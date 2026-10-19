@@ -6,7 +6,8 @@ export const TIPI = {
   gruppi:   { nome: "Gruppi",   spiega: "Elementi da mettere nel gruppo giusto." },
   domande:  { nome: "Domande",  spiega: "Una domanda, la risposta giusta e qualche risposta sbagliata." },
   sequenza: { nome: "Sequenza", spiega: "Passi da mettere in ordine, dal primo all'ultimo." },
-  frasi:    { nome: "Frasi",    spiega: "Frasi con le parole mancanti. Scrivi tra [quadre] le parole da completare." }
+  frasi:    { nome: "Frasi",    spiega: "Frasi con le parole mancanti. Scrivi tra [quadre] le parole da completare." },
+  matematica: { nome: "Matematica", spiega: "Numeri, operazioni e problemi con gli oggetti da vedere, muovere e contare." }
 };
 
 export const GIOCHI = {
@@ -15,6 +16,7 @@ export const GIOCHI = {
   raggruppa: { nome: "Raggruppa",          icona: "🧺", tipi: ["gruppi"],                      consegna: "Metti ogni carta nel gruppo giusto." },
   sequenza:  { nome: "Ordina la sequenza", icona: "🔢", tipi: ["sequenza"],                    consegna: "Metti le carte in ordine." },
   completa:  { nome: "Completa la frase",  icona: "✏️", tipi: ["frasi"],                       consegna: "Metti ogni parola al suo posto." },
+  matematica: { nome: "Matematica con gli oggetti", icona: "🧮", tipi: ["matematica"],       consegna: "Guarda, conta e rispondi." },
   scelta:    { nome: "Scelta multipla",    icona: "✅", tipi: ["domande", "coppie", "gruppi"], consegna: "Scegli la risposta giusta." }
 };
 // L'ordine conta: il primo gioco adatto a un tipo è quello con cui l'esercizio si apre.
@@ -99,7 +101,95 @@ export function valida(v) {
     es.dati.extra = (Array.isArray(d.extra) ? d.extra : []).map(p => testo(p, 60)).filter(Boolean);
     if (!es.dati.frasi.length) errore("Serve almeno una frase con una parola tra [quadre].");
   }
+  if (tipo === "matematica") {
+    es.dati.aiuto = d.aiuto === "a-richiesta" ? "a-richiesta" : "sempre";
+    const oggetto = elemento(d.oggetto);
+    if (oggetto) es.dati.oggetto = oggetto;
+    es.dati.esercizi = (Array.isArray(d.esercizi) ? d.esercizi : []).map(esercizioDiMatematica).filter(Boolean);
+    if (!es.dati.esercizi.length) errore("Serve almeno un esercizio di matematica completo.");
+  }
   return es;
+}
+
+/* ---------- matematica con gli oggetti ---------- */
+
+export const MAX_OGGETTI = 60;
+
+export const GENERI = {
+  conta:        { nome: "Quanti sono?",          spiega: "Oggetti in file da dieci, da contare." },
+  confronta:    { nome: "Di più, di meno, uguali", spiega: "Due gruppi: si mettono gli oggetti in coppia e si vede chi ne ha di più." },
+  "prima-dopo": { nome: "Prima e dopo",          spiega: "Il numero che viene prima o dopo, sulla linea dei numeri." },
+  decine:       { nome: "Decine e unità",        spiega: "Il numero fatto con le decine (barrette da dieci) e le unità." },
+  operazione:   { nome: "Operazione",            spiega: "Un calcolo che si vede con gli oggetti." },
+  problema:     { nome: "Problema",              spiega: "Una piccola storia da guardare e capire prima di scegliere l'operazione." }
+};
+
+export const OPERAZIONI = { "+": "+", "-": "−", "x": "×", ":": ":" };
+
+// In un problema l'operazione nasce da ciò che succede, non dalle parole del testo.
+// a e b: unione/aggiunta/togliere/confronto = due quantità; gruppi = quanti gruppi e quanti in ognuno;
+// ripartizione = quanti oggetti e tra quante parti; contenenza = quanti oggetti e quanti in ogni gruppo.
+export const SCHEMI = {
+  unione:       { op: "+", nome: "Si mettono insieme due gruppi" },
+  aggiunta:     { op: "+", nome: "Ne arrivano altri" },
+  togliere:     { op: "-", nome: "Ne vanno via alcuni" },
+  confronto:    { op: "-", nome: "Si confrontano due gruppi" },
+  gruppi:       { op: "x", nome: "Ci sono gruppi tutti uguali" },
+  ripartizione: { op: ":", nome: "Si dividono in parti uguali" },
+  contenenza:   { op: ":", nome: "Si fanno gruppi uguali e si contano i gruppi" }
+};
+
+export function risultato(op, a, b) {
+  return op === "+" ? a + b : op === "-" ? a - b : op === "x" ? a * b : a / b;
+}
+
+function controllaConti(op, a, b, schema, inizio) {
+  const no = msg => errore(inizio + msg);
+  if (!Number.isInteger(a) || !Number.isInteger(b) || a < 0 || b < 0) no("servono due numeri interi.");
+  if (op === "+" && a + b > MAX_OGGETTI) no("con più di " + MAX_OGGETTI + " oggetti non si vedono bene.");
+  if (op === "-" && (b > a || a > MAX_OGGETTI)) no("il secondo numero non può essere più grande del primo, e al massimo " + MAX_OGGETTI + ".");
+  if (op === "x" && (a < 1 || b < 1 || a > 10 || a * b > MAX_OGGETTI)) no("al massimo 10 gruppi e " + MAX_OGGETTI + " oggetti in tutto.");
+  if (op === ":" && (b < 1 || a < 1 || a > MAX_OGGETTI || a % b !== 0)) no("il primo numero deve dividersi per il secondo senza resto, al massimo " + MAX_OGGETTI + ".");
+  if (op === ":" && schema !== "contenenza" && b > 10) no("si divide al massimo in 10 parti.");
+  if (schema === "contenenza" && a / b > 12) no("al massimo 12 gruppi.");
+  if (schema === "confronto" && a > 30) no("per confrontare, al massimo 30 per gruppo.");
+}
+
+function esercizioDiMatematica(x, i) {
+  if (!x || !GENERI[x.genere]) return null;
+  const inizio = "Esercizio " + (i + 1) + ": ";
+  const a = Number(x.a);
+  const b = Number(x.b);
+  const m = { genere: x.genere, a };
+  if (x.genere === "conta" && !(Number.isInteger(a) && a >= 1 && a <= MAX_OGGETTI)) errore(inizio + "il numero va da 1 a " + MAX_OGGETTI + ".");
+  if (x.genere === "confronta") {
+    if (!(Number.isInteger(a) && Number.isInteger(b) && a >= 0 && b >= 0 && a <= 30 && b <= 30)) errore(inizio + "i due numeri vanno da 0 a 30.");
+    m.b = b;
+  }
+  if (x.genere === "prima-dopo" || x.genere === "decine") {
+    if (!(Number.isInteger(a) && a >= 1 && a <= 99)) errore(inizio + "il numero va da 1 a 99.");
+    if (x.genere === "prima-dopo") m.verso = x.verso === "prima" ? "prima" : "dopo";
+  }
+  if (x.genere === "operazione") {
+    m.op = OPERAZIONI[x.op] ? x.op : errore(inizio + "scegli l'operazione.");
+    m.b = b;
+    controllaConti(m.op, a, b, null, inizio);
+  }
+  if (x.genere === "problema") {
+    m.schema = SCHEMI[x.schema] ? x.schema : errore(inizio + "scegli che cosa succede nel problema.");
+    m.b = b;
+    controllaConti(SCHEMI[m.schema].op, a, b, m.schema, inizio);
+    if (m.schema === "confronto" && b > a) errore(inizio + "nel confronto il primo gruppo è quello più grande.");
+    m.testo = (Array.isArray(x.testo) ? x.testo : []).map(t => testo(t, 200)).filter(Boolean).slice(0, 4);
+    if (!m.testo.length) errore(inizio + "manca il testo del problema.");
+    const oggetto = elemento(x.oggetto);
+    const contenitore = elemento(x.contenitore);
+    const risposta = testo(x.risposta, 200);
+    if (oggetto) m.oggetto = oggetto;
+    if (contenitore) m.contenitore = contenitore;
+    if (risposta) m.risposta = risposta;
+  }
+  return m;
 }
 
 // Motivi del menu «Segnala». «nascondi»: subito, dopo le segnalazioni (1 insegnante o 3 anonime), oppure mai

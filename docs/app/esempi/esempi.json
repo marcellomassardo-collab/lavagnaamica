@@ -1173,6 +1173,841 @@
   }
  },
  {
+  "id": "conta-oggetti",
+  "materia": "Matematica",
+  "titolo": "Quanti sono?",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Conta gli oggetti. Puoi toccarli.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "mela",
+    "p": 2462
+   },
+   "esercizi": [
+    {
+     "genere": "conta",
+     "a": 3
+    },
+    {
+     "genere": "conta",
+     "a": 6
+    },
+    {
+     "genere": "conta",
+     "a": 9
+    },
+    {
+     "genere": "conta",
+     "a": 12
+    },
+    {
+     "genere": "conta",
+     "a": 15
+    },
+    {
+     "genere": "conta",
+     "a": 18
+    },
+    {
+     "genere": "conta",
+     "a": 20
+    },
+    {
+     "genere": "conta",
+     "a": 24
+    }
+   ]
+  }
+ },
+ {
+  "id": "maggiore-minore",
+  "materia": "Matematica",
+  "titolo": "Di più, di meno o uguali?",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Metti gli oggetti in coppia e confronta.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "caramella",
+    "p": 2686
+   },
+   "esercizi": [
+    {
+     "genere": "confronta",
+     "a": 5,
+     "b": 8
+    },
+    {
+     "genere": "confronta",
+     "a": 12,
+     "b": 10
+    },
+    {
+     "genere": "confronta",
+     "a": 7,
+     "b": 7
+    },
+    {
+     "genere": "confronta",
+     "a": 15,
+     "b": 19
+    },
+    {
+     "genere": "confronta",
+     "a": 20,
+     "b": 11
+    },
+    {
+     "genere": "confronta",
+     "a": 9,
+     "b": 6
+    }
+   ]
+  }
+ },
+ {
+  "id": "prima-dopo",
+  "materia": "Matematica",
+  "titolo": "Il numero prima e dopo",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda la linea dei numeri.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "mela",
+    "p": 2462
+   },
+   "esercizi": [
+    {
+     "genere": "prima-dopo",
+     "a": 5,
+     "verso": "dopo"
+    },
+    {
+     "genere": "prima-dopo",
+     "a": 12,
+     "verso": "prima"
+    },
+    {
+     "genere": "prima-dopo",
+     "a": 9,
+     "verso": "dopo"
+    },
+    {
+     "genere": "prima-dopo",
+     "a": 17,
+     "verso": "prima"
+    },
+    {
+     "genere": "prima-dopo",
+     "a": 14,
+     "verso": "dopo"
+    },
+    {
+     "genere": "prima-dopo",
+     "a": 19,
+     "verso": "prima"
+    },
+    {
+     "genere": "prima-dopo",
+     "a": 23,
+     "verso": "dopo"
+    },
+    {
+     "genere": "prima-dopo",
+     "a": 40,
+     "verso": "prima"
+    },
+    {
+     "genere": "prima-dopo",
+     "a": 59,
+     "verso": "dopo"
+    },
+    {
+     "genere": "prima-dopo",
+     "a": 70,
+     "verso": "prima"
+    }
+   ]
+  }
+ },
+ {
+  "id": "decine-unita",
+  "materia": "Matematica",
+  "titolo": "Decine e unità",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni barretta è una decina. Conta decine e unità.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "mela",
+    "p": 2462
+   },
+   "esercizi": [
+    {
+     "genere": "decine",
+     "a": 13
+    },
+    {
+     "genere": "decine",
+     "a": 16
+    },
+    {
+     "genere": "decine",
+     "a": 11
+    },
+    {
+     "genere": "decine",
+     "a": 18
+    },
+    {
+     "genere": "decine",
+     "a": 47
+    },
+    {
+     "genere": "decine",
+     "a": 82
+    },
+    {
+     "genere": "decine",
+     "a": 36
+    },
+    {
+     "genere": "decine",
+     "a": 90
+    },
+    {
+     "genere": "decine",
+     "a": 15
+    },
+    {
+     "genere": "decine",
+     "a": 64
+    }
+   ]
+  }
+ },
+ {
+  "id": "addizioni",
+  "materia": "Matematica",
+  "titolo": "Addizioni con gli oggetti",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda: gli oggetti nuovi arrivano e riempiono le file da dieci.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "fragola",
+    "p": 2400
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 3,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 5,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 8,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 7,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 12,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 15,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 18,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 25,
+     "b": 8
+    }
+   ]
+  }
+ },
+ {
+  "id": "sottrazioni",
+  "materia": "Matematica",
+  "titolo": "Sottrazioni con gli oggetti",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda: gli oggetti tolti si cancellano.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "biscotto",
+    "p": 8295
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 9,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 10,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 12,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 15,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 18,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 20,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 24,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 30,
+     "b": 12
+    }
+   ]
+  }
+ },
+ {
+  "id": "moltiplicazioni",
+  "materia": "Matematica",
+  "titolo": "Moltiplicazioni con gli schieramenti",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "fiore",
+    "p": 7104
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 6
+    }
+   ]
+  }
+ },
+ {
+  "id": "divisioni",
+  "materia": "Matematica",
+  "titolo": "Divisioni: in parti uguali",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Dai un oggetto a ogni piatto, uno alla volta.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "caramella",
+    "p": 2686
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 6,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 8,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 10,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 12,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 15,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 12,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 20,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 18,
+     "b": 3
+    }
+   ]
+  }
+ },
+ {
+  "id": "problemi-aggiungere-togliere",
+  "materia": "Matematica",
+  "titolo": "Problemi: aggiungere e togliere",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda la storia: che cosa succede agli oggetti?",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "mela",
+    "p": 2462
+   },
+   "esercizi": [
+    {
+     "genere": "problema",
+     "schema": "togliere",
+     "a": 15,
+     "b": 6,
+     "testo": [
+      "NEL CESTO CI SONO 15 MELE.",
+      "LA MAMMA NE PRENDE 6.",
+      "QUANTE MELE RESTANO?"
+     ],
+     "oggetto": {
+      "t": "mela",
+      "p": 2462
+     },
+     "risposta": "RESTANO 9 MELE."
+    },
+    {
+     "genere": "problema",
+     "schema": "unione",
+     "a": 14,
+     "b": 9,
+     "testo": [
+      "IN CLASSE CI SONO 14 MATITE ROSSE.",
+      "CI SONO ANCHE 9 MATITE BLU.",
+      "QUANTE MATITE CI SONO IN TUTTO?"
+     ],
+     "oggetto": {
+      "t": "matita",
+      "p": 2440
+     },
+     "risposta": "CI SONO 23 MATITE."
+    },
+    {
+     "genere": "problema",
+     "schema": "aggiunta",
+     "a": 7,
+     "b": 5,
+     "testo": [
+      "GIULIA HA 7 FIGURINE.",
+      "IL NONNO LE REGALA 5 FIGURINE.",
+      "QUANTE FIGURINE HA ADESSO GIULIA?"
+     ],
+     "oggetto": {
+      "t": "figurina",
+      "p": 35425
+     },
+     "risposta": "GIULIA HA 12 FIGURINE."
+    },
+    {
+     "genere": "problema",
+     "schema": "togliere",
+     "a": 30,
+     "b": 12,
+     "testo": [
+      "SARA HA 30 PALLONCINI.",
+      "NE VOLANO VIA 12.",
+      "QUANTI PALLONCINI RESTANO?"
+     ],
+     "oggetto": {
+      "t": "palloncino",
+      "p": 2408
+     },
+     "risposta": "RESTANO 18 PALLONCINI."
+    },
+    {
+     "genere": "problema",
+     "schema": "aggiunta",
+     "a": 25,
+     "b": 8,
+     "testo": [
+      "NELL'ACQUARIO CI SONO 25 PESCI.",
+      "NE ARRIVANO ALTRI 8.",
+      "QUANTI PESCI CI SONO ADESSO?"
+     ],
+     "oggetto": {
+      "t": "pesce",
+      "p": 2520
+     },
+     "risposta": "ADESSO CI SONO 33 PESCI."
+    },
+    {
+     "genere": "problema",
+     "schema": "confronto",
+     "a": 12,
+     "b": 8,
+     "testo": [
+      "ANNA HA 12 CARAMELLE.",
+      "MARCO HA 8 CARAMELLE.",
+      "QUANTE CARAMELLE HA ANNA PIÙ DI MARCO?"
+     ],
+     "oggetto": {
+      "t": "caramella",
+      "p": 2686
+     },
+     "risposta": "ANNA HA 4 CARAMELLE PIÙ DI MARCO."
+    },
+    {
+     "genere": "problema",
+     "schema": "togliere",
+     "a": 8,
+     "b": 3,
+     "testo": [
+      "SUL TAVOLO CI SONO 8 BICCHIERI.",
+      "3 BICCHIERI SI SONO ROTTI.",
+      "QUANTI BICCHIERI SI POSSONO USARE?"
+     ],
+     "oggetto": {
+      "t": "bicchiere",
+      "p": 2610
+     },
+     "risposta": "SI POSSONO USARE 5 BICCHIERI."
+    },
+    {
+     "genere": "problema",
+     "schema": "aggiunta",
+     "a": 23,
+     "b": 9,
+     "testo": [
+      "NEL PARCHEGGIO CI SONO 23 AUTO.",
+      "NE ARRIVANO ALTRE 9.",
+      "QUANTE AUTO CI SONO ADESSO?"
+     ],
+     "oggetto": {
+      "t": "auto",
+      "p": 2339
+     },
+     "risposta": "ADESSO CI SONO 32 AUTO."
+    },
+    {
+     "genere": "problema",
+     "schema": "togliere",
+     "a": 40,
+     "b": 15,
+     "testo": [
+      "LUCA HA 40 FIGURINE.",
+      "NE REGALA 15 A UN AMICO.",
+      "QUANTE FIGURINE GLI RESTANO?"
+     ],
+     "oggetto": {
+      "t": "figurina",
+      "p": 35425
+     },
+     "risposta": "GLI RESTANO 25 FIGURINE."
+    },
+    {
+     "genere": "problema",
+     "schema": "togliere",
+     "a": 18,
+     "b": 5,
+     "testo": [
+      "IN UN CESTO CI SONO 18 UOVA.",
+      "SE NE ROMPONO 5.",
+      "QUANTE UOVA SONO ANCORA INTERE?"
+     ],
+     "oggetto": {
+      "t": "uovo",
+      "p": 2427
+     },
+     "risposta": "SONO INTERE 13 UOVA."
+    }
+   ]
+  }
+ },
+ {
+  "id": "problemi-gruppi-divisioni",
+  "materia": "Matematica",
+  "titolo": "Problemi: gruppi uguali e divisioni",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda la storia: ci sono gruppi uguali? Si divide?",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "biscotto",
+    "p": 8295
+   },
+   "esercizi": [
+    {
+     "genere": "problema",
+     "schema": "gruppi",
+     "a": 3,
+     "b": 4,
+     "testo": [
+      "OGNI SCATOLA HA 4 BISCOTTI.",
+      "HO 3 SCATOLE.",
+      "QUANTI BISCOTTI HO?"
+     ],
+     "oggetto": {
+      "t": "biscotto",
+      "p": 8295
+     },
+     "risposta": "HO 12 BISCOTTI.",
+     "contenitore": {
+      "t": "scatola",
+      "p": 5935
+     }
+    },
+    {
+     "genere": "problema",
+     "schema": "ripartizione",
+     "a": 12,
+     "b": 3,
+     "testo": [
+      "LA NONNA HA 12 BISCOTTI E 3 NIPOTI.",
+      "VUOLE DARE A OGNI NIPOTE LO STESSO NUMERO DI BISCOTTI.",
+      "QUANTI BISCOTTI HA OGNI NIPOTE?"
+     ],
+     "oggetto": {
+      "t": "biscotto",
+      "p": 8295
+     },
+     "risposta": "OGNI NIPOTE HA 4 BISCOTTI.",
+     "contenitore": {
+      "t": "nipote",
+      "p": 10342
+     }
+    },
+    {
+     "genere": "problema",
+     "schema": "gruppi",
+     "a": 4,
+     "b": 5,
+     "testo": [
+      "IN UN VASO CI SONO 4 FIORI.",
+      "OGNI FIORE HA 5 PETALI.",
+      "QUANTI PETALI CI SONO IN TUTTO?"
+     ],
+     "oggetto": {
+      "t": "petalo",
+      "p": 34063
+     },
+     "risposta": "CI SONO 20 PETALI.",
+     "contenitore": {
+      "t": "fiore",
+      "p": 7104
+     }
+    },
+    {
+     "genere": "problema",
+     "schema": "contenenza",
+     "a": 15,
+     "b": 5,
+     "testo": [
+      "CI SONO 15 UOVA.",
+      "IN OGNI SCATOLA CI STANNO 5 UOVA.",
+      "QUANTE SCATOLE SERVONO?"
+     ],
+     "oggetto": {
+      "t": "uovo",
+      "p": 2427
+     },
+     "risposta": "SERVONO 3 SCATOLE.",
+     "contenitore": {
+      "t": "scatola",
+      "p": 5935
+     }
+    },
+    {
+     "genere": "problema",
+     "schema": "gruppi",
+     "a": 5,
+     "b": 6,
+     "testo": [
+      "IN UN PRATO CI SONO 5 COCCINELLE.",
+      "OGNI COCCINELLA HA 6 ZAMPE.",
+      "QUANTE ZAMPE CI SONO IN TUTTO?"
+     ],
+     "oggetto": {
+      "t": "zampa"
+     },
+     "risposta": "CI SONO 30 ZAMPE.",
+     "contenitore": {
+      "t": "coccinella",
+      "p": 2924
+     }
+    },
+    {
+     "genere": "problema",
+     "schema": "ripartizione",
+     "a": 20,
+     "b": 4,
+     "testo": [
+      "CI SONO 20 MATITE E 4 ASTUCCI.",
+      "IN OGNI ASTUCCIO VA LO STESSO NUMERO DI MATITE.",
+      "QUANTE MATITE VANNO IN OGNI ASTUCCIO?"
+     ],
+     "oggetto": {
+      "t": "matita",
+      "p": 2440
+     },
+     "risposta": "IN OGNI ASTUCCIO VANNO 5 MATITE.",
+     "contenitore": {
+      "t": "astuccio",
+      "p": 8575
+     }
+    },
+    {
+     "genere": "problema",
+     "schema": "gruppi",
+     "a": 4,
+     "b": 3,
+     "testo": [
+      "CI SONO 4 GRUPPI DI BAMBINI.",
+      "IN OGNI GRUPPO CI SONO 3 BAMBINI.",
+      "QUANTI BAMBINI CI SONO?"
+     ],
+     "oggetto": {
+      "t": "bambino",
+      "p": 7176
+     },
+     "risposta": "CI SONO 12 BAMBINI."
+    },
+    {
+     "genere": "problema",
+     "schema": "contenenza",
+     "a": 18,
+     "b": 6,
+     "testo": [
+      "LA MAESTRA HA 18 PALLONCINI.",
+      "NE LEGA 6 IN OGNI MAZZO.",
+      "QUANTI MAZZI FA?"
+     ],
+     "oggetto": {
+      "t": "palloncino",
+      "p": 2408
+     },
+     "risposta": "FA 3 MAZZI."
+    }
+   ]
+  }
+ },
+ {
   "id": "numeri-parole",
   "materia": "Matematica",
   "titolo": "I numeri da 1 a 20",
@@ -1342,656 +2177,6 @@
       "t": "VENTI"
      }
     ]
-   ]
-  }
- },
- {
-  "id": "prima-dopo",
-  "materia": "Matematica",
-  "titolo": "Il numero prima e dopo",
-  "scrittura": "maiuscolo",
-  "tipo": "domande",
-  "gioco": "scelta",
-  "dati": {
-   "domande": [
-    {
-     "d": {
-      "t": "CHE NUMERO VIENE DOPO 5?"
-     },
-     "giusta": {
-      "t": "6"
-     },
-     "sbagliate": [
-      {
-       "t": "4"
-      },
-      {
-       "t": "7"
-      },
-      {
-       "t": "15"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "CHE NUMERO VIENE PRIMA DI 12?"
-     },
-     "giusta": {
-      "t": "11"
-     },
-     "sbagliate": [
-      {
-       "t": "13"
-      },
-      {
-       "t": "10"
-      },
-      {
-       "t": "2"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "CHE NUMERO VIENE DOPO 9?"
-     },
-     "giusta": {
-      "t": "10"
-     },
-     "sbagliate": [
-      {
-       "t": "8"
-      },
-      {
-       "t": "11"
-      },
-      {
-       "t": "19"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "CHE NUMERO VIENE PRIMA DI 17?"
-     },
-     "giusta": {
-      "t": "16"
-     },
-     "sbagliate": [
-      {
-       "t": "18"
-      },
-      {
-       "t": "15"
-      },
-      {
-       "t": "7"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "CHE NUMERO VIENE DOPO 14?"
-     },
-     "giusta": {
-      "t": "15"
-     },
-     "sbagliate": [
-      {
-       "t": "13"
-      },
-      {
-       "t": "16"
-      },
-      {
-       "t": "24"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "CHE NUMERO VIENE PRIMA DI 19?"
-     },
-     "giusta": {
-      "t": "18"
-     },
-     "sbagliate": [
-      {
-       "t": "20"
-      },
-      {
-       "t": "17"
-      },
-      {
-       "t": "9"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "CHE NUMERO VIENE DOPO 23?"
-     },
-     "giusta": {
-      "t": "24"
-     },
-     "sbagliate": [
-      {
-       "t": "22"
-      },
-      {
-       "t": "25"
-      },
-      {
-       "t": "33"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "CHE NUMERO VIENE PRIMA DI 40?"
-     },
-     "giusta": {
-      "t": "39"
-     },
-     "sbagliate": [
-      {
-       "t": "41"
-      },
-      {
-       "t": "38"
-      },
-      {
-       "t": "30"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "CHE NUMERO VIENE DOPO 59?"
-     },
-     "giusta": {
-      "t": "60"
-     },
-     "sbagliate": [
-      {
-       "t": "58"
-      },
-      {
-       "t": "61"
-      },
-      {
-       "t": "69"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "CHE NUMERO VIENE PRIMA DI 70?"
-     },
-     "giusta": {
-      "t": "69"
-     },
-     "sbagliate": [
-      {
-       "t": "71"
-      },
-      {
-       "t": "68"
-      },
-      {
-       "t": "60"
-      }
-     ]
-    }
-   ]
-  }
- },
- {
-  "id": "maggiore-minore",
-  "materia": "Matematica",
-  "titolo": "Maggiore, minore o uguale?",
-  "scrittura": "maiuscolo",
-  "tipo": "domande",
-  "gioco": "scelta",
-  "consegna": "Il primo numero è maggiore, minore o uguale al secondo?",
-  "dati": {
-   "domande": [
-    {
-     "d": {
-      "t": "5  …  8"
-     },
-     "giusta": {
-      "t": "< MINORE"
-     },
-     "sbagliate": [
-      {
-       "t": "> MAGGIORE"
-      },
-      {
-       "t": "= UGUALE"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "12  …  10"
-     },
-     "giusta": {
-      "t": "> MAGGIORE"
-     },
-     "sbagliate": [
-      {
-       "t": "< MINORE"
-      },
-      {
-       "t": "= UGUALE"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "7  …  7"
-     },
-     "giusta": {
-      "t": "= UGUALE"
-     },
-     "sbagliate": [
-      {
-       "t": "< MINORE"
-      },
-      {
-       "t": "> MAGGIORE"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "15  …  19"
-     },
-     "giusta": {
-      "t": "< MINORE"
-     },
-     "sbagliate": [
-      {
-       "t": "> MAGGIORE"
-      },
-      {
-       "t": "= UGUALE"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "20  …  11"
-     },
-     "giusta": {
-      "t": "> MAGGIORE"
-     },
-     "sbagliate": [
-      {
-       "t": "< MINORE"
-      },
-      {
-       "t": "= UGUALE"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "9  …  6"
-     },
-     "giusta": {
-      "t": "> MAGGIORE"
-     },
-     "sbagliate": [
-      {
-       "t": "< MINORE"
-      },
-      {
-       "t": "= UGUALE"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "34  …  43"
-     },
-     "giusta": {
-      "t": "< MINORE"
-     },
-     "sbagliate": [
-      {
-       "t": "> MAGGIORE"
-      },
-      {
-       "t": "= UGUALE"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "56  …  65"
-     },
-     "giusta": {
-      "t": "< MINORE"
-     },
-     "sbagliate": [
-      {
-       "t": "> MAGGIORE"
-      },
-      {
-       "t": "= UGUALE"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "70  …  70"
-     },
-     "giusta": {
-      "t": "= UGUALE"
-     },
-     "sbagliate": [
-      {
-       "t": "< MINORE"
-      },
-      {
-       "t": "> MAGGIORE"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "91  …  19"
-     },
-     "giusta": {
-      "t": "> MAGGIORE"
-     },
-     "sbagliate": [
-      {
-       "t": "< MINORE"
-      },
-      {
-       "t": "= UGUALE"
-      }
-     ]
-    }
-   ]
-  }
- },
- {
-  "id": "decine-unita",
-  "materia": "Matematica",
-  "titolo": "Decine e unità",
-  "scrittura": "maiuscolo",
-  "tipo": "domande",
-  "gioco": "scelta",
-  "dati": {
-   "domande": [
-    {
-     "d": {
-      "t": "QUANTE DECINE E UNITÀ HA 13?"
-     },
-     "giusta": {
-      "t": "1 DECINA E 3 UNITÀ"
-     },
-     "sbagliate": [
-      {
-       "t": "3 DECINE E 1 UNITÀ"
-      },
-      {
-       "t": "10 DECINE E 3 UNITÀ"
-      },
-      {
-       "t": "1 DECINA E 4 UNITÀ"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "QUANTE DECINE E UNITÀ HA 16?"
-     },
-     "giusta": {
-      "t": "1 DECINA E 6 UNITÀ"
-     },
-     "sbagliate": [
-      {
-       "t": "6 DECINE E 1 UNITÀ"
-      },
-      {
-       "t": "10 DECINE E 6 UNITÀ"
-      },
-      {
-       "t": "1 DECINA E 7 UNITÀ"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "QUANTE DECINE E UNITÀ HA 11?"
-     },
-     "giusta": {
-      "t": "1 DECINA E 1 UNITÀ"
-     },
-     "sbagliate": [
-      {
-       "t": "2 DECINE E 1 UNITÀ"
-      },
-      {
-       "t": "10 DECINE E 1 UNITÀ"
-      },
-      {
-       "t": "1 DECINA E 2 UNITÀ"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "QUANTE DECINE E UNITÀ HA 18?"
-     },
-     "giusta": {
-      "t": "1 DECINA E 8 UNITÀ"
-     },
-     "sbagliate": [
-      {
-       "t": "8 DECINE E 1 UNITÀ"
-      },
-      {
-       "t": "10 DECINE E 8 UNITÀ"
-      },
-      {
-       "t": "1 DECINA E 9 UNITÀ"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "QUANTE DECINE E UNITÀ HA 47?"
-     },
-     "giusta": {
-      "t": "4 DECINE E 7 UNITÀ"
-     },
-     "sbagliate": [
-      {
-       "t": "7 DECINE E 4 UNITÀ"
-      },
-      {
-       "t": "40 DECINE E 7 UNITÀ"
-      },
-      {
-       "t": "4 DECINE E 8 UNITÀ"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "QUANTE DECINE E UNITÀ HA 82?"
-     },
-     "giusta": {
-      "t": "8 DECINE E 2 UNITÀ"
-     },
-     "sbagliate": [
-      {
-       "t": "2 DECINE E 8 UNITÀ"
-      },
-      {
-       "t": "80 DECINE E 2 UNITÀ"
-      },
-      {
-       "t": "8 DECINE E 3 UNITÀ"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "QUANTE DECINE E UNITÀ HA 36?"
-     },
-     "giusta": {
-      "t": "3 DECINE E 6 UNITÀ"
-     },
-     "sbagliate": [
-      {
-       "t": "6 DECINE E 3 UNITÀ"
-      },
-      {
-       "t": "30 DECINE E 6 UNITÀ"
-      },
-      {
-       "t": "3 DECINE E 7 UNITÀ"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "QUANTE DECINE E UNITÀ HA 90?"
-     },
-     "giusta": {
-      "t": "9 DECINE E 0 UNITÀ"
-     },
-     "sbagliate": [
-      {
-       "t": "0 DECINE E 9 UNITÀ"
-      },
-      {
-       "t": "90 DECINE E 0 UNITÀ"
-      },
-      {
-       "t": "9 DECINE E 1 UNITÀ"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "QUANTE DECINE E UNITÀ HA 15?"
-     },
-     "giusta": {
-      "t": "1 DECINA E 5 UNITÀ"
-     },
-     "sbagliate": [
-      {
-       "t": "5 DECINE E 1 UNITÀ"
-      },
-      {
-       "t": "10 DECINE E 5 UNITÀ"
-      },
-      {
-       "t": "1 DECINA E 6 UNITÀ"
-      }
-     ]
-    },
-    {
-     "d": {
-      "t": "QUANTE DECINE E UNITÀ HA 64?"
-     },
-     "giusta": {
-      "t": "6 DECINE E 4 UNITÀ"
-     },
-     "sbagliate": [
-      {
-       "t": "4 DECINE E 6 UNITÀ"
-      },
-      {
-       "t": "60 DECINE E 4 UNITÀ"
-      },
-      {
-       "t": "6 DECINE E 5 UNITÀ"
-      }
-     ]
-    }
-   ]
-  }
- },
- {
-  "id": "parole-problemi",
-  "materia": "Matematica",
-  "titolo": "Le parole che aiutano nei problemi",
-  "scrittura": "maiuscolo",
-  "tipo": "gruppi",
-  "gioco": "raggruppa",
-  "consegna": "Che operazione ti fa pensare questa parola?",
-  "dati": {
-   "gruppi": [
-    {
-     "nome": "+ PIÙ",
-     "elementi": [
-      {
-       "t": "IN TUTTO"
-      },
-      {
-       "t": "INSIEME"
-      },
-      {
-       "t": "AGGIUNGE"
-      },
-      {
-       "t": "ARRIVANO"
-      },
-      {
-       "t": "COMPRA ANCORA"
-      }
-     ]
-    },
-    {
-     "nome": "− MENO",
-     "elementi": [
-      {
-       "t": "RESTANO"
-      },
-      {
-       "t": "TOGLIE"
-      },
-      {
-       "t": "REGALA"
-      },
-      {
-       "t": "PERDE"
-      },
-      {
-       "t": "MANGIA"
-      },
-      {
-       "t": "VOLANO VIA"
-      }
-     ]
-    },
-    {
-     "nome": "× PER",
-     "elementi": [
-      {
-       "t": "OGNI"
-      },
-      {
-       "t": "CIASCUNO"
-      },
-      {
-       "t": "VOLTE"
-      },
-      {
-       "t": "GRUPPI UGUALI"
-      }
-     ]
-    }
    ]
   }
  },

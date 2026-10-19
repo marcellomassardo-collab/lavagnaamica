@@ -2,7 +2,7 @@
 // I file dell'app si chiedono prima alla rete (così si vede sempre l'ultima versione)
 // e solo se la rete non risponde in tempo si prendono dalla copia salvata.
 
-const VERSIONE = "app-3";
+const VERSIONE = "app-4";
 const PITTOGRAMMI = "pittogrammi";
 const MAX_PITTOGRAMMI = 400;
 const ATTESA_RETE = 3500;
@@ -10,8 +10,8 @@ const ATTESA_RETE = 3500;
 const FILE = [
   "./", "index.html", "stile.css", "manifest.webmanifest",
   "js/avvio.js", "js/catalogo.js", "js/config.js", "js/dati.js", "js/editor.js", "js/impostazioni.js", "js/insegnanti.js",
-  "js/modello.js", "js/pagine.js", "js/picto.js", "js/suoni.js", "js/trascina.js", "js/ui.js", "js/voce.js",
-  "js/giochi/abbina.js", "js/giochi/completa.js", "js/giochi/memory.js", "js/giochi/raggruppa.js", "js/giochi/scelta.js", "js/giochi/sequenza.js",
+  "js/modello.js", "js/pagine.js", "js/picto.js", "js/scena.js", "js/suoni.js", "js/trascina.js", "js/ui.js", "js/voce.js",
+  "js/giochi/abbina.js", "js/giochi/completa.js", "js/giochi/matematica.js", "js/giochi/memory.js", "js/giochi/raggruppa.js", "js/giochi/scelta.js", "js/giochi/sequenza.js",
   "esempi/esempi.json", "font/corsivo-scuola.woff2",
   "icone/icona.svg", "icone/icona-192.png", "icone/icona-512.png", "icone/icona-maskable-512.png"
 ];

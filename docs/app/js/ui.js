@@ -1,7 +1,7 @@
 // Pezzi d'interfaccia condivisi da giochi, editor e pagine.
 
 import { impostazioni } from "./impostazioni.js";
-import { parla, voceDisponibile } from "./voce.js";
+import { parla, parlaEAspetta, voceDisponibile } from "./voce.js";
 import { suonoGiusto, suonoRiprova } from "./suoni.js";
 
 export function el(tag, attr, ...figli) {
@@ -61,6 +61,10 @@ export function creaContesto(fine) {
   return {
     opz: impostazioni,
     leggi(testo) { if (impostazioni.voce) parla(testo); },
+    // racconta una frase e aspetta che finisca (o un momento, se la voce è spenta)
+    racconta(testo) {
+      return impostazioni.voce && voceDisponibile ? parlaEAspetta(testo) : new Promise(r => setTimeout(r, 1200));
+    },
     giusto(n) {
       suonoGiusto();
       if (n) n.classList.add("giusta");

@@ -1,7 +1,7 @@
 // Editor degli esercizi: tutto si prepara riempiendo dei campi, senza codice.
 
 import { el, immaginePicto } from "./ui.js";
-import { TIPI, GIOCHI, SCRITTURE, MATERIE, giochiPer, valida } from "./modello.js";
+import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, OPERAZIONI, SCHEMI, giochiPer, valida } from "./modello.js";
 import { scegliPittogramma } from "./picto.js";
 
 const vuoto = () => ({ t: "" });
@@ -13,7 +13,8 @@ const NUOVI = {
   gruppi: () => ({ gruppi: [nuovoGruppo(), nuovoGruppo()] }),
   domande: () => ({ domande: [nuovaDomanda()] }),
   sequenza: () => ({ passi: [vuoto(), vuoto(), vuoto()] }),
-  frasi: () => ({ frasi: ["", ""], extra: [] })
+  frasi: () => ({ frasi: ["", ""], extra: [] }),
+  matematica: () => ({ aiuto: "sempre", oggetto: { t: "mela", p: 2462 }, esercizi: [{ genere: "conta", a: 5 }] })
 };
 
 // L'editor lavora su una copia; nei gruppi nome e immagine stanno in «testa».
@@ -72,9 +73,88 @@ const tasto = (testo, azione, attr) =>
 const cestino = (azione, attivo) => tasto("🗑", azione, { "aria-label": "Togli", title: "Togli", disabled: !attivo });
 const aggiungi = (testo, azione) => el("button", { type: "button", class: "aggiungi", text: "＋ " + testo, on: { click: azione } });
 
+/* ---------- matematica con gli oggetti ---------- */
+
+const NOMI_NUMERI = {
+  operazione: ["Primo numero", "Secondo numero"],
+  unione: ["Primo gruppo", "Secondo gruppo"],
+  aggiunta: ["All'inizio", "Ne arrivano"],
+  togliere: ["All'inizio", "Ne vanno via"],
+  confronto: ["Gruppo più grande", "Gruppo più piccolo"],
+  gruppi: ["Quanti gruppi", "Quanti in ogni gruppo"],
+  ripartizione: ["Quanti oggetti", "In quante parti"],
+  contenenza: ["Quanti oggetti", "Quanti in ogni gruppo"]
+};
+
+function numero(valore, cambia, nome) {
+  const i = el("input", { type: "number", inputmode: "numeric", min: "0", max: "99", value: valore === undefined ? "" : valore, "aria-label": nome });
+  i.addEventListener("input", () => cambia(i.value === "" ? undefined : Number(i.value)));
+  return etichetta(nome, i);
+}
+
+function menu(valore, voci, cambia, nome) {
+  const s = el("select", { "aria-label": nome, on: { change: e => cambia(e.target.value) } },
+    Object.entries(voci).map(([v, t]) => el("option", { value: v, selected: v === valore, text: t })));
+  return etichetta(nome, s);
+}
+
+function campiDiMatematica(x, ridisegna) {
+  const genere = menu(x.genere, Object.fromEntries(Object.entries(GENERI).map(([k, g]) => [k, g.nome])), v => {
+    Object.keys(x).forEach(k => delete x[k]);
+    Object.assign(x, { genere: v, a: 5 });
+    if (v === "operazione") Object.assign(x, { op: "+", b: 3 });
+    if (v === "confronta") x.b = 3;
+    if (v === "prima-dopo") x.verso = "dopo";
+    if (v === "problema") Object.assign(x, { schema: "aggiunta", b: 3, testo: ["", "", ""], oggetto: { t: "" } });
+    ridisegna();
+  }, "Che cosa");
+  const campi = [genere, el("small", { class: "spiega", text: GENERI[x.genere].spiega })];
+  const a = nome => numero(x.a, v => { x.a = v; }, nome);
+  const b = nome => numero(x.b, v => { x.b = v; }, nome);
+  if (x.genere === "conta" || x.genere === "decine") campi.push(a("Numero"));
+  if (x.genere === "confronta") campi.push(a("Primo gruppo"), b("Secondo gruppo"));
+  if (x.genere === "prima-dopo") campi.push(a("Numero"), menu(x.verso, { dopo: "Il numero dopo", prima: "Il numero prima" }, v => { x.verso = v; }, "Che cosa chiedere"));
+  if (x.genere === "operazione") {
+    campi.push(a(NOMI_NUMERI.operazione[0]), menu(x.op, OPERAZIONI, v => { x.op = v; }, "Operazione"), b(NOMI_NUMERI.operazione[1]));
+  }
+  if (x.genere === "problema") {
+    if (!Array.isArray(x.testo)) x.testo = ["", "", ""];
+    while (x.testo.length < 3) x.testo.push("");
+    const nomi = NOMI_NUMERI[x.schema];
+    campi.push(
+      menu(x.schema, Object.fromEntries(Object.entries(SCHEMI).map(([k, s]) => [k, s.nome])), v => { x.schema = v; ridisegna(); }, "Che cosa succede nella storia"),
+      etichetta("Prima frase: la situazione", testoLibero(x.testo[0], v => { x.testo[0] = v; }, { placeholder: "NEL CESTO CI SONO 15 MELE." })),
+      etichetta("Seconda frase: che cosa succede", testoLibero(x.testo[1], v => { x.testo[1] = v; }, { placeholder: "LA MAMMA NE PRENDE 6." })),
+      etichetta("La domanda", testoLibero(x.testo[2], v => { x.testo[2] = v; }, { placeholder: "QUANTE MELE RESTANO?" })),
+      a(nomi[0]), b(nomi[1]),
+      etichetta("Gli oggetti della storia", campoElemento(x.oggetto || (x.oggetto = { t: "" }), "Per esempio: mele")));
+    if (["gruppi", "ripartizione", "contenenza"].includes(x.schema)) {
+      campi.push(etichetta("Il contenitore (facoltativo)", campoElemento(x.contenitore || (x.contenitore = { t: "" }), "Per esempio: scatola, piatto, bambino")));
+    }
+    campi.push(etichetta("La risposta completa (facoltativa)", testoLibero(x.risposta, v => { x.risposta = v; }, { placeholder: "RESTANO 9 MELE." })));
+  }
+  return campi;
+}
+
 /* ---------- contenuto per ogni tipo ---------- */
 
 const SEZIONI = {
+  matematica(d, ridisegna) {
+    const sposta = (i, j) => { [d.esercizi[i], d.esercizi[j]] = [d.esercizi[j], d.esercizi[i]]; ridisegna(); };
+    return [
+      el("p", { class: "spiega", text: "Gli esercizi si vedono con gli oggetti da contare. Mettili in ordine, dal più facile al più difficile." }),
+      etichetta("Gli oggetti da contare", campoElemento(d.oggetto || (d.oggetto = { t: "" }), "Per esempio: mele")),
+      menu(d.aiuto, { sempre: "Sempre visibili", "a-richiesta": "Solo quando il bambino li chiede" }, v => { d.aiuto = v; }, "Gli oggetti"),
+      d.esercizi.map((x, i) => el("fieldset", { class: "box-ed" },
+        el("legend", { text: "Esercizio " + (i + 1) }),
+        campiDiMatematica(x, ridisegna),
+        el("div", { class: "riga-ed" },
+          tasto("↑", () => sposta(i, i - 1), { "aria-label": "Sposta su", disabled: i === 0 }),
+          tasto("↓", () => sposta(i, i + 1), { "aria-label": "Sposta giù", disabled: i === d.esercizi.length - 1 }),
+          cestino(() => { d.esercizi.splice(i, 1); ridisegna(); }, d.esercizi.length > 1)))),
+      aggiungi("Aggiungi un esercizio", () => { d.esercizi.push({ genere: "operazione", op: "+", a: 5, b: 3 }); ridisegna(); })
+    ];
+  },
   coppie(d, ridisegna) {
     return [
       el("p", { class: "spiega", text: "Scrivi le due carte di ogni coppia: una parola, un'immagine o tutte e due." }),

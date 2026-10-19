@@ -16,13 +16,15 @@ import * as scelta from "./giochi/scelta.js";
 import * as raggruppa from "./giochi/raggruppa.js";
 import * as sequenza from "./giochi/sequenza.js";
 import * as completa from "./giochi/completa.js";
+import * as matematica from "./giochi/matematica.js";
 
-const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa };
+const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica };
 
 /* ---------- inizio ---------- */
 
 function descrizione(es) {
-  const quanti = { coppie: es.dati.coppie, gruppi: es.dati.gruppi, domande: es.dati.domande, sequenza: es.dati.passi, frasi: es.dati.frasi }[es.tipo];
+  const quanti = { coppie: es.dati.coppie, gruppi: es.dati.gruppi, domande: es.dati.domande, sequenza: es.dati.passi,
+    frasi: es.dati.frasi, matematica: es.dati.esercizi }[es.tipo];
   return TIPI[es.tipo].nome + " · " + quanti.length;
 }
 

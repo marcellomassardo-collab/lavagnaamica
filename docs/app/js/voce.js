@@ -25,6 +25,25 @@ export function parla(testo) {
   sintesi.speak(u);
 }
 
+// Legge e aspetta la fine della frase, per far andare la storia insieme alla voce.
+export function parlaEAspetta(testo) {
+  return new Promise(fine => {
+    if (!sintesi || !testo) {
+      fine();
+      return;
+    }
+    sintesi.cancel();
+    const u = new SpeechSynthesisUtterance(testo);
+    u.lang = "it-IT";
+    if (voce) u.voice = voce;
+    u.rate = 0.9;
+    u.onend = fine;
+    u.onerror = fine;
+    sintesi.speak(u);
+    setTimeout(fine, 9000);
+  });
+}
+
 export function zitto() {
   if (sintesi) sintesi.cancel();
 }

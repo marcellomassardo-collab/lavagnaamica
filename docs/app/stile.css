@@ -289,6 +289,84 @@ input[type="text"], input[type="search"], select {
   display: grid; place-items: center; background: var(--evidenzia); font-weight: 800; font-family: system-ui, sans-serif; text-transform: none;
 }
 
+/* matematica con gli oggetti */
+.mat-testo { text-align: center; font-size: clamp(1.15rem, 1rem + 1vw, 1.7rem); font-weight: 700; }
+.mat-testo p { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 10px; justify-content: center; align-items: center; }
+.storia .frase-storia { padding: 2px 8px; border-radius: 10px; transition: background-color .25s; }
+.storia .frase-storia.ora { background: var(--evidenzia-chiaro); box-shadow: 0 0 0 3px var(--evidenzia); }
+.mat-corpo { display: grid; grid-template-columns: minmax(0, 3fr) minmax(260px, 2fr); gap: clamp(12px, 2vw, 28px); align-items: start; flex: 1; }
+.mat-vista { display: grid; gap: 10px; min-width: 0; }
+.mat-scatola { position: relative; background: var(--carta); border: 3px solid var(--bordo); border-radius: 22px; padding: clamp(10px, 1.6vw, 22px); min-height: 160px; display: grid; place-items: center; }
+.mat-scatola.coperta .mat-scena { visibility: hidden; }
+.mat-mostra { position: absolute; inset: auto; }
+.mat-strumenti { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.mat-pannello { display: grid; gap: 12px; align-content: start; }
+.mat-chiede { margin: 0; font-weight: 800; font-size: 1.15em; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.mat-opzioni { display: grid; gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.mat-opzione {
+  min-height: 64px; padding: 8px 12px; border-radius: 16px; border: 3px solid var(--bordo); background: var(--carta);
+  font-weight: 800; font-size: clamp(1.1rem, .9rem + 1vw, 1.7rem); box-shadow: 0 4px 0 var(--bordo);
+}
+.mat-opzione.giusta { border-color: var(--giusto); background: var(--giusto-chiaro); }
+.mat-opzione.sbagliata { opacity: .35; }
+.mat-uguale { margin: 0; font-size: clamp(1.6rem, 1.2rem + 2vw, 2.8rem); font-weight: 800; text-align: center; color: var(--lavagna); letter-spacing: .04em; }
+.mat-risposta { margin: 0; text-align: center; font-weight: 700; font-size: 1.15em; }
+
+.ogg {
+  --ogg: clamp(32px, 4.2vw, 68px);
+  position: relative; width: var(--ogg); height: var(--ogg); display: grid; place-items: center;
+  border-radius: 12px; opacity: 0; transform: scale(.3); transition: opacity .25s, transform .25s, filter .25s;
+}
+.ogg.visibile { opacity: 1; transform: none; }
+.ogg img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.ogg .pallino { width: 70%; height: 70%; border-radius: 50%; background: #E0332B; }
+.ogg.nuovo { box-shadow: 0 0 0 3px #F28C1B; background: #FFF1DD; }
+.ogg.nuovo:not(.visibile) { transform: translateX(60px) scale(.6); }
+.ogg.via { opacity: .32; filter: grayscale(1); transform: translateY(-6px) scale(.85); }
+.ogg.via::after { content: "✕"; position: absolute; inset: 0; display: grid; place-items: center; color: #C0282B; font-size: calc(var(--ogg) * .9); font-weight: 800; opacity: 1; }
+.ogg.in-coppia { box-shadow: 0 0 0 3px var(--giusto); }
+.ogg.in-piu { box-shadow: 0 0 0 4px var(--evidenzia); background: var(--evidenzia-chiaro); animation: suggerisci .8s 2; }
+.ogg[data-n]::before {
+  content: attr(data-n); position: absolute; top: -8px; right: -8px; z-index: 1; min-width: 26px; height: 26px; padding: 0 5px;
+  border-radius: 13px; background: var(--lavagna); color: #fff; font-size: 15px; font-weight: 800; display: grid; place-items: center;
+  font-family: system-ui, sans-serif; text-transform: none;
+}
+.file-10 { display: grid; grid-template-columns: repeat(10, auto); gap: clamp(4px, .6vw, 9px); justify-content: center; }
+.file-10 > .ogg:nth-child(10n + 6) { margin-left: clamp(8px, 1.4vw, 22px); }
+.file-10.tanti .ogg { --ogg: clamp(24px, 2.8vw, 46px); }
+.confronto { display: grid; gap: 14px; }
+.riga-confronto { display: flex; gap: 10px; align-items: center; }
+.etichetta-gruppo { font-weight: 800; color: var(--tenue); min-width: 2em; }
+.gruppi-m { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.gruppi-m.tanti .ogg { --ogg: clamp(20px, 2.2vw, 36px); }
+.gruppi-m.tanti { --ogg-g: 36px; }
+.gruppo-m { border: 3px dashed var(--bordo); border-radius: 18px; padding: 8px; display: grid; gap: 6px; justify-items: center; min-width: 80px; min-height: 80px; transition: opacity .3s; }
+.gruppo-m.chiuso { opacity: 0; }
+.gruppo-testa img { width: 44px; height: 44px; object-fit: contain; }
+.gruppo-dentro { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; max-width: calc(6 * (var(--ogg-g, 58px) + 4px)); }
+.schieramento { display: grid; grid-template-columns: repeat(var(--colonne), auto); gap: 8px; justify-content: center; }
+.dividere { display: grid; gap: 18px; justify-items: center; width: 100%; }
+.mucchio { cursor: pointer; padding: 10px; border-radius: 18px; background: rgba(30, 107, 82, .06); border: 2px dashed var(--lavagna); min-height: 60px; min-width: 120px; touch-action: manipulation; }
+.mucchio:empty { display: none; }
+.piatti .gruppo-m { border-style: solid; background: #FAFAF7; }
+.decine-vista { display: flex; gap: 22px; align-items: flex-end; flex-wrap: wrap; justify-content: center; }
+.barrette, .unita-tutte { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end; max-width: 100%; }
+.unita-tutte { max-width: calc(5 * 46px); }
+.ogg.decina { --ogg: 34px; height: auto; display: grid; grid-template-rows: repeat(10, 1fr); gap: 2px; padding: 3px; background: #F7C900; border: 2px solid #8a6d00; border-radius: 8px; }
+.ogg.decina i { display: block; width: 22px; height: 16px; background: #FFE36A; border-radius: 3px; }
+.ogg.unita { --ogg: 34px; background: #F7C900; border: 2px solid #8a6d00; border-radius: 8px; }
+.linea-numeri { display: flex; gap: 0; justify-content: center; flex-wrap: wrap; padding-top: 18px; }
+.tacca { min-width: clamp(34px, 4vw, 58px); padding: 14px 0 8px; text-align: center; border-top: 4px solid var(--testo); position: relative; font-weight: 800; font-size: 1.15em; }
+.tacca::before { content: ""; position: absolute; top: -14px; left: 50%; width: 3px; height: 14px; background: var(--testo); }
+.tacca.segnata { color: var(--lavagna); }
+.tacca.segnata::after { content: ""; position: absolute; top: -26px; left: calc(50% - 10px); width: 20px; height: 20px; border-radius: 50%; background: var(--evidenzia); border: 3px solid var(--testo); }
+.tacca.salto::after { animation: salta .6s; }
+@keyframes salta { 40% { transform: translateY(-26px); } }
+
+@media (max-width: 900px) {
+  .mat-corpo { grid-template-columns: 1fr; }
+}
+
 /* fine partita */
 .festa { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(251, 247, 238, .85); z-index: 20; padding: 16px; }
 .festa-box { background: var(--carta); border: 4px solid var(--giusto); border-radius: 26px; padding: clamp(20px, 4vw, 44px); text-align: center; animation: arriva .4s; max-width: 680px; }
