@@ -1,0 +1,17 @@
+{
+  "name": "lavagnaamica-catalogo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "locale": "wrangler dev --port 8787",
+    "db-locale": "wrangler d1 execute lavagnaamica --local --file=schema.sql",
+    "db-online": "wrangler d1 execute lavagnaamica --remote --file=schema.sql",
+    "pubblica": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  },
+  "allowScripts": {
+    "workerd@1.20261019.1": true
+  }
+}

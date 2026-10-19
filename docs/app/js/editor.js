@@ -1,7 +1,7 @@
 // Editor degli esercizi: tutto si prepara riempiendo dei campi, senza codice.
 
 import { el, immaginePicto } from "./ui.js";
-import { TIPI, GIOCHI, SCRITTURE, giochiPer, valida } from "./dati.js";
+import { TIPI, GIOCHI, SCRITTURE, giochiPer, valida } from "./modello.js";
 import { scegliPittogramma } from "./picto.js";
 
 const vuoto = () => ({ t: "" });
@@ -163,7 +163,7 @@ export function editor(bozza, { salva, annulla }) {
   const sceltaGioco = el("select");
   const consegna = testoLibero(bozza.consegna, v => { bozza.consegna = v; }, { maxlength: "300" });
 
-  const ridisegna = () => contenuto.replaceChildren(...SEZIONI[bozza.tipo](bozza.dati, ridisegna).flat());
+  const ridisegna = () => contenuto.replaceChildren(...SEZIONI[bozza.tipo](bozza.dati, ridisegna).flat().filter(Boolean));
 
   function mostraGiochi() {
     sceltaGioco.replaceChildren(...giochiPer(bozza.tipo).map(g =>

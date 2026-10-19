@@ -1,0 +1,15 @@
+name = "lavagnaamica"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[vars]
+ORIGINI = "https://marcellomassardo-collab.github.io,http://localhost:8765"
+GOOGLE_CLIENT_ID = ""
+
+[[d1_databases]]
+binding = "DB"
+database_name = "lavagnaamica"
+database_id = "00000000-0000-0000-0000-000000000000"
+
+# ADMIN_EMAIL (chi modera) e SALE (per le impronte di rete) sono segreti:
+# si impostano con «npx wrangler secret put» e non stanno in questo file.

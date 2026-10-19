@@ -33,6 +33,12 @@ Per un uso didattico dovrebbero essere di tutti.
 - Niente tempo e niente «hai perso». Numero di risposte regolabile. Modalità senza errore.
 - Alla LIM: bersagli grandi, comandi in basso, e «tocca e tocca» oltre al trascinamento.
 
+## Com'è fatta
+
+- `docs/app/`: l'app. HTML, CSS e JavaScript senza compilazione, funziona anche offline.
+- `docs/compiti/`: pagine di compiti da mandare con un link.
+- `server/`: il catalogo comune, in costo zero. Istruzioni in [server/LEGGIMI.md](server/LEGGIMI.md).
+
 ## Licenze
 
 - **Codice:** [GNU AGPL-3.0](LICENSE). Chi mette online una versione modificata deve condividerne il codice.

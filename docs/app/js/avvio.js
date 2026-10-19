@@ -1,11 +1,14 @@
 // Le pagine dell'app e il passaggio dall'una all'altra (tutto dopo il # dell'indirizzo).
 
-import { GIOCHI, TIPI, giochiPer, consegnaDi, caricaEsempi, elencoMiei, trovaMio, salvaMio, eliminaMio,
-  inLink, daLink, scaricaFile, apriFile } from "./dati.js";
+import { GIOCHI, TIPI, MOTIVI, giochiPer, consegnaDi, valida } from "./modello.js";
+import { caricaEsempi, elencoMiei, trovaMio, salvaMio, eliminaMio, inLink, daLink, scaricaFile, apriFile } from "./dati.js";
 import { impostazioni, applica, cambia, LIMITI } from "./impostazioni.js";
 import { parla, zitto, voceDisponibile } from "./voce.js";
 import { suonoFesta } from "./suoni.js";
 import { el, creaContesto, pulsanteVoce, avviso, finestra } from "./ui.js";
+import { vista, pagina, intestazione, quandoSiEsce } from "./pagine.js";
+import { catalogo, catalogoAttivo, insegnante } from "./catalogo.js";
+import { vistaInsegnanti, vistaModerazione, schedaCatalogo, pubblica, copiaLink } from "./insegnanti.js";
 import { editor, bozzaDa } from "./editor.js";
 import * as abbina from "./giochi/abbina.js";
 import * as memory from "./giochi/memory.js";
@@ -15,34 +18,6 @@ import * as sequenza from "./giochi/sequenza.js";
 import * as completa from "./giochi/completa.js";
 
 const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa };
-const app = document.getElementById("app");
-let chiudiVista = null;
-
-function vista(...nodi) {
-  if (chiudiVista) chiudiVista();
-  chiudiVista = null;
-  zitto();
-  app.replaceChildren(...nodi);
-  window.scrollTo(0, 0);
-}
-
-const LOGO = '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="8" width="60" height="48" rx="8" fill="#B7793F"/>' +
-  '<rect x="8" y="14" width="48" height="36" rx="4" fill="#1E6B52"/><circle cx="24" cy="28" r="3" fill="#fff"/>' +
-  '<circle cx="40" cy="28" r="3" fill="#fff"/><path d="M22 37q10 9 20 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>';
-
-function intestazione() {
-  const marchio = el("a", { class: "marchio", href: "#/" });
-  marchio.innerHTML = LOGO;
-  marchio.append(el("span", { text: "Lavagna Amica" }));
-  return el("header", { class: "testata" }, marchio,
-    el("nav", { class: "testata-link" },
-      el("a", { href: "#/impostazioni", text: "⚙️ Impostazioni" }),
-      el("a", { href: "#/info", text: "ℹ️ Info" })));
-}
-
-function pagina(titolo, ...contenuto) {
-  return el("div", { class: "pagina" }, intestazione(), el("main", { class: "contenuto" }, el("h1", { text: titolo }), ...contenuto));
-}
 
 /* ---------- inizio ---------- */
 
@@ -73,18 +48,66 @@ function schedaEsercizio(es, origine) {
   const apri = el("a", { class: "scheda-apri", href: "#/gioca/" + origine + "/" + es.id },
     el("span", { class: "scheda-icona", "aria-hidden": "true", text: g.icona }),
     el("span", { class: "scheda-titolo", text: es.titolo }),
-    el("span", { class: "scheda-info", text: g.nome + " · " + descrizione(es) }));
+    el("span", { class: "scheda-info", text: g.nome + " · " + descrizione(es) + (es.catalogo ? " · nel catalogo" : "") }));
   if (origine !== "mio") return el("li", { class: "scheda" }, apri);
   return el("li", { class: "scheda" }, apri,
     el("div", { class: "scheda-azioni" },
       el("a", { class: "tasto-piccolo", href: "#/modifica/" + es.id, text: "✏️ Modifica" }),
       el("button", { type: "button", class: "tasto-piccolo", text: "🔗 Condividi", on: { click: () => condividi(es) } }),
       el("button", { type: "button", class: "tasto-piccolo", text: "💾 File", title: "Scarica il file dell'esercizio", on: { click: () => scaricaFile(es) } }),
+      catalogoAttivo ? el("button", { type: "button", class: "tasto-piccolo", text: es.catalogo ? "📤 Aggiorna nel catalogo" : "📤 Pubblica",
+        on: { click: () => pubblica(es, casa) } }) : null,
       el("button", { type: "button", class: "tasto-piccolo", text: "🗑", "aria-label": "Elimina", title: "Elimina", on: { click: () => {
         if (!confirm("Eliminare «" + es.titolo + "» da questo dispositivo?")) return;
         eliminaMio(es.id);
         casa();
       } } })));
+}
+
+// Il catalogo comune: cerca, filtra per tipo, ordina per stelle o per novità.
+function sezioneCatalogo() {
+  const filtri = { q: "", tipo: "", ordine: "", da: 0 };
+  const cerca = el("input", { type: "search", placeholder: "Cerca un esercizio…", "aria-label": "Cerca nel catalogo", enterkeyhint: "search" });
+  const tipo = el("select", { "aria-label": "Tipo" }, el("option", { value: "", text: "Tutti i tipi" }),
+    Object.keys(TIPI).map(t => el("option", { value: t, text: TIPI[t].nome })));
+  const ordine = el("select", { "aria-label": "Ordine" }, el("option", { value: "", text: "I più votati" }), el("option", { value: "recenti", text: "I più recenti" }));
+  const elenco = el("ul", { class: "schede" });
+  const stato = el("p", { class: "vuoto", "aria-live": "polite" });
+  const altri = el("button", { type: "button", class: "pulsante secondario", hidden: true, text: "Mostra altri" });
+
+  async function carica(daCapo) {
+    if (daCapo) {
+      filtri.da = 0;
+      elenco.replaceChildren();
+    }
+    stato.textContent = "Carico…";
+    altri.hidden = true;
+    try {
+      const r = await catalogo.elenco(filtri);
+      elenco.append(...r.esercizi.map(e => schedaCatalogo(e)));
+      filtri.da += r.esercizi.length;
+      altri.hidden = !r.altri;
+      stato.textContent = elenco.children.length ? "" : filtri.q || filtri.tipo
+        ? "Nessun esercizio trovato."
+        : "Il catalogo è ancora vuoto: i primi esercizi arriveranno presto.";
+    } catch (e) {
+      stato.textContent = e.message;
+    }
+  }
+  let attesa = null;
+  cerca.addEventListener("input", () => {
+    clearTimeout(attesa);
+    attesa = setTimeout(() => { filtri.q = cerca.value.trim(); carica(true); }, 350);
+  });
+  tipo.addEventListener("change", () => { filtri.tipo = tipo.value; carica(true); });
+  ordine.addEventListener("change", () => { filtri.ordine = ordine.value; carica(true); });
+  altri.addEventListener("click", () => carica(false));
+  carica(true);
+  return el("section", {},
+    el("h2", { text: "Catalogo comune" }),
+    el("p", { class: "tenue", text: "Esercizi pubblicati dagli insegnanti e controllati da altri insegnanti. Si gioca senza account." }),
+    el("div", { class: "filtri" }, cerca, tipo, ordine),
+    elenco, stato, altri);
 }
 
 async function casa() {
@@ -114,6 +137,7 @@ async function casa() {
       miei.length
         ? el("ul", { class: "schede" }, miei.map(e => schedaEsercizio(e, "mio")))
         : el("p", { class: "vuoto", text: "Qui troverai gli esercizi che crei. Restano salvati su questo dispositivo: per portarli altrove usa «Condividi» o «File»." })),
+    catalogoAttivo ? sezioneCatalogo() : null,
     el("section", {},
       el("h2", { text: "Esempi da provare" }),
       el("ul", { class: "schede" }, esempi.map(e => schedaEsercizio(e, "es")))))));
@@ -121,7 +145,7 @@ async function casa() {
 
 /* ---------- gioco ---------- */
 
-function gioca(es, base, uscita, giocoChiesto) {
+function gioca(es, base, uscita, giocoChiesto, sopra) {
   const giochi = giochiPer(es.tipo);
   const gioco = giochi.includes(giocoChiesto) ? giocoChiesto : es.gioco;
   const consegna = consegnaDi(es, gioco);
@@ -160,16 +184,17 @@ function gioca(es, base, uscita, giocoChiesto) {
     el("header", { class: "gioco-testa" },
       el("h1", { text: es.titolo }),
       el("p", { class: "consegna" }, el("span", { text: consegna }), pulsanteVoce(consegna, "Ascolta la consegna"))),
+    sopra || null,
     area,
     el("nav", { class: "barra-gioco", "aria-label": "Comandi del gioco" },
       el("a", { class: "tasto", href: uscita, "aria-label": "Esci" }, "⟵", el("span", { class: "etichetta", text: "Esci" })),
       el("button", { type: "button", class: "tasto", "aria-label": "Ricomincia", on: { click: inizia } }, "↻", el("span", { class: "etichetta", text: "Ricomincia" })),
       cambiaGioco,
       schermo)));
-  chiudiVista = () => {
+  quandoSiEsce(() => {
     if (ferma) ferma();
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
-  };
+  });
   inizia();
 }
 
@@ -180,6 +205,78 @@ async function giocaSalvato(origine, id, gioco) {
     return;
   }
   gioca(es, "#/gioca/" + origine + "/" + id, "#/", gioco);
+}
+
+/* ---------- esercizio del catalogo comune ---------- */
+
+function segnala(id) {
+  const motivo = el("select", { "aria-label": "Motivo" }, el("option", { value: "", text: "Scegli che cosa non va…" }),
+    Object.keys(MOTIVI).map(m => el("option", { value: m, text: MOTIVI[m].nome })));
+  const invia = el("button", { type: "button", class: "pulsante", text: "Invia" });
+  const d = finestra("Segnala un problema",
+    el("p", { text: "Che cosa non va in questo esercizio?" }),
+    motivo,
+    el("p", { class: "tenue", text: "Le segnalazioni le guardano gli insegnanti. Grazie per l'aiuto." }),
+    el("div", { class: "finestra-piede" }, invia,
+      el("button", { type: "button", class: "pulsante secondario", text: "Annulla", on: { click: () => d.close() } })));
+  invia.addEventListener("click", async () => {
+    if (!motivo.value) { motivo.focus(); return; }
+    try {
+      await catalogo.segnala(id, motivo.value);
+      d.close();
+      avviso("Grazie! La segnalazione è arrivata.");
+    } catch (e) {
+      avviso(e.message);
+    }
+  });
+}
+
+function dagliStelle(r, aggiorna) {
+  const d = finestra("Quante stelle?",
+    el("div", { class: "stelle-scelta", role: "group", "aria-label": "Stelle" },
+      [1, 2, 3, 4, 5].map(n => el("button", { type: "button", class: "stella" + (n <= r.mieStelle ? " accesa" : ""), "aria-label": n + (n === 1 ? " stella" : " stelle"),
+        text: "★", on: { click: async () => {
+          try {
+            Object.assign(r, await catalogo.stelle(r.id, n));
+            d.close();
+            avviso("Grazie per le stelle!");
+            aggiorna();
+          } catch (e) { avviso(e.message); }
+        } } }))),
+    el("p", { class: "tenue", text: "Le stelle aiutano gli altri insegnanti a trovare gli esercizi migliori." }));
+}
+
+async function giocaCatalogo(id, gioco) {
+  const r = await catalogo.apri(id);
+  const es = valida(r.esercizio);
+  const io = insegnante();
+  const barra = el("div", { class: "azioni-catalogo" });
+  const tasto = (testo, azione) => el("button", { type: "button", class: "tasto-piccolo", text: testo, on: { click: azione } });
+
+  function disegna() {
+    barra.replaceChildren(...[
+      r.stato === "nuovo" ? el("span", { class: "stato stato-nuovo", text: "Nuovo: non ancora controllato" }) : null,
+      r.stato === "nascosto" ? el("span", { class: "stato stato-nascosto", text: "Nascosto: in attesa di moderazione" }) : null,
+      r.stelle ? el("span", { class: "tenue", text: "⭐ " + r.stelle.toLocaleString("it") + " (" + r.voti + ")" }) : null,
+      r.autore ? el("span", { class: "tenue", text: "di " + r.autore }) : null,
+      io && !r.mio && r.stato === "nuovo" && !r.approvato ? tasto("✓ Va bene", async () => {
+        try {
+          Object.assign(r, await catalogo.approva(id), { approvato: true });
+          avviso(r.stato === "pubblico" ? "Grazie! Ora è nel catalogo." : "Grazie! Manca ancora un controllo.");
+          disegna();
+        } catch (e) { avviso(e.message); }
+      }) : null,
+      io && !r.mio && r.stato !== "nascosto" ? tasto(r.mieStelle ? "⭐ Le tue stelle: " + r.mieStelle : "⭐ Dai le stelle", () => dagliStelle(r, disegna)) : null,
+      tasto("⚑ Segnala", () => segnala(id)),
+      tasto("💾 Salva nei miei", () => {
+        salvaMio(Object.assign({}, es));
+        avviso("Salvato nei tuoi esercizi: ora puoi adattarlo.");
+      }),
+      tasto("🔗 Link", () => copiaLink(id))
+    ].filter(Boolean));
+  }
+  disegna();
+  gioca(es, "#/catalogo/" + id, "#/", gioco, barra);
 }
 
 /* ---------- esercizio arrivato con un link ---------- */
@@ -208,8 +305,8 @@ function apriEditor(es) {
   vista(el("div", { class: "pagina" }, intestazione(), el("main", { class: "contenuto" },
     editor(bozzaDa(es), {
       salva(pronto, poi) {
-        const s = salvaMio(pronto);
-        avviso("Esercizio salvato su questo dispositivo.");
+        const s = salvaMio(Object.assign(pronto, { catalogo: es && es.catalogo }));
+        avviso(s.catalogo ? "Salvato. Per mandare la modifica al catalogo usa «Aggiorna nel catalogo»." : "Esercizio salvato su questo dispositivo.");
         location.hash = poi === "gioca" ? "#/gioca/mio/" + s.id : "#/";
       },
       annulla() { location.hash = "#/"; }
@@ -254,7 +351,8 @@ function info() {
   vista(pagina("Lavagna Amica",
     el("p", { text: "Esercizi interattivi gratuiti, pensati per il sostegno e per la LIM. Nessuna funzione a pagamento, niente pubblicità, niente tracciamento." }),
     el("h2", { text: "I tuoi dati" }),
-    el("p", { text: "Non serve un account e non raccogliamo nulla. Gli esercizi che crei e le impostazioni restano su questo dispositivo. Un esercizio esce dal dispositivo solo se lo condividi tu, con un link o un file." }),
+    el("p", { text: "Per giocare non serve un account e non raccogliamo nulla. Gli esercizi che crei e le impostazioni restano su questo dispositivo. Un esercizio esce dal dispositivo solo se lo condividi tu, con un link o un file, o se lo pubblichi nel catalogo." }),
+    catalogoAttivo ? el("p", { text: "Il catalogo comune sta su un server di Cloudflare. Gli insegnanti accedono con Google: salviamo la loro email, che non viene mai mostrata, e il nome che scelgono di mostrare. Una segnalazione anonima salva solo il motivo, un numero a caso di questo dispositivo e un'impronta della rete che cambia ogni giorno, per frenare gli abusi." }) : null,
     el("p", { text: "Le immagini arrivano dall'archivio pubblico di pittogrammi ARASAAC, che vede quindi le richieste delle immagini." }),
     el("h2", { text: "Riconoscimenti" }),
     el("p", { text: "Pittogrammi: autore Sergio Palao. Origine: ARASAAC (arasaac.org). Licenza: CC BY-NC-SA 4.0. Proprietà: Governo d'Aragona (Spagna)." }),
@@ -275,12 +373,15 @@ async function instrada() {
   try {
     if (!pagina1) await casa();
     else if (pagina1 === "gioca") await giocaSalvato(a, b, c);
+    else if (pagina1 === "catalogo" && catalogoAttivo) await giocaCatalogo(a, b);
     else if (pagina1 === "link") await vistaLink(a || "", b, c);
     else if (pagina1 === "crea") apriEditor(null);
     else if (pagina1 === "modifica") {
       const es = trovaMio(a);
       if (es) apriEditor(es); else location.hash = "#/";
     }
+    else if (pagina1 === "insegnanti" && catalogoAttivo) await vistaInsegnanti();
+    else if (pagina1 === "moderazione" && catalogoAttivo) await vistaModerazione();
     else if (pagina1 === "impostazioni") vistaImpostazioni();
     else if (pagina1 === "info") info();
     else location.hash = "#/";

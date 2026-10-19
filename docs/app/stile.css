@@ -97,6 +97,24 @@ html.contrasto .carta, html.contrasto .pulsante, html.contrasto .tasto { border-
 }
 .avviso.visibile { transform: translate(-50%, 0); }
 
+/* ---------- catalogo e area insegnanti ---------- */
+.tenue { color: var(--tenue); }
+.filtri { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+.filtri input { flex: 1 1 260px; }
+.azioni-catalogo { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center; padding: 4px 16px; font-size: .9em; }
+.stato { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .8em; font-weight: 700; background: var(--lavagna-chiaro); color: var(--lavagna); }
+.stato-nuovo { background: var(--evidenzia-chiaro); color: #6B4E00; }
+.stato-nascosto { background: #F8E1E1; color: #8A2222; }
+.da-correggere { color: #8A2222; font-weight: 700; font-size: .85em; }
+.scheda-azioni .tenue { font-size: .8em; align-self: center; }
+.regole { margin: 0 0 12px; padding-left: 1.2em; }
+.regole li { margin-bottom: 4px; }
+.posto-google { min-height: 48px; margin-top: 12px; }
+.stelle-scelta { display: flex; gap: 8px; justify-content: center; margin: 18px 0; }
+.stella { width: 64px; height: 64px; border-radius: 16px; border: 2px solid var(--bordo); background: #fff; font-size: 2.2em; line-height: 1; color: #C9C2B0; }
+.stella.accesa, .stella:hover, .stella:focus-visible { color: #E6A700; border-color: #E6A700; }
+.finestra select { width: 100%; }
+
 /* ---------- finestre ---------- */
 .finestra {
   width: min(760px, calc(100vw - 24px)); max-height: calc(100dvh - 24px);
