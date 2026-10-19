@@ -1,7 +1,7 @@
 // Editor degli esercizi: tutto si prepara riempiendo dei campi, senza codice.
 
 import { el, immaginePicto } from "./ui.js";
-import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, OPERAZIONI, SCHEMI, giochiPer, valida } from "./modello.js";
+import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, OPERAZIONI, SCHEMI, ANIMAZIONI, giochiPer, valida } from "./modello.js";
 import { scegliPittogramma } from "./picto.js";
 
 const vuoto = () => ({ t: "" });
@@ -33,6 +33,13 @@ function esercizioDa(b) {
     es.dati.gruppi = es.dati.gruppi.map(g => ({ nome: g.testa.t, p: g.testa.p, elementi: g.elementi }));
   }
   return valida(es);
+}
+
+// Dal link di un video di YouTube (in tutte le sue forme) al codice di 11 caratteri.
+export function idYoutube(testo) {
+  const t = String(testo || "").trim();
+  const m = t.match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([\w-]{11})/) || t.match(/^([\w-]{11})$/);
+  return m ? m[1] : "";
 }
 
 function haContenuto(b) {
@@ -298,6 +305,17 @@ export function editor(bozza, { salva, annulla }) {
     el("option", { value: "", text: "Scegli la materia…" }),
     MATERIE.map(m => el("option", { value: m, selected: m === bozza.materia, text: m })));
 
+  bozza.scopri = bozza.scopri || {};
+  const animazione = el("select", { on: { change: e => { bozza.scopri.animazione = e.target.value || undefined; } } },
+    el("option", { value: "", text: "Nessuna" }),
+    Object.entries(ANIMAZIONI).map(([k, nome]) => el("option", { value: k, selected: k === bozza.scopri.animazione, text: nome })));
+  const avvisoVideo = el("small", { class: "errore" });
+  const video = testoLibero(bozza.scopri.youtube ? "https://youtu.be/" + bozza.scopri.youtube : "", v => {
+    const id = idYoutube(v);
+    bozza.scopri.youtube = id || undefined;
+    avvisoVideo.textContent = v.trim() && !id ? "Non riconosco il link: copia l'indirizzo del video da YouTube." : "";
+  }, { placeholder: "Per esempio: https://www.youtube.com/watch?v=…", "aria-label": "Link del video di YouTube" });
+
   return el("div", { class: "editor" },
     el("h1", { text: bozza.id ? "Modifica l'esercizio" : "Nuovo esercizio" }),
     etichetta("Titolo", testoLibero(bozza.titolo, v => { bozza.titolo = v; }, { placeholder: "Per esempio: Gli animali e i loro versi", maxlength: "120" })),
@@ -307,6 +325,9 @@ export function editor(bozza, { salva, annulla }) {
     contenuto,
     etichetta("Gioco con cui si apre", sceltaGioco, "Chi gioca può passare agli altri giochi della lista: il contenuto è lo stesso."),
     etichetta("Consegna (facoltativa)", consegna),
+    etichetta("Spiegazione animata prima dell'esercizio (facoltativa)", animazione, "Parte da sola prima dell'esercizio; si può saltare o rivedere."),
+    etichetta("Video di YouTube (facoltativo)", video, "Si vede dopo la spiegazione e si carica solo se qualcuno lo chiede."),
+    avvisoVideo,
     errore,
     el("div", { class: "editor-azioni" },
       el("button", { type: "button", class: "pulsante secondario", text: "Annulla", on: { click: annulla } }),

@@ -17,11 +17,11 @@ const TAPPE = [
   { x: 3, t: "Paleolitico", p: 34991 },
   { x: 10.5, t: "Neolitico", p: 38079 },
   { x: 18, t: "Età dei metalli", f: "ascia-di-bronzo.jpg" },
-  { anno: -3200, t: "La scrittura", f: "tavoletta-cuneiforme.jpg" },
-  { anno: -2560, t: "Le piramidi", f: "piramidi.jpg" },
-  { anno: -1754, t: "Le leggi di Hammurabi", f: "codice-hammurabi.jpg" },
-  { anno: -1050, t: "L'alfabeto fenicio", f: "alfabeto-fenicio.jpg" },
-  { anno: -753, t: "Nasce Roma" },
+  { anno: -3200, circa: true, t: "La scrittura", f: "tavoletta-cuneiforme.jpg" },
+  { anno: -2560, circa: true, t: "La grande piramide", f: "piramidi.jpg" },
+  { anno: -1754, circa: true, t: "Le leggi di Hammurabi", f: "codice-hammurabi.jpg" },
+  { anno: -1050, circa: true, t: "L'alfabeto fenicio", f: "alfabeto-fenicio.jpg" },
+  { anno: -753, t: "Nasce Roma (tradizione)" },
   { anno: -432, t: "Il Partenone", f: "partenone.jpg" },
   { anno: 80, t: "Il Colosseo", f: "colosseo.jpg" },
   { anno: 476, t: "Fine dell'Impero romano", f: "moneta-romana.jpg" }
@@ -51,7 +51,7 @@ export function lineaDelTempo(epoca) {
           style: "left:" + x + "%" },
           figura(tp),
           el("span", { class: "lt-nome", text: tp.t }),
-          tp.anno !== undefined ? el("span", { class: "lt-anno", text: scritta(tp.anno) }) : null);
+          tp.anno !== undefined ? el("span", { class: "lt-anno", text: (tp.circa ? "circa " : "") + scritta(tp.anno) }) : null);
       })),
       el("div", { class: "lt-riga" },
         el("div", { class: "lt-preistoria", style: "width:" + PREISTORIA + "%" }, el("span", { text: "Preistoria" })),

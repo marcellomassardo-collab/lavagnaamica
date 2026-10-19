@@ -27,6 +27,15 @@ export const SCRITTURE = {
   corsivo: "corsivo"
 };
 
+// Le spiegazioni animate che si possono mettere prima di un esercizio (sono in animazioni.js).
+export const ANIMAZIONI = {
+  "stati-materia": "Solidi, liquidi e gas",
+  "ciclo-acqua": "Il ciclo dell'acqua",
+  pianta: "Dal seme al frutto",
+  "sistema-solare": "Il sistema solare",
+  universo: "Dove siamo nell'universo"
+};
+
 export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Inglese", "Arte e immagine", "Musica", "Altro"];
 
 export function giochiPer(tipo) {
@@ -71,6 +80,13 @@ export function valida(v) {
     dati: {}
   };
   if (MATERIE.includes(v.materia)) es.materia = v.materia;
+  // la spiegazione prima dell'esercizio: un'animazione dell'app e/o un video di YouTube (solo il codice del video)
+  if (v.scopri && typeof v.scopri === "object") {
+    const sc = {};
+    if (Object.prototype.hasOwnProperty.call(ANIMAZIONI, v.scopri.animazione)) sc.animazione = v.scopri.animazione;
+    if (typeof v.scopri.youtube === "string" && /^[\w-]{11}$/.test(v.scopri.youtube)) sc.youtube = v.scopri.youtube;
+    if (sc.animazione || sc.youtube) es.scopri = sc;
+  }
   // il periodo dell'esercizio sulla linea del tempo: [da, a] in anni, negativi = avanti Cristo
   if (Array.isArray(v.epoca) && v.epoca.length === 2 && v.epoca.every(Number.isFinite) &&
     v.epoca[0] < v.epoca[1] && v.epoca[0] >= -1e7 && v.epoca[1] <= 3000) es.epoca = v.epoca.map(Math.round);

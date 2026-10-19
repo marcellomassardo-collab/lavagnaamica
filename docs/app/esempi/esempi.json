@@ -1192,6 +1192,783 @@
   }
  },
  {
+  "id": "viventi",
+  "titolo": "Vivente o non vivente?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Metti ogni cosa nel gruppo giusto.",
+  "materia": "Scienze",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "Esseri viventi: nascono, crescono, si nutrono, muoiono",
+     "elementi": [
+      {
+       "t": "albero",
+       "p": 3057
+      },
+      {
+       "t": "gatto",
+       "p": 7114
+      },
+      {
+       "t": "fiore",
+       "p": 3127
+      },
+      {
+       "t": "pesce",
+       "p": 2520
+      },
+      {
+       "t": "uccello",
+       "p": 2490
+      },
+      {
+       "t": "bambino",
+       "p": 7176
+      }
+     ]
+    },
+    {
+     "nome": "Cose non viventi",
+     "elementi": [
+      {
+       "t": "pietra",
+       "p": 6594
+      },
+      {
+       "t": "sedia",
+       "p": 3155
+      },
+      {
+       "t": "palla",
+       "p": 3241
+      },
+      {
+       "t": "matita",
+       "p": 2440
+      },
+      {
+       "t": "automobile",
+       "p": 2339
+      },
+      {
+       "t": "acqua",
+       "p": 2248
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "stati-materia",
+  "titolo": "Solido, liquido o gassoso?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Metti ogni cosa nel suo stato.",
+  "materia": "Scienze",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "Solidi",
+     "elementi": [
+      {
+       "t": "pietra",
+       "p": 6594
+      },
+      {
+       "t": "ghiaccio",
+       "p": 7128
+      },
+      {
+       "t": "legno",
+       "p": 6143
+      },
+      {
+       "t": "matita",
+       "p": 2440
+      }
+     ]
+    },
+    {
+     "nome": "Liquidi",
+     "elementi": [
+      {
+       "t": "acqua",
+       "p": 2248
+      },
+      {
+       "t": "latte",
+       "p": 4769
+      },
+      {
+       "t": "olio",
+       "p": 8481
+      },
+      {
+       "t": "succo di frutta",
+       "p": 11461
+      }
+     ]
+    },
+    {
+     "nome": "Gas",
+     "elementi": [
+      {
+       "t": "l'aria nel palloncino",
+       "p": 8313
+      },
+      {
+       "t": "il vapore acqueo (invisibile)"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "stati-materia"
+  }
+ },
+ {
+  "id": "cambia-acqua",
+  "titolo": "Come cambia l'acqua",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni parola a quello che succede.",
+  "materia": "Scienze",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "fusione"
+     },
+     {
+      "t": "il ghiaccio si scalda e diventa acqua"
+     }
+    ],
+    [
+     {
+      "t": "solidificazione"
+     },
+     {
+      "t": "l'acqua si raffredda e diventa ghiaccio"
+     }
+    ],
+    [
+     {
+      "t": "evaporazione"
+     },
+     {
+      "t": "l'acqua si scalda e diventa vapore"
+     }
+    ],
+    [
+     {
+      "t": "condensazione"
+     },
+     {
+      "t": "il vapore si raffredda e torna acqua"
+     }
+    ]
+   ]
+  },
+  "scopri": {
+   "animazione": "stati-materia"
+  }
+ },
+ {
+  "id": "ciclo-acqua",
+  "titolo": "Il ciclo dell'acqua",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti in ordine il viaggio dell'acqua, dal mare.",
+  "materia": "Scienze",
+  "dati": {
+   "passi": [
+    {
+     "t": "evaporazione: il sole scalda l'acqua, che sale come vapore"
+    },
+    {
+     "t": "condensazione: il vapore si raffredda e forma le nuvole"
+    },
+    {
+     "t": "precipitazione: cade la pioggia, o la neve"
+    },
+    {
+     "t": "l'acqua scorre nei fiumi e torna al mare"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "ciclo-acqua"
+  }
+ },
+ {
+  "id": "seme-frutto",
+  "titolo": "Dal seme al frutto",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti in ordine: come nasce e cresce una pianta.",
+  "materia": "Scienze",
+  "dati": {
+   "passi": [
+    {
+     "t": "il seme",
+     "p": 8321
+    },
+    {
+     "t": "il seme germoglia",
+     "p": 8689
+    },
+    {
+     "t": "la piantina con le foglie",
+     "p": 3143
+    },
+    {
+     "t": "il fiore",
+     "p": 3127
+    },
+    {
+     "t": "il frutto con i semi",
+     "p": 39824
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "pianta"
+  }
+ },
+ {
+  "id": "parti-pianta",
+  "titolo": "Le parti della pianta",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni parte della pianta a quello che fa.",
+  "materia": "Scienze",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "radice",
+      "p": 3148
+     },
+     {
+      "t": "tiene la pianta nel terreno e assorbe acqua e sali minerali"
+     }
+    ],
+    [
+     {
+      "t": "fusto",
+      "p": 3159
+     },
+     {
+      "t": "sostiene la pianta e porta la linfa"
+     }
+    ],
+    [
+     {
+      "t": "foglia",
+      "p": 5077
+     },
+     {
+      "t": "con la luce del sole produce il nutrimento"
+     }
+    ],
+    [
+     {
+      "t": "fiore",
+      "p": 3127
+     },
+     {
+      "t": "serve a formare il frutto e i semi"
+     }
+    ],
+    [
+     {
+      "t": "frutto",
+      "p": 39824
+     },
+     {
+      "t": "protegge i semi"
+     }
+    ]
+   ]
+  },
+  "scopri": {
+   "animazione": "pianta"
+  }
+ },
+ {
+  "id": "cosa-mangiano",
+  "titolo": "Erbivori, carnivori, onnivori",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Che cosa mangia? Metti ogni animale nel gruppo giusto.",
+  "materia": "Scienze",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "Erbivori: mangiano piante",
+     "elementi": [
+      {
+       "t": "mucca",
+       "p": 2609
+      },
+      {
+       "t": "coniglio",
+       "p": 2351
+      },
+      {
+       "t": "cavallo",
+       "p": 2294
+      },
+      {
+       "t": "pecora",
+       "p": 2489
+      }
+     ]
+    },
+    {
+     "nome": "Carnivori: mangiano altri animali",
+     "elementi": [
+      {
+       "t": "leone",
+       "p": 25187
+      },
+      {
+       "t": "lupo",
+       "p": 5892
+      },
+      {
+       "t": "aquila",
+       "p": 2638
+      },
+      {
+       "t": "squalo",
+       "p": 2589
+      }
+     ]
+    },
+    {
+     "nome": "Onnivori: mangiano di tutto",
+     "elementi": [
+      {
+       "t": "orso",
+       "p": 2488
+      },
+      {
+       "t": "maiale",
+       "p": 2327
+      },
+      {
+       "t": "gallina",
+       "p": 2403
+      },
+      {
+       "t": "essere umano",
+       "p": 39006
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "catena-alimentare",
+  "titolo": "La catena alimentare",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Chi mangia chi? Metti in ordine, dalla pianta.",
+  "materia": "Scienze",
+  "dati": {
+   "passi": [
+    {
+     "t": "l'erba",
+     "p": 3113
+    },
+    {
+     "t": "la cavalletta mangia l'erba",
+     "p": 2805
+    },
+    {
+     "t": "la rana mangia la cavalletta",
+     "p": 2543
+    },
+    {
+     "t": "il serpente mangia la rana",
+     "p": 2568
+    },
+    {
+     "t": "l'aquila mangia il serpente",
+     "p": 2638
+    }
+   ]
+  }
+ },
+ {
+  "id": "vertebrati-classi",
+  "titolo": "I vertebrati",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Metti ogni animale nella sua classe. Attenzione alle sorprese!",
+  "materia": "Scienze",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "Mammiferi",
+     "elementi": [
+      {
+       "t": "cane",
+       "p": 7202
+      },
+      {
+       "t": "balena",
+       "p": 2268
+      },
+      {
+       "t": "pipistrello",
+       "p": 2903
+      }
+     ]
+    },
+    {
+     "nome": "Uccelli",
+     "elementi": [
+      {
+       "t": "aquila",
+       "p": 2638
+      },
+      {
+       "t": "pinguino",
+       "p": 3243
+      },
+      {
+       "t": "gallina",
+       "p": 2403
+      }
+     ]
+    },
+    {
+     "nome": "Rettili",
+     "elementi": [
+      {
+       "t": "serpente",
+       "p": 2568
+      },
+      {
+       "t": "tartaruga",
+       "p": 2596
+      },
+      {
+       "t": "coccodrillo",
+       "p": 2343
+      }
+     ]
+    },
+    {
+     "nome": "Anfibi",
+     "elementi": [
+      {
+       "t": "rana",
+       "p": 2543
+      },
+      {
+       "t": "salamandra",
+       "p": 7236
+      }
+     ]
+    },
+    {
+     "nome": "Pesci",
+     "elementi": [
+      {
+       "t": "squalo",
+       "p": 2589
+      },
+      {
+       "t": "pesce",
+       "p": 2520
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "vertebrati-invertebrati",
+  "titolo": "Vertebrati o invertebrati?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Ha la colonna vertebrale? Metti ogni animale nel gruppo giusto.",
+  "materia": "Scienze",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "Vertebrati: hanno la colonna vertebrale",
+     "elementi": [
+      {
+       "t": "cane",
+       "p": 7202
+      },
+      {
+       "t": "pesce",
+       "p": 2520
+      },
+      {
+       "t": "uccello",
+       "p": 2490
+      },
+      {
+       "t": "rana",
+       "p": 2543
+      },
+      {
+       "t": "serpente",
+       "p": 2568
+      }
+     ]
+    },
+    {
+     "nome": "Invertebrati: non hanno la colonna vertebrale",
+     "elementi": [
+      {
+       "t": "lumaca",
+       "p": 8061
+      },
+      {
+       "t": "farfalla",
+       "p": 2465
+      },
+      {
+       "t": "ragno",
+       "p": 2254
+      },
+      {
+       "t": "medusa",
+       "p": 2920
+      },
+      {
+       "t": "lombrico",
+       "p": 2935
+      },
+      {
+       "t": "ape",
+       "p": 24823
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "corpo-umano",
+  "titolo": "Il corpo umano",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni parte del corpo a quello che fa.",
+  "materia": "Scienze",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "cuore",
+      "p": 2715
+     },
+     {
+      "t": "spinge il sangue in tutto il corpo"
+     }
+    ],
+    [
+     {
+      "t": "polmoni",
+      "p": 2822
+     },
+     {
+      "t": "prendono l'ossigeno dall'aria che respiriamo"
+     }
+    ],
+    [
+     {
+      "t": "stomaco",
+      "p": 3309
+     },
+     {
+      "t": "aiuta a digerire il cibo"
+     }
+    ],
+    [
+     {
+      "t": "cervello",
+      "p": 2696
+     },
+     {
+      "t": "comanda il corpo, pensa e ricorda"
+     }
+    ],
+    [
+     {
+      "t": "scheletro",
+      "p": 5727
+     },
+     {
+      "t": "sostiene e protegge il corpo"
+     }
+    ],
+    [
+     {
+      "t": "muscoli",
+      "p": 37172
+     },
+     {
+      "t": "fanno muovere il corpo"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "sistema-solare",
+  "titolo": "Il sistema solare",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti in ordine i pianeti, dal più vicino al Sole.",
+  "materia": "Scienze",
+  "dati": {
+   "passi": [
+    {
+     "t": "Mercurio",
+     "p": 10297
+    },
+    {
+     "t": "Venere",
+     "p": 10303
+    },
+    {
+     "t": "Terra",
+     "p": 30015
+    },
+    {
+     "t": "Marte",
+     "p": 10296
+    },
+    {
+     "t": "Giove",
+     "p": 10293
+    },
+    {
+     "t": "Saturno",
+     "p": 10300
+    },
+    {
+     "t": "Urano",
+     "p": 10302
+    },
+    {
+     "t": "Nettuno",
+     "p": 10298
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "sistema-solare"
+  }
+ },
+ {
+  "id": "universo",
+  "titolo": "Dove siamo nell'universo",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti in ordine, dal più piccolo al più grande.",
+  "materia": "Scienze",
+  "dati": {
+   "passi": [
+    {
+     "t": "la Terra",
+     "p": 30015
+    },
+    {
+     "t": "il Sistema solare",
+     "p": 37979
+    },
+    {
+     "t": "la Via Lattea"
+    },
+    {
+     "t": "il Gruppo Locale"
+    },
+    {
+     "t": "Laniakea"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "universo"
+  }
+ },
+ {
+  "id": "energia",
+  "titolo": "Energia: rinnovabile o no?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Questa fonte di energia finisce o si rinnova? Mettila nel gruppo giusto.",
+  "materia": "Scienze",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "Rinnovabili: non finiscono",
+     "elementi": [
+      {
+       "t": "il sole",
+       "p": 38040
+      },
+      {
+       "t": "il vento",
+       "p": 7259
+      },
+      {
+       "t": "l'acqua dei fiumi",
+       "p": 6191
+      },
+      {
+       "t": "il calore della Terra"
+      }
+     ]
+    },
+    {
+     "nome": "Non rinnovabili: prima o poi finiscono",
+     "elementi": [
+      {
+       "t": "il petrolio",
+       "p": 8186
+      },
+      {
+       "t": "il carbone",
+       "p": 5943
+      },
+      {
+       "t": "il gas naturale"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
   "id": "autunno-sensi",
   "materia": "Italiano",
   "titolo": "L'autunno con i cinque sensi",
@@ -1713,7 +2490,7 @@
       "t": "antropologo"
      },
      {
-      "t": "studia l'origine e l'evoluzione dell'uomo"
+      "t": "studia gli esseri umani: come sono fatti e come si sono evoluti"
      }
     ]
    ]
@@ -1985,11 +2762,11 @@
      "nome": "Greci",
      "elementi": [
       {
-       "t": "un vaso dipinto",
+       "t": "un vaso a figure rosse",
        "f": "anfora-greca.jpg"
       },
       {
-       "t": "un elmo di bronzo",
+       "t": "un elmo corinzio",
        "f": "elmo-corinzio.jpg"
       },
       {
@@ -2015,11 +2792,11 @@
        "f": "colosseo.jpg"
       },
       {
-       "t": "una moneta d'argento",
+       "t": "una moneta con un imperatore",
        "f": "moneta-romana.jpg"
       },
       {
-       "t": "un pavimento a mosaico",
+       "t": "il mosaico di una villa romana",
        "f": "mosaico-romano.jpg"
       },
       {
@@ -2052,7 +2829,7 @@
   "dati": {
    "passi": [
     {
-     "t": "753 a.C.: nasce Roma, governano i re"
+     "t": "753 a.C.: nasce Roma, secondo la tradizione; governano i re"
     },
     {
      "t": "509 a.C.: inizia la Repubblica"
@@ -2263,7 +3040,7 @@
       "p": 2909
      },
      {
-      "t": "rilievo alto più di 600 metri"
+      "t": "rilievo alto, di solito più di 600 metri"
      }
     ],
     [
@@ -2272,7 +3049,7 @@
       "p": 34147
      },
      {
-      "t": "rilievo più basso, sotto i 600 metri"
+      "t": "rilievo più basso, di solito sotto i 600 metri"
      }
     ],
     [

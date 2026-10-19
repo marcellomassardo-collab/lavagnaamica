@@ -2,18 +2,19 @@
 // I file dell'app si chiedono prima alla rete (così si vede sempre l'ultima versione)
 // e solo se la rete non risponde in tempo si prendono dalla copia salvata.
 
-const VERSIONE = "app-9";
+const VERSIONE = "app-10";
 const PITTOGRAMMI = "pittogrammi";
 const MAX_PITTOGRAMMI = 400;
 const ATTESA_RETE = 3500;
 
 const FILE = [
   "./", "index.html", "stile.css", "manifest.webmanifest",
-  "js/avvio.js", "js/catalogo.js", "js/config.js", "js/dati.js", "js/editor.js", "js/impostazioni.js", "js/insegnanti.js", "js/linea.js",
+  "js/animazioni.js", "js/avvio.js", "js/catalogo.js", "js/config.js", "js/dati.js", "js/editor.js", "js/impostazioni.js", "js/insegnanti.js", "js/linea.js",
   "js/modello.js", "js/pagine.js", "js/picto.js", "js/scena.js", "js/suoni.js", "js/trascina.js", "js/ui.js", "js/voce.js",
   "js/giochi/abbina.js", "js/giochi/completa.js", "js/giochi/matematica.js", "js/giochi/memory.js", "js/giochi/raggruppa.js", "js/giochi/scelta.js", "js/giochi/sequenza.js",
   "esempi/esempi.json", "font/corsivo-scuola.woff2",
   "foto/alfabeto-fenicio.jpg", "foto/amigdala.jpg", "foto/anfora-greca.jpg", "foto/ascia-di-bronzo.jpg", "foto/augusto.jpg", "foto/codice-hammurabi.jpg", "foto/colosseo.jpg", "foto/elmo-corinzio.jpg", "foto/moneta-romana.jpg", "foto/mosaico-romano.jpg", "foto/partenone.jpg", "foto/piramidi.jpg", "foto/pittura-rupestre.jpg", "foto/stele-egizia.jpg", "foto/tavoletta-cuneiforme.jpg",
+  "video/terra-che-gira.webm",
   "icone/icona.svg", "icone/icona-192.png", "icone/icona-512.png", "icone/icona-maskable-512.png"
 ];
 

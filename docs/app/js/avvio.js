@@ -8,6 +8,7 @@ import { suonoFesta } from "./suoni.js";
 import { el, creaContesto, pulsanteVoce, avviso, finestra } from "./ui.js";
 import { vista, pagina, intestazione, quandoSiEsce } from "./pagine.js";
 import { lineaDelTempo } from "./linea.js";
+import { spiegazione } from "./animazioni.js";
 import { catalogo, catalogoAttivo, insegnante } from "./catalogo.js";
 import { vistaInsegnanti, vistaModerazione, schedaCatalogo, pubblica, copiaLink } from "./insegnanti.js";
 import { editor, bozzaDa } from "./editor.js";
@@ -165,6 +166,17 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
     ferma = MOTORI[gioco].avvia(area, es, creaContesto(finito)) || null;
   }
 
+  // la spiegazione animata: parte da sola prima dell'esercizio e si può rivedere
+  function spiega() {
+    if (ferma) ferma();
+    zitto();
+    area.replaceChildren();
+    const sp = spiegazione(es.scopri, () => { ferma = null; inizia(); });
+    ferma = sp.ferma;
+    area.append(sp.el);
+    sp.parti();
+  }
+
   // Il punteggio conta le risposte giuste al primo tentativo; nel memory, coppie e tentativi.
   // Le stelle (da 1 a 3) dicono com'è andata a colpo d'occhio, anche a chi non legge.
   function finito(r) {
@@ -205,7 +217,8 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
   vista(el("div", { class: "gioco s-" + es.scrittura + (storia ? " con-linea" : "") },
     el("header", { class: "gioco-testa" },
       el("h1", { text: es.titolo }),
-      el("p", { class: "consegna" }, el("span", { text: consegna }), pulsanteVoce(consegna, "Ascolta la consegna"))),
+      el("p", { class: "consegna" }, el("span", { text: consegna }), pulsanteVoce(consegna, "Ascolta la consegna")),
+      es.scopri ? el("button", { type: "button", class: "tasto-piccolo rivedi", text: "🎬 Rivedi la spiegazione", on: { click: spiega } }) : null),
     sopra || null,
     area,
     el("div", { class: "piede-gioco" },
@@ -219,7 +232,7 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
     if (ferma) ferma();
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
   });
-  inizia();
+  if (es.scopri && !giocoChiesto) spiega(); else inizia();
 }
 
 async function giocaSalvato(origine, id, gioco) {
