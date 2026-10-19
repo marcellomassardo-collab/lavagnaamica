@@ -4,7 +4,7 @@ compatibility_date = "2025-09-01"
 
 [vars]
 ORIGINI = "https://marcellomassardo-collab.github.io,http://localhost:8765"
-GOOGLE_CLIENT_ID = ""
+GOOGLE_CLIENT_ID = "263649132797-uscdtejr99t8or0e43f9bubgk11ephud.apps.googleusercontent.com"
 
 [[d1_databases]]
 binding = "DB"

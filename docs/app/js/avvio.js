@@ -354,6 +354,7 @@ function info() {
     el("p", { text: "Per giocare non serve un account e non raccogliamo nulla. Gli esercizi che crei e le impostazioni restano su questo dispositivo. Un esercizio esce dal dispositivo solo se lo condividi tu, con un link o un file, o se lo pubblichi nel catalogo." }),
     catalogoAttivo ? el("p", { text: "Il catalogo comune sta su un server di Cloudflare. Gli insegnanti accedono con Google: salviamo la loro email, che non viene mai mostrata, e il nome che scelgono di mostrare. Una segnalazione anonima salva solo il motivo, un numero a caso di questo dispositivo e un'impronta della rete che cambia ogni giorno, per frenare gli abusi." }) : null,
     el("p", { text: "Le immagini arrivano dall'archivio pubblico di pittogrammi ARASAAC, che vede quindi le richieste delle immagini." }),
+    el("p", {}, el("a", { href: "../privacy.html", text: "Informativa privacy completa" })),
     el("h2", { text: "Riconoscimenti" }),
     el("p", { text: "Pittogrammi: autore Sergio Palao. Origine: ARASAAC (arasaac.org). Licenza: CC BY-NC-SA 4.0. Proprietà: Governo d'Aragona (Spagna)." }),
     el("p", { text: "Carattere corsivo: Playwrite IT Moderna, SIL Open Font License 1.1." }),
