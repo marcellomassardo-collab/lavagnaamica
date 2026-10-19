@@ -5,11 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lavagna Amica</title>
 <meta name="description" content="Esercizi interattivi gratuiti per la scuola, pensati per il sostegno e per la LIM: abbina, memory, scelta multipla, raggruppa, sequenze e frasi da completare.">
-<meta name="theme-color" content="#1E6B52">
+<meta name="theme-color" content="#171D21">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icone/icona.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icone/icona-192.png">
 <link rel="stylesheet" href="stile.css">
+<script>
+  // il tema scelto prima di disegnare la pagina, così non lampeggia di chiaro
+  try {
+    var i = JSON.parse(localStorage.getItem("la.impostazioni")) || {};
+    var tema = i.tema || "scuro";
+    if (!i.contrasto && (tema === "scuro" || (tema === "auto" && matchMedia("(prefers-color-scheme: dark)").matches)))
+      document.documentElement.classList.add("scuro");
+  } catch (e) {}
+</script>
 <script type="module" src="js/avvio.js"></script>
 </head>
 <body>

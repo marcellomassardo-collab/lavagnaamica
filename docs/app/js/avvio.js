@@ -2,7 +2,7 @@
 
 import { GIOCHI, TIPI, MOTIVI, MATERIE, giochiPer, consegnaDi, valida } from "./modello.js";
 import { caricaEsempi, elencoMiei, trovaMio, salvaMio, eliminaMio, inLink, daLink, scaricaFile, apriFile } from "./dati.js";
-import { impostazioni, applica, cambia, LIMITI, VELOCITA } from "./impostazioni.js";
+import { impostazioni, applica, cambia, LIMITI, VELOCITA, TEMI } from "./impostazioni.js";
 import { parla, zitto, voceDisponibile, vociDelDispositivo, quandoCambianoLeVoci } from "./voce.js";
 import { suonoFesta } from "./suoni.js";
 import { el, creaContesto, pulsanteVoce, avviso, finestra } from "./ui.js";
@@ -376,6 +376,15 @@ function sceltaVoce() {
         parla("Ciao! Sono la voce di Lavagna Amica. Nel cesto ci sono 15 mele: la mamma ne prende 6. Quante mele restano?") } })));
 }
 
+function sceltaTema() {
+  const tema = el("select", { "aria-label": "Tema" },
+    TEMI.map(([v, nome]) => el("option", { value: v, selected: v === impostazioni.tema, text: nome })));
+  tema.addEventListener("change", () => cambia("tema", tema.value));
+  return el("label", { class: "numero" },
+    el("span", {}, el("b", { text: "Tema" }), el("small", { text: "Con il tema scuro le pagine diventano scure e le carte da gioco restano chiare." })),
+    tema);
+}
+
 function vistaImpostazioni() {
   vista(pagina("Impostazioni",
     el("p", { text: "Valgono per questo dispositivo." }),
@@ -386,7 +395,8 @@ function vistaImpostazioni() {
       voceDisponibile ? sceltaVoce() : null,
       interruttore("suoni", "Suoni", "Un suono a ogni risposta e una festa alla fine."),
       interruttore("aiuto", "Aiuto dopo un errore", "Mostra per un momento dove va la carta."),
-      interruttore("contrasto", "Alto contrasto", "Colori più forti e bordi più spessi."),
+      sceltaTema(),
+      interruttore("contrasto", "Alto contrasto", "Colori più forti e bordi più spessi. Vale al posto del tema."),
       numero("elementi", "Carte per partita", "Quante carte o domande in ogni partita."),
       numero("risposte", "Risposte tra cui scegliere", "Nella scelta multipla e nelle frasi da completare."))));
 }
