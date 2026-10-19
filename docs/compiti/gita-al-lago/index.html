@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="it" class="s-maiuscolo">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La gita al lago – Lavagna Amica</title>
+<meta name="description" content="Leggi il testo e rispondi alle domande: la gita al lago. Esercizio di comprensione con lettura ad alta voce e disegno.">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='8' width='60' height='48' rx='8' fill='%23B7793F'/%3E%3Crect x='8' y='14' width='48' height='36' rx='4' fill='%231E6B52'/%3E%3Ccircle cx='24' cy='28' r='3' fill='%23fff'/%3E%3Ccircle cx='40' cy='28' r='3' fill='%23fff'/%3E%3Cpath d='M22 37q10 9 20 0' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  @font-face {
+    font-family: "Corsivo Scuola";
+    src: url("../../font/corsivo-scuola.woff2") format("woff2");
+    font-display: swap;
+  }
+  :root {
+    --bg: #FFF9EC;
+    --carta: #FFFFFF;
+    --testo: #1C2430;
+    --tenue: #4E5866;
+    --blu: #2F7FD1;
+    --blu-chiaro: #E3F0FC;
+    --bordo: #CFE0F2;
+    --giusto: #1E8A4C;
+    --giusto-sf: #E2F6EA;
+    --sbagliato: #B23A3A;
+    --evidenzia: #FFF1A8;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--testo);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: clamp(19px, 0.95rem + 0.5vw, 25px);
+    line-height: 1.5;
+  }
+  html.s-maiuscolo .t, html.s-maiuscolo input.risposta { text-transform: uppercase; letter-spacing: 0.02em; }
+  html.s-corsivo .t, html.s-corsivo input.risposta, .f-corsivo {
+    font-family: "Corsivo Scuola", cursive;
+    line-height: 1.95;
+  }
+  html.s-corsivo .t { font-size: 1.04em; }
+
+  .pagina { max-width: 1000px; margin: 0 auto; padding: 0 16px 48px; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #F2A900; outline-offset: 2px; }
+
+  /* barra in alto */
+  .barra {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    padding: 12px 0;
+  }
+  .marchio { font-weight: 700; color: #1E6B52; text-decoration: none; font-size: 0.85em; display: inline-flex; align-items: center; gap: 8px; }
+  .marchio svg { width: 30px; height: 30px; }
+  .scritture { display: inline-flex; background: var(--carta); border: 2px solid var(--bordo); border-radius: 999px; padding: 4px; gap: 4px; }
+  .scritture button {
+    border: 0; background: transparent; border-radius: 999px; padding: 6px 14px; font-size: 0.8em; min-height: 44px;
+  }
+  .scritture button[aria-pressed="true"] { background: var(--blu); color: #fff; }
+
+  /* intestazione */
+  .titolo-scheda {
+    text-align: center; margin: 8px 0 6px;
+    font-size: clamp(1.35rem, 1rem + 2vw, 2.3rem); font-weight: 800; color: var(--blu);
+    letter-spacing: 0.03em;
+  }
+  .consegna {
+    display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+    margin: 0 auto 20px; text-align: center; font-weight: 700;
+  }
+  .consegna span { background: #FFF6C9; border: 2px solid #E9C547; border-radius: 14px; padding: 6px 16px; }
+
+  .voce {
+    border: 2px solid var(--bordo); background: var(--carta); border-radius: 999px;
+    min-width: 48px; min-height: 48px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    font-size: 0.85em; flex: none;
+  }
+  .voce[aria-busy="true"] { background: var(--blu-chiaro); border-color: var(--blu); }
+  .nascosto { display: none !important; }
+
+  /* testo e immagine */
+  .storia {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start;
+    background: var(--carta); border: 3px solid var(--bordo); border-radius: 22px; padding: 18px;
+  }
+  .storia h2 { margin: 0 0 10px; color: var(--blu); font-size: 1.5em; line-height: 1.2; }
+  .frasi { margin: 0 0 14px; font-size: 1.08em; }
+  .frasi span { display: block; margin-bottom: 0.35em; border-radius: 8px; padding: 0 4px; transition: background-color .2s; }
+  .frasi span.letta { background: var(--blu-chiaro); }
+  .frasi span.aiuto { background: var(--evidenzia); }
+  .storia img { width: 100%; height: auto; border-radius: 16px; display: block; }
+
+  /* domande */
+  .domande { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 14px; }
+  .domanda {
+    background: var(--carta); border: 3px solid var(--bordo); border-radius: 22px; padding: 16px 18px;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 6px 14px; align-items: start;
+    grid-template-areas: "num tit fig" "num corpo fig";
+  }
+  .domanda.fatta { border-color: #9ED4B4; }
+  .numero {
+    width: 52px; height: 52px; border-radius: 50%; border: 3px solid #1C2430;
+    display: grid; place-items: center; font-weight: 800; font-size: 1.25em; font-family: system-ui, sans-serif;
+  }
+  .domanda .numero { grid-area: num; }
+  .domanda h3 { grid-area: tit; margin: 0; font-size: 1.05em; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .figura { grid-area: fig; width: clamp(70px, 14vw, 120px); height: auto; align-self: center; }
+  .corpo { grid-area: corpo; min-width: 0; }
+  .scelte { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+  .scelta {
+    display: inline-flex; align-items: center; gap: 10px;
+    min-height: 56px; padding: 8px 18px; border-radius: 14px;
+    border: 3px solid var(--bordo); background: #F7FAFE; text-align: left;
+  }
+  .scelta::before {
+    content: ""; width: 26px; height: 26px; border: 3px solid #5A7896; border-radius: 7px; flex: none; background: #fff;
+  }
+  .scelta.si { border-color: var(--giusto); background: var(--giusto-sf); }
+  .scelta.si::before { content: "✓"; border-color: var(--giusto); background: var(--giusto); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 18px; font-family: system-ui, sans-serif; }
+  .scelta.no { opacity: .45; text-decoration: line-through; animation: scuoti .35s; }
+  .scelta:disabled { cursor: default; }
+  @keyframes scuoti { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+  .scrivi { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+  input.risposta {
+    flex: 1 1 240px; min-height: 56px; font: inherit; font-size: 1em; padding: 6px 14px;
+    border: 3px solid var(--bordo); border-radius: 14px; background: #fff; color: var(--testo);
+  }
+  input.risposta.si { border-color: var(--giusto); background: var(--giusto-sf); }
+  .pulsante {
+    min-height: 56px; padding: 6px 20px; border-radius: 14px; border: 0;
+    background: var(--blu); color: #fff; font-weight: 700;
+  }
+  .pulsante.secondario { background: #fff; color: var(--blu); border: 3px solid var(--blu); }
+  .link-aiuto { background: none; border: 0; color: var(--blu); text-decoration: underline; padding: 8px 0; margin-top: 4px; font-size: 0.85em; min-height: 44px; }
+
+  .esito { margin: 10px 0 0; font-weight: 700; min-height: 0; }
+  .esito.si { color: var(--giusto); }
+  .esito.no { color: var(--sbagliato); }
+  .indizio {
+    margin-top: 8px; background: var(--evidenzia); border-radius: 12px; padding: 8px 12px;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .indizio .t { flex: 1 1 200px; }
+
+  /* disegno */
+  .disegno { margin-top: 14px; background: var(--carta); border: 3px solid var(--bordo); border-radius: 22px; padding: 16px 18px; }
+  .disegno .testa { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .disegno h3 { margin: 0; font-size: 1.05em; flex: 1 1 260px; }
+  .tela-box { margin-top: 12px; border: 3px dashed #9DB8D3; border-radius: 16px; overflow: hidden; background: #fff; touch-action: none; }
+  canvas { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; touch-action: none; cursor: crosshair; }
+  .attrezzi { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; align-items: center; }
+  .colore { width: 46px; height: 46px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 2px #B9C7D6; }
+  .colore[aria-pressed="true"] { box-shadow: 0 0 0 4px #1C2430; }
+  .attrezzo {
+    min-height: 46px; padding: 4px 14px; border-radius: 12px; border: 2px solid var(--bordo); background: #F7FAFE; font-size: 0.8em;
+  }
+  .attrezzo[aria-pressed="true"] { border-color: #1C2430; background: #EAF1F8; }
+  .sep { width: 1px; height: 36px; background: var(--bordo); margin: 0 4px; }
+
+  /* fine */
+  .fine { margin-top: 18px; text-align: center; background: var(--giusto-sf); border: 3px solid #9ED4B4; border-radius: 22px; padding: 22px 18px; }
+  .fine h2 { margin: 0 0 6px; color: var(--giusto); font-size: 1.6em; }
+  .fine p { margin: 0 0 14px; }
+  .fine .azioni { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .avanzamento { text-align: center; color: var(--tenue); margin: 18px 0 0; font-size: 0.9em; }
+  .piede { text-align: center; color: var(--tenue); font-size: 0.75em; margin-top: 30px; }
+  .piede a { color: inherit; }
+
+  @media (max-width: 720px) {
+    .storia { grid-template-columns: 1fr; }
+    .storia img { order: -1; }
+    .domanda { grid-template-areas: "num tit fig" "corpo corpo corpo"; padding: 14px; }
+    .figura { width: 64px; align-self: start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scelta.no { animation: none; }
+    .frasi span { transition: none; }
+  }
+  @media print {
+    .barra, .voce, .link-aiuto, .attrezzi, .fine .azioni, .pulsante, .piede { display: none !important; }
+    body { background: #fff; font-size: 14pt; }
+    .storia, .domanda, .disegno, .fine { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="pagina">
+  <div class="barra">
+    <a class="marchio" href="../../">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="8" width="60" height="48" rx="8" fill="#B7793F"/><rect x="8" y="14" width="48" height="36" rx="4" fill="#1E6B52"/><circle cx="24" cy="28" r="3" fill="#fff"/><circle cx="40" cy="28" r="3" fill="#fff"/><path d="M22 37q10 9 20 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+      Lavagna Amica
+    </a>
+    <div class="scritture" role="group" aria-label="Come scrivere le lettere">
+      <button type="button" data-s="maiuscolo" aria-pressed="true">MAIUSCOLO</button>
+      <button type="button" data-s="minuscolo" aria-pressed="false">minuscolo</button>
+      <button type="button" data-s="corsivo" aria-pressed="false" class="f-corsivo">corsivo</button>
+    </div>
+  </div>
+
+  <p class="titolo-scheda t">Leggere · Capire · Rispondere</p>
+  <p class="consegna"><span class="t" id="consegna">Leggi il testo e rispondi alle domande.</span><button type="button" class="voce" data-leggi="consegna" aria-label="Ascolta la consegna">🔊</button></p>
+
+  <section class="storia" aria-labelledby="titolo-storia">
+    <div>
+      <h2 id="titolo-storia" class="t">La gita al lago</h2>
+      <p class="frasi t" id="frasi">
+        <span data-f="1">Luca e la sua famiglia vanno al lago per il picnic.</span>
+        <span data-f="2">Luca porta lo zaino con il cibo, la mamma prende la coperta e il papà gonfia il pallone.</span>
+        <span data-f="3">Quando arrivano, trovano un bel posto vicino all'acqua.</span>
+        <span data-f="4">Mangiano, giocano e poi fanno una passeggiata.</span>
+        <span data-f="5">Nel pomeriggio tornano a casa felici e con tanti bei ricordi.</span>
+      </p>
+      <button type="button" class="voce" id="ascolta-testo"><span aria-hidden="true">🔊</span> <span class="t">Ascolta il testo</span></button>
+    </div>
+    <img src="lago-picnic.jpg" width="700" height="782" alt="Luca con la mamma e il papà fanno il picnic su una coperta vicino al lago. Il papà tiene un pallone, Luca apre lo zaino, la mamma stende una coperta gialla.">
+  </section>
+
+  <ol class="domande" id="domande"></ol>
+
+  <section class="disegno" aria-labelledby="titolo-disegno">
+    <div class="testa">
+      <span class="numero" style="background:#FFE7A3" aria-hidden="true">✏️</span>
+      <h3 id="titolo-disegno" class="t">Disegna il posto che hanno trovato vicino al lago.</h3>
+      <button type="button" class="voce" data-leggi="titolo-disegno" aria-label="Ascolta">🔊</button>
+    </div>
+    <div class="tela-box"><canvas id="tela" width="1200" height="800" aria-label="Foglio per disegnare"></canvas></div>
+    <div class="attrezzi" id="attrezzi"></div>
+  </section>
+
+  <p class="avanzamento t" id="avanzamento"></p>
+
+  <section class="fine nascosto" id="fine" aria-live="polite">
+    <h2 class="t">Hai finito! Ottimo lavoro.</h2>
+    <p class="t">Puoi salvare il lavoro e mandarlo all'insegnante.</p>
+    <div class="azioni">
+      <button type="button" class="pulsante" id="scarica"><span class="t">Salva il lavoro</span></button>
+      <button type="button" class="pulsante secondario" id="stampa"><span class="t">Stampa</span></button>
+      <button type="button" class="pulsante secondario" id="ricomincia"><span class="t">Ricomincia</span></button>
+    </div>
+  </section>
+
+  <p class="piede">Le risposte e il disegno restano su questo dispositivo: non vengono mandati a nessuno. · <a href="../../">Lavagna Amica</a></p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var DOMANDE = [
+    { tipo: "scelta", testo: "Dove va Luca con la sua famiglia?", img: "lago.png", alt: "Un lago con una barca a vela",
+      scelte: ["al mare", "in montagna", "al lago"], giusta: 2, frase: 1, colore: "#FFD84D" },
+    { tipo: "scrivi", testo: "Cosa porta Luca con sé?", img: "zaino.png", alt: "Uno zaino blu",
+      accetta: ["zaino", "cibo"], scelte: ["lo zaino", "la coperta", "il pallone"], giusta: 0, frase: 2, colore: "#9BD86B" },
+    { tipo: "scrivi", testo: "Chi prende la coperta?", img: "coperta.png", alt: "Una coperta gialla piegata",
+      accetta: ["mamma"], scelte: ["il papà", "la mamma", "Luca"], giusta: 1, frase: 2, colore: "#F6A3C0" },
+    { tipo: "scelta", testo: "Cosa fanno nel pomeriggio?", img: "pallone.png", alt: "Un pallone colorato",
+      scelte: ["giocano", "guardano la TV", "vanno a scuola"], giusta: 0, frase: 4, colore: "#7CC8F0" },
+    { tipo: "scelta", testo: "Come tornano a casa?", img: "felice.png", alt: "Un bambino che sorride",
+      scelte: ["tristi", "felici", "arrabbiati"], giusta: 1, frase: 5, colore: "#B9A3F0" }
+  ];
+  var CHIAVE = "la.compito.gita-al-lago.v1";
+  var stato = carica();
+  var radice = document.documentElement;
+  var fine = document.getElementById("fine");
+
+  function carica() {
+    try {
+      var s = JSON.parse(localStorage.getItem(CHIAVE));
+      if (s && typeof s === "object") { s.risposte = s.risposte || {}; s.tratti = s.tratti || []; return s; }
+    } catch (e) {}
+    return { risposte: {}, tratti: [] };
+  }
+  function salva() {
+    try { localStorage.setItem(CHIAVE, JSON.stringify(stato)); } catch (e) {}
+  }
+  function el(tag, attr, figli) {
+    var n = document.createElement(tag);
+    if (attr) for (var k in attr) {
+      if (k === "class") n.className = attr[k];
+      else if (k === "text") n.textContent = attr[k];
+      else n.setAttribute(k, attr[k]);
+    }
+    (figli || []).forEach(function (f) { if (f) n.appendChild(f); });
+    return n;
+  }
+  function normalizza(s) {
+    return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ").trim();
+  }
+  function frase(n) { return document.querySelector('#frasi span[data-f="' + n + '"]'); }
+
+  /* ---------- scrittura: maiuscolo, minuscolo, corsivo ---------- */
+  var SCRITTURE = ["maiuscolo", "minuscolo", "corsivo"];
+  function impostaScrittura(s, aggiornaLink) {
+    if (SCRITTURE.indexOf(s) < 0) s = "maiuscolo";
+    SCRITTURE.forEach(function (x) { radice.classList.toggle("s-" + x, x === s); });
+    document.querySelectorAll(".scritture button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-s") === s));
+    });
+    stato.scrittura = s; salva();
+    document.querySelectorAll("input.risposta").forEach(function (c) {
+      c.setAttribute("autocapitalize", s === "maiuscolo" ? "characters" : "sentences");
+    });
+    if (aggiornaLink && history.replaceState) {
+      history.replaceState(null, "", s === "maiuscolo" ? location.pathname : location.pathname + "?scrittura=" + s);
+    }
+  }
+  var dalLink = new URLSearchParams(location.search).get("scrittura");
+  impostaScrittura(dalLink || stato.scrittura || "maiuscolo", false);
+  document.querySelectorAll(".scritture button").forEach(function (b) {
+    b.addEventListener("click", function () { impostaScrittura(b.getAttribute("data-s"), true); });
+  });
+
+  /* ---------- lettura ad alta voce ---------- */
+  var sintesi = window.speechSynthesis;
+  var voceIt = null, pulsanteAttivo = null;
+  function scegliVoce() {
+    if (!sintesi) return;
+    var v = sintesi.getVoices().filter(function (x) { return /^it(-|_|$)/i.test(x.lang); });
+    voceIt = v.filter(function (x) { return x.localService; })[0] || v[0] || null;
+  }
+  if (sintesi) { scegliVoce(); sintesi.addEventListener && sintesi.addEventListener("voiceschanged", scegliVoce); }
+  function ferma() {
+    if (sintesi) sintesi.cancel();
+    document.querySelectorAll("#frasi span.letta").forEach(function (s) { s.classList.remove("letta"); });
+    if (pulsanteAttivo) pulsanteAttivo.removeAttribute("aria-busy");
+    pulsanteAttivo = null;
+  }
+  function leggi(testi, pulsante, ogniFrase) {
+    if (!sintesi) return;
+    var stessoPulsante = pulsanteAttivo === pulsante;
+    ferma();
+    if (stessoPulsante) return;
+    pulsanteAttivo = pulsante;
+    if (pulsante) pulsante.setAttribute("aria-busy", "true");
+    var i = 0;
+    (function prossima() {
+      if (pulsanteAttivo !== pulsante) return;
+      if (i >= testi.length) { ferma(); return; }
+      if (ogniFrase) ogniFrase(i);
+      var u = new SpeechSynthesisUtterance(testi[i]);
+      u.lang = "it-IT"; if (voceIt) u.voice = voceIt; u.rate = 0.88;
+      u.onend = function () { i++; prossima(); };
+      u.onerror = function () { ferma(); };
+      sintesi.speak(u);
+    })();
+  }
+  var bottoneTesto = document.getElementById("ascolta-testo");
+  bottoneTesto.addEventListener("click", function () {
+    var spans = Array.prototype.slice.call(document.querySelectorAll("#frasi span"));
+    var testi = [document.getElementById("titolo-storia").textContent].concat(spans.map(function (s) { return s.textContent; }));
+    leggi(testi, bottoneTesto, function (i) {
+      spans.forEach(function (s) { s.classList.remove("letta"); });
+      if (i > 0) spans[i - 1].classList.add("letta");
+    });
+  });
+  function collegaVoce(b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-leggi");
+      var testo = b.getAttribute("data-testo") || (id && document.getElementById(id).textContent) || "";
+      leggi([testo], b);
+    });
+  }
+  document.querySelectorAll(".voce[data-leggi]").forEach(collegaVoce);
+  function pulsanteVoce(testo, etichetta) {
+    var b = el("button", { type: "button", class: "voce", "aria-label": etichetta || "Ascolta", "data-testo": testo, text: "🔊" });
+    collegaVoce(b);
+    if (!sintesi) b.classList.add("nascosto");
+    return b;
+  }
+  if (!sintesi) document.querySelectorAll(".voce").forEach(function (b) { b.classList.add("nascosto"); });
+
+  /* ---------- suono della risposta giusta ---------- */
+  var audio = null;
+  function suonoGiusto() {
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      var t = audio.currentTime;
+      [660, 880].forEach(function (f, k) {
+        var o = audio.createOscillator(), g = audio.createGain();
+        o.type = "sine"; o.frequency.value = f;
+        g.gain.setValueAtTime(0.0001, t + k * 0.12);
+        g.gain.exponentialRampToValueAtTime(0.18, t + k * 0.12 + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + k * 0.12 + 0.35);
+        o.connect(g); g.connect(audio.destination);
+        o.start(t + k * 0.12); o.stop(t + k * 0.12 + 0.4);
+      });
+    } catch (e) {}
+  }
+
+  /* ---------- domande ---------- */
+  var lista = document.getElementById("domande");
+  DOMANDE.forEach(function (d, i) {
+    var esito = el("p", { class: "esito t", "aria-live": "polite" });
+    var indizio = el("div", { class: "indizio nascosto" });
+    var corpo = el("div", { class: "corpo" });
+    var titolo = el("h3", {}, [el("span", { class: "t", text: d.testo }), pulsanteVoce(d.testo, "Ascolta la domanda")]);
+    var li = el("li", { class: "domanda" }, [
+      el("span", { class: "numero", style: "background:" + d.colore, text: String(i + 1), "aria-hidden": "true" }),
+      titolo,
+      el("img", { class: "figura", src: d.img, alt: d.alt, width: "120", height: "80" }),
+      corpo
+    ]);
+    lista.appendChild(li);
+
+    function mostraIndizio() {
+      document.querySelectorAll("#frasi span.aiuto").forEach(function (s) { s.classList.remove("aiuto"); });
+      var f = frase(d.frase);
+      f.classList.add("aiuto");
+      indizio.textContent = "";
+      indizio.appendChild(el("span", { "aria-hidden": "true", text: "📖" }));
+      indizio.appendChild(el("span", { class: "t", text: "Rileggi: «" + f.textContent + "»" }));
+      indizio.appendChild(pulsanteVoce(f.textContent, "Ascolta la frase"));
+      indizio.classList.remove("nascosto");
+    }
+    function giusta(valore) {
+      stato.risposte[i] = { valore: valore };
+      salva();
+      li.classList.add("fatta");
+      esito.className = "esito t si";
+      esito.textContent = "Esatto! 🎉";
+      indizio.classList.add("nascosto");
+      var f = frase(d.frase); if (f) f.classList.remove("aiuto");
+      aggiornaAvanzamento();
+    }
+    function sbagliata(testo) {
+      esito.className = "esito t no";
+      esito.textContent = testo;
+      mostraIndizio();
+    }
+
+    function bottoniScelta(contenitore, quandoGiusta) {
+      var bottoni = d.scelte.map(function (s, k) {
+        var b = el("button", { type: "button", class: "scelta" }, [el("span", { class: "t", text: s })]);
+        b.addEventListener("click", function () {
+          if (k === d.giusta) {
+            bottoni.forEach(function (x) { x.disabled = true; });
+            b.classList.add("si");
+            suonoGiusto();
+            quandoGiusta(s);
+          } else {
+            b.classList.add("no"); b.disabled = true;
+            sbagliata("Non è questa. Riprova!");
+          }
+        });
+        contenitore.appendChild(b);
+        return b;
+      });
+      return bottoni;
+    }
+    var fatta = stato.risposte[i];
+
+    if (d.tipo === "scelta") {
+      var scelte = el("div", { class: "scelte", role: "group", "aria-label": d.testo });
+      var bottoni = bottoniScelta(scelte, giusta);
+      corpo.appendChild(scelte);
+      if (fatta) {
+        bottoni.forEach(function (x) { x.disabled = true; });
+        bottoni[d.giusta].classList.add("si");
+        giusta(d.scelte[d.giusta]);
+      }
+    } else {
+      var campo = el("input", { class: "risposta", type: "text", autocomplete: "off",
+        autocapitalize: stato.scrittura === "maiuscolo" ? "characters" : "sentences",
+        "aria-label": d.testo, placeholder: "Scrivi qui" });
+      var controlla = el("button", { type: "button", class: "pulsante" }, [el("span", { class: "t", text: "Controlla" })]);
+      var scelteAiuto = el("div", { class: "scelte nascosto", role: "group", "aria-label": "Scegli la risposta" });
+      var linkAiuto = el("button", { type: "button", class: "link-aiuto" }, [el("span", { class: "t", text: "Preferisco scegliere" })]);
+      corpo.appendChild(el("div", { class: "scrivi" }, [campo, controlla]));
+      corpo.appendChild(linkAiuto);
+      corpo.appendChild(scelteAiuto);
+
+      function chiudi(valore) {
+        campo.value = valore; campo.readOnly = true; campo.classList.add("si");
+        controlla.classList.add("nascosto"); linkAiuto.classList.add("nascosto");
+        giusta(valore);
+      }
+      function apriScelte() { scelteAiuto.classList.remove("nascosto"); linkAiuto.classList.add("nascosto"); }
+      var bottoniAiuto = bottoniScelta(scelteAiuto, function (s) { chiudi(s); });
+      function verifica() {
+        var v = normalizza(campo.value);
+        if (!v) { campo.focus(); return; }
+        var ok = d.accetta.some(function (a) { return v.indexOf(normalizza(a)) >= 0; });
+        if (ok) { suonoGiusto(); chiudi(campo.value.trim()); bottoniAiuto.forEach(function (x) { x.disabled = true; }); }
+        else { sbagliata("Non ancora. Puoi riprovare o scegliere."); apriScelte(); }
+      }
+      controlla.addEventListener("click", verifica);
+      campo.addEventListener("keydown", function (e) { if (e.key === "Enter") verifica(); });
+      linkAiuto.addEventListener("click", apriScelte);
+      if (fatta) { bottoniAiuto.forEach(function (x) { x.disabled = true; }); chiudi(fatta.valore); }
+    }
+    corpo.appendChild(esito);
+    corpo.appendChild(indizio);
+  });
+
+  /* ---------- disegno ---------- */
+  var tela = document.getElementById("tela");
+  var ctx = tela.getContext("2d");
+  var COLORI = [["nero", "#222222"], ["marrone", "#8B5A2B"], ["verde", "#2E9E44"], ["azzurro", "#3BA7E0"], ["blu", "#1F4FD1"],
+    ["giallo", "#F7C900"], ["arancione", "#F28C1B"], ["rosso", "#E0332B"], ["rosa", "#F38BB5"]];
+  var SPESSORI = [["sottile", 6], ["medio", 14], ["grosso", 30]];
+  var pennello = { colore: "#2E9E44", spessore: 14, gomma: false };
+  var attrezzi = document.getElementById("attrezzi");
+
+  function gruppo(nodi) { nodi.forEach(function (n) { attrezzi.appendChild(n); }); }
+  function premi(lista, scelto) { lista.forEach(function (b) { b.setAttribute("aria-pressed", String(b === scelto)); }); }
+  var bottoniColore = COLORI.map(function (c) {
+    var b = el("button", { type: "button", class: "colore", style: "background:" + c[1], "aria-label": c[0],
+      "aria-pressed": String(c[1] === pennello.colore) });
+    b.addEventListener("click", function () { pennello.colore = c[1]; pennello.gomma = false; premi(bottoniColore.concat([gomma]), b); });
+    return b;
+  });
+  var bottoniSpessore = SPESSORI.map(function (s) {
+    var b = el("button", { type: "button", class: "attrezzo", "aria-pressed": String(s[1] === pennello.spessore) }, [el("span", { class: "t", text: s[0] })]);
+    b.addEventListener("click", function () { pennello.spessore = s[1]; premi(bottoniSpessore, b); });
+    return b;
+  });
+  var gomma = el("button", { type: "button", class: "attrezzo", "aria-pressed": "false" }, [el("span", { class: "t", text: "gomma" })]);
+  gomma.addEventListener("click", function () { pennello.gomma = true; premi(bottoniColore.concat([gomma]), gomma); });
+  var annulla = el("button", { type: "button", class: "attrezzo" }, [el("span", { class: "t", text: "annulla" })]);
+  annulla.addEventListener("click", function () { stato.tratti.pop(); salva(); ridisegna(); aggiornaAvanzamento(); });
+  var pulisci = el("button", { type: "button", class: "attrezzo" }, [el("span", { class: "t", text: "cancella tutto" })]);
+  pulisci.addEventListener("click", function () {
+    if (!stato.tratti.length || !confirm("Vuoi cancellare tutto il disegno?")) return;
+    stato.tratti = []; salva(); ridisegna(); aggiornaAvanzamento();
+  });
+  gruppo(bottoniColore);
+  gruppo([el("span", { class: "sep" })]);
+  gruppo(bottoniSpessore);
+  gruppo([el("span", { class: "sep" }), gomma, annulla, pulisci]);
+
+  function traccia(t) {
+    if (!t.p.length) return;
+    ctx.save();
+    ctx.globalCompositeOperation = t.g ? "destination-out" : "source-over";
+    ctx.strokeStyle = t.c; ctx.fillStyle = t.c; ctx.lineWidth = t.s; ctx.lineCap = "round"; ctx.lineJoin = "round";
+    if (t.p.length === 2) {
+      ctx.beginPath(); ctx.arc(t.p[0], t.p[1], t.s / 2, 0, Math.PI * 2); ctx.fill();
+    } else {
+      ctx.beginPath(); ctx.moveTo(t.p[0], t.p[1]);
+      for (var k = 2; k < t.p.length; k += 2) ctx.lineTo(t.p[k], t.p[k + 1]);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  function ridisegna() { ctx.clearRect(0, 0, tela.width, tela.height); stato.tratti.forEach(traccia); }
+  function punto(e) {
+    var r = tela.getBoundingClientRect();
+    return [Math.round((e.clientX - r.left) * tela.width / r.width), Math.round((e.clientY - r.top) * tela.height / r.height)];
+  }
+  var corrente = null;
+  tela.addEventListener("pointerdown", function (e) {
+    if (corrente) return;
+    e.preventDefault();
+    try { tela.setPointerCapture(e.pointerId); } catch (x) {}
+    corrente = { c: pennello.colore, s: pennello.gomma ? pennello.spessore * 2 : pennello.spessore, g: pennello.gomma, p: punto(e), id: e.pointerId };
+    traccia(corrente);
+  });
+  tela.addEventListener("pointermove", function (e) {
+    if (!corrente || e.pointerId !== corrente.id) return;
+    var q = punto(e), n = corrente.p.length;
+    if (Math.abs(q[0] - corrente.p[n - 2]) + Math.abs(q[1] - corrente.p[n - 1]) < 3) return;
+    ctx.save();
+    ctx.globalCompositeOperation = corrente.g ? "destination-out" : "source-over";
+    ctx.strokeStyle = corrente.c; ctx.lineWidth = corrente.s; ctx.lineCap = "round"; ctx.lineJoin = "round";
+    ctx.beginPath(); ctx.moveTo(corrente.p[n - 2], corrente.p[n - 1]); ctx.lineTo(q[0], q[1]); ctx.stroke();
+    ctx.restore();
+    corrente.p.push(q[0], q[1]);
+  });
+  function fineTratto(e) {
+    if (!corrente || e.pointerId !== corrente.id) return;
+    delete corrente.id;
+    stato.tratti.push(corrente); corrente = null;
+    salva(); aggiornaAvanzamento();
+  }
+  tela.addEventListener("pointerup", fineTratto);
+  tela.addEventListener("pointercancel", fineTratto);
+  ridisegna();
+
+  /* ---------- avanzamento e fine ---------- */
+  function quanteFatte() { return DOMANDE.filter(function (d, i) { return stato.risposte[i]; }).length; }
+  function aggiornaAvanzamento() {
+    var n = quanteFatte(), disegnato = stato.tratti.some(function (t) { return !t.g; });
+    document.getElementById("avanzamento").textContent =
+      "Risposte: " + n + " su " + DOMANDE.length + " · Disegno: " + (disegnato ? "fatto" : "da fare");
+    fine.classList.toggle("nascosto", !(n === DOMANDE.length && disegnato));
+  }
+  aggiornaAvanzamento();
+
+  /* immagine del lavoro da mandare all'insegnante */
+  function testoScheda(s) { return stato.scrittura === "maiuscolo" ? s.toLocaleUpperCase("it") : s; }
+  function caratteri(px, grassetto) {
+    var fam = stato.scrittura === "corsivo" ? '"Corsivo Scuola", cursive' : 'system-ui, "Segoe UI", Arial, sans-serif';
+    return (grassetto ? "700 " : "400 ") + px + "px " + fam;
+  }
+  function aCapo(c, testo, larghezza) {
+    var parole = testo.split(" "), righe = [], riga = "";
+    parole.forEach(function (p) {
+      var prova = riga ? riga + " " + p : p;
+      if (c.measureText(prova).width > larghezza && riga) { righe.push(riga); riga = p; } else riga = prova;
+    });
+    if (riga) righe.push(riga);
+    return righe;
+  }
+  document.getElementById("scarica").addEventListener("click", function () {
+    var pronto = document.fonts && stato.scrittura === "corsivo" ? document.fonts.load(caratteri(34, false)) : Promise.resolve();
+    pronto.then(salvaLavoro, salvaLavoro);
+  });
+  function salvaLavoro() {
+    var W = 1240, M = 70, y = 90, alt = stato.scrittura === "corsivo" ? 1.6 : 1.35;
+    var out = document.createElement("canvas"), c = out.getContext("2d");
+    out.width = W; out.height = 2000;
+    c.fillStyle = "#fff"; c.fillRect(0, 0, W, out.height);
+    c.fillStyle = "#2F7FD1"; c.font = caratteri(54, true); c.fillText(testoScheda("La gita al lago"), M, y); y += 80;
+    DOMANDE.forEach(function (d, i) {
+      c.fillStyle = "#1C2430"; c.font = caratteri(34, true);
+      aCapo(c, (i + 1) + ". " + testoScheda(d.testo), W - 2 * M).forEach(function (r) { c.fillText(r, M, y); y += 34 * alt; });
+      c.fillStyle = "#1E8A4C"; c.font = caratteri(34, false);
+      var r = stato.risposte[i];
+      c.fillText("✓ " + testoScheda(r ? r.valore : ""), M + 30, y); y += 34 * alt + 18;
+    });
+    c.fillStyle = "#1C2430"; c.font = caratteri(34, true);
+    aCapo(c, "6. " + testoScheda("Disegna il posto che hanno trovato vicino al lago."), W - 2 * M).forEach(function (r) { c.fillText(r, M, y); y += 34 * alt; });
+    y += 10;
+    var dw = W - 2 * M, dh = Math.round(dw * tela.height / tela.width);
+    c.strokeStyle = "#9DB8D3"; c.lineWidth = 4; c.strokeRect(M, y, dw, dh);
+    c.drawImage(tela, M, y, dw, dh); y += dh + 50;
+    var finale = document.createElement("canvas");
+    finale.width = W; finale.height = y;
+    var f = finale.getContext("2d"); f.fillStyle = "#fff"; f.fillRect(0, 0, W, y); f.drawImage(out, 0, 0);
+    finale.toBlob(function (blob) {
+      var nome = "gita-al-lago.png", file = null;
+      try { file = new File([blob], nome, { type: "image/png" }); } catch (e) {}
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file], title: "La gita al lago" }).catch(function () {});
+        return;
+      }
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob); a.download = nome;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+    }, "image/png");
+  }
+  document.getElementById("stampa").addEventListener("click", function () { window.print(); });
+  document.getElementById("ricomincia").addEventListener("click", function () {
+    if (!confirm("Vuoi ricominciare da capo? Risposte e disegno saranno cancellati.")) return;
+    var s = stato.scrittura;
+    try { localStorage.removeItem(CHIAVE); } catch (e) {}
+    stato = { risposte: {}, tratti: [], scrittura: s }; salva();
+    location.reload();
+  });
+})();
+</script>
+</body>
+</html>
