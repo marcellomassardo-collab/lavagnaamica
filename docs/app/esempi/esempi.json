@@ -1334,6 +1334,1661 @@
   }
  },
  {
+  "id": "crescita",
+  "titolo": "Si cresce",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti in ordine, dal più piccolo al più grande.",
+  "materia": "Storia",
+  "dati": {
+   "passi": [
+    {
+     "t": "neonato",
+     "p": 2275
+    },
+    {
+     "t": "bambino",
+     "p": 7176
+    },
+    {
+     "t": "ragazzo",
+     "p": 4673
+    },
+    {
+     "t": "adulto",
+     "p": 39006
+    },
+    {
+     "t": "anziano",
+     "p": 23718
+    }
+   ]
+  }
+ },
+ {
+  "id": "settimana",
+  "titolo": "I giorni della settimana",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti in ordine i giorni, da lunedì a domenica.",
+  "materia": "Storia",
+  "dati": {
+   "passi": [
+    {
+     "t": "lunedì"
+    },
+    {
+     "t": "martedì"
+    },
+    {
+     "t": "mercoledì"
+    },
+    {
+     "t": "giovedì"
+    },
+    {
+     "t": "venerdì"
+    },
+    {
+     "t": "sabato"
+    },
+    {
+     "t": "domenica"
+    }
+   ]
+  }
+ },
+ {
+  "id": "misurare-tempo",
+  "titolo": "Il tempo si misura",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Scegli la risposta giusta.",
+  "materia": "Storia",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Quanti giorni ha una settimana?",
+      "p": 3071
+     },
+     "giusta": {
+      "t": "7"
+     },
+     "sbagliate": [
+      {
+       "t": "5"
+      },
+      {
+       "t": "12"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quanti mesi ha un anno?"
+     },
+     "giusta": {
+      "t": "12"
+     },
+     "sbagliate": [
+      {
+       "t": "7"
+      },
+      {
+       "t": "4"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quante sono le stagioni?"
+     },
+     "giusta": {
+      "t": "4"
+     },
+     "sbagliate": [
+      {
+       "t": "2"
+      },
+      {
+       "t": "12"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Che giorno viene dopo lunedì?"
+     },
+     "giusta": {
+      "t": "martedì"
+     },
+     "sbagliate": [
+      {
+       "t": "domenica"
+      },
+      {
+       "t": "venerdì"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Che mese viene dopo marzo?"
+     },
+     "giusta": {
+      "t": "aprile"
+     },
+     "sbagliate": [
+      {
+       "t": "febbraio"
+      },
+      {
+       "t": "giugno"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Con che cosa si leggono le ore?"
+     },
+     "giusta": {
+      "t": "l'orologio",
+      "p": 2549
+     },
+     "sbagliate": [
+      {
+       "t": "il calendario",
+       "p": 3071
+      },
+      {
+       "t": "la bussola",
+       "p": 8045
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Con che cosa si contano i giorni e i mesi?"
+     },
+     "giusta": {
+      "t": "il calendario",
+      "p": 3071
+     },
+     "sbagliate": [
+      {
+       "t": "l'orologio",
+       "p": 2549
+      },
+      {
+       "t": "la bussola",
+       "p": 8045
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "fonti-reperti",
+  "titolo": "Che fonte è? I reperti veri",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Guarda bene: che tipo di fonte è?",
+  "materia": "Storia",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Una tavoletta d'argilla con la scrittura",
+      "f": "tavoletta-cuneiforme.jpg"
+     },
+     "giusta": {
+      "t": "fonte scritta"
+     },
+     "sbagliate": [
+      {
+       "t": "fonte orale"
+      },
+      {
+       "t": "immagine"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Una pittura in una caverna",
+      "f": "pittura-rupestre.jpg"
+     },
+     "giusta": {
+      "t": "immagine"
+     },
+     "sbagliate": [
+      {
+       "t": "fonte scritta"
+      },
+      {
+       "t": "fonte orale"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Una pietra scheggiata dagli uomini primitivi",
+      "f": "amigdala.jpg"
+     },
+     "giusta": {
+      "t": "oggetto"
+     },
+     "sbagliate": [
+      {
+       "t": "fonte orale"
+      },
+      {
+       "t": "immagine"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Un vaso greco",
+      "f": "anfora-greca.jpg"
+     },
+     "giusta": {
+      "t": "oggetto"
+     },
+     "sbagliate": [
+      {
+       "t": "fonte orale"
+      },
+      {
+       "t": "fonte scritta"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Una moneta romana",
+      "f": "moneta-romana.jpg"
+     },
+     "giusta": {
+      "t": "oggetto"
+     },
+     "sbagliate": [
+      {
+       "t": "fonte orale"
+      },
+      {
+       "t": "resto"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Il racconto dei nonni",
+      "p": 23718
+     },
+     "giusta": {
+      "t": "fonte orale"
+     },
+     "sbagliate": [
+      {
+       "t": "oggetto"
+      },
+      {
+       "t": "immagine"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Lo scheletro di un dinosauro",
+      "p": 34254
+     },
+     "giusta": {
+      "t": "resto"
+     },
+     "sbagliate": [
+      {
+       "t": "fonte scritta"
+      },
+      {
+       "t": "fonte orale"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "esperti-passato",
+  "titolo": "Chi studia il passato?",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni esperto a quello che studia.",
+  "materia": "Storia",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "archeologo",
+      "p": 32095
+     },
+     {
+      "t": "studia gli oggetti, le case e le tombe degli uomini antichi"
+     }
+    ],
+    [
+     {
+      "t": "paleontologo",
+      "p": 34254
+     },
+     {
+      "t": "studia i fossili di piante e animali"
+     }
+    ],
+    [
+     {
+      "t": "storico"
+     },
+     {
+      "t": "studia le fonti e racconta i fatti del passato"
+     }
+    ],
+    [
+     {
+      "t": "geologo"
+     },
+     {
+      "t": "studia le rocce e la Terra"
+     }
+    ],
+    [
+     {
+      "t": "antropologo"
+     },
+     {
+      "t": "studia l'origine e l'evoluzione dell'uomo"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "storia-terra",
+  "titolo": "La storia della Terra",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti in ordine, da quello che è successo prima.",
+  "materia": "Storia",
+  "dati": {
+   "passi": [
+    {
+     "t": "nasce la Terra",
+     "p": 30015
+    },
+    {
+     "t": "i primi esseri viventi nel mare",
+     "p": 2920
+    },
+    {
+     "t": "le piante sulla terraferma",
+     "p": 3143
+    },
+    {
+     "t": "i dinosauri",
+     "p": 2738
+    },
+    {
+     "t": "i primi esseri umani",
+     "p": 34991
+    }
+   ]
+  }
+ },
+ {
+  "id": "paleolitico-neolitico",
+  "titolo": "Paleolitico o Neolitico?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Metti ogni cosa nel periodo giusto.",
+  "materia": "Storia",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "Paleolitico",
+     "elementi": [
+      {
+       "t": "caccia con la lancia",
+       "p": 34991
+      },
+      {
+       "t": "vivere nelle caverne",
+       "p": 2729
+      },
+      {
+       "t": "la scoperta del fuoco",
+       "p": 4654
+      },
+      {
+       "t": "pietra scheggiata",
+       "f": "amigdala.jpg"
+      },
+      {
+       "t": "pitture nelle caverne",
+       "f": "pittura-rupestre.jpg"
+      },
+      {
+       "t": "caccia al mammut",
+       "p": 29682
+      }
+     ]
+    },
+    {
+     "nome": "Neolitico",
+     "elementi": [
+      {
+       "t": "agricoltura",
+       "p": 38079
+      },
+      {
+       "t": "allevamento",
+       "p": 38056
+      },
+      {
+       "t": "villaggi di capanne"
+      },
+      {
+       "t": "vasi di terracotta"
+      },
+      {
+       "t": "pietra levigata"
+      },
+      {
+       "t": "tessitura"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "preistoria-storia",
+  "titolo": "Dalla preistoria alla storia",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti in ordine, dal periodo più antico.",
+  "materia": "Storia",
+  "dati": {
+   "passi": [
+    {
+     "t": "Paleolitico: cacciatori e raccoglitori",
+     "p": 34991
+    },
+    {
+     "t": "Neolitico: agricoltori e allevatori",
+     "p": 38079
+    },
+    {
+     "t": "Età dei metalli",
+     "f": "ascia-di-bronzo.jpg"
+    },
+    {
+     "t": "nasce la scrittura: inizia la storia",
+     "f": "tavoletta-cuneiforme.jpg"
+    }
+   ]
+  }
+ },
+ {
+  "id": "civilta-fiumi",
+  "titolo": "Le civiltà dei fiumi",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni popolo al suo fiume.",
+  "materia": "Storia",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "Egizi"
+     },
+     {
+      "t": "Nilo"
+     }
+    ],
+    [
+     {
+      "t": "Sumeri"
+     },
+     {
+      "t": "Tigri ed Eufrate"
+     }
+    ],
+    [
+     {
+      "t": "Indi"
+     },
+     {
+      "t": "Indo"
+     }
+    ],
+    [
+     {
+      "t": "Cinesi"
+     },
+     {
+      "t": "Fiume Giallo"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "reperti-civilta",
+  "titolo": "I reperti delle civiltà antiche",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni reperto al popolo che l'ha fatto.",
+  "materia": "Storia",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "tavoletta d'argilla",
+      "f": "tavoletta-cuneiforme.jpg"
+     },
+     {
+      "t": "Mesopotamia: la scrittura cuneiforme"
+     }
+    ],
+    [
+     {
+      "t": "stele di pietra dipinta",
+      "f": "stele-egizia.jpg"
+     },
+     {
+      "t": "Egizi: i geroglifici"
+     }
+    ],
+    [
+     {
+      "t": "piramidi",
+      "f": "piramidi.jpg"
+     },
+     {
+      "t": "Egizi: le tombe dei faraoni"
+     }
+    ],
+    [
+     {
+      "t": "stele con le leggi",
+      "f": "codice-hammurabi.jpg"
+     },
+     {
+      "t": "Babilonesi: le leggi di Hammurabi"
+     }
+    ],
+    [
+     {
+      "t": "iscrizione su pietra",
+      "f": "alfabeto-fenicio.jpg"
+     },
+     {
+      "t": "Fenici: l'alfabeto"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "greci-romani",
+  "titolo": "Greci o Romani?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Metti ogni cosa con il suo popolo.",
+  "materia": "Storia",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "Greci",
+     "elementi": [
+      {
+       "t": "un vaso dipinto",
+       "f": "anfora-greca.jpg"
+      },
+      {
+       "t": "un elmo di bronzo",
+       "f": "elmo-corinzio.jpg"
+      },
+      {
+       "t": "il Partenone",
+       "f": "partenone.jpg"
+      },
+      {
+       "t": "le Olimpiadi"
+      },
+      {
+       "t": "Atene e Sparta"
+      },
+      {
+       "t": "le polis"
+      }
+     ]
+    },
+    {
+     "nome": "Romani",
+     "elementi": [
+      {
+       "t": "il Colosseo",
+       "f": "colosseo.jpg"
+      },
+      {
+       "t": "una moneta d'argento",
+       "f": "moneta-romana.jpg"
+      },
+      {
+       "t": "un pavimento a mosaico",
+       "f": "mosaico-romano.jpg"
+      },
+      {
+       "t": "l'imperatore Augusto",
+       "f": "augusto.jpg"
+      },
+      {
+       "t": "le legioni"
+      },
+      {
+       "t": "le strade consolari"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "tappe-roma",
+  "titolo": "Le tappe di Roma",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti in ordine, dalla più antica. Attenzione: prima di Cristo gli anni si contano all'indietro!",
+  "materia": "Storia",
+  "dati": {
+   "passi": [
+    {
+     "t": "753 a.C.: nasce Roma, governano i re"
+    },
+    {
+     "t": "509 a.C.: inizia la Repubblica"
+    },
+    {
+     "t": "44 a.C.: muore Giulio Cesare"
+    },
+    {
+     "t": "27 a.C.: Augusto, primo imperatore",
+     "f": "augusto.jpg"
+    },
+    {
+     "t": "80 d.C.: si apre il Colosseo",
+     "f": "colosseo.jpg"
+    },
+    {
+     "t": "476 d.C.: cade l'Impero romano d'Occidente"
+    }
+   ]
+  }
+ },
+ {
+  "id": "dove-si-trova",
+  "titolo": "Dov'è il pallino rosso?",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Guarda dove si trova il pallino rosso.",
+  "materia": "Geografia",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Dov'è il pallino rosso?",
+      "p": 5388
+     },
+     "giusta": {
+      "t": "sopra"
+     },
+     "sbagliate": [
+      {
+       "t": "sotto"
+      },
+      {
+       "t": "dentro"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Dov'è il pallino rosso?",
+      "p": 5355
+     },
+     "giusta": {
+      "t": "sotto"
+     },
+     "sbagliate": [
+      {
+       "t": "sopra"
+      },
+      {
+       "t": "fuori"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Dov'è il pallino rosso?",
+      "p": 5439
+     },
+     "giusta": {
+      "t": "dentro"
+     },
+     "sbagliate": [
+      {
+       "t": "fuori"
+      },
+      {
+       "t": "sotto"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Dov'è il pallino rosso?",
+      "p": 5475
+     },
+     "giusta": {
+      "t": "fuori"
+     },
+     "sbagliate": [
+      {
+       "t": "dentro"
+      },
+      {
+       "t": "sopra"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Dov'è il pallino rosso?",
+      "p": 5443
+     },
+     "giusta": {
+      "t": "dietro"
+     },
+     "sbagliate": [
+      {
+       "t": "davanti"
+      },
+      {
+       "t": "dentro"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "naturale-antropico",
+  "titolo": "Naturale o costruito dall'uomo?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Metti ogni elemento nel suo gruppo.",
+  "materia": "Geografia",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "Elementi naturali",
+     "elementi": [
+      {
+       "t": "montagna",
+       "p": 2909
+      },
+      {
+       "t": "fiume",
+       "p": 2811
+      },
+      {
+       "t": "lago",
+       "p": 6022
+      },
+      {
+       "t": "bosco",
+       "p": 2666
+      },
+      {
+       "t": "mare",
+       "p": 2925
+      },
+      {
+       "t": "collina",
+       "p": 34147
+      }
+     ]
+    },
+    {
+     "nome": "Elementi antropici: fatti dall'uomo",
+     "elementi": [
+      {
+       "t": "casa",
+       "p": 2317
+      },
+      {
+       "t": "strada",
+       "p": 5946
+      },
+      {
+       "t": "ponte",
+       "p": 6194
+      },
+      {
+       "t": "ferrovia",
+       "p": 7299
+      },
+      {
+       "t": "porto",
+       "p": 15535
+      },
+      {
+       "t": "campo coltivato",
+       "p": 25916
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "paesaggi",
+  "titolo": "I paesaggi",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni paesaggio alla sua descrizione.",
+  "materia": "Geografia",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "montagna",
+      "p": 2909
+     },
+     {
+      "t": "rilievo alto più di 600 metri"
+     }
+    ],
+    [
+     {
+      "t": "collina",
+      "p": 34147
+     },
+     {
+      "t": "rilievo più basso, sotto i 600 metri"
+     }
+    ],
+    [
+     {
+      "t": "pianura",
+      "p": 20395
+     },
+     {
+      "t": "terreno piatto e basso"
+     }
+    ],
+    [
+     {
+      "t": "lago",
+      "p": 6022
+     },
+     {
+      "t": "acqua dolce ferma, circondata dalla terra"
+     }
+    ],
+    [
+     {
+      "t": "fiume",
+      "p": 2811
+     },
+     {
+      "t": "acqua dolce che scorre fino al mare"
+     }
+    ],
+    [
+     {
+      "t": "mare",
+      "p": 2925
+     },
+     {
+      "t": "grande distesa di acqua salata"
+     }
+    ],
+    [
+     {
+      "t": "isola",
+      "p": 2966
+     },
+     {
+      "t": "terra circondata dall'acqua"
+     }
+    ],
+    [
+     {
+      "t": "vulcano",
+      "p": 6247
+     },
+     {
+      "t": "montagna da cui può uscire la lava"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "punti-cardinali",
+  "titolo": "I punti cardinali",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni punto cardinale al suo altro nome.",
+  "materia": "Geografia",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "nord"
+     },
+     {
+      "t": "settentrione"
+     }
+    ],
+    [
+     {
+      "t": "sud"
+     },
+     {
+      "t": "meridione o mezzogiorno"
+     }
+    ],
+    [
+     {
+      "t": "est"
+     },
+     {
+      "t": "oriente o levante"
+     }
+    ],
+    [
+     {
+      "t": "ovest"
+     },
+     {
+      "t": "occidente o ponente"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "orientarsi",
+  "titolo": "Come ci si orienta",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Scegli la risposta giusta.",
+  "materia": "Geografia",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Da che parte sorge il sole?",
+      "p": 7252
+     },
+     "giusta": {
+      "t": "est"
+     },
+     "sbagliate": [
+      {
+       "t": "ovest"
+      },
+      {
+       "t": "nord"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Da che parte tramonta il sole?",
+      "p": 7252
+     },
+     "giusta": {
+      "t": "ovest"
+     },
+     "sbagliate": [
+      {
+       "t": "est"
+      },
+      {
+       "t": "sud"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "A mezzogiorno il sole è verso…",
+      "p": 7252
+     },
+     "giusta": {
+      "t": "sud"
+     },
+     "sbagliate": [
+      {
+       "t": "nord"
+      },
+      {
+       "t": "ovest"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Di notte la stella polare indica il…",
+      "p": 2752
+     },
+     "giusta": {
+      "t": "nord"
+     },
+     "sbagliate": [
+      {
+       "t": "sud"
+      },
+      {
+       "t": "est"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Lo strumento con l'ago che indica il nord è…"
+     },
+     "giusta": {
+      "t": "la bussola",
+      "p": 8045
+     },
+     "sbagliate": [
+      {
+       "t": "l'orologio",
+       "p": 2549
+      },
+      {
+       "t": "il calendario",
+       "p": 3071
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "carte-geografiche",
+  "titolo": "Le carte geografiche",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni parola al suo significato.",
+  "materia": "Geografia",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "carta fisica"
+     },
+     {
+      "t": "mostra montagne, pianure, fiumi e laghi"
+     }
+    ],
+    [
+     {
+      "t": "carta politica"
+     },
+     {
+      "t": "mostra i confini, le regioni e le città"
+     }
+    ],
+    [
+     {
+      "t": "carta tematica"
+     },
+     {
+      "t": "mostra un solo argomento, come il clima"
+     }
+    ],
+    [
+     {
+      "t": "legenda"
+     },
+     {
+      "t": "spiega i simboli e i colori della carta"
+     }
+    ],
+    [
+     {
+      "t": "scala"
+     },
+     {
+      "t": "dice quanto è stata rimpicciolita la realtà"
+     }
+    ],
+    [
+     {
+      "t": "pianta"
+     },
+     {
+      "t": "disegno dall'alto di un posto piccolo, come una casa"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "italia-fisica",
+  "titolo": "L'Italia fisica",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Scegli la risposta giusta.",
+  "materia": "Geografia",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Qual è il fiume più lungo d'Italia?",
+      "p": 2811
+     },
+     "giusta": {
+      "t": "il Po"
+     },
+     "sbagliate": [
+      {
+       "t": "il Tevere"
+      },
+      {
+       "t": "l'Arno"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Qual è il lago più grande d'Italia?",
+      "p": 6022
+     },
+     "giusta": {
+      "t": "il lago di Garda"
+     },
+     "sbagliate": [
+      {
+       "t": "il lago di Como"
+      },
+      {
+       "t": "il lago Trasimeno"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Qual è la montagna più alta d'Italia?",
+      "p": 2909
+     },
+     "giusta": {
+      "t": "il Monte Bianco"
+     },
+     "sbagliate": [
+      {
+       "t": "l'Etna"
+      },
+      {
+       "t": "il Gran Sasso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quali montagne chiudono l'Italia a nord?"
+     },
+     "giusta": {
+      "t": "le Alpi"
+     },
+     "sbagliate": [
+      {
+       "t": "gli Appennini"
+      },
+      {
+       "t": "i Pirenei"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quali montagne attraversano la penisola da nord a sud?"
+     },
+     "giusta": {
+      "t": "gli Appennini"
+     },
+     "sbagliate": [
+      {
+       "t": "le Alpi"
+      },
+      {
+       "t": "i Pirenei"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Qual è la pianura più grande d'Italia?",
+      "p": 20395
+     },
+     "giusta": {
+      "t": "la Pianura Padana"
+     },
+     "sbagliate": [
+      {
+       "t": "il Tavoliere delle Puglie"
+      },
+      {
+       "t": "la Maremma"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quali sono le due isole più grandi d'Italia?",
+      "p": 2966
+     },
+     "giusta": {
+      "t": "Sicilia e Sardegna"
+     },
+     "sbagliate": [
+      {
+       "t": "Elba e Capri"
+      },
+      {
+       "t": "Ischia e Procida"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Qual è il vulcano attivo più alto d'Europa?",
+      "p": 6247
+     },
+     "giusta": {
+      "t": "l'Etna"
+     },
+     "sbagliate": [
+      {
+       "t": "il Vesuvio"
+      },
+      {
+       "t": "lo Stromboli"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quale mare bagna la costa est dell'Italia?",
+      "p": 2925
+     },
+     "giusta": {
+      "t": "il mar Adriatico"
+     },
+     "sbagliate": [
+      {
+       "t": "il mar Tirreno"
+      },
+      {
+       "t": "il mar Ligure"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "regioni-capoluoghi",
+  "titolo": "Regioni e capoluoghi",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni regione al suo capoluogo.",
+  "materia": "Geografia",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "Valle d'Aosta"
+     },
+     {
+      "t": "Aosta"
+     }
+    ],
+    [
+     {
+      "t": "Piemonte"
+     },
+     {
+      "t": "Torino"
+     }
+    ],
+    [
+     {
+      "t": "Liguria"
+     },
+     {
+      "t": "Genova"
+     }
+    ],
+    [
+     {
+      "t": "Lombardia"
+     },
+     {
+      "t": "Milano"
+     }
+    ],
+    [
+     {
+      "t": "Trentino-Alto Adige"
+     },
+     {
+      "t": "Trento"
+     }
+    ],
+    [
+     {
+      "t": "Veneto"
+     },
+     {
+      "t": "Venezia"
+     }
+    ],
+    [
+     {
+      "t": "Friuli-Venezia Giulia"
+     },
+     {
+      "t": "Trieste"
+     }
+    ],
+    [
+     {
+      "t": "Emilia-Romagna"
+     },
+     {
+      "t": "Bologna"
+     }
+    ],
+    [
+     {
+      "t": "Toscana"
+     },
+     {
+      "t": "Firenze"
+     }
+    ],
+    [
+     {
+      "t": "Umbria"
+     },
+     {
+      "t": "Perugia"
+     }
+    ],
+    [
+     {
+      "t": "Marche"
+     },
+     {
+      "t": "Ancona"
+     }
+    ],
+    [
+     {
+      "t": "Lazio"
+     },
+     {
+      "t": "Roma"
+     }
+    ],
+    [
+     {
+      "t": "Abruzzo"
+     },
+     {
+      "t": "L'Aquila"
+     }
+    ],
+    [
+     {
+      "t": "Molise"
+     },
+     {
+      "t": "Campobasso"
+     }
+    ],
+    [
+     {
+      "t": "Campania"
+     },
+     {
+      "t": "Napoli"
+     }
+    ],
+    [
+     {
+      "t": "Puglia"
+     },
+     {
+      "t": "Bari"
+     }
+    ],
+    [
+     {
+      "t": "Basilicata"
+     },
+     {
+      "t": "Potenza"
+     }
+    ],
+    [
+     {
+      "t": "Calabria"
+     },
+     {
+      "t": "Catanzaro"
+     }
+    ],
+    [
+     {
+      "t": "Sicilia"
+     },
+     {
+      "t": "Palermo"
+     }
+    ],
+    [
+     {
+      "t": "Sardegna"
+     },
+     {
+      "t": "Cagliari"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "stato-italiano",
+  "titolo": "Lo Stato italiano",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Scegli la risposta giusta.",
+  "materia": "Geografia",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Qual è la capitale d'Italia?"
+     },
+     "giusta": {
+      "t": "Roma"
+     },
+     "sbagliate": [
+      {
+       "t": "Milano"
+      },
+      {
+       "t": "Napoli"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Come si chiama la legge più importante dello Stato?"
+     },
+     "giusta": {
+      "t": "la Costituzione"
+     },
+     "sbagliate": [
+      {
+       "t": "il regolamento"
+      },
+      {
+       "t": "il codice della strada"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "In che anno è entrata in vigore la Costituzione?"
+     },
+     "giusta": {
+      "t": "1948"
+     },
+     "sbagliate": [
+      {
+       "t": "1861"
+      },
+      {
+       "t": "2000"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Chi è il capo dello Stato?"
+     },
+     "giusta": {
+      "t": "il Presidente della Repubblica"
+     },
+     "sbagliate": [
+      {
+       "t": "il sindaco"
+      },
+      {
+       "t": "il re"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Chi fa le leggi?"
+     },
+     "giusta": {
+      "t": "il Parlamento"
+     },
+     "sbagliate": [
+      {
+       "t": "il Comune"
+      },
+      {
+       "t": "la scuola"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Di che colori è la bandiera italiana?"
+     },
+     "giusta": {
+      "t": "verde, bianco e rosso"
+     },
+     "sbagliate": [
+      {
+       "t": "rosso, bianco e blu"
+      },
+      {
+       "t": "giallo e rosso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quante sono le regioni italiane?"
+     },
+     "giusta": {
+      "t": "20"
+     },
+     "sbagliate": [
+      {
+       "t": "12"
+      },
+      {
+       "t": "50"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quante regioni sono a statuto speciale?"
+     },
+     "giusta": {
+      "t": "5"
+     },
+     "sbagliate": [
+      {
+       "t": "2"
+      },
+      {
+       "t": "20"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
   "id": "conta-oggetti",
   "materia": "Matematica",
   "titolo": "Quanti sono?",

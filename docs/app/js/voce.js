@@ -45,6 +45,8 @@ export function perLaVoce(t) {
     .replace(/>/g, " maggiore di ")
     .replace(/…/g, ", ")
     .replace(/\s\/\s/g, ", ")
+    .replace(/\ba\.\s?c\./gi, "avanti Cristo")
+    .replace(/\bd\.\s?c\./gi, "dopo Cristo")
     .replace(/\b1°/g, "primo")
     .replace(/\b2°/g, "secondo")
     .replace(/\s+/g, " ")

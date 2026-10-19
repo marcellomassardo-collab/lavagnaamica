@@ -413,6 +413,7 @@ function info() {
     el("h2", { text: "Riconoscimenti" }),
     el("p", { text: "Pittogrammi: autore Sergio Palao. Origine: ARASAAC (arasaac.org). Licenza: CC BY-NC-SA 4.0. Proprietà: Governo d'Aragona (Spagna)." }),
     el("p", { text: "Carattere corsivo: Playwrite IT Moderna, SIL Open Font License 1.1." }),
+    el("p", { text: "Foto di reperti e monumenti: di pubblico dominio, salvate dentro l'app." }),
     el("h2", { text: "Licenze" }),
     el("p", {}, "Il codice è libero, sotto licenza ",
       el("a", { href: "https://github.com/marcellomassardo-collab/lavagnaamica", text: "GNU AGPL-3.0" }),

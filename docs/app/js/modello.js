@@ -47,7 +47,9 @@ function elemento(v) {
   const e = { t: testo(v && v.t, 200) };
   const p = Number(v && v.p);
   if (Number.isInteger(p) && p > 0 && p < 1e7) e.p = p;
-  return e.t || e.p ? e : null;
+  // una foto della cartella foto/ dell'app (reperti, monumenti): solo il nome del file, mai un indirizzo esterno
+  if (v && typeof v.f === "string" && /^[a-z0-9-]{1,60}\.(jpg|png|webp)$/.test(v.f)) e.f = v.f;
+  return e.t || e.p || e.f ? e : null;
 }
 
 function elementi(lista) {

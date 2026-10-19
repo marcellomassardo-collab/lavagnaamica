@@ -40,9 +40,13 @@ export function immaginePicto(id, alt) {
 }
 
 // Una carta: immagine e/o testo. data-voce contiene ciò che va letto ad alta voce.
+export function fotoCarta(file, alt) {
+  return el("img", { class: "foto", src: "foto/" + file, alt: alt || "", draggable: "false", decoding: "async" });
+}
+
 export function carta(e, classe, attr) {
   return el("div", Object.assign({ class: "carta " + (classe || ""), "data-voce": e.t || null }, attr),
-    e.p ? immaginePicto(e.p, e.t) : null,
+    e.f ? fotoCarta(e.f, e.t) : e.p ? immaginePicto(e.p, e.t) : null,
     e.t ? el("span", { class: "carta-testo", text: e.t }) : null);
 }
 
