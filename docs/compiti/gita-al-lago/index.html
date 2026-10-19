@@ -128,6 +128,8 @@
   .fine { margin-top: 18px; text-align: center; background: var(--giusto-sf); border: 3px solid #9ED4B4; border-radius: 22px; padding: 22px 18px; }
   .fine h2 { margin: 0 0 6px; color: var(--giusto); font-size: 1.6em; }
   .fine p { margin: 0 0 14px; }
+  .fine .punteggio { font-size: 1.2em; }
+  .fine .punteggio b { font-size: 1.4em; }
   .fine .azioni { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
   .avanzamento { text-align: center; color: var(--tenue); margin: 18px 0 0; font-size: 0.9em; }
   .piede { text-align: center; color: var(--tenue); font-size: 0.7em; margin-top: 30px; }
@@ -183,6 +185,7 @@
 
   <section class="fine nascosto" id="fine" aria-live="polite">
     <h2>Hai finito! Ottimo lavoro.</h2>
+    <p class="punteggio"><b id="punteggio"></b> giuste al primo tentativo</p>
     <p>Puoi salvare il lavoro e mandarlo all'insegnante.</p>
     <div class="azioni">
       <button type="button" class="pulsante" id="scarica">Salva il lavoro</button>
@@ -217,9 +220,13 @@
   function carica() {
     try {
       var s = JSON.parse(localStorage.getItem(CHIAVE));
-      if (s && typeof s === "object" && s.risposte) return s;
+      if (s && typeof s === "object" && s.risposte) {
+        // lavoro iniziato prima che si contassero gli errori: il punteggio non si può sapere
+        if (!s.sbagliate) { s.sbagliate = {}; s.senzaPunteggio = Object.keys(s.risposte).length > 0; }
+        return s;
+      }
     } catch (e) {}
-    return { risposte: {} };
+    return { risposte: {}, sbagliate: {} };
   }
   function salva() {
     try { localStorage.setItem(CHIAVE, JSON.stringify(stato)); } catch (e) {}
@@ -245,7 +252,9 @@
   var voceIt = null, pulsanteAttivo = null;
   function scegliVoce() {
     var v = sintesi.getVoices().filter(function (x) { return /^it(-|_|$)/i.test(x.lang); });
-    voceIt = v.filter(function (x) { return x.localService; })[0] || v[0] || null;
+    // le voci «in rete» e quelle neurali suonano molto più naturali di quelle vecchie del sistema
+    function qualita(x) { return (/natural|neural|premium|enhanced/i.test(x.name) ? 4 : 0) + (x.localService ? 0 : 3) + (/^it[-_]IT$/i.test(x.lang) ? 1 : 0); }
+    voceIt = v.sort(function (a, b) { return qualita(b) - qualita(a); })[0] || null;
   }
   if (sintesi) {
     scegliVoce();
@@ -300,22 +309,33 @@
   }
   if (!sintesi) document.querySelectorAll(".voce").forEach(function (b) { b.classList.add("nascosto"); });
 
-  /* ---------- suono della risposta giusta ---------- */
+  /* ---------- suoni: «ding» se è giusta, «bup» morbido per riprovare, fanfara alla fine ---------- */
   var audio = null;
-  function suonoGiusto() {
+  function nota(f, inizio, durata, forma, volume, fineF) {
+    var t = audio.currentTime + inizio, o = audio.createOscillator(), g = audio.createGain();
+    o.type = forma; o.frequency.setValueAtTime(f, t);
+    if (fineF) o.frequency.exponentialRampToValueAtTime(fineF, t + durata);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(volume, t + 0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + durata);
+    o.connect(g); g.connect(audio.destination);
+    o.start(t); o.stop(t + durata + 0.05);
+  }
+  function suona(fn) {
     try {
       audio = audio || new (window.AudioContext || window.webkitAudioContext)();
-      var t = audio.currentTime;
-      [660, 880].forEach(function (f, k) {
-        var o = audio.createOscillator(), g = audio.createGain();
-        o.type = "sine"; o.frequency.value = f;
-        g.gain.setValueAtTime(0.0001, t + k * 0.12);
-        g.gain.exponentialRampToValueAtTime(0.18, t + k * 0.12 + 0.02);
-        g.gain.exponentialRampToValueAtTime(0.0001, t + k * 0.12 + 0.35);
-        o.connect(g); g.connect(audio.destination);
-        o.start(t + k * 0.12); o.stop(t + k * 0.12 + 0.4);
-      });
+      if (audio.state === "suspended") audio.resume();
+      fn();
     } catch (e) {}
+  }
+  function suonoGiusto() { suona(function () { nota(1046.5, 0, 0.18, "triangle", 0.28); nota(1568, 0.09, 0.32, "triangle", 0.24); }); }
+  function suonoRiprova() { suona(function () { nota(330, 0, 0.22, "sine", 0.16, 247); }); }
+  function suonoFesta() {
+    suona(function () {
+      [523.25, 659.25, 783.99, 1046.5].forEach(function (f, k) { nota(f, k * 0.13, 0.22, "triangle", 0.26); });
+      [523.25, 659.25, 783.99, 1046.5].forEach(function (f) { nota(f, 0.58, 1.3, "triangle", 0.16); });
+      nota(261.63, 0.58, 1.3, "sine", 0.18);
+    });
   }
 
   /* ---------- domande ---------- */
@@ -353,6 +373,9 @@
       aggiornaAvanzamento();
     }
     function sbagliata(testo) {
+      stato.sbagliate[i] = true;
+      salva();
+      suonoRiprova();
       esito.className = "esito no";
       esito.textContent = testo;
       mostraIndizio();
@@ -423,12 +446,19 @@
   });
 
   /* ---------- avanzamento e fine ---------- */
+  function primoColpo() { return DOMANDE.filter(function (d, i) { return !stato.sbagliate[i]; }).length; }
+  var avviato = false;
   function aggiornaAvanzamento() {
     var n = DOMANDE.filter(function (d, i) { return stato.risposte[i]; }).length;
+    var eraNascosta = fine.classList.contains("nascosto");
     document.getElementById("avanzamento").textContent = "Risposte: " + n + " su " + DOMANDE.length;
+    document.getElementById("punteggio").textContent = primoColpo() + " su " + DOMANDE.length;
+    document.getElementById("punteggio").parentNode.hidden = !!stato.senzaPunteggio;
     fine.classList.toggle("nascosto", n < DOMANDE.length);
+    if (avviato && eraNascosta && n === DOMANDE.length) suonoFesta();
   }
   aggiornaAvanzamento();
+  avviato = true;
 
   /* immagine del lavoro da mandare all'insegnante */
   function aCapo(c, testo, larghezza) {
@@ -452,6 +482,8 @@
       c.fillStyle = "#1E8A4C"; c.font = "400 38px " + FONT;
       c.fillText("✓ " + maiuscolo(stato.risposte[i].valore), M + 34, y); y += 76;
     });
+    c.fillStyle = "#1C2430"; c.font = "700 40px " + FONT;
+    if (!stato.senzaPunteggio) { c.fillText(maiuscolo("Giuste al primo tentativo: " + primoColpo() + " su " + DOMANDE.length), M, y); y += 60; }
     var tagliato = document.createElement("canvas");
     tagliato.width = W; tagliato.height = y + 10;
     tagliato.getContext("2d").drawImage(foglio, 0, 0);

@@ -8,8 +8,12 @@ const BASE = {
   aiuto: true,      // dopo un errore mostra dove va la carta
   contrasto: false,
   elementi: 6,      // carte per partita
-  risposte: 3       // risposte tra cui scegliere
+  risposte: 3,      // risposte tra cui scegliere
+  voceScelta: "",   // nome della voce del dispositivo; vuoto = la più naturale disponibile
+  velocita: 0.85    // un po' più lenta del normale
 };
+
+export const VELOCITA = [[0.7, "Lenta"], [0.85, "Calma"], [1, "Normale"]];
 
 export const LIMITI = { elementi: [3, 10], risposte: [2, 4] };
 

@@ -2,8 +2,8 @@
 
 import { GIOCHI, TIPI, MOTIVI, MATERIE, giochiPer, consegnaDi, valida } from "./modello.js";
 import { caricaEsempi, elencoMiei, trovaMio, salvaMio, eliminaMio, inLink, daLink, scaricaFile, apriFile } from "./dati.js";
-import { impostazioni, applica, cambia, LIMITI } from "./impostazioni.js";
-import { parla, zitto, voceDisponibile } from "./voce.js";
+import { impostazioni, applica, cambia, LIMITI, VELOCITA } from "./impostazioni.js";
+import { parla, zitto, voceDisponibile, vociDelDispositivo, quandoCambianoLeVoci } from "./voce.js";
 import { suonoFesta } from "./suoni.js";
 import { el, creaContesto, pulsanteVoce, avviso, finestra } from "./ui.js";
 import { vista, pagina, intestazione, quandoSiEsce } from "./pagine.js";
@@ -165,14 +165,24 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
   }
 
   // Il punteggio conta le risposte giuste al primo tentativo; nel memory, coppie e tentativi.
+  // Le stelle (da 1 a 3) dicono com'è andata a colpo d'occhio, anche a chi non legge.
   function finito(r) {
     suonoFesta();
-    if (impostazioni.voce) parla("Ce l'hai fatta!");
+    if (impostazioni.voce) setTimeout(() => parla("Ce l'hai fatta!"), 900);
+    const quota = r.coppie ? r.coppie / Math.max(r.tentativi, 1) : r.giuste / Math.max(r.totale, 1);
+    const stelle = quota >= (r.coppie ? 0.75 : 0.9) ? 3 : quota >= (r.coppie ? 0.5 : 0.6) ? 2 : 1;
     const punteggio = r.coppie
       ? el("p", { class: "festa-punteggio" }, el("b", { text: r.coppie + " coppie" }), " trovate in " + r.tentativi + " tentativi")
       : el("p", { class: "festa-punteggio" }, el("b", { text: r.giuste + " su " + r.totale }), " giuste al primo tentativo");
-    area.append(el("div", { class: "festa" }, el("div", { class: "festa-box", role: "status" },
+    area.append(el("div", { class: "festa" },
+      el("div", { class: "coriandoli", "aria-hidden": "true" }, Array.from({ length: 36 }, (x, k) => el("i", {
+        style: "left:" + Math.round(Math.random() * 100) + "%;animation-delay:" + (Math.random() * 0.8).toFixed(2) + "s;" +
+          "animation-duration:" + (1.8 + Math.random() * 1.6).toFixed(2) + "s;background:" + ["#F7C900", "#2E9E44", "#3BA7E0", "#E0332B", "#F28C1B", "#F38BB5"][k % 6]
+      }))),
+      el("div", { class: "festa-box", role: "status" },
       el("p", { class: "festa-titolo", text: "Ce l'hai fatta! 🎉" }),
+      el("p", { class: "festa-stelle", "aria-label": stelle + (stelle === 1 ? " stella" : " stelle") + " su 3" },
+        [1, 2, 3].map(k => el("span", { class: k <= stelle ? "accesa" : "", style: "animation-delay:" + (0.5 + k * 0.25) + "s", text: "★" }))),
       punteggio,
       el("div", { class: "azioni" },
         el("button", { type: "button", class: "pulsante", text: "↻ Gioca ancora", on: { click: inizia } }),
@@ -343,6 +353,29 @@ function numero(chiave, nome, aiuto) {
     el("div", { class: "numero-tasti" }, passo(-1), valore, passo(1)));
 }
 
+// La voce: si sceglie tra quelle del dispositivo (le più naturali in cima) e si prova subito.
+function sceltaVoce() {
+  const voce = el("select", { "aria-label": "Voce" });
+  const velocita = el("select", { "aria-label": "Velocità" },
+    VELOCITA.map(([v, nome]) => el("option", { value: v, selected: v === impostazioni.velocita, text: nome })));
+  function riempi() {
+    voce.replaceChildren(el("option", { value: "", text: "Automatica: la più naturale" }),
+      ...vociDelDispositivo().map(v => el("option", { value: v.name, selected: v.name === impostazioni.voceScelta,
+        text: v.name.replace(/\s*-\s*Italian.*$/i, "") + (v.localService ? "" : " (in rete)") })));
+  }
+  riempi();
+  quandoCambianoLeVoci(riempi);
+  [300, 1000, 2500].forEach(ms => setTimeout(() => { if (voce.options.length === 1) riempi(); }, ms));
+  voce.addEventListener("change", () => cambia("voceScelta", voce.value));
+  velocita.addEventListener("change", () => cambia("velocita", Number(velocita.value)));
+  return el("div", { class: "numero voce-scelta" },
+    el("span", {}, el("b", { text: "La voce" }),
+      el("small", { text: "Le voci «in rete» o «Natural» di solito sono le più naturali. Cambiano da un browser all'altro: provale." })),
+    el("div", { class: "voce-comandi" }, voce, velocita,
+      el("button", { type: "button", class: "tasto-piccolo", text: "▶ Prova", on: { click: () =>
+        parla("Ciao! Sono la voce di Lavagna Amica. Nel cesto ci sono 15 mele: la mamma ne prende 6. Quante mele restano?") } })));
+}
+
 function vistaImpostazioni() {
   vista(pagina("Impostazioni",
     el("p", { text: "Valgono per questo dispositivo." }),
@@ -350,7 +383,8 @@ function vistaImpostazioni() {
       interruttore("voce", "Lettura ad alta voce", voceDisponibile
         ? "Legge le carte quando le tocchi e le domande quando compaiono."
         : "Questo dispositivo non ha una voce per leggere.", voceDisponibile),
-      interruttore("suoni", "Suoni", "Un suono gentile quando la risposta è giusta."),
+      voceDisponibile ? sceltaVoce() : null,
+      interruttore("suoni", "Suoni", "Un suono a ogni risposta e una festa alla fine."),
       interruttore("aiuto", "Aiuto dopo un errore", "Mostra per un momento dove va la carta."),
       interruttore("contrasto", "Alto contrasto", "Colori più forti e bordi più spessi."),
       numero("elementi", "Carte per partita", "Quante carte o domande in ogni partita."),
@@ -364,6 +398,7 @@ function info() {
     el("p", { text: "Per giocare non serve un account e non raccogliamo nulla. Gli esercizi che crei e le impostazioni restano su questo dispositivo. Un esercizio esce dal dispositivo solo se lo condividi tu, con un link o un file, o se lo pubblichi nel catalogo." }),
     catalogoAttivo ? el("p", { text: "Il catalogo comune sta su un server di Cloudflare. Gli insegnanti accedono con Google: salviamo la loro email, che non viene mai mostrata, e il nome che scelgono di mostrare. Una segnalazione anonima salva solo il motivo, un numero a caso di questo dispositivo e un'impronta della rete che cambia ogni giorno, per frenare gli abusi." }) : null,
     el("p", { text: "Le immagini arrivano dall'archivio pubblico di pittogrammi ARASAAC, che vede quindi le richieste delle immagini." }),
+    el("p", { text: "La lettura ad alta voce usa le voci del dispositivo. Le voci «in rete» mandano il testo da leggere al servizio di chi le fornisce." }),
     el("p", {}, el("a", { href: "../privacy.html", text: "Informativa privacy completa" })),
     el("h2", { text: "Riconoscimenti" }),
     el("p", { text: "Pittogrammi: autore Sergio Palao. Origine: ARASAAC (arasaac.org). Licenza: CC BY-NC-SA 4.0. Proprietà: Governo d'Aragona (Spagna)." }),
