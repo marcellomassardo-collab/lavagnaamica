@@ -67,6 +67,167 @@
   "materia": "Scienze"
  },
  {
+  "id": "versi-nomi",
+  "titolo": "Come si chiama il verso?",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta il nome del verso vicino al suo animale.",
+  "materia": "Italiano",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "mucca: muuu",
+      "p": 2609
+     },
+     {
+      "t": "muggito / muggire"
+     }
+    ],
+    [
+     {
+      "t": "cane: bau bau",
+      "p": 7202
+     },
+     {
+      "t": "abbaio / abbaiare"
+     }
+    ],
+    [
+     {
+      "t": "gatto: miao",
+      "p": 7114
+     },
+     {
+      "t": "miagolio / miagolare"
+     }
+    ],
+    [
+     {
+      "t": "pecora: beee",
+      "p": 2489
+     },
+     {
+      "t": "belato / belare"
+     }
+    ],
+    [
+     {
+      "t": "cavallo: hiii",
+      "p": 2294
+     },
+     {
+      "t": "nitrito / nitrire"
+     }
+    ],
+    [
+     {
+      "t": "asino: ih oh",
+      "p": 2291
+     },
+     {
+      "t": "raglio / ragliare"
+     }
+    ],
+    [
+     {
+      "t": "maiale: oink oink",
+      "p": 2327
+     },
+     {
+      "t": "grugnito / grugnire"
+     }
+    ],
+    [
+     {
+      "t": "leone: roar",
+      "p": 25187
+     },
+     {
+      "t": "ruggito / ruggire"
+     }
+    ],
+    [
+     {
+      "t": "lupo: auuu",
+      "p": 5892
+     },
+     {
+      "t": "ululato / ululare"
+     }
+    ],
+    [
+     {
+      "t": "uccellino: cip cip",
+      "p": 2490
+     },
+     {
+      "t": "cinguettio / cinguettare"
+     }
+    ],
+    [
+     {
+      "t": "rana: cra cra",
+      "p": 2543
+     },
+     {
+      "t": "gracidio / gracidare"
+     }
+    ],
+    [
+     {
+      "t": "ape: bzzz",
+      "p": 24823
+     },
+     {
+      "t": "ronzio / ronzare"
+     }
+    ],
+    [
+     {
+      "t": "topo: squit squit",
+      "p": 2546
+     },
+     {
+      "t": "squittio / squittire"
+     }
+    ],
+    [
+     {
+      "t": "gallo: chicchirichì",
+      "p": 2404
+     },
+     {
+      "t": "canto / cantare"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "versi-verbi",
+  "titolo": "Che cosa fa? Come si chiama il verso?",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Completa la frase: che cosa fa l'animale e come si chiama il suo verso.",
+  "materia": "Italiano",
+  "dati": {
+   "frasi": [
+    "La mucca fa «muuu»: [muggisce]. Il suo verso si chiama [muggito].",
+    "Il cane fa «bau bau»: [abbaia]. Il suo verso si chiama [abbaio].",
+    "Il gatto fa «miao»: [miagola]. Il suo verso si chiama [miagolio].",
+    "La pecora fa «beee»: [bela]. Il suo verso si chiama [belato].",
+    "Il cavallo fa «hiii»: [nitrisce]. Il suo verso si chiama [nitrito].",
+    "Il leone fa «roar»: [ruggisce]. Il suo verso si chiama [ruggito].",
+    "Il lupo fa «auuu»: [ulula]. Il suo verso si chiama [ululato].",
+    "L'uccellino fa «cip cip»: [cinguetta]. Il suo verso si chiama [cinguettio]."
+   ],
+   "extra": []
+  }
+ },
+ {
   "id": "frutta-memory",
   "titolo": "Memory della frutta",
   "scrittura": "minuscolo",

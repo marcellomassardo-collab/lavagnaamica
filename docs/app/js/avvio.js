@@ -186,8 +186,8 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
       punteggio,
       el("div", { class: "azioni" },
         el("button", { type: "button", class: "pulsante", text: "↻ Gioca ancora", on: { click: inizia } }),
-        giochi.filter(g => g !== gioco).map(g => el("a", { class: "pulsante secondario", href: base + "/" + g, text: GIOCHI[g].icona + " " + GIOCHI[g].nome })),
-        el("a", { class: "pulsante secondario", href: uscita, text: "Esci" })))));
+        el("a", { class: "pulsante secondario", href: "#/", text: "🏠 Home" }),
+        giochi.filter(g => g !== gioco).map(g => el("a", { class: "pulsante secondario", href: base + "/" + g, text: GIOCHI[g].icona + " " + GIOCHI[g].nome }))))));
   }
 
   const cambiaGioco = giochi.length > 1

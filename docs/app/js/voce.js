@@ -44,6 +44,7 @@ export function perLaVoce(t) {
     .replace(/</g, " minore di ")
     .replace(/>/g, " maggiore di ")
     .replace(/…/g, ", ")
+    .replace(/\s\/\s/g, ", ")
     .replace(/\b1°/g, "primo")
     .replace(/\b2°/g, "secondo")
     .replace(/\s+/g, " ")

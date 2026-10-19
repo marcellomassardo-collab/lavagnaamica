@@ -2,7 +2,7 @@
 // I file dell'app si chiedono prima alla rete (così si vede sempre l'ultima versione)
 // e solo se la rete non risponde in tempo si prendono dalla copia salvata.
 
-const VERSIONE = "app-6";
+const VERSIONE = "app-7";
 const PITTOGRAMMI = "pittogrammi";
 const MAX_PITTOGRAMMI = 400;
 const ATTESA_RETE = 3500;
