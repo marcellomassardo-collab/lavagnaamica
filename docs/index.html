@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lavagna Amica</title>
+<meta name="description" content="Esercizi interattivi gratuiti per la scuola, pensati per il sostegno e per la LIM. Senza pubblicità, senza account per gli alunni, open source.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='8' width='60' height='48' rx='8' fill='%23B7793F'/%3E%3Crect x='8' y='14' width='48' height='36' rx='4' fill='%231E6B52'/%3E%3Ccircle cx='24' cy='28' r='3' fill='%23fff'/%3E%3Ccircle cx='40' cy='28' r='3' fill='%23fff'/%3E%3Cpath d='M22 37q10 9 20 0' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #FBF7EE;
+    --surface: #FFFFFF;
+    --text: #1D2329;
+    --muted: #4A5560;
+    --border: #E3DCCB;
+    --accent: #1E6B52;
+    --accent-ink: #FFFFFF;
+    --wood: #B7793F;
+    --chalk: #FFFFFF;
+    --highlight: #FFD23F;
+    --highlight-ink: #1D2329;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121614;
+      --surface: #1B211E;
+      --text: #EEF1EC;
+      --muted: #B4BDB6;
+      --border: #2C3631;
+      --accent: #5FCB9F;
+      --accent-ink: #0D1A14;
+      --wood: #C98C52;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121614;
+    --surface: #1B211E;
+    --text: #EEF1EC;
+    --muted: #B4BDB6;
+    --border: #2C3631;
+    --accent: #5FCB9F;
+    --accent-ink: #0D1A14;
+    --wood: #C98C52;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(18px, 1rem + 0.45vw, 23px);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+  a { color: var(--accent); text-underline-offset: 0.18em; }
+  a:focus-visible { outline: 3px solid var(--highlight); outline-offset: 3px; border-radius: 4px; }
+
+  header { padding: clamp(40px, 7vw, 88px) 0 clamp(32px, 5vw, 56px); }
+  .hero { display: flex; align-items: center; gap: clamp(20px, 4vw, 44px); flex-wrap: wrap; }
+  .logo { width: clamp(112px, 18vw, 168px); height: auto; flex: none; }
+  .logo .frame { fill: var(--wood); }
+  .logo .board { fill: #1E6B52; }
+  .logo .chalk { fill: var(--chalk); }
+  .logo .chalk-line { stroke: var(--chalk); }
+  h1 {
+    font-size: clamp(2.4rem, 1.6rem + 3.6vw, 4.2rem);
+    line-height: 1.05;
+    margin: 0 0 0.3em;
+    letter-spacing: -0.01em;
+  }
+  .tagline { font-size: 1.2em; color: var(--muted); margin: 0 0 0.9em; max-width: 30ch; }
+  .badge {
+    display: inline-block;
+    background: var(--highlight);
+    color: var(--highlight-ink);
+    font-weight: 700;
+    padding: 0.3em 0.8em;
+    border-radius: 999px;
+    font-size: 0.85em;
+  }
+
+  section { padding: clamp(28px, 4vw, 48px) 0; border-top: 1px solid var(--border); }
+  h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); margin: 0 0 0.8em; }
+  .why { font-size: 1.1em; max-width: 46ch; margin: 0; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 22px;
+  }
+  .card h3 { margin: 0 0 0.35em; font-size: 1.1em; color: var(--accent); }
+  .card p { margin: 0; color: var(--muted); }
+
+  ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: passo; display: grid; gap: 14px; }
+  ol.steps li { counter-increment: passo; display: grid; grid-template-columns: 2.2em 1fr; gap: 0.7em; align-items: start; }
+  ol.steps li::before {
+    content: counter(passo);
+    width: 2.2em; height: 2.2em;
+    display: grid; place-items: center;
+    background: var(--accent); color: var(--accent-ink);
+    border-radius: 50%;
+    font-weight: 700;
+  }
+  ol.steps li span { padding-top: 0.25em; }
+
+  ul.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  ul.ticks li { display: grid; grid-template-columns: 1.6em 1fr; gap: 0.6em; }
+  ul.ticks li::before { content: "✓"; color: var(--accent); font-weight: 800; font-size: 1.15em; line-height: 1.35; }
+
+  footer { border-top: 1px solid var(--border); padding: 32px 0 48px; color: var(--muted); font-size: 0.9em; }
+  footer p { margin: 0 0 0.6em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="hero">
+      <svg class="logo" viewBox="0 0 64 64" role="img" aria-label="Una lavagna che sorride">
+        <rect class="frame" x="2" y="8" width="60" height="48" rx="8"/>
+        <rect class="board" x="8" y="14" width="48" height="36" rx="4"/>
+        <circle class="chalk" cx="24" cy="28" r="3"/>
+        <circle class="chalk" cx="40" cy="28" r="3"/>
+        <path class="chalk-line" d="M22 37q10 9 20 0" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h1>Lavagna Amica</h1>
+        <p class="tagline">Esercizi interattivi gratuiti, pensati per il sostegno e per la LIM.</p>
+        <span class="badge">In costruzione</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section aria-labelledby="perche">
+      <h2 id="perche">Perché esiste</h2>
+      <p class="why">Molti strumenti per creare esercizi interattivi fanno pagare le funzioni migliori. Per un uso didattico dovrebbero essere di tutti.</p>
+    </section>
+
+    <section aria-labelledby="promesse">
+      <h2 id="promesse">Le promesse</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Gratis per sempre</h3>
+          <p>Nessuna funzione a pagamento, nessun abbonamento.</p>
+        </div>
+        <div class="card">
+          <h3>Niente pubblicità</h3>
+          <p>E niente tracciamento: nessuno ti segue mentre giochi.</p>
+        </div>
+        <div class="card">
+          <h3>Nessun dato degli alunni</h3>
+          <p>Per giocare non serve un account: a scuola, a casa, con i genitori.</p>
+        </div>
+        <div class="card">
+          <h3>Di tutti</h3>
+          <p>Il codice è aperto e gli esercizi pubblicati restano liberi.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="come">
+      <h2 id="come">Come funzionerà</h2>
+      <ol class="steps">
+        <li><span>Gli insegnanti si registrano con la loro email, creano gli esercizi e li pubblicano.</span></li>
+        <li><span>Un esercizio nuovo si gioca subito con il suo link ed entra nel catalogo comune dopo il controllo di altri insegnanti.</span></li>
+        <li><span>Chiunque può aprire il catalogo e giocare, senza registrarsi.</span></li>
+        <li><span>Gli insegnanti danno le stelle e segnalano i contenuti non validi: la moderazione è della comunità.</span></li>
+        <li><span>Funziona nel browser, anche senza connessione, e si installa come app su tablet, telefono e PC della LIM.</span></li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="sostegno">
+      <h2 id="sostegno">Pensata per il sostegno</h2>
+      <ul class="ticks">
+        <li><span>Pittogrammi per la comunicazione aumentativa e lettura ad alta voce di ogni testo.</span></li>
+        <li><span>Le tre scritture con un tasto: stampato maiuscolo, stampato minuscolo, corsivo.</span></li>
+        <li><span>Niente tempo e niente «hai perso». Numero di risposte regolabile. Modalità senza errore.</span></li>
+        <li><span>Alla LIM: bersagli grandi, comandi in basso, e «tocca e tocca» oltre al trascinamento.</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Progetto open source: <a href="https://github.com/marcellomassardo-collab/lavagnaamica">codice su GitHub</a>.</p>
+    <p>Codice sotto licenza <a href="https://github.com/marcellomassardo-collab/lavagnaamica/blob/main/LICENSE">GNU AGPL-3.0</a> · esercizi pubblicati sotto <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.it">CC BY-SA 4.0</a>.</p>
+    <p>Questa pagina non usa cookie e non carica nulla da altri siti.</p>
+  </footer>
+</div>
+</body>
+</html>
