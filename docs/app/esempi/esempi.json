@@ -1750,7 +1750,11 @@
      "p": 34991
     }
    ]
-  }
+  },
+  "epoca": [
+   -3000000,
+   -3500
+  ]
  },
  {
   "id": "paleolitico-neolitico",
@@ -1817,7 +1821,11 @@
      ]
     }
    ]
-  }
+  },
+  "epoca": [
+   -3000000,
+   -3500
+  ]
  },
  {
   "id": "preistoria-storia",
@@ -1846,7 +1854,11 @@
      "f": "tavoletta-cuneiforme.jpg"
     }
    ]
-  }
+  },
+  "epoca": [
+   -3000000,
+   -3000
+  ]
  },
  {
   "id": "civilta-fiumi",
@@ -1891,7 +1903,11 @@
      }
     ]
    ]
-  }
+  },
+  "epoca": [
+   -3500,
+   -1000
+  ]
  },
  {
   "id": "reperti-civilta",
@@ -1949,7 +1965,11 @@
      }
     ]
    ]
-  }
+  },
+  "epoca": [
+   -3500,
+   -1000
+  ]
  },
  {
   "id": "greci-romani",
@@ -2015,7 +2035,11 @@
      ]
     }
    ]
-  }
+  },
+  "epoca": [
+   -800,
+   476
+  ]
  },
  {
   "id": "tappe-roma",
@@ -2048,7 +2072,11 @@
      "t": "476 d.C.: cade l'Impero romano d'Occidente"
     }
    ]
-  }
+  },
+  "epoca": [
+   -753,
+   476
+  ]
  },
  {
   "id": "dove-si-trova",

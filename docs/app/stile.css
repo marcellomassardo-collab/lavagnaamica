@@ -234,8 +234,8 @@ input[type="text"], input[type="search"], select {
 .gioco-testa h1 { margin: 0; font-size: clamp(1.3rem, 1rem + 1.4vw, 2.1rem); color: var(--lavagna); }
 .consegna { display: inline-flex; gap: 10px; align-items: center; margin: 6px 0 0; color: var(--tenue); font-weight: 600; }
 .area-gioco { user-select: none; -webkit-user-select: none; flex: 1; position: relative; display: flex; flex-direction: column; gap: clamp(14px, 2vw, 26px); padding: 12px 16px 20px; max-width: 1400px; width: 100%; margin: 0 auto; }
+.piede-gioco { position: sticky; bottom: 0; z-index: 10; background: var(--sfondo); }
 .barra-gioco {
-  position: sticky; bottom: 0; z-index: 10;
   display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
   padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); background: var(--sfondo); border-top: 2px solid var(--bordo);
 }
@@ -432,7 +432,7 @@ input[type="text"], input[type="search"], select {
   .abbina-righe { --picto: 40px; gap: 8px; }
   .riga { padding: 4px; gap: 6px; }
   .area-gioco { padding: 8px 10px 12px; gap: 12px; }
-  .vasca { position: sticky; bottom: 66px; z-index: 5; max-height: 40vh; overflow: auto; background: var(--lavagna-chiaro); padding: 10px; gap: 8px; }
+  .vasca { position: sticky; bottom: var(--piede, 66px); z-index: 5; max-height: 40vh; overflow: auto; background: var(--lavagna-chiaro); padding: 10px; gap: 8px; }
   .barra-gioco .etichetta { display: none; }
   .cesti { grid-template-columns: repeat(min(var(--gruppi), 2), minmax(0, 1fr)); }
   .fila { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
@@ -446,3 +446,44 @@ input[type="text"], input[type="search"], select {
 .voce-scelta { flex-wrap: wrap; }
 .voce-comandi { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .voce-comandi select { min-height: 44px; }
+
+/* ---------- linea del tempo (storia) ---------- */
+.linea-tempo {
+  border-top: 2px solid var(--bordo); padding: .5em 16px 0; overflow-x: auto;
+  font: 700 clamp(11px, .78vw, 16px) / 1.1 system-ui, sans-serif; text-transform: none; letter-spacing: 0;
+}
+.lt-dentro { position: relative; min-width: 1100px; max-width: 1900px; margin: 0 auto; }
+.lt-tappe { position: relative; height: 7.4em; }
+.lt-tappa {
+  position: absolute; bottom: .35em; display: grid; grid-template-columns: 2.5em auto; column-gap: .4em; align-items: center;
+  max-width: 9.6em; padding-left: .35em;
+}
+.lt-tappa.alta { bottom: 4em; }
+.lt-tappa.senza-figura { grid-template-columns: auto; }
+.lt-tappa > img { grid-row: span 2; width: 2.5em; height: 2.5em; border-radius: .6em; background: #fff; border: 1px solid var(--bordo); object-fit: cover; }
+.lt-tappa > img[src*="arasaac"] { object-fit: contain; }
+.lt-tappa::after { content: ""; position: absolute; left: 0; top: 100%; width: 2px; height: .35em; background: var(--tenue); }
+.lt-tappa.alta::after { height: 4em; }
+.lt-tappa.a-destra { transform: translateX(-100%); padding: 0 .35em 0 0; }
+.lt-tappa.a-destra::after { left: auto; right: 0; }
+.lt-nome { font-weight: 800; color: var(--testo); }
+.lt-anno { color: var(--tenue); }
+.lt-riga { position: relative; height: 2em; }
+.lt-preistoria, .lt-ac, .lt-dc {
+  position: absolute; top: 0; bottom: 0; display: flex; align-items: center; overflow: hidden; white-space: nowrap;
+  font-weight: 800; color: #fff; padding: 0 .8em;
+}
+.lt-preistoria { left: 0; border-radius: 1em 0 0 1em; text-transform: uppercase; letter-spacing: .06em;
+  background: repeating-linear-gradient(90deg, #7D6B55 0 1em, #95826A 1em 2em); }
+.lt-ac { background: #B7793F; justify-content: center; }
+.lt-dc { background: #1E6B52; border-radius: 0 1em 1em 0; }
+.lt-cristo { position: absolute; top: -.55em; bottom: -.55em; width: 5px; margin-left: -2px; background: var(--testo); border-radius: 3px; }
+.lt-fascia { position: absolute; top: -.4em; bottom: -.4em; border: 3px solid var(--evidenzia); border-radius: .8em; box-shadow: 0 0 0 4px rgba(255, 210, 63, .35); pointer-events: none; }
+.lt-sotto { position: relative; height: 2em; color: var(--tenue); }
+.lt-sotto > span { position: absolute; top: .35em; white-space: nowrap; }
+.lt-tacca, .lt-cristo-nome { transform: translateX(-50%); }
+.lt-cristo-nome { color: var(--testo); font-weight: 800; }
+.lt-qui { background: var(--evidenzia); color: #1D2329; border-radius: .5em; padding: 0 .5em; font-weight: 800; top: .2em !important; }
+@media (max-width: 760px) {
+  .con-linea { --piede: 230px; }
+}

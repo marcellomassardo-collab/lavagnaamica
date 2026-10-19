@@ -7,6 +7,7 @@ import { parla, zitto, voceDisponibile, vociDelDispositivo, quandoCambianoLeVoci
 import { suonoFesta } from "./suoni.js";
 import { el, creaContesto, pulsanteVoce, avviso, finestra } from "./ui.js";
 import { vista, pagina, intestazione, quandoSiEsce } from "./pagine.js";
+import { lineaDelTempo } from "./linea.js";
 import { catalogo, catalogoAttivo, insegnante } from "./catalogo.js";
 import { vistaInsegnanti, vistaModerazione, schedaCatalogo, pubblica, copiaLink } from "./insegnanti.js";
 import { editor, bozzaDa } from "./editor.js";
@@ -200,17 +201,20 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
     } } })
     : null;
 
-  vista(el("div", { class: "gioco s-" + es.scrittura },
+  const storia = es.materia === "Storia";
+  vista(el("div", { class: "gioco s-" + es.scrittura + (storia ? " con-linea" : "") },
     el("header", { class: "gioco-testa" },
       el("h1", { text: es.titolo }),
       el("p", { class: "consegna" }, el("span", { text: consegna }), pulsanteVoce(consegna, "Ascolta la consegna"))),
     sopra || null,
     area,
-    el("nav", { class: "barra-gioco", "aria-label": "Comandi del gioco" },
-      el("a", { class: "tasto", href: uscita, "aria-label": "Esci" }, "⟵", el("span", { class: "etichetta", text: "Esci" })),
-      el("button", { type: "button", class: "tasto", "aria-label": "Ricomincia", on: { click: inizia } }, "↻", el("span", { class: "etichetta", text: "Ricomincia" })),
-      cambiaGioco,
-      schermo)));
+    el("div", { class: "piede-gioco" },
+      storia ? lineaDelTempo(es.epoca) : null,
+      el("nav", { class: "barra-gioco", "aria-label": "Comandi del gioco" },
+        el("a", { class: "tasto", href: uscita, "aria-label": "Esci" }, "⟵", el("span", { class: "etichetta", text: "Esci" })),
+        el("button", { type: "button", class: "tasto", "aria-label": "Ricomincia", on: { click: inizia } }, "↻", el("span", { class: "etichetta", text: "Ricomincia" })),
+        cambiaGioco,
+        schermo))));
   quandoSiEsce(() => {
     if (ferma) ferma();
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});

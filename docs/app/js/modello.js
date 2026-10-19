@@ -71,6 +71,9 @@ export function valida(v) {
     dati: {}
   };
   if (MATERIE.includes(v.materia)) es.materia = v.materia;
+  // il periodo dell'esercizio sulla linea del tempo: [da, a] in anni, negativi = avanti Cristo
+  if (Array.isArray(v.epoca) && v.epoca.length === 2 && v.epoca.every(Number.isFinite) &&
+    v.epoca[0] < v.epoca[1] && v.epoca[0] >= -1e7 && v.epoca[1] <= 3000) es.epoca = v.epoca.map(Math.round);
   if (typeof v.id === "string" && /^[\w-]{1,40}$/.test(v.id)) es.id = v.id;
   const d = v.dati || {};
 
