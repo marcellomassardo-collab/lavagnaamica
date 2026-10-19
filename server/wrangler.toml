@@ -11,5 +11,5 @@ binding = "DB"
 database_name = "lavagnaamica"
 database_id = "00000000-0000-0000-0000-000000000000"
 
-# ADMIN_EMAIL (chi modera) e SALE (per le impronte di rete) sono segreti:
+# ADMIN_EMAIL (chi modera: una o più email separate da virgola) e SALE (per le impronte di rete) sono segreti:
 # si impostano con «npx wrangler secret put» e non stanno in questo file.

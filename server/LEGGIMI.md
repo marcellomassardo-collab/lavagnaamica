@@ -15,6 +15,7 @@ Gira su Cloudflare Workers con un database D1, nel piano gratuito.
   - «Non adatto» e «Materiale protetto» nascondono dopo 1 segnalazione di un insegnante o 3 anonime;
   - «Risposta sbagliata» e «Non funziona» arrivano solo all'autore.
 - Gli esercizi nascosti aspettano chi modera: li rimette o li rimuove, e può bloccare un autore.
+- Chi modera si sceglie con il segreto `ADMIN_EMAIL`: una o più email separate da virgola. Per aggiungere qualcuno basta cambiare il segreto.
 
 ## Messa in linea
 

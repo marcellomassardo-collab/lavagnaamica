@@ -110,8 +110,13 @@ function gettoneDa(richiesta) {
   return m ? m[1] : null;
 }
 
+// Chi modera: una o più email, separate da virgola, nel segreto ADMIN_EMAIL.
+function moderatori(env) {
+  return (env.ADMIN_EMAIL || "").toLowerCase().split(",").map(s => s.trim()).filter(Boolean);
+}
+
 function profilo(i, env) {
-  return { id: i.id, email: i.email, nome: i.nome, admin: !!env.ADMIN_EMAIL && i.email === env.ADMIN_EMAIL.toLowerCase() };
+  return { id: i.id, email: i.email, nome: i.nome, admin: moderatori(env).includes(i.email) };
 }
 
 async function insegnanteDa(richiesta, env) {
