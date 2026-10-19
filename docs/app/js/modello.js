@@ -25,6 +25,8 @@ export const SCRITTURE = {
   corsivo: "corsivo"
 };
 
+export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Inglese", "Arte e immagine", "Musica", "Altro"];
+
 export function giochiPer(tipo) {
   return Object.keys(GIOCHI).filter(g => GIOCHI[g].tipi.includes(tipo));
 }
@@ -64,6 +66,7 @@ export function valida(v) {
     gioco: giochiPer(tipo).includes(v.gioco) ? v.gioco : giochiPer(tipo)[0],
     dati: {}
   };
+  if (MATERIE.includes(v.materia)) es.materia = v.materia;
   if (typeof v.id === "string" && /^[\w-]{1,40}$/.test(v.id)) es.id = v.id;
   const d = v.dati || {};
 

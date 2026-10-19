@@ -13,7 +13,7 @@ export function el(tag, attr, ...figli) {
     else if (k === "on") Object.entries(v).forEach(([evento, fn]) => n.addEventListener(evento, fn));
     else n.setAttribute(k, v === true ? "" : v);
   });
-  figli.flat().forEach(f => {
+  figli.flat(Infinity).forEach(f => {
     if (f === null || f === undefined || f === false) return;
     n.append(typeof f === "string" ? document.createTextNode(f) : f);
   });

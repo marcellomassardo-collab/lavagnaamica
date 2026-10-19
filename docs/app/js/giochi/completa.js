@@ -33,6 +33,9 @@ export function avvia(area, es, ctx) {
   area.append(punti, scena);
   let n = 0;
   let restano = 0;
+  let giuste = 0;
+  const sbagliati = new WeakSet();
+  const totale = frasi.reduce((s, f) => s + f.filter(x => x.buco).length, 0);
   let riga = null;
   let attesa = null;
 
@@ -62,12 +65,14 @@ export function avvia(area, es, ctx) {
       if (norma(k.dataset.voce) !== norma(buco.dataset.parola)) {
         const giusto = Array.from(riga.querySelectorAll(".buco[data-bersaglio]"))
           .find(b => norma(b.dataset.parola) === norma(k.dataset.voce));
+        sbagliati.add(buco);
         ctx.riprova(k, giusto);
         return;
       }
       buco.textContent = buco.dataset.parola;
       buco.removeAttribute("data-bersaglio");
       buco.classList.add("pieno");
+      if (!sbagliati.has(buco)) giuste++;
       k.remove();
       if (--restano > 0) {
         ctx.giusto(buco);
@@ -77,7 +82,7 @@ export function avvia(area, es, ctx) {
       punti.children[n].classList.add("fatto");
       attesa = setTimeout(() => {
         n++;
-        if (n < frasi.length) mostra(); else ctx.fine();
+        if (n < frasi.length) mostra(); else ctx.fine({ giuste, totale });
       }, 1300);
     }
   });

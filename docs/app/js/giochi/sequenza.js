@@ -6,6 +6,8 @@ import { creaTavolo } from "../trascina.js";
 export function avvia(area, es, ctx) {
   const passi = es.dati.passi;
   let restano = passi.length;
+  let giuste = 0;
+  const sbagliate = new Set();
   let ordine = mescola(passi.map((p, i) => i));
   if (ordine.every((x, k) => x === k)) ordine.reverse();
 
@@ -20,6 +22,7 @@ export function avvia(area, es, ctx) {
     scegli: k => ctx.leggi(k.dataset.voce),
     lascia(k, casella) {
       if (k.dataset.i !== casella.dataset.i) {
+        sbagliate.add(k.dataset.i);
         ctx.riprova(k, fila.querySelector('.casella[data-i="' + k.dataset.i + '"]'));
         return;
       }
@@ -27,7 +30,8 @@ export function avvia(area, es, ctx) {
       casella.removeAttribute("data-bersaglio");
       k.removeAttribute("data-mobile");
       ctx.giusto(k);
-      if (--restano === 0) ctx.fine();
+      if (!sbagliate.has(k.dataset.i)) giuste++;
+      if (--restano === 0) ctx.fine({ giuste, totale: passi.length });
     }
   });
 }

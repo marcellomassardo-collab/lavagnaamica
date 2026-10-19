@@ -25,10 +25,13 @@ export function avvia(area, es, ctx) {
   const scena = el("div", { class: "scelta-scena" });
   area.append(punti, scena);
   let n = 0;
+  let giuste = 0;
+  let sbagliato = false;
   let attesa = null;
 
   function mostra() {
     const q = domande[n];
+    sbagliato = false;
     punti.children[n].classList.add("ora");
     const opzioni = mescola([q.giusta].concat(mescola(q.sbagliate).slice(0, ctx.opz.risposte - 1)));
     const bottoni = opzioni.map(o => el("button", { type: "button", class: "opzione" }, carta(o)));
@@ -38,15 +41,17 @@ export function avvia(area, es, ctx) {
       if (b !== giusto) {
         b.disabled = true;
         b.classList.add("sbagliata");
+        sbagliato = true;
         ctx.riprova(b, giusto);
         return;
       }
       bottoni.forEach(x => { x.disabled = true; });
       ctx.giusto(b);
+      if (!sbagliato) giuste++;
       punti.children[n].classList.add("fatto");
       attesa = setTimeout(() => {
         n++;
-        if (n < domande.length) mostra(); else ctx.fine();
+        if (n < domande.length) mostra(); else ctx.fine({ giuste, totale: domande.length });
       }, 1100);
     }));
     scena.replaceChildren(

@@ -12,6 +12,7 @@ export function avvia(area, es, ctx) {
   let prima = null;
   let attesa = null;
   let trovate = 0;
+  let tentativi = 0;
 
   function copri(b) {
     b.classList.remove("girata");
@@ -33,11 +34,12 @@ export function avvia(area, es, ctx) {
       }
       const a = prima;
       prima = null;
+      tentativi++;
       if (a.dataset.i === b.dataset.i) {
         a.disabled = b.disabled = true;
         ctx.giusto(a);
         b.classList.add("giusta");
-        if (++trovate === coppie.length) attesa = setTimeout(ctx.fine, 700);
+        if (++trovate === coppie.length) attesa = setTimeout(() => ctx.fine({ coppie: coppie.length, tentativi }), 700);
       } else {
         attesa = setTimeout(() => {
           copri(a);

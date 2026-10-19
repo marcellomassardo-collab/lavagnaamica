@@ -1,7 +1,7 @@
 // Editor degli esercizi: tutto si prepara riempiendo dei campi, senza codice.
 
 import { el, immaginePicto } from "./ui.js";
-import { TIPI, GIOCHI, SCRITTURE, giochiPer, valida } from "./modello.js";
+import { TIPI, GIOCHI, SCRITTURE, MATERIE, giochiPer, valida } from "./modello.js";
 import { scegliPittogramma } from "./picto.js";
 
 const vuoto = () => ({ t: "" });
@@ -214,9 +214,14 @@ export function editor(bozza, { salva, annulla }) {
   mostraGiochi();
   ridisegna();
 
+  const materia = el("select", { on: { change: e => { bozza.materia = e.target.value || undefined; } } },
+    el("option", { value: "", text: "Scegli la materia…" }),
+    MATERIE.map(m => el("option", { value: m, selected: m === bozza.materia, text: m })));
+
   return el("div", { class: "editor" },
     el("h1", { text: bozza.id ? "Modifica l'esercizio" : "Nuovo esercizio" }),
     etichetta("Titolo", testoLibero(bozza.titolo, v => { bozza.titolo = v; }, { placeholder: "Per esempio: Gli animali e i loro versi", maxlength: "120" })),
+    etichetta("Materia", materia),
     el("div", { class: "campo" }, el("span", { class: "campo-nome", text: "Scrittura" }), scritture),
     el("div", { class: "campo" }, el("span", { class: "campo-nome", text: "Che cosa vuoi preparare?" }), tipi, spiegaTipo),
     contenuto,

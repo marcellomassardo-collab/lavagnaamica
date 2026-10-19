@@ -12,6 +12,8 @@ export function avvia(area, es, ctx) {
     liste.forEach(l => { if (l[k] && scelti.length < quante) scelti.push(l[k]); });
   }
   let restano = scelti.length;
+  let giuste = 0;
+  const sbagliate = new WeakSet();
 
   const cesti = el("div", { class: "cesti", style: "--gruppi:" + gruppi.length },
     gruppi.map((g, gi) => el("div", { class: "cesto", "data-bersaglio": true, "data-g": gi },
@@ -30,13 +32,15 @@ export function avvia(area, es, ctx) {
     scegli: k => ctx.leggi(k.dataset.voce),
     lascia(k, cesto) {
       if (k.dataset.g !== cesto.dataset.g) {
+        sbagliate.add(k);
         ctx.riprova(k, cesti.querySelector('.cesto[data-g="' + k.dataset.g + '"]'));
         return;
       }
       cesto.querySelector(".cesto-dentro").append(k);
       k.removeAttribute("data-mobile");
       ctx.giusto(k);
-      if (--restano === 0) ctx.fine();
+      if (!sbagliate.has(k)) giuste++;
+      if (--restano === 0) ctx.fine({ giuste, totale: scelti.length });
     }
   });
 }

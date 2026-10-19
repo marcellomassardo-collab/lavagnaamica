@@ -1,6 +1,6 @@
 // Le pagine dell'app e il passaggio dall'una all'altra (tutto dopo il # dell'indirizzo).
 
-import { GIOCHI, TIPI, MOTIVI, giochiPer, consegnaDi, valida } from "./modello.js";
+import { GIOCHI, TIPI, MOTIVI, MATERIE, giochiPer, consegnaDi, valida } from "./modello.js";
 import { caricaEsempi, elencoMiei, trovaMio, salvaMio, eliminaMio, inLink, daLink, scaricaFile, apriFile } from "./dati.js";
 import { impostazioni, applica, cambia, LIMITI } from "./impostazioni.js";
 import { parla, zitto, voceDisponibile } from "./voce.js";
@@ -139,8 +139,11 @@ async function casa() {
         : el("p", { class: "vuoto", text: "Qui troverai gli esercizi che crei. Restano salvati su questo dispositivo: per portarli altrove usa «Condividi» o «File»." })),
     catalogoAttivo ? sezioneCatalogo() : null,
     el("section", {},
-      el("h2", { text: "Esempi da provare" }),
-      el("ul", { class: "schede" }, esempi.map(e => schedaEsercizio(e, "es")))))));
+      el("h2", { text: "Esercizi pronti" }),
+      MATERIE.concat([undefined]).map(m => {
+        const qui = esempi.filter(e => e.materia === m);
+        return qui.length ? [el("h3", { class: "materia", text: m || "Altro" }), el("ul", { class: "schede" }, qui.map(e => schedaEsercizio(e, "es")))] : null;
+      })))));
 }
 
 /* ---------- gioco ---------- */
@@ -159,11 +162,16 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
     ferma = MOTORI[gioco].avvia(area, es, creaContesto(finito)) || null;
   }
 
-  function finito() {
+  // Il punteggio conta le risposte giuste al primo tentativo; nel memory, coppie e tentativi.
+  function finito(r) {
     suonoFesta();
     if (impostazioni.voce) parla("Ce l'hai fatta!");
+    const punteggio = r.coppie
+      ? el("p", { class: "festa-punteggio" }, el("b", { text: r.coppie + " coppie" }), " trovate in " + r.tentativi + " tentativi")
+      : el("p", { class: "festa-punteggio" }, el("b", { text: r.giuste + " su " + r.totale }), " giuste al primo tentativo");
     area.append(el("div", { class: "festa" }, el("div", { class: "festa-box", role: "status" },
       el("p", { class: "festa-titolo", text: "Ce l'hai fatta! 🎉" }),
+      punteggio,
       el("div", { class: "azioni" },
         el("button", { type: "button", class: "pulsante", text: "↻ Gioca ancora", on: { click: inizia } }),
         giochi.filter(g => g !== gioco).map(g => el("a", { class: "pulsante secondario", href: base + "/" + g, text: GIOCHI[g].icona + " " + GIOCHI[g].nome })),

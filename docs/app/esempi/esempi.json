@@ -1,120 +1,2107 @@
 [
-  {
-    "id": "versi",
-    "titolo": "Gli animali e i loro versi",
-    "scrittura": "maiuscolo",
-    "tipo": "coppie",
-    "gioco": "abbina",
-    "consegna": "Porta ogni verso vicino al suo animale.",
-    "dati": {
-      "coppie": [
-        [{ "t": "cane", "p": 7202 }, { "t": "bau bau" }],
-        [{ "t": "gatto", "p": 7114 }, { "t": "miao" }],
-        [{ "t": "mucca", "p": 2609 }, { "t": "muu" }],
-        [{ "t": "pecora", "p": 2489 }, { "t": "bee" }],
-        [{ "t": "gallina", "p": 2403 }, { "t": "coccodè" }],
-        [{ "t": "anatra", "p": 28479 }, { "t": "qua qua" }]
-      ]
-    }
+ {
+  "id": "versi",
+  "titolo": "Gli animali e i loro versi",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni verso vicino al suo animale.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "cane",
+      "p": 7202
+     },
+     {
+      "t": "bau bau"
+     }
+    ],
+    [
+     {
+      "t": "gatto",
+      "p": 7114
+     },
+     {
+      "t": "miao"
+     }
+    ],
+    [
+     {
+      "t": "mucca",
+      "p": 2609
+     },
+     {
+      "t": "muu"
+     }
+    ],
+    [
+     {
+      "t": "pecora",
+      "p": 2489
+     },
+     {
+      "t": "bee"
+     }
+    ],
+    [
+     {
+      "t": "gallina",
+      "p": 2403
+     },
+     {
+      "t": "coccodè"
+     }
+    ],
+    [
+     {
+      "t": "anatra",
+      "p": 28479
+     },
+     {
+      "t": "qua qua"
+     }
+    ]
+   ]
   },
-  {
-    "id": "frutta-memory",
-    "titolo": "Memory della frutta",
-    "scrittura": "minuscolo",
-    "tipo": "coppie",
-    "gioco": "memory",
-    "consegna": "Trova l'immagine e la sua parola.",
-    "dati": {
-      "coppie": [
-        [{ "p": 2462 }, { "t": "mela" }],
-        [{ "p": 2530 }, { "t": "banana" }],
-        [{ "p": 2561 }, { "t": "pera" }],
-        [{ "p": 2400 }, { "t": "fragola" }],
-        [{ "p": 2483 }, { "t": "arancia" }],
-        [{ "p": 2619 }, { "t": "carota" }]
-      ]
-    }
+  "materia": "Scienze"
+ },
+ {
+  "id": "frutta-memory",
+  "titolo": "Memory della frutta",
+  "scrittura": "minuscolo",
+  "tipo": "coppie",
+  "gioco": "memory",
+  "consegna": "Trova l'immagine e la sua parola.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2462
+     },
+     {
+      "t": "mela"
+     }
+    ],
+    [
+     {
+      "p": 2530
+     },
+     {
+      "t": "banana"
+     }
+    ],
+    [
+     {
+      "p": 2561
+     },
+     {
+      "t": "pera"
+     }
+    ],
+    [
+     {
+      "p": 2400
+     },
+     {
+      "t": "fragola"
+     }
+    ],
+    [
+     {
+      "p": 2483
+     },
+     {
+      "t": "arancia"
+     }
+    ],
+    [
+     {
+      "p": 2619
+     },
+     {
+      "t": "carota"
+     }
+    ]
+   ]
   },
-  {
-    "id": "frutta-verdura",
-    "titolo": "Frutta o verdura?",
-    "scrittura": "maiuscolo",
-    "tipo": "gruppi",
-    "gioco": "raggruppa",
-    "dati": {
-      "gruppi": [
-        {
-          "nome": "frutta", "p": 28339,
-          "elementi": [
-            { "t": "mela", "p": 2462 }, { "t": "banana", "p": 2530 }, { "t": "pera", "p": 2561 },
-            { "t": "fragola", "p": 2400 }, { "t": "arancia", "p": 2483 }
-          ]
-        },
-        {
-          "nome": "verdura", "p": 28343,
-          "elementi": [
-            { "t": "carota", "p": 2619 }, { "t": "insalata", "p": 2377 }, { "t": "zucchina", "p": 2678 },
-            { "t": "broccolo", "p": 23853 }, { "t": "spinaci", "p": 5460 }
-          ]
-        }
-      ]
+  "materia": "Italiano"
+ },
+ {
+  "id": "frutta-verdura",
+  "titolo": "Frutta o verdura?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "frutta",
+     "p": 28339,
+     "elementi": [
+      {
+       "t": "mela",
+       "p": 2462
+      },
+      {
+       "t": "banana",
+       "p": 2530
+      },
+      {
+       "t": "pera",
+       "p": 2561
+      },
+      {
+       "t": "fragola",
+       "p": 2400
+      },
+      {
+       "t": "arancia",
+       "p": 2483
+      }
+     ]
+    },
+    {
+     "nome": "verdura",
+     "p": 28343,
+     "elementi": [
+      {
+       "t": "carota",
+       "p": 2619
+      },
+      {
+       "t": "insalata",
+       "p": 2377
+      },
+      {
+       "t": "zucchina",
+       "p": 2678
+      },
+      {
+       "t": "broccolo",
+       "p": 23853
+      },
+      {
+       "t": "spinaci",
+       "p": 5460
+      }
+     ]
     }
+   ]
   },
-  {
-    "id": "colori",
-    "titolo": "Di che colore è?",
-    "scrittura": "maiuscolo",
-    "tipo": "domande",
-    "gioco": "scelta",
-    "dati": {
-      "domande": [
-        { "d": { "t": "Di che colore è il sole?", "p": 7252 }, "giusta": { "t": "giallo", "p": 2648 },
-          "sbagliate": [{ "t": "azzurro", "p": 4869 }, { "t": "verde", "p": 4887 }] },
-        { "d": { "t": "Di che colore è l'erba?", "p": 3113 }, "giusta": { "t": "verde", "p": 4887 },
-          "sbagliate": [{ "t": "rosso", "p": 2808 }, { "t": "giallo", "p": 2648 }] },
-        { "d": { "t": "Di che colore è il mare?", "p": 2925 }, "giusta": { "t": "azzurro", "p": 4869 },
-          "sbagliate": [{ "t": "marrone", "p": 2923 }, { "t": "rosso", "p": 2808 }] },
-        { "d": { "t": "Di che colore è la neve?", "p": 3135 }, "giusta": { "t": "bianco", "p": 8043 },
-          "sbagliate": [{ "t": "verde", "p": 4887 }, { "t": "marrone", "p": 2923 }] },
-        { "d": { "t": "Di che colore è la fragola?", "p": 2400 }, "giusta": { "t": "rosso", "p": 2808 },
-          "sbagliate": [{ "t": "azzurro", "p": 4869 }, { "t": "bianco", "p": 8043 }] }
-      ]
+  "materia": "Scienze"
+ },
+ {
+  "id": "colori",
+  "titolo": "Di che colore è?",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Di che colore è il sole?",
+      "p": 7252
+     },
+     "giusta": {
+      "t": "giallo",
+      "p": 2648
+     },
+     "sbagliate": [
+      {
+       "t": "azzurro",
+       "p": 4869
+      },
+      {
+       "t": "verde",
+       "p": 4887
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Di che colore è l'erba?",
+      "p": 3113
+     },
+     "giusta": {
+      "t": "verde",
+      "p": 4887
+     },
+     "sbagliate": [
+      {
+       "t": "rosso",
+       "p": 2808
+      },
+      {
+       "t": "giallo",
+       "p": 2648
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Di che colore è il mare?",
+      "p": 2925
+     },
+     "giusta": {
+      "t": "azzurro",
+      "p": 4869
+     },
+     "sbagliate": [
+      {
+       "t": "marrone",
+       "p": 2923
+      },
+      {
+       "t": "rosso",
+       "p": 2808
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Di che colore è la neve?",
+      "p": 3135
+     },
+     "giusta": {
+      "t": "bianco",
+      "p": 8043
+     },
+     "sbagliate": [
+      {
+       "t": "verde",
+       "p": 4887
+      },
+      {
+       "t": "marrone",
+       "p": 2923
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Di che colore è la fragola?",
+      "p": 2400
+     },
+     "giusta": {
+      "t": "rosso",
+      "p": 2808
+     },
+     "sbagliate": [
+      {
+       "t": "azzurro",
+       "p": 4869
+      },
+      {
+       "t": "bianco",
+       "p": 8043
+      }
+     ]
     }
+   ]
   },
-  {
-    "id": "giornata",
-    "titolo": "La mia giornata",
-    "scrittura": "maiuscolo",
-    "tipo": "sequenza",
-    "gioco": "sequenza",
-    "consegna": "Che cosa viene prima? Metti in ordine la giornata.",
-    "dati": {
-      "passi": [
-        { "t": "mi sveglio", "p": 8989 },
-        { "t": "faccio colazione", "p": 4626 },
-        { "t": "vado a scuola", "p": 36473 },
-        { "t": "pranzo", "p": 4611 },
-        { "t": "faccio i compiti", "p": 32556 },
-        { "t": "vado a dormire", "p": 6479 }
-      ]
+  "materia": "Italiano"
+ },
+ {
+  "id": "giornata",
+  "titolo": "La mia giornata",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Che cosa viene prima? Metti in ordine la giornata.",
+  "dati": {
+   "passi": [
+    {
+     "t": "mi sveglio",
+     "p": 8989
+    },
+    {
+     "t": "faccio colazione",
+     "p": 4626
+    },
+    {
+     "t": "vado a scuola",
+     "p": 36473
+    },
+    {
+     "t": "pranzo",
+     "p": 4611
+    },
+    {
+     "t": "faccio i compiti",
+     "p": 32556
+    },
+    {
+     "t": "vado a dormire",
+     "p": 6479
     }
+   ]
   },
-  {
-    "id": "articoli",
-    "titolo": "Gli articoli",
-    "scrittura": "minuscolo",
-    "tipo": "frasi",
-    "gioco": "completa",
-    "consegna": "Scegli l'articolo giusto.",
-    "dati": {
-      "frasi": [
-        "[Il] cane corre nel prato.",
-        "[La] mela è rossa.",
-        "[Lo] zaino è pesante.",
-        "[Gli] alberi sono alti.",
-        "[Le] stelle brillano."
-      ],
-      "extra": ["un", "una"]
+  "materia": "Storia"
+ },
+ {
+  "id": "articoli",
+  "titolo": "Gli articoli",
+  "scrittura": "minuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Scegli l'articolo giusto.",
+  "dati": {
+   "frasi": [
+    "[Il] cane corre nel prato.",
+    "[La] mela è rossa.",
+    "[Lo] zaino è pesante.",
+    "[Gli] alberi sono alti.",
+    "[Le] stelle brillano."
+   ],
+   "extra": [
+    "un",
+    "una"
+   ]
+  },
+  "materia": "Italiano"
+ },
+ {
+  "id": "sillabe",
+  "materia": "Italiano",
+  "titolo": "Con che sillaba inizia?",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Ascolta la parola. Con che sillaba inizia?",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "MANO",
+      "p": 2928
+     },
+     "giusta": {
+      "t": "MA"
+     },
+     "sbagliate": [
+      {
+       "t": "ME"
+      },
+      {
+       "t": "MI"
+      },
+      {
+       "t": "MO"
+      },
+      {
+       "t": "MU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "MELA",
+      "p": 2462
+     },
+     "giusta": {
+      "t": "ME"
+     },
+     "sbagliate": [
+      {
+       "t": "MA"
+      },
+      {
+       "t": "MI"
+      },
+      {
+       "t": "MO"
+      },
+      {
+       "t": "MU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "MOTO",
+      "p": 7166
+     },
+     "giusta": {
+      "t": "MO"
+     },
+     "sbagliate": [
+      {
+       "t": "MA"
+      },
+      {
+       "t": "ME"
+      },
+      {
+       "t": "MI"
+      },
+      {
+       "t": "MU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "LUNA",
+      "p": 2933
+     },
+     "giusta": {
+      "t": "LU"
+     },
+     "sbagliate": [
+      {
+       "t": "LA"
+      },
+      {
+       "t": "LE"
+      },
+      {
+       "t": "LI"
+      },
+      {
+       "t": "LO"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "LUPO",
+      "p": 5892
+     },
+     "giusta": {
+      "t": "LU"
+     },
+     "sbagliate": [
+      {
+       "t": "LA"
+      },
+      {
+       "t": "LE"
+      },
+      {
+       "t": "LI"
+      },
+      {
+       "t": "LO"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "LIMONE",
+      "p": 3022
+     },
+     "giusta": {
+      "t": "LI"
+     },
+     "sbagliate": [
+      {
+       "t": "LA"
+      },
+      {
+       "t": "LE"
+      },
+      {
+       "t": "LO"
+      },
+      {
+       "t": "LU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "SOLE",
+      "p": 7252
+     },
+     "giusta": {
+      "t": "SO"
+     },
+     "sbagliate": [
+      {
+       "t": "SA"
+      },
+      {
+       "t": "SE"
+      },
+      {
+       "t": "SI"
+      },
+      {
+       "t": "SU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "SEDIA",
+      "p": 3155
+     },
+     "giusta": {
+      "t": "SE"
+     },
+     "sbagliate": [
+      {
+       "t": "SA"
+      },
+      {
+       "t": "SI"
+      },
+      {
+       "t": "SO"
+      },
+      {
+       "t": "SU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "SALE",
+      "p": 25576
+     },
+     "giusta": {
+      "t": "SA"
+     },
+     "sbagliate": [
+      {
+       "t": "SE"
+      },
+      {
+       "t": "SI"
+      },
+      {
+       "t": "SO"
+      },
+      {
+       "t": "SU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "NASO",
+      "p": 2887
+     },
+     "giusta": {
+      "t": "NA"
+     },
+     "sbagliate": [
+      {
+       "t": "NE"
+      },
+      {
+       "t": "NI"
+      },
+      {
+       "t": "NO"
+      },
+      {
+       "t": "NU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "NAVE",
+      "p": 2273
+     },
+     "giusta": {
+      "t": "NA"
+     },
+     "sbagliate": [
+      {
+       "t": "NE"
+      },
+      {
+       "t": "NI"
+      },
+      {
+       "t": "NO"
+      },
+      {
+       "t": "NU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "NIDO",
+      "p": 7173
+     },
+     "giusta": {
+      "t": "NI"
+     },
+     "sbagliate": [
+      {
+       "t": "NA"
+      },
+      {
+       "t": "NE"
+      },
+      {
+       "t": "NO"
+      },
+      {
+       "t": "NU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "ROSA",
+      "p": 3151
+     },
+     "giusta": {
+      "t": "RO"
+     },
+     "sbagliate": [
+      {
+       "t": "RA"
+      },
+      {
+       "t": "RE"
+      },
+      {
+       "t": "RI"
+      },
+      {
+       "t": "RU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "RANA",
+      "p": 28473
+     },
+     "giusta": {
+      "t": "RA"
+     },
+     "sbagliate": [
+      {
+       "t": "RE"
+      },
+      {
+       "t": "RI"
+      },
+      {
+       "t": "RO"
+      },
+      {
+       "t": "RU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "RE",
+      "p": 5563
+     },
+     "giusta": {
+      "t": "RE"
+     },
+     "sbagliate": [
+      {
+       "t": "RA"
+      },
+      {
+       "t": "RI"
+      },
+      {
+       "t": "RO"
+      },
+      {
+       "t": "RU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "PERA",
+      "p": 2561
+     },
+     "giusta": {
+      "t": "PE"
+     },
+     "sbagliate": [
+      {
+       "t": "PA"
+      },
+      {
+       "t": "PI"
+      },
+      {
+       "t": "PO"
+      },
+      {
+       "t": "PU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "PANE",
+      "p": 2494
+     },
+     "giusta": {
+      "t": "PA"
+     },
+     "sbagliate": [
+      {
+       "t": "PE"
+      },
+      {
+       "t": "PI"
+      },
+      {
+       "t": "PO"
+      },
+      {
+       "t": "PU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "POMODORO",
+      "p": 2594
+     },
+     "giusta": {
+      "t": "PO"
+     },
+     "sbagliate": [
+      {
+       "t": "PA"
+      },
+      {
+       "t": "PE"
+      },
+      {
+       "t": "PI"
+      },
+      {
+       "t": "PU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "TOPO",
+      "p": 2546
+     },
+     "giusta": {
+      "t": "TO"
+     },
+     "sbagliate": [
+      {
+       "t": "TA"
+      },
+      {
+       "t": "TE"
+      },
+      {
+       "t": "TI"
+      },
+      {
+       "t": "TU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "TORO",
+      "p": 2595
+     },
+     "giusta": {
+      "t": "TO"
+     },
+     "sbagliate": [
+      {
+       "t": "TA"
+      },
+      {
+       "t": "TE"
+      },
+      {
+       "t": "TI"
+      },
+      {
+       "t": "TU"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "TELEFONO",
+      "p": 26479
+     },
+     "giusta": {
+      "t": "TE"
+     },
+     "sbagliate": [
+      {
+       "t": "TA"
+      },
+      {
+       "t": "TI"
+      },
+      {
+       "t": "TO"
+      },
+      {
+       "t": "TU"
+      }
+     ]
     }
+   ]
   }
+ },
+ {
+  "id": "bosco",
+  "materia": "Italiano",
+  "titolo": "Le parole del bosco",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino alla sua figura.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2666
+     },
+     {
+      "t": "IL BOSCO"
+     }
+    ],
+    [
+     {
+      "p": 3057
+     },
+     {
+      "t": "L'ALBERO"
+     }
+    ],
+    [
+     {
+      "p": 5077
+     },
+     {
+      "t": "LA FOGLIA"
+     }
+    ],
+    [
+     {
+      "p": 8328
+     },
+     {
+      "t": "IL FUNGO"
+     }
+    ],
+    [
+     {
+      "p": 3183
+     },
+     {
+      "t": "LA CASTAGNA"
+     }
+    ],
+    [
+     {
+      "p": 7819
+     },
+     {
+      "t": "LA LEGNA"
+     }
+    ],
+    [
+     {
+      "p": 25815
+     },
+     {
+      "t": "LO SCOIATTOLO"
+     }
+    ],
+    [
+     {
+      "p": 2671
+     },
+     {
+      "t": "IL GUFO"
+     }
+    ],
+    [
+     {
+      "p": 26829
+     },
+     {
+      "t": "IL RICCIO"
+     }
+    ],
+    [
+     {
+      "p": 8061
+     },
+     {
+      "t": "LA LUMACA"
+     }
+    ],
+    [
+     {
+      "p": 2623
+     },
+     {
+      "t": "LA VOLPE"
+     }
+    ],
+    [
+     {
+      "p": 7173
+     },
+     {
+      "t": "IL NIDO"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "cinque-sensi",
+  "materia": "Scienze",
+  "titolo": "I cinque sensi",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parte del corpo vicino al suo senso.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "LA VISTA",
+      "p": 6564
+     },
+     {
+      "t": "GLI OCCHI",
+      "p": 2876
+     }
+    ],
+    [
+     {
+      "t": "L'UDITO",
+      "p": 6572
+     },
+     {
+      "t": "LE ORECCHIE",
+      "p": 2871
+     }
+    ],
+    [
+     {
+      "t": "L'OLFATTO",
+      "p": 2486
+     },
+     {
+      "t": "IL NASO",
+      "p": 2887
+     }
+    ],
+    [
+     {
+      "t": "IL GUSTO",
+      "p": 7124
+     },
+     {
+      "t": "LA LINGUA",
+      "p": 2944
+     }
+    ],
+    [
+     {
+      "t": "IL TATTO",
+      "p": 3293
+     },
+     {
+      "t": "LA PELLE",
+      "p": 2840
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "autunno-sensi",
+  "materia": "Italiano",
+  "titolo": "L'autunno con i cinque sensi",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Metti la parola giusta nella frase.",
+  "dati": {
+   "frasi": [
+    "VEDO LE [FOGLIE] GIALLE E ROSSE CHE CADONO.",
+    "SENTO LA PIOGGIA, IL [VENTO] E LE FOGLIE SECCHE.",
+    "SENTO L'ODORE DI [CASTAGNE], MUSCHIO E TERRA BAGNATA.",
+    "ASSAGGIO LE CASTAGNE, L'UVA, LE MELE E LA [ZUCCA].",
+    "TOCCO LE FOGLIE SECCHE E SENTO IL [FREDDO]."
+   ],
+   "extra": [
+    "MARE",
+    "SOLE",
+    "CALDO",
+    "NEVE"
+   ]
+  }
+ },
+ {
+  "id": "fonti-storiche",
+  "materia": "Storia",
+  "titolo": "Le fonti storiche",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Che tipo di fonte è? Mettila nel suo gruppo.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "FONTI ORALI",
+     "elementi": [
+      {
+       "t": "RACCONTI DEI NONNI",
+       "p": 6876
+      },
+      {
+       "t": "INTERVISTE",
+       "p": 8105
+      },
+      {
+       "t": "LEGGENDE",
+       "p": 2364
+      }
+     ]
+    },
+    {
+     "nome": "FONTI SCRITTE",
+     "elementi": [
+      {
+       "t": "LETTERE",
+       "p": 2688
+      },
+      {
+       "t": "LIBRI",
+       "p": 2450
+      },
+      {
+       "t": "DIARI",
+       "p": 2359
+      },
+      {
+       "t": "INCISIONI SU PIETRA",
+       "p": 36923
+      }
+     ]
+    },
+    {
+     "nome": "IMMAGINI",
+     "elementi": [
+      {
+       "t": "DISEGNI ANTICHI",
+       "p": 11238
+      },
+      {
+       "t": "FOTOGRAFIE",
+       "p": 7107
+      },
+      {
+       "t": "PITTURE NELLE CAVERNE",
+       "p": 11177
+      },
+      {
+       "t": "SCULTURE",
+       "p": 8567
+      },
+      {
+       "t": "QUADRI",
+       "p": 2360
+      }
+     ]
+    },
+    {
+     "nome": "OGGETTI",
+     "elementi": [
+      {
+       "t": "VASI",
+       "p": 21359
+      },
+      {
+       "t": "GIOIELLI",
+       "p": 29088
+      },
+      {
+       "t": "ARMI",
+       "p": 7093
+      },
+      {
+       "t": "MONETE",
+       "p": 8633
+      },
+      {
+       "t": "ANTICHI EDIFICI",
+       "p": 5421
+      }
+     ]
+    },
+    {
+     "nome": "RESTI",
+     "elementi": [
+      {
+       "t": "FOSSILI",
+       "p": 26098
+      },
+      {
+       "t": "SCHELETRI",
+       "p": 5727
+      },
+      {
+       "t": "IMPRONTE NELLA ROCCIA",
+       "p": 6527
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "numeri-parole",
+  "materia": "Matematica",
+  "titolo": "I numeri da 1 a 20",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "memory",
+  "consegna": "Trova il numero e la sua parola.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "1"
+     },
+     {
+      "t": "UNO"
+     }
+    ],
+    [
+     {
+      "t": "2"
+     },
+     {
+      "t": "DUE"
+     }
+    ],
+    [
+     {
+      "t": "3"
+     },
+     {
+      "t": "TRE"
+     }
+    ],
+    [
+     {
+      "t": "4"
+     },
+     {
+      "t": "QUATTRO"
+     }
+    ],
+    [
+     {
+      "t": "5"
+     },
+     {
+      "t": "CINQUE"
+     }
+    ],
+    [
+     {
+      "t": "6"
+     },
+     {
+      "t": "SEI"
+     }
+    ],
+    [
+     {
+      "t": "7"
+     },
+     {
+      "t": "SETTE"
+     }
+    ],
+    [
+     {
+      "t": "8"
+     },
+     {
+      "t": "OTTO"
+     }
+    ],
+    [
+     {
+      "t": "9"
+     },
+     {
+      "t": "NOVE"
+     }
+    ],
+    [
+     {
+      "t": "10"
+     },
+     {
+      "t": "DIECI"
+     }
+    ],
+    [
+     {
+      "t": "11"
+     },
+     {
+      "t": "UNDICI"
+     }
+    ],
+    [
+     {
+      "t": "12"
+     },
+     {
+      "t": "DODICI"
+     }
+    ],
+    [
+     {
+      "t": "13"
+     },
+     {
+      "t": "TREDICI"
+     }
+    ],
+    [
+     {
+      "t": "14"
+     },
+     {
+      "t": "QUATTORDICI"
+     }
+    ],
+    [
+     {
+      "t": "15"
+     },
+     {
+      "t": "QUINDICI"
+     }
+    ],
+    [
+     {
+      "t": "16"
+     },
+     {
+      "t": "SEDICI"
+     }
+    ],
+    [
+     {
+      "t": "17"
+     },
+     {
+      "t": "DICIASSETTE"
+     }
+    ],
+    [
+     {
+      "t": "18"
+     },
+     {
+      "t": "DICIOTTO"
+     }
+    ],
+    [
+     {
+      "t": "19"
+     },
+     {
+      "t": "DICIANNOVE"
+     }
+    ],
+    [
+     {
+      "t": "20"
+     },
+     {
+      "t": "VENTI"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "prima-dopo",
+  "materia": "Matematica",
+  "titolo": "Il numero prima e dopo",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "CHE NUMERO VIENE DOPO 5?"
+     },
+     "giusta": {
+      "t": "6"
+     },
+     "sbagliate": [
+      {
+       "t": "4"
+      },
+      {
+       "t": "7"
+      },
+      {
+       "t": "15"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "CHE NUMERO VIENE PRIMA DI 12?"
+     },
+     "giusta": {
+      "t": "11"
+     },
+     "sbagliate": [
+      {
+       "t": "13"
+      },
+      {
+       "t": "10"
+      },
+      {
+       "t": "2"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "CHE NUMERO VIENE DOPO 9?"
+     },
+     "giusta": {
+      "t": "10"
+     },
+     "sbagliate": [
+      {
+       "t": "8"
+      },
+      {
+       "t": "11"
+      },
+      {
+       "t": "19"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "CHE NUMERO VIENE PRIMA DI 17?"
+     },
+     "giusta": {
+      "t": "16"
+     },
+     "sbagliate": [
+      {
+       "t": "18"
+      },
+      {
+       "t": "15"
+      },
+      {
+       "t": "7"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "CHE NUMERO VIENE DOPO 14?"
+     },
+     "giusta": {
+      "t": "15"
+     },
+     "sbagliate": [
+      {
+       "t": "13"
+      },
+      {
+       "t": "16"
+      },
+      {
+       "t": "24"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "CHE NUMERO VIENE PRIMA DI 19?"
+     },
+     "giusta": {
+      "t": "18"
+     },
+     "sbagliate": [
+      {
+       "t": "20"
+      },
+      {
+       "t": "17"
+      },
+      {
+       "t": "9"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "CHE NUMERO VIENE DOPO 23?"
+     },
+     "giusta": {
+      "t": "24"
+     },
+     "sbagliate": [
+      {
+       "t": "22"
+      },
+      {
+       "t": "25"
+      },
+      {
+       "t": "33"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "CHE NUMERO VIENE PRIMA DI 40?"
+     },
+     "giusta": {
+      "t": "39"
+     },
+     "sbagliate": [
+      {
+       "t": "41"
+      },
+      {
+       "t": "38"
+      },
+      {
+       "t": "30"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "CHE NUMERO VIENE DOPO 59?"
+     },
+     "giusta": {
+      "t": "60"
+     },
+     "sbagliate": [
+      {
+       "t": "58"
+      },
+      {
+       "t": "61"
+      },
+      {
+       "t": "69"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "CHE NUMERO VIENE PRIMA DI 70?"
+     },
+     "giusta": {
+      "t": "69"
+     },
+     "sbagliate": [
+      {
+       "t": "71"
+      },
+      {
+       "t": "68"
+      },
+      {
+       "t": "60"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "maggiore-minore",
+  "materia": "Matematica",
+  "titolo": "Maggiore, minore o uguale?",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Il primo numero è maggiore, minore o uguale al secondo?",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "5  …  8"
+     },
+     "giusta": {
+      "t": "< MINORE"
+     },
+     "sbagliate": [
+      {
+       "t": "> MAGGIORE"
+      },
+      {
+       "t": "= UGUALE"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "12  …  10"
+     },
+     "giusta": {
+      "t": "> MAGGIORE"
+     },
+     "sbagliate": [
+      {
+       "t": "< MINORE"
+      },
+      {
+       "t": "= UGUALE"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "7  …  7"
+     },
+     "giusta": {
+      "t": "= UGUALE"
+     },
+     "sbagliate": [
+      {
+       "t": "< MINORE"
+      },
+      {
+       "t": "> MAGGIORE"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "15  …  19"
+     },
+     "giusta": {
+      "t": "< MINORE"
+     },
+     "sbagliate": [
+      {
+       "t": "> MAGGIORE"
+      },
+      {
+       "t": "= UGUALE"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "20  …  11"
+     },
+     "giusta": {
+      "t": "> MAGGIORE"
+     },
+     "sbagliate": [
+      {
+       "t": "< MINORE"
+      },
+      {
+       "t": "= UGUALE"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "9  …  6"
+     },
+     "giusta": {
+      "t": "> MAGGIORE"
+     },
+     "sbagliate": [
+      {
+       "t": "< MINORE"
+      },
+      {
+       "t": "= UGUALE"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "34  …  43"
+     },
+     "giusta": {
+      "t": "< MINORE"
+     },
+     "sbagliate": [
+      {
+       "t": "> MAGGIORE"
+      },
+      {
+       "t": "= UGUALE"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "56  …  65"
+     },
+     "giusta": {
+      "t": "< MINORE"
+     },
+     "sbagliate": [
+      {
+       "t": "> MAGGIORE"
+      },
+      {
+       "t": "= UGUALE"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "70  …  70"
+     },
+     "giusta": {
+      "t": "= UGUALE"
+     },
+     "sbagliate": [
+      {
+       "t": "< MINORE"
+      },
+      {
+       "t": "> MAGGIORE"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "91  …  19"
+     },
+     "giusta": {
+      "t": "> MAGGIORE"
+     },
+     "sbagliate": [
+      {
+       "t": "< MINORE"
+      },
+      {
+       "t": "= UGUALE"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "decine-unita",
+  "materia": "Matematica",
+  "titolo": "Decine e unità",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "QUANTE DECINE E UNITÀ HA 13?"
+     },
+     "giusta": {
+      "t": "1 DECINA E 3 UNITÀ"
+     },
+     "sbagliate": [
+      {
+       "t": "3 DECINE E 1 UNITÀ"
+      },
+      {
+       "t": "10 DECINE E 3 UNITÀ"
+      },
+      {
+       "t": "1 DECINA E 4 UNITÀ"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "QUANTE DECINE E UNITÀ HA 16?"
+     },
+     "giusta": {
+      "t": "1 DECINA E 6 UNITÀ"
+     },
+     "sbagliate": [
+      {
+       "t": "6 DECINE E 1 UNITÀ"
+      },
+      {
+       "t": "10 DECINE E 6 UNITÀ"
+      },
+      {
+       "t": "1 DECINA E 7 UNITÀ"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "QUANTE DECINE E UNITÀ HA 11?"
+     },
+     "giusta": {
+      "t": "1 DECINA E 1 UNITÀ"
+     },
+     "sbagliate": [
+      {
+       "t": "2 DECINE E 1 UNITÀ"
+      },
+      {
+       "t": "10 DECINE E 1 UNITÀ"
+      },
+      {
+       "t": "1 DECINA E 2 UNITÀ"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "QUANTE DECINE E UNITÀ HA 18?"
+     },
+     "giusta": {
+      "t": "1 DECINA E 8 UNITÀ"
+     },
+     "sbagliate": [
+      {
+       "t": "8 DECINE E 1 UNITÀ"
+      },
+      {
+       "t": "10 DECINE E 8 UNITÀ"
+      },
+      {
+       "t": "1 DECINA E 9 UNITÀ"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "QUANTE DECINE E UNITÀ HA 47?"
+     },
+     "giusta": {
+      "t": "4 DECINE E 7 UNITÀ"
+     },
+     "sbagliate": [
+      {
+       "t": "7 DECINE E 4 UNITÀ"
+      },
+      {
+       "t": "40 DECINE E 7 UNITÀ"
+      },
+      {
+       "t": "4 DECINE E 8 UNITÀ"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "QUANTE DECINE E UNITÀ HA 82?"
+     },
+     "giusta": {
+      "t": "8 DECINE E 2 UNITÀ"
+     },
+     "sbagliate": [
+      {
+       "t": "2 DECINE E 8 UNITÀ"
+      },
+      {
+       "t": "80 DECINE E 2 UNITÀ"
+      },
+      {
+       "t": "8 DECINE E 3 UNITÀ"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "QUANTE DECINE E UNITÀ HA 36?"
+     },
+     "giusta": {
+      "t": "3 DECINE E 6 UNITÀ"
+     },
+     "sbagliate": [
+      {
+       "t": "6 DECINE E 3 UNITÀ"
+      },
+      {
+       "t": "30 DECINE E 6 UNITÀ"
+      },
+      {
+       "t": "3 DECINE E 7 UNITÀ"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "QUANTE DECINE E UNITÀ HA 90?"
+     },
+     "giusta": {
+      "t": "9 DECINE E 0 UNITÀ"
+     },
+     "sbagliate": [
+      {
+       "t": "0 DECINE E 9 UNITÀ"
+      },
+      {
+       "t": "90 DECINE E 0 UNITÀ"
+      },
+      {
+       "t": "9 DECINE E 1 UNITÀ"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "QUANTE DECINE E UNITÀ HA 15?"
+     },
+     "giusta": {
+      "t": "1 DECINA E 5 UNITÀ"
+     },
+     "sbagliate": [
+      {
+       "t": "5 DECINE E 1 UNITÀ"
+      },
+      {
+       "t": "10 DECINE E 5 UNITÀ"
+      },
+      {
+       "t": "1 DECINA E 6 UNITÀ"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "QUANTE DECINE E UNITÀ HA 64?"
+     },
+     "giusta": {
+      "t": "6 DECINE E 4 UNITÀ"
+     },
+     "sbagliate": [
+      {
+       "t": "4 DECINE E 6 UNITÀ"
+      },
+      {
+       "t": "60 DECINE E 4 UNITÀ"
+      },
+      {
+       "t": "6 DECINE E 5 UNITÀ"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "parole-problemi",
+  "materia": "Matematica",
+  "titolo": "Le parole che aiutano nei problemi",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Che operazione ti fa pensare questa parola?",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "+ PIÙ",
+     "elementi": [
+      {
+       "t": "IN TUTTO"
+      },
+      {
+       "t": "INSIEME"
+      },
+      {
+       "t": "AGGIUNGE"
+      },
+      {
+       "t": "ARRIVANO"
+      },
+      {
+       "t": "COMPRA ANCORA"
+      }
+     ]
+    },
+    {
+     "nome": "− MENO",
+     "elementi": [
+      {
+       "t": "RESTANO"
+      },
+      {
+       "t": "TOGLIE"
+      },
+      {
+       "t": "REGALA"
+      },
+      {
+       "t": "PERDE"
+      },
+      {
+       "t": "MANGIA"
+      },
+      {
+       "t": "VOLANO VIA"
+      }
+     ]
+    },
+    {
+     "nome": "× PER",
+     "elementi": [
+      {
+       "t": "OGNI"
+      },
+      {
+       "t": "CIASCUNO"
+      },
+      {
+       "t": "VOLTE"
+      },
+      {
+       "t": "GRUPPI UGUALI"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "orologio",
+  "materia": "Matematica",
+  "titolo": "Che ore sono?",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni ora scritta in parole vicino al suo orario.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "1:00"
+     },
+     {
+      "t": "L'UNA"
+     }
+    ],
+    [
+     {
+      "t": "2:00"
+     },
+     {
+      "t": "LE DUE"
+     }
+    ],
+    [
+     {
+      "t": "3:00"
+     },
+     {
+      "t": "LE TRE"
+     }
+    ],
+    [
+     {
+      "t": "4:00"
+     },
+     {
+      "t": "LE QUATTRO"
+     }
+    ],
+    [
+     {
+      "t": "5:00"
+     },
+     {
+      "t": "LE CINQUE"
+     }
+    ],
+    [
+     {
+      "t": "6:00"
+     },
+     {
+      "t": "LE SEI"
+     }
+    ],
+    [
+     {
+      "t": "7:00"
+     },
+     {
+      "t": "LE SETTE"
+     }
+    ],
+    [
+     {
+      "t": "8:00"
+     },
+     {
+      "t": "LE OTTO"
+     }
+    ],
+    [
+     {
+      "t": "9:00"
+     },
+     {
+      "t": "LE NOVE"
+     }
+    ],
+    [
+     {
+      "t": "10:00"
+     },
+     {
+      "t": "LE DIECI"
+     }
+    ],
+    [
+     {
+      "t": "11:00"
+     },
+     {
+      "t": "LE UNDICI"
+     }
+    ],
+    [
+     {
+      "t": "12:00"
+     },
+     {
+      "t": "LE DODICI"
+     }
+    ]
+   ]
+  }
+ }
 ]

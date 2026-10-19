@@ -6,6 +6,8 @@ import { creaTavolo } from "../trascina.js";
 export function avvia(area, es, ctx) {
   const coppie = mescola(es.dati.coppie).slice(0, ctx.opz.elementi);
   let restano = coppie.length;
+  let giuste = 0;
+  const sbagliate = new Set();
 
   const righe = el("div", { class: "abbina-righe" },
     coppie.map((c, i) => el("div", { class: "riga", "data-bersaglio": true, "data-i": i },
@@ -24,6 +26,7 @@ export function avvia(area, es, ctx) {
     scegli: k => ctx.leggi(k.dataset.voce),
     lascia(k, riga) {
       if (k.dataset.i !== riga.dataset.i) {
+        sbagliate.add(k.dataset.i);
         ctx.riprova(k, righe.querySelector('.riga[data-i="' + k.dataset.i + '"]'));
         return;
       }
@@ -32,7 +35,8 @@ export function avvia(area, es, ctx) {
       riga.classList.add("fatta");
       k.removeAttribute("data-mobile");
       ctx.giusto(k);
-      if (--restano === 0) ctx.fine();
+      if (!sbagliate.has(k.dataset.i)) giuste++;
+      if (--restano === 0) ctx.fine({ giuste, totale: coppie.length });
     }
   });
 }
