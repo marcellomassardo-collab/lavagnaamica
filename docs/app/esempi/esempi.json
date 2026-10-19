@@ -1,0 +1,120 @@
+[
+  {
+    "id": "versi",
+    "titolo": "Gli animali e i loro versi",
+    "scrittura": "maiuscolo",
+    "tipo": "coppie",
+    "gioco": "abbina",
+    "consegna": "Porta ogni verso vicino al suo animale.",
+    "dati": {
+      "coppie": [
+        [{ "t": "cane", "p": 7202 }, { "t": "bau bau" }],
+        [{ "t": "gatto", "p": 7114 }, { "t": "miao" }],
+        [{ "t": "mucca", "p": 2609 }, { "t": "muu" }],
+        [{ "t": "pecora", "p": 2489 }, { "t": "bee" }],
+        [{ "t": "gallina", "p": 2403 }, { "t": "coccodè" }],
+        [{ "t": "anatra", "p": 28479 }, { "t": "qua qua" }]
+      ]
+    }
+  },
+  {
+    "id": "frutta-memory",
+    "titolo": "Memory della frutta",
+    "scrittura": "minuscolo",
+    "tipo": "coppie",
+    "gioco": "memory",
+    "consegna": "Trova l'immagine e la sua parola.",
+    "dati": {
+      "coppie": [
+        [{ "p": 2462 }, { "t": "mela" }],
+        [{ "p": 2530 }, { "t": "banana" }],
+        [{ "p": 2561 }, { "t": "pera" }],
+        [{ "p": 2400 }, { "t": "fragola" }],
+        [{ "p": 2483 }, { "t": "arancia" }],
+        [{ "p": 2619 }, { "t": "carota" }]
+      ]
+    }
+  },
+  {
+    "id": "frutta-verdura",
+    "titolo": "Frutta o verdura?",
+    "scrittura": "maiuscolo",
+    "tipo": "gruppi",
+    "gioco": "raggruppa",
+    "dati": {
+      "gruppi": [
+        {
+          "nome": "frutta", "p": 28339,
+          "elementi": [
+            { "t": "mela", "p": 2462 }, { "t": "banana", "p": 2530 }, { "t": "pera", "p": 2561 },
+            { "t": "fragola", "p": 2400 }, { "t": "arancia", "p": 2483 }
+          ]
+        },
+        {
+          "nome": "verdura", "p": 28343,
+          "elementi": [
+            { "t": "carota", "p": 2619 }, { "t": "insalata", "p": 2377 }, { "t": "zucchina", "p": 2678 },
+            { "t": "broccolo", "p": 23853 }, { "t": "spinaci", "p": 5460 }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "colori",
+    "titolo": "Di che colore è?",
+    "scrittura": "maiuscolo",
+    "tipo": "domande",
+    "gioco": "scelta",
+    "dati": {
+      "domande": [
+        { "d": { "t": "Di che colore è il sole?", "p": 7252 }, "giusta": { "t": "giallo", "p": 2648 },
+          "sbagliate": [{ "t": "azzurro", "p": 4869 }, { "t": "verde", "p": 4887 }] },
+        { "d": { "t": "Di che colore è l'erba?", "p": 3113 }, "giusta": { "t": "verde", "p": 4887 },
+          "sbagliate": [{ "t": "rosso", "p": 2808 }, { "t": "giallo", "p": 2648 }] },
+        { "d": { "t": "Di che colore è il mare?", "p": 2925 }, "giusta": { "t": "azzurro", "p": 4869 },
+          "sbagliate": [{ "t": "marrone", "p": 2923 }, { "t": "rosso", "p": 2808 }] },
+        { "d": { "t": "Di che colore è la neve?", "p": 3135 }, "giusta": { "t": "bianco", "p": 8043 },
+          "sbagliate": [{ "t": "verde", "p": 4887 }, { "t": "marrone", "p": 2923 }] },
+        { "d": { "t": "Di che colore è la fragola?", "p": 2400 }, "giusta": { "t": "rosso", "p": 2808 },
+          "sbagliate": [{ "t": "azzurro", "p": 4869 }, { "t": "bianco", "p": 8043 }] }
+      ]
+    }
+  },
+  {
+    "id": "giornata",
+    "titolo": "La mia giornata",
+    "scrittura": "maiuscolo",
+    "tipo": "sequenza",
+    "gioco": "sequenza",
+    "consegna": "Che cosa viene prima? Metti in ordine la giornata.",
+    "dati": {
+      "passi": [
+        { "t": "mi sveglio", "p": 8989 },
+        { "t": "faccio colazione", "p": 4626 },
+        { "t": "vado a scuola", "p": 36473 },
+        { "t": "pranzo", "p": 4611 },
+        { "t": "faccio i compiti", "p": 32556 },
+        { "t": "vado a dormire", "p": 6479 }
+      ]
+    }
+  },
+  {
+    "id": "articoli",
+    "titolo": "Gli articoli",
+    "scrittura": "minuscolo",
+    "tipo": "frasi",
+    "gioco": "completa",
+    "consegna": "Scegli l'articolo giusto.",
+    "dati": {
+      "frasi": [
+        "[Il] cane corre nel prato.",
+        "[La] mela è rossa.",
+        "[Lo] zaino è pesante.",
+        "[Gli] alberi sono alti.",
+        "[Le] stelle brillano."
+      ],
+      "extra": ["un", "una"]
+    }
+  }
+]

@@ -2,7 +2,8 @@
 
 Esercizi interattivi gratuiti per la scuola, pensati prima di tutto per il sostegno e per la LIM.
 
-**Stato:** in costruzione.
+**Stato:** anteprima. Ci sono i sei giochi (abbina, memory, scelta multipla, raggruppa, ordina la sequenza, completa la frase), l'editor, la condivisione con link e file e il funzionamento senza connessione. In arrivo: il catalogo comune con la moderazione degli insegnanti.
+**App:** https://marcellomassardo-collab.github.io/lavagnaamica/app/
 **Sito:** https://marcellomassardo-collab.github.io/lavagnaamica/
 
 ## Perché esiste
