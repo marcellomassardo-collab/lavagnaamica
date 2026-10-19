@@ -399,24 +399,284 @@ const UNIVERSO = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO };
+/* ---------- immagini dentro i disegni ---------- */
+const picto = id => "https://static.arasaac.org/pictograms/" + id + "/" + id + "_300.png";
+const figura = (href, x, y, w, h) => s("image", { href, x, y, width: w, height: h, preserveAspectRatio: "xMidYMid meet" });
 
-// Un video di YouTube si carica solo quando qualcuno lo chiede: prima non parte nessuna richiesta.
+/* ---------- le fonti storiche ---------- */
+const FONTI = {
+  passi: [
+    "Come facciamo a sapere che cosa è successo tanto tempo fa? Lo storico fa come un detective: cerca e studia le tracce del passato. Queste tracce si chiamano FONTI.",
+    "Le FONTI ORALI sono i racconti e i ricordi delle persone, come quelli dei nonni.",
+    "Le FONTI SCRITTE sono tutto quello che è scritto: lettere, libri, documenti, scritte sulla pietra o sull'argilla.",
+    "Le IMMAGINI sono disegni, pitture e fotografie, come le pitture che gli uomini preistorici facevano nelle caverne.",
+    "Gli OGGETTI sono le cose costruite e usate dalle persone: vasi, attrezzi, monete, case.",
+    "I RESTI sono quello che rimane degli esseri viventi: fossili, ossa, scheletri, impronte.",
+    "Lo storico confronta tante fonti diverse: così ricostruisce il passato nel modo più vicino possibile al vero."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FFF8EC" }));
+    const storico = s("g", {}, figura(picto(9191), 20, 120, 210, 260), etichetta(125, 410, "LO STORICO", 22));
+    const lente = s("g", { class: "sp-sfuma" }, s("g", { class: "sp-cerca" }, figura(picto(9927), 0, 0, 90, 90)));
+    lente.setAttribute("transform", "translate(400 170)");
+    const dati = [
+      ["FONTI ORALI", picto(23718), 265, 30], ["FONTI SCRITTE", "foto/tavoletta-cuneiforme.jpg", 440, 30], ["IMMAGINI", "foto/pittura-rupestre.jpg", 615, 30],
+      ["OGGETTI", "foto/anfora-greca.jpg", 352, 240], ["RESTI", picto(34254), 527, 240]
+    ];
+    const fili = s("g", { class: "sp-sfuma" }, dati.map(([n, h, x, y]) =>
+      s("line", { x1: 205, y1: 230, x2: x, y2: y + 85, stroke: "#B7793F", "stroke-width": 3, "stroke-dasharray": "8 8" })));
+    const carte = dati.map(([nome, href, x, y]) => s("g", { class: "sp-sfuma" },
+      s("rect", { x, y, width: 160, height: 180, rx: 16, fill: "#fff", stroke: "#DDD5C3", "stroke-width": 3, class: "sp-bordo" }),
+      figura(href, x + 15, y + 12, 130, 120),
+      scritta(x + 80, y + 162, nome, { "font-size": 17, "font-weight": 800, fill: "#1D2329" })));
+    svg.append(fili, storico, ...carte, lente);
+    return {
+      vai(k) {
+        vedi(lente, k === 0);
+        vedi(fili, k === 6);
+        carte.forEach((c, i) => {
+          c.style.opacity = k === 0 ? .15 : k === 6 || i + 1 === k ? 1 : i + 1 < k ? .4 : 0;
+          c.querySelector(".sp-bordo").setAttribute("stroke", i + 1 === k ? "#F2B705" : "#DDD5C3");
+          c.querySelector(".sp-bordo").setAttribute("stroke-width", i + 1 === k ? 6 : 3);
+        });
+      },
+      ferma() {}
+    };
+  }
+};
+
+/* ---------- la linea del tempo ---------- */
+const LINEA = {
+  passi: [
+    "La LINEA DEL TEMPO mette in ordine i fatti: a sinistra quello che è successo PRIMA, a destra quello che è successo DOPO.",
+    "Per contare gli anni partiamo da un fatto importante: la NASCITA DI CRISTO. È il modo di contare usato in Italia e in gran parte del mondo.",
+    "Gli anni DOPO la nascita di Cristo si scrivono d.C. e si contano in avanti: 100, 500, 1000, 2000… fino a oggi.",
+    "Gli anni PRIMA della nascita di Cristo si scrivono a.C. e si contano all'indietro: più il numero è grande, più il fatto è antico. Il 3000 a.C. è più antico del 500 a.C.!",
+    "Per esempio: secondo la tradizione Roma nasce nel 753 a.C., e il Colosseo si apre nell'80 d.C. La nascita di Roma viene molto prima.",
+    "Cento anni fanno un SECOLO e mille anni un MILLENNIO. E attenzione: contando gli anni avanti e dopo Cristo, l'anno zero non esiste! Dopo l'anno 1 a.C. viene subito l'anno 1 d.C."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FFF8EC" }));
+    svg.append(s("defs", {}, s("marker", { id: "sp-punta-lt", viewBox: "0 0 10 10", refX: 8, refY: 5, markerWidth: 6, markerHeight: 6, orient: "auto" },
+      s("path", { d: "M0 0 L10 5 L0 10 Z", fill: "#1D2329" }))));
+    const X = anno => 472 + anno * 0.144;     // da 3000 a.C. (x 40) a 2000 d.C. (x 760)
+    const riga = s("line", { x1: 30, y1: 260, x2: 778, y2: 260, stroke: "#1D2329", "stroke-width": 6, "marker-end": "url(#sp-punta-lt)" });
+    const ordine = s("g", { class: "sp-sfuma" },
+      figura(picto(2275), 90, 120, 110, 110), figura(picto(7176), 345, 110, 110, 120), figura(picto(39006), 600, 100, 110, 130),
+      etichetta(80, 310, "◀ PRIMA", 26), etichetta(720, 310, "DOPO ▶", 26));
+    const cristo = s("g", { class: "sp-sfuma" },
+      s("rect", { x: X(0) - 4, y: 215, width: 8, height: 90, rx: 4, fill: "#1D2329" }),
+      etichetta(X(0), 200, "NASCITA DI CRISTO", 22));
+    // le tacche dei 500 anni scendono di una riga, così le scritte non si toccano
+    const tacca = (anno, testo) => s("g", {},
+      s("line", { x1: X(anno), y1: 250, x2: X(anno), y2: Math.abs(anno) === 500 ? 300 : 272, stroke: "#1D2329", "stroke-width": 3 }),
+      scritta(X(anno), Math.abs(anno) === 500 ? 320 : 296, testo, { "font-size": 16, "font-weight": 700, fill: "#1D2329" }));
+    const dopo = s("g", { class: "sp-sfuma" },
+      s("rect", { x: X(0), y: 254, width: 760 - X(0), height: 12, fill: "#1E6B52" }),
+      tacca(500, "500 d.C."), tacca(1000, "1000 d.C."), tacca(2000, "2000 d.C."), etichetta(752, 236, "OGGI", 16));
+    const notaDopo = s("g", { class: "sp-sfuma" }, etichetta(670, 370, "si conta in avanti ▶", 20));
+    const prima = s("g", { class: "sp-sfuma" },
+      s("rect", { x: 40, y: 254, width: X(0) - 40, height: 12, fill: "#B7793F" }),
+      tacca(-3000, "3000 a.C."), tacca(-2000, "2000 a.C."), tacca(-1000, "1000 a.C."), tacca(-500, "500 a.C."));
+    const notaPrima = s("g", { class: "sp-sfuma" }, etichetta(190, 370, "◀ si conta all'indietro", 20), etichetta(150, 405, "più antico", 20));
+    const esempio = s("g", { class: "sp-sfuma" },
+      s("circle", { cx: X(-753), cy: 260, r: 12, fill: "#F2B705", stroke: "#1D2329", "stroke-width": 3 }),
+      etichetta(X(-753) - 40, 118, "753 a.C.", 20), etichetta(X(-753) - 40, 144, "NASCE ROMA (tradizione)", 17),
+      s("line", { x1: X(-753), y1: 154, x2: X(-753), y2: 248, stroke: "#F2B705", "stroke-width": 3 }),
+      figura("foto/colosseo.jpg", X(80) + 40, 335, 80, 100),
+      s("circle", { cx: X(80), cy: 260, r: 12, fill: "#F2B705", stroke: "#1D2329", "stroke-width": 3 }),
+      etichetta(X(80) + 190, 370, "80 d.C.", 20), etichetta(X(80) + 190, 396, "IL COLOSSEO", 17));
+    const misure = s("g", { class: "sp-sfuma" },
+      s("rect", { x: 70, y: 40, width: 270, height: 110, rx: 16, fill: "#fff", stroke: "#DDD5C3", "stroke-width": 3 }),
+      etichetta(205, 85, "1 SECOLO = 100 ANNI", 22), etichetta(205, 125, "1 MILLENNIO = 1000 ANNI", 20),
+      s("rect", { x: 420, y: 40, width: 320, height: 110, rx: 16, fill: "#fff", stroke: "#E0332B", "stroke-width": 3 }),
+      etichetta(580, 82, "... 2 a.C. | 1 a.C. | 1 d.C. | 2 d.C. ...", 18), etichetta(580, 124, "L'ANNO ZERO NON ESISTE", 22));
+    svg.append(prima, dopo, riga, ordine, cristo, notaPrima, notaDopo, esempio, misure);
+    return {
+      vai(k) {
+        vedi(ordine, k === 0);
+        vedi(cristo, k >= 1);
+        vedi(dopo, k >= 2);
+        vedi(prima, k >= 3);
+        vedi(notaDopo, k === 2 || k === 3);
+        vedi(notaPrima, k === 3);
+        vedi(esempio, k === 4);
+        vedi(misure, k === 5);
+      },
+      ferma() {}
+    };
+  }
+};
+
+/* ---------- i punti cardinali ---------- */
+const PUNTI = {
+  passi: [
+    "Per orientarci, cioè per capire dove ci troviamo e da che parte andare, usiamo i quattro PUNTI CARDINALI: NORD, EST, SUD e OVEST.",
+    "Mettiamoci con il SUD davanti a noi. Al mattino il Sole sorge dalla parte di EST, alla nostra sinistra.",
+    "A metà della giornata il Sole è nel punto più alto del suo cammino nel cielo, verso SUD.",
+    "La sera il Sole tramonta dalla parte di OVEST, alla nostra destra.",
+    "Il NORD è dalla parte opposta al sud. Di notte, guardando verso nord, vediamo la STELLA POLARE.",
+    "La BUSSOLA ci aiuta sempre, di giorno e di notte: il suo ago calamitato indica il nord."
+  ],
+  crea(svg) {
+    const cieloR = s("rect", { width: 800, height: 450, fill: "#9FD3F0", class: "sp-cielo" });
+    svg.append(cieloR);
+    const stelle = s("g", { class: "sp-sfuma" });
+    const r = dado(5);
+    for (let i = 0; i < 70; i++) stelle.append(s("circle", { cx: (r() * 800).toFixed(1), cy: (r() * 300).toFixed(1), r: (0.5 + r()).toFixed(2), fill: "#fff", opacity: .8 }));
+    stelle.append(s("circle", { cx: 400, cy: 120, r: 6, fill: "#FFF6C8" }), etichettaCielo(400, 100, "STELLA POLARE", 18));
+    const percorso = s("path", { d: "M90 330 Q 400 -150 710 330", fill: "none", stroke: "#fff", "stroke-width": 3, "stroke-dasharray": "8 10", opacity: .8, class: "sp-sfuma" });
+    const sole = s("g", { class: "sp-astro" }, s("circle", { r: 34, fill: "#FFD23F" }),
+      Array.from({ length: 8 }, (x, k) => { const a = k * Math.PI / 4; return s("line", { x1: Math.cos(a) * 44, y1: Math.sin(a) * 44, x2: Math.cos(a) * 58, y2: Math.sin(a) * 58, stroke: "#FFB800", "stroke-width": 5, "stroke-linecap": "round" }); }));
+    const terra = s("rect", { y: 330, width: 800, height: 120, fill: "#74A85A" });
+    const nomiGiorno = s("g", { class: "sp-sfuma" }, etichetta(90, 380, "EST", 30), etichetta(400, 380, "SUD", 30), etichetta(400, 418, "davanti a noi", 18), etichetta(710, 380, "OVEST", 30));
+    const nomiNotte = s("g", { class: "sp-sfuma" }, etichetta(90, 380, "OVEST", 30), etichetta(400, 380, "NORD", 30), etichetta(400, 418, "davanti a noi", 18), etichetta(710, 380, "EST", 30));
+    const rosa = s("g", { class: "sp-sfuma" }, s("g", { transform: "translate(400 200)" },
+      s("circle", { r: 120, fill: "#fff", stroke: "#1D2329", "stroke-width": 4 }),
+      s("path", { d: "M0 -105 L18 0 L0 105 L-18 0 Z", fill: "#1D2329" }), s("path", { d: "M-105 0 L0 -18 L105 0 L0 18 Z", fill: "#6B7785" }),
+      s("path", { d: "M0 -105 L18 0 L-18 0 Z", fill: "#E0332B" }),
+      etichetta(0, -128, "N", 32), etichetta(0, 156, "S", 32), etichetta(150, 12, "E", 32), etichetta(-150, 12, "O", 32)));
+    const bussola = s("g", { class: "sp-sfuma" }, s("g", { transform: "translate(400 200)" },
+      s("circle", { r: 130, fill: "#F4EFE6", stroke: "#8A6D3B", "stroke-width": 10 }),
+      etichetta(0, -95, "N", 30), etichetta(0, 118, "S", 30), etichetta(105, 10, "E", 30), etichetta(-105, 10, "O", 30),
+      s("g", { class: "sp-ago" }, s("path", { d: "M0 -90 L14 0 L-14 0 Z", fill: "#E0332B" }), s("path", { d: "M0 90 L14 0 L-14 0 Z", fill: "#6B7785" }),
+        s("circle", { r: 8, fill: "#1D2329" }))));
+    svg.append(stelle, percorso, sole, terra, nomiGiorno, nomiNotte, rosa, bussola);
+    const posto = [[90, 330], [400, 90], [710, 330]];
+    const colori = ["#9FD3F0", "#FFD6A5", "#9FD3F0", "#FFB38A", "#0B1020", "#9FD3F0"];
+    return {
+      vai(k) {
+        cieloR.setAttribute("fill", colori[k]);
+        const paesaggio = k >= 1 && k <= 4;
+        terra.style.opacity = paesaggio ? 1 : 0;
+        vedi(percorso, k >= 1 && k <= 3);
+        vedi(nomiGiorno, k >= 1 && k <= 3);
+        vedi(nomiNotte, k === 4);
+        vedi(stelle, k === 4);
+        vedi(rosa, k === 0);
+        vedi(bussola, k === 5);
+        anima(bussola, k === 5);
+        const [x, y] = posto[Math.min(Math.max(k - 1, 0), 2)];
+        sole.style.opacity = k >= 1 && k <= 3 ? 1 : 0;
+        sole.style.transform = `translate(${x}px, ${y}px)`;
+      },
+      ferma() {}
+    };
+  }
+};
+
+/* ---------- pianta e carta geografica ---------- */
+const CARTE = {
+  passi: [
+    "Per disegnare un posto lo guardiamo dall'ALTO, come farebbe un uccello in volo. Un tavolo, visto dall'alto, diventa un rettangolo.",
+    "Poi lo RIMPICCIOLIAMO sempre nello stesso modo: è la RIDUZIONE IN SCALA. Con la scala 1 a 100, un centimetro sul foglio vale 100 centimetri nella realtà, cioè un metro.",
+    "Al posto delle cose disegniamo SIMBOLI e colori. La LEGENDA spiega che cosa vuol dire ogni simbolo.",
+    "La PIANTA rappresenta un posto piccolo, come una stanza o una casa. La CARTA GEOGRAFICA rappresenta un territorio grande, come una regione o tutta l'Italia.",
+    "Nelle carte FISICHE i colori mostrano il territorio: verde per le pianure, giallo per le colline, marrone per le montagne, azzurro per l'acqua. Nelle carte POLITICHE vediamo confini, regioni e città."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#F7F3EA" }));
+    const alto = s("g", { class: "sp-sfuma" },
+      figura(picto(3129), 60, 170, 230, 190), etichetta(175, 395, "di lato", 22),
+      figura(picto(2490), 520, 10, 90, 90),
+      s("path", { d: "M565 105 L565 160", stroke: "#1D2329", "stroke-width": 4, "stroke-dasharray": "6 6" }),
+      s("rect", { x: 450, y: 180, width: 230, height: 140, rx: 6, fill: "#B07A45", stroke: "#6E4A26", "stroke-width": 5 }),
+      etichetta(565, 365, "visto dall'alto", 22));
+    const stanza = s("g", { transform: "translate(400 215)" }, s("g", { class: "sp-riduci" },
+      s("rect", { x: -300, y: -150, width: 600, height: 300, fill: "#fff", stroke: "#1D2329", "stroke-width": 6 }),
+      s("rect", { x: -120, y: -50, width: 240, height: 100, fill: "#B07A45" }),
+      etichetta(0, -165, "3 metri nella realtà", 22)));
+    const scala = s("g", { class: "sp-sfuma" },
+      etichetta(400, 330, "3 centimetri sul foglio", 22), etichetta(400, 395, "SCALA 1 : 100", 34));
+    const ridotta = s("g", { class: "sp-sfuma" }, stanza);
+    const simbolo = {
+      casa: (x, y) => s("rect", { x: x - 9, y: y - 9, width: 18, height: 18, fill: "#E0332B", stroke: "#1D2329", "stroke-width": 2 }),
+      albero: (x, y) => s("circle", { cx: x, cy: y, r: 10, fill: "#2E9E44" })
+    };
+    const mappa = s("g", { class: "sp-sfuma" },
+      s("rect", { x: 40, y: 40, width: 470, height: 370, rx: 10, fill: "#fff", stroke: "#9AA8B4", "stroke-width": 3 }),
+      s("path", { d: "M60 120 C 180 160, 260 60, 380 140 S 470 260, 500 230", fill: "none", stroke: "#2F8FD8", "stroke-width": 10, "stroke-linecap": "round" }),
+      s("path", { d: "M60 330 L 500 300", stroke: "#8A8F96", "stroke-width": 10 }),
+      [[120, 260], [160, 280], [210, 250], [300, 270], [340, 245]].map(([x, y]) => simbolo.casa(x, y)),
+      [[90, 200], [130, 190], [400, 360], [440, 370], [470, 350], [250, 200]].map(([x, y]) => simbolo.albero(x, y)),
+      s("rect", { x: 540, y: 90, width: 220, height: 260, rx: 10, fill: "#fff", stroke: "#1D2329", "stroke-width": 3 }),
+      etichetta(650, 125, "LEGENDA", 22),
+      simbolo.casa(575, 170), scritta(670, 177, "casa", { "font-size": 20, fill: "#1D2329" }),
+      simbolo.albero(575, 220), scritta(670, 227, "albero", { "font-size": 20, fill: "#1D2329" }),
+      s("line", { x1: 560, y1: 270, x2: 595, y2: 270, stroke: "#2F8FD8", "stroke-width": 8 }), scritta(670, 277, "fiume", { "font-size": 20, fill: "#1D2329" }),
+      s("line", { x1: 560, y1: 318, x2: 595, y2: 318, stroke: "#8A8F96", "stroke-width": 8 }), scritta(670, 325, "strada", { "font-size": 20, fill: "#1D2329" }));
+    const confronto = s("g", { class: "sp-sfuma" },
+      s("rect", { x: 70, y: 90, width: 280, height: 220, fill: "#fff", stroke: "#1D2329", "stroke-width": 5 }),
+      s("rect", { x: 90, y: 110, width: 110, height: 70, fill: "#9BC3E6" }), s("rect", { x: 240, y: 230, width: 90, height: 60, fill: "#B07A45" }),
+      s("rect", { x: 70, y: 250, width: 6, height: 50, fill: "#F7F3EA" }),
+      etichetta(210, 350, "PIANTA DI UNA STANZA", 22),
+      figura(picto(28971), 450, 50, 280, 290), etichetta(590, 370, "CARTA DELL'ITALIA", 22));
+    const fisica = s("g", { class: "sp-sfuma" },
+      s("rect", { x: 40, y: 40, width: 470, height: 370, rx: 10, fill: "#7FB8E8" }),
+      s("path", { d: "M40 300 C 140 280, 200 330, 300 320 S 450 300, 510 320 L 510 410 L 40 410 Z", fill: "#7FB8E8" }),
+      s("path", { d: "M40 40 L 510 40 L 510 300 C 450 290, 380 310, 300 300 C 220 290, 120 300, 40 290 Z", fill: "#8DC66B" }),
+      s("path", { d: "M180 40 C 200 120, 330 140, 380 90 C 420 60, 470 70, 510 110 L 510 40 Z", fill: "#E9D36B" }),
+      s("path", { d: "M300 40 C 320 80, 400 90, 430 60 C 450 45, 480 50, 510 70 L 510 40 Z", fill: "#A0703C" }),
+      s("path", { d: "M330 110 C 300 170, 220 200, 185 290 S 170 320, 165 330", fill: "none", stroke: "#2F8FD8", "stroke-width": 8 }),
+      s("ellipse", { cx: 120, cy: 160, rx: 45, ry: 25, fill: "#7FB8E8" }),
+      s("rect", { x: 540, y: 90, width: 220, height: 260, rx: 10, fill: "#fff", stroke: "#1D2329", "stroke-width": 3 }),
+      etichetta(650, 125, "LEGENDA", 22),
+      [["#A0703C", "montagna"], ["#E9D36B", "collina"], ["#8DC66B", "pianura"], ["#7FB8E8", "acqua"]].map(([c, n], i) => s("g", {},
+        s("rect", { x: 560, y: 150 + i * 48, width: 36, height: 28, fill: c, stroke: "#1D2329", "stroke-width": 2 }),
+        scritta(675, 171 + i * 48, n, { "font-size": 20, fill: "#1D2329" }))),
+      etichetta(275, 435, "CARTA FISICA", 22));
+    svg.append(alto, ridotta, scala, mappa, confronto, fisica);
+    return {
+      vai(k) {
+        vedi(alto, k === 0);
+        vedi(ridotta, k === 1);
+        scala.style.transitionDelay = k === 1 ? "2.4s" : "0s";   // le misure compaiono quando la stanza è già rimpicciolita
+        vedi(scala, k === 1);
+        stanza.firstChild.classList.toggle("sp-piccola", k === 1);
+        vedi(mappa, k === 2);
+        vedi(confronto, k === 3);
+        vedi(fisica, k === 4);
+      },
+      ferma() {}
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
+  fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE };
+
+// Un video libero dell'archivio Wikimedia Commons: niente pubblicità. Si carica solo quando qualcuno lo chiede,
+// e accanto c'è il link alla sua pagina, dove ci sono autore e licenza.
+function videoLibero(nome) {
+  const pagina = "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(nome);
+  const box = el("div", { class: "sp-carica" },
+    el("button", { type: "button", class: "pulsante", text: "▶ Carica il video", on: { click: () => {
+      box.replaceChildren(el("video", { src: "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(nome),
+        controls: true, autoplay: true, playsinline: true, preload: "metadata" }));
+    } } }),
+    el("small", {}, "Video libero, senza pubblicità, dall'archivio Wikimedia Commons. ",
+      el("a", { href: pagina, target: "_blank", rel: "noopener", text: "Autore e licenza" })));
+  return box;
+}
+
+// YouTube solo come seconda scelta: si carica al tocco, e si dice chiaro che può mostrare pubblicità.
 function videoYoutube(id) {
-  const box = el("div", { class: "sp-yt" },
+  const box = el("div", { class: "sp-carica" },
     el("button", { type: "button", class: "pulsante", text: "▶ Carica il video", on: { click: () => {
       box.replaceChildren(el("iframe", { src: "https://www.youtube-nocookie.com/embed/" + id + "?rel=0", title: "Video",
         allow: "autoplay; encrypted-media; picture-in-picture", allowfullscreen: true, referrerpolicy: "strict-origin-when-cross-origin" }));
     } } }),
-    el("small", { text: "Il video arriva da YouTube: quando lo carichi, YouTube riceve i dati della connessione." }));
+    el("small", { text: "Il video arriva da YouTube, che può mostrare pubblicità e riceve i dati della connessione. " +
+      "Per non vedere la pubblicità si può usare un browser che la blocca, come Brave." }));
   return box;
 }
 
-// scopri: { animazione, youtube }; fine: si chiama quando si passa all'esercizio.
+// scopri: { animazione, commons, youtube }; fine: si chiama quando si passa all'esercizio.
 export function spiegazione(scopri, fine) {
   const a = SPIEGAZIONI[scopri.animazione] || null;
   const passi = a ? a.passi.map(p => (typeof p === "string" ? { t: p } : p)) : [];
-  if (scopri.youtube) passi.push({ t: "Guarda anche questo video.", youtube: scopri.youtube });
+  if (scopri.commons) passi.push({ t: "Guarda anche questo video.", commons: scopri.commons });
+  if (scopri.youtube) passi.push({ t: scopri.commons ? "E guarda anche questo." : "Guarda anche questo video.", youtube: scopri.youtube });
   const svg = s("svg", { viewBox: "0 0 800 450", class: "sp-svg", role: "img", "aria-label": ANIMAZIONI[scopri.animazione] || "Video" });
   const ctrl = a ? a.crea(svg) : { vai() {}, ferma() {} };
   const scena = el("div", { class: "sp-scena" }, svg);
@@ -432,10 +692,13 @@ export function spiegazione(scopri, fine) {
     i = k;
     const p = passi[k];
     if (extra) { extra.remove(); extra = null; }
-    svg.style.display = p.video || p.youtube ? "none" : "";
+    svg.style.display = p.video || p.commons || p.youtube ? "none" : "";
     if (p.video) {
       extra = el("video", { src: "video/" + p.video, autoplay: true, loop: true, playsinline: true, "aria-hidden": "true" });
       extra.muted = true;
+      scena.append(extra);
+    } else if (p.commons) {
+      extra = videoLibero(p.commons);
       scena.append(extra);
     } else if (p.youtube) {
       extra = videoYoutube(p.youtube);

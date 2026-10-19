@@ -2108,6 +2108,9 @@
      ]
     }
    ]
+  },
+  "scopri": {
+   "animazione": "fonti"
   }
  },
  {
@@ -2439,6 +2442,9 @@
      ]
     }
    ]
+  },
+  "scopri": {
+   "animazione": "fonti"
   }
  },
  {
@@ -2853,7 +2859,10 @@
   "epoca": [
    -753,
    476
-  ]
+  ],
+  "scopri": {
+   "animazione": "linea-del-tempo"
+  }
  },
  {
   "id": "dove-si-trova",
@@ -3152,6 +3161,9 @@
      }
     ]
    ]
+  },
+  "scopri": {
+   "animazione": "punti-cardinali"
   }
  },
  {
@@ -3200,7 +3212,7 @@
     },
     {
      "d": {
-      "t": "A mezzogiorno il sole è verso…",
+      "t": "A metà giornata il sole è verso…",
       "p": 7252
      },
      "giusta": {
@@ -3252,6 +3264,9 @@
      ]
     }
    ]
+  },
+  "scopri": {
+   "animazione": "punti-cardinali"
   }
  },
  {
@@ -3313,6 +3328,9 @@
      }
     ]
    ]
+  },
+  "scopri": {
+   "animazione": "carte"
   }
  },
  {

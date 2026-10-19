@@ -33,7 +33,11 @@ export const ANIMAZIONI = {
   "ciclo-acqua": "Il ciclo dell'acqua",
   pianta: "Dal seme al frutto",
   "sistema-solare": "Il sistema solare",
-  universo: "Dove siamo nell'universo"
+  universo: "Dove siamo nell'universo",
+  fonti: "Le fonti storiche",
+  "linea-del-tempo": "La linea del tempo",
+  "punti-cardinali": "I punti cardinali",
+  carte: "Pianta e carta geografica"
 };
 
 export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Inglese", "Arte e immagine", "Musica", "Altro"];
@@ -80,12 +84,14 @@ export function valida(v) {
     dati: {}
   };
   if (MATERIE.includes(v.materia)) es.materia = v.materia;
-  // la spiegazione prima dell'esercizio: un'animazione dell'app e/o un video di YouTube (solo il codice del video)
+  // la spiegazione prima dell'esercizio: un'animazione dell'app, un video libero dell'archivio Wikimedia Commons
+  // (solo il nome del file: niente pubblicità) e, se serve, un video di YouTube (solo il codice)
   if (v.scopri && typeof v.scopri === "object") {
     const sc = {};
     if (Object.prototype.hasOwnProperty.call(ANIMAZIONI, v.scopri.animazione)) sc.animazione = v.scopri.animazione;
+    if (typeof v.scopri.commons === "string" && /^[^/\\?#<>"]{1,200}\.(webm|ogv|ogg|mp4)$/i.test(v.scopri.commons)) sc.commons = v.scopri.commons;
     if (typeof v.scopri.youtube === "string" && /^[\w-]{11}$/.test(v.scopri.youtube)) sc.youtube = v.scopri.youtube;
-    if (sc.animazione || sc.youtube) es.scopri = sc;
+    if (sc.animazione || sc.commons || sc.youtube) es.scopri = sc;
   }
   // il periodo dell'esercizio sulla linea del tempo: [da, a] in anni, negativi = avanti Cristo
   if (Array.isArray(v.epoca) && v.epoca.length === 2 && v.epoca.every(Number.isFinite) &&

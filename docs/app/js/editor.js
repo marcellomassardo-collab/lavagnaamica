@@ -35,6 +35,19 @@ function esercizioDa(b) {
   return valida(es);
 }
 
+// Dal link di un video dell'archivio Wikimedia Commons (pagina del file o indirizzo diretto) al nome del file.
+export function fileCommons(testo) {
+  const t = String(testo || "").trim();
+  const m = t.match(/commons\.wikimedia\.org\/wiki\/(?:File:|Special:FilePath\/)([^?#]+)/i) ||
+    t.match(/upload\.wikimedia\.org\/wikipedia\/commons\/(?:transcoded\/)?[0-9a-f]\/[0-9a-f]{2}\/([^/?#]+)/i) ||
+    t.match(/^(?:File:)?([^/?#]+\.(?:webm|ogv|ogg|mp4))$/i);
+  if (!m) return "";
+  let nome = m[1];
+  try { nome = decodeURIComponent(nome); } catch (e) {}
+  nome = nome.replace(/ /g, "_");
+  return /\.(webm|ogv|ogg|mp4)$/i.test(nome) ? nome : "";
+}
+
 // Dal link di un video di YouTube (in tutte le sue forme) al codice di 11 caratteri.
 export function idYoutube(testo) {
   const t = String(testo || "").trim();
@@ -310,10 +323,16 @@ export function editor(bozza, { salva, annulla }) {
     el("option", { value: "", text: "Nessuna" }),
     Object.entries(ANIMAZIONI).map(([k, nome]) => el("option", { value: k, selected: k === bozza.scopri.animazione, text: nome })));
   const avvisoVideo = el("small", { class: "errore" });
-  const video = testoLibero(bozza.scopri.youtube ? "https://youtu.be/" + bozza.scopri.youtube : "", v => {
+  const video = testoLibero(bozza.scopri.commons ? "https://commons.wikimedia.org/wiki/File:" + bozza.scopri.commons : "", v => {
+    const nome = fileCommons(v);
+    bozza.scopri.commons = nome || undefined;
+    avvisoVideo.textContent = v.trim() && !nome ? "Non riconosco il link: copia l'indirizzo della pagina del video su Wikimedia Commons." : "";
+  }, { placeholder: "Per esempio: https://commons.wikimedia.org/wiki/File:…webm", "aria-label": "Link del video libero" });
+  const avvisoYoutube = el("small", { class: "errore" });
+  const youtube = testoLibero(bozza.scopri.youtube ? "https://youtu.be/" + bozza.scopri.youtube : "", v => {
     const id = idYoutube(v);
     bozza.scopri.youtube = id || undefined;
-    avvisoVideo.textContent = v.trim() && !id ? "Non riconosco il link: copia l'indirizzo del video da YouTube." : "";
+    avvisoYoutube.textContent = v.trim() && !id ? "Non riconosco il link: copia l'indirizzo del video da YouTube." : "";
   }, { placeholder: "Per esempio: https://www.youtube.com/watch?v=…", "aria-label": "Link del video di YouTube" });
 
   return el("div", { class: "editor" },
@@ -326,8 +345,12 @@ export function editor(bozza, { salva, annulla }) {
     etichetta("Gioco con cui si apre", sceltaGioco, "Chi gioca può passare agli altri giochi della lista: il contenuto è lo stesso."),
     etichetta("Consegna (facoltativa)", consegna),
     etichetta("Spiegazione animata prima dell'esercizio (facoltativa)", animazione, "Parte da sola prima dell'esercizio; si può saltare o rivedere."),
-    etichetta("Video di YouTube (facoltativo)", video, "Si vede dopo la spiegazione e si carica solo se qualcuno lo chiede."),
+    etichetta("Video libero da Wikimedia Commons (facoltativo, consigliato)", video,
+      "Senza pubblicità. Si vede dopo la spiegazione e si carica solo se qualcuno lo chiede."),
     avvisoVideo,
+    etichetta("Video di YouTube (facoltativo, solo se serve)", youtube,
+      "YouTube può mostrare pubblicità anche nei video incorporati: se c'è, meglio un video di Wikimedia Commons."),
+    avvisoYoutube,
     errore,
     el("div", { class: "editor-azioni" },
       el("button", { type: "button", class: "pulsante secondario", text: "Annulla", on: { click: annulla } }),
