@@ -19,14 +19,15 @@ import * as raggruppa from "./giochi/raggruppa.js";
 import * as sequenza from "./giochi/sequenza.js";
 import * as completa from "./giochi/completa.js";
 import * as matematica from "./giochi/matematica.js";
+import * as lettura from "./giochi/lettura.js";
 
-const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica };
+const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura };
 
 /* ---------- inizio ---------- */
 
 function descrizione(es) {
   const quanti = { coppie: es.dati.coppie, gruppi: es.dati.gruppi, domande: es.dati.domande, sequenza: es.dati.passi,
-    frasi: es.dati.frasi, matematica: es.dati.esercizi }[es.tipo];
+    frasi: es.dati.frasi, matematica: es.dati.esercizi, lettura: es.dati.esercizi }[es.tipo];
   return TIPI[es.tipo].nome + " · " + quanti.length;
 }
 
@@ -430,6 +431,7 @@ function info() {
     el("h2", { text: "Riconoscimenti" }),
     el("p", { text: "Pittogrammi: autore Sergio Palao. Origine: ARASAAC (arasaac.org). Licenza: CC BY-NC-SA 4.0. Proprietà: Governo d'Aragona (Spagna)." }),
     el("p", { text: "Carattere corsivo: Playwrite IT Moderna, SIL Open Font License 1.1." }),
+    el("p", { text: "Carattere per la lettura: Andika, di SIL International, SIL Open Font License 1.1." }),
     el("p", { text: "Foto di reperti e monumenti: di pubblico dominio, salvate dentro l'app." }),
     el("h2", { text: "Licenze" }),
     el("p", {}, "Il codice è libero, sotto licenza ",

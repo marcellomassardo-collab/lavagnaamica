@@ -1,7 +1,7 @@
 // Completa la frase: una frase alla volta, le parole vanno nei buchi.
 // Nel testo dell'insegnante le parole da completare stanno tra [quadre].
 
-import { el, mescola, pulsanteVoce } from "../ui.js";
+import { el, mescola, pulsanteVoce, due } from "../ui.js";
 import { creaTavolo } from "../trascina.js";
 
 const BUCO = /\[([^\]]+)\]/g;
@@ -55,7 +55,7 @@ export function avvia(area, es, ctx) {
       el("div", { class: "frase-box" }, riga, pulsanteVoce(leggiFrase, "Ascolta la frase")),
       el("div", { class: "vasca" },
         mescola(buchi.concat(altre)).map(p => el("div", { class: "carta parola mobile", "data-mobile": true, "data-voce": p },
-          el("span", { class: "carta-testo", text: p })))));
+          el("span", { class: "carta-testo" }, due(p))))));
     ctx.leggi(leggiFrase());
   }
 

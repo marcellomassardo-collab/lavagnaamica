@@ -1,7 +1,7 @@
 // Editor degli esercizi: tutto si prepara riempiendo dei campi, senza codice.
 
 import { el, immaginePicto } from "./ui.js";
-import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, OPERAZIONI, SCHEMI, ANIMAZIONI, giochiPer, valida } from "./modello.js";
+import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, GENERI_LETTURA, OPERAZIONI, SCHEMI, ANIMAZIONI, giochiPer, valida } from "./modello.js";
 import { scegliPittogramma } from "./picto.js";
 
 const vuoto = () => ({ t: "" });
@@ -14,7 +14,8 @@ const NUOVI = {
   domande: () => ({ domande: [nuovaDomanda()] }),
   sequenza: () => ({ passi: [vuoto(), vuoto(), vuoto()] }),
   frasi: () => ({ frasi: ["", ""], extra: [] }),
-  matematica: () => ({ aiuto: "sempre", oggetto: { t: "mela", p: 2462 }, esercizi: [{ genere: "conta", a: 5 }] })
+  matematica: () => ({ aiuto: "sempre", oggetto: { t: "mela", p: 2462 }, esercizi: [{ genere: "conta", a: 5 }] }),
+  lettura: () => ({ esercizi: [{ genere: "parola", pezzi: ["ca", "ne"], p: 7202 }] })
 };
 
 // L'editor lavora su una copia; nei gruppi nome e immagine stanno in «testa».
@@ -156,9 +157,92 @@ function campiDiMatematica(x, ridisegna) {
   return campi;
 }
 
+/* ---------- lettura ---------- */
+
+// Un'immagine sola, da scegliere tra i pittogrammi (cerca con la parola indicata).
+function campoPicto(contenitore, chiave, cerca, nome, poi) {
+  const b = el("button", { type: "button", class: "picto-scegli" });
+  function mostra() {
+    const p = contenitore[chiave];
+    b.replaceChildren(p ? immaginePicto(p, "") : el("span", { "aria-hidden": "true", text: "🖼️" }));
+    b.setAttribute("aria-label", (p ? "Cambia " : "Scegli ") + nome);
+    b.title = b.getAttribute("aria-label");
+  }
+  b.addEventListener("click", () => scegliPittogramma(cerca(), id => {
+    if (id) contenitore[chiave] = id; else delete contenitore[chiave];
+    mostra();
+    if (poi) poi();
+  }));
+  mostra();
+  return el("div", { class: "campo" }, el("span", { class: "campo-nome", text: nome }), b);
+}
+
+// Le liste si scrivono in una riga: «ca-ne», «m + a», «a, e, o».
+const pezziIn = (v, segno) => String(v || "").split(segno).map(s => s.trim()).filter(Boolean);
+
+function campiDiLettura(x, ridisegna) {
+  const genere = menu(x.genere, Object.fromEntries(Object.entries(GENERI_LETTURA).map(([k, g]) => [k, g.nome])), v => {
+    Object.keys(x).forEach(k => delete x[k]);
+    x.genere = v;
+    if (v === "iniziale") Object.assign(x, { parola: "", giusta: "", altre: [] });
+    if (v === "fusione") Object.assign(x, { pezzi: ["m", "a"], altre: ["am", "mo"] });
+    if (v === "parola" || v === "frase") x.pezzi = [];
+    if (v === "leggi") Object.assign(x, { testo: "", altre: [] });
+    ridisegna();
+  }, "Che cosa");
+  const campi = [genere, el("small", { class: "spiega", text: GENERI_LETTURA[x.genere].spiega })];
+  const lista = (nome, chiave, segno, esempio, aiuto) => etichetta(nome,
+    testoLibero((x[chiave] || []).join({ ",": ", ", "-": "-", "+": " + ", " ": " " }[segno]),
+      v => { x[chiave] = pezziIn(v, segno === " " ? /\s+/ : segno); }, { placeholder: esempio }), aiuto);
+  if (x.genere === "iniziale") {
+    campi.push(
+      etichetta("La parola", testoLibero(x.parola, v => { x.parola = v; }, { placeholder: "mela" })),
+      campoPicto(x, "p", () => x.parola, "l'immagine"),
+      etichetta("Risposta giusta: la lettera o la sillaba iniziale", testoLibero(x.giusta, v => { x.giusta = v; }, { placeholder: "me" })),
+      lista("Risposte sbagliate", "altre", ",", "ma, mo", "Separate da virgole."));
+  }
+  if (x.genere === "fusione") {
+    campi.push(lista("Le lettere da unire", "pezzi", "+", "m + a", "Separate da +. La risposta giusta è la loro unione."),
+      lista("Risposte sbagliate", "altre", ",", "am, mo", "Separate da virgole: per esempio le lettere al contrario."));
+  }
+  if (x.genere === "parola") {
+    campi.push(lista("Le sillabe, in ordine", "pezzi", "-", "ca-ne", "Separate da un trattino."),
+      campoPicto(x, "p", () => (x.pezzi || []).join(""), "l'immagine della parola"));
+  }
+  if (x.genere === "frase") {
+    campi.push(lista("La frase", "pezzi", " ", "Il bambino dorme.", "Scritta giusta, con la maiuscola e il punto: le parole si mescolano da sole."),
+      campoPicto(x, "p", () => (x.pezzi || []).join(" "), "un'immagine (facoltativa)"));
+  }
+  if (x.genere === "leggi") {
+    if (!Array.isArray(x.altre)) x.altre = [];
+    const sbagliate = { a: x.altre[0], b: x.altre[1] };
+    const aggiorna = () => { x.altre = [sbagliate.a, sbagliate.b].filter(Boolean); };
+    const scegliSbagliata = (chiave, nome) => campoPicto(sbagliate, chiave, () => "", nome, aggiorna);
+    campi.push(
+      etichetta("La parola o la frase da leggere", testoLibero(x.testo, v => { x.testo = v; }, { placeholder: "Il bambino dorme." })),
+      campoPicto(x, "p", () => x.testo, "l'immagine giusta"),
+      scegliSbagliata("a", "un'immagine sbagliata"), scegliSbagliata("b", "un'altra immagine sbagliata (facoltativa)"));
+  }
+  return campi;
+}
+
 /* ---------- contenuto per ogni tipo ---------- */
 
 const SEZIONI = {
+  lettura(d, ridisegna) {
+    const sposta = (i, j) => { [d.esercizi[i], d.esercizi[j]] = [d.esercizi[j], d.esercizi[i]]; ridisegna(); };
+    return [
+      el("p", { class: "spiega", text: "Mettili in ordine, dal più facile al più difficile. Con la scrittura «MAIUSCOLO e minuscolo» ogni testo si vede in tutti e due i modi." }),
+      d.esercizi.map((x, i) => el("fieldset", { class: "box-ed" },
+        el("legend", { text: "Esercizio " + (i + 1) }),
+        campiDiLettura(x, ridisegna),
+        el("div", { class: "riga-ed" },
+          tasto("↑", () => sposta(i, i - 1), { "aria-label": "Sposta su", disabled: i === 0 }),
+          tasto("↓", () => sposta(i, i + 1), { "aria-label": "Sposta giù", disabled: i === d.esercizi.length - 1 }),
+          cestino(() => { d.esercizi.splice(i, 1); ridisegna(); }, d.esercizi.length > 1)))),
+      aggiungi("Aggiungi un esercizio", () => { d.esercizi.push({ genere: "parola", pezzi: [] }); ridisegna(); })
+    ];
+  },
   matematica(d, ridisegna) {
     const sposta = (i, j) => { [d.esercizi[i], d.esercizi[j]] = [d.esercizi[j], d.esercizi[i]]; ridisegna(); };
     return [

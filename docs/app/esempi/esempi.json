@@ -67,6 +67,1072 @@
   "materia": "Scienze"
  },
  {
+  "id": "leggere-1-vocali",
+  "titolo": "Leggere 1 · Le vocali",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Ascolta la parola: con che vocale inizia?",
+  "materia": "Italiano",
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "iniziale",
+     "parola": "ape",
+     "p": 24823,
+     "giusta": "a",
+     "altre": [
+      "e",
+      "i",
+      "o",
+      "u"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "albero",
+     "p": 3057,
+     "giusta": "a",
+     "altre": [
+      "e",
+      "i",
+      "o",
+      "u"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "elefante",
+     "p": 2372,
+     "giusta": "e",
+     "altre": [
+      "a",
+      "i",
+      "o",
+      "u"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "isola",
+     "p": 2966,
+     "giusta": "i",
+     "altre": [
+      "a",
+      "e",
+      "o",
+      "u"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "orso",
+     "p": 2488,
+     "giusta": "o",
+     "altre": [
+      "a",
+      "e",
+      "i",
+      "u"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "oca",
+     "p": 2878,
+     "giusta": "o",
+     "altre": [
+      "a",
+      "e",
+      "i",
+      "u"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "ombrello",
+     "p": 2500,
+     "giusta": "o",
+     "altre": [
+      "a",
+      "e",
+      "i",
+      "u"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "uva",
+     "p": 3247,
+     "giusta": "u",
+     "altre": [
+      "a",
+      "e",
+      "i",
+      "o"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "uovo",
+     "p": 2427,
+     "giusta": "u",
+     "altre": [
+      "a",
+      "e",
+      "i",
+      "o"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-2-maiuscole",
+  "titolo": "Leggere 2 · Maiuscolo e minuscolo",
+  "scrittura": "minuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni lettera maiuscola alla sua minuscola.",
+  "materia": "Italiano",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "A"
+     },
+     {
+      "t": "a"
+     }
+    ],
+    [
+     {
+      "t": "E"
+     },
+     {
+      "t": "e"
+     }
+    ],
+    [
+     {
+      "t": "I"
+     },
+     {
+      "t": "i"
+     }
+    ],
+    [
+     {
+      "t": "O"
+     },
+     {
+      "t": "o"
+     }
+    ],
+    [
+     {
+      "t": "U"
+     },
+     {
+      "t": "u"
+     }
+    ],
+    [
+     {
+      "t": "M"
+     },
+     {
+      "t": "m"
+     }
+    ],
+    [
+     {
+      "t": "P"
+     },
+     {
+      "t": "p"
+     }
+    ],
+    [
+     {
+      "t": "L"
+     },
+     {
+      "t": "l"
+     }
+    ],
+    [
+     {
+      "t": "S"
+     },
+     {
+      "t": "s"
+     }
+    ],
+    [
+     {
+      "t": "T"
+     },
+     {
+      "t": "t"
+     }
+    ],
+    [
+     {
+      "t": "R"
+     },
+     {
+      "t": "r"
+     }
+    ],
+    [
+     {
+      "t": "N"
+     },
+     {
+      "t": "n"
+     }
+    ],
+    [
+     {
+      "t": "C"
+     },
+     {
+      "t": "c"
+     }
+    ],
+    [
+     {
+      "t": "D"
+     },
+     {
+      "t": "d"
+     }
+    ],
+    [
+     {
+      "t": "F"
+     },
+     {
+      "t": "f"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "leggere-3-consonanti",
+  "titolo": "Leggere 3 · La prima lettera",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Ascolta la parola: con che lettera inizia?",
+  "materia": "Italiano",
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "iniziale",
+     "parola": "mela",
+     "p": 2462,
+     "giusta": "m",
+     "altre": [
+      "n",
+      "p"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "pane",
+     "p": 2494,
+     "giusta": "p",
+     "altre": [
+      "b",
+      "t"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "luna",
+     "p": 2933,
+     "giusta": "l",
+     "altre": [
+      "n",
+      "r"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "sole",
+     "p": 7252,
+     "giusta": "s",
+     "altre": [
+      "z",
+      "f"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "topo",
+     "p": 2546,
+     "giusta": "t",
+     "altre": [
+      "d",
+      "p"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "rana",
+     "p": 2543,
+     "giusta": "r",
+     "altre": [
+      "l",
+      "n"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "nave",
+     "p": 6932,
+     "giusta": "n",
+     "altre": [
+      "m",
+      "v"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "casa",
+     "p": 2317,
+     "giusta": "c",
+     "altre": [
+      "g",
+      "p"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "dado",
+     "p": 2731,
+     "giusta": "d",
+     "altre": [
+      "t",
+      "b"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "foca",
+     "p": 2397,
+     "giusta": "f",
+     "altre": [
+      "v",
+      "s"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-4-unisci",
+  "titolo": "Leggere 4 · Unisci le lettere",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Guarda le lettere che si uniscono e leggi la sillaba.",
+  "materia": "Italiano",
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "fusione",
+     "pezzi": [
+      "m",
+      "a"
+     ],
+     "altre": [
+      "am",
+      "mo",
+      "me"
+     ]
+    },
+    {
+     "genere": "fusione",
+     "pezzi": [
+      "p",
+      "e"
+     ],
+     "altre": [
+      "ep",
+      "pa",
+      "pi"
+     ]
+    },
+    {
+     "genere": "fusione",
+     "pezzi": [
+      "l",
+      "u"
+     ],
+     "altre": [
+      "ul",
+      "lo",
+      "la"
+     ]
+    },
+    {
+     "genere": "fusione",
+     "pezzi": [
+      "s",
+      "o"
+     ],
+     "altre": [
+      "os",
+      "sa",
+      "su"
+     ]
+    },
+    {
+     "genere": "fusione",
+     "pezzi": [
+      "t",
+      "i"
+     ],
+     "altre": [
+      "it",
+      "te",
+      "to"
+     ]
+    },
+    {
+     "genere": "fusione",
+     "pezzi": [
+      "r",
+      "a"
+     ],
+     "altre": [
+      "ar",
+      "re",
+      "ro"
+     ]
+    },
+    {
+     "genere": "fusione",
+     "pezzi": [
+      "n",
+      "e"
+     ],
+     "altre": [
+      "en",
+      "na",
+      "ni"
+     ]
+    },
+    {
+     "genere": "fusione",
+     "pezzi": [
+      "c",
+      "a"
+     ],
+     "altre": [
+      "ac",
+      "co",
+      "cu"
+     ]
+    },
+    {
+     "genere": "fusione",
+     "pezzi": [
+      "d",
+      "o"
+     ],
+     "altre": [
+      "od",
+      "da",
+      "di"
+     ]
+    },
+    {
+     "genere": "fusione",
+     "pezzi": [
+      "f",
+      "u"
+     ],
+     "altre": [
+      "uf",
+      "fa",
+      "fo"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-5-sillaba",
+  "titolo": "Leggere 5 · Con che sillaba inizia?",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Ascolta la parola: con che sillaba inizia?",
+  "materia": "Italiano",
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "iniziale",
+     "parola": "mela",
+     "p": 2462,
+     "giusta": "me",
+     "altre": [
+      "ma",
+      "mo"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "pane",
+     "p": 2494,
+     "giusta": "pa",
+     "altre": [
+      "pe",
+      "po"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "luna",
+     "p": 2933,
+     "giusta": "lu",
+     "altre": [
+      "la",
+      "li"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "sole",
+     "p": 7252,
+     "giusta": "so",
+     "altre": [
+      "sa",
+      "se"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "topo",
+     "p": 2546,
+     "giusta": "to",
+     "altre": [
+      "ta",
+      "tu"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "rana",
+     "p": 2543,
+     "giusta": "ra",
+     "altre": [
+      "re",
+      "ro"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "nave",
+     "p": 6932,
+     "giusta": "na",
+     "altre": [
+      "ne",
+      "no"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "casa",
+     "p": 2317,
+     "giusta": "ca",
+     "altre": [
+      "co",
+      "cu"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "dado",
+     "p": 2731,
+     "giusta": "da",
+     "altre": [
+      "do",
+      "de"
+     ]
+    },
+    {
+     "genere": "iniziale",
+     "parola": "foca",
+     "p": 2397,
+     "giusta": "fo",
+     "altre": [
+      "fa",
+      "fu"
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-6-parole",
+  "titolo": "Leggere 6 · Componi la parola",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Metti in ordine le sillabe e componi la parola.",
+  "materia": "Italiano",
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "parola",
+     "pezzi": [
+      "ca",
+      "ne"
+     ],
+     "p": 7202
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "me",
+      "la"
+     ],
+     "p": 2462
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "ca",
+      "sa"
+     ],
+     "p": 2317
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "so",
+      "le"
+     ],
+     "p": 7252
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "lu",
+      "na"
+     ],
+     "p": 2933
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "pa",
+      "ne"
+     ],
+     "p": 2494
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "ra",
+      "na"
+     ],
+     "p": 2543
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "to",
+      "po"
+     ],
+     "p": 2546
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "ma",
+      "no"
+     ],
+     "p": 2928
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "na",
+      "ve"
+     ],
+     "p": 6932
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-7-parole-lunghe",
+  "titolo": "Leggere 7 · Parole più lunghe",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Metti in ordine le sillabe e componi la parola.",
+  "materia": "Italiano",
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "parola",
+     "pezzi": [
+      "ma",
+      "ti",
+      "ta"
+     ],
+     "p": 2440
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "pe",
+      "co",
+      "ra"
+     ],
+     "p": 2489
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "lu",
+      "ma",
+      "ca"
+     ],
+     "p": 8061
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "ta",
+      "vo",
+      "lo"
+     ],
+     "p": 3129
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "ba",
+      "na",
+      "na"
+     ],
+     "p": 2530
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "pa",
+      "ta",
+      "ta"
+     ],
+     "p": 2503
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "gat",
+      "to"
+     ],
+     "p": 7114
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "pal",
+      "la"
+     ],
+     "p": 3241
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "gal",
+      "li",
+      "na"
+     ],
+     "p": 2403
+    },
+    {
+     "genere": "parola",
+     "pezzi": [
+      "ca",
+      "val",
+      "lo"
+     ],
+     "p": 2294
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-8-leggi-parole",
+  "titolo": "Leggere 8 · Leggi la parola",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Leggi la parola e tocca l'immagine giusta.",
+  "materia": "Italiano",
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "leggi",
+     "testo": "cane",
+     "p": 7202,
+     "altre": [
+      2494,
+      2317
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "pane",
+     "p": 2494,
+     "altre": [
+      7202,
+      2561
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "mela",
+     "p": 2462,
+     "altre": [
+      2561,
+      2928
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "pera",
+     "p": 2561,
+     "altre": [
+      2462,
+      2494
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "luna",
+     "p": 2933,
+     "altre": [
+      5892,
+      8061
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "lupo",
+     "p": 5892,
+     "altre": [
+      2933,
+      2546
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "topo",
+     "p": 2546,
+     "altre": [
+      5892,
+      2397
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "casa",
+     "p": 2317,
+     "altre": [
+      7202,
+      2731
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "mano",
+     "p": 2928,
+     "altre": [
+      6932,
+      2462
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "nave",
+     "p": 6932,
+     "altre": [
+      7173,
+      2928
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-9-ordina-frase",
+  "titolo": "Leggere 9 · Metti in ordine la frase",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Metti in ordine le parole e componi la frase.",
+  "materia": "Italiano",
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "frase",
+     "pezzi": [
+      "Il",
+      "bambino",
+      "dorme."
+     ],
+     "p": 2369
+    },
+    {
+     "genere": "frase",
+     "pezzi": [
+      "La",
+      "bambina",
+      "corre."
+     ],
+     "p": 2719
+    },
+    {
+     "genere": "frase",
+     "pezzi": [
+      "La",
+      "rana",
+      "salta."
+     ],
+     "p": 2543
+    },
+    {
+     "genere": "frase",
+     "pezzi": [
+      "Il",
+      "sole",
+      "è",
+      "giallo."
+     ],
+     "p": 7252
+    },
+    {
+     "genere": "frase",
+     "pezzi": [
+      "Il",
+      "bambino",
+      "legge",
+      "un",
+      "libro."
+     ],
+     "p": 2447
+    },
+    {
+     "genere": "frase",
+     "pezzi": [
+      "La",
+      "mucca",
+      "mangia",
+      "l'erba."
+     ],
+     "p": 2609
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-10-leggi-frasi",
+  "titolo": "Leggere 10 · Leggi la frase",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Leggi la frase e tocca l'immagine giusta.",
+  "materia": "Italiano",
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "leggi",
+     "testo": "Il bambino dorme.",
+     "p": 2369,
+     "altre": [
+      2349,
+      2276
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "Il bambino mangia.",
+     "p": 2349,
+     "altre": [
+      2369,
+      2447
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "Il bambino beve.",
+     "p": 2276,
+     "altre": [
+      2349,
+      2315
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "La bambina corre.",
+     "p": 2719,
+     "altre": [
+      24903,
+      2369
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "Il bambino legge.",
+     "p": 2447,
+     "altre": [
+      2380,
+      2315
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "Il bambino canta.",
+     "p": 2315,
+     "altre": [
+      3239,
+      2447
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "Il bambino piange.",
+     "p": 3239,
+     "altre": [
+      2315,
+      2349
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "Il bambino nuota.",
+     "p": 24903,
+     "altre": [
+      2719,
+      2369
+     ]
+    }
+   ]
+  }
+ },
+ {
   "id": "versi-nomi",
   "titolo": "Come si chiama il verso?",
   "scrittura": "maiuscolo",

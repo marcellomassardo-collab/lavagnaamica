@@ -44,10 +44,21 @@ export function fotoCarta(file, alt) {
   return el("img", { class: "foto", src: "foto/" + file, alt: alt || "", draggable: "false", decoding: "async" });
 }
 
+// Un testo per la scrittura «doppia»: sopra in stampato maiuscolo, sotto com'è scritto (minuscolo,
+// con la maiuscola a inizio frase). Con le altre scritture si vede una riga sola.
+// «evidenzia»: quanti caratteri iniziali mettere in grassetto.
+export function due(t, evidenzia) {
+  const riga = classe => el("span", { class: classe },
+    evidenzia ? [el("b", { text: t.slice(0, evidenzia) }), t.slice(evidenzia)] : t);
+  return el("span", { class: "due" }, riga("alto"), riga("basso"));
+}
+
 export function carta(e, classe, attr) {
-  return el("div", Object.assign({ class: "carta " + (classe || ""), "data-voce": e.t || null }, attr),
+  // una o due lettere (alfabeto, sillabe) si scrivono grandi
+  const breve = e.t && !e.p && !e.f && e.t.trim().length <= 3 ? " breve" : "";
+  return el("div", Object.assign({ class: "carta" + breve + " " + (classe || ""), "data-voce": e.t || null }, attr),
     e.f ? fotoCarta(e.f, e.t) : e.p ? immaginePicto(e.p, e.t) : null,
-    e.t ? el("span", { class: "carta-testo", text: e.t }) : null);
+    e.t ? el("span", { class: "carta-testo" }, due(e.t)) : null);
 }
 
 export function pulsanteVoce(testo, etichetta) {

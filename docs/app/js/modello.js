@@ -7,7 +7,8 @@ export const TIPI = {
   domande:  { nome: "Domande",  spiega: "Una domanda, la risposta giusta e qualche risposta sbagliata." },
   sequenza: { nome: "Sequenza", spiega: "Passi da mettere in ordine, dal primo all'ultimo." },
   frasi:    { nome: "Frasi",    spiega: "Frasi con le parole mancanti. Scrivi tra [quadre] le parole da completare." },
-  matematica: { nome: "Matematica", spiega: "Numeri, operazioni e problemi con gli oggetti da vedere, muovere e contare." }
+  matematica: { nome: "Matematica", spiega: "Numeri, operazioni e problemi con gli oggetti da vedere, muovere e contare." },
+  lettura: { nome: "Lettura", spiega: "Dalle lettere alle sillabe, alle parole, alle frasi: per imparare a leggere un passo alla volta." }
 };
 
 export const GIOCHI = {
@@ -17,6 +18,7 @@ export const GIOCHI = {
   sequenza:  { nome: "Ordina la sequenza", icona: "🔢", tipi: ["sequenza"],                    consegna: "Metti le carte in ordine." },
   completa:  { nome: "Completa la frase",  icona: "✏️", tipi: ["frasi"],                       consegna: "Metti ogni parola al suo posto." },
   matematica: { nome: "Matematica con gli oggetti", icona: "🧮", tipi: ["matematica"],       consegna: "Guarda, conta e rispondi." },
+  lettura:   { nome: "Impariamo a leggere", icona: "📖", tipi: ["lettura"],                  consegna: "Guarda, ascolta e leggi." },
   scelta:    { nome: "Scelta multipla",    icona: "✅", tipi: ["domande", "coppie", "gruppi"], consegna: "Scegli la risposta giusta." }
 };
 // L'ordine conta: il primo gioco adatto a un tipo è quello con cui l'esercizio si apre.
@@ -24,6 +26,7 @@ export const GIOCHI = {
 export const SCRITTURE = {
   maiuscolo: "STAMPATO MAIUSCOLO",
   minuscolo: "stampato minuscolo",
+  doppio: "MAIUSCOLO e minuscolo",
   corsivo: "corsivo"
 };
 
@@ -135,7 +138,61 @@ export function valida(v) {
     es.dati.esercizi = (Array.isArray(d.esercizi) ? d.esercizi : []).map(esercizioDiMatematica).filter(Boolean);
     if (!es.dati.esercizi.length) errore("Serve almeno un esercizio di matematica completo.");
   }
+  if (tipo === "lettura") {
+    es.dati.esercizi = (Array.isArray(d.esercizi) ? d.esercizi : []).map(esercizioDiLettura).filter(Boolean);
+    if (!es.dati.esercizi.length) errore("Serve almeno un esercizio di lettura completo.");
+  }
   return es;
+}
+
+/* ---------- lettura ---------- */
+
+export const GENERI_LETTURA = {
+  iniziale: { nome: "Con che lettera o sillaba inizia?", spiega: "Si vede l'immagine, la voce dice la parola e si sceglie come inizia." },
+  fusione: { nome: "Unisci le lettere", spiega: "Le lettere si avvicinano e si legge la sillaba che formano insieme." },
+  parola: { nome: "Componi la parola", spiega: "Si mettono in ordine le sillabe per formare la parola dell'immagine." },
+  frase: { nome: "Metti in ordine la frase", spiega: "Si mettono in ordine le parole per formare la frase." },
+  leggi: { nome: "Leggi e trova l'immagine", spiega: "Si legge una parola o una frase (la voce non la dice) e si sceglie l'immagine giusta." }
+};
+
+const minuscola = s => s.toLocaleLowerCase("it");
+const picto = v => { const p = Number(v); return Number.isInteger(p) && p > 0 && p < 1e7 ? p : undefined; };
+
+function esercizioDiLettura(x, i) {
+  if (!x || typeof x !== "object" || !GENERI_LETTURA[x.genere]) return null;
+  const inizio = "Esercizio " + (i + 1) + ": ";
+  const lista = (v, max) => (Array.isArray(v) ? v : []).map(s => testo(s, max)).filter(Boolean);
+  const diverse = (v, giusta) => [...new Set(v.map(minuscola))].filter(a => a !== minuscola(giusta));
+  const e = { genere: x.genere };
+  if (x.genere === "iniziale") {
+    e.p = picto(x.p) || errore(inizio + "serve l'immagine.");
+    e.parola = testo(x.parola, 40) || errore(inizio + "manca la parola.");
+    e.giusta = testo(x.giusta, 4) || errore(inizio + "manca la risposta giusta.");
+    if (!minuscola(e.parola).startsWith(minuscola(e.giusta))) errore(inizio + "«" + e.parola + "» non inizia con «" + e.giusta + "».");
+    e.altre = diverse(lista(x.altre, 4), e.giusta);
+    if (!e.altre.length) errore(inizio + "serve almeno una risposta sbagliata.");
+  }
+  if (x.genere === "fusione") {
+    e.pezzi = lista(x.pezzi, 3);
+    if (e.pezzi.length < 2 || e.pezzi.length > 3) errore(inizio + "servono 2 o 3 lettere da unire.");
+    e.giusta = e.pezzi.join("");
+    e.altre = diverse(lista(x.altre, 6), e.giusta);
+    if (!e.altre.length) errore(inizio + "serve almeno una risposta sbagliata.");
+  }
+  if (x.genere === "parola" || x.genere === "frase") {
+    const parola = x.genere === "parola";
+    e.pezzi = lista(x.pezzi, parola ? 8 : 30);
+    if (e.pezzi.length < 2 || e.pezzi.length > (parola ? 6 : 10)) errore(inizio + (parola ? "servono da 2 a 6 sillabe." : "servono da 2 a 10 parole."));
+    const p = picto(x.p);
+    if (p) e.p = p; else if (parola) errore(inizio + "serve l'immagine della parola.");
+  }
+  if (x.genere === "leggi") {
+    e.testo = testo(x.testo, 120) || errore(inizio + "manca la parola o la frase da leggere.");
+    e.p = picto(x.p) || errore(inizio + "serve l'immagine giusta.");
+    e.altre = [...new Set((Array.isArray(x.altre) ? x.altre : []).map(picto).filter(p => p && p !== e.p))];
+    if (!e.altre.length) errore(inizio + "serve almeno un'immagine sbagliata.");
+  }
+  return e;
 }
 
 /* ---------- matematica con gli oggetti ---------- */

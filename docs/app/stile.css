@@ -1,3 +1,6 @@
+/* carattere per chi impara a leggere: la I maiuscola e la l minuscola sono diverse, «a» e «g» come a mano */
+@font-face { font-family: "Lettura"; src: url("font/andika-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Lettura"; src: url("font/andika-700.woff2") format("woff2"); font-weight: 700 900; font-display: swap; }
 @font-face {
   font-family: "Corsivo Scuola";
   src: url("font/corsivo-scuola.woff2") format("woff2");
@@ -224,6 +227,11 @@ input[type="text"], input[type="search"], select {
 
 /* ---------- scritture ---------- */
 .s-maiuscolo :is(.gioco-testa, .area-gioco, .area-gioco button), .scelta-scrittura.s-maiuscolo { text-transform: uppercase; letter-spacing: .02em; }
+/* scrittura doppia: sopra in maiuscolo, sotto com'è scritto */
+.due .basso { display: none; }
+.s-doppio .due { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.15; }
+.s-doppio .due .alto { text-transform: uppercase; letter-spacing: .03em; }
+.s-doppio .due .basso { display: block; font-weight: 600; font-size: .9em; }
 .s-corsivo :is(.gioco-testa h1, .consegna span, .area-gioco, .area-gioco button), .scelta-scrittura.s-corsivo {
   font-family: "Corsivo Scuola", cursive; line-height: 1.8;
 }
@@ -233,7 +241,7 @@ input[type="text"], input[type="search"], select {
 .gioco-testa { padding: 12px 16px 4px; text-align: center; }
 .gioco-testa h1 { margin: 0; font-size: clamp(1.3rem, 1rem + 1.4vw, 2.1rem); color: var(--lavagna); }
 .consegna { display: inline-flex; gap: 10px; align-items: center; margin: 6px 0 0; color: var(--tenue); font-weight: 600; }
-.area-gioco { user-select: none; -webkit-user-select: none; flex: 1; position: relative; display: flex; flex-direction: column; gap: clamp(14px, 2vw, 26px); padding: 12px 16px 20px; max-width: 1400px; width: 100%; margin: 0 auto; }
+.area-gioco { font-family: "Lettura", system-ui, sans-serif; user-select: none; -webkit-user-select: none; flex: 1; position: relative; display: flex; flex-direction: column; gap: clamp(14px, 2vw, 26px); padding: 12px 16px 20px; max-width: 1400px; width: 100%; margin: 0 auto; }
 .piede-gioco { position: sticky; bottom: 0; z-index: 10; background: var(--sfondo); }
 .barra-gioco {
   display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
@@ -249,6 +257,7 @@ input[type="text"], input[type="search"], select {
   font-weight: 700; text-align: center; overflow-wrap: anywhere; user-select: none; -webkit-user-select: none;
 }
 .carta img { width: var(--picto); height: var(--picto); object-fit: contain; pointer-events: none; }
+.carta.breve .carta-testo { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.6rem); line-height: 1.1; }
 .carta img.foto { width: calc(var(--picto) * 1.9); height: calc(var(--picto) * 1.5); border-radius: 10px; }
 .carta.mobile { cursor: grab; touch-action: none; box-shadow: 0 4px 0 var(--bordo); }
 .carta.scelta { border-color: var(--evidenzia); box-shadow: 0 0 0 5px var(--evidenzia); transform: translateY(-3px); }
@@ -527,3 +536,43 @@ input[type="text"], input[type="search"], select {
 .sp-riduci.sp-piccola { transform: scale(.25); transition-delay: 1.2s; }
 @keyframes sp-cerca { 0%, 100% { transform: translate(-70px, 30px); } 50% { transform: translate(90px, -40px); } }
 @keyframes sp-ago { 0% { transform: rotate(80deg); } 30% { transform: rotate(-40deg); } 55% { transform: rotate(20deg); } 75% { transform: rotate(-8deg); } 100% { transform: rotate(0deg); } }
+
+/* ---------- lettura ---------- */
+.let-scena { display: grid; justify-items: center; gap: clamp(10px, 1.6vw, 20px); text-align: center; }
+.let-figura img { width: clamp(110px, 16vw, 240px); height: clamp(110px, 16vw, 240px); object-fit: contain; background: #fff; border-radius: 22px; border: 3px solid var(--bordo); padding: 8px; }
+.let-domanda { margin: 0; display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap; font-weight: 800; font-size: clamp(1.1rem, .95rem + .8vw, 1.6rem); }
+.let-parola, .let-testo, .let-pezzi, .let-opzione, .let-tessera { font-weight: 800; }
+.let-parola { font-size: clamp(2rem, 1.3rem + 3vw, 4.4rem); transition: opacity .4s; }
+.let-parola.nascosta { opacity: 0; }
+.let-parola b { color: var(--lavagna); }
+.let-testo { font-size: clamp(1.8rem, 1.1rem + 2.6vw, 4rem); line-height: 1.2; max-width: 22ch; }
+.let-pannello { display: grid; justify-items: center; }
+.let-opzioni { display: grid; gap: 14px; grid-template-columns: repeat(var(--quante), minmax(0, 1fr)); width: min(100%, 900px); }
+.let-opzione {
+  min-height: 96px; padding: 10px; border-radius: 18px; border: 3px solid var(--bordo); background: var(--carta);
+  font-size: clamp(1.8rem, 1.2rem + 2.4vw, 3.6rem); box-shadow: 0 4px 0 var(--bordo);
+}
+.let-opzione.giusta { border-color: var(--giusto); background: var(--giusto-chiaro); }
+.let-opzione.sbagliata { opacity: .35; }
+.let-immagine img { width: clamp(90px, 13vw, 190px); height: clamp(90px, 13vw, 190px); object-fit: contain; }
+.let-immagine { background: #fff; }
+.let-pezzi { display: flex; gap: clamp(40px, 8vw, 120px); font-size: clamp(2.6rem, 1.6rem + 4vw, 6rem); transition: gap .9s ease-in-out; }
+.let-pezzi.uniti { gap: 0; }
+.let-pezzo { background: var(--carta); border: 3px solid var(--bordo); border-radius: 16px; padding: 4px 18px; }
+.let-pezzi.uniti .let-pezzo:not(:last-child) { border-right: 0; border-radius: 16px 0 0 16px; }
+.let-pezzi.uniti .let-pezzo:not(:first-child) { border-left: 0; border-radius: 0 16px 16px 0; }
+.let-caselle { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; min-height: 92px; }
+.let-caselle.parola { gap: 4px; }
+.let-casella { min-width: clamp(80px, 9vw, 130px); min-height: 84px; border: 3px dashed var(--bordo); border-radius: 16px; display: grid; place-items: center; }
+.let-caselle.fatta .let-casella { border-style: solid; border-color: var(--giusto); background: var(--giusto-chiaro); }
+.let-mucchio { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; min-height: 92px; }
+.let-tessera {
+  min-width: clamp(72px, 8vw, 120px); min-height: 76px; padding: 6px 14px; border-radius: 14px; border: 3px solid var(--bordo);
+  background: var(--carta); font-size: clamp(1.4rem, 1rem + 1.6vw, 2.6rem); box-shadow: 0 4px 0 var(--bordo); touch-action: manipulation;
+}
+.let-casella .let-tessera { box-shadow: none; }
+.let-tessera.suggerito { animation: suggerisci .8s 2; }
+:where(html.scuro) :is(.let-opzione, .let-tessera, .let-pezzo, .let-figura, .let-casella) {
+  --carta: #FFFFFF; --testo: #1D2329; --bordo: #DDD5C3; --lavagna: #1E6B52; --giusto: #1E8A4C; --giusto-chiaro: #E2F6EA; --tenue: #4A5560;
+  color: var(--testo);
+}
