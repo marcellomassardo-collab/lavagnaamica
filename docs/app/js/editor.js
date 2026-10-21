@@ -1,7 +1,7 @@
 // Editor degli esercizi: tutto si prepara riempiendo dei campi, senza codice.
 
 import { el, immaginePicto } from "./ui.js";
-import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, GENERI_LETTURA, OPERAZIONI, SCHEMI, ANIMAZIONI, giochiPer, valida } from "./modello.js";
+import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, GENERI_LETTURA, LIVELLI, OPERAZIONI, SCHEMI, ANIMAZIONI, giochiPer, valida } from "./modello.js";
 import { scegliPittogramma } from "./picto.js";
 
 const vuoto = () => ({ t: "" });
@@ -15,7 +15,8 @@ const NUOVI = {
   sequenza: () => ({ passi: [vuoto(), vuoto(), vuoto()] }),
   frasi: () => ({ frasi: ["", ""], extra: [] }),
   matematica: () => ({ aiuto: "sempre", oggetto: { t: "mela", p: 2462 }, esercizi: [{ genere: "conta", a: 5 }] }),
-  lettura: () => ({ esercizi: [{ genere: "parola", pezzi: ["ca", "ne"], p: 7202 }] })
+  lettura: () => ({ esercizi: [{ genere: "parola", pezzi: ["ca", "ne"], p: 7202 }] }),
+  brano: () => ({ testo: [], domande: [{ d: "", giusta: "", sbagliate: ["", ""] }] })
 };
 
 // L'editor lavora su una copia; nei gruppi nome e immagine stanno in «testa».
@@ -228,7 +229,38 @@ function campiDiLettura(x, ridisegna) {
 
 /* ---------- contenuto per ogni tipo ---------- */
 
+function areaTesto(valore, cambia, attr) {
+  const t = el("textarea", Object.assign({ rows: "10" }, attr), valore || "");
+  t.addEventListener("input", () => cambia(t.value));
+  return t;
+}
+
 const SEZIONI = {
+  brano(d, ridisegna) {
+    const campo = (nome, k, esempio, max) => etichetta(nome, testoLibero(d[k], v => { d[k] = v; }, { placeholder: esempio, maxlength: String(max) }));
+    const poesia = el("input", { type: "checkbox", checked: !!d.poesia, on: { change: e => { d.poesia = e.target.checked; } } });
+    return [
+      el("p", { class: "spiega", text: "Incolla il testo: ogni a capo resta com'è (nelle poesie una riga vuota separa le strofe). Poi scrivi le domande per capirlo." }),
+      etichetta("Il testo", areaTesto((d.testo || []).join("\n"), v => { d.testo = v.split(/\r?\n/); },
+        { placeholder: "C'era una volta…", "aria-label": "Il testo da leggere" })),
+      el("label", { class: "interruttore" }, poesia, el("span", {}, el("b", { text: "È una poesia o una filastrocca" }), el("small", { text: "Le righe restano vicine, come versi." }))),
+      campo("Autore", "autore", "Carlo Collodi", 80),
+      campo("Opera", "opera", "Le avventure di Pinocchio, capitolo 1", 140),
+      campo("Anno", "anno", "1883", 20),
+      menu(String(d.livello || ""), Object.assign({ "": "Scegli il livello…" }, LIVELLI), v => { d.livello = v ? Number(v) : undefined; }, "Livello di lettura"),
+      campoPicto(d, "p", () => d.opera || d.autore || "", "un'immagine (facoltativa)"),
+      d.domande.map((q, qi) => el("fieldset", { class: "box-ed" },
+        el("legend", { text: "Domanda " + (qi + 1) }),
+        etichetta("La domanda", testoLibero(q.d, v => { q.d = v; }, { placeholder: "Chi trova il pezzo di legno?", maxlength: "300" })),
+        etichetta("Risposta giusta", testoLibero(q.giusta, v => { q.giusta = v; }, { placeholder: "Maestro Ciliegia", maxlength: "200" })),
+        q.sbagliate.map((s, si) => el("div", { class: "riga-ed" },
+          testoLibero(s, v => { q.sbagliate[si] = v; }, { placeholder: "Risposta sbagliata", maxlength: "200", "aria-label": "Risposta sbagliata" }),
+          cestino(() => { q.sbagliate.splice(si, 1); ridisegna(); }, q.sbagliate.length > 1))),
+        aggiungi("Aggiungi una risposta sbagliata", () => { q.sbagliate.push(""); ridisegna(); }),
+        el("div", { class: "riga-ed" }, cestino(() => { d.domande.splice(qi, 1); ridisegna(); }, d.domande.length > 1)))),
+      aggiungi("Aggiungi una domanda", () => { d.domande.push({ d: "", giusta: "", sbagliate: ["", ""] }); ridisegna(); })
+    ];
+  },
   lettura(d, ridisegna) {
     const sposta = (i, j) => { [d.esercizi[i], d.esercizi[j]] = [d.esercizi[j], d.esercizi[i]]; ridisegna(); };
     return [
@@ -402,6 +434,7 @@ export function editor(bozza, { salva, annulla }) {
     el("option", { value: "", text: "Scegli la materia…" }),
     MATERIE.map(m => el("option", { value: m, selected: m === bozza.materia, text: m })));
 
+  const privato = el("input", { type: "checkbox", checked: !!bozza.privato, on: { change: e => { bozza.privato = e.target.checked || undefined; } } });
   bozza.scopri = bozza.scopri || {};
   const animazione = el("select", { on: { change: e => { bozza.scopri.animazione = e.target.value || undefined; } } },
     el("option", { value: "", text: "Nessuna" }),
@@ -432,6 +465,9 @@ export function editor(bozza, { salva, annulla }) {
     etichetta("Video libero da Wikimedia Commons (facoltativo, consigliato)", video,
       "Senza pubblicità. Si vede dopo la spiegazione e si carica solo se qualcuno lo chiede."),
     avvisoVideo,
+    el("label", { class: "interruttore" }, privato,
+      el("span", {}, el("b", { text: "🔒 Contiene testi o immagini protetti da diritti: solo per la mia classe" }),
+        el("small", { text: "Per esempio un brano di un libro di oggi. Si può usare in classe citando l'autore (art. 70 e 70-bis della legge sul diritto d'autore), ma non si pubblica nel catalogo e non si condivide con un link: resta su questo dispositivo, e si sposta con il file." }))),
     etichetta("Video di YouTube (facoltativo, solo se serve)", youtube,
       "YouTube può mostrare pubblicità anche nei video incorporati: se c'è, meglio un video di Wikimedia Commons."),
     avvisoYoutube,

@@ -576,3 +576,37 @@ input[type="text"], input[type="search"], select {
   --carta: #FFFFFF; --testo: #1D2329; --bordo: #DDD5C3; --lavagna: #1E6B52; --giusto: #1E8A4C; --giusto-chiaro: #E2F6EA; --tenue: #4A5560;
   color: var(--testo);
 }
+
+/* ---------- brani da leggere ---------- */
+.brano { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: clamp(14px, 2.4vw, 32px); align-items: start; max-width: 1300px; width: 100%; margin: 0 auto; }
+.brano.senza-figura { grid-template-columns: minmax(0, 1fr); max-width: 900px; }
+.brano-immagine { margin: 0; position: sticky; top: 8px; }
+.brano-immagine img { width: auto; height: auto; max-width: 100%; max-height: 62vh; margin: 0 auto; border-radius: 16px; background: #fff; border: 3px solid var(--bordo); display: block; }
+.brano-immagine figcaption { color: var(--tenue); font-size: .8em; margin-top: 6px; text-align: center; }
+.brano-testo { font-size: clamp(1.15rem, .95rem + .9vw, 1.9rem); line-height: 1.55; background: var(--carta); border: 3px solid var(--bordo); border-radius: 22px; padding: clamp(14px, 2.4vw, 30px); text-align: left; }
+.brano-testo p { margin: 0 0 .75em; cursor: pointer; border-radius: 8px; }
+.brano-testo p:hover { background: var(--lavagna-chiaro); }
+.brano-testo.poesia p { margin: 0 0 .1em; }
+.brano-testo .stacco { height: .8em; cursor: default; }
+.brano-testo .due { display: inline; }
+.s-doppio .brano-testo .due { display: inline-flex; align-items: flex-start; }
+.brano-fonte { color: var(--tenue); font-style: italic; margin: .8em 0 0; }
+.brano-nota { color: var(--tenue); font-size: .85em; margin: .3em 0 0; }
+.brano-comandi { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 16px; }
+.brano-domanda { display: grid; gap: clamp(12px, 2vw, 22px); max-width: 1000px; width: 100%; margin: 0 auto; justify-items: center; }
+.brano-chiede { margin: 0; display: flex; gap: 10px; align-items: center; justify-content: center; flex-wrap: wrap; text-align: center;
+  font-weight: 800; font-size: clamp(1.3rem, 1rem + 1.3vw, 2.2rem); }
+.brano-opzioni { display: grid; gap: 12px; width: 100%; }
+.brano-opzione {
+  text-align: left; padding: 14px 20px; min-height: 64px; border-radius: 16px; border: 3px solid var(--bordo); background: var(--carta);
+  font-size: clamp(1.1rem, .95rem + .8vw, 1.7rem); font-weight: 700; box-shadow: 0 4px 0 var(--bordo);
+}
+.brano-opzione.giusta { border-color: var(--giusto); background: var(--giusto-chiaro); }
+.brano-opzione.sbagliata { opacity: .35; }
+.finestra .brano-testo { font-size: 1.1rem; }
+textarea { font: inherit; color: inherit; padding: 10px 14px; border: 2px solid var(--bordo); border-radius: 12px; background: var(--campo); width: 100%; min-height: 12em; }
+:where(html.scuro) :is(.brano-opzione) {
+  --carta: #FFFFFF; --testo: #1D2329; --bordo: #DDD5C3; --giusto: #1E8A4C; --giusto-chiaro: #E2F6EA;
+  color: var(--testo);
+}
+@media (max-width: 900px) { .brano { grid-template-columns: minmax(0, 1fr); } .brano-immagine { position: static; } .brano-immagine img { max-height: 40vh; } }

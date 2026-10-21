@@ -20,14 +20,15 @@ import * as sequenza from "./giochi/sequenza.js";
 import * as completa from "./giochi/completa.js";
 import * as matematica from "./giochi/matematica.js";
 import * as lettura from "./giochi/lettura.js";
+import * as brano from "./giochi/brano.js";
 
-const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura };
+const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura, brano };
 
 /* ---------- inizio ---------- */
 
 function descrizione(es) {
   const quanti = { coppie: es.dati.coppie, gruppi: es.dati.gruppi, domande: es.dati.domande, sequenza: es.dati.passi,
-    frasi: es.dati.frasi, matematica: es.dati.esercizi, lettura: es.dati.esercizi }[es.tipo];
+    frasi: es.dati.frasi, matematica: es.dati.esercizi, lettura: es.dati.esercizi, brano: es.dati.domande }[es.tipo];
   return TIPI[es.tipo].nome + " · " + quanti.length;
 }
 
@@ -53,14 +54,14 @@ function schedaEsercizio(es, origine) {
   const apri = el("a", { class: "scheda-apri", href: "#/gioca/" + origine + "/" + es.id },
     el("span", { class: "scheda-icona", "aria-hidden": "true", text: g.icona }),
     el("span", { class: "scheda-titolo", text: es.titolo }),
-    el("span", { class: "scheda-info", text: g.nome + " · " + descrizione(es) + (es.catalogo ? " · nel catalogo" : "") }));
+    el("span", { class: "scheda-info", text: g.nome + " · " + descrizione(es) + (es.catalogo ? " · nel catalogo" : "") + (es.privato ? " · 🔒 solo per la mia classe" : "") }));
   if (origine !== "mio") return el("li", { class: "scheda" }, apri);
   return el("li", { class: "scheda" }, apri,
     el("div", { class: "scheda-azioni" },
       el("a", { class: "tasto-piccolo", href: "#/modifica/" + es.id, text: "✏️ Modifica" }),
-      el("button", { type: "button", class: "tasto-piccolo", text: "🔗 Condividi", on: { click: () => condividi(es) } }),
+      es.privato ? null : el("button", { type: "button", class: "tasto-piccolo", text: "🔗 Condividi", on: { click: () => condividi(es) } }),
       el("button", { type: "button", class: "tasto-piccolo", text: "💾 File", title: "Scarica il file dell'esercizio", on: { click: () => scaricaFile(es) } }),
-      catalogoAttivo ? el("button", { type: "button", class: "tasto-piccolo", text: es.catalogo ? "📤 Aggiorna nel catalogo" : "📤 Pubblica",
+      catalogoAttivo && !es.privato ? el("button", { type: "button", class: "tasto-piccolo", text: es.catalogo ? "📤 Aggiorna nel catalogo" : "📤 Pubblica",
         on: { click: () => pubblica(es, casa) } }) : null,
       el("button", { type: "button", class: "tasto-piccolo", text: "🗑", "aria-label": "Elimina", title: "Elimina", on: { click: () => {
         if (!confirm("Eliminare «" + es.titolo + "» da questo dispositivo?")) return;

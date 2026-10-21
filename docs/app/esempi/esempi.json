@@ -1133,6 +1133,1148 @@
   }
  },
  {
+  "id": "brano-giro-tondo",
+  "titolo": "Livello 1 · Giro giro tondo",
+  "scrittura": "doppio",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 1,
+   "testo": [
+    "Giro giro tondo,",
+    "casca il mondo,",
+    "casca la terra,",
+    "tutti giù per terra!"
+   ],
+   "domande": [
+    {
+     "d": "Come si gira?",
+     "giusta": "in tondo",
+     "sbagliate": [
+      "in fila",
+      "all'indietro"
+     ]
+    },
+    {
+     "d": "Che cosa casca per primo?",
+     "giusta": "il mondo",
+     "sbagliate": [
+      "la luna",
+      "il cielo"
+     ]
+    },
+    {
+     "d": "Dove vanno tutti, alla fine?",
+     "giusta": "giù per terra",
+     "sbagliate": [
+      "su in cielo",
+      "dentro casa"
+     ]
+    }
+   ],
+   "autore": "Filastrocca popolare",
+   "didascalia": "Illustrazione di Myles Birket Foster (Ottocento).",
+   "poesia": true,
+   "f": "birket-foster-girotondo.jpg"
+  }
+ },
+ {
+  "id": "brano-trenta-giorni",
+  "titolo": "Livello 1 · Trenta giorni ha novembre",
+  "scrittura": "doppio",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 1,
+   "testo": [
+    "Trenta giorni ha novembre",
+    "con april, giugno e settembre;",
+    "di ventotto ce n'è uno,",
+    "tutti gli altri ne han trentuno."
+   ],
+   "domande": [
+    {
+     "d": "Quanti giorni ha novembre?",
+     "giusta": "trenta",
+     "sbagliate": [
+      "trentuno",
+      "ventotto"
+     ]
+    },
+    {
+     "d": "Quale di questi mesi ha trenta giorni, come novembre?",
+     "giusta": "settembre",
+     "sbagliate": [
+      "gennaio",
+      "agosto"
+     ]
+    },
+    {
+     "d": "Quanti mesi hanno ventotto giorni?",
+     "giusta": "uno",
+     "sbagliate": [
+      "tre",
+      "nessuno"
+     ]
+    },
+    {
+     "d": "Quanti giorni hanno tutti gli altri mesi?",
+     "giusta": "trentuno",
+     "sbagliate": [
+      "trenta",
+      "venti"
+     ]
+    }
+   ],
+   "autore": "Filastrocca popolare",
+   "nota": "«April» è un modo antico per dire aprile.",
+   "didascalia": "Novembre, in un libro dipinto a mano più di cinquecento anni fa (Jean Colombe).",
+   "poesia": true,
+   "f": "novembre-tres-riches-heures.jpg"
+  }
+ },
+ {
+  "id": "brano-volpe-uva",
+  "titolo": "Livello 1 · La volpe e l'uva",
+  "scrittura": "doppio",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 1,
+   "testo": [
+    "Una volpe aveva tanta fame.",
+    "Vide un grappolo d'uva appeso in alto.",
+    "Saltò una volta, saltò due volte, saltò tre volte.",
+    "Ma l'uva era troppo in alto.",
+    "Allora la volpe se ne andò e disse:",
+    "«Tanto quell'uva è ancora acerba!»",
+    "Così, quando non riusciamo a fare una cosa, a volte diciamo che non ci interessava."
+   ],
+   "domande": [
+    {
+     "d": "Che cosa voleva la volpe?",
+     "giusta": "l'uva",
+     "sbagliate": [
+      "una gallina",
+      "l'acqua"
+     ]
+    },
+    {
+     "d": "Perché la volpe non prese l'uva?",
+     "giusta": "Era troppo in alto.",
+     "sbagliate": [
+      "Era troppo piccola.",
+      "Non aveva fame."
+     ]
+    },
+    {
+     "d": "Che cosa disse la volpe, andando via?",
+     "giusta": "Che l'uva era acerba.",
+     "sbagliate": [
+      "Che l'uva era buonissima.",
+      "Che sarebbe tornata domani."
+     ]
+    }
+   ],
+   "autore": "Esopo",
+   "opera": "Favole",
+   "anno": "VI secolo a.C.",
+   "nota": "Traduzione e adattamento di Lavagna Amica.",
+   "didascalia": "Illustrazione di Arthur Rackham (1912).",
+   "f": "rackham-volpe-uva.jpg"
+  }
+ },
+ {
+  "id": "brano-lepre-tartaruga",
+  "titolo": "Livello 2 · La lepre e la tartaruga",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "Una volta la lepre prendeva in giro la tartaruga, perché era lenta.",
+    "«Facciamo una gara» disse la tartaruga. «Vedrai che arrivo prima io.»",
+    "La lepre si mise a ridere, ma accettò. Decisero da dove partire e dove arrivare.",
+    "Partirono. La lepre corse velocissima, e ben presto la tartaruga non si vedeva più.",
+    "«Ho tanto tempo» pensò la lepre. «Faccio un pisolino.» Si sdraiò vicino alla strada e si addormentò.",
+    "La tartaruga, invece, sapeva di essere lenta: camminava piano piano, un passo dopo l'altro, senza fermarsi mai.",
+    "Quando la lepre si svegliò, corse più veloce che poteva. Ma era troppo tardi: la tartaruga era già arrivata.",
+    "Chi si impegna e non si ferma arriva lontano, anche più di chi è bravo ma non si impegna."
+   ],
+   "domande": [
+    {
+     "d": "Perché la lepre prendeva in giro la tartaruga?",
+     "giusta": "Perché era lenta.",
+     "sbagliate": [
+      "Perché era piccola.",
+      "Perché era verde."
+     ]
+    },
+    {
+     "d": "Che cosa fece la lepre durante la gara?",
+     "giusta": "Si addormentò.",
+     "sbagliate": [
+      "Si perse nel bosco.",
+      "Si fece male a una zampa."
+     ]
+    },
+    {
+     "d": "Come camminava la tartaruga?",
+     "giusta": "Piano piano, senza fermarsi mai.",
+     "sbagliate": [
+      "Velocissima.",
+      "Saltando."
+     ]
+    },
+    {
+     "d": "Chi vinse la gara?",
+     "giusta": "la tartaruga",
+     "sbagliate": [
+      "la lepre",
+      "nessuno"
+     ]
+    },
+    {
+     "d": "Che cosa vuole insegnare la favola?",
+     "giusta": "Chi si impegna e non si ferma arriva lontano.",
+     "sbagliate": [
+      "Chi è veloce vince sempre.",
+      "Non bisogna mai fare le gare."
+     ]
+    }
+   ],
+   "autore": "Esopo",
+   "opera": "Favole",
+   "anno": "VI secolo a.C.",
+   "nota": "Traduzione e adattamento di Lavagna Amica.",
+   "didascalia": "Illustrazione di Arthur Rackham (1912).",
+   "f": "rackham-lepre-tartaruga.jpg"
+  }
+ },
+ {
+  "id": "brano-pappa-dolce",
+  "titolo": "Livello 2 · La pentola della pappa dolce",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "C'era una volta una bambina povera e buona, che viveva sola con la sua mamma. Non avevano più niente da mangiare.",
+    "Allora la bambina andò nel bosco e incontrò una vecchina, che sapeva già quanto erano tristi. La vecchina le regalò una pentolina.",
+    "Bastava dirle: «Pentolina, cuoci!», e lei cuoceva una buona pappa dolce di miglio. E quando le si diceva: «Pentolina, fermati!», smetteva di cuocere.",
+    "La bambina portò la pentolina a casa, e da quel giorno lei e la mamma non ebbero più fame: mangiavano pappa dolce tutte le volte che volevano.",
+    "Un giorno la bambina era uscita. La mamma disse: «Pentolina, cuoci!», e la pentolina cuoceva, e la mamma mangiò finché fu sazia.",
+    "Poi volle che la pentolina si fermasse, ma non sapeva la parola giusta.",
+    "Così la pentolina continuava a cuocere: la pappa uscì dal bordo, riempì la cucina, poi tutta la casa, poi la casa vicina, poi la strada, come se volesse sfamare il mondo intero. Nessuno sapeva che cosa fare.",
+    "Alla fine, quando era rimasta una casa sola senza pappa, la bambina tornò e disse soltanto: «Pentolina, fermati!». E la pentolina si fermò.",
+    "E chi voleva tornare in città, dovette farsi strada mangiando!"
+   ],
+   "domande": [
+    {
+     "d": "Perché la bambina andò nel bosco?",
+     "giusta": "Perché lei e la mamma non avevano niente da mangiare.",
+     "sbagliate": [
+      "Per giocare con le amiche.",
+      "Per cercare la nonna."
+     ]
+    },
+    {
+     "d": "Che cosa le regalò la vecchina?",
+     "giusta": "una pentolina magica",
+     "sbagliate": [
+      "una gallina",
+      "un sacco d'oro"
+     ]
+    },
+    {
+     "d": "Che cosa bisognava dire per farla smettere?",
+     "giusta": "«Pentolina, fermati!»",
+     "sbagliate": [
+      "«Pentolina, cuoci!»",
+      "«Basta pappa, per favore!»"
+     ]
+    },
+    {
+     "d": "Perché la pappa riempì tutta la città?",
+     "giusta": "La mamma non sapeva la parola per fermarla.",
+     "sbagliate": [
+      "La bambina aveva rotto la pentolina.",
+      "La vecchina si era arrabbiata."
+     ]
+    },
+    {
+     "d": "Come si tornava in città, alla fine?",
+     "giusta": "Mangiando la pappa per farsi strada.",
+     "sbagliate": [
+      "Con una barca.",
+      "Volando."
+     ]
+    }
+   ],
+   "autore": "Jacob e Wilhelm Grimm",
+   "opera": "Fiabe per bambini e famiglie",
+   "anno": "1815",
+   "nota": "Traduzione e adattamento di Lavagna Amica.",
+   "didascalia": "Illustrazione di Otto Ubbelohde (inizio Novecento).",
+   "f": "grimm-pappa-dolce.jpg"
+  }
+ },
+ {
+  "id": "brano-pezzo-di-legno",
+  "titolo": "Livello 2 · C'era una volta un pezzo di legno",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "— C'era una volta...",
+    "— Un re! — diranno subito i miei piccoli lettori.",
+    "— No, ragazzi, avete sbagliato. C'era una volta un pezzo di legno.",
+    "Non era un legno di lusso, ma un semplice pezzo da catasta, di quelli che d'inverno si mettono nelle stufe e nei caminetti per accendere il fuoco e per riscaldare le stanze."
+   ],
+   "domande": [
+    {
+     "d": "Che cosa pensano i piccoli lettori, quando sentono «C'era una volta»?",
+     "giusta": "Che arrivi un re.",
+     "sbagliate": [
+      "Che arrivi un lupo.",
+      "Che arrivi una fata."
+     ]
+    },
+    {
+     "d": "Che cosa c'era, invece, una volta?",
+     "giusta": "un pezzo di legno",
+     "sbagliate": [
+      "un castello",
+      "un burattino"
+     ]
+    },
+    {
+     "d": "Era un legno di lusso?",
+     "giusta": "No, era un semplice pezzo da catasta.",
+     "sbagliate": [
+      "Sì, era molto prezioso.",
+      "Sì, era tutto d'oro."
+     ]
+    },
+    {
+     "d": "A che cosa serve, d'inverno, quel legno?",
+     "giusta": "A fare il fuoco e scaldare le stanze.",
+     "sbagliate": [
+      "A costruire le barche.",
+      "A fare i tavoli."
+     ]
+    }
+   ],
+   "autore": "Carlo Collodi",
+   "opera": "Le avventure di Pinocchio, capitolo 1",
+   "anno": "1883",
+   "nota": "Un pezzo «da catasta»: uno dei pezzi di legno ammucchiati per bruciarli nel fuoco.",
+   "didascalia": "Pinocchio disegnato da Enrico Mazzanti nella prima edizione (1883).",
+   "f": "mazzanti-pinocchio.jpg"
+  }
+ },
+ {
+  "id": "brano-vocina",
+  "titolo": "Livello 3 · La vocina nel legno",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Non so come andasse, ma il fatto gli è che un bel giorno questo pezzo di legno capitò nella bottega di un vecchio falegname, il quale aveva nome mastr'Antonio, se non che tutti lo chiamavano maestro Ciliegia, per via della punta del suo naso, che era sempre lustra e paonazza, come una ciliegia matura.",
+    "Appena maestro Ciliegia ebbe visto quel pezzo di legno, si rallegrò tutto; e dandosi una fregatina di mani per la contentezza, borbottò a mezza voce:",
+    "— Questo legno è capitato a tempo; voglio servirmene per fare una gamba di tavolino. —",
+    "Detto fatto, prese subito l'ascia arrotata per cominciare a levargli la scorza e a digrossarlo; ma quando fu lì per lasciare andare la prima asciata, rimase col braccio sospeso in aria, perché sentì una vocina sottile sottile, che disse raccomandandosi:",
+    "— Non mi picchiar tanto forte! —",
+    "Figuratevi come rimase quel buon vecchio di maestro Ciliegia!",
+    "Girò gli occhi smarriti intorno alla stanza per vedere di dove mai poteva essere uscita quella vocina, e non vide nessuno! Guardò sotto il banco, e nessuno: guardò dentro un armadio che stava sempre chiuso, e nessuno; guardò nel corbello dei trucioli e della segatura, e nessuno; aprì l'uscio di bottega per dare un'occhiata anche sulla strada, e nessuno. O dunque?..."
+   ],
+   "domande": [
+    {
+     "d": "Perché tutti chiamavano il falegname «maestro Ciliegia»?",
+     "giusta": "Per la punta del naso, rossa come una ciliegia.",
+     "sbagliate": [
+      "Perché mangiava tante ciliegie.",
+      "Perché aveva un albero di ciliegie."
+     ]
+    },
+    {
+     "d": "Che cosa voleva fare con il pezzo di legno?",
+     "giusta": "Una gamba di tavolino.",
+     "sbagliate": [
+      "Un burattino.",
+      "Una sedia nuova."
+     ]
+    },
+    {
+     "d": "Che cosa disse la vocina?",
+     "giusta": "«Non mi picchiar tanto forte!»",
+     "sbagliate": [
+      "«Buongiorno, maestro!»",
+      "«Aiuto, c'è un lupo!»"
+     ]
+    },
+    {
+     "d": "Dove cercò, maestro Ciliegia?",
+     "giusta": "Sotto il banco, nell'armadio, nella cesta e in strada.",
+     "sbagliate": [
+      "Solo in cantina.",
+      "Sul tetto della bottega."
+     ]
+    },
+    {
+     "d": "Chi trovò?",
+     "giusta": "nessuno",
+     "sbagliate": [
+      "un bambino nascosto",
+      "un gatto"
+     ]
+    }
+   ],
+   "autore": "Carlo Collodi",
+   "opera": "Le avventure di Pinocchio, capitolo 1",
+   "anno": "1883",
+   "nota": "Paonazza: rosso scuro. Digrossarlo: dargli la prima forma. Il corbello: una cesta. L'uscio: la porta.",
+   "didascalia": "Pinocchio disegnato da Enrico Mazzanti nella prima edizione (1883).",
+   "f": "mazzanti-pinocchio.jpg"
+  }
+ },
+ {
+  "id": "brano-lupo-agnello",
+  "titolo": "Livello 3 · Il lupo e l'agnello",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Un lupo e un agnello, spinti dalla sete, erano arrivati allo stesso ruscello. Il lupo stava più in alto; l'agnello beveva molto più in basso.",
+    "Il lupo aveva una gran fame, e cercò una scusa per litigare. «Perché mi sporchi l'acqua che sto bevendo?» gridò.",
+    "L'agnello, tremando, rispose: «Come posso fare quello che dici, lupo? L'acqua scende da te fino a me.»",
+    "Il lupo, battuto dalla verità, disse: «Sei mesi fa hai parlato male di me!»",
+    "«Ma sei mesi fa io non ero ancora nato» rispose l'agnello.",
+    "«Allora è stato tuo padre!» disse il lupo. E lo afferrò e lo sbranò, ingiustamente.",
+    "Questa favola è scritta per quelle persone che fanno del male agli innocenti con scuse inventate."
+   ],
+   "domande": [
+    {
+     "d": "Dove si trovavano il lupo e l'agnello?",
+     "giusta": "a un ruscello",
+     "sbagliate": [
+      "in una stalla",
+      "in un prato fiorito"
+     ]
+    },
+    {
+     "d": "Chi stava più in alto, lungo il ruscello?",
+     "giusta": "il lupo",
+     "sbagliate": [
+      "l'agnello",
+      "il pastore"
+     ]
+    },
+    {
+     "d": "Perché l'agnello non poteva sporcare l'acqua del lupo?",
+     "giusta": "Perché l'acqua scendeva dal lupo verso di lui.",
+     "sbagliate": [
+      "Perché non stava bevendo.",
+      "Perché l'acqua era pulitissima."
+     ]
+    },
+    {
+     "d": "Perché il lupo cercava una scusa?",
+     "giusta": "Aveva fame e voleva mangiare l'agnello.",
+     "sbagliate": [
+      "Voleva giocare con lui.",
+      "Voleva diventare suo amico."
+     ]
+    },
+    {
+     "d": "Per chi è scritta questa favola?",
+     "giusta": "Per chi fa del male agli innocenti con scuse inventate.",
+     "sbagliate": [
+      "Per chi ha sete.",
+      "Per chi alleva gli agnelli."
+     ]
+    }
+   ],
+   "autore": "Fedro",
+   "opera": "Favole, libro I",
+   "anno": "I secolo d.C.",
+   "nota": "Traduzione e adattamento di Lavagna Amica.",
+   "didascalia": "Illustrazione di Gustave Doré (1868).",
+   "f": "dore-lupo-agnello.jpg"
+  }
+ },
+ {
+  "id": "brano-cicala-formica",
+  "titolo": "Livello 3 · La cicala e la formica",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "La cicala aveva cantato per tutta l'estate.",
+    "Quando arrivò il vento freddo, si trovò senza niente da mangiare: neanche un pezzetto di mosca o di vermetto.",
+    "Allora andò a piangere la fame dalla formica, sua vicina, e la pregò di prestarle qualche chicco di grano, per arrivare fino alla bella stagione.",
+    "«Ti restituirò tutto prima di agosto, parola d'animale,» le disse, «e anche qualcosa in più.»",
+    "Ma la formica non è una che presta.",
+    "«E tu che cosa facevi quando faceva caldo?» chiese.",
+    "«Notte e giorno cantavo, per chiunque passasse, se non ti dispiace.»",
+    "«Cantavi? Ne sono proprio contenta. Bene: adesso balla!»"
+   ],
+   "domande": [
+    {
+     "d": "Che cosa aveva fatto la cicala per tutta l'estate?",
+     "giusta": "Aveva cantato.",
+     "sbagliate": [
+      "Aveva raccolto il grano.",
+      "Aveva dormito."
+     ]
+    },
+    {
+     "d": "Che cosa chiede la cicala alla formica?",
+     "giusta": "Qualche chicco di grano in prestito.",
+     "sbagliate": [
+      "Un posto per dormire.",
+      "Di cantare insieme."
+     ]
+    },
+    {
+     "d": "Quando promette di restituirlo?",
+     "giusta": "Prima di agosto.",
+     "sbagliate": [
+      "Mai.",
+      "L'inverno dopo."
+     ]
+    },
+    {
+     "d": "Che cosa risponde la formica, alla fine?",
+     "giusta": "«Adesso balla!»",
+     "sbagliate": [
+      "«Prendi tutto il grano che vuoi.»",
+      "«Canta ancora per me.»"
+     ]
+    },
+    {
+     "d": "Che cosa vuole insegnare la favola?",
+     "giusta": "Bisogna pensare anche al futuro, non solo a oggi.",
+     "sbagliate": [
+      "Cantare è sempre sbagliato.",
+      "Le formiche sono cattive."
+     ]
+    }
+   ],
+   "autore": "Jean de La Fontaine",
+   "opera": "Favole, libro I",
+   "anno": "1668",
+   "nota": "Traduzione e adattamento di Lavagna Amica.",
+   "didascalia": "Illustrazione di Gustave Doré (1868).",
+   "f": "dore-cicala-formica.jpg"
+  }
+ },
+ {
+  "id": "brano-giufa",
+  "titolo": "Livello 3 · Mangiate, vestiti miei!",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Giufà era un ragazzo povero. Un giorno andò a una festa in una casa di signori, con i suoi vestiti vecchi e rattoppati.",
+    "Nessuno lo salutò, nessuno gli offrì una sedia, nessuno gli diede da mangiare. Tutti facevano finta di non vederlo.",
+    "Giufà tornò a casa, si fece prestare un vestito bellissimo, di velluto, con i bottoni dorati, e tornò alla festa.",
+    "Questa volta tutti gli andarono incontro: «Benvenuto! Si accomodi! Assaggi questo, assaggi quello!»",
+    "Giufà si sedette a tavola. Prese la carne e se la mise in tasca. Prese il pane e se lo infilò nelle maniche. Prese i dolci e li nascose sotto la giacca.",
+    "«Mangiate, vestiti miei, mangiate!» diceva. «Hanno invitato voi, mica me!»",
+    "Questa storia si racconta in Sicilia, dove il protagonista si chiama Giufà, e in molti paesi arabi, dove si chiama Giuha."
+   ],
+   "domande": [
+    {
+     "d": "Com'era vestito Giufà, la prima volta?",
+     "giusta": "Con vestiti vecchi e rattoppati.",
+     "sbagliate": [
+      "Con un vestito d'oro.",
+      "Da re."
+     ]
+    },
+    {
+     "d": "Che cosa fecero gli invitati, la prima volta?",
+     "giusta": "Fecero finta di non vederlo.",
+     "sbagliate": [
+      "Lo abbracciarono.",
+      "Gli offrirono la torta."
+     ]
+    },
+    {
+     "d": "Che cosa era cambiato, la seconda volta?",
+     "giusta": "Il vestito di Giufà.",
+     "sbagliate": [
+      "Il nome di Giufà.",
+      "La casa della festa."
+     ]
+    },
+    {
+     "d": "Perché Giufà mise il cibo nelle tasche?",
+     "giusta": "Per far capire che gli invitati guardavano solo i vestiti.",
+     "sbagliate": [
+      "Per portarlo alla mamma.",
+      "Perché non aveva fame."
+     ]
+    },
+    {
+     "d": "Dove si racconta questa storia?",
+     "giusta": "In Sicilia e in molti paesi arabi.",
+     "sbagliate": [
+      "Solo in Francia.",
+      "In Cina e in Giappone."
+     ]
+    }
+   ],
+   "autore": "Racconto popolare di Sicilia e dei paesi arabi",
+   "nota": "Testo di Lavagna Amica."
+  }
+ },
+ {
+  "id": "brano-anansi",
+  "titolo": "Livello 3 · Anansi e la pentola della saggezza",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Nel paese dei Fanti, in Africa, viveva una volta Padre Anansi, il ragno. Possedeva tutta la saggezza del mondo, e ogni giorno la gente andava da lui a chiedere consigli.",
+    "Un giorno gli uomini del paese lo offesero. Anansi decise di punirli: avrebbe nascosto tutta la sua saggezza, così nessuno ne avrebbe più avuta.",
+    "Raccolse tutta la saggezza che aveva già dato e la chiuse in una grande pentola. Poi decise di nasconderla in cima all'albero più alto della foresta.",
+    "Anansi aveva un figlio, Kweku Tsin, che sospettava qualcosa. Così lo seguì di nascosto.",
+    "Anansi si appese la pentola al collo e cominciò ad arrampicarsi. Ma la pentola, pesante, gli stava proprio davanti: ogni volta che provava a salire, la pentola lo intralciava. Provò e riprovò, senza riuscirci.",
+    "Alla fine Kweku Tsin non resistette e gridò: «Papà, perché non ti metti la pentola sulla schiena? Così potresti arrampicarti facilmente!»",
+    "Anansi si voltò e disse: «Pensavo di avere tutta la saggezza del mondo in questa pentola. Ma tu ne hai più di me!»",
+    "Arrabbiato, gettò via la pentola. La pentola cadde su una grande roccia e si ruppe: la saggezza uscì e si sparse in tutto il mondo. Per questo, oggi, un po' di saggezza ce l'hanno tutti."
+   ],
+   "domande": [
+    {
+     "d": "Chi era Padre Anansi?",
+     "giusta": "Il ragno che possedeva tutta la saggezza.",
+     "sbagliate": [
+      "Il re del paese dei Fanti.",
+      "Un leone della foresta."
+     ]
+    },
+    {
+     "d": "Perché Anansi voleva nascondere la saggezza?",
+     "giusta": "Perché gli uomini lo avevano offeso.",
+     "sbagliate": [
+      "Perché voleva venderla.",
+      "Perché l'aveva persa."
+     ]
+    },
+    {
+     "d": "Dove voleva nasconderla?",
+     "giusta": "In cima all'albero più alto.",
+     "sbagliate": [
+      "In fondo al mare.",
+      "Sotto il letto."
+     ]
+    },
+    {
+     "d": "Che consiglio gli diede il figlio?",
+     "giusta": "Di mettersi la pentola sulla schiena.",
+     "sbagliate": [
+      "Di usare una scala.",
+      "Di chiedere aiuto agli uccelli."
+     ]
+    },
+    {
+     "d": "Che cosa successe alla saggezza, alla fine?",
+     "giusta": "Si sparse in tutto il mondo.",
+     "sbagliate": [
+      "Restò chiusa nella pentola.",
+      "La prese tutta il figlio."
+     ]
+    }
+   ],
+   "autore": "Racconto popolare dell'Africa occidentale (Ghana)",
+   "opera": "dalla raccolta «West African Folk-Tales» di W. H. Barker e C. Sinclair",
+   "anno": "1917",
+   "nota": "Traduzione e adattamento di Lavagna Amica."
+  }
+ },
+ {
+  "id": "brano-ciclone",
+  "titolo": "Livello 3 · Il ciclone",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Dorothy viveva in mezzo alle grandi praterie del Kansas, con lo zio Henry, che era un contadino, e la zia Em, sua moglie. La loro casa era piccola: quattro muri, un pavimento e un tetto, cioè una stanza sola.",
+    "Sotto il pavimento c'era una buca scura, la «cantina del ciclone», dove la famiglia poteva ripararsi se arrivava uno di quei venti terribili che girano su sé stessi e schiacciano tutto quello che incontrano.",
+    "Intorno, tutto era grigio: la prateria, l'erba bruciata dal sole, la casa. Solo Toto non era grigio: era un cagnolino nero, con il pelo lungo e morbido, e faceva ridere Dorothy tutto il giorno.",
+    "Un giorno lo zio Henry guardò il cielo, più grigio del solito. «Sta arrivando un ciclone, Em!» gridò, e corse dalle mucche e dai cavalli.",
+    "«Presto, Dorothy!» urlò la zia. «Scappa in cantina!»",
+    "Ma Toto saltò giù dalle braccia di Dorothy e si nascose sotto il letto. Mentre Dorothy lo riprendeva, il vento urlò fortissimo, e la casa tremò così tanto che lei cadde seduta sul pavimento.",
+    "Allora successe una cosa strana. La casa girò su sé stessa due o tre volte e si alzò piano piano nell'aria, come un pallone. Il ciclone la portò fino in cima e la trasportò lontano, per chilometri e chilometri, leggera come una piuma."
+   ],
+   "domande": [
+    {
+     "d": "Dove viveva Dorothy?",
+     "giusta": "Nelle praterie del Kansas.",
+     "sbagliate": [
+      "In una grande città.",
+      "Su un'isola."
+     ]
+    },
+    {
+     "d": "Con chi viveva?",
+     "giusta": "Con lo zio Henry e la zia Em.",
+     "sbagliate": [
+      "Con la mamma e il papà.",
+      "Con il mago di Oz."
+     ]
+    },
+    {
+     "d": "Chi faceva ridere Dorothy?",
+     "giusta": "Toto, il cagnolino nero.",
+     "sbagliate": [
+      "La zia Em.",
+      "Le mucche."
+     ]
+    },
+    {
+     "d": "A che cosa serviva la buca sotto il pavimento?",
+     "giusta": "A ripararsi dal ciclone.",
+     "sbagliate": [
+      "A tenere il vino.",
+      "A nascondere i giocattoli."
+     ]
+    },
+    {
+     "d": "Perché Dorothy non arrivò in cantina?",
+     "giusta": "Perché andò a riprendere Toto sotto il letto.",
+     "sbagliate": [
+      "Perché aveva paura del buio.",
+      "Perché stava dormendo."
+     ]
+    }
+   ],
+   "autore": "L. Frank Baum",
+   "opera": "Il meraviglioso mago di Oz, capitolo 1",
+   "anno": "1900",
+   "nota": "Traduzione e adattamento di Lavagna Amica. Nel libro il vento si chiama ciclone: oggi diremmo tornado.",
+   "didascalia": "Illustrazione di W. W. Denslow nella prima edizione (1900).",
+   "f": "denslow-casa-ciclone.jpg"
+  }
+ },
+ {
+  "id": "brano-icaro",
+  "titolo": "Livello 4 · Dedalo e Icaro",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 4,
+   "testo": [
+    "Dedalo era un inventore bravissimo, ma il re Minosse lo teneva prigioniero sull'isola di Creta, insieme al figlio Icaro. Dedalo sentiva una gran nostalgia della sua terra.",
+    "«Il re può chiudermi la terra e il mare,» disse, «ma il cielo è aperto: andremo via da lì.»",
+    "Allora mise in fila delle penne, dalle più piccole alle più grandi; le legò in mezzo con il filo e in fondo con la cera, e le piegò un poco, come le ali degli uccelli veri.",
+    "Il piccolo Icaro gli stava accanto: rincorreva le piume portate via dal vento e ammorbidiva la cera con il pollice, giocando, senza sapere che stava toccando il suo destino.",
+    "Quando le ali furono pronte, Dedalo le provò e rimase sospeso nell'aria. Poi le legò al figlio e gli disse: «Vola in mezzo, Icaro. Se vai troppo in basso, l'acqua del mare appesantisce le penne; se vai troppo in alto, il sole le brucia. Segui me.»",
+    "Partirono. Un pescatore, un pastore e un contadino li videro passare e rimasero a bocca aperta: pensarono che fossero dei.",
+    "Ma Icaro cominciò a provare gusto nel volo audace. Lasciò la sua guida e, attirato dal cielo, salì sempre più in alto.",
+    "Il sole, così vicino, sciolse la cera profumata che teneva insieme le penne. Icaro agitò le braccia nude, ma senza penne non poteva più reggersi nell'aria. Chiamava il nome del padre, mentre cadeva nel mare azzurro, che da lui prese il nome: il mare Icario.",
+    "E il povero padre, che ormai non era più padre, gridava: «Icaro, Icaro, dove sei?». Vide le penne sulle onde, e maledisse la sua bravura."
+   ],
+   "domande": [
+    {
+     "d": "Dove erano prigionieri Dedalo e Icaro?",
+     "giusta": "Sull'isola di Creta.",
+     "sbagliate": [
+      "In una torre di Roma.",
+      "Su una nave."
+     ]
+    },
+    {
+     "d": "Con che cosa Dedalo costruì le ali?",
+     "giusta": "Con penne, filo e cera.",
+     "sbagliate": [
+      "Con legno e chiodi.",
+      "Con stoffa e corda."
+     ]
+    },
+    {
+     "d": "Che consiglio diede Dedalo al figlio?",
+     "giusta": "Di volare in mezzo, né troppo in basso né troppo in alto.",
+     "sbagliate": [
+      "Di volare più in alto possibile.",
+      "Di volare vicino all'acqua."
+     ]
+    },
+    {
+     "d": "Che cosa pensarono il pescatore, il pastore e il contadino?",
+     "giusta": "Che fossero dei.",
+     "sbagliate": [
+      "Che fossero uccelli giganti.",
+      "Che fossero ladri."
+     ]
+    },
+    {
+     "d": "Perché Icaro cadde?",
+     "giusta": "Il sole sciolse la cera delle ali.",
+     "sbagliate": [
+      "Un uccello lo spinse giù.",
+      "Le ali erano troppo pesanti."
+     ]
+    },
+    {
+     "d": "Che cosa prese il nome di Icaro?",
+     "giusta": "Il mare in cui cadde.",
+     "sbagliate": [
+      "L'isola di Creta.",
+      "Una stella."
+     ]
+    }
+   ],
+   "autore": "Ovidio",
+   "opera": "Le metamorfosi, libro VIII",
+   "anno": "I secolo d.C.",
+   "nota": "Traduzione e adattamento di Lavagna Amica.",
+   "didascalia": "«Paesaggio con la caduta di Icaro», copia antica da un dipinto di Pieter Bruegel il Vecchio: il contadino, il pastore e il pescatore, e le gambe di Icaro che spariscono nel mare, in basso a destra.",
+   "f": "bruegel-caduta-icaro.jpg"
+  }
+ },
+ {
+  "id": "brano-thor",
+  "titolo": "Livello 4 · Il martello di Thor",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 4,
+   "testo": [
+    "Una mattina Thor, il dio del tuono, si svegliò e cercò il suo martello. Non c'era più! Si scosse la barba, si arruffò i capelli: il martello era sparito.",
+    "Loki, il dio furbo, si fece prestare dalla dea Freia il suo mantello di piume e volò nel paese dei giganti. Lì trovò Thrym, il re dei giganti, seduto su una collina: intrecciava collari d'oro per i suoi cani.",
+    "«Sì, ho nascosto io il martello di Thor» disse Thrym. «È sepolto otto leghe sotto terra. Lo restituirò soltanto se Freia, la dea più bella, diventerà mia moglie.»",
+    "Quando Freia lo seppe, si arrabbiò così tanto che il suo famoso collare d'oro si spezzò. «Io, sposa di un gigante? Mai!»",
+    "Allora gli dei si riunirono, e il saggio Heimdall ebbe un'idea: «Vestiamo Thor da sposa! Mettiamogli il velo, il collare di Freia e un mazzo di chiavi che tintinnano alla cintura.» Thor brontolò, ma non c'era altra scelta. E Loki si vestì da damigella.",
+    "Al banchetto di nozze la sposa mangiò un bue intero, otto salmoni e tutti i dolci preparati per le signore, e bevve tre botti di idromele. «Non ho mai visto una sposa mangiare così!» disse Thrym. «È che per otto notti non ha mangiato niente,» rispose svelta la damigella, «tanto desiderava venire da te.»",
+    "Thrym sollevò il velo per darle un bacio, ma vide due occhi che bruciavano come il fuoco, e fece un salto indietro. «È che per otto notti non ha dormito,» disse la damigella, «tanto desiderava venire da te.»",
+    "Allora Thrym ordinò: «Portate il martello, per benedire la sposa! Mettetelo sulle sue ginocchia!»",
+    "Quando Thor sentì il suo martello sulle ginocchia, il cuore gli rise nel petto. Lo afferrò e lo usò contro Thrym e i suoi giganti. Così Thor ebbe di nuovo il suo martello."
+   ],
+   "domande": [
+    {
+     "d": "Che cosa aveva perso Thor?",
+     "giusta": "il suo martello",
+     "sbagliate": [
+      "il suo mantello",
+      "il suo cavallo"
+     ]
+    },
+    {
+     "d": "Chi l'aveva nascosto?",
+     "giusta": "Thrym, il re dei giganti.",
+     "sbagliate": [
+      "Loki, il dio furbo.",
+      "La dea Freia."
+     ]
+    },
+    {
+     "d": "Che cosa voleva Thrym, per restituirlo?",
+     "giusta": "Sposare la dea Freia.",
+     "sbagliate": [
+      "Un sacco d'oro.",
+      "Diventare un dio."
+     ]
+    },
+    {
+     "d": "Come si travestì Thor?",
+     "giusta": "Da sposa, con il velo.",
+     "sbagliate": [
+      "Da gigante.",
+      "Da uccello."
+     ]
+    },
+    {
+     "d": "Che cosa diceva Loki per spiegare la fame e gli occhi di fuoco della sposa?",
+     "giusta": "Che per otto notti non aveva mangiato né dormito.",
+     "sbagliate": [
+      "Che era malata.",
+      "Che era una gigante."
+     ]
+    },
+    {
+     "d": "Come riprese il martello, Thor?",
+     "giusta": "Glielo misero sulle ginocchia per benedire la sposa.",
+     "sbagliate": [
+      "Lo trovò scavando.",
+      "Glielo riportò Freia."
+     ]
+    }
+   ],
+   "autore": "Edda poetica",
+   "opera": "Il canto di Thrym",
+   "anno": "manoscritto del XIII secolo",
+   "nota": "Traduzione e adattamento di Lavagna Amica. Un mito degli antichi popoli del Nord Europa.",
+   "didascalia": "Il banchetto di nozze di Thrym, disegnato da W. G. Collingwood (1908).",
+   "f": "thor-sposa.jpg"
+  }
+ },
+ {
+  "id": "brano-primo-giorno",
+  "titolo": "Livello 4 · Il primo giorno di scuola",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 4,
+   "testo": [
+    "Oggi primo giorno di scuola. Passarono come un sogno quei tre mesi di vacanza in campagna! Mia madre mi condusse questa mattina alla Sezione Baretti a farmi inscrivere per la terza elementare: io pensavo alla campagna e andavo di mala voglia.",
+    "Tutte le strade brulicavano di ragazzi; le due botteghe di libraio erano affollate di padri e di madri che compravano zaini, cartelle e quaderni, e davanti alla scuola s'accalcava tanta gente che il bidello e la guardia civica duravan fatica a tenere sgombra la porta.",
+    "Vicino alla porta, mi sentii toccare una spalla: era il mio maestro della seconda, sempre allegro, coi suoi capelli rossi arruffati, che mi disse: — Dunque, Enrico, siamo separati per sempre? — Io lo sapevo bene; eppure mi fecero pena quelle parole.",
+    "Il nostro maestro è alto, senza barba, coi capelli grigi e lunghi, e ha una ruga diritta sulla fronte; ha la voce grossa, e ci guarda tutti fisso, l'un dopo l'altro, come per leggerci dentro; e non ride mai.",
+    "Io dicevo tra me: — Ecco il primo giorno. Ancora nove mesi. Quanti lavori, quanti esami mensili, quante fatiche! — Avevo proprio bisogno di trovar mia madre all'uscita, e corsi a baciarle la mano. Essa mi disse: — Coraggio Enrico! Studieremo insieme. — E tornai a casa contento."
+   ],
+   "domande": [
+    {
+     "d": "In che classe va Enrico?",
+     "giusta": "in terza elementare",
+     "sbagliate": [
+      "in prima",
+      "in quinta"
+     ]
+    },
+    {
+     "d": "Come va a scuola, Enrico, la mattina?",
+     "giusta": "Malvolentieri: pensa ancora alla campagna.",
+     "sbagliate": [
+      "Felicissimo.",
+      "Arrabbiato con la mamma."
+     ]
+    },
+    {
+     "d": "Chi gli tocca la spalla, vicino alla porta?",
+     "giusta": "Il suo maestro della seconda.",
+     "sbagliate": [
+      "Il direttore.",
+      "Un compagno nuovo."
+     ]
+    },
+    {
+     "d": "Com'è il nuovo maestro?",
+     "giusta": "Alto, coi capelli grigi, la voce grossa, e non ride mai.",
+     "sbagliate": [
+      "Piccolo e sempre allegro.",
+      "Giovane e con la barba rossa."
+     ]
+    },
+    {
+     "d": "Che cosa gli dice la mamma, all'uscita?",
+     "giusta": "«Coraggio Enrico! Studieremo insieme.»",
+     "sbagliate": [
+      "«Domani resti a casa.»",
+      "«Il maestro è cattivo.»"
+     ]
+    }
+   ],
+   "autore": "Edmondo De Amicis",
+   "opera": "Cuore, «Il primo giorno di scuola»",
+   "anno": "1886",
+   "nota": "Brano con alcuni tagli. Inscrivere: iscrivere. Brulicavano: erano piene di gente che si muoveva. Duravan fatica: facevano fatica."
+  }
+ },
+ {
+  "id": "brano-valentino",
+  "titolo": "Livello 4 · Valentino",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 4,
+   "testo": [
+    "Oh! Valentino vestito di nuovo,",
+    "come le brocche dei biancospini!",
+    "Solo, ai piedini provati dal rovo",
+    "porti la pelle de' tuoi piedini;",
+    "porti le scarpe che mamma ti fece,",
+    "che non mutasti mai da quel dì,",
+    "che non costarono un picciolo: in vece",
+    "costa il vestito che ti cucì.",
+    "",
+    "Costa; ché mamma già tutto ci spese",
+    "quel tintinnante salvadanaio:",
+    "ora esso è vuoto; e cantò più d'un mese,",
+    "per riempirlo, tutto il pollaio.",
+    "Pensa, a Gennaio, che il fuoco del ciocco",
+    "non ti bastava, tremavi, ahimè!,",
+    "e le galline cantavano. Un cocco!",
+    "ecco ecco un cocco un cocco per te!",
+    "",
+    "Poi, le galline chiocciarono, e venne",
+    "Marzo, e tu, magro contadinello,",
+    "restasti a mezzo, così, con le penne,",
+    "ma nudi i piedi, come un uccello:",
+    "come l'uccello venuto dal mare,",
+    "che tra il ciliegio salta, e non sa",
+    "ch'oltre il beccare, il cantare, l'amare,",
+    "ci sia qualch'altra felicità."
+   ],
+   "domande": [
+    {
+     "d": "Com'è vestito Valentino?",
+     "giusta": "Con un vestito nuovo.",
+     "sbagliate": [
+      "Con un vestito vecchio.",
+      "Da soldato."
+     ]
+    },
+    {
+     "d": "Che cosa porta ai piedi?",
+     "giusta": "Niente: è scalzo, ha solo «la pelle dei suoi piedini».",
+     "sbagliate": [
+      "Scarpe nuove.",
+      "Stivali di cuoio."
+     ]
+    },
+    {
+     "d": "Con che cosa la mamma ha pagato il vestito?",
+     "giusta": "Con i soldi del salvadanaio, riempito con le uova delle galline.",
+     "sbagliate": [
+      "Con un regalo di un signore.",
+      "Con i soldi trovati per strada."
+     ]
+    },
+    {
+     "d": "Che cosa vuol dire «un cocco», nella poesia?",
+     "giusta": "un uovo",
+     "sbagliate": [
+      "un frutto tropicale",
+      "un pulcino"
+     ]
+    },
+    {
+     "d": "A che cosa somiglia Valentino, con il vestito nuovo e i piedi nudi?",
+     "giusta": "A un uccello, con le penne ma con i piedi nudi.",
+     "sbagliate": [
+      "A un re.",
+      "A un albero."
+     ]
+    }
+   ],
+   "autore": "Giovanni Pascoli",
+   "opera": "Canti di Castelvecchio",
+   "anno": "1903",
+   "nota": "Brocche: i germogli. Rovo: pianta con le spine. Picciolo: una moneta piccolissima. Ciocco: un grosso pezzo di legno da bruciare. Cocco: nella lingua dei bambini toscani, l'uovo.",
+   "poesia": true
+  }
+ },
+ {
+  "id": "brano-peter-pan",
+  "titolo": "Livello 4 · Tutti i bambini, tranne uno, crescono",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 4,
+   "testo": [
+    "Tutti i bambini, tranne uno, crescono. Lo capiscono presto, che cresceranno, e Wendy lo capì così.",
+    "Un giorno, quando aveva due anni, stava giocando in un giardino. Colse un altro fiore e corse a portarlo alla mamma. Immagino che fosse proprio una delizia, perché la signora Darling si mise una mano sul cuore ed esclamò: «Oh, perché non puoi restare così per sempre!»",
+    "Fu tutto quello che si dissero sull'argomento, ma da quel giorno Wendy seppe che doveva crescere. Lo si sa sempre, dopo i due anni. I due anni sono l'inizio della fine."
+   ],
+   "domande": [
+    {
+     "d": "Secondo il testo, quanti bambini non crescono?",
+     "giusta": "Uno solo.",
+     "sbagliate": [
+      "Nessuno.",
+      "Tutti."
+     ]
+    },
+    {
+     "d": "Quanti anni aveva Wendy, nel giardino?",
+     "giusta": "due",
+     "sbagliate": [
+      "sei",
+      "dieci"
+     ]
+    },
+    {
+     "d": "Che cosa portò alla mamma?",
+     "giusta": "un fiore",
+     "sbagliate": [
+      "un sasso",
+      "una farfalla"
+     ]
+    },
+    {
+     "d": "Che cosa desiderò la mamma?",
+     "giusta": "Che Wendy restasse così per sempre.",
+     "sbagliate": [
+      "Che Wendy crescesse in fretta.",
+      "Che Wendy andasse a dormire."
+     ]
+    },
+    {
+     "d": "Che cosa capì Wendy, da quel giorno?",
+     "giusta": "Che doveva crescere.",
+     "sbagliate": [
+      "Che sapeva volare.",
+      "Che non sarebbe mai cresciuta."
+     ]
+    }
+   ],
+   "autore": "James Matthew Barrie",
+   "opera": "Peter Pan e Wendy, capitolo 1",
+   "anno": "1911",
+   "nota": "Traduzione di Lavagna Amica.",
+   "didascalia": "Peter Pan disegnato da F. D. Bedford nella prima edizione (1911).",
+   "f": "bedford-peter-pan.jpg"
+  }
+ },
+ {
   "id": "versi-nomi",
   "titolo": "Come si chiama il verso?",
   "scrittura": "maiuscolo",

@@ -8,7 +8,8 @@ export const TIPI = {
   sequenza: { nome: "Sequenza", spiega: "Passi da mettere in ordine, dal primo all'ultimo." },
   frasi:    { nome: "Frasi",    spiega: "Frasi con le parole mancanti. Scrivi tra [quadre] le parole da completare." },
   matematica: { nome: "Matematica", spiega: "Numeri, operazioni e problemi con gli oggetti da vedere, muovere e contare." },
-  lettura: { nome: "Lettura", spiega: "Dalle lettere alle sillabe, alle parole, alle frasi: per imparare a leggere un passo alla volta." }
+  lettura: { nome: "Lettura", spiega: "Dalle lettere alle sillabe, alle parole, alle frasi: per imparare a leggere un passo alla volta." },
+  brano: { nome: "Brano da leggere", spiega: "Un racconto, una poesia o una favola da leggere, e poi le domande per capirlo." }
 };
 
 export const GIOCHI = {
@@ -19,6 +20,7 @@ export const GIOCHI = {
   completa:  { nome: "Completa la frase",  icona: "✏️", tipi: ["frasi"],                       consegna: "Metti ogni parola al suo posto." },
   matematica: { nome: "Matematica con gli oggetti", icona: "🧮", tipi: ["matematica"],       consegna: "Guarda, conta e rispondi." },
   lettura:   { nome: "Impariamo a leggere", icona: "📖", tipi: ["lettura"],                  consegna: "Guarda, ascolta e leggi." },
+  brano:     { nome: "Leggi e rispondi",   icona: "📚", tipi: ["brano"],                      consegna: "Leggi il testo, poi rispondi alle domande." },
   scelta:    { nome: "Scelta multipla",    icona: "✅", tipi: ["domande", "coppie", "gruppi"], consegna: "Scegli la risposta giusta." }
 };
 // L'ordine conta: il primo gioco adatto a un tipo è quello con cui l'esercizio si apre.
@@ -87,6 +89,9 @@ export function valida(v) {
     dati: {}
   };
   if (MATERIE.includes(v.materia)) es.materia = v.materia;
+  // testi o immagini protetti da diritti: si usano solo in classe (art. 70 e 70-bis L. 633/1941),
+  // quindi l'esercizio non si pubblica nel catalogo e non si condivide con un link
+  if (v.privato) es.privato = true;
   // la spiegazione prima dell'esercizio: un'animazione dell'app, un video libero dell'archivio Wikimedia Commons
   // (solo il nome del file: niente pubblicità) e, se serve, un video di YouTube (solo il codice)
   if (v.scopri && typeof v.scopri === "object") {
@@ -138,11 +143,44 @@ export function valida(v) {
     es.dati.esercizi = (Array.isArray(d.esercizi) ? d.esercizi : []).map(esercizioDiMatematica).filter(Boolean);
     if (!es.dati.esercizi.length) errore("Serve almeno un esercizio di matematica completo.");
   }
+  if (tipo === "brano") es.dati = brano(d);
   if (tipo === "lettura") {
     es.dati.esercizi = (Array.isArray(d.esercizi) ? d.esercizi : []).map(esercizioDiLettura).filter(Boolean);
     if (!es.dati.esercizi.length) errore("Serve almeno un esercizio di lettura completo.");
   }
   return es;
+}
+
+/* ---------- brani da leggere ---------- */
+
+export const LIVELLI = {
+  1: "Livello 1 · prime letture",
+  2: "Livello 2 · testi brevi",
+  3: "Livello 3 · racconti",
+  4: "Livello 4 · testi d'autore"
+};
+
+function brano(d) {
+  const righe = (Array.isArray(d.testo) ? d.testo : []).slice(0, 80).map(r => testo(r, 1500));
+  while (righe.length && !righe[0]) righe.shift();
+  while (righe.length && !righe[righe.length - 1]) righe.pop();
+  if (!righe.length) errore("Manca il testo da leggere.");
+  const b = { testo: righe };
+  ["autore", "opera", "anno", "nota", "didascalia"].forEach((k, i) => {
+    const v = testo(d[k], [80, 140, 20, 300, 200][i]);
+    if (v) b[k] = v;
+  });
+  if (d.poesia) b.poesia = true;
+  if (LIVELLI[d.livello]) b.livello = Number(d.livello);
+  if (typeof d.f === "string" && /^[a-z0-9-]{1,60}\.(jpg|png|webp)$/.test(d.f)) b.f = d.f;
+  else if (picto(d.p)) b.p = picto(d.p);
+  b.domande = (Array.isArray(d.domande) ? d.domande : []).map(q => ({
+    d: testo(q && q.d, 300),
+    giusta: testo(q && q.giusta, 200),
+    sbagliate: (Array.isArray(q && q.sbagliate) ? q.sbagliate : []).map(s => testo(s, 200)).filter(Boolean)
+  })).filter(q => q.d && q.giusta && q.sbagliate.length);
+  if (!b.domande.length) errore("Serve almeno una domanda con la risposta giusta e una sbagliata.");
+  return b;
 }
 
 /* ---------- lettura ---------- */

@@ -217,6 +217,7 @@ async function apri(id, ins, env) {
 function contenutoValido(v) {
   let es;
   try { es = valida(v); } catch (e) { no(400, e.message); }
+  if (es.privato) no(400, "Questo esercizio contiene testi protetti da diritti: si usa solo in classe e non si pubblica.");
   delete es.id;
   if (JSON.stringify(es).length > MAX_CONTENUTO) no(413, "L'esercizio è troppo grande.");
   return es;
