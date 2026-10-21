@@ -2275,6 +2275,1293 @@
   }
  },
  {
+  "id": "brano-mida",
+  "titolo": "Livello 2 · Re Mida",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "Il re Mida aveva aiutato il vecchio maestro del dio Bacco. Per ringraziarlo, Bacco gli disse: «Chiedimi quello che vuoi.»",
+    "Mida rispose: «Fa' che tutto quello che tocco diventi oro.» Bacco lo accontentò, ma era dispiaciuto: Mida non aveva chiesto una cosa buona.",
+    "Mida, felice, tornò a casa e provò. Toccò un ramoscello, e il ramoscello diventò d'oro. Raccolse un sasso, e il sasso diventò d'oro. Prese una mela, e sembrava la mela d'oro delle favole.",
+    "Poi i servi gli prepararono la tavola. Ma quando Mida prese il pane, il pane diventò duro come l'oro. Quando morse la carne, la carne diventò una lamina d'oro. Quando bevve il vino, nella sua bocca scorreva oro liquido.",
+    "Mida, ricco e povero insieme, non poteva né mangiare né bere. Allora alzò le braccia al cielo: «Perdonami, Bacco, ho sbagliato. Liberami da questo dono!»",
+    "Bacco gli disse di lavarsi nel fiume Pattolo. Mida si immerse nell'acqua, e il potere dell'oro passò dal suo corpo al fiume. Per questo, si racconta, la sabbia di quel fiume è piena di pagliuzze d'oro."
+   ],
+   "domande": [
+    {
+     "d": "Che cosa chiese Mida a Bacco?",
+     "giusta": "Che tutto quello che toccava diventasse oro.",
+     "sbagliate": [
+      "Di diventare un dio.",
+      "Un castello nuovo."
+     ]
+    },
+    {
+     "d": "Perché Bacco era dispiaciuto?",
+     "giusta": "Mida non aveva chiesto una cosa buona.",
+     "sbagliate": [
+      "Non voleva fargli nessun regalo.",
+      "Mida era povero."
+     ]
+    },
+    {
+     "d": "Che cosa successe al pane e al vino?",
+     "giusta": "Diventarono oro, e Mida non poteva mangiare né bere.",
+     "sbagliate": [
+      "Diventarono più buoni.",
+      "Sparirono dalla tavola."
+     ]
+    },
+    {
+     "d": "Come si liberò Mida dal suo dono?",
+     "giusta": "Si lavò nel fiume Pattolo.",
+     "sbagliate": [
+      "Dormì per tre giorni.",
+      "Regalò tutto il suo oro."
+     ]
+    },
+    {
+     "d": "Che cosa vuol dire «ricco e povero insieme»?",
+     "giusta": "Aveva tanto oro, ma non poteva mangiare.",
+     "sbagliate": [
+      "Aveva un fratello povero.",
+      "Era ricco solo la domenica."
+     ]
+    }
+   ],
+   "autore": "Ovidio",
+   "opera": "Le metamorfosi, libro XI",
+   "anno": "I secolo d.C.",
+   "nota": "Traduzione dal latino e adattamento di Lavagna Amica.",
+   "f": "poussin-mida.jpg",
+   "didascalia": "Mida si lava alla sorgente del fiume Pattolo: dipinto di Nicolas Poussin (1627 circa), particolare."
+  }
+ },
+ {
+  "id": "brano-leone-lepre",
+  "titolo": "Livello 2 · Il leone e la lepre",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "In un bosco viveva un leone feroce, che ogni giorno uccideva tantissimi animali.",
+    "Gli animali si riunirono e andarono da lui: «Re leone, facciamo un patto. Ogni giorno ti manderemo un animale da mangiare, e tu lascerai in pace gli altri.» Il leone accettò.",
+    "Un giorno toccò alla lepre. La lepre era piccola, ma molto furba. Camminò piano piano, apposta, e arrivò dal leone molto in ritardo.",
+    "Il leone, affamato e furioso, ruggì: «Perché arrivi così tardi?»",
+    "«Non è colpa mia» disse la lepre. «Per strada mi ha fermato un altro leone. Dice che il re del bosco è lui, e che tu sei un impostore.»",
+    "«Un altro leone? Portami subito da lui!»",
+    "La lepre lo portò a un pozzo profondo, pieno d'acqua limpida. «Abita lì sotto» disse.",
+    "Il leone si affacciò e vide nell'acqua un leone furioso: era la sua immagine riflessa. Ruggì, e dal pozzo l'eco ruggì più forte. Allora il leone saltò nel pozzo per attaccare il nemico, e non ne uscì mai più.",
+    "La lepre tornò dagli altri animali, che fecero festa: la più piccola di tutti li aveva salvati. L'intelligenza vale più della forza."
+   ],
+   "domande": [
+    {
+     "d": "Che patto fecero gli animali con il leone?",
+     "giusta": "Ogni giorno gli avrebbero mandato un animale.",
+     "sbagliate": [
+      "Gli avrebbero costruito una casa.",
+      "Sarebbero scappati tutti."
+     ]
+    },
+    {
+     "d": "Perché la lepre arrivò in ritardo?",
+     "giusta": "Camminò piano apposta, per il suo piano.",
+     "sbagliate": [
+      "Si era persa nel bosco.",
+      "Si era addormentata."
+     ]
+    },
+    {
+     "d": "Che cosa raccontò la lepre al leone?",
+     "giusta": "Che c'era un altro leone che si diceva re.",
+     "sbagliate": [
+      "Che gli animali erano scappati.",
+      "Che aveva mal di pancia."
+     ]
+    },
+    {
+     "d": "Che cosa vide il leone nel pozzo?",
+     "giusta": "La sua immagine riflessa nell'acqua.",
+     "sbagliate": [
+      "Un altro leone vero.",
+      "Un tesoro."
+     ]
+    },
+    {
+     "d": "Che cosa ci insegna la favola?",
+     "giusta": "L'intelligenza vale più della forza.",
+     "sbagliate": [
+      "I leoni sanno nuotare.",
+      "Bisogna sempre arrivare in ritardo."
+     ]
+    }
+   ],
+   "autore": "Panchatantra, antiche favole dell'India",
+   "nota": "Traduzione e adattamento di Lavagna Amica. Queste favole sono arrivate fino a noi anche attraverso la Persia e i paesi arabi, nel libro «Kalila e Dimna».",
+   "f": "kalila-leone-lepre.jpg",
+   "didascalia": "Il leone guarda nel pozzo e vede il suo riflesso: da un antico manoscritto di «Kalila e Dimna», particolare."
+  }
+ },
+ {
+  "id": "brano-calzolaio",
+  "titolo": "Livello 2 · Il calzolaio e i folletti",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "C'era una volta un calzolaio che, senza colpa sua, era diventato così povero che gli restava il cuoio per un solo paio di scarpe. Una sera tagliò il cuoio, per cucire le scarpe la mattina dopo, e andò a dormire tranquillo.",
+    "La mattina, sul tavolo, trovò le scarpe già pronte! Erano fatte così bene che non c'era un punto sbagliato: sembravano un capolavoro.",
+    "Entrò un cliente: le scarpe gli piacquero tanto che le pagò più del solito. Con quei soldi il calzolaio comprò il cuoio per due paia di scarpe. La sera le tagliò, e la mattina erano già pronte. Poi quattro paia, poi otto... e così il calzolaio diventò un uomo benestante.",
+    "Una sera, poco prima di Natale, disse alla moglie: «Restiamo svegli stanotte, per vedere chi ci aiuta?» Si nascosero dietro i vestiti appesi.",
+    "A mezzanotte arrivarono due piccoli omini, senza niente addosso. Si sedettero al tavolo e, con le loro ditine, cominciarono a cucire, a battere e a forare così veloci che il calzolaio non riusciva a staccare gli occhi. Quando finirono, scapparono via.",
+    "La mattina la moglie disse: «Gli omini ci hanno fatto diventare ricchi: dobbiamo ringraziarli. Vanno in giro senza vestiti e avranno freddo. Io cucirò per loro camicine, giacchette e pantaloncini, e farò a maglia un paio di calze per ciascuno. Tu fa' a ognuno un paio di scarpette.»",
+    "La sera misero i regali sul tavolo e si nascosero. A mezzanotte gli omini arrivarono, videro i vestitini, e prima si meravigliarono, poi fecero una grandissima festa. Si vestirono in un lampo e cantarono: «Siamo bei ragazzi, eleganti e fini: perché fare ancora i calzolai?»",
+    "Poi saltarono e ballarono sopra le sedie e le panche, e alla fine uscirono ballando dalla porta. Non tornarono più. Ma al calzolaio, per tutta la vita, andò sempre tutto bene."
+   ],
+   "domande": [
+    {
+     "d": "Quanto cuoio era rimasto al calzolaio, all'inizio?",
+     "giusta": "Quello per un solo paio di scarpe.",
+     "sbagliate": [
+      "Un magazzino pieno.",
+      "Neanche un pezzetto."
+     ]
+    },
+    {
+     "d": "Che cosa trovava ogni mattina sul tavolo?",
+     "giusta": "Le scarpe già cucite.",
+     "sbagliate": [
+      "Un sacchetto di monete.",
+      "Una lettera."
+     ]
+    },
+    {
+     "d": "Chi cuciva le scarpe di notte?",
+     "giusta": "Due piccoli omini.",
+     "sbagliate": [
+      "La moglie del calzolaio.",
+      "Un gatto magico."
+     ]
+    },
+    {
+     "d": "Come ringraziarono gli omini il calzolaio e la moglie?",
+     "giusta": "Cucirono per loro vestiti e scarpette.",
+     "sbagliate": [
+      "Diedero loro del cibo.",
+      "Scrissero un biglietto."
+     ]
+    },
+    {
+     "d": "Che cosa fecero gli omini, quando trovarono i regali?",
+     "giusta": "Fecero festa, si vestirono e se ne andarono ballando.",
+     "sbagliate": [
+      "Si arrabbiarono.",
+      "Cucirono altre scarpe."
+     ]
+    }
+   ],
+   "autore": "Jacob e Wilhelm Grimm",
+   "opera": "Fiabe per bambini e famiglie",
+   "anno": "1812",
+   "nota": "Traduzione e adattamento di Lavagna Amica.",
+   "f": "ubbelohde-folletti.jpg",
+   "didascalia": "Illustrazione di Otto Ubbelohde (inizio Novecento)."
+  }
+ },
+ {
+  "id": "brano-polifemo",
+  "titolo": "Livello 3 · Ulisse e Polifemo",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Racconta Ulisse: «Arrivammo vicino a una grotta alta, in riva al mare, coperta di alloro. Lì dentro dormivano tante pecore e capre. Ci abitava un gigante che pascolava le sue bestie da solo, lontano da tutti, e non conosceva né leggi né regole. Era un mostro: non sembrava un uomo che mangia il pane, ma la cima di una montagna coperta di boschi.",
+    "Scelsi i dodici compagni migliori e portai un otre di vino rosso, dolce e fortissimo. Il gigante non c'era. Nella grotta trovammo graticci pieni di formaggi, recinti pieni di agnelli e di capretti, secchi pieni di latte.",
+    "I compagni mi pregavano: “Prendiamo i formaggi e scappiamo alla nave!” Ma io non li ascoltai: volevo vedere il padrone di casa, e ricevere da lui i doni che si fanno agli ospiti.",
+    "La sera tornò il Ciclope con un enorme carico di legna, e lo buttò a terra con un tale fracasso che corremmo a nasconderci in fondo alla grotta. Poi chiuse l'entrata con un masso così grande che non l'avrebbero spostato ventidue carri.",
+    "Ci vide e chiese: “Stranieri, chi siete?” Risposi: “Siamo Greci che tornano da Troia. Rispetta gli dei: Zeus protegge chi è ospite.” Ma lui rispose senza pietà: “Noi Ciclopi non abbiamo paura degli dei.” E afferrò due dei miei compagni e se li mangiò.",
+    "Il giorno dopo, mentre il Ciclope era al pascolo, preparai un piano. Nella grotta c'era un grande tronco d'ulivo: ne tagliai un pezzo lungo, i compagni lo lisciarono, io gli feci la punta e la indurii nel fuoco. Poi lo nascondemmo.",
+    "La sera offrii il vino al Ciclope. Lui bevve e ne chiese ancora: “Dammene ancora, e dimmi il tuo nome, così ti faccio un regalo.” Tre volte gli versai il vino, tre volte lo bevve. Allora gli dissi con voce dolce: “Il mio nome è Nessuno. Nessuno mi chiamano mia madre, mio padre e tutti i miei compagni.” E lui: “Nessuno lo mangerò per ultimo: ecco il mio regalo.”",
+    "Poi cadde a terra e si addormentò. Scaldammo la punta del palo nella brace e, tutti insieme, gliela piantammo nell'unico occhio.",
+    "Il Ciclope urlò così forte che la roccia rimbombò. Gli altri Ciclopi accorsero: “Polifemo, perché gridi così? Qualcuno ti fa del male?” E lui: “Amici, Nessuno mi fa del male, con l'inganno!” “Se nessuno ti fa del male,” risposero, “sarà una malattia mandata da Zeus.” E se ne andarono. E io ridevo dentro di me: il mio nome e la mia astuzia lo avevano ingannato.",
+    "Al mattino il Ciclope, cieco, spostò il masso e si sedette all'entrata con le mani tese, per toccare chi usciva. Ma io avevo legato ogni compagno sotto la pancia di tre montoni, e io mi aggrappai alla lana del montone più grande. Il Ciclope toccava la schiena delle bestie, ma non capì che sotto c'erano gli uomini. Così uscimmo tutti e corremmo alla nave.»"
+   ],
+   "domande": [
+    {
+     "d": "Perché Ulisse non volle scappare subito con i formaggi?",
+     "giusta": "Voleva vedere il gigante e ricevere i doni degli ospiti.",
+     "sbagliate": [
+      "Era troppo stanco.",
+      "Aveva paura del mare."
+     ]
+    },
+    {
+     "d": "Come chiudeva la grotta il Ciclope?",
+     "giusta": "Con un masso enorme.",
+     "sbagliate": [
+      "Con una porta di legno.",
+      "Con una rete."
+     ]
+    },
+    {
+     "d": "Che nome disse Ulisse al Ciclope?",
+     "giusta": "Nessuno",
+     "sbagliate": [
+      "Ulisse",
+      "Polifemo"
+     ]
+    },
+    {
+     "d": "Perché gli altri Ciclopi se ne andarono?",
+     "giusta": "Polifemo gridò che «Nessuno» gli faceva del male.",
+     "sbagliate": [
+      "Avevano paura di Ulisse.",
+      "Dovevano portare al pascolo le pecore."
+     ]
+    },
+    {
+     "d": "Come uscirono dalla grotta Ulisse e i compagni?",
+     "giusta": "Aggrappati sotto la pancia dei montoni.",
+     "sbagliate": [
+      "Scavando un tunnel.",
+      "Mentre il Ciclope dormiva."
+     ]
+    },
+    {
+     "d": "Quale regola importante non rispettava il Ciclope?",
+     "giusta": "Trattare bene gli ospiti.",
+     "sbagliate": [
+      "Non mangiare il formaggio.",
+      "Andare a dormire presto."
+     ]
+    }
+   ],
+   "autore": "Omero",
+   "opera": "Odissea, libro IX",
+   "anno": "VIII secolo a.C.",
+   "nota": "Traduzione dal greco e adattamento di Lavagna Amica.",
+   "f": "polifemo.jpg",
+   "didascalia": "Ulisse e i compagni scappano dalla grotta aggrappati sotto le pecore: incisione di Theodoor van Thulden (1633), da un affresco del Primaticcio."
+  }
+ },
+ {
+  "id": "brano-sirene",
+  "titolo": "Livello 3 · Ulisse e le sirene",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Racconta Ulisse: «Dissi ai compagni: “Amici, la maga Circe mi ha detto che cosa ci aspetta. Prima di tutto dobbiamo stare lontani dal canto delle Sirene e dal loro prato fiorito. Solo io posso ascoltarle: ma voi legatemi stretto, in piedi, all'albero della nave. E se vi prego di slegarmi, voi stringete le corde ancora di più.”",
+    "Intanto la nave arrivò vicino all'isola delle Sirene. Il vento si fermò e il mare diventò calmissimo. I compagni tirarono giù la vela e presero i remi.",
+    "Io tagliai a pezzetti un grosso disco di cera e lo ammorbidii con le mani e al sole; poi tappai le orecchie a tutti i compagni, uno dopo l'altro. Loro mi legarono mani e piedi all'albero della nave, e ripresero a remare.",
+    "Quando fummo abbastanza vicini perché si sentisse una voce, le Sirene si accorsero della nave e cominciarono un canto bellissimo:",
+    "“Vieni qui, famoso Ulisse, gloria dei Greci! Ferma la nave e ascolta la nostra voce. Nessuno è mai passato di qui senza ascoltare il nostro canto dolce come il miele: chi lo ascolta se ne va felice, e sapendo più cose. Noi sappiamo tutto quello che è successo a Troia, e tutto quello che succede sulla terra.”",
+    "Così cantavano, e io volevo ascoltarle: con gli occhi facevo segno ai compagni di slegarmi. Ma loro remavano più forte, e Perimede ed Euriloco si alzarono e mi legarono con altre corde, ancora più strette.",
+    "Quando le avemmo superate, e non si sentiva più la loro voce, i compagni si tolsero la cera dalle orecchie e mi slegarono.»"
+   ],
+   "domande": [
+    {
+     "d": "Chi aveva avvertito Ulisse del pericolo?",
+     "giusta": "La maga Circe.",
+     "sbagliate": [
+      "Il Ciclope.",
+      "Sua moglie Penelope."
+     ]
+    },
+    {
+     "d": "Che cosa mise Ulisse nelle orecchie dei compagni?",
+     "giusta": "La cera.",
+     "sbagliate": [
+      "Il cotone.",
+      "La sabbia."
+     ]
+    },
+    {
+     "d": "Perché Ulisse si fece legare all'albero della nave?",
+     "giusta": "Per ascoltare il canto senza poter andare dalle Sirene.",
+     "sbagliate": [
+      "Per non cadere in mare.",
+      "Per dormire tranquillo."
+     ]
+    },
+    {
+     "d": "Che cosa promettevano le Sirene a chi le ascoltava?",
+     "giusta": "Che se ne sarebbe andato sapendo più cose.",
+     "sbagliate": [
+      "Un tesoro d'oro.",
+      "Una nave nuova."
+     ]
+    },
+    {
+     "d": "Che cosa fecero i compagni, quando Ulisse chiese di slegarlo?",
+     "giusta": "Lo legarono ancora più stretto.",
+     "sbagliate": [
+      "Lo slegarono subito.",
+      "Si fermarono ad ascoltare."
+     ]
+    }
+   ],
+   "autore": "Omero",
+   "opera": "Odissea, libro XII",
+   "anno": "VIII secolo a.C.",
+   "nota": "Traduzione dal greco e adattamento di Lavagna Amica.",
+   "f": "waterhouse-sirene.jpg",
+   "didascalia": "«Ulisse e le sirene», di John William Waterhouse (1891): nell'arte antica le sirene erano uccelli con la testa di donna."
+  }
+ },
+ {
+  "id": "brano-cavallo",
+  "titolo": "Livello 3 · Il cavallo di legno",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Ulisse, ospite del re dei Feaci, non aveva ancora detto chi era. Durante la festa chiese al cantore Demodoco: «Canta il cavallo di legno, che Epeo costruì con l'aiuto della dea Atena, e che Ulisse portò con l'inganno dentro la città, pieno di guerrieri.»",
+    "E Demodoco cantò. I Greci avevano fatto finta di andarsene: avevano bruciato le loro tende ed erano partiti con le navi.",
+    "Ma i più forti erano rimasti nascosti dentro il cavallo, insieme a Ulisse, in mezzo alla piazza di Troia: erano stati i Troiani stessi a trascinarlo fin sulla rocca della città.",
+    "Il cavallo stava lì, e i Troiani discutevano senza fine, seduti intorno. Alcuni volevano aprirlo con le spade, altri buttarlo giù dalle rocce, altri tenerlo come un grande dono per gli dei. E vinse quest'ultima idea.",
+    "Ma era destino che Troia cadesse, il giorno in cui avesse accolto il grande cavallo di legno. Demodoco cantò come i Greci uscirono dal loro nascondiglio e conquistarono la città.",
+    "Mentre ascoltava, Ulisse si copriva il viso con il mantello e piangeva, ricordando."
+   ],
+   "domande": [
+    {
+     "d": "Chi costruì il cavallo di legno?",
+     "giusta": "Epeo, con l'aiuto della dea Atena.",
+     "sbagliate": [
+      "Ulisse da solo.",
+      "I Troiani."
+     ]
+    },
+    {
+     "d": "Che cosa fecero i Greci per far credere di essere partiti?",
+     "giusta": "Bruciarono le tende e partirono con le navi.",
+     "sbagliate": [
+      "Si travestirono da Troiani.",
+      "Scrissero una lettera di saluti."
+     ]
+    },
+    {
+     "d": "Chi c'era dentro il cavallo?",
+     "giusta": "I guerrieri greci più forti, con Ulisse.",
+     "sbagliate": [
+      "Un tesoro d'oro.",
+      "Niente: era vuoto."
+     ]
+    },
+    {
+     "d": "Chi portò il cavallo dentro la città?",
+     "giusta": "I Troiani stessi.",
+     "sbagliate": [
+      "I Greci.",
+      "Gli dei."
+     ]
+    },
+    {
+     "d": "Che cosa decisero di fare i Troiani con il cavallo?",
+     "giusta": "Tenerlo come dono per gli dei.",
+     "sbagliate": [
+      "Bruciarlo.",
+      "Buttarlo in mare."
+     ]
+    }
+   ],
+   "autore": "Omero",
+   "opera": "Odissea, libro VIII",
+   "anno": "VIII secolo a.C.",
+   "nota": "Traduzione dal greco e adattamento di Lavagna Amica.",
+   "f": "tiepolo-cavallo.jpg",
+   "didascalia": "«Il cavallo di Troia entra in città», di Giovanni Domenico Tiepolo (1760 circa)."
+  }
+ },
+ {
+  "id": "brano-filemone-bauci",
+  "titolo": "Livello 3 · Filemone e Bauci",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Un giorno Giove, il re degli dei, e suo figlio Mercurio scesero sulla terra, travestiti da poveri viandanti. Bussarono a mille case, chiedendo un posto per riposare: e mille porte rimasero chiuse.",
+    "Solo una casetta li accolse: piccola, con il tetto di paglia e di canne. Lì vivevano da sempre due vecchi sposi, Filemone e Bauci. Erano poveri, ma non si vergognavano della loro povertà, e la sopportavano insieme, con serenità.",
+    "I due vecchi fecero sedere gli ospiti, ravvivarono il fuoco soffiando sulla cenere, cucinarono le verdure dell'orto. Bauci sistemò la tavola, che zoppicava, mettendo un coccio sotto una gamba. Portarono olive, corniole, formaggio, uova, noci, fichi, mele, uva e miele.",
+    "Ma si accorsero di una cosa strana: la brocca del vino, ogni volta che la svuotavano, si riempiva da sola. Spaventati, capirono di avere davanti degli dei.",
+    "«Siamo dei» dissero i viandanti. «I vostri vicini, che ci hanno chiuso la porta, saranno puniti. Voi venite con noi sulla montagna.»",
+    "Dalla cima del monte, i due vecchi si voltarono: tutta la valle era sommersa da una palude; solo la loro casetta era rimasta, e si stava trasformando in un tempio, con le colonne di marmo e il tetto d'oro.",
+    "Giove disse: «Chiedetemi quello che volete.» Filemone e Bauci chiesero di custodire il tempio, e di morire nello stesso momento, per non dover mai piangere uno la morte dell'altro.",
+    "Così fu. Quando furono molto vecchi, davanti al tempio, Bauci vide Filemone coprirsi di foglie, e Filemone vide Bauci coprirsi di foglie. Si salutarono, e diventarono una quercia e un tiglio, uno accanto all'altro."
+   ],
+   "domande": [
+    {
+     "d": "Come erano travestiti Giove e Mercurio?",
+     "giusta": "Da poveri viandanti.",
+     "sbagliate": [
+      "Da re.",
+      "Da animali."
+     ]
+    },
+    {
+     "d": "Che cosa fecero le altre case?",
+     "giusta": "Tennero la porta chiusa.",
+     "sbagliate": [
+      "Prepararono una festa.",
+      "Chiamarono le guardie."
+     ]
+    },
+    {
+     "d": "Com'erano Filemone e Bauci?",
+     "giusta": "Poveri, ma generosi e sereni.",
+     "sbagliate": [
+      "Ricchi e avari.",
+      "Giovani e arrabbiati."
+     ]
+    },
+    {
+     "d": "Come capirono che i viandanti erano dei?",
+     "giusta": "La brocca del vino si riempiva da sola.",
+     "sbagliate": [
+      "Avevano le ali.",
+      "Brillavano come il sole."
+     ]
+    },
+    {
+     "d": "Che cosa chiesero agli dei?",
+     "giusta": "Di custodire il tempio e di morire insieme.",
+     "sbagliate": [
+      "Tanto oro.",
+      "Di tornare giovani."
+     ]
+    },
+    {
+     "d": "In che cosa si trasformarono, alla fine?",
+     "giusta": "In una quercia e un tiglio.",
+     "sbagliate": [
+      "In due uccelli.",
+      "In due stelle."
+     ]
+    }
+   ],
+   "autore": "Ovidio",
+   "opera": "Le metamorfosi, libro VIII",
+   "anno": "I secolo d.C.",
+   "nota": "Traduzione dal latino e adattamento di Lavagna Amica.",
+   "f": "rembrandt-filemone.jpg",
+   "didascalia": "«Filemone e Bauci», di Rembrandt (1658)."
+  }
+ },
+ {
+  "id": "brano-aracne",
+  "titolo": "Livello 3 · Aracne",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Aracne era una ragazza di famiglia povera, ma tessere era la sua arte: le ninfe uscivano dai boschi e dai fiumi per guardarla filare la lana e intrecciare i fili sul telaio. Si capiva che aveva imparato da Minerva, la dea delle arti.",
+    "Ma Aracne non voleva sentirselo dire. «Non devo niente a nessuna dea» diceva. «Venga pure Minerva a gareggiare con me!»",
+    "Minerva si travestì da vecchia e andò da lei: «Non disprezzare il consiglio di una vecchia. Sii la più brava tra le donne, ma chiedi perdono alla dea.» Aracne la guardò storto: «I tuoi consigli dalli alle tue figlie. Perché la dea non viene lei?»",
+    "«È venuta» disse Minerva, e tornò dea.",
+    "La gara cominciò. Minerva tessé gli dei nella loro gloria e, negli angoli, le storie di chi aveva sfidato gli dei ed era stato punito. Aracne tessé gli dei che ingannavano gli uomini. Il suo lavoro era perfetto: nemmeno Minerva poteva trovargli un difetto.",
+    "Furiosa, la dea strappò la tela. Poi toccò Aracne con un'erba magica: i capelli le caddero, la testa diventò piccolissima, il corpo minuscolo; ai fianchi le rimasero dita sottili al posto delle gambe. Il resto è pancia: da lì Aracne tira fuori il filo e, diventata ragno, continua ancora oggi a tessere la sua tela."
+   ],
+   "domande": [
+    {
+     "d": "In che cosa era bravissima Aracne?",
+     "giusta": "A tessere la lana.",
+     "sbagliate": [
+      "A cantare.",
+      "A correre."
+     ]
+    },
+    {
+     "d": "Perché Minerva si arrabbiò?",
+     "giusta": "Aracne diceva di non dovere niente alla dea, e la sfidò.",
+     "sbagliate": [
+      "Aracne le aveva rubato la lana.",
+      "Aracne era pigra."
+     ]
+    },
+    {
+     "d": "Come si presentò Minerva, la prima volta?",
+     "giusta": "Travestita da vecchia.",
+     "sbagliate": [
+      "Su un carro d'oro.",
+      "Come una civetta."
+     ]
+    },
+    {
+     "d": "Com'era la tela di Aracne?",
+     "giusta": "Perfetta, senza nemmeno un difetto.",
+     "sbagliate": [
+      "Brutta e piena di buchi.",
+      "Ancora da finire."
+     ]
+    },
+    {
+     "d": "In che cosa si trasformò Aracne?",
+     "giusta": "In un ragno.",
+     "sbagliate": [
+      "In una farfalla.",
+      "In una civetta."
+     ]
+    }
+   ],
+   "autore": "Ovidio",
+   "opera": "Le metamorfosi, libro VI",
+   "anno": "I secolo d.C.",
+   "nota": "Traduzione dal latino e adattamento di Lavagna Amica.",
+   "f": "velazquez-filatrici.jpg",
+   "didascalia": "«Le filatrici», di Diego Velázquez (1655 circa): sullo sfondo, la gara tra Minerva e Aracne."
+  }
+ },
+ {
+  "id": "brano-persefone",
+  "titolo": "Livello 3 · Persefone e le stagioni",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Demetra, la dea del grano e dei raccolti, aveva una figlia, Persefone. Un giorno Persefone raccoglieva fiori in un prato con le amiche: rose, crochi, viole, iris, giacinti, e un narciso meraviglioso.",
+    "Mentre allungava la mano verso il narciso, la terra si aprì, e dalla buca uscì Ade, il re dei morti, sul suo carro d'oro. Afferrò Persefone e la portò via con sé, nel suo regno sotto terra.",
+    "Demetra la cercò per nove giorni, con una fiaccola accesa in mano, senza mangiare e senza lavarsi. Poi, disperata e arrabbiata, non fece più crescere niente: dalla terra non spuntava più un chicco di grano, e gli uomini rischiavano di morire di fame.",
+    "Allora Zeus mandò Ermes da Ade, a chiedere di restituire Persefone. Ade accettò; ma prima le fece mangiare un chicco di melagrana. E chi ha mangiato il cibo dei morti deve tornare da loro.",
+    "Così si decise: Persefone sarebbe stata un terzo dell'anno sotto terra, con Ade, e il resto dell'anno con la sua mamma.",
+    "Quando Persefone torna, Demetra è felice e la terra si copre di fiori e di spighe. Quando Persefone scende sotto terra, la terra si riposa, e arriva l'inverno.",
+    "Così gli antichi Greci spiegavano le stagioni. Oggi sappiamo che le stagioni dipendono dalla Terra, che gira intorno al Sole con il suo asse un po' inclinato."
+   ],
+   "domande": [
+    {
+     "d": "Chi era la mamma di Persefone?",
+     "giusta": "Demetra, la dea del grano.",
+     "sbagliate": [
+      "Atena.",
+      "Era."
+     ]
+    },
+    {
+     "d": "Che fiore voleva cogliere Persefone, quando la terra si aprì?",
+     "giusta": "un narciso",
+     "sbagliate": [
+      "una rosa",
+      "un girasole"
+     ]
+    },
+    {
+     "d": "Che cosa fece Demetra, disperata?",
+     "giusta": "Non fece più crescere niente.",
+     "sbagliate": [
+      "Fece piovere oro.",
+      "Andò a dormire."
+     ]
+    },
+    {
+     "d": "Che cosa mangiò Persefone nel regno di Ade?",
+     "giusta": "Un chicco di melagrana.",
+     "sbagliate": [
+      "Una mela.",
+      "Del pane."
+     ]
+    },
+    {
+     "d": "Secondo il mito, quando la terra si copre di fiori?",
+     "giusta": "Quando Persefone torna dalla mamma.",
+     "sbagliate": [
+      "Quando Ade si addormenta.",
+      "Quando Zeus si arrabbia."
+     ]
+    },
+    {
+     "d": "Da che cosa dipendono davvero le stagioni?",
+     "giusta": "Dalla Terra che gira intorno al Sole con l'asse inclinato.",
+     "sbagliate": [
+      "Dalla tristezza di una dea.",
+      "Dalle nuvole."
+     ]
+    }
+   ],
+   "autore": "Inno omerico a Demetra",
+   "anno": "VII secolo a.C. circa",
+   "nota": "Traduzione dal greco e adattamento di Lavagna Amica.",
+   "f": "leighton-persefone.jpg",
+   "didascalia": "«Il ritorno di Persefone», di Frederic Leighton (1891): Ermes la riporta dalla mamma."
+  }
+ },
+ {
+  "id": "brano-anansi-storie",
+  "titolo": "Livello 3 · Come le storie diventarono di Anansi",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Una volta tutte le storie che gli uomini raccontavano erano storie di Nyankupon, il re degli dei. Ma il ragno Anansi, che era molto vanitoso, voleva che le storie parlassero di lui.",
+    "Andò da Nyankupon e gli chiese: «D'ora in poi le storie possono essere le storie di Anansi?» Nyankupon disse di sì, ma a una condizione: Anansi doveva portargli tre cose. Un vaso pieno di api vive, un pitone e un leopardo.",
+    "Anansi prese un vaso di terracotta e andò dove vivevano le api. Cominciò a parlare da solo: «Non ci riusciranno a entrare in questo vaso!» «Sì che ci riusciranno!» «No, non ci riusciranno!» Le api arrivarono: «Che cosa dici, signor Anansi?» «Nyankupon dice che voi non riuscite a entrare in questo vaso. Io dico di sì.» «Ma certo che ci riusciamo!» E ci volarono dentro. Anansi chiuse il vaso e lo mandò a Nyankupon.",
+    "Il giorno dopo prese un lungo bastone e andò dal pitone. «Sarà lungo come questo bastone!» «No, non lo sarà!» «Sì, lo sarà!» Il pitone uscì a vedere che cosa succedeva. «Nel paese di Nyankupon dicono che tu non sei lungo come questo bastone. Io dico di sì. Posso misurarti?» Il pitone si distese bello dritto, e Anansi lo legò al bastone da una punta all'altra. Poi lo mandò a Nyankupon.",
+    "Il terzo giorno Anansi si coprì un occhio con una benda e andò davanti alla tana del leopardo, cantando a squarciagola. Il leopardo uscì. «Non vedi?» disse Anansi. «Ho un occhio bendato, e così vedo cose meravigliose: devo cantarle!» «Benda anche i miei occhi» disse il leopardo, «così le vedo anch'io!» Anansi lo bendò e lo portò, senza fatica, fino alla casa di Nyankupon.",
+    "Nyankupon rimase a bocca aperta davanti all'astuzia del ragno, e mantenne la promessa. Da quel giorno le storie antiche si chiamano storie di Anansi."
+   ],
+   "domande": [
+    {
+     "d": "Di chi erano le storie, all'inizio?",
+     "giusta": "Di Nyankupon, il re degli dei.",
+     "sbagliate": [
+      "Di Anansi.",
+      "Del leopardo."
+     ]
+    },
+    {
+     "d": "Quali tre cose doveva portare Anansi?",
+     "giusta": "Un vaso di api, un pitone e un leopardo.",
+     "sbagliate": [
+      "Tre sacchi d'oro.",
+      "Un elefante, un leone e una giraffa."
+     ]
+    },
+    {
+     "d": "Come convinse le api a entrare nel vaso?",
+     "giusta": "Disse che Nyankupon pensava che non ci sarebbero riuscite.",
+     "sbagliate": [
+      "Mise del miele dentro.",
+      "Le prese con una rete."
+     ]
+    },
+    {
+     "d": "Come prese il pitone?",
+     "giusta": "Gli chiese di misurarsi con il bastone e lo legò.",
+     "sbagliate": [
+      "Lo fece addormentare.",
+      "Lo spaventò con un tamburo."
+     ]
+    },
+    {
+     "d": "Perché da allora le storie si chiamano storie di Anansi?",
+     "giusta": "Perché Anansi superò le tre prove con la sua astuzia.",
+     "sbagliate": [
+      "Perché le scrisse lui.",
+      "Perché le comprò con l'oro."
+     ]
+    }
+   ],
+   "autore": "Racconto popolare dell'Africa occidentale (Ghana)",
+   "opera": "dalla raccolta «West African Folk-Tales» di W. H. Barker e C. Sinclair",
+   "anno": "1917",
+   "nota": "Traduzione e adattamento di Lavagna Amica. Nella raccolta del 1917 ci sono una «tigre» e un «boa», ma in Africa vivono il leopardo e il pitone: sono loro i protagonisti della storia originale."
+  }
+ },
+ {
+  "id": "brano-musicanti-brema",
+  "titolo": "Livello 3 · I musicanti di Brema",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Un uomo aveva un asino che per tanti anni aveva portato i sacchi al mulino, senza mai lamentarsi. Ma ora l'asino era vecchio e stanco, e il padrone pensava di liberarsene. L'asino capì che tirava una brutta aria e scappò via, sulla strada per Brema: «Lì diventerò musicante della città!»",
+    "Dopo un po' trovò un cane da caccia sdraiato sulla strada, che ansimava. «Perché ansimi così?» chiese l'asino. «Sono vecchio, divento ogni giorno più debole, e a caccia non ce la faccio più: il mio padrone voleva uccidermi, e sono scappato. Ma adesso come mi guadagno il pane?» «Vieni con me a Brema» disse l'asino. «Io suono il liuto, e tu i tamburi.»",
+    "Poco dopo trovarono un gatto con una faccia lunga come tre giorni di pioggia. Era vecchio, i denti non erano più buoni, e invece di cacciare i topi preferiva stare accanto alla stufa a fare le fusa: per questo la padrona voleva annegarlo. «Vieni con noi a Brema: tu sai fare la musica di notte!»",
+    "Poi passarono davanti a una fattoria, dove un gallo cantava a squarciagola: la padrona voleva cucinarlo nella minestra per gli ospiti della domenica. «Vieni con noi» disse l'asino. «Qualcosa di meglio della morte lo trovi dappertutto. Hai una bella voce, e se suoniamo insieme sarà una gran musica!»",
+    "La sera arrivarono in un bosco e videro una luce: era una casa di briganti, con la tavola piena di cose buone. Gli animali fecero un piano. L'asino appoggiò le zampe davanti alla finestra, il cane saltò sulla schiena dell'asino, il gatto salì sul cane, e il gallo volò sulla testa del gatto.",
+    "Poi, tutti insieme, fecero la loro musica: l'asino ragliò, il cane abbaiò, il gatto miagolò e il gallo cantò. E saltarono dentro dalla finestra, facendo tintinnare i vetri. I briganti credettero che fosse arrivato un fantasma e scapparono nel bosco, spaventatissimi.",
+    "Un brigante tornò di notte a controllare, ma il gatto gli graffiò la faccia, il cane gli morse la gamba, l'asino gli diede un calcio e il gallo gridò «chicchirichì!». Il brigante corse dal capo: «Nella casa c'è una strega, un uomo con un coltello, un mostro nero con una mazza, e sul tetto un giudice che grida!»",
+    "Da quel giorno i briganti non tornarono più. E ai quattro musicanti di Brema quella casa piacque così tanto che non vollero più andarsene."
+   ],
+   "domande": [
+    {
+     "d": "Perché l'asino scappò di casa?",
+     "giusta": "Era vecchio e il padrone voleva liberarsene.",
+     "sbagliate": [
+      "Voleva fare un viaggio.",
+      "Aveva litigato con il cane."
+     ]
+    },
+    {
+     "d": "Che cosa avevano in comune i quattro animali?",
+     "giusta": "Erano vecchi e i padroni non li volevano più.",
+     "sbagliate": [
+      "Erano tutti giovani e forti.",
+      "Erano tutti gatti."
+     ]
+    },
+    {
+     "d": "Dove volevano andare?",
+     "giusta": "A Brema, a fare i musicanti.",
+     "sbagliate": [
+      "Al mare.",
+      "Nel bosco dei briganti."
+     ]
+    },
+    {
+     "d": "Come spaventarono i briganti?",
+     "giusta": "Uno sopra l'altro, facendo la loro musica tutti insieme.",
+     "sbagliate": [
+      "Con una spada.",
+      "Chiamando le guardie."
+     ]
+    },
+    {
+     "d": "Che cosa ci insegna questa storia?",
+     "giusta": "Insieme, anche chi è stato scartato può farcela.",
+     "sbagliate": [
+      "Bisogna sempre obbedire ai padroni.",
+      "Gli animali vecchi non servono a niente."
+     ]
+    }
+   ],
+   "autore": "Jacob e Wilhelm Grimm",
+   "opera": "Fiabe per bambini e famiglie",
+   "anno": "1819",
+   "nota": "Traduzione e adattamento di Lavagna Amica.",
+   "f": "musicanti-brema.jpg",
+   "didascalia": "Illustrazione di Otto Ubbelohde (inizio Novecento)."
+  }
+ },
+ {
+  "id": "brano-anatroccolo",
+  "titolo": "Livello 3 · Il brutto anatroccolo",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "In campagna era estate, e si stava proprio bene. Sotto le grandi foglie di bardana, vicino al fossato di un vecchio castello, una mamma anatra covava le sue uova.",
+    "Finalmente, un uovo dopo l'altro fece crac: «Pip! Pip!» Tutti gli anatroccoli tirarono fuori la testa. «Com'è grande il mondo!» dicevano. Ma l'uovo più grosso non si era ancora aperto.",
+    "Quando finalmente si aprì, ne uscì un anatroccolo grande e brutto, tutto grigio. «È diverso da tutti gli altri» pensò la mamma.",
+    "Nel cortile, tutti lo prendevano in giro: le anatre lo beccavano, le galline lo spingevano, e la ragazza che dava da mangiare agli animali gli dava un calcio. Anche i suoi fratelli gli dicevano: «Ti prendesse il gatto, brutto mostro!»",
+    "Allora l'anatroccolo scappò via. Arrivò alla casetta di una vecchia, che viveva con un gatto e una gallina. «Sai fare le uova?» gli chiese la gallina. «No.» «Sai fare le fusa?» chiese il gatto. «No.» «Allora sta' zitto, quando parlano quelli che sanno le cose!» L'anatroccolo aveva tanta voglia di nuotare nell'acqua, ma loro non lo capivano. Così se ne andò.",
+    "Visse da solo nella palude, e poi venne l'inverno: un inverno freddissimo, così duro che una volta rimase intrappolato nel ghiaccio, finché un contadino lo salvò.",
+    "Quando tornò la primavera, l'anatroccolo aprì le ali: erano diventate forti, e lo portarono lontano, fino a un grande giardino. Sull'acqua nuotavano tre cigni bianchissimi, bellissimi.",
+    "«Andrò da loro» pensò. «Forse mi uccideranno, perché sono così brutto. Ma è meglio che essere beccato dalle anatre e soffrire l'inverno.» Nuotò verso di loro e abbassò la testa verso l'acqua.",
+    "Ma che cosa vide nell'acqua limpida? Vide la sua immagine: non era più un uccello goffo e grigio. Era un cigno!",
+    "Non importa essere nati tra le anatre, se si è stati dentro un uovo di cigno.",
+    "I cigni gli nuotarono intorno e lo accarezzarono con il becco. Dei bambini gridarono: «C'è un cigno nuovo! È il più bello di tutti!» Lui era felicissimo, ma per niente superbo, perché un cuore buono non diventa mai superbo. E pensò: «Tanta felicità non me la sognavo, quando ero il brutto anatroccolo!»"
+   ],
+   "domande": [
+    {
+     "d": "Com'era l'anatroccolo uscito dall'uovo più grosso?",
+     "giusta": "Grande, grigio e diverso dagli altri.",
+     "sbagliate": [
+      "Piccolo e giallo.",
+      "Uguale ai fratelli."
+     ]
+    },
+    {
+     "d": "Come lo trattavano nel cortile?",
+     "giusta": "Tutti lo prendevano in giro e lo maltrattavano.",
+     "sbagliate": [
+      "Tutti gli volevano bene.",
+      "Nessuno lo vedeva."
+     ]
+    },
+    {
+     "d": "Che cosa fece l'anatroccolo?",
+     "giusta": "Scappò e visse da solo nella palude.",
+     "sbagliate": [
+      "Rimase sempre nel cortile.",
+      "Andò a scuola."
+     ]
+    },
+    {
+     "d": "Che cosa scoprì, guardandosi nell'acqua?",
+     "giusta": "Che era diventato un cigno.",
+     "sbagliate": [
+      "Che era sempre brutto.",
+      "Che era un'oca."
+     ]
+    },
+    {
+     "d": "Perché non diventò superbo?",
+     "giusta": "Perché un cuore buono non diventa mai superbo.",
+     "sbagliate": [
+      "Perché nessuno lo guardava.",
+      "Perché era stanco."
+     ]
+    }
+   ],
+   "autore": "Hans Christian Andersen",
+   "opera": "Fiabe",
+   "anno": "1843",
+   "nota": "Traduzione dal danese e adattamento di Lavagna Amica.",
+   "f": "pedersen-anatroccolo.jpg",
+   "didascalia": "L'anatroccolo nella casa della vecchia, con il gatto e la gallina: illustrazione di Vilhelm Pedersen, il primo illustratore delle fiabe di Andersen."
+  }
+ },
+ {
+  "id": "brano-gigante",
+  "titolo": "Livello 3 · Il gigante egoista",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Ogni pomeriggio, tornando da scuola, i bambini andavano a giocare nel giardino del Gigante. Era un giardino grande e bellissimo, con l'erba morbida e verde, fiori come stelle e dodici peschi che in primavera si coprivano di fiori rosa e perla.",
+    "Un giorno il Gigante tornò, dopo sette anni di viaggio. Vide i bambini e gridò con voce cattiva: «Che cosa fate qui? Il mio giardino è il mio giardino. Non lascerò giocare nessuno, tranne me.» Costruì un muro altissimo tutto intorno, e ci appese un cartello: VIETATO ENTRARE. Era un gigante molto egoista.",
+    "I poveri bambini non sapevano più dove giocare. Girovagavano intorno al muro e dicevano: «Com'eravamo felici, là dentro.»",
+    "Poi arrivò la primavera, e dappertutto c'erano fiorellini e uccellini. Solo nel giardino del Gigante egoista era ancora inverno. Gli uccelli non avevano voglia di cantare, perché non c'erano bambini, e gli alberi si dimenticavano di fiorire. La Neve coprì l'erba con il suo grande mantello bianco, il Gelo dipinse d'argento gli alberi, e arrivarono anche il Vento del Nord e la Grandine.",
+    "Un mattino il Gigante sentì una musica dolcissima: era un fanello che cantava sotto la sua finestra. Guardò fuori, e che cosa vide? Da un buchino nel muro i bambini erano entrati, e stavano seduti sui rami degli alberi. Gli alberi erano così contenti che si erano coperti di fiori.",
+    "Solo in un angolo era ancora inverno. Lì c'era un bambino piccolo piccolo, che non arrivava ai rami dell'albero, e piangeva.",
+    "E il cuore del Gigante si sciolse. «Quanto sono stato egoista!» disse. «Ora so perché la primavera non veniva qui.» Uscì piano piano, prese delicatamente il bambino e lo mise sull'albero. L'albero fiorì subito, e il bambino abbracciò il Gigante e gli diede un bacio.",
+    "«Ora il giardino è vostro, bambini» disse il Gigante. Prese una grande ascia e buttò giù il muro. E da quel giorno giocò con i bambini nel giardino più bello che si fosse mai visto. «Ho tanti fiori bellissimi» diceva, «ma i bambini sono i fiori più belli di tutti.»"
+   ],
+   "domande": [
+    {
+     "d": "Perché il Gigante costruì il muro?",
+     "giusta": "Voleva il giardino tutto per sé.",
+     "sbagliate": [
+      "Aveva paura dei ladri.",
+      "Voleva proteggere i fiori dal vento."
+     ]
+    },
+    {
+     "d": "Che cosa successe nel giardino, senza i bambini?",
+     "giusta": "Restò sempre inverno.",
+     "sbagliate": [
+      "Fiorì più che mai.",
+      "Diventò un lago."
+     ]
+    },
+    {
+     "d": "Come rientrarono i bambini nel giardino?",
+     "giusta": "Da un buchino nel muro.",
+     "sbagliate": [
+      "Con una scala.",
+      "Il Gigante li invitò."
+     ]
+    },
+    {
+     "d": "Che cosa fece il Gigante per il bambino che piangeva?",
+     "giusta": "Lo prese con delicatezza e lo mise sull'albero.",
+     "sbagliate": [
+      "Lo mandò via.",
+      "Gli regalò una pesca."
+     ]
+    },
+    {
+     "d": "Che cosa capì il Gigante?",
+     "giusta": "Che era stato egoista, e che il giardino era più bello con i bambini.",
+     "sbagliate": [
+      "Che doveva costruire un muro più alto.",
+      "Che l'inverno è la stagione più bella."
+     ]
+    }
+   ],
+   "autore": "Oscar Wilde",
+   "opera": "Il principe felice e altri racconti",
+   "anno": "1888",
+   "nota": "Traduzione dall'inglese e adattamento di Lavagna Amica. Il racconto ha un finale che qui non c'è: si può leggere in classe.",
+   "f": "crane-gigante.jpg",
+   "didascalia": "Illustrazione di Walter Crane nella prima edizione (1888)."
+  }
+ },
+ {
+  "id": "brano-fenrir",
+  "titolo": "Livello 4 · Il lupo Fenrir e il nastro magico",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 4,
+   "testo": [
+    "Il lupo Fenrir cresceva ogni giorno di più, e gli dei avevano paura: le profezie dicevano che un giorno avrebbe portato loro grandi sventure. Solo Tyr, il più coraggioso, osava dargli da mangiare.",
+    "Gli dei costruirono una catena fortissima e dissero al lupo: «Vediamo quanto sei forte: prova a romperla.» Fenrir si lasciò legare, si stiracchiò, e la catena si spezzò. Ne costruirono un'altra, due volte più forte: Fenrir si scosse, puntò le zampe, e anche quella andò in pezzi.",
+    "Allora Odino mandò un messaggero dai nani, gli artigiani più bravi del mondo. I nani fabbricarono un nastro sottile e morbido come la seta, fatto di sei cose: il rumore dei passi del gatto, la barba delle donne, le radici delle montagne, i tendini dell'orso, il respiro dei pesci e la saliva degli uccelli. Per questo, si dice, oggi queste cose non esistono più!",
+    "Quando Fenrir vide il nastro, si insospettì: «Se è così sottile, che gloria c'è a romperlo? E se è fatto con un trucco, non mi farò legare. Mi lascerò legare solo se uno di voi mette la mano nella mia bocca, come garanzia.»",
+    "Gli dei si guardarono: nessuno voleva. Allora Tyr mise la sua mano destra nella bocca del lupo.",
+    "Fenrir si fece legare, poi tirò: ma più tirava, più il nastro diventava forte. Gli dei risero, tutti tranne Tyr: il lupo, arrabbiato, gli staccò la mano con un morso.",
+    "Per questo Tyr, il dio del coraggio e della giustizia, ha una mano sola: l'ha data per proteggere gli altri."
+   ],
+   "domande": [
+    {
+     "d": "Perché gli dei avevano paura di Fenrir?",
+     "giusta": "Cresceva sempre di più, e le profezie dicevano che avrebbe portato sventure.",
+     "sbagliate": [
+      "Aveva mangiato il sole.",
+      "Era un lupo d'oro."
+     ]
+    },
+    {
+     "d": "Che cosa successe alle prime due catene?",
+     "giusta": "Fenrir le spezzò.",
+     "sbagliate": [
+      "Lo tennero legato per sempre.",
+      "Si sciolsero al sole."
+     ]
+    },
+    {
+     "d": "Chi fabbricò il nastro magico?",
+     "giusta": "I nani.",
+     "sbagliate": [
+      "Gli dei.",
+      "I giganti."
+     ]
+    },
+    {
+     "d": "Quale di queste cose c'è nel nastro?",
+     "giusta": "Il rumore dei passi del gatto.",
+     "sbagliate": [
+      "La coda di un drago.",
+      "L'oro del sole."
+     ]
+    },
+    {
+     "d": "Che garanzia chiese Fenrir?",
+     "giusta": "Che un dio mettesse la mano nella sua bocca.",
+     "sbagliate": [
+      "Un sacco di carne.",
+      "Una corona."
+     ]
+    },
+    {
+     "d": "Perché Tyr ha una mano sola?",
+     "giusta": "L'ha data per proteggere gli altri: Fenrir gliela staccò con un morso.",
+     "sbagliate": [
+      "La perse giocando.",
+      "Era nato così."
+     ]
+    }
+   ],
+   "autore": "Snorri Sturluson",
+   "opera": "Edda in prosa",
+   "anno": "XIII secolo",
+   "nota": "Traduzione dall'antico islandese e adattamento di Lavagna Amica. Un mito degli antichi popoli del Nord Europa.",
+   "f": "fenrir.jpg",
+   "didascalia": "Gli dei legano il lupo Fenrir: illustrazione di Dorothy Hardy (inizio Novecento)."
+  }
+ },
+ {
+  "id": "brano-argo",
+  "titolo": "Livello 4 · Il cane Argo",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 4,
+   "testo": [
+    "Ulisse era tornato a Itaca dopo vent'anni, ma nessuno doveva riconoscerlo: era travestito da vecchio mendicante, e camminava verso il suo palazzo insieme al porcaro Eumeo.",
+    "Mentre parlavano, un cane sdraiato lì vicino alzò la testa e drizzò le orecchie. Era Argo, il cane di Ulisse: l'aveva allevato lui, prima di partire per Troia, ma non aveva fatto in tempo a godersi la sua compagnia. Un tempo i giovani lo portavano a caccia di capre selvatiche, di caprioli e di lepri.",
+    "Ora che il padrone era lontano, Argo stava abbandonato sul letame, davanti alla porta, pieno di zecche.",
+    "Appena si accorse che Ulisse era vicino, mosse la coda e abbassò tutte e due le orecchie; ma non ebbe più la forza di avvicinarsi al suo padrone.",
+    "Ulisse lo vide e, senza farsi notare da Eumeo, si asciugò una lacrima. Poi chiese: «Eumeo, che strano: un cane così bello, buttato sul letame. Era anche veloce, o era uno di quei cani che i signori tengono solo per bellezza?»",
+    "Eumeo rispose: «È il cane di un uomo morto lontano. Se tu l'avessi visto com'era quando Ulisse partì per Troia, ti saresti meravigliato della sua velocità e della sua forza: nessun animale gli sfuggiva, nel fitto del bosco. Adesso sta male: il suo padrone non c'è più, e nessuno si cura di lui.»",
+    "Poi Eumeo entrò nel palazzo. E Argo, che aveva rivisto Ulisse dopo vent'anni, in quel momento morì."
+   ],
+   "domande": [
+    {
+     "d": "Dopo quanti anni Ulisse torna a casa?",
+     "giusta": "dopo vent'anni",
+     "sbagliate": [
+      "dopo un anno",
+      "dopo cinque anni"
+     ]
+    },
+    {
+     "d": "Perché nessuno riconosce Ulisse?",
+     "giusta": "È travestito da vecchio mendicante.",
+     "sbagliate": [
+      "Ha cambiato nome.",
+      "È diventato un gigante."
+     ]
+    },
+    {
+     "d": "Dove stava Argo?",
+     "giusta": "Abbandonato sul letame, davanti alla porta.",
+     "sbagliate": [
+      "In una cuccia d'oro.",
+      "Nella camera di Penelope."
+     ]
+    },
+    {
+     "d": "Che cosa fa Argo, quando riconosce Ulisse?",
+     "giusta": "Muove la coda e abbassa le orecchie.",
+     "sbagliate": [
+      "Abbaia forte.",
+      "Gli corre incontro."
+     ]
+    },
+    {
+     "d": "Che cosa fa Ulisse, vedendo Argo?",
+     "giusta": "Si asciuga una lacrima di nascosto.",
+     "sbagliate": [
+      "Lo accarezza davanti a tutti.",
+      "Lo manda via."
+     ]
+    },
+    {
+     "d": "Perché Argo era trascurato?",
+     "giusta": "Il suo padrone non c'era più, e nessuno si curava di lui.",
+     "sbagliate": [
+      "Era un cane cattivo.",
+      "Era sempre stato pigro."
+     ]
+    }
+   ],
+   "autore": "Omero",
+   "opera": "Odissea, libro XVII",
+   "anno": "VIII secolo a.C.",
+   "nota": "Traduzione dal greco e adattamento di Lavagna Amica.",
+   "f": "argo.jpg",
+   "didascalia": "Ulisse e il vecchio cane Argo: incisione di Frederick Stacpoole da un dipinto di Briton Rivière (Ottocento)."
+  }
+ },
+ {
+  "id": "brano-ettore",
+  "titolo": "Livello 4 · Ettore e il piccolo Astianatte",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 4,
+   "testo": [
+    "Durante la guerra di Troia, Ettore, il più forte dei Troiani, tornò per un momento in città. Alle porte gli corse incontro la moglie Andromaca; con lei c'era la nutrice, che teneva in braccio il loro bambino piccolo, Astianatte, bello come una stella.",
+    "Ettore tese le braccia verso il figlio. Ma il bambino si buttò indietro, piangendo, contro il petto della nutrice: aveva paura del suo papà, del bronzo dell'armatura e del pennacchio di crini di cavallo, che vedeva ondeggiare paurosamente in cima all'elmo.",
+    "Il papà e la mamma si misero a ridere. Subito Ettore si tolse l'elmo dalla testa e lo posò a terra, tutto luccicante.",
+    "Poi baciò il suo bambino, lo cullò tra le braccia e pregò Zeus e gli altri dei: «Fate che anche questo mio figlio diventi come me, forte e coraggioso, e che un giorno qualcuno dica: è molto più bravo di suo padre!»",
+    "Poi lo mise tra le braccia della moglie. Andromaca lo strinse al petto profumato, sorridendo tra le lacrime. Ettore la guardò, ne ebbe pietà, la accarezzò con la mano e le parlò con dolcezza."
+   ],
+   "domande": [
+    {
+     "d": "Chi era Ettore?",
+     "giusta": "Il più forte dei Troiani.",
+     "sbagliate": [
+      "Il re dei Greci.",
+      "Un pastore di Itaca."
+     ]
+    },
+    {
+     "d": "Perché il piccolo Astianatte piange?",
+     "giusta": "Ha paura dell'elmo con il pennacchio.",
+     "sbagliate": [
+      "Ha fame.",
+      "È caduto."
+     ]
+    },
+    {
+     "d": "Che cosa fa Ettore, allora?",
+     "giusta": "Si toglie l'elmo e lo posa a terra.",
+     "sbagliate": [
+      "Se ne va arrabbiato.",
+      "Gli dà un giocattolo."
+     ]
+    },
+    {
+     "d": "Che cosa chiede Ettore agli dei, per il figlio?",
+     "giusta": "Che diventi forte, e ancora più bravo di lui.",
+     "sbagliate": [
+      "Che diventi ricco.",
+      "Che non cresca mai."
+     ]
+    },
+    {
+     "d": "Come sorride Andromaca?",
+     "giusta": "Tra le lacrime.",
+     "sbagliate": [
+      "Ridendo forte.",
+      "Non sorride."
+     ]
+    }
+   ],
+   "autore": "Omero",
+   "opera": "Iliade, libro VI",
+   "anno": "VIII secolo a.C.",
+   "nota": "Traduzione dal greco e adattamento di Lavagna Amica.",
+   "f": "ettore-astianatte.jpg",
+   "didascalia": "Ettore saluta Andromaca, e il piccolo Astianatte si spaventa: disegno di Benjamin West."
+  }
+ },
+ {
+  "id": "brano-psiche",
+  "titolo": "Livello 4 · Psiche e le formiche",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 4,
+   "testo": [
+    "Psiche cercava il suo sposo, Amore, che aveva perduto per colpa della sua curiosità. Andò a chiedere aiuto alla dea Venere, la mamma di Amore. Ma Venere era gelosa di lei, e voleva metterla alla prova.",
+    "Prese del grano, dell'orzo, del miglio, dei semi di papavero, dei ceci, delle lenticchie e delle fave; li mescolò tutti in un enorme mucchio e disse: «Separa i semi uno per uno, ogni tipo nel suo mucchietto. Devi finire prima di stasera.» E se ne andò a una festa di nozze.",
+    "Psiche non toccò nemmeno il mucchio: restò lì, senza parole, davanti a un lavoro impossibile.",
+    "Ma una piccola formica, una formichina dei campi, ebbe pietà della ragazza. Corse a chiamare le sue compagne: «Aiutate questa ragazza, presto!» E arrivarono a ondate, migliaia di formiche dalle sei zampe: una dopo l'altra, chicco dopo chicco, divisero tutto il mucchio e misero ogni seme al suo posto. Poi sparirono, veloci come erano venute.",
+    "Quando Venere tornò, la sera, trovò il lavoro finito. «Questo non l'hai fatto tu!» disse arrabbiata.",
+    "Ma Psiche non aveva perso la speranza: con l'aiuto dei più piccoli, aveva superato la prima prova. E ne avrebbe superate altre, fino a ritrovare Amore."
+   ],
+   "domande": [
+    {
+     "d": "Che cosa doveva fare Psiche?",
+     "giusta": "Separare i semi mescolati, ogni tipo nel suo mucchietto.",
+     "sbagliate": [
+      "Cucinare una torta.",
+      "Contare le stelle."
+     ]
+    },
+    {
+     "d": "Perché Psiche non cominciò nemmeno?",
+     "giusta": "Le sembrava un lavoro impossibile.",
+     "sbagliate": [
+      "Era pigra.",
+      "Non le piacevano i semi."
+     ]
+    },
+    {
+     "d": "Chi la aiutò?",
+     "giusta": "Migliaia di formiche.",
+     "sbagliate": [
+      "Le api.",
+      "Venere."
+     ]
+    },
+    {
+     "d": "Perché la formichina aiutò Psiche?",
+     "giusta": "Ebbe pietà di lei.",
+     "sbagliate": [
+      "Voleva mangiare i semi.",
+      "Gliel'aveva ordinato Venere."
+     ]
+    },
+    {
+     "d": "Che cosa ci insegna questa storia?",
+     "giusta": "Anche i più piccoli possono aiutare a superare una prova difficile.",
+     "sbagliate": [
+      "Bisogna sempre lavorare da soli.",
+      "Le formiche hanno paura delle dee."
+     ]
+    }
+   ],
+   "autore": "Apuleio",
+   "opera": "Le metamorfosi, libro VI",
+   "anno": "II secolo d.C.",
+   "nota": "Traduzione dal latino e adattamento di Lavagna Amica."
+  }
+ },
+ {
+  "id": "brano-calabrese",
+  "titolo": "Livello 4 · Il ragazzo calabrese",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 4,
+   "testo": [
+    "Ieri sera, mentre il maestro ci dava notizie del povero Robetti, che dovrà camminare un pezzo con le stampelle, entrò il Direttore con un nuovo iscritto, un ragazzo di viso molto bruno, coi capelli neri, con gli occhi grandi e neri, con le sopracciglia folte e raggiunte sulla fronte.",
+    "Il Direttore, dopo aver parlato nell'orecchio al maestro, se ne uscì, lasciandogli accanto il ragazzo, che guardava noi con quegli occhioni neri, come spaurito.",
+    "Allora il maestro gli prese una mano, e disse alla classe: — Voi dovete essere contenti. Oggi entra nella scuola un piccolo italiano nato a Reggio di Calabria, a più di cinquecento miglia di qua. Vogliate bene al vostro fratello venuto di lontano. Vogliategli bene, in maniera che non s'accorga di esser lontano dalla città dove è nato. —",
+    "Poi chiamò forte: — Ernesto Derossi! — quello che ha sempre il primo premio. — Come primo della scuola, — gli disse il maestro, — dà l'abbraccio del benvenuto, in nome di tutta la classe, al nuovo compagno. —",
+    "Derossi abbracciò il calabrese, dicendo con la sua voce chiara: — Benvenuto! — e questi baciò lui sulle due guance, con impeto. Tutti batterono le mani. — Silenzio! — gridò il maestro, — non si batton le mani in iscuola! — Ma si vedeva che era contento. Anche il calabrese era contento.",
+    "Il maestro disse ancora: — Voi dovete rispettarvi, amarvi tutti fra voi; ma chi di voi offendesse questo compagno perché non è nato nella nostra provincia, si renderebbe indegno di alzare mai più gli occhi da terra. —",
+    "Appena il calabrese fu seduto al posto, i suoi vicini gli regalarono delle penne e una stampa, e un altro ragazzo, dall'ultimo banco, gli mandò un francobollo di Svezia."
+   ],
+   "domande": [
+    {
+     "d": "Com'era il ragazzo nuovo, quando entrò?",
+     "giusta": "Spaurito, con gli occhioni neri.",
+     "sbagliate": [
+      "Allegro e chiacchierone.",
+      "Arrabbiato."
+     ]
+    },
+    {
+     "d": "Da dove veniva?",
+     "giusta": "Da Reggio di Calabria, lontano da Torino.",
+     "sbagliate": [
+      "Da un paese vicino.",
+      "Dalla Svezia."
+     ]
+    },
+    {
+     "d": "Che cosa chiede il maestro alla classe?",
+     "giusta": "Di volergli bene, perché non si senta lontano da casa.",
+     "sbagliate": [
+      "Di fargli fare un esame.",
+      "Di non parlargli."
+     ]
+    },
+    {
+     "d": "Che cosa fa Derossi?",
+     "giusta": "Gli dà l'abbraccio del benvenuto a nome di tutti.",
+     "sbagliate": [
+      "Gli cede il primo premio.",
+      "Gli presta il quaderno."
+     ]
+    },
+    {
+     "d": "Che cosa regalano i compagni al ragazzo nuovo?",
+     "giusta": "Delle penne, una stampa e un francobollo.",
+     "sbagliate": [
+      "Una torta.",
+      "Niente."
+     ]
+    },
+    {
+     "d": "Secondo il maestro, che cosa non si deve mai fare?",
+     "giusta": "Offendere un compagno perché è nato in un altro posto.",
+     "sbagliate": [
+      "Battere le mani.",
+      "Arrivare tardi a scuola."
+     ]
+    }
+   ],
+   "autore": "Edmondo De Amicis",
+   "opera": "Cuore, «Il ragazzo calabrese»",
+   "anno": "1886",
+   "nota": "Brano con alcuni tagli. Raggiunte sulla fronte: unite. Con impeto: con slancio. In iscuola: a scuola. Una stampa: un'immagine stampata."
+  }
+ },
+ {
   "id": "versi-nomi",
   "titolo": "Come si chiama il verso?",
   "scrittura": "maiuscolo",
