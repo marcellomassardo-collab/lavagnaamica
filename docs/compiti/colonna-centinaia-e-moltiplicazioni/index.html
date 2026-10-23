@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Addizioni, sottrazioni e moltiplicazioni con le centinaia – Lavagna Amica</title>
+<meta name="description" content="Compiti di matematica: Addizioni, sottrazioni e moltiplicazioni con le centinaia. Scrivi i risultati: le risposte giuste si colorano di verde.">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='8' width='60' height='48' rx='8' fill='%23B7793F'/%3E%3Crect x='8' y='14' width='48' height='36' rx='4' fill='%231E6B52'/%3E%3Ccircle cx='24' cy='28' r='3' fill='%23fff'/%3E%3Ccircle cx='40' cy='28' r='3' fill='%23fff'/%3E%3Cpath d='M22 37q10 9 20 0' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #F7F0E1;
+    --carta: #FFFFFF;
+    --testo: #1C2430;
+    --tenue: #4E5866;
+    --blu: #2F7FD1;
+    --blu-chiaro: #E3F0FC;
+    --bordo: #CFE0F2;
+    --giusto: #1E8A4C;
+    --giusto-sf: #E2F6EA;
+    --sbagliato: #B23A3A;
+    --evidenzia: #FFF1A8;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--testo);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: clamp(19px, 0.95rem + 0.5vw, 25px);
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  button, input { font: inherit; color: inherit; text-transform: inherit; letter-spacing: inherit; }
+  button { cursor: pointer; }
+  button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #F2A900; outline-offset: 2px; }
+  .nascosto { display: none !important; }
+
+  .pagina { max-width: 1000px; margin: 0 auto; padding: 0 16px 48px; }
+  .barra { padding: 12px 0; }
+  .marchio { font-weight: 700; color: #1E6B52; text-decoration: none; font-size: 0.8em; display: inline-flex; align-items: center; gap: 8px; }
+  .marchio svg { width: 30px; height: 30px; }
+
+  .titolo-scheda {
+    text-align: center; margin: 8px 0 6px;
+    font-size: clamp(1.35rem, 1rem + 2vw, 2.3rem); font-weight: 800; color: var(--blu);
+  }
+  .consegna {
+    display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+    margin: 0 auto 20px; text-align: center; font-weight: 700;
+  }
+  .consegna span { background: #FFF6C9; border: 2px solid #E9C547; border-radius: 14px; padding: 6px 16px; }
+
+  .voce {
+    border: 2px solid var(--bordo); background: var(--carta); border-radius: 999px;
+    min-width: 48px; min-height: 48px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    font-size: 0.85em; flex: none;
+  }
+  .voce[aria-busy="true"] { background: var(--blu-chiaro); border-color: var(--blu); }
+
+  /* testo e immagine */
+  .storia {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start;
+    background: var(--carta); border: 3px solid var(--bordo); border-radius: 22px; padding: 18px;
+  }
+  .storia h2 { margin: 0 0 10px; color: var(--blu); font-size: 1.5em; line-height: 1.2; }
+  .frasi { margin: 0 0 14px; font-size: 1.08em; }
+  .frasi span { display: block; margin-bottom: 0.35em; border-radius: 8px; padding: 0 4px; transition: background-color .2s; }
+  .frasi span.letta { background: var(--blu-chiaro); }
+  .frasi span.aiuto { background: var(--evidenzia); }
+  .storia img { width: 100%; height: auto; border-radius: 16px; display: block; }
+
+  /* domande */
+  .domande { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 14px; }
+  .domanda {
+    background: var(--carta); border: 3px solid var(--bordo); border-radius: 22px; padding: 16px 18px;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 6px 14px; align-items: start;
+    grid-template-areas: "num tit fig" "num corpo fig";
+  }
+  .domanda.fatta { border-color: #9ED4B4; }
+  .numero {
+    grid-area: num; width: 52px; height: 52px; border-radius: 50%; border: 3px solid #1C2430;
+    display: grid; place-items: center; font-weight: 800; font-size: 1.25em;
+  }
+  .domanda h3 { grid-area: tit; margin: 0; font-size: 1.05em; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .figura { grid-area: fig; width: clamp(70px, 14vw, 120px); height: auto; align-self: center; }
+  .corpo { grid-area: corpo; min-width: 0; }
+  .scelte { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+  .scelta {
+    display: inline-flex; align-items: center; gap: 10px;
+    min-height: 56px; padding: 8px 18px; border-radius: 14px;
+    border: 3px solid var(--bordo); background: #F7FAFE; text-align: left;
+  }
+  .scelta::before {
+    content: ""; width: 26px; height: 26px; border: 3px solid #5A7896; border-radius: 7px; flex: none; background: #fff;
+  }
+  .scelta.si { border-color: var(--giusto); background: var(--giusto-sf); }
+  .scelta.si::before { content: "✓"; border-color: var(--giusto); background: var(--giusto); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 18px; }
+  .scelta.no { opacity: .45; text-decoration: line-through; animation: scuoti .35s; }
+  .scelta:disabled { cursor: default; }
+  @keyframes scuoti { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+  .scrivi { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+  input.risposta {
+    flex: 1 1 240px; min-height: 56px; font-size: 1em; padding: 6px 14px;
+    border: 3px solid var(--bordo); border-radius: 14px; background: #fff;
+  }
+  input.risposta.si { border-color: var(--giusto); background: var(--giusto-sf); }
+  .pulsante {
+    min-height: 56px; padding: 6px 20px; border-radius: 14px; border: 0;
+    background: var(--blu); color: #fff; font-weight: 700;
+  }
+  .pulsante.secondario { background: #fff; color: var(--blu); border: 3px solid var(--blu); }
+  .link-aiuto { background: none; border: 0; color: var(--blu); text-decoration: underline; padding: 8px 0; margin-top: 4px; font-size: 0.85em; min-height: 44px; }
+
+  .esito { margin: 10px 0 0; font-weight: 700; }
+  .esito.si { color: var(--giusto); }
+  .esito.no { color: var(--sbagliato); }
+  .indizio {
+    margin-top: 8px; background: var(--evidenzia); border-radius: 12px; padding: 8px 12px;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .indizio .frase-indizio { flex: 1 1 200px; }
+
+  /* fine */
+  .fine { margin-top: 18px; text-align: center; background: var(--giusto-sf); border: 3px solid #9ED4B4; border-radius: 22px; padding: 22px 18px; }
+  .fine h2 { margin: 0 0 6px; color: var(--giusto); font-size: 1.6em; }
+  .fine p { margin: 0 0 14px; }
+  .fine .punteggio { font-size: 1.2em; }
+  .fine .punteggio b { font-size: 1.4em; }
+  .fine .azioni { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .avanzamento { text-align: center; color: var(--tenue); margin: 18px 0 0; font-size: 0.9em; }
+  .piede { text-align: center; color: var(--tenue); font-size: 0.7em; margin-top: 30px; }
+  .piede a { color: inherit; }
+
+  @media (max-width: 720px) {
+    .storia { grid-template-columns: 1fr; }
+    .storia img { order: -1; }
+    .domanda { grid-template-areas: "num tit fig" "corpo corpo corpo"; padding: 14px; }
+    .figura { width: 64px; align-self: start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scelta.no { animation: none; }
+    .frasi span { transition: none; }
+  }
+  @media print {
+    .barra, .voce, .link-aiuto, .fine .azioni, .pulsante, .piede { display: none !important; }
+    body { background: #fff; font-size: 14pt; }
+    .storia, .domanda, .fine { break-inside: avoid; }
+  }
+
+  /* operazioni */
+  .esercizio { background: var(--carta); border: 3px solid var(--bordo); border-radius: 22px; padding: 16px 18px; margin-top: 18px; }
+  .esercizio h2 { margin: 0 0 12px; font-size: 1.05em; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .esercizio h2 .numero { width: 44px; height: 44px; font-size: 1.1em; }
+  .righe { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px 18px; }
+  .op { display: flex; align-items: center; gap: 10px; font-size: 1.35em; font-weight: 800; white-space: nowrap; }
+  input.ris {
+    width: 3.2ch; min-height: 56px; font-size: 1em; font-weight: 800; text-align: center; padding: 2px 4px;
+    border: 3px solid #5A7896; border-radius: 12px; background: #fff;
+  }
+  input.ris.si { border-color: var(--giusto); background: var(--giusto-sf); color: var(--giusto); }
+  input.ris.no { border-color: var(--sbagliato); background: #FBE9E9; animation: scuoti .35s; }
+  input.ris.esempio { border-color: var(--bordo); color: #8A94A3; background: #F4F6F9; }
+  .colonne { display: flex; flex-wrap: wrap; gap: 18px 34px; }
+  table.colonna { border-collapse: collapse; font-size: 1.35em; font-weight: 800; }
+  table.colonna th { font-size: .55em; color: var(--tenue); font-weight: 700; padding: 0 0 4px; }
+  table.colonna td { width: 1.6em; height: 1.6em; text-align: center; border: 2px solid #5A7896; }
+  table.colonna td.segno { border: 0; width: 1.2em; }
+  table.colonna tr.ultima td:not(.segno) { border-bottom-width: 4px; border-bottom-color: #1C2430; }
+  table.colonna td.risultato { border: 0; padding-top: 8px; }
+  table.colonna input.ris { width: 3.6ch; }
+  @media (prefers-reduced-motion: reduce) { input.ris.no { animation: none; } }
+
+  /* la spiegazione animata dell'app (app/js/animazioni.js), prima degli esercizi */
+  .guarda { background: var(--carta); border: 3px solid var(--bordo); border-radius: 22px; padding: 16px 18px; margin-top: 8px; display: grid; gap: 12px; justify-items: center; }
+  .guarda h2 { margin: 0; font-size: 1.1em; color: var(--blu); }
+  .spiegazione { display: grid; gap: 12px; justify-items: center; width: 100%; }
+  .sp-scena { position: relative; width: min(100%, calc(52vh * 16 / 9)); aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; border: 3px solid var(--bordo); background: #FBF8F1; }
+  .sp-scena > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; text-transform: none; }
+  .sp-testo { margin: 0; max-width: 46em; font-weight: 700; text-align: center; line-height: 1.35; min-height: 2.7em; }
+  .sp-comandi { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .sp-scritta { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .sp-sfuma { transition: opacity .6s; }
+  .sp-blocco { transition: transform .9s cubic-bezier(.3,.7,.4,1), opacity .5s; }
+  .punti { display: flex; justify-content: center; gap: 8px; }
+  .punti span { width: 14px; height: 14px; border-radius: 50%; background: var(--bordo); }
+  .punti span.ora { background: #F2A900; }
+  .punti span.fatto { background: var(--giusto); }
+  .tasto { min-width: 56px; min-height: 56px; border-radius: 14px; border: 3px solid var(--blu); background: #fff; color: var(--blu); font-weight: 800; }
+  .tasto:disabled { opacity: .35; }
+  .tasto-piccolo { min-height: 48px; padding: 6px 16px; border-radius: 12px; border: 2px solid var(--bordo); background: #fff; font-weight: 700; }
+  @media (prefers-reduced-motion: reduce) { .sp-blocco, .sp-sfuma { transition: none; } }
+</style>
+</head>
+<body>
+<div class="pagina">
+  <div class="barra">
+    <a class="marchio" href="../../">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="8" width="60" height="48" rx="8" fill="#B7793F"/><rect x="8" y="14" width="48" height="36" rx="4" fill="#1E6B52"/><circle cx="24" cy="28" r="3" fill="#fff"/><circle cx="40" cy="28" r="3" fill="#fff"/><path d="M22 37q10 9 20 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+      Lavagna Amica
+    </a>
+  </div>
+
+  <p class="titolo-scheda">Compiti di matematica</p>
+  <section class="guarda" id="guarda" aria-labelledby="titolo-guarda">
+    <h2 id="titolo-guarda">Prima guarda come si fa</h2>
+    <div id="spiegazione"></div>
+    <button type="button" class="tasto-piccolo" id="vai-esercizi">Vai agli esercizi ▶▶</button>
+  </section>
+
+  <div id="zona-esercizi" class="nascosto">
+  <p class="consegna"><span id="consegna">Scrivi i risultati delle operazioni.</span><button type="button" class="voce" data-leggi="consegna" aria-label="Ascolta la consegna">🔊</button></p>
+  <p class="consegna"><button type="button" class="tasto-piccolo" id="rivedi">🎬 Rivedi la spiegazione</button></p>
+
+  <div id="esercizi"></div>
+
+  <p class="avanzamento" id="avanzamento"></p>
+  </div>
+
+  <section class="fine nascosto" id="fine" aria-live="polite">
+    <h2>Hai finito! Ottimo lavoro.</h2>
+    <p class="punteggio"><b id="punteggio"></b> giuste al primo tentativo</p>
+    <p>Puoi salvare il lavoro e mandarlo all'insegnante.</p>
+    <div class="azioni">
+      <button type="button" class="pulsante" id="scarica">Salva il lavoro</button>
+      <button type="button" class="pulsante secondario" id="stampa">Stampa</button>
+      <button type="button" class="pulsante secondario" id="ricomincia">Ricomincia</button>
+    </div>
+  </section>
+
+  <p class="piede">Le risposte restano su questo dispositivo: non vengono mandate a nessuno. · <a href="../../">Lavagna Amica</a></p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var ESERCIZI = [{"consegna": "Addizioni in colonna.", "forma": "colonna", "ops": [[46, "+", 37, 83], [247, "+", 135, 382]], "esempio": false}, {"consegna": "Sottrazioni in colonna.", "forma": "colonna", "ops": [[73, "−", 38, 35], [482, "−", 157, 325]], "esempio": false}, {"consegna": "Moltiplicazioni.", "forma": "riga", "ops": [[4, "×", 6, 24], [3, "×", 8, 24], [6, "×", 7, 42]], "esempio": false}];
+  var COLORI = ["#FFD84D", "#9BD86B", "#F6A3C0", "#7CC8F0", "#B9A3F0"];
+  var CHIAVE = "la.compito.colonna-centinaia-e-moltiplicazioni.v1";
+  var stato = carica();
+  var fine = document.getElementById("fine");
+
+  function carica() {
+    try {
+      var s = JSON.parse(localStorage.getItem(CHIAVE));
+      if (s && typeof s === "object" && s.risposte) return s;
+    } catch (e) {}
+    return { risposte: {}, sbagliate: {} };
+  }
+  function salva() {
+    try { localStorage.setItem(CHIAVE, JSON.stringify(stato)); } catch (e) {}
+  }
+  function el(tag, attr, figli) {
+    var n = document.createElement(tag);
+    if (attr) for (var k in attr) {
+      if (k === "class") n.className = attr[k];
+      else if (k === "text") n.textContent = attr[k];
+      else n.setAttribute(k, attr[k]);
+    }
+    (figli || []).forEach(function (f) { if (f) n.appendChild(f); });
+    return n;
+  }
+  function maiuscolo(s) { return s.toLocaleUpperCase("it"); }
+
+  /* ---------- lettura ad alta voce ---------- */
+  var sintesi = window.speechSynthesis;
+  var voceIt = null, pulsanteAttivo = null;
+  function scegliVoce() {
+    var v = sintesi.getVoices().filter(function (x) { return /^it(-|_|$)/i.test(x.lang); });
+    // le voci «in rete» e quelle neurali suonano molto più naturali di quelle vecchie del sistema
+    function qualita(x) { return (/natural|neural|premium|enhanced/i.test(x.name) ? 4 : 0) + (x.localService ? 0 : 3) + (/^it[-_]IT$/i.test(x.lang) ? 1 : 0); }
+    voceIt = v.sort(function (a, b) { return qualita(b) - qualita(a); })[0] || null;
+  }
+  if (sintesi) {
+    scegliVoce();
+    if (sintesi.addEventListener) sintesi.addEventListener("voiceschanged", scegliVoce);
+  }
+  function ferma() {
+    if (sintesi) sintesi.cancel();
+    document.querySelectorAll("#frasi span.letta").forEach(function (s) { s.classList.remove("letta"); });
+    if (pulsanteAttivo) pulsanteAttivo.removeAttribute("aria-busy");
+    pulsanteAttivo = null;
+  }
+  function leggi(testi, pulsante, ogniFrase) {
+    if (!sintesi) return;
+    var stessoPulsante = pulsanteAttivo === pulsante;
+    ferma();
+    if (stessoPulsante) return;
+    pulsanteAttivo = pulsante;
+    pulsante.setAttribute("aria-busy", "true");
+    var i = 0;
+    (function prossima() {
+      if (pulsanteAttivo !== pulsante) return;
+      if (i >= testi.length) { ferma(); return; }
+      if (ogniFrase) ogniFrase(i);
+      var u = new SpeechSynthesisUtterance(testi[i]);
+      u.lang = "it-IT"; if (voceIt) u.voice = voceIt; u.rate = 0.88;
+      u.onend = function () { i++; prossima(); };
+      u.onerror = function () { ferma(); };
+      sintesi.speak(u);
+    })();
+  }
+  function collegaVoce(b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-leggi");
+      leggi([b.getAttribute("data-testo") || document.getElementById(id).textContent], b);
+    });
+  }
+  document.querySelectorAll(".voce[data-leggi]").forEach(collegaVoce);
+  function pulsanteVoce(testo, etichetta) {
+    var b = el("button", { type: "button", class: "voce", "aria-label": etichetta, "data-testo": testo, text: "🔊" });
+    collegaVoce(b);
+    if (!sintesi) b.classList.add("nascosto");
+    return b;
+  }
+  if (!sintesi) document.querySelectorAll(".voce").forEach(function (b) { b.classList.add("nascosto"); });
+
+  /* ---------- suoni: «ding» se è giusta, «bup» morbido per riprovare, fanfara alla fine ---------- */
+  var audio = null;
+  function nota(f, inizio, durata, forma, volume, fineF) {
+    var t = audio.currentTime + inizio, o = audio.createOscillator(), g = audio.createGain();
+    o.type = forma; o.frequency.setValueAtTime(f, t);
+    if (fineF) o.frequency.exponentialRampToValueAtTime(fineF, t + durata);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(volume, t + 0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + durata);
+    o.connect(g); g.connect(audio.destination);
+    o.start(t); o.stop(t + durata + 0.05);
+  }
+  function suona(fn) {
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      if (audio.state === "suspended") audio.resume();
+      fn();
+    } catch (e) {}
+  }
+  function suonoGiusto() { suona(function () { nota(1046.5, 0, 0.18, "triangle", 0.28); nota(1568, 0.09, 0.32, "triangle", 0.24); }); }
+  function suonoRiprova() { suona(function () { nota(330, 0, 0.22, "sine", 0.16, 247); }); }
+  function suonoFesta() {
+    suona(function () {
+      [523.25, 659.25, 783.99, 1046.5].forEach(function (f, k) { nota(f, k * 0.13, 0.22, "triangle", 0.26); });
+      [523.25, 659.25, 783.99, 1046.5].forEach(function (f) { nota(f, 0.58, 1.3, "triangle", 0.16); });
+      nota(261.63, 0.58, 1.3, "sine", 0.18);
+    });
+  }
+
+
+  /* ---------- operazioni ---------- */
+  var tutte = [];  // le operazioni da fare (senza gli esempi)
+  function casella(op, chiave) {
+    var r = op[3];
+    if (chiave === null) {  // l'esempio svolto, come nel foglio
+      return el("input", { class: "ris esempio", value: String(r), readonly: "readonly", "aria-label": "Esempio: " + r, tabindex: "-1" });
+    }
+    var testo = op[0] + " " + op[1] + " " + op[2] + " =";
+    var campo = el("input", { class: "ris", type: "text", inputmode: "numeric", autocomplete: "off", maxlength: "3",
+      "aria-label": testo });
+    tutte.push(chiave);
+    function giusta() {
+      campo.value = String(r); campo.readOnly = true; campo.classList.remove("no"); campo.classList.add("si");
+      stato.risposte[chiave] = true; salva(); aggiorna();
+    }
+    function controlla(forza) {
+      var v = campo.value.replace(/\D/g, "");
+      if (!v) return;
+      if (parseInt(v, 10) === r) { suonoGiusto(); giusta(); return; }
+      if (!forza && v.length < String(r).length) return;  // sta ancora scrivendo
+      stato.sbagliate[chiave] = true; salva();
+      suonoRiprova();
+      campo.classList.remove("no"); void campo.offsetWidth; campo.classList.add("no");
+      campo.select();
+    }
+    campo.addEventListener("input", function () { campo.classList.remove("no"); controlla(false); });
+    campo.addEventListener("keydown", function (e) { if (e.key === "Enter") controlla(true); });
+    campo.addEventListener("change", function () { controlla(true); });
+    if (stato.risposte[chiave]) giusta();
+    return campo;
+  }
+  var contenitore = document.getElementById("esercizi");
+  ESERCIZI.forEach(function (es, k) {
+    var sezione = el("section", { class: "esercizio" }, [
+      el("h2", {}, [el("span", { class: "numero", style: "background:" + COLORI[k % COLORI.length], text: String(k + 1), "aria-hidden": "true" }),
+        el("span", { text: es.consegna }), pulsanteVoce(es.consegna, "Ascolta la consegna")])
+    ]);
+    if (es.forma === "colonna") {
+      var colonne = el("div", { class: "colonne" });
+      es.ops.forEach(function (op, i) {
+        // 2 o 3 colonne (h da u); le cifre a zero in testa al numero restano vuote
+        var n = Math.max(2, String(Math.max(op[0], op[2], op[3])).length);
+        function cifre(x) { var t = String(x); while (t.length < n) t = " " + t; return t.split(""); }
+        function celle(x) { return cifre(x).map(function (c) { return el("td", { text: c.trim() }); }); }
+        colonne.appendChild(el("table", { class: "colonna", "aria-label": op[0] + " " + op[1] + " " + op[2] }, [
+          el("tr", {}, [el("th")].concat(["h", "da", "u"].slice(3 - n).map(function (s) { return el("th", { text: s }); }))),
+          el("tr", {}, [el("td", { class: "segno" })].concat(celle(op[0]))),
+          el("tr", { class: "ultima" }, [el("td", { class: "segno", text: op[1] })].concat(celle(op[2]))),
+          el("tr", {}, [el("td", { class: "segno" }), el("td", { class: "risultato", colspan: String(n) }, [casella(op, es.esempio && i === 0 ? null : k + "-" + i)])])
+        ]));
+      });
+      sezione.appendChild(colonne);
+    } else {
+      var righe = el("div", { class: "righe" });
+      es.ops.forEach(function (op, i) {
+        righe.appendChild(el("div", { class: "op" }, [el("span", { text: op[0] + " " + op[1] + " " + op[2] + " =" }),
+          casella(op, es.esempio && i === 0 ? null : k + "-" + i)]));
+      });
+      sezione.appendChild(righe);
+    }
+    contenitore.appendChild(sezione);
+  });
+
+  /* ---------- avanzamento e fine ---------- */
+  function primoColpo() { return tutte.filter(function (c) { return !stato.sbagliate[c]; }).length; }
+  var avviato = false;
+  function aggiorna() {
+    var n = tutte.filter(function (c) { return stato.risposte[c]; }).length;
+    var eraNascosta = fine.classList.contains("nascosto");
+    document.getElementById("avanzamento").textContent = "Risposte: " + n + " su " + tutte.length;
+    document.getElementById("punteggio").textContent = primoColpo() + " su " + tutte.length;
+    fine.classList.toggle("nascosto", n < tutte.length);
+    if (avviato && eraNascosta && n === tutte.length) suonoFesta();
+  }
+  aggiorna();
+  avviato = true;
+
+  /* immagine del lavoro da mandare all'insegnante */
+  document.getElementById("scarica").addEventListener("click", function () {
+    var W = 1240, M = 70, y = 100, FONT = 'system-ui, "Segoe UI", Arial, sans-serif';
+    var foglio = document.createElement("canvas"), c = foglio.getContext("2d");
+    foglio.width = W; foglio.height = 2400;
+    c.fillStyle = "#fff"; c.fillRect(0, 0, W, foglio.height);
+    c.fillStyle = "#2F7FD1"; c.font = "700 52px " + FONT; c.fillText(maiuscolo("Addizioni, sottrazioni e moltiplicazioni con le centinaia"), M, y); y += 84;
+    ESERCIZI.forEach(function (es, k) {
+      c.fillStyle = "#1C2430"; c.font = "700 38px " + FONT;
+      c.fillText((k + 1) + ". " + maiuscolo(es.consegna), M, y); y += 60;
+      c.font = "700 40px " + FONT;
+      es.ops.forEach(function (op, i) {
+        var col = i % 3, x = M + 30 + col * 370;
+        c.fillStyle = es.esempio && i === 0 ? "#8A94A3" : "#1E8A4C";
+        c.fillText(op[0] + " " + op[1] + " " + op[2] + " = " + op[3], x, y);
+        if (col === 2 || i === es.ops.length - 1) y += 58;
+      });
+      y += 24;
+    });
+    c.fillStyle = "#1C2430"; c.font = "700 40px " + FONT;
+    c.fillText(maiuscolo("Giuste al primo tentativo: " + primoColpo() + " su " + tutte.length), M, y); y += 60;
+    var tagliato = document.createElement("canvas");
+    tagliato.width = W; tagliato.height = y + 10;
+    tagliato.getContext("2d").drawImage(foglio, 0, 0);
+    tagliato.toBlob(function (blob) {
+      var nome = "colonna-centinaia-e-moltiplicazioni.png", file = null;
+      try { file = new File([blob], nome, { type: "image/png" }); } catch (e) {}
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file], title: "Addizioni, sottrazioni e moltiplicazioni con le centinaia" }).catch(function () {});
+        return;
+      }
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob); a.download = nome;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+    }, "image/png");
+  });
+  document.getElementById("stampa").addEventListener("click", function () { window.print(); });
+  document.getElementById("ricomincia").addEventListener("click", function () {
+    if (!confirm("VUOI RICOMINCIARE DA CAPO? LE RISPOSTE SARANNO CANCELLATE.")) return;
+    try { localStorage.removeItem(CHIAVE); } catch (e) {}
+    location.reload();
+  });
+})();
+</script>
+<script type="module">
+  // la spiegazione animata dell'app, una dopo l'altra; poi compaiono gli esercizi
+  import { spiegazione } from "../../app/js/animazioni.js";
+  var giri = ["riporto", "prestito"], k = 0, attuale = null;
+  var guarda = document.getElementById("guarda"), zona = document.getElementById("zona-esercizi");
+  function esercizi() {
+    if (attuale) attuale.ferma();
+    guarda.classList.add("nascosto");
+    zona.classList.remove("nascosto");
+  }
+  function prossima() {
+    if (k >= giri.length) { esercizi(); return; }
+    attuale = spiegazione({ animazione: giri[k++] }, prossima);
+    document.getElementById("spiegazione").replaceChildren(attuale.el);
+    attuale.parti();
+  }
+  document.getElementById("vai-esercizi").addEventListener("click", esercizi);
+  document.getElementById("rivedi").addEventListener("click", function () {
+    k = 0; zona.classList.add("nascosto"); guarda.classList.remove("nascosto"); prossima(); window.scrollTo(0, 0);
+  });
+  prossima();
+</script>
+<script nomodule>
+  // browser troppo vecchio per la spiegazione: si va subito agli esercizi
+  document.getElementById("guarda").className = "nascosto";
+  document.getElementById("zona-esercizi").className = "";
+</script>
+</body>
+</html>
