@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La lepre e la tartaruga – Lavagna Amica</title>
+<meta name="description" content="Leggi la favola e rispondi alle domande: la lepre e la tartaruga. Esercizio di comprensione in stampatello maiuscolo, con lettura ad alta voce.">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='8' width='60' height='48' rx='8' fill='%23B7793F'/%3E%3Crect x='8' y='14' width='48' height='36' rx='4' fill='%231E6B52'/%3E%3Ccircle cx='24' cy='28' r='3' fill='%23fff'/%3E%3Ccircle cx='40' cy='28' r='3' fill='%23fff'/%3E%3Cpath d='M22 37q10 9 20 0' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #F7F0E1;
+    --carta: #FFFFFF;
+    --testo: #1C2430;
+    --tenue: #4E5866;
+    --blu: #2F7FD1;
+    --blu-chiaro: #E3F0FC;
+    --bordo: #CFE0F2;
+    --giusto: #1E8A4C;
+    --giusto-sf: #E2F6EA;
+    --sbagliato: #B23A3A;
+    --evidenzia: #FFF1A8;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--testo);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: clamp(19px, 0.95rem + 0.5vw, 25px);
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  button, input { font: inherit; color: inherit; text-transform: inherit; letter-spacing: inherit; }
+  button { cursor: pointer; }
+  button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #F2A900; outline-offset: 2px; }
+  .nascosto { display: none !important; }
+
+  .pagina { max-width: 1000px; margin: 0 auto; padding: 0 16px 48px; }
+  .barra { padding: 12px 0; }
+  .marchio { font-weight: 700; color: #1E6B52; text-decoration: none; font-size: 0.8em; display: inline-flex; align-items: center; gap: 8px; }
+  .marchio svg { width: 30px; height: 30px; }
+
+  .titolo-scheda {
+    text-align: center; margin: 8px 0 6px;
+    font-size: clamp(1.35rem, 1rem + 2vw, 2.3rem); font-weight: 800; color: var(--blu);
+  }
+  .consegna {
+    display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+    margin: 0 auto 20px; text-align: center; font-weight: 700;
+  }
+  .consegna span { background: #FFF6C9; border: 2px solid #E9C547; border-radius: 14px; padding: 6px 16px; }
+
+  .voce {
+    border: 2px solid var(--bordo); background: var(--carta); border-radius: 999px;
+    min-width: 48px; min-height: 48px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    font-size: 0.85em; flex: none;
+  }
+  .voce[aria-busy="true"] { background: var(--blu-chiaro); border-color: var(--blu); }
+
+  /* testo e immagine */
+  .storia {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start;
+    background: var(--carta); border: 3px solid var(--bordo); border-radius: 22px; padding: 18px;
+  }
+  .storia h2 { margin: 0 0 10px; color: var(--blu); font-size: 1.5em; line-height: 1.2; }
+  .frasi { margin: 0 0 14px; font-size: 1.08em; }
+  .frasi span { display: block; margin-bottom: 0.35em; border-radius: 8px; padding: 0 4px; transition: background-color .2s; }
+  .frasi span.letta { background: var(--blu-chiaro); }
+  .frasi span.aiuto { background: var(--evidenzia); }
+  .storia img { width: 100%; height: auto; border-radius: 16px; display: block; }
+
+  /* domande */
+  .domande { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 14px; }
+  .domanda {
+    background: var(--carta); border: 3px solid var(--bordo); border-radius: 22px; padding: 16px 18px;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 6px 14px; align-items: start;
+    grid-template-areas: "num tit fig" "num corpo fig";
+  }
+  .domanda.fatta { border-color: #9ED4B4; }
+  .numero {
+    grid-area: num; width: 52px; height: 52px; border-radius: 50%; border: 3px solid #1C2430;
+    display: grid; place-items: center; font-weight: 800; font-size: 1.25em;
+  }
+  .domanda h3 { grid-area: tit; margin: 0; font-size: 1.05em; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .figura { grid-area: fig; width: clamp(70px, 14vw, 120px); height: auto; align-self: center; }
+  .corpo { grid-area: corpo; min-width: 0; }
+  .scelte { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+  .scelta {
+    display: inline-flex; align-items: center; gap: 10px;
+    min-height: 56px; padding: 8px 18px; border-radius: 14px;
+    border: 3px solid var(--bordo); background: #F7FAFE; text-align: left;
+  }
+  .scelta::before {
+    content: ""; width: 26px; height: 26px; border: 3px solid #5A7896; border-radius: 7px; flex: none; background: #fff;
+  }
+  .scelta.si { border-color: var(--giusto); background: var(--giusto-sf); }
+  .scelta.si::before { content: "✓"; border-color: var(--giusto); background: var(--giusto); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 18px; }
+  .scelta.no { opacity: .45; text-decoration: line-through; animation: scuoti .35s; }
+  .scelta:disabled { cursor: default; }
+  @keyframes scuoti { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+  .scrivi { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+  input.risposta {
+    flex: 1 1 240px; min-height: 56px; font-size: 1em; padding: 6px 14px;
+    border: 3px solid var(--bordo); border-radius: 14px; background: #fff;
+  }
+  input.risposta.si { border-color: var(--giusto); background: var(--giusto-sf); }
+  .pulsante {
+    min-height: 56px; padding: 6px 20px; border-radius: 14px; border: 0;
+    background: var(--blu); color: #fff; font-weight: 700;
+  }
+  .pulsante.secondario { background: #fff; color: var(--blu); border: 3px solid var(--blu); }
+  .link-aiuto { background: none; border: 0; color: var(--blu); text-decoration: underline; padding: 8px 0; margin-top: 4px; font-size: 0.85em; min-height: 44px; }
+
+  .esito { margin: 10px 0 0; font-weight: 700; }
+  .esito.si { color: var(--giusto); }
+  .esito.no { color: var(--sbagliato); }
+  .indizio {
+    margin-top: 8px; background: var(--evidenzia); border-radius: 12px; padding: 8px 12px;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .indizio .frase-indizio { flex: 1 1 200px; }
+
+  /* fine */
+  .fine { margin-top: 18px; text-align: center; background: var(--giusto-sf); border: 3px solid #9ED4B4; border-radius: 22px; padding: 22px 18px; }
+  .fine h2 { margin: 0 0 6px; color: var(--giusto); font-size: 1.6em; }
+  .fine p { margin: 0 0 14px; }
+  .fine .punteggio { font-size: 1.2em; }
+  .fine .punteggio b { font-size: 1.4em; }
+  .fine .azioni { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .avanzamento { text-align: center; color: var(--tenue); margin: 18px 0 0; font-size: 0.9em; }
+  .piede { text-align: center; color: var(--tenue); font-size: 0.7em; margin-top: 30px; }
+  .piede a { color: inherit; }
+
+  @media (max-width: 720px) {
+    .storia { grid-template-columns: 1fr; }
+    .storia img { order: -1; }
+    .domanda { grid-template-areas: "num tit fig" "corpo corpo corpo"; padding: 14px; }
+    .figura { width: 64px; align-self: start; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scelta.no { animation: none; }
+    .frasi span { transition: none; }
+  }
+  @media print {
+    .barra, .voce, .link-aiuto, .fine .azioni, .pulsante, .piede { display: none !important; }
+    body { background: #fff; font-size: 14pt; }
+    .storia, .domanda, .fine { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="pagina">
+  <div class="barra">
+    <a class="marchio" href="../../">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="8" width="60" height="48" rx="8" fill="#B7793F"/><rect x="8" y="14" width="48" height="36" rx="4" fill="#1E6B52"/><circle cx="24" cy="28" r="3" fill="#fff"/><circle cx="40" cy="28" r="3" fill="#fff"/><path d="M22 37q10 9 20 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+      Lavagna Amica
+    </a>
+  </div>
+
+  <p class="titolo-scheda">Leggere · Capire · Rispondere</p>
+  <p class="consegna"><span id="consegna">Leggi il testo e rispondi alle domande.</span><button type="button" class="voce" data-leggi="consegna" aria-label="Ascolta la consegna">🔊</button></p>
+
+  <section class="storia" aria-labelledby="titolo-storia">
+    <div>
+      <h2 id="titolo-storia">La lepre e la tartaruga</h2>
+      <p class="frasi" id="frasi">
+        <span data-f="1">Una volta la lepre prendeva in giro la tartaruga, perché era lenta.</span>
+        <span data-f="2">«Facciamo una gara» disse la tartaruga. «Vedrai che arrivo prima io.»</span>
+        <span data-f="3">La lepre si mise a ridere, ma accettò. Decisero da dove partire e dove arrivare.</span>
+        <span data-f="4">Partirono. La lepre corse velocissima, e ben presto la tartaruga non si vedeva più.</span>
+        <span data-f="5">«Ho tanto tempo» pensò la lepre. «Faccio un pisolino.» Si sdraiò vicino alla strada e si addormentò.</span>
+        <span data-f="6">La tartaruga, invece, sapeva di essere lenta: camminava piano piano, un passo dopo l&#x27;altro, senza fermarsi mai.</span>
+        <span data-f="7">Quando la lepre si svegliò, corse più veloce che poteva. Ma era troppo tardi: la tartaruga era già arrivata.</span>
+        <span data-f="8">Chi si impegna e non si ferma arriva lontano, anche più di chi è bravo ma non si impegna.</span>
+      </p>
+      <button type="button" class="voce" id="ascolta-testo"><span aria-hidden="true">🔊</span> Ascolta il testo</button>
+    </div>
+    <img src="../../app/foto/rackham-lepre-tartaruga.jpg" width="500" height="649" alt="La lepre e la tartaruga. Illustrazione di Arthur Rackham.">
+  </section>
+
+  <ol class="domande" id="domande"></ol>
+
+  <p class="avanzamento" id="avanzamento"></p>
+
+  <section class="fine nascosto" id="fine" aria-live="polite">
+    <h2>Hai finito! Ottimo lavoro.</h2>
+    <p class="punteggio"><b id="punteggio"></b> giuste al primo tentativo</p>
+    <p>Puoi salvare il lavoro e mandarlo all'insegnante.</p>
+    <div class="azioni">
+      <button type="button" class="pulsante" id="scarica">Salva il lavoro</button>
+      <button type="button" class="pulsante secondario" id="stampa">Stampa</button>
+      <button type="button" class="pulsante secondario" id="ricomincia">Ricomincia</button>
+    </div>
+  </section>
+
+  <p class="piede">Testo: Esopo, traduzione e adattamento di Lavagna Amica. Illustrazione di Arthur Rackham (1912). Pubblico dominio.</p>
+  <p class="piede">Le risposte restano su questo dispositivo: non vengono mandate a nessuno. · <a href="../../">Lavagna Amica</a></p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var DOMANDE = [
+    { tipo: "scelta", testo: "Perché la lepre prendeva in giro la tartaruga?", scelte: ["Perché era piccola.", "Perché era verde.", "Perché era lenta."], giusta: 2, frase: 1, colore: "#FFD84D" },
+    { tipo: "scelta", testo: "Che cosa fece la lepre durante la gara?", scelte: ["Si fece male a una zampa.", "Si perse nel bosco.", "Si addormentò."], giusta: 2, frase: 5, colore: "#9BD86B" },
+    { tipo: "scelta", testo: "Come camminava la tartaruga?", scelte: ["Velocissima.", "Piano piano, senza fermarsi mai.", "Saltando."], giusta: 1, frase: 6, colore: "#F6A3C0" },
+    { tipo: "scelta", testo: "Chi vinse la gara?", scelte: ["nessuno", "la tartaruga", "la lepre"], giusta: 1, frase: 7, colore: "#7CC8F0" },
+    { tipo: "scelta", testo: "Che cosa vuole insegnare la favola?", scelte: ["Chi è veloce vince sempre.", "Chi si impegna e non si ferma arriva lontano.", "Non bisogna mai fare le gare."], giusta: 1, frase: 8, colore: "#B9A3F0" }
+  ];
+  var CHIAVE = "la.compito.la-lepre-e-la-tartaruga.v1";
+  var stato = carica();
+  var fine = document.getElementById("fine");
+
+  function carica() {
+    try {
+      var s = JSON.parse(localStorage.getItem(CHIAVE));
+      if (s && typeof s === "object" && s.risposte) {
+        // lavoro iniziato prima che si contassero gli errori: il punteggio non si può sapere
+        if (!s.sbagliate) { s.sbagliate = {}; s.senzaPunteggio = Object.keys(s.risposte).length > 0; }
+        return s;
+      }
+    } catch (e) {}
+    return { risposte: {}, sbagliate: {} };
+  }
+  function salva() {
+    try { localStorage.setItem(CHIAVE, JSON.stringify(stato)); } catch (e) {}
+  }
+  function el(tag, attr, figli) {
+    var n = document.createElement(tag);
+    if (attr) for (var k in attr) {
+      if (k === "class") n.className = attr[k];
+      else if (k === "text") n.textContent = attr[k];
+      else n.setAttribute(k, attr[k]);
+    }
+    (figli || []).forEach(function (f) { if (f) n.appendChild(f); });
+    return n;
+  }
+  function normalizza(s) {
+    return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ").trim();
+  }
+  function maiuscolo(s) { return s.toLocaleUpperCase("it"); }
+  function frase(n) { return document.querySelector('#frasi span[data-f="' + n + '"]'); }
+
+  /* ---------- lettura ad alta voce ---------- */
+  var sintesi = window.speechSynthesis;
+  var voceIt = null, pulsanteAttivo = null;
+  function scegliVoce() {
+    var v = sintesi.getVoices().filter(function (x) { return /^it(-|_|$)/i.test(x.lang); });
+    // le voci «in rete» e quelle neurali suonano molto più naturali di quelle vecchie del sistema
+    function qualita(x) { return (/natural|neural|premium|enhanced/i.test(x.name) ? 4 : 0) + (x.localService ? 0 : 3) + (/^it[-_]IT$/i.test(x.lang) ? 1 : 0); }
+    voceIt = v.sort(function (a, b) { return qualita(b) - qualita(a); })[0] || null;
+  }
+  if (sintesi) {
+    scegliVoce();
+    if (sintesi.addEventListener) sintesi.addEventListener("voiceschanged", scegliVoce);
+  }
+  function ferma() {
+    if (sintesi) sintesi.cancel();
+    document.querySelectorAll("#frasi span.letta").forEach(function (s) { s.classList.remove("letta"); });
+    if (pulsanteAttivo) pulsanteAttivo.removeAttribute("aria-busy");
+    pulsanteAttivo = null;
+  }
+  function leggi(testi, pulsante, ogniFrase) {
+    if (!sintesi) return;
+    var stessoPulsante = pulsanteAttivo === pulsante;
+    ferma();
+    if (stessoPulsante) return;
+    pulsanteAttivo = pulsante;
+    pulsante.setAttribute("aria-busy", "true");
+    var i = 0;
+    (function prossima() {
+      if (pulsanteAttivo !== pulsante) return;
+      if (i >= testi.length) { ferma(); return; }
+      if (ogniFrase) ogniFrase(i);
+      var u = new SpeechSynthesisUtterance(testi[i]);
+      u.lang = "it-IT"; if (voceIt) u.voice = voceIt; u.rate = 0.88;
+      u.onend = function () { i++; prossima(); };
+      u.onerror = function () { ferma(); };
+      sintesi.speak(u);
+    })();
+  }
+  var bottoneTesto = document.getElementById("ascolta-testo");
+  bottoneTesto.addEventListener("click", function () {
+    var spans = Array.prototype.slice.call(document.querySelectorAll("#frasi span"));
+    var testi = [document.getElementById("titolo-storia").textContent].concat(spans.map(function (s) { return s.textContent; }));
+    leggi(testi, bottoneTesto, function (i) {
+      spans.forEach(function (s) { s.classList.remove("letta"); });
+      if (i > 0) spans[i - 1].classList.add("letta");
+    });
+  });
+  function collegaVoce(b) {
+    b.addEventListener("click", function () {
+      var id = b.getAttribute("data-leggi");
+      leggi([b.getAttribute("data-testo") || document.getElementById(id).textContent], b);
+    });
+  }
+  document.querySelectorAll(".voce[data-leggi]").forEach(collegaVoce);
+  function pulsanteVoce(testo, etichetta) {
+    var b = el("button", { type: "button", class: "voce", "aria-label": etichetta, "data-testo": testo, text: "🔊" });
+    collegaVoce(b);
+    if (!sintesi) b.classList.add("nascosto");
+    return b;
+  }
+  if (!sintesi) document.querySelectorAll(".voce").forEach(function (b) { b.classList.add("nascosto"); });
+
+  /* ---------- suoni: «ding» se è giusta, «bup» morbido per riprovare, fanfara alla fine ---------- */
+  var audio = null;
+  function nota(f, inizio, durata, forma, volume, fineF) {
+    var t = audio.currentTime + inizio, o = audio.createOscillator(), g = audio.createGain();
+    o.type = forma; o.frequency.setValueAtTime(f, t);
+    if (fineF) o.frequency.exponentialRampToValueAtTime(fineF, t + durata);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(volume, t + 0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + durata);
+    o.connect(g); g.connect(audio.destination);
+    o.start(t); o.stop(t + durata + 0.05);
+  }
+  function suona(fn) {
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      if (audio.state === "suspended") audio.resume();
+      fn();
+    } catch (e) {}
+  }
+  function suonoGiusto() { suona(function () { nota(1046.5, 0, 0.18, "triangle", 0.28); nota(1568, 0.09, 0.32, "triangle", 0.24); }); }
+  function suonoRiprova() { suona(function () { nota(330, 0, 0.22, "sine", 0.16, 247); }); }
+  function suonoFesta() {
+    suona(function () {
+      [523.25, 659.25, 783.99, 1046.5].forEach(function (f, k) { nota(f, k * 0.13, 0.22, "triangle", 0.26); });
+      [523.25, 659.25, 783.99, 1046.5].forEach(function (f) { nota(f, 0.58, 1.3, "triangle", 0.16); });
+      nota(261.63, 0.58, 1.3, "sine", 0.18);
+    });
+  }
+
+  /* ---------- domande ---------- */
+  var lista = document.getElementById("domande");
+  DOMANDE.forEach(function (d, i) {
+    var esito = el("p", { class: "esito", "aria-live": "polite" });
+    var indizio = el("div", { class: "indizio nascosto" });
+    var corpo = el("div", { class: "corpo" });
+    var li = el("li", { class: "domanda" }, [
+      el("span", { class: "numero", style: "background:" + d.colore, text: String(i + 1), "aria-hidden": "true" }),
+      el("h3", {}, [el("span", { text: d.testo }), pulsanteVoce(d.testo, "Ascolta la domanda")]),
+      d.img ? el("img", { class: "figura", src: d.img, alt: d.alt, width: "120", height: "80" }) : null,
+      corpo
+    ]);
+    lista.appendChild(li);
+
+    function mostraIndizio() {
+      document.querySelectorAll("#frasi span.aiuto").forEach(function (s) { s.classList.remove("aiuto"); });
+      var f = frase(d.frase);
+      f.classList.add("aiuto");
+      indizio.textContent = "";
+      indizio.appendChild(el("span", { "aria-hidden": "true", text: "📖" }));
+      indizio.appendChild(el("span", { class: "frase-indizio", text: "Rileggi: «" + f.textContent + "»" }));
+      indizio.appendChild(pulsanteVoce(f.textContent, "Ascolta la frase"));
+      indizio.classList.remove("nascosto");
+    }
+    function giusta(valore) {
+      stato.risposte[i] = { valore: valore };
+      salva();
+      li.classList.add("fatta");
+      esito.className = "esito si";
+      esito.textContent = "Esatto! 🎉";
+      indizio.classList.add("nascosto");
+      frase(d.frase).classList.remove("aiuto");
+      aggiornaAvanzamento();
+    }
+    function sbagliata(testo) {
+      stato.sbagliate[i] = true;
+      salva();
+      suonoRiprova();
+      esito.className = "esito no";
+      esito.textContent = testo;
+      mostraIndizio();
+    }
+    function bottoniScelta(contenitore, quandoGiusta) {
+      var bottoni = d.scelte.map(function (s, k) {
+        var b = el("button", { type: "button", class: "scelta", text: s });
+        b.addEventListener("click", function () {
+          if (k === d.giusta) {
+            bottoni.forEach(function (x) { x.disabled = true; });
+            b.classList.add("si");
+            suonoGiusto();
+            quandoGiusta(s);
+          } else {
+            b.classList.add("no"); b.disabled = true;
+            sbagliata("Non è questa. Riprova!");
+          }
+        });
+        contenitore.appendChild(b);
+        return b;
+      });
+      return bottoni;
+    }
+    var fatta = stato.risposte[i];
+
+    if (d.tipo === "scelta") {
+      var scelte = el("div", { class: "scelte", role: "group", "aria-label": d.testo });
+      var bottoni = bottoniScelta(scelte, giusta);
+      corpo.appendChild(scelte);
+      if (fatta) {
+        bottoni.forEach(function (x) { x.disabled = true; });
+        bottoni[d.giusta].classList.add("si");
+        giusta(d.scelte[d.giusta]);
+      }
+    } else {
+      var campo = el("input", { class: "risposta", type: "text", autocomplete: "off", autocapitalize: "characters",
+        "aria-label": d.testo, placeholder: "Scrivi qui" });
+      var controlla = el("button", { type: "button", class: "pulsante", text: "Controlla" });
+      var scelteAiuto = el("div", { class: "scelte nascosto", role: "group", "aria-label": "Scegli la risposta" });
+      var linkAiuto = el("button", { type: "button", class: "link-aiuto", text: "Preferisco scegliere" });
+      corpo.appendChild(el("div", { class: "scrivi" }, [campo, controlla]));
+      corpo.appendChild(linkAiuto);
+      corpo.appendChild(scelteAiuto);
+
+      var bottoniAiuto;
+      function chiudi(valore) {
+        campo.value = valore; campo.readOnly = true; campo.classList.add("si");
+        controlla.classList.add("nascosto"); linkAiuto.classList.add("nascosto");
+        bottoniAiuto.forEach(function (x) { x.disabled = true; });
+        giusta(valore);
+      }
+      function apriScelte() { scelteAiuto.classList.remove("nascosto"); linkAiuto.classList.add("nascosto"); }
+      bottoniAiuto = bottoniScelta(scelteAiuto, chiudi);
+      function verifica() {
+        var v = normalizza(campo.value);
+        if (!v) { campo.focus(); return; }
+        var ok = d.accetta.some(function (a) { return v.indexOf(normalizza(a)) >= 0; });
+        if (ok) { suonoGiusto(); chiudi(campo.value.trim()); }
+        else { sbagliata("Non ancora. Puoi riprovare o scegliere."); apriScelte(); }
+      }
+      controlla.addEventListener("click", verifica);
+      campo.addEventListener("keydown", function (e) { if (e.key === "Enter") verifica(); });
+      linkAiuto.addEventListener("click", apriScelte);
+      if (fatta) chiudi(fatta.valore);
+    }
+    corpo.appendChild(esito);
+    corpo.appendChild(indizio);
+  });
+
+  /* ---------- avanzamento e fine ---------- */
+  function primoColpo() { return DOMANDE.filter(function (d, i) { return !stato.sbagliate[i]; }).length; }
+  var avviato = false;
+  function aggiornaAvanzamento() {
+    var n = DOMANDE.filter(function (d, i) { return stato.risposte[i]; }).length;
+    var eraNascosta = fine.classList.contains("nascosto");
+    document.getElementById("avanzamento").textContent = "Risposte: " + n + " su " + DOMANDE.length;
+    document.getElementById("punteggio").textContent = primoColpo() + " su " + DOMANDE.length;
+    document.getElementById("punteggio").parentNode.hidden = !!stato.senzaPunteggio;
+    fine.classList.toggle("nascosto", n < DOMANDE.length);
+    if (avviato && eraNascosta && n === DOMANDE.length) suonoFesta();
+  }
+  aggiornaAvanzamento();
+  avviato = true;
+
+  /* immagine del lavoro da mandare all'insegnante */
+  function aCapo(c, testo, larghezza) {
+    var parole = testo.split(" "), righe = [], riga = "";
+    parole.forEach(function (p) {
+      var prova = riga ? riga + " " + p : p;
+      if (c.measureText(prova).width > larghezza && riga) { righe.push(riga); riga = p; } else riga = prova;
+    });
+    if (riga) righe.push(riga);
+    return righe;
+  }
+  document.getElementById("scarica").addEventListener("click", function () {
+    var W = 1240, M = 70, y = 100, FONT = 'system-ui, "Segoe UI", Arial, sans-serif';
+    var foglio = document.createElement("canvas"), c = foglio.getContext("2d");
+    foglio.width = W; foglio.height = 1200;
+    c.fillStyle = "#fff"; c.fillRect(0, 0, W, foglio.height);
+    c.fillStyle = "#2F7FD1"; c.font = "700 56px " + FONT; c.fillText(maiuscolo("La lepre e la tartaruga"), M, y); y += 90;
+    DOMANDE.forEach(function (d, i) {
+      c.fillStyle = "#1C2430"; c.font = "700 38px " + FONT;
+      aCapo(c, (i + 1) + ". " + maiuscolo(d.testo), W - 2 * M).forEach(function (r) { c.fillText(r, M, y); y += 52; });
+      c.fillStyle = "#1E8A4C"; c.font = "400 38px " + FONT;
+      c.fillText("✓ " + maiuscolo(stato.risposte[i].valore), M + 34, y); y += 76;
+    });
+    c.fillStyle = "#1C2430"; c.font = "700 40px " + FONT;
+    if (!stato.senzaPunteggio) { c.fillText(maiuscolo("Giuste al primo tentativo: " + primoColpo() + " su " + DOMANDE.length), M, y); y += 60; }
+    var tagliato = document.createElement("canvas");
+    tagliato.width = W; tagliato.height = y + 10;
+    tagliato.getContext("2d").drawImage(foglio, 0, 0);
+    tagliato.toBlob(function (blob) {
+      var nome = "la-lepre-e-la-tartaruga.png", file = null;
+      try { file = new File([blob], nome, { type: "image/png" }); } catch (e) {}
+      if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file], title: "La lepre e la tartaruga" }).catch(function () {});
+        return;
+      }
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob); a.download = nome;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+    }, "image/png");
+  });
+  document.getElementById("stampa").addEventListener("click", function () { window.print(); });
+  document.getElementById("ricomincia").addEventListener("click", function () {
+    if (!confirm("VUOI RICOMINCIARE DA CAPO? LE RISPOSTE SARANNO CANCELLATE.")) return;
+    try { localStorage.removeItem(CHIAVE); } catch (e) {}
+    location.reload();
+  });
+})();
+</script>
+</body>
+</html>
