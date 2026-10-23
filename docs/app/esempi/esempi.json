@@ -2482,6 +2482,417 @@
   }
  },
  {
+  "id": "brano-leone-topo",
+  "titolo": "Livello 2 · Il leone e il topo",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "Un leone dormiva all'ombra di un albero. Un topolino, correndo, gli passò sul muso e lo svegliò.",
+    "Il leone, arrabbiato, lo afferrò con la zampa e stava per mangiarlo.",
+    "«Ti prego, lasciami andare!» disse il topolino. «Se mi salvi la vita, un giorno ti aiuterò anch'io.»",
+    "Il leone si mise a ridere: come poteva un topolino aiutare il re degli animali? Però lo lasciò andare.",
+    "Qualche giorno dopo, alcuni cacciatori catturarono il leone con una rete di corde robuste.",
+    "Il leone ruggiva, ma non riusciva a liberarsi. Il topolino riconobbe il suo ruggito e corse da lui.",
+    "Con i suoi dentini rosicchiò le corde, una dopo l'altra, finché il leone fu libero.",
+    "«Ridevi di me» disse il topolino, «ma adesso lo sai: anche un topolino può aiutare un leone.»"
+   ],
+   "domande": [
+    {
+     "d": "Perché il leone si arrabbiò?",
+     "giusta": "Il topolino lo aveva svegliato.",
+     "sbagliate": [
+      "Il topolino gli aveva rubato il cibo.",
+      "Aveva fame."
+     ]
+    },
+    {
+     "d": "Che cosa promise il topolino?",
+     "giusta": "Che un giorno lo avrebbe aiutato.",
+     "sbagliate": [
+      "Che sarebbe andato via per sempre.",
+      "Che gli avrebbe portato del formaggio."
+     ]
+    },
+    {
+     "d": "Perché il leone rise?",
+     "giusta": "Non credeva che un topolino potesse aiutarlo.",
+     "sbagliate": [
+      "Il topolino gli faceva il solletico.",
+      "Aveva sentito una barzelletta."
+     ]
+    },
+    {
+     "d": "Che cosa successe al leone qualche giorno dopo?",
+     "giusta": "Lo catturarono dei cacciatori con una rete.",
+     "sbagliate": [
+      "Si perse nel bosco.",
+      "Cadde in un fiume."
+     ]
+    },
+    {
+     "d": "Come lo liberò il topolino?",
+     "giusta": "Rosicchiò le corde con i dentini.",
+     "sbagliate": [
+      "Chiamò gli altri leoni.",
+      "Spaventò i cacciatori."
+     ]
+    }
+   ],
+   "autore": "Esopo",
+   "opera": "Favole",
+   "anno": "VI secolo a.C.",
+   "nota": "Traduzione e adattamento di Lavagna Amica.",
+   "f": "hollar-leone-topo.jpg",
+   "didascalia": "Il topo rosicchia la rete che tiene prigioniero il leone: acquaforte di Wenceslaus Hollar (Seicento)."
+  }
+ },
+ {
+  "id": "brano-vento-sole",
+  "titolo": "Livello 2 · Il vento e il sole",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "Un giorno il vento del nord e il sole litigavano: chi dei due era il più forte?",
+    "Videro passare un viaggiatore avvolto nel suo mantello. «Facciamo una gara» disse il sole. «Vince chi riesce a togliergli il mantello.»",
+    "Il vento cominciò per primo. Soffiò forte, sempre più forte: gli alberi si piegavano e le foglie volavano via.",
+    "Ma più il vento soffiava, più il viaggiatore stringeva il mantello intorno a sé. Alla fine il vento, stanco, si arrese.",
+    "Allora toccò al sole. Il sole uscì da dietro le nuvole e cominciò a splendere, caldo e gentile.",
+    "Il viaggiatore si sentì scaldare. Prima aprì il mantello, poi se lo tolse, e alla fine, sudato, si fermò a fare il bagno in un ruscello.",
+    "Il sole aveva vinto: con la gentilezza si ottiene più che con la forza."
+   ],
+   "domande": [
+    {
+     "d": "Su che cosa litigavano il vento e il sole?",
+     "giusta": "Su chi era il più forte.",
+     "sbagliate": [
+      "Su chi era il più bello.",
+      "Su chi arrivava prima."
+     ]
+    },
+    {
+     "d": "Che gara fecero?",
+     "giusta": "Togliere il mantello a un viaggiatore.",
+     "sbagliate": [
+      "Una corsa nel cielo.",
+      "Far cadere le foglie da un albero."
+     ]
+    },
+    {
+     "d": "Che cosa faceva il viaggiatore quando il vento soffiava?",
+     "giusta": "Stringeva il mantello intorno a sé.",
+     "sbagliate": [
+      "Si toglieva il mantello.",
+      "Correva a casa."
+     ]
+    },
+    {
+     "d": "Come vinse il sole?",
+     "giusta": "Splendendo, caldo e gentile.",
+     "sbagliate": [
+      "Soffiando più forte del vento.",
+      "Nascondendosi dietro le nuvole."
+     ]
+    },
+    {
+     "d": "Che cosa ci insegna la favola?",
+     "giusta": "Con la gentilezza si ottiene più che con la forza.",
+     "sbagliate": [
+      "Il vento è più forte del sole.",
+      "Non bisogna mai uscire con il mantello."
+     ]
+    }
+   ],
+   "autore": "Esopo",
+   "opera": "Favole",
+   "anno": "VI secolo a.C.",
+   "nota": "Traduzione e adattamento di Lavagna Amica.",
+   "f": "rackham-vento-sole.jpg",
+   "didascalia": "Il vento del nord soffia contro il viaggiatore: illustrazione di Arthur Rackham (1912)."
+  }
+ },
+ {
+  "id": "brano-monete-stelle",
+  "titolo": "Livello 2 · Le monete delle stelle",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "C'era una volta una bambina che non aveva più né il papà né la mamma. Era così povera che non aveva più una casa e nemmeno un lettino: le restavano solo i vestiti che aveva addosso e un pezzetto di pane, che le aveva regalato una persona di buon cuore.",
+    "Ma era buona, e un giorno se ne andò per i campi, piena di fiducia.",
+    "Incontrò un povero che le disse: «Dammi qualcosa da mangiare, ho tanta fame.» Lei gli diede tutto il suo pezzetto di pane, e proseguì.",
+    "Poi arrivò un bambino che piangeva: «Ho tanto freddo alla testa, dammi qualcosa per coprirmi.» E lei gli diede il suo berretto.",
+    "Più avanti incontrò un altro bambino che tremava dal freddo, e gli diede il suo giubbino; e a un altro ancora diede la sua gonnellina.",
+    "Era già buio quando arrivò in un bosco. Un ultimo bambino le chiese una camicina, e lei pensò: «È notte, nessuno mi vede», e diede anche quella.",
+    "Ora non aveva più niente. Ma ecco che dal cielo cominciarono a cadere le stelle: erano tante monete d'argento, lucenti. E addosso aveva una camicina nuova, della stoffa più fine.",
+    "La bambina raccolse le monete e fu ricca per tutta la vita."
+   ],
+   "domande": [
+    {
+     "d": "Che cosa aveva la bambina all'inizio?",
+     "giusta": "Solo i vestiti e un pezzetto di pane.",
+     "sbagliate": [
+      "Una bella casa.",
+      "Un sacco di monete."
+     ]
+    },
+    {
+     "d": "A chi diede il suo pane?",
+     "giusta": "A un povero che aveva fame.",
+     "sbagliate": [
+      "A un uccellino.",
+      "A un bambino che piangeva."
+     ]
+    },
+    {
+     "d": "Che cosa diede al bambino che aveva freddo alla testa?",
+     "giusta": "Il suo berretto.",
+     "sbagliate": [
+      "La sua gonnellina.",
+      "Le sue scarpe."
+     ]
+    },
+    {
+     "d": "Che cosa cadde dal cielo?",
+     "giusta": "Le stelle, che erano monete d'argento.",
+     "sbagliate": [
+      "Fiocchi di neve.",
+      "Foglie d'oro."
+     ]
+    },
+    {
+     "d": "Com'era la bambina?",
+     "giusta": "Generosa: dava tutto a chi aveva bisogno.",
+     "sbagliate": [
+      "Avara: teneva tutto per sé.",
+      "Pigra: non voleva camminare."
+     ]
+    }
+   ],
+   "autore": "Jacob e Wilhelm Grimm",
+   "opera": "Fiabe per bambini e famiglie",
+   "anno": "1857",
+   "nota": "Traduzione dal tedesco e adattamento di Lavagna Amica.",
+   "f": "ubbelohde-sterntaler.jpg",
+   "didascalia": "La bambina e le stelle che cadono: illustrazione di Otto Ubbelohde (inizio Novecento)."
+  }
+ },
+ {
+  "id": "brano-nonno-nipotino",
+  "titolo": "Livello 2 · Il nonno e il nipotino",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "C'era una volta un uomo molto, molto vecchio. I suoi occhi non vedevano più bene, le orecchie non sentivano più e le ginocchia gli tremavano.",
+    "Quando stava a tavola faceva fatica a tenere il cucchiaio, e spesso la minestra gli cadeva sulla tovaglia.",
+    "Suo figlio e la moglie del figlio non lo sopportavano. Così lo fecero sedere in un angolo, dietro la stufa, e gli davano da mangiare in una ciotola di coccio, e nemmeno abbastanza. Il nonno guardava la tavola, triste, con gli occhi lucidi.",
+    "Un giorno le sue mani tremanti non riuscirono a tenere la ciotola: cadde a terra e si ruppe. La giovane donna lo sgridò; lui non disse niente, sospirò soltanto. Allora gli comprarono una ciotolina di legno, e da quel giorno dovette mangiare lì.",
+    "Una sera il nipotino di quattro anni stava raccogliendo per terra dei pezzetti di legno. «Che cosa fai?» gli chiese il papà. «Faccio una ciotolina» rispose il bambino, «così, quando sarò grande, ci darò da mangiare a te e alla mamma.»",
+    "Il papà e la mamma si guardarono per un po', poi cominciarono a piangere. Subito riportarono il nonno a tavola, e da allora mangiò sempre con loro; e se versava un po' di minestra, nessuno diceva più niente."
+   ],
+   "domande": [
+    {
+     "d": "Perché il nonno faceva cadere la minestra?",
+     "giusta": "Era molto vecchio e le mani gli tremavano.",
+     "sbagliate": [
+      "Non gli piaceva la minestra.",
+      "Lo faceva apposta."
+     ]
+    },
+    {
+     "d": "Dove lo fecero mangiare il figlio e sua moglie?",
+     "giusta": "In un angolo, dietro la stufa.",
+     "sbagliate": [
+      "In giardino.",
+      "In un'altra casa."
+     ]
+    },
+    {
+     "d": "Che cosa faceva il nipotino con i pezzetti di legno?",
+     "giusta": "Una ciotolina per il papà e la mamma, per quando sarebbero stati vecchi.",
+     "sbagliate": [
+      "Un giocattolo per sé.",
+      "Legna per la stufa."
+     ]
+    },
+    {
+     "d": "Perché il papà e la mamma piansero?",
+     "giusta": "Capirono di aver trattato male il nonno.",
+     "sbagliate": [
+      "Il bambino si era fatto male.",
+      "La ciotola si era rotta."
+     ]
+    },
+    {
+     "d": "Che cosa ci insegna la storia?",
+     "giusta": "Le persone anziane vanno trattate con rispetto e con affetto.",
+     "sbagliate": [
+      "I bambini non devono giocare con il legno.",
+      "Bisogna mangiare in fretta."
+     ]
+    }
+   ],
+   "autore": "Jacob e Wilhelm Grimm",
+   "opera": "Fiabe per bambini e famiglie",
+   "anno": "1857",
+   "nota": "Traduzione dal tedesco e adattamento di Lavagna Amica.",
+   "f": "ubbelohde-nonno-nipote.jpg",
+   "didascalia": "Il nonno mangia dalla sua ciotolina: illustrazione di Otto Ubbelohde (inizio Novecento)."
+  }
+ },
+ {
+  "id": "brano-scimmia-coccodrillo",
+  "titolo": "Livello 2 · La scimmia e il coccodrillo",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "Sulla riva del grande fiume Gange viveva una scimmia grande e forte, che mangiava la frutta degli alberi.",
+    "Nel fiume abitava un coccodrillo. Sua moglie vide la scimmia e disse: «Voglio mangiare il cuore di quella scimmia! Portamelo!» «Ma io vivo nell'acqua e lei sulla terra» rispose il coccodrillo. «Però ho un'idea.»",
+    "Il coccodrillo nuotò fino alla riva e disse alla scimmia: «Dall'altra parte del fiume ci sono alberi pieni di manghi, dolci come il miele. Sali sulla mia schiena: ti ci porto io!»",
+    "La scimmia si fidò e salì. Ma dopo un po' il coccodrillo la spinse sott'acqua. «Che cosa fai?» gridò la scimmia. «Mia moglie vuole il tuo cuore!» rispose il coccodrillo.",
+    "La scimmia non perse la calma. «Grazie di avermelo detto» disse. «Ma noi scimmie non teniamo il cuore dentro di noi: saltando tra gli alberi si romperebbe! Lo teniamo appeso a quell'albero di fichi, vedi? Portami lì, e te lo faccio vedere.»",
+    "Il coccodrillo la riportò a riva. La scimmia saltò giù dalla sua schiena e si arrampicò in cima all'albero. «Sciocco di un coccodrillo!» gli gridò. «Davvero hai creduto che il cuore stesse appeso a un albero? Sei grande e grosso, ma non sei per niente furbo!»",
+    "Il coccodrillo tornò nel fiume a mani vuote. Anche nel pericolo, chi non perde la calma trova una via d'uscita."
+   ],
+   "domande": [
+    {
+     "d": "Che cosa voleva la moglie del coccodrillo?",
+     "giusta": "Il cuore della scimmia.",
+     "sbagliate": [
+      "Dei manghi dolci.",
+      "Una casa sulla riva."
+     ]
+    },
+    {
+     "d": "Come convinse la scimmia a salire sulla sua schiena?",
+     "giusta": "Le promise alberi pieni di frutti dall'altra parte del fiume.",
+     "sbagliate": [
+      "Le promise un regalo.",
+      "La minacciò."
+     ]
+    },
+    {
+     "d": "Dove disse la scimmia di tenere il cuore?",
+     "giusta": "Appeso a un albero di fichi.",
+     "sbagliate": [
+      "In una grotta.",
+      "Sotto un sasso."
+     ]
+    },
+    {
+     "d": "Che cosa fece la scimmia quando arrivò a riva?",
+     "giusta": "Si arrampicò sull'albero e si salvò.",
+     "sbagliate": [
+      "Diede il cuore al coccodrillo.",
+      "Si mise a piangere."
+     ]
+    },
+    {
+     "d": "Che cosa ci insegna la storia?",
+     "giusta": "Chi non perde la calma trova una via d'uscita.",
+     "sbagliate": [
+      "I coccodrilli sono i più furbi.",
+      "Bisogna sempre fidarsi di tutti."
+     ]
+    }
+   ],
+   "autore": "Jataka, antiche storie dell'India",
+   "nota": "Traduzione e adattamento di Lavagna Amica. Una storia simile si trova anche nel Panchatantra e, con una tartaruga al posto del coccodrillo, in «Kalila e Dimna».",
+   "f": "babbitt-scimmia-coccodrillo.jpg",
+   "didascalia": "La scimmia sulla schiena del coccodrillo: silhouette di Ellsworth Young (1912)."
+  }
+ },
+ {
+  "id": "brano-sole-luna",
+  "titolo": "Livello 2 · Perché il sole e la luna vivono in cielo",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "Tanto tempo fa il sole e l'acqua erano grandi amici, e vivevano tutti e due sulla terra.",
+    "Il sole andava spesso a trovare l'acqua, ma l'acqua non andava mai a trovare lui. Un giorno il sole le chiese perché.",
+    "«La tua casa è troppo piccola» rispose l'acqua. «Se vengo con tutta la mia gente, ti caccio fuori. Se vuoi che venga, costruisci un recinto grandissimo: siamo davvero tanti.»",
+    "Il sole tornò a casa da sua moglie, la luna, e il giorno dopo cominciò a costruire un recinto enorme. Quando fu finito, invitò l'acqua.",
+    "L'acqua arrivò e chiese: «Posso entrare?» «Sì, amica mia, entra!» rispose il sole. E l'acqua cominciò a entrare, con i pesci e tutti gli animali dell'acqua.",
+    "Presto l'acqua arrivò alle ginocchia. «Posso entrare ancora?» «Sì» disse il sole. Quando l'acqua arrivò all'altezza della testa di un uomo, il sole e la luna, che non sapevano come sarebbe finita, dissero ancora di sì.",
+    "Così l'acqua continuò a salire, e il sole e la luna dovettero arrampicarsi sul tetto. Ma l'acqua salì ancora e coprì anche il tetto: il sole e la luna furono costretti a salire su, nel cielo. E da allora sono rimasti lassù."
+   ],
+   "domande": [
+    {
+     "d": "Dove vivevano all'inizio il sole e l'acqua?",
+     "giusta": "Sulla terra, insieme.",
+     "sbagliate": [
+      "In cielo.",
+      "In fondo al mare."
+     ]
+    },
+    {
+     "d": "Perché l'acqua non andava a trovare il sole?",
+     "giusta": "La casa del sole era troppo piccola per tutta la sua gente.",
+     "sbagliate": [
+      "Era arrabbiata con lui.",
+      "Abitava troppo lontano."
+     ]
+    },
+    {
+     "d": "Chi è la moglie del sole, in questa storia?",
+     "giusta": "La luna.",
+     "sbagliate": [
+      "Una stella.",
+      "L'acqua."
+     ]
+    },
+    {
+     "d": "Chi entrò insieme all'acqua?",
+     "giusta": "I pesci e gli animali dell'acqua.",
+     "sbagliate": [
+      "Gli uccelli.",
+      "Le nuvole."
+     ]
+    },
+    {
+     "d": "Perché il sole e la luna sono in cielo?",
+     "giusta": "L'acqua salì così in alto che dovettero andare lassù.",
+     "sbagliate": [
+      "Volevano vedere il mondo dall'alto.",
+      "Il vento li portò via."
+     ]
+    }
+   ],
+   "autore": "Racconto popolare della Nigeria",
+   "opera": "raccolto da Elphinstone Dayrell, «Folk Stories from Southern Nigeria»",
+   "anno": "1910",
+   "nota": "Traduzione e adattamento di Lavagna Amica."
+  }
+ },
+ {
   "id": "brano-polifemo",
   "titolo": "Livello 3 · Ulisse e Polifemo",
   "scrittura": "minuscolo",
@@ -3197,6 +3608,315 @@
    "nota": "Traduzione dall'inglese e adattamento di Lavagna Amica. Il racconto ha un finale che qui non c'è: si può leggere in classe.",
    "f": "crane-gigante.jpg",
    "didascalia": "Illustrazione di Walter Crane nella prima edizione (1888)."
+  }
+ },
+ {
+  "id": "brano-soldatino",
+  "titolo": "Livello 3 · Il soldatino di stagno",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "C'erano una volta venticinque soldatini di stagno, tutti fratelli, perché erano nati da un vecchio cucchiaio di stagno. Erano tutti uguali, tranne uno: aveva una gamba sola, perché, quando l'avevano fatto, lo stagno era finito. Eppure stava ritto sulla sua unica gamba, saldo come gli altri sulle due.",
+    "Sul tavolo dove il bambino li aveva messi c'era un bel castello di carta, e sulla porta del castello una ballerina di carta, con una gonna leggera e un nastrino azzurro sulla spalla, con un lustrino lucente. Teneva le braccia aperte e una gamba alzata così in alto che il soldatino non la vedeva, e pensò che anche lei avesse una gamba sola. «Sarebbe la sposa per me» pensò.",
+    "La mattina dopo la finestra si spalancò, e il soldatino cadde giù, dal terzo piano. Due ragazzi lo trovarono in strada, fecero una barchetta di carta e lo misero dentro, nel rigagnolo che la pioggia aveva fatto diventare un fiumicello.",
+    "La barchetta correva e girava; il soldatino aveva paura, ma restava fermo, con il fucile in spalla, e guardava avanti. Sotto un ponticello sbucò un grosso topo d'acqua: «Hai il passaporto?» Ma la corrente portò via la barchetta, fino a un grande canale. La carta si sciolse, il soldatino affondò, e proprio in quel momento lo inghiottì un pesce.",
+    "Che buio, là dentro! Ma il soldatino restava fermo, con il fucile in spalla. Poi il pesce fu pescato, venduto al mercato e portato in una cucina, dove la cuoca lo aprì con un coltello: dentro c'era il soldatino! Ed era la stessa casa da cui era partito: c'erano i suoi fratelli, il castello e la bella ballerina, che stava ancora su una gamba sola. Il soldatino si commosse, ma non pianse: non era da soldato.",
+    "Ma uno dei bambini, senza un perché, lo prese e lo gettò nella stufa. Il soldatino sentiva un caldo terribile; guardava la ballerina, e lei guardava lui. Allora la porta si aprì, una corrente d'aria prese la ballerina, e lei volò nella stufa, vicino a lui, e sparì in una fiammata.",
+    "Il giorno dopo, quando la serva tolse la cenere, trovò un piccolo cuore di stagno. Della ballerina era rimasto solo il lustrino, nero come il carbone."
+   ],
+   "domande": [
+    {
+     "d": "Perché un soldatino aveva una gamba sola?",
+     "giusta": "Lo stagno era finito mentre lo facevano.",
+     "sbagliate": [
+      "Si era rotto in una battaglia.",
+      "L'aveva perso un bambino."
+     ]
+    },
+    {
+     "d": "Chi piaceva al soldatino?",
+     "giusta": "La ballerina di carta.",
+     "sbagliate": [
+      "Il topo d'acqua.",
+      "La cuoca."
+     ]
+    },
+    {
+     "d": "Come arrivò il soldatino nel canale?",
+     "giusta": "In una barchetta di carta, portato dall'acqua del rigagnolo.",
+     "sbagliate": [
+      "Lo buttò un ragazzo dal ponte.",
+      "Lo portò un uccello."
+     ]
+    },
+    {
+     "d": "Dove lo ritrovò la cuoca?",
+     "giusta": "Nella pancia di un pesce.",
+     "sbagliate": [
+      "Sotto il tavolo.",
+      "In una scarpa."
+     ]
+    },
+    {
+     "d": "Com'era il soldatino in tutte le sue avventure?",
+     "giusta": "Coraggioso e fermo, anche quando aveva paura.",
+     "sbagliate": [
+      "Pauroso: piangeva sempre.",
+      "Distratto: dormiva sempre."
+     ]
+    },
+    {
+     "d": "Che cosa trovò la serva nella cenere?",
+     "giusta": "Un piccolo cuore di stagno.",
+     "sbagliate": [
+      "Un fucile.",
+      "La barchetta di carta."
+     ]
+    }
+   ],
+   "autore": "Hans Christian Andersen",
+   "opera": "Il soldatino di stagno",
+   "anno": "1838",
+   "nota": "Traduzione dal danese e adattamento, con alcuni tagli, di Lavagna Amica.",
+   "f": "bayes-soldatino.jpg",
+   "didascalia": "I bambini giocano con i soldatini; sul tavolo, il castello e la ballerina: incisione da un disegno di Alfred Walter Bayes (1895)."
+  }
+ },
+ {
+  "id": "brano-principe-felice",
+  "titolo": "Livello 3 · Il principe felice",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "In alto sopra la città, su una colonna, c'era la statua del Principe Felice. Era tutta coperta di sottili foglie d'oro, aveva due zaffiri lucenti al posto degli occhi e un grosso rubino rosso sull'elsa della spada. Tutti la ammiravano.",
+    "Una notte arrivò in città una piccola rondine. Le sue amiche erano partite per l'Egitto da sei settimane; lei era rimasta indietro. Si posò ai piedi della statua per dormire, ma cadde una goccia d'acqua, poi un'altra: la statua piangeva.",
+    "«Chi sei?» chiese la rondine. «Sono il Principe Felice. Quando ero vivo non conoscevo il dolore, perché nel mio palazzo non poteva entrare. Ora, quassù, vedo tutta la tristezza della mia città, e anche se il mio cuore è di piombo, non posso fare a meno di piangere.»",
+    "«Laggiù, in una povera casa, una sarta lavora fino a tardi. Il suo bambino è malato e vorrebbe delle arance, ma lei non ha soldi. Rondinella, portale il rubino della mia spada.» La rondine lo portò, e con le ali fece fresco al bambino, che si addormentò.",
+    "Poi il Principe le chiese di portare uno dei suoi occhi di zaffiro a un giovane scrittore che moriva di freddo e di fame, e l'altro a una piccola venditrice di fiammiferi che aveva perso i suoi fiammiferi. «Ma così resterai cieco!» disse la rondine. E decise di non partire più e di restare con lui.",
+    "Ogni giorno volava sulla città e raccontava al Principe quello che vedeva; poi staccava, una dopo l'altra, le foglie d'oro della statua e le portava ai poveri. I bambini ebbero di nuovo il pane e tornarono a giocare per le strade.",
+    "Ma arrivò l'inverno, con la neve e il gelo. La rondine aveva sempre più freddo, ma non voleva lasciare il suo amico. Un giorno baciò il Principe e cadde morta ai suoi piedi. In quel momento, dentro la statua, si sentì uno strano crac: il cuore di piombo si era spezzato in due.",
+    "La statua, grigia e senza oro, ora sembrava brutta, e la fecero fondere. Ma il cuore di piombo non si sciolse, e fu buttato tra i rifiuti, vicino alla rondine. Quando Dio chiese a un angelo di portargli le due cose più preziose della città, l'angelo gli portò il cuore di piombo e la piccola rondine."
+   ],
+   "domande": [
+    {
+     "d": "Di che cosa era coperta la statua del Principe Felice?",
+     "giusta": "Di foglie d'oro, con due zaffiri e un rubino.",
+     "sbagliate": [
+      "Di marmo bianco.",
+      "Di fiori."
+     ]
+    },
+    {
+     "d": "Perché il Principe piangeva?",
+     "giusta": "Vedeva la tristezza e la povertà della sua città.",
+     "sbagliate": [
+      "Aveva freddo.",
+      "La rondine gli aveva fatto male."
+     ]
+    },
+    {
+     "d": "A chi portò la rondine il rubino?",
+     "giusta": "A una sarta povera con il bambino malato.",
+     "sbagliate": [
+      "Al sindaco.",
+      "A un re."
+     ]
+    },
+    {
+     "d": "Perché la rondine non partì per l'Egitto?",
+     "giusta": "Volle restare ad aiutare il suo amico Principe.",
+     "sbagliate": [
+      "Non sapeva la strada.",
+      "Aveva un'ala rotta."
+     ]
+    },
+    {
+     "d": "Che cosa successe al cuore di piombo?",
+     "giusta": "Si spezzò in due quando la rondine morì.",
+     "sbagliate": [
+      "Diventò d'oro.",
+      "Lo rubarono."
+     ]
+    },
+    {
+     "d": "Quali furono, per l'angelo, le due cose più preziose della città?",
+     "giusta": "Il cuore di piombo e la rondine.",
+     "sbagliate": [
+      "Il rubino e gli zaffiri.",
+      "Il palazzo e la colonna."
+     ]
+    }
+   ],
+   "autore": "Oscar Wilde",
+   "opera": "Il principe felice e altri racconti",
+   "anno": "1888",
+   "nota": "Traduzione dall'inglese e adattamento, con alcuni tagli, di Lavagna Amica.",
+   "f": "crane-principe-felice.jpg",
+   "didascalia": "La statua del Principe Felice e la rondine: illustrazione di Walter Crane (1888)."
+  }
+ },
+ {
+  "id": "brano-orfeo",
+  "titolo": "Livello 3 · Orfeo ed Euridice",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Orfeo era il più grande cantore del mondo: quando suonava la sua lira, gli animali si avvicinavano ad ascoltare, e perfino gli alberi e i sassi sembravano muoversi.",
+    "Orfeo sposò Euridice. Ma proprio nei giorni delle nozze, mentre Euridice camminava sull'erba con le sue amiche, un serpente la morse a un piede, ed Euridice morì.",
+    "Orfeo la pianse a lungo. Poi decise di fare una cosa che nessuno aveva mai osato: scendere nel regno dei morti per riprenderla.",
+    "Arrivato davanti a Plutone e Proserpina, i re dell'oltretomba, cominciò a cantare, accompagnandosi con la lira: «Vi chiedo soltanto Euridice. Ridatemela: un giorno, quando sarà la sua ora, tornerà qui da voi.»",
+    "Il suo canto era così triste e così bello che le anime dei morti piangevano. Si racconta che per la prima volta piansero perfino le Furie. I re dei morti non riuscirono a dire di no.",
+    "Chiamarono Euridice, che camminava ancora piano per la ferita al piede, e la ridiedero a Orfeo, ma a un patto: lui non doveva voltarsi a guardarla finché non fossero usciti dal regno dei morti.",
+    "Salirono per un sentiero ripido e buio, in silenzio. Erano quasi arrivati in cima quando Orfeo, per paura che lei non lo seguisse e per il desiderio di vederla, si voltò.",
+    "In quell'istante Euridice scivolò indietro. Tese le braccia, ma Orfeo strinse soltanto l'aria. Lei non si lamentò: di che cosa avrebbe dovuto lamentarsi, se non di essere amata? Gli disse un ultimo «addio», che lui riuscì appena a sentire, e tornò giù, tra le ombre."
+   ],
+   "domande": [
+    {
+     "d": "Che cosa sapeva fare Orfeo meglio di tutti?",
+     "giusta": "Cantare e suonare la lira.",
+     "sbagliate": [
+      "Correre.",
+      "Combattere."
+     ]
+    },
+    {
+     "d": "Come morì Euridice?",
+     "giusta": "La morse un serpente.",
+     "sbagliate": [
+      "Cadde da una montagna.",
+      "Si ammalò."
+     ]
+    },
+    {
+     "d": "Dove andò Orfeo per riprenderla?",
+     "giusta": "Nel regno dei morti.",
+     "sbagliate": [
+      "In cima a un monte.",
+      "In fondo al mare."
+     ]
+    },
+    {
+     "d": "Quale patto doveva rispettare Orfeo?",
+     "giusta": "Non voltarsi a guardarla prima di essere usciti.",
+     "sbagliate": [
+      "Non parlare mai più.",
+      "Non suonare più la lira."
+     ]
+    },
+    {
+     "d": "Perché Orfeo si voltò?",
+     "giusta": "Per paura che lei non lo seguisse e per il desiderio di vederla.",
+     "sbagliate": [
+      "Perché lo chiamarono i re dei morti.",
+      "Perché sentì un rumore."
+     ]
+    },
+    {
+     "d": "Che cosa disse Euridice prima di tornare giù?",
+     "giusta": "Un ultimo «addio».",
+     "sbagliate": [
+      "Che era arrabbiata.",
+      "Niente: si mise a ridere."
+     ]
+    }
+   ],
+   "autore": "Ovidio",
+   "opera": "Le metamorfosi, libro X",
+   "anno": "I secolo d.C.",
+   "nota": "Traduzione dal latino e adattamento di Lavagna Amica.",
+   "f": "corot-orfeo.jpg",
+   "didascalia": "Orfeo guida Euridice fuori dal regno dei morti: dipinto di Camille Corot."
+  }
+ },
+ {
+  "id": "brano-momotaro",
+  "titolo": "Livello 3 · Momotaro, il bambino della pesca",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Tanto tempo fa, in Giappone, vivevano un vecchio e una vecchia. Erano poveri e non avevano figli. Un giorno il vecchio andò sulle colline a raccogliere legna, e la vecchia andò al fiume a lavare i panni.",
+    "Mentre lavava, la vecchia vide arrivare, portata dalla corrente, una pesca enorme. La prese e la portò a casa. Quando i due vecchi provarono a tagliarla, la pesca si aprì da sola, e ne uscì un bel bambino! «Non abbiate paura» disse il bambino. «Il Cielo ha visto che eravate soli e mi ha mandato da voi.»",
+    "Lo chiamarono Momotaro, che vuol dire «il ragazzo della pesca». Crebbe forte, buono e coraggioso. Quando fu grande disse: «Su un'isola in mezzo al mare vivono gli orchi, che fanno del male alla gente e rubano i suoi tesori. Andrò a sconfiggerli e porterò a casa quello che hanno rubato.»",
+    "La vecchia gli preparò delle polpettine di miglio per il viaggio, e Momotaro partì. Per strada incontrò un cane, che gli chiese una polpettina e gli promise di seguirlo. Poi incontrò una scimmia, e poi un fagiano: Momotaro diede una polpettina anche a loro, e diventarono i suoi compagni.",
+    "Arrivati all'isola, il fagiano volò sopra il castello degli orchi e li beccò sulla testa; la scimmia scavalcò il muro e aprì il cancello; il cane morse gli orchi alle gambe; e Momotaro combatté con la sua spada. Alla fine il re degli orchi si inginocchiò: «Basta, ti prego! Prometto che non faremo più del male a nessuno.» E gli diede tutti i tesori.",
+    "Momotaro tornò a casa con i suoi tre amici e con i tesori. I due vecchi piansero di gioia, e da quel giorno vissero tutti insieme felici, senza più povertà."
+   ],
+   "domande": [
+    {
+     "d": "Dove trovò la vecchia il bambino?",
+     "giusta": "Dentro una pesca enorme portata dal fiume.",
+     "sbagliate": [
+      "Sotto un albero.",
+      "In una barca."
+     ]
+    },
+    {
+     "d": "Che cosa vuol dire «Momotaro»?",
+     "giusta": "Il ragazzo della pesca.",
+     "sbagliate": [
+      "Il ragazzo del fiume.",
+      "Il ragazzo coraggioso."
+     ]
+    },
+    {
+     "d": "Perché Momotaro partì per l'isola?",
+     "giusta": "Per sconfiggere gli orchi che facevano del male alla gente.",
+     "sbagliate": [
+      "Per fare una vacanza.",
+      "Per cercare dei nuovi amici."
+     ]
+    },
+    {
+     "d": "Che cosa diede Momotaro al cane, alla scimmia e al fagiano?",
+     "giusta": "Una polpettina di miglio.",
+     "sbagliate": [
+      "Una moneta d'oro.",
+      "Una spada."
+     ]
+    },
+    {
+     "d": "Come aiutò la scimmia?",
+     "giusta": "Scavalcò il muro e aprì il cancello.",
+     "sbagliate": [
+      "Volò sopra il castello.",
+      "Morse gli orchi alle gambe."
+     ]
+    },
+    {
+     "d": "Che cosa ci insegna la storia?",
+     "giusta": "Insieme agli amici si superano anche le prove più difficili.",
+     "sbagliate": [
+      "Gli orchi sono buoni.",
+      "Bisogna restare sempre a casa."
+     ]
+    }
+   ],
+   "autore": "Fiaba popolare del Giappone",
+   "opera": "nella raccolta di Yei Theodora Ozaki, «The Japanese Fairy Book»",
+   "anno": "1908",
+   "nota": "Traduzione e adattamento di Lavagna Amica. Polpettine di miglio: in giapponese kibi-dango.",
+   "f": "momotaro.jpg",
+   "didascalia": "Momotaro con il fagiano, la scimmia e il cane: dalla copertina di un libro di fiabe giapponesi illustrato da Kobayashi Eitaku (1885), particolare."
   }
  },
  {
