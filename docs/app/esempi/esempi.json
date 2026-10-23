@@ -8685,13 +8685,16 @@
   }
  },
  {
-  "id": "tabelline-2-5",
+  "id": "tabelline-fino-al-10",
   "materia": "Matematica",
-  "titolo": "Le tabelline del 2, del 3, del 4 e del 5",
+  "titolo": "Le tabelline fino al 10",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
   "gioco": "matematica",
   "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "scopri": {
+   "animazione": "tabelline"
+  },
   "dati": {
    "aiuto": "sempre",
    "oggetto": {
@@ -8703,37 +8706,49 @@
      "genere": "operazione",
      "op": "x",
      "a": 2,
-     "b": 4
+     "b": 8
     },
     {
      "genere": "operazione",
      "op": "x",
      "a": 3,
-     "b": 5
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 6
     },
     {
      "genere": "operazione",
      "op": "x",
      "a": 4,
-     "b": 3
+     "b": 9
     },
     {
      "genere": "operazione",
      "op": "x",
-     "a": 5,
-     "b": 4
+     "a": 6,
+     "b": 7
     },
     {
      "genere": "operazione",
      "op": "x",
-     "a": 3,
+     "a": 7,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
      "b": 6
     },
     {
      "genere": "operazione",
      "op": "x",
-     "a": 5,
-     "b": 6
+     "a": 10,
+     "b": 9
     }
    ]
   }

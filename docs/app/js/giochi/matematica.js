@@ -155,7 +155,7 @@ export function avvia(area, es, ctx) {
   // schieramento: a righe da b
   async function scenaSchieramento(a, b, o) {
     const righe = Array.from({ length: a }, () => oggetti(b, o));
-    scena.replaceChildren(el("div", { class: "schieramento", style: "--colonne:" + b }, righe.flat()));
+    scena.replaceChildren(el("div", { class: "schieramento" + (a * b > 64 ? " molti" : a * b > 36 ? " tanti" : ""), style: "--colonne:" + b }, righe.flat()));
     for (const r of righe) {
       if (fermo) return;
       await compari(r, fermato);

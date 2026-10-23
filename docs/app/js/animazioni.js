@@ -791,7 +791,130 @@ const PRESTITO = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, riporto: RIPORTO, prestito: PRESTITO, "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
+/* ---------- che cos'è la moltiplicazione ---------- */
+// 3 × 4 visto in tre modi: gruppi uguali, addizione ripetuta, schieramento (che si può girare: 4 × 3).
+const MOLTIPLICAZIONE = {
+  passi: [
+    "La moltiplicazione serve a contare in fretta tanti gruppi tutti uguali.",
+    "Qui ci sono 3 gruppi, e in ogni gruppo ci sono 4 mele. Si scrive 3 × 4, e si legge «3 per 4».",
+    "Si può contare con l'addizione: 4 + 4 + 4 fa 12. Moltiplicare vuol dire sommare tante volte lo stesso numero.",
+    "Mettiamo le mele in righe: 3 righe da 4. È uno schieramento. In tutto sono 12: 3 × 4 = 12.",
+    "Se giriamo lo schieramento diventano 4 righe da 3, e il risultato non cambia: anche 4 × 3 fa 12."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const piatti = [170, 400, 630].map(cx => nascosto(s("ellipse", { cx, cy: 200, rx: 92, ry: 78, fill: "#fff", stroke: "#9AA8B4", "stroke-width": 4 })));
+    svg.append(...piatti);
+    const mela = () => s("g", { class: "sp-blocco" },
+      s("circle", { cx: 0, cy: 0, r: 19, fill: "#E0332B", stroke: "#9E1F1A", "stroke-width": 2 }),
+      s("path", { d: "M0 -19 q 3 -10 10 -12", fill: "none", stroke: "#5B3A1E", "stroke-width": 3, "stroke-linecap": "round" }));
+    const mele = Array.from({ length: 12 }, mela);
+    // nei piatti: il gruppo g, al posto j (2 × 2); nello schieramento: riga r, colonna c
+    const nelPiatto = i => [[170, 400, 630][Math.floor(i / 4)] - 26 + (i % 2) * 52, 174 + Math.floor((i % 4) / 2) * 52];
+    const inRiga = i => [235 + (i % 4) * 110, 110 + Math.floor(i / 4) * 95];
+    const girato = i => [290 + Math.floor(i / 4) * 110, 70 + (i % 4) * 80];
+    mele.forEach((m, i) => piazza(m, nelPiatto(i)));
+    svg.append(...mele);
+    const scritte = ["3 gruppi da 4", "4 + 4 + 4 = 12", "3 × 4 = 12", "4 × 3 = 12"].map(t => nascosto(etichetta(400, 420, t, 34)));
+    const numeri = [0, 1, 2].map(g => nascosto(etichetta([170, 400, 630][g], 320, "4", 30)));
+    svg.append(...scritte, ...numeri);
+    return {
+      vai(k) {
+        piatti.forEach(p => vedi(p, k <= 2));
+        mele.forEach((m, i) => piazza(m, k <= 2 ? nelPiatto(i) : k === 3 ? inRiga(i) : girato(i)));
+        scritte.forEach((t, j) => vedi(t, k === j + 1));
+        numeri.forEach(n => vedi(n, k === 2));
+      },
+      ferma() {}
+    };
+  }
+};
+
+// Più spiegazioni una dopo l'altra, come se fossero una sola: ogni parte ha il suo disegno e i suoi passi.
+function insieme(...parti) {
+  return {
+    passi: parti.flatMap(p => p.passi),
+    crea(svg) {
+      let da = 0;
+      const pezzi = parti.map(p => {
+        const g = s("g", {});
+        svg.append(g);
+        const ctrl = p.crea(g);
+        const pezzo = { g, ctrl, da, a: da + p.passi.length };
+        da = pezzo.a;
+        return pezzo;
+      });
+      return {
+        vai(k) {
+          pezzi.forEach(p => {
+            const qui = k >= p.da && k < p.a;
+            p.g.style.display = qui ? "" : "none";
+            if (qui) p.ctrl.vai(k - p.da);
+          });
+        },
+        ferma() { pezzi.forEach(p => p.ctrl.ferma()); }
+      };
+    }
+  };
+}
+
+/* ---------- come si usa la tavola pitagorica ---------- */
+// 4 × 6: si trova il 4 nella colonna di sinistra, il 6 nella riga in alto, e si seguono fino a dove si incontrano.
+const TAVOLA = {
+  passi: [
+    "Questa è la tavola pitagorica. Nella prima riga in alto e nella prima colonna a sinistra ci sono i numeri da 1 a 10.",
+    "Per fare 4 × 6, cerca il 4 nella colonna a sinistra.",
+    "Poi cerca il 6 nella riga in alto.",
+    "Segui la riga del 4 verso destra e la colonna del 6 verso il basso: dove si incontrano c'è il risultato. 4 × 6 fa 24.",
+    "Funziona anche al contrario: 6 × 4 fa sempre 24. E ogni riga è una tabellina: la riga del 4 conta 4, 8, 12, 16, 20, 24…"
+  ],
+  crea(svg) {
+    const L = 37, x0 = 197, y0 = 22;   // 11 × 11 caselle: la prima riga e la prima colonna sono i numeri da 1 a 10
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const cella = (r, c) => [x0 + c * L, y0 + r * L];
+    const striscia = (x, y, w, h, colore) => nascosto(s("rect", { x, y, width: w, height: h, fill: colore, rx: 4 }));
+    const riga4 = striscia(x0, y0 + 4 * L, 11 * L, L, "#CFE6FA");
+    const colonna6 = striscia(x0 + 6 * L, y0, L, 11 * L, "#FFE3B8");
+    const incontro = striscia(x0 + 6 * L, y0 + 4 * L, L, L, "#7FD49B");
+    const contrario = striscia(x0 + 4 * L, y0 + 6 * L, L, L, "#7FD49B");
+    svg.append(riga4, colonna6, incontro, contrario);
+    const testa = [];
+    for (let r = 0; r <= 10; r++) for (let c = 0; c <= 10; c++) {
+      if (r === 0 && c === 0) continue;
+      const [x, y] = cella(r, c);
+      const bordo = r === 0 || c === 0;
+      svg.append(s("rect", { x, y, width: L, height: L, fill: bordo ? "#F7C900" : "none", stroke: "#8A9BA8", "stroke-width": 1 }));
+      const n = r === 0 ? c : c === 0 ? r : r * c;
+      const t = scritta(x + L / 2, y + L / 2 + 6, String(n), { "font-size": bordo ? 18 : 16, "font-weight": bordo ? 800 : 600, fill: "#1D2329" });
+      svg.append(t);
+      if ((r === 0 && c === 6) || (c === 0 && r === 4)) testa.push(t);
+    }
+    svg.append(scritta(x0 + L / 2, y0 + L / 2 + 7, "×", { "font-size": 22, "font-weight": 800, fill: "#C0282B" }));
+    const cerchio = (r, c) => nascosto(s("circle", { cx: cella(r, c)[0] + L / 2, cy: cella(r, c)[1] + L / 2, r: L / 2 + 3, fill: "none", stroke: "#C0282B", "stroke-width": 4 }));
+    const c4 = cerchio(4, 0), c6 = cerchio(0, 6), c24 = cerchio(4, 6), c24b = cerchio(6, 4);
+    const scritte = [nascosto(etichetta(100, 120, "4 × 6 = 24", 26)), nascosto(etichetta(100, 120, "6 × 4 = 24", 26))];
+    svg.append(c4, c6, c24, c24b, ...scritte);
+    return {
+      vai(k) {
+        vedi(riga4, k >= 1);
+        vedi(c4, k >= 1 && k <= 3);
+        vedi(colonna6, k >= 2 && k <= 3);
+        vedi(c6, k >= 2 && k <= 3);
+        vedi(incontro, k >= 3);
+        vedi(c24, k >= 3);
+        vedi(scritte[0], k === 3);
+        vedi(contrario, k === 4);
+        vedi(c24b, k === 4);
+        vedi(scritte[1], k === 4);
+        testa.forEach(t => t.setAttribute("fill", k >= 1 && k <= 3 ? "#C0282B" : "#1D2329"));
+      },
+      ferma() {}
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+  moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE };
 
 // Un video libero dell'archivio Wikimedia Commons: niente pubblicità. Si carica solo quando qualcuno lo chiede,

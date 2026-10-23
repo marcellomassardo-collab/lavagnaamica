@@ -396,6 +396,10 @@ input[type="text"], input[type="search"], select {
 .gruppo-testa img { width: 44px; height: 44px; object-fit: contain; }
 .gruppo-dentro { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; max-width: calc(6 * (var(--ogg-g, 58px) + 4px)); }
 .schieramento { display: grid; grid-template-columns: repeat(var(--colonne), auto); gap: 8px; justify-content: center; }
+.schieramento.tanti { gap: 6px; }
+.schieramento.tanti .ogg { --ogg: clamp(22px, 2.6vw, 42px); }
+.schieramento.molti { gap: 4px; }
+.schieramento.molti .ogg { --ogg: clamp(18px, 2vw, 32px); }
 .dividere { display: grid; gap: 18px; justify-items: center; width: 100%; }
 .mucchio { cursor: pointer; padding: 10px; border-radius: 18px; background: rgba(30, 107, 82, .06); border: 2px dashed var(--lavagna); min-height: 60px; min-width: 120px; touch-action: manipulation; }
 .mucchio:empty { display: none; }

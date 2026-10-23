@@ -44,7 +44,10 @@ export const ANIMAZIONI = {
   "punti-cardinali": "I punti cardinali",
   carte: "Pianta e carta geografica",
   riporto: "Il riporto, in colonna",
-  prestito: "Il prestito, in colonna"
+  prestito: "Il prestito, in colonna",
+  "tavola-pitagorica": "Come si usa la tavola pitagorica",
+  moltiplicazione: "Che cos'è la moltiplicazione",
+  tabelline: "La moltiplicazione e la tavola pitagorica"
 };
 
 export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Inglese", "Arte e immagine", "Musica", "Altro"];
@@ -273,7 +276,8 @@ function controllaConti(op, a, b, schema, inizio) {
   if (!Number.isInteger(a) || !Number.isInteger(b) || a < 0 || b < 0) no("servono due numeri interi.");
   if (op === "+" && a + b > MAX_OGGETTI) no("con più di " + MAX_OGGETTI + " oggetti non si vedono bene.");
   if (op === "-" && (b > a || a > MAX_OGGETTI)) no("il secondo numero non può essere più grande del primo, e al massimo " + MAX_OGGETTI + ".");
-  if (op === "x" && (a < 1 || b < 1 || a > 10 || a * b > MAX_OGGETTI)) no("al massimo 10 gruppi e " + MAX_OGGETTI + " oggetti in tutto.");
+  // le tabelline arrivano fino a 10 × 10: per le moltiplicazioni gli oggetti possono essere fino a 100
+  if (op === "x" && (a < 1 || b < 1 || a > 10 || b > 10)) no("al massimo 10 righe (o gruppi) da 10.");
   if (op === ":" && (b < 1 || a < 1 || a > MAX_OGGETTI || a % b !== 0)) no("il primo numero deve dividersi per il secondo senza resto, al massimo " + MAX_OGGETTI + ".");
   if (op === ":" && schema !== "contenenza" && b > 10) no("si divide al massimo in 10 parti.");
   if (schema === "contenenza" && a / b > 12) no("al massimo 12 gruppi.");

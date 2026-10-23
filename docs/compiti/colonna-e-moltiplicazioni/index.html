@@ -238,7 +238,7 @@
 (function () {
   "use strict";
 
-  var ESERCIZI = [{"consegna": "Addizioni in colonna.", "forma": "colonna", "ops": [[34, "+", 25, 59], [47, "+", 36, 83]], "esempio": false}, {"consegna": "Sottrazioni in colonna.", "forma": "colonna", "ops": [[68, "−", 24, 44], [52, "−", 18, 34]], "esempio": false}, {"consegna": "Moltiplicazioni.", "forma": "riga", "ops": [[2, "×", 6, 12], [3, "×", 4, 12], [5, "×", 3, 15]], "esempio": false}];
+  var ESERCIZI = [{"consegna": "Addizioni in colonna.", "forma": "colonna", "ops": [[34, "+", 25, 59], [47, "+", 36, 83]], "esempio": false}, {"consegna": "Sottrazioni in colonna.", "forma": "colonna", "ops": [[68, "−", 24, 44], [52, "−", 18, 34]], "esempio": false}, {"consegna": "Moltiplicazioni.", "forma": "riga", "ops": [[6, "×", 2, 12], [8, "×", 3, 24], [10, "×", 4, 40]], "esempio": false}];
   var COLORI = ["#FFD84D", "#9BD86B", "#F6A3C0", "#7CC8F0", "#B9A3F0"];
   var CHIAVE = "la.compito.colonna-e-moltiplicazioni.v1";
   var stato = carica();
@@ -474,7 +474,7 @@
 <script type="module">
   // la spiegazione animata dell'app, una dopo l'altra; poi compaiono gli esercizi
   import { spiegazione } from "../../app/js/animazioni.js";
-  var giri = ["riporto", "prestito"], k = 0, attuale = null;
+  var giri = ["riporto", "prestito", "tabelline"], k = 0, attuale = null;
   var guarda = document.getElementById("guarda"), zona = document.getElementById("zona-esercizi");
   function esercizi() {
     if (attuale) attuale.ferma();
