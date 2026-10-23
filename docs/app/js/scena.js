@@ -68,11 +68,31 @@ export function gruppo(contenitore, figli) {
     el("div", { class: "gruppo-dentro" }, figli));
 }
 
+export const barretta = () => el("span", { class: "ogg decina", "data-ogg": true, "data-valore": 10, "aria-label": "una decina" },
+  Array.from({ length: 10 }, () => el("i")));
+export const cubetto = () => el("span", { class: "ogg unita", "data-ogg": true, "aria-label": "una unità" });
+// il centinaio è un quadrato di 10 × 10 quadretti (disegnati con lo sfondo, non con cento elementi)
+export const centinaio = () => el("span", { class: "ogg centinaio", "data-ogg": true, "data-valore": 100, "aria-label": "un centinaio" });
+
 export function decine(n) {
-  const barrette = Array.from({ length: Math.floor(n / 10) }, () => el("span", { class: "ogg decina", "data-ogg": true, "data-valore": 10, "aria-label": "una decina" },
-    Array.from({ length: 10 }, () => el("i"))));
-  const unita = Array.from({ length: n % 10 }, () => el("span", { class: "ogg unita", "data-ogg": true, "aria-label": "una unità" }));
+  const barrette = Array.from({ length: Math.floor(n / 10) }, barretta);
+  const unita = Array.from({ length: n % 10 }, cubetto);
   return { vista: el("div", { class: "decine-vista" }, el("div", { class: "barrette" }, barrette), el("div", { class: "unita-tutte" }, unita)), barrette, unita };
+}
+
+// Come sposta(), ma per tanti oggetti insieme: volano tutti nello stesso momento.
+export async function spostaInsieme(nodi, dove) {
+  const prima = nodi.map(n => n.getBoundingClientRect());
+  dove.append(...nodi);
+  if (movimentoRidotto() || !nodi.length || !nodi[0].animate) return;
+  nodi.forEach((n, k) => {
+    const dopo = n.getBoundingClientRect();
+    n.animate([
+      { transform: "translate(" + (prima[k].left - dopo.left) + "px," + (prima[k].top - dopo.top) + "px)" },
+      { transform: "none" }
+    ], { duration: 520, easing: "cubic-bezier(.3,.7,.4,1)" });
+  });
+  await aspetta(520);
 }
 
 export function linea(da, a, segnato) {

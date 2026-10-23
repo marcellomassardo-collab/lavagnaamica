@@ -1135,7 +1135,7 @@
  {
   "id": "brano-giro-tondo",
   "titolo": "Livello 1 · Giro giro tondo",
-  "scrittura": "doppio",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -1183,7 +1183,7 @@
  {
   "id": "brano-trenta-giorni",
   "titolo": "Livello 1 · Trenta giorni ha novembre",
-  "scrittura": "doppio",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -1240,7 +1240,7 @@
  {
   "id": "brano-volpe-uva",
   "titolo": "Livello 1 · La volpe e l'uva",
-  "scrittura": "doppio",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -1293,7 +1293,7 @@
  {
   "id": "brano-lepre-tartaruga",
   "titolo": "Livello 2 · La lepre e la tartaruga",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -1363,7 +1363,7 @@
  {
   "id": "brano-pappa-dolce",
   "titolo": "Livello 2 · La pentola della pappa dolce",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -1434,7 +1434,7 @@
  {
   "id": "brano-pezzo-di-legno",
   "titolo": "Livello 2 · C'era una volta un pezzo di legno",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -1492,7 +1492,7 @@
  {
   "id": "brano-vocina",
   "titolo": "Livello 3 · La vocina nel legno",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -1561,7 +1561,7 @@
  {
   "id": "brano-lupo-agnello",
   "titolo": "Livello 3 · Il lupo e l'agnello",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -1630,7 +1630,7 @@
  {
   "id": "brano-cicala-formica",
   "titolo": "Livello 3 · La cicala e la formica",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -1700,7 +1700,7 @@
  {
   "id": "brano-giufa",
   "titolo": "Livello 3 · Mangiate, vestiti miei!",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -1765,7 +1765,7 @@
  {
   "id": "brano-anansi",
   "titolo": "Livello 3 · Anansi e la pentola della saggezza",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -1833,7 +1833,7 @@
  {
   "id": "brano-ciclone",
   "titolo": "Livello 3 · Il ciclone",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -2277,7 +2277,7 @@
  {
   "id": "brano-mida",
   "titolo": "Livello 2 · Re Mida",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -2345,7 +2345,7 @@
  {
   "id": "brano-leone-lepre",
   "titolo": "Livello 2 · Il leone e la lepre",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -2414,7 +2414,7 @@
  {
   "id": "brano-calzolaio",
   "titolo": "Livello 2 · Il calzolaio e i folletti",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -2484,7 +2484,7 @@
  {
   "id": "brano-leone-topo",
   "titolo": "Livello 2 · Il leone e il topo",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -2554,7 +2554,7 @@
  {
   "id": "brano-vento-sole",
   "titolo": "Livello 2 · Il vento e il sole",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -2623,7 +2623,7 @@
  {
   "id": "brano-monete-stelle",
   "titolo": "Livello 2 · Le monete delle stelle",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -2693,7 +2693,7 @@
  {
   "id": "brano-nonno-nipotino",
   "titolo": "Livello 2 · Il nonno e il nipotino",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -2761,7 +2761,7 @@
  {
   "id": "brano-scimmia-coccodrillo",
   "titolo": "Livello 2 · La scimmia e il coccodrillo",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -2828,7 +2828,7 @@
  {
   "id": "brano-sole-luna",
   "titolo": "Livello 2 · Perché il sole e la luna vivono in cielo",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -2895,7 +2895,7 @@
  {
   "id": "brano-polifemo",
   "titolo": "Livello 3 · Ulisse e Polifemo",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -2975,7 +2975,7 @@
  {
   "id": "brano-sirene",
   "titolo": "Livello 3 · Ulisse e le sirene",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3044,7 +3044,7 @@
  {
   "id": "brano-cavallo",
   "titolo": "Livello 3 · Il cavallo di legno",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3112,7 +3112,7 @@
  {
   "id": "brano-filemone-bauci",
   "titolo": "Livello 3 · Filemone e Bauci",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3190,7 +3190,7 @@
  {
   "id": "brano-aracne",
   "titolo": "Livello 3 · Aracne",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3258,7 +3258,7 @@
  {
   "id": "brano-persefone",
   "titolo": "Livello 3 · Persefone e le stagioni",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3334,7 +3334,7 @@
  {
   "id": "brano-anansi-storie",
   "titolo": "Livello 3 · Come le storie diventarono di Anansi",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3400,7 +3400,7 @@
  {
   "id": "brano-musicanti-brema",
   "titolo": "Livello 3 · I musicanti di Brema",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3470,7 +3470,7 @@
  {
   "id": "brano-anatroccolo",
   "titolo": "Livello 3 · Il brutto anatroccolo",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3543,7 +3543,7 @@
  {
   "id": "brano-gigante",
   "titolo": "Livello 3 · Il gigante egoista",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3613,7 +3613,7 @@
  {
   "id": "brano-soldatino",
   "titolo": "Livello 3 · Il soldatino di stagno",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3690,7 +3690,7 @@
  {
   "id": "brano-principe-felice",
   "titolo": "Livello 3 · Il principe felice",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3768,7 +3768,7 @@
  {
   "id": "brano-orfeo",
   "titolo": "Livello 3 · Orfeo ed Euridice",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -3846,7 +3846,7 @@
  {
   "id": "brano-momotaro",
   "titolo": "Livello 3 · Momotaro, il bambino della pesca",
-  "scrittura": "minuscolo",
+  "scrittura": "maiuscolo",
   "tipo": "brano",
   "gioco": "brano",
   "consegna": "Leggi con calma, poi rispondi alle domande.",
@@ -8383,6 +8383,242 @@
   }
  },
  {
+  "id": "colonna-addizioni",
+  "materia": "Matematica",
+  "titolo": "Addizioni in colonna",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Prima le unità, poi le decine. Quando le unità sono 10 o più, 10 unità diventano 1 decina.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 23,
+     "b": 14
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 41,
+     "b": 35
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 52,
+     "b": 26
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 36,
+     "b": 27
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 48,
+     "b": 35
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 29,
+     "b": 43
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 57,
+     "b": 38
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 65,
+     "b": 19
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "riporto"
+  }
+ },
+ {
+  "id": "colonna-addizioni-centinaia",
+  "materia": "Matematica",
+  "titolo": "Addizioni in colonna con le centinaia",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Prima le unità, poi le decine, poi le centinaia. 10 unità fanno 1 decina, 10 decine fanno 1 centinaio.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 124,
+     "b": 352
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 236,
+     "b": 148
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 345,
+     "b": 182
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 75,
+     "b": 48
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 467,
+     "b": 256
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 389,
+     "b": 147
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "riporto"
+  }
+ },
+ {
+  "id": "colonna-sottrazioni",
+  "materia": "Matematica",
+  "titolo": "Sottrazioni in colonna",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Prima le unità, poi le decine. Se le unità non bastano, cambia 1 decina in 10 unità.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 47,
+     "b": 23
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 68,
+     "b": 35
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 59,
+     "b": 17
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 52,
+     "b": 28
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 63,
+     "b": 37
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 81,
+     "b": 46
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 70,
+     "b": 24
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 94,
+     "b": 58
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "prestito"
+  }
+ },
+ {
+  "id": "colonna-sottrazioni-centinaia",
+  "materia": "Matematica",
+  "titolo": "Sottrazioni in colonna con le centinaia",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Prima le unità, poi le decine, poi le centinaia. Se non bastano, cambia 1 della colonna a sinistra in 10.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 586,
+     "b": 243
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 452,
+     "b": 128
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 634,
+     "b": 271
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 725,
+     "b": 368
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 503,
+     "b": 127
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 140,
+     "b": 65
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "prestito"
+  }
+ },
+ {
   "id": "moltiplicazioni",
   "materia": "Matematica",
   "titolo": "Moltiplicazioni con gli schieramenti",
@@ -8443,6 +8679,60 @@
      "genere": "operazione",
      "op": "x",
      "a": 3,
+     "b": 6
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabelline-2-5",
+  "materia": "Matematica",
+  "titolo": "Le tabelline del 2, del 3, del 4 e del 5",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "fiore",
+    "p": 7104
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
      "b": 6
     }
    ]

@@ -42,7 +42,9 @@ export const ANIMAZIONI = {
   fonti: "Le fonti storiche",
   "linea-del-tempo": "La linea del tempo",
   "punti-cardinali": "I punti cardinali",
-  carte: "Pianta e carta geografica"
+  carte: "Pianta e carta geografica",
+  riporto: "Il riporto, in colonna",
+  prestito: "Il prestito, in colonna"
 };
 
 export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Inglese", "Arte e immagine", "Musica", "Altro"];
@@ -243,6 +245,7 @@ export const GENERI = {
   "prima-dopo": { nome: "Prima e dopo",          spiega: "Il numero che viene prima o dopo, sulla linea dei numeri." },
   decine:       { nome: "Decine e unità",        spiega: "Il numero fatto con le decine (barrette da dieci) e le unità." },
   operazione:   { nome: "Operazione",            spiega: "Un calcolo che si vede con gli oggetti." },
+  colonna:      { nome: "In colonna",            spiega: "Addizione o sottrazione in colonna, fino a 999: con i quadrati delle centinaia, le barrette delle decine e i cubetti delle unità si vede il cambio (riporto e prestito)." },
   problema:     { nome: "Problema",              spiega: "Una piccola storia da guardare e capire prima di scegliere l'operazione." }
 };
 
@@ -296,6 +299,13 @@ function esercizioDiMatematica(x, i) {
     m.op = OPERAZIONI[x.op] ? x.op : errore(inizio + "scegli l'operazione.");
     m.b = b;
     controllaConti(m.op, a, b, null, inizio);
+  }
+  if (x.genere === "colonna") {
+    m.op = x.op === "-" ? "-" : x.op === "+" ? "+" : errore(inizio + "in colonna: addizione o sottrazione.");
+    m.b = b;
+    if (!Number.isInteger(a) || !Number.isInteger(b) || a < 1 || b < 1 || a > 999 || b > 999) errore(inizio + "i due numeri vanno da 1 a 999.");
+    if (m.op === "+" && a + b > 999) errore(inizio + "il risultato deve stare entro 999.");
+    if (m.op === "-" && b > a) errore(inizio + "il secondo numero non può essere più grande del primo.");
   }
   if (x.genere === "problema") {
     m.schema = SCHEMI[x.schema] ? x.schema : errore(inizio + "scegli che cosa succede nel problema.");

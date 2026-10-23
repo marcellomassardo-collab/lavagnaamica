@@ -55,11 +55,12 @@ function schedaEsercizio(es, origine) {
     el("span", { class: "scheda-icona", "aria-hidden": "true", text: g.icona }),
     el("span", { class: "scheda-titolo", text: es.titolo }),
     el("span", { class: "scheda-info", text: g.nome + " · " + descrizione(es) + (es.catalogo ? " · nel catalogo" : "") + (es.privato ? " · 🔒 solo per la mia classe" : "") }));
-  // le letture di livello 2 e 3 si aprono anche in MAIUSCOLO: «~maiuscolo» dopo l'id cambia solo la scrittura
-  if (origine === "es" && es.tipo === "brano" && [2, 3].includes(es.dati.livello)) {
+  // le letture fino al livello 3 sono in stampatello maiuscolo e si aprono anche in minuscolo:
+  // «~minuscolo» (o «~maiuscolo») dopo l'id cambia solo la scrittura
+  if (origine === "es" && es.tipo === "brano" && es.dati.livello <= 3) {
     return el("li", { class: "scheda" }, apri,
       el("div", { class: "scheda-azioni" },
-        el("a", { class: "tasto-piccolo", href: "#/gioca/es/" + es.id + "~maiuscolo", text: "🔠 Leggi in MAIUSCOLO" })));
+        el("a", { class: "tasto-piccolo", href: "#/gioca/es/" + es.id + "~minuscolo", text: "🔡 Leggi in minuscolo" })));
   }
   if (origine !== "mio") return el("li", { class: "scheda" }, apri);
   return el("li", { class: "scheda" }, apri,
@@ -250,7 +251,7 @@ async function giocaSalvato(origine, idScrittura, gioco) {
     location.hash = "#/";
     return;
   }
-  if (scrittura === "maiuscolo") es = Object.assign({}, es, { scrittura });
+  if (scrittura === "maiuscolo" || scrittura === "minuscolo") es = Object.assign({}, es, { scrittura });
   gioca(es, "#/gioca/" + origine + "/" + idScrittura, "#/", gioco);
 }
 

@@ -3,7 +3,7 @@
 
 import { el, mescola, pulsanteVoce } from "../ui.js";
 import { OPERAZIONI, SCHEMI, risultato } from "../modello.js";
-import { oggetto, oggetti, file10, compari, sposta, aspetta, contaToccando, gruppo, decine, linea } from "../scena.js";
+import { oggetto, oggetti, file10, compari, sposta, spostaInsieme, aspetta, contaToccando, gruppo, decine, barretta, cubetto, centinaio, linea } from "../scena.js";
 
 const MELA = { t: "mela", p: 2462 };
 
@@ -355,7 +355,133 @@ export function avvia(area, es, ctx) {
     await avanti([uguale(conto + " = " + r), x.risposta ? el("p", { class: "mat-risposta", text: x.risposta }) : null]);
   }
 
-  const GENERI = { conta, confronta, "prima-dopo": primaDopo, decine: decineUnita, operazione, problema };
+  // In colonna: ogni colonna (centinaia, decine, unità) ha le sue cifre e i suoi blocchi: quadrati da cento,
+  // barrette da dieci, cubetti. Si comincia dalle unità; il cambio si vede succedere: 10 blocchi diventano uno
+  // della colonna a sinistra (riporto), oppure uno della colonna a sinistra diventa 10 blocchi (prestito).
+  const POSTI = [
+    { nome: "unità", sigla: "u", blocco: cubetto, uno: "1 decina" },
+    { nome: "decine", sigla: "da", blocco: barretta, uno: "1 centinaio" },
+    { nome: "centinaia", sigla: "h", blocco: centinaio }];
+  async function colonna(x) {
+    const piu = x.op === "+";
+    const segno = OPERAZIONI[x.op];
+    const parola = piu ? " più " : " meno ";
+    const r = risultato(x.op, x.a, x.b);
+    const cifreDi = n => [n % 10, Math.floor(n / 10) % 10, Math.floor(n / 100)];
+    const A = cifreDi(x.a), B = cifreDi(x.b);
+    const quante = Math.max(2, String(Math.max(x.a, x.b, r)).length);
+    const conto = x.a + " " + segno + " " + x.b;
+    testo.replaceChildren(el("p", {}, el("span", { text: conto + ": in colonna" })));
+    const blocchi = (n, fatto) => Array.from({ length: n }, fatto);
+    const cifra = n => el("span", { class: "cifra", text: n === null ? "" : String(n) });
+    // le cifre a zero in testa al numero non si scrivono (7, non 07)
+    const inTesta = (n, k) => k > 0 && n < 10 ** k;
+    const col = [];
+    for (let k = 0; k < quante; k++) {
+      const c = { ca: cifra(inTesta(x.a, k) ? null : A[k]), cb: cifra(inTesta(x.b, k) ? null : B[k]), cr: cifra(null),
+        sopra: el("span", { class: "sopra-col" }) };
+      c.blA = blocchi(A[k], POSTI[k].blocco);
+      // nella sottrazione il secondo numero è quello da togliere: si scrive, ma non si costruisce con i blocchi
+      c.blB = piu ? blocchi(B[k], POSTI[k].blocco) : [];
+      const cella = (cf, figli) => el("div", { class: "cella-col", "data-k": k }, cf, el("div", { class: "blocchi" }, figli));
+      c.cellaA = cella(c.ca, c.blA);
+      c.cellaB = cella(c.cb, c.blB);
+      c.cellaR = cella(c.cr, []);
+      col.push(c);
+    }
+    const daSinistra = sceglie => col.slice().reverse().map(sceglie);
+    const riga = (s, celle, classe) => el("div", { class: "riga-col " + (classe || "") }, el("span", { class: "segno-col", text: s }), celle);
+    const tabella = el("div", { class: "colonna-blocchi", style: "--colonne:" + quante },
+      riga("", daSinistra((c, i) => el("span", { class: "posto" }, POSTI[quante - 1 - i].sigla, c.sopra)), "testa"),
+      riga("", daSinistra(c => c.cellaA)), riga(segno, daSinistra(c => c.cellaB), "seconda"), riga("", daSinistra(c => c.cellaR), "risultato"));
+    scena.replaceChildren(tabella);
+    await compari(col.flatMap(c => c.blA.concat(c.blB)).reverse(), fermato);
+    const dentro = c => c.querySelector(".blocchi");
+    const vivi = c => [...dentro(c).children].filter(b => !b.classList.contains("via"));
+    const scrivi = (k, n) => { if (!inTesta(r, k)) { col[k].cr.textContent = String(n); col[k].cr.classList.add("scritta"); } };
+    const spiega = async t => {
+      pannello.replaceChildren(el("p", { class: "mat-chiede" }, el("span", { text: t }), pulsanteVoce(t, "Ascolta")));
+      await ctx.racconta(t);
+    };
+    const prima = k => (k === 0 ? "Prima le " : "Ora le ") + POSTI[k].nome + ": ";
+
+    if (piu) {
+      let riporto = 0;
+      for (let k = 0; k < quante; k++) {
+        if (fermo) return;
+        tabella.dataset.ora = k;
+        const c = col[k];
+        const somma = A[k] + B[k] + riporto;
+        if (A[k] || B[k]) {
+          await chiedi(prima(k) + A[k] + parola + B[k] + (riporto ? parola + "1" : "") + ". Quante sono?",
+            opzioniNumeri(somma, [riporto ? somma - 1 : Math.abs(A[k] - B[k])]), String(somma),
+            uguale(A[k] + " + " + B[k] + (riporto ? " + 1" : "") + " = ?"));
+        }
+        await spostaInsieme(c.blA.concat(c.blB), dentro(c.cellaR));
+        if (somma >= 10 && !fermo) {
+          const dieci = [...dentro(c.cellaR).children].slice(0, 10);
+          dieci.forEach(b => b.classList.add("cambio"));
+          await spiega(somma + " " + POSTI[k].nome + ": 10 " + POSTI[k].nome + " fanno " + POSTI[k].uno + ". Cambio e porto " + POSTI[k].uno + " nella colonna a sinistra.");
+          const nuovo = POSTI[k + 1].blocco();
+          nuovo.classList.add("visibile", "riportata");
+          dieci.forEach(b => b.remove());
+          dentro(col[k + 1].cellaR).append(nuovo);
+          col[k + 1].sopra.textContent = "1";
+          col[k + 1].sopra.classList.add("visibile");
+          await aspetta(400);
+          await chiedi("Quante " + POSTI[k].nome + " restano?", opzioniNumeri(somma - 10, [somma]), String(somma - 10));
+        }
+        scrivi(k, somma % 10);
+        riporto = somma >= 10 ? 1 : 0;
+      }
+    } else {
+      const disp = A.slice();  // le cifre del primo numero dopo i cambi
+      // la colonna j+1 dà un blocco alla colonna j, che ne riceve 10; se anche lei è a zero, prima chiede alla sua sinistra
+      const presta = async j => {
+        if (disp[j + 1] === 0) await presta(j + 1);
+        if (fermo) return;
+        const da = col[j + 1], a = col[j];
+        const blocco = vivi(da.cellaA).pop();
+        blocco.classList.add("cambio");
+        await spiega("Le " + POSTI[j].nome + " non bastano: cambio " + POSTI[j].uno + " in 10 " + POSTI[j].nome + ".");
+        blocco.remove();
+        disp[j + 1]--;
+        disp[j] += 10;
+        const dieci = blocchi(10, POSTI[j].blocco);
+        dentro(a.cellaA).append(...dieci);
+        await compari(dieci, fermato);
+        da.ca.classList.add("barrata");
+        da.sopra.textContent = String(disp[j + 1]);
+        da.sopra.classList.add("visibile");
+        a.ca.dataset.prestito = "1";
+      };
+      for (let k = 0; k < quante; k++) {
+        if (fermo) return;
+        tabella.dataset.ora = k;
+        const c = col[k];
+        if (disp[k] < B[k]) {
+          await presta(k);
+          await chiedi("Quante " + POSTI[k].nome + " ci sono adesso?", opzioniNumeri(disp[k], [A[k]]), String(disp[k]));
+        }
+        const resto = disp[k] - B[k];
+        if (disp[k] || B[k]) {
+          await chiedi(prima(k) + disp[k] + parola + B[k] + ". Quante restano?", opzioniNumeri(resto, [Math.abs(B[k] - A[k])]), String(resto),
+            uguale(disp[k] + " − " + B[k] + " = ?"));
+        }
+        for (const b of vivi(c.cellaA).slice(disp[k] - B[k])) {
+          if (fermo) return;
+          b.classList.add("via");
+          await aspetta(Math.max(40, 600 / Math.max(1, B[k])));
+        }
+        scrivi(k, resto);
+      }
+    }
+    delete tabella.dataset.ora;
+    strumenti.replaceChildren(tasto("↺ Conta da capo", azzeraConta));
+    await avanti([uguale(conto + " = " + r)]);
+  }
+
+  const GENERI = { conta, confronta, "prima-dopo": primaDopo, decine: decineUnita, operazione, colonna, problema };
 
   (async () => {
     for (n = 0; n < scelti.length; n++) {

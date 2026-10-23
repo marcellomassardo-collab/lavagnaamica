@@ -642,7 +642,156 @@ const CARTE = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
+/* ---------- il riporto e il prestito, in colonna ---------- */
+// Le stesse barrette (decine) e gli stessi cubetti (unità) dell'esercizio «In colonna»; ogni blocco si sposta
+// con una transizione CSS, così si vede da dove viene e dove va. Ogni passo rimette tutto al suo posto:
+// si può andare avanti e indietro.
+const RIGHE = [72, 182, 302];
+function blocco(tipo) {
+  const g = s("g", { class: "sp-blocco" });
+  if (tipo === "u") g.append(s("rect", { width: 15, height: 15, rx: 2, fill: "#F7C900", stroke: "#8A6D00", "stroke-width": 1.5 }));
+  else {
+    g.append(s("rect", { width: 16, height: 90, rx: 3, fill: "#F7C900", stroke: "#8A6D00", "stroke-width": 1.5 }));
+    for (let j = 1; j < 10; j++) g.append(s("line", { x1: 1, x2: 15, y1: j * 9, y2: j * 9, stroke: "#8A6D00", "stroke-width": 1 }));
+  }
+  return g;
+}
+const piazza = (g, [x, y]) => { g.style.transform = "translate(" + x + "px," + y + "px)"; };
+const postoD = (riga, i) => [250 + i * 22, RIGHE[riga]];
+const postoU = (riga, i) => [500 + (i % 5) * 19, RIGHE[riga] + 6 + Math.floor(i / 5) * 19];
+const cifraCol = (x, y, t, colore) => scritta(x, y, t, { "font-size": 54, "font-weight": 800, fill: colore || "#1D2329" });
+function tabellaColonna(svg, a, segno, b) {
+  svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+  const luce = {
+    d: s("rect", { x: 188, y: 50, width: 240, height: 352, rx: 16, fill: "#FFF1A8", class: "sp-sfuma" }),
+    u: s("rect", { x: 438, y: 50, width: 292, height: 352, rx: 16, fill: "#FFF1A8", class: "sp-sfuma" })
+  };
+  vedi(luce.d, false);
+  vedi(luce.u, false);
+  svg.append(luce.d, luce.u,
+    scritta(305, 38, "da", { "font-size": 26, "font-weight": 800, fill: "#5B6670" }), scritta(585, 38, "u", { "font-size": 26, "font-weight": 800, fill: "#5B6670" }),
+    cifraCol(215, 120, String(Math.floor(a / 10))), cifraCol(465, 120, String(a % 10)),
+    cifraCol(160, 230, segno), cifraCol(215, 230, String(Math.floor(b / 10))), cifraCol(465, 230, String(b % 10)),
+    s("line", { x1: 140, x2: 730, y1: 285, y2: 285, stroke: "#1D2329", "stroke-width": 5 }));
+  return luce;
+}
+function nascosto(n) {
+  n.classList.add("sp-sfuma");
+  vedi(n, false);
+  return n;
+}
+
+const RIPORTO = {
+  passi: [
+    "Facciamo 38 + 25 in colonna. Ogni numero è fatto di decine, le barrette da dieci, e di unità, i cubetti.",
+    "Si comincia sempre dalle unità: 8 unità più 5 unità fanno 13 unità.",
+    "13 unità sono troppe per una colonna sola: 10 unità si mettono insieme e diventano 1 decina.",
+    "La decina nuova va nella colonna delle decine: è il riporto. Sopra le decine si scrive un 1 piccolo, e nelle unità ne restano 3.",
+    "Ora le decine: 3 più 2 fa 5, più 1 di riporto fa 6 decine. Il risultato è 63."
+  ],
+  crea(svg) {
+    const luce = tabellaColonna(svg, 38, "+", 25);
+    const aD = [0, 1, 2].map(() => blocco("d")), bD = [0, 1].map(() => blocco("d"));
+    const unita = Array.from({ length: 13 }, () => blocco("u"));  // le prime 8 sono di 38, le altre 5 di 25
+    const nuova = blocco("d");
+    nuova.firstChild.setAttribute("stroke", "#C0282B");
+    nuova.firstChild.setAttribute("stroke-width", 3);
+    const dieci = nascosto(s("rect", { x: 492, y: 302, width: 102, height: 44, rx: 8, fill: "none", stroke: "#C0282B", "stroke-width": 4, "stroke-dasharray": "8 6" }));
+    const scrittaDieci = nascosto(etichetta(612, 396, "10 unità = 1 decina", 19));
+    const uno = nascosto(scritta(215, 66, "1", { "font-size": 34, "font-weight": 800, fill: "#C0282B" }));
+    const ru = nascosto(cifraCol(465, 360, "3", "#1E6B52"));
+    const rd = nascosto(cifraCol(215, 360, "6", "#1E6B52"));
+    const finale = nascosto(etichetta(400, 436, "38 + 25 = 63", 30));
+    aD.forEach((g, i) => piazza(g, postoD(0, i)));
+    bD.forEach((g, i) => piazza(g, postoD(1, i)));
+    unita.forEach((g, i) => piazza(g, i < 8 ? postoU(0, i) : postoU(1, i - 8)));
+    piazza(nuova, [548, 300]);
+    vedi(nuova, false);
+    svg.append(...aD, ...bD, ...unita, nuova, dieci, scrittaDieci, uno, ru, rd, finale);
+    return {
+      vai(k) {
+        vedi(luce.u, k >= 1 && k <= 3);
+        vedi(luce.d, k === 4);
+        unita.forEach((g, i) => {
+          // dal passo 3 i primi 10 cubetti sono diventati la barretta: restano solo gli ultimi 3, spostati a sinistra
+          piazza(g, k === 0 ? (i < 8 ? postoU(0, i) : postoU(1, i - 8)) : k >= 3 && i >= 10 ? postoU(2, i - 10) : postoU(2, i));
+          vedi(g, !(k >= 3 && i < 10));
+        });
+        vedi(dieci, k === 2);
+        vedi(scrittaDieci, k === 2);
+        // la barretta nuova compare dove c'erano i 10 cubetti, poi vola tra le decine
+        nuova.style.transition = k === 3 ? "opacity .5s, transform 1s cubic-bezier(.3,.7,.4,1) .7s" : "";
+        vedi(nuova, k >= 3);
+        piazza(nuova, k >= 3 ? postoD(2, 0) : [548, 300]);
+        aD.forEach((g, i) => piazza(g, k === 4 ? postoD(2, 1 + i) : postoD(0, i)));
+        bD.forEach((g, i) => piazza(g, k === 4 ? postoD(2, 4 + i) : postoD(1, i)));
+        vedi(uno, k >= 3);
+        vedi(ru, k >= 3);
+        vedi(rd, k === 4);
+        vedi(finale, k === 4);
+      },
+      ferma() {}
+    };
+  }
+};
+
+const PRESTITO = {
+  passi: [
+    "Facciamo 52 − 27 in colonna. Il numero 52 è fatto di 5 decine, le barrette, e di 2 unità, i cubetti.",
+    "Si comincia dalle unità: devo togliere 7 unità, ma ne ho solo 2. Non bastano!",
+    "Allora chiedo un prestito alle decine: 1 decina si apre e diventa 10 unità. Le decine diventano 4 e le unità diventano 12.",
+    "Adesso le unità sono 12: ne tolgo 7, e ne restano 5.",
+    "Ora le decine: ne sono rimaste 4. Ne tolgo 2, e ne restano 2. Il risultato è 25."
+  ],
+  crea(svg) {
+    const luce = tabellaColonna(svg, 52, "−", 27);
+    const aD = [0, 1, 2, 3, 4].map(() => blocco("d"));
+    const unita = Array.from({ length: 12 }, () => blocco("u"));  // 2 di 52 e 10 che arrivano dalla decina aperta
+    const pochi = nascosto(etichetta(640, 152, "2 è meno di 7!", 22));
+    const barra = nascosto(s("line", { x1: 192, x2: 238, y1: 96, y2: 80, stroke: "#C0282B", "stroke-width": 6, "stroke-linecap": "round" }));
+    const quattro = nascosto(scritta(215, 66, "4", { "font-size": 34, "font-weight": 800, fill: "#C0282B" }));
+    const unoU = nascosto(scritta(438, 104, "1", { "font-size": 30, "font-weight": 800, fill: "#C0282B" }));
+    const tolgo7 = nascosto(etichetta(640, 152, "ne tolgo 7", 22));
+    const tolgo2 = nascosto(etichetta(305, 168, "ne tolgo 2", 22));
+    const ru = nascosto(cifraCol(465, 360, "5", "#1E6B52"));
+    const rd = nascosto(cifraCol(215, 360, "2", "#1E6B52"));
+    const finale = nascosto(etichetta(400, 436, "52 − 27 = 25", 30));
+    const casa = i => (i < 2 ? postoU(0, i) : postoD(0, 4));  // le 10 nuove partono da dentro la decina che si apre
+    aD.forEach((g, i) => piazza(g, postoD(0, i)));
+    unita.forEach((g, i) => { piazza(g, casa(i)); vedi(g, i < 2); });
+    svg.append(...aD, ...unita, pochi, barra, quattro, unoU, tolgo7, tolgo2, ru, rd, finale);
+    return {
+      vai(k) {
+        vedi(luce.u, k >= 1 && k <= 3);
+        vedi(luce.d, k === 4);
+        vedi(pochi, k === 1);
+        // la quinta decina si apre: sparisce, e al suo posto partono 10 cubetti verso le unità
+        vedi(aD[4], k < 2);
+        unita.forEach((g, i) => {
+          const tolto = k >= 3 && i >= 5;   // gli ultimi 7 se ne vanno
+          vedi(g, i < 2 || k >= 2 ? (tolto ? 0.18 : 1) : 0);
+          g.style.opacity = i < 2 || k >= 2 ? (tolto ? 0.18 : 1) : 0;
+          piazza(g, k >= 3 && !tolto ? postoU(2, i) : k >= 2 || i < 2 ? postoU(0, i) : casa(i));
+        });
+        vedi(barra, k >= 2);
+        vedi(quattro, k >= 2);
+        vedi(unoU, k >= 2);
+        vedi(tolgo7, k === 3);
+        vedi(ru, k >= 3);
+        aD.slice(0, 4).forEach((g, i) => {
+          g.style.opacity = k === 4 && i >= 2 ? 0.18 : 1;
+          piazza(g, k === 4 && i < 2 ? postoD(2, i) : postoD(0, i));
+        });
+        vedi(tolgo2, k === 4);
+        vedi(rd, k === 4);
+        vedi(finale, k === 4);
+      },
+      ferma() {}
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, riporto: RIPORTO, prestito: PRESTITO, "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE };
 
 // Un video libero dell'archivio Wikimedia Commons: niente pubblicità. Si carica solo quando qualcuno lo chiede,

@@ -406,6 +406,30 @@ input[type="text"], input[type="search"], select {
 .ogg.decina { --ogg: 34px; height: auto; display: grid; grid-template-rows: repeat(10, 1fr); gap: 2px; padding: 3px; background: #F7C900; border: 2px solid #8a6d00; border-radius: 8px; }
 .ogg.decina i { display: block; width: 22px; height: 16px; background: #FFE36A; border-radius: 3px; }
 .ogg.unita { --ogg: 34px; background: #F7C900; border: 2px solid #8a6d00; border-radius: 8px; }
+/* in colonna: cifre e blocchi nella loro colonna; la colonna di cui si parla è evidenziata */
+.colonna-blocchi { display: grid; gap: 8px; width: 100%; padding-top: 1.2em; }
+.riga-col { display: grid; grid-template-columns: 2em repeat(var(--colonne, 2), minmax(0, 1fr)); gap: 8px; align-items: stretch; }
+.riga-col.testa > span { text-align: center; font-weight: 800; color: var(--tenue); position: relative; text-transform: lowercase; }
+.cella-col { flex-wrap: wrap; }
+.riga-col.risultato { border-top: 5px solid var(--testo); padding-top: 8px; }
+.segno-col { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.6rem); font-weight: 800; align-self: center; text-align: center; }
+.cella-col { display: flex; align-items: center; gap: 10px; min-height: 70px; padding: 6px 8px; border-radius: 14px; border: 2px dashed var(--bordo); transition: background-color .3s, border-color .3s; }
+.colonna-blocchi[data-ora="0"] .cella-col[data-k="0"], .colonna-blocchi[data-ora="1"] .cella-col[data-k="1"], .colonna-blocchi[data-ora="2"] .cella-col[data-k="2"] { background: var(--evidenzia-chiaro); border-color: var(--evidenzia); }
+.cifra { font-size: clamp(1.8rem, 1.3rem + 2vw, 3.2rem); font-weight: 800; min-width: 1.1ch; text-align: center; position: relative; flex: none; }
+.cifra.scritta { color: var(--lavagna); animation: suggerisci .6s 1; }
+.cifra.barrata { text-decoration: line-through; text-decoration-thickness: 5px; text-decoration-color: #C0282B; color: var(--tenue); }
+.cifra[data-prestito]::before { content: attr(data-prestito); font-size: .5em; vertical-align: super; color: #C0282B; margin-right: 1px; }
+.sopra-col { position: absolute; left: 50%; top: -1.3em; transform: translateX(-50%); font-size: 1.6em; color: #C0282B; font-weight: 800; opacity: 0; transition: opacity .3s; }
+.sopra-col.visibile { opacity: 1; }
+.cella-col .blocchi { display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-end; min-width: 0; }
+.cella-col .ogg.decina { --ogg: 20px; padding: 2px; gap: 1px; }
+.cella-col .ogg.decina i { width: 14px; height: 8px; }
+.cella-col .ogg.unita { --ogg: 20px; }
+.ogg.centinaio { --ogg: 44px; background-color: #F7C900; border: 2px solid #8a6d00; border-radius: 6px;
+  background-image: linear-gradient(rgba(138, 109, 0, .45) 1px, transparent 1px), linear-gradient(90deg, rgba(138, 109, 0, .45) 1px, transparent 1px); background-size: 10% 10%; }
+.cella-col .ogg.centinaio { --ogg: 34px; }
+.ogg.cambio { box-shadow: 0 0 0 3px #C0282B; animation: suggerisci .8s 2; }
+.ogg.riportata { box-shadow: 0 0 0 3px #C0282B; }
 .linea-numeri { display: flex; gap: 0; justify-content: center; flex-wrap: wrap; padding-top: 18px; }
 .tacca { min-width: clamp(34px, 4vw, 58px); padding: 14px 0 8px; text-align: center; border-top: 4px solid var(--testo); position: relative; font-weight: 800; font-size: 1.15em; }
 .tacca::before { content: ""; position: absolute; top: -14px; left: 50%; width: 3px; height: 14px; background: var(--testo); }
@@ -514,6 +538,8 @@ input[type="text"], input[type="search"], select {
 .sp-comandi { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; }
 .sp-scritta { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
 .sp-sfuma { transition: opacity .6s; }
+.sp-blocco { transition: transform .9s cubic-bezier(.3,.7,.4,1), opacity .5s; }
+@media (prefers-reduced-motion: reduce) { .sp-blocco { transition: none !important; } }
 .sp-traccia { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s ease-out; }
 .sp-cresce { transform: scale(0); transition: transform 1.1s cubic-bezier(.2, .8, .3, 1.15); }
 .sp-cresce.sp-grande { transform: scale(1); }

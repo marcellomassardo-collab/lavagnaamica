@@ -109,7 +109,7 @@ const NOMI_NUMERI = {
 };
 
 function numero(valore, cambia, nome) {
-  const i = el("input", { type: "number", inputmode: "numeric", min: "0", max: "99", value: valore === undefined ? "" : valore, "aria-label": nome });
+  const i = el("input", { type: "number", inputmode: "numeric", min: "0", max: "999", value: valore === undefined ? "" : valore, "aria-label": nome });
   i.addEventListener("input", () => cambia(i.value === "" ? undefined : Number(i.value)));
   return etichetta(nome, i);
 }
@@ -125,6 +125,7 @@ function campiDiMatematica(x, ridisegna) {
     Object.keys(x).forEach(k => delete x[k]);
     Object.assign(x, { genere: v, a: 5 });
     if (v === "operazione") Object.assign(x, { op: "+", b: 3 });
+    if (v === "colonna") Object.assign(x, { op: "+", a: 36, b: 27 });
     if (v === "confronta") x.b = 3;
     if (v === "prima-dopo") x.verso = "dopo";
     if (v === "problema") Object.assign(x, { schema: "aggiunta", b: 3, testo: ["", "", ""], oggetto: { t: "" } });
@@ -138,6 +139,9 @@ function campiDiMatematica(x, ridisegna) {
   if (x.genere === "prima-dopo") campi.push(a("Numero"), menu(x.verso, { dopo: "Il numero dopo", prima: "Il numero prima" }, v => { x.verso = v; }, "Che cosa chiedere"));
   if (x.genere === "operazione") {
     campi.push(a(NOMI_NUMERI.operazione[0]), menu(x.op, OPERAZIONI, v => { x.op = v; }, "Operazione"), b(NOMI_NUMERI.operazione[1]));
+  }
+  if (x.genere === "colonna") {
+    campi.push(a(NOMI_NUMERI.operazione[0]), menu(x.op, { "+": "+", "-": "−" }, v => { x.op = v; }, "Operazione"), b(NOMI_NUMERI.operazione[1]));
   }
   if (x.genere === "problema") {
     if (!Array.isArray(x.testo)) x.testo = ["", "", ""];
