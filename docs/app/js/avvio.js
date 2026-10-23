@@ -55,6 +55,12 @@ function schedaEsercizio(es, origine) {
     el("span", { class: "scheda-icona", "aria-hidden": "true", text: g.icona }),
     el("span", { class: "scheda-titolo", text: es.titolo }),
     el("span", { class: "scheda-info", text: g.nome + " · " + descrizione(es) + (es.catalogo ? " · nel catalogo" : "") + (es.privato ? " · 🔒 solo per la mia classe" : "") }));
+  // le letture di livello 2 e 3 si aprono anche in MAIUSCOLO: «~maiuscolo» dopo l'id cambia solo la scrittura
+  if (origine === "es" && es.tipo === "brano" && [2, 3].includes(es.dati.livello)) {
+    return el("li", { class: "scheda" }, apri,
+      el("div", { class: "scheda-azioni" },
+        el("a", { class: "tasto-piccolo", href: "#/gioca/es/" + es.id + "~maiuscolo", text: "🔠 Leggi in MAIUSCOLO" })));
+  }
   if (origine !== "mio") return el("li", { class: "scheda" }, apri);
   return el("li", { class: "scheda" }, apri,
     el("div", { class: "scheda-azioni" },
@@ -237,13 +243,15 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
   if (es.scopri && !giocoChiesto) spiega(); else inizia();
 }
 
-async function giocaSalvato(origine, id, gioco) {
-  const es = origine === "es" ? (await caricaEsempi()).find(e => e.id === id) : origine === "mio" ? trovaMio(id) : null;
+async function giocaSalvato(origine, idScrittura, gioco) {
+  const [id, scrittura] = (idScrittura || "").split("~");
+  let es = origine === "es" ? (await caricaEsempi()).find(e => e.id === id) : origine === "mio" ? trovaMio(id) : null;
   if (!es) {
     location.hash = "#/";
     return;
   }
-  gioca(es, "#/gioca/" + origine + "/" + id, "#/", gioco);
+  if (scrittura === "maiuscolo") es = Object.assign({}, es, { scrittura });
+  gioca(es, "#/gioca/" + origine + "/" + idScrittura, "#/", gioco);
 }
 
 /* ---------- esercizio del catalogo comune ---------- */
