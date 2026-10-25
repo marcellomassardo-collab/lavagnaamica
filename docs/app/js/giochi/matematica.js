@@ -2,8 +2,8 @@
 // Nei problemi l'operazione nasce da ciò che succede nella storia, non dalle parole del testo.
 
 import { el, mescola, pulsanteVoce } from "../ui.js";
-import { OPERAZIONI, SCHEMI, risultato } from "../modello.js";
-import { oggetto, oggetti, file10, compari, sposta, spostaInsieme, aspetta, contaToccando, gruppo, decine, barretta, cubetto, centinaio, linea } from "../scena.js";
+import { OPERAZIONI, SCHEMI, PROPRIETA, risultato } from "../modello.js";
+import { oggetto, oggetti, file10, compari, sposta, spostaInsieme, riordina, aspetta, contaToccando, gruppo, decine, barretta, cubetto, centinaio, linea } from "../scena.js";
 
 const MELA = { t: "mela", p: 2462 };
 
@@ -481,7 +481,274 @@ export function avvia(area, es, ctx) {
     await avanti([uguale(conto + " = " + r)]);
   }
 
-  const GENERI = { conta, confronta, "prima-dopo": primaDopo, decine: decineUnita, operazione, colonna, problema };
+  /* ---------- le proprietà: lo stesso calcolo, fatto in un modo più facile ---------- */
+  // Prima si vede che gli oggetti sono sempre quelli (il risultato non cambia), poi si fa il calcolo nel modo comodo.
+  const regola = p => el("p", { class: "mat-risposta" }, el("strong", { text: PROPRIETA[p].nome + ": " }), PROPRIETA[p].regola);
+  const consiglio = t => el("p", { class: "mat-consiglio", text: "💡 " + t });
+  const dimensione = n => (n > 64 ? " molti" : n > 36 ? " tanti" : "");
+  const schieramento = (colonne, nodi, quanti) => el("div", { class: "schieramento" + dimensione(quanti || nodi.length), style: "--colonne:" + colonne }, nodi);
+  const titolo = t => testo.replaceChildren(el("p", {}, el("span", { text: t })));
+  const racconta = async t => {
+    pannello.replaceChildren(el("p", { class: "mat-chiede" }, el("span", { text: t }), pulsanteVoce(t, "Ascolta")));
+    await ctx.racconta(t);
+  };
+  const righeDi = (a, b, o) => Array.from({ length: a }, () => oggetti(b, o));
+  async function compariRighe(righe) {
+    for (const r of righe) {
+      if (fermo) return;
+      await compari(r, fermato);
+      await aspetta(120);
+    }
+  }
+
+  const PROP = {
+    async "commutativa-addizione"(x, o) {
+      const r = x.a + x.b;
+      titolo(x.a + " + " + x.b + ": se scambio i numeri, il risultato cambia?");
+      const primi = oggetti(x.a, o), secondi = oggetti(x.b, o, "nuovo");
+      const fila = file10(primi.concat(secondi), r > 30 ? "tanti" : "");
+      scena.replaceChildren(fila);
+      coperta();
+      await compari(primi, fermato);
+      await compari(secondi, fermato);
+      let scambiati = false;
+      const scambia = () => {
+        scambiati = !scambiati;
+        return riordina(primi.concat(secondi), () => fila.append(...(scambiati ? secondi.concat(primi) : primi.concat(secondi))));
+      };
+      await racconta("Scambio i due gruppi: prima " + x.b + ", poi " + x.a + ".");
+      await scambia();
+      strumenti.replaceChildren(tasto("⇄ Scambia di nuovo", scambia), tasto("↺ Conta da capo", azzeraConta));
+      await chiedi(x.a + " + " + x.b + " = " + x.b + " + ?", opzioniNumeri(x.a, [x.b]), String(x.a));
+      await chiedi("Quanto fa?", opzioniNumeri(r, [Math.abs(x.a - x.b)]), String(r), uguale(x.b + " + " + x.a + " = ?"));
+      await avanti([uguale(x.a + " + " + x.b + " = " + x.b + " + " + x.a + " = " + r), regola(x.prop),
+        x.a !== x.b ? consiglio("Conviene partire dal numero più grande: da " + Math.max(x.a, x.b) + " conti solo " + Math.min(x.a, x.b) + " passi avanti.") : null]);
+    },
+
+    async "associativa-addizione"(x, o) {
+      const prima = (x.a + x.b) % 10 === 0;   // la coppia vicina che fa un numero tondo (il modello ne accetta una sola)
+      const coppie = [x.a + " + " + x.b, x.b + " + " + x.c];
+      const s = prima ? x.a + x.b : x.b + x.c;
+      const r = x.a + x.b + x.c;
+      const conto = x.a + " + " + x.b + " + " + x.c;
+      titolo(conto + ": quali numeri sommo prima?");
+      const gruppi = [oggetti(x.a, o), oggetti(x.b, o, "nuovo"), oggetti(x.c, o)];
+      const scatole = gruppi.map(g => el("div", { class: "gruppo-m" }, el("div", { class: "gruppo-dentro" }, g)));
+      scena.replaceChildren(el("div", { class: "gruppi-m" + (r > 20 ? " tanti" : "") }, scatole));
+      coperta();
+      for (const g of gruppi) await compari(g, fermato);
+      await chiedi("Quali due numeri conviene sommare prima? Cerca quelli che insieme fanno un numero tondo.", coppie, coppie[prima ? 0 : 1], uguale(conto));
+      // i due gruppi diventano uno solo, in file da dieci: si vede che fanno una decina (o più) intera
+      const uniti = prima ? gruppi[0].concat(gruppi[1]) : gruppi[1].concat(gruppi[2]);
+      const nuova = el("div", { class: "gruppo-m" }, file10([], "tanti"));
+      await riordina(uniti, () => {
+        const [s1, s2] = prima ? scatole.slice(0, 2) : scatole.slice(1, 3);
+        s1.replaceWith(nuova);
+        s2.remove();
+        nuova.firstChild.append(...uniti);
+      });
+      strumenti.replaceChildren(tasto("↺ Conta da capo", azzeraConta));
+      await chiedi(coppie[prima ? 0 : 1] + " = ?", opzioniNumeri(s, [s - 1]), String(s));
+      const dopo = prima ? s + " + " + x.c : x.a + " + " + s;
+      await chiedi(dopo + " = ?", opzioniNumeri(r, [r - 10]), String(r));
+      await avanti([uguale((prima ? "(" + coppie[0] + ") + " + x.c : x.a + " + (" + coppie[1] + ")") + " = " + dopo + " = " + r), regola(x.prop),
+        consiglio("Cerca i numeri amici, quelli che insieme fanno 10, 20, 30…")]);
+    },
+
+    // senza c: si spezza b per arrivare alla decina dopo a (8 + 5 = 8 + 2 + 3); con c: b = c + il resto (34 + 25 = 34 + 20 + 5)
+    async "dissociativa-addizione"(x, o) {
+      const decina = x.c === undefined;
+      const pezzo = decina ? 10 - x.a % 10 : x.c, meta = x.a + pezzo, resto = x.b - pezzo, r = x.a + x.b;
+      titolo(x.a + " + " + x.b + ": " + (decina ? "prima arrivo a " + meta + ", poi aggiungo il resto" : "spezzo il " + x.b + " in " + pezzo + " + " + resto));
+      const primi = oggetti(x.a, o), nuovi = oggetti(x.b, o, "nuovo");
+      scena.replaceChildren(file10(primi.concat(nuovi), r > 30 ? "tanti" : ""));
+      coperta();
+      await compari(primi, fermato);
+      if (decina) await chiedi("Quanti ne mancano a " + x.a + " per arrivare a " + meta + "?", opzioniNumeri(pezzo, [x.a % 10]), String(pezzo));
+      else await chiedi("Spezzo il " + x.b + ": " + x.b + " = " + pezzo + " + ?", opzioniNumeri(resto, [x.b + pezzo]), String(resto));
+      // arriva prima il primo pezzo (cerchiato in rosso), poi il resto
+      nuovi.slice(0, pezzo).forEach(n => n.classList.add("cambio"));
+      await compari(nuovi.slice(0, pezzo), fermato);
+      if (!decina) await chiedi(x.a + " + " + pezzo + " = ?", opzioniNumeri(meta, [x.a + resto]), String(meta));
+      await aspetta(500);
+      await compari(nuovi.slice(pezzo), fermato);
+      strumenti.replaceChildren(tasto("↺ Conta da capo", azzeraConta));
+      if (decina) await chiedi("Spezzo il " + x.b + ": " + x.b + " = " + pezzo + " + ?", opzioniNumeri(resto, [x.b + pezzo]), String(resto));
+      await chiedi(meta + " + " + resto + " = ?", opzioniNumeri(r, [r + 10]), String(r));
+      await avanti([uguale(x.a + " + " + x.b + " = " + x.a + " + " + pezzo + " + " + resto + " = " + meta + " + " + resto + " = " + r), regola(x.prop),
+        consiglio(decina ? "Arriva prima al numero tondo: dopo è più facile." : "Aggiungi prima le decine, poi le unità.")]);
+    },
+
+    async "invariantiva-sottrazione"(x, o) {
+      const r = x.a - x.b, A = x.a + x.c, B = x.b + x.c, k = Math.abs(x.c), piu = x.c > 0;
+      const segno = piu ? " + " : " − ";
+      titolo(x.a + " − " + x.b + ": " + (piu ? "aggiungo " : "tolgo ") + k + " a tutti e due i numeri");
+      const tanti = Math.max(x.a, A) > 20 ? "tanti" : "";
+      const uno = oggetti(x.a, o), due = oggetti(x.b, o, "nuovo");
+      const f1 = file10(uno, tanti), f2 = file10(due, tanti);
+      scena.replaceChildren(el("div", { class: "confronto" },
+        el("div", { class: "riga-confronto" }, el("span", { class: "etichetta-gruppo", text: "1°" }), f1),
+        el("div", { class: "riga-confronto" }, el("span", { class: "etichetta-gruppo", text: "2°" }), f2)));
+      coperta();
+      // la differenza: quelli della prima fila che restano senza compagno nella seconda
+      const marca = () => {
+        const v1 = uno.filter(n => !n.classList.contains("via")), v2 = due.filter(n => !n.classList.contains("via"));
+        uno.concat(due).forEach(n => n.classList.remove("in-coppia", "in-piu"));
+        v1.forEach((n, i) => n.classList.add(i < v2.length ? "in-coppia" : "in-piu"));
+        v2.forEach(n => n.classList.add("in-coppia"));
+      };
+      await compari(uno, fermato);
+      await compari(due, fermato);
+      marca();
+      await racconta("Quelli senza compagno sono la differenza tra " + x.a + " e " + x.b + ". Ora " +
+        (piu ? "aggiungo " + k + " a tutte e due le file." : "tolgo " + k + " da tutte e due le file."));
+      if (fermo) return;
+      if (piu) {
+        const n1 = oggetti(k, o), n2 = oggetti(k, o, "nuovo");
+        f1.append(...n1);
+        f2.append(...n2);
+        uno.push(...n1);
+        due.push(...n2);
+        await compari(n1.concat(n2), fermato);
+      } else {
+        for (const n of uno.slice(-k).concat(due.slice(-k))) {
+          n.classList.add("via");
+          await aspetta(180);
+        }
+      }
+      marca();
+      strumenti.replaceChildren(tasto("↺ Conta da capo", azzeraConta));
+      await chiedi("Prima fila: " + x.a + segno + k + " = ?", opzioniNumeri(A, [x.a]), String(A));
+      await chiedi("Seconda fila: " + x.b + segno + k + " = ?", opzioniNumeri(B, [x.b]), String(B));
+      await chiedi("Quelli senza compagno sono sempre gli stessi. " + A + " − " + B + " = ?", opzioniNumeri(r, [x.a - B]), String(r), uguale(A + " − " + B + " = ?"));
+      await avanti([uguale(x.a + " − " + x.b + " = " + A + " − " + B + " = " + r), regola(x.prop),
+        consiglio("Fai diventare tondo il numero da togliere: " + A + " − " + B + " è più facile.")]);
+    },
+
+    async "commutativa-moltiplicazione"(x, o) {
+      const r = x.a * x.b;
+      titolo(x.a + " × " + x.b + ": se giro lo schieramento, il risultato cambia?");
+      const righe = righeDi(x.a, x.b, o);
+      const tutti = righe.flat();
+      const vista = schieramento(x.b, tutti);
+      scena.replaceChildren(vista);
+      coperta();
+      await compariRighe(righe);
+      let girato = false;
+      // girare = le righe diventano colonne: l'oggetto della riga i, colonna j va nella riga j, colonna i
+      const gira = () => {
+        girato = !girato;
+        const ordine = girato ? Array.from({ length: x.b }, (_, j) => righe.map(riga => riga[j])).flat() : tutti;
+        return riordina(tutti, () => {
+          vista.style.setProperty("--colonne", girato ? x.a : x.b);
+          vista.append(...ordine);
+        });
+      };
+      await racconta(x.a + " righe da " + x.b + ". Ora giro lo schieramento: diventano " + x.b + " righe da " + x.a + ".");
+      await gira();
+      strumenti.replaceChildren(tasto("⟳ Gira di nuovo", gira), tasto("↺ Conta da capo", azzeraConta));
+      await chiedi(x.a + " × " + x.b + " = " + x.b + " × ?", opzioniNumeri(x.a, [x.b]), String(x.a));
+      await chiedi("Quanto fa?", opzioniNumeri(r, [x.a + x.b]), String(r), uguale(x.b + " × " + x.a + " = ?"));
+      await avanti([uguale(x.a + " × " + x.b + " = " + x.b + " × " + x.a + " = " + r), regola(x.prop),
+        x.a !== x.b ? consiglio("Se sai " + x.b + " × " + x.a + ", sai anche " + x.a + " × " + x.b + ": le tabelline da imparare sono quasi la metà.") : null]);
+    },
+
+    async "associativa-moltiplicazione"(x, o) {
+      const prima = (x.a * x.b) % 10 === 0;   // la coppia vicina che fa un numero tondo (il modello ne accetta una sola)
+      const coppie = [x.a + " × " + x.b, x.b + " × " + x.c];
+      const [p, q] = prima ? [x.a, x.b] : [x.b, x.c];
+      const fuori = prima ? x.c : x.a;
+      const s = p * q, r = s * fuori;
+      const conto = x.a + " × " + x.b + " × " + x.c;
+      titolo(conto + ": quale moltiplicazione faccio prima?");
+      scena.replaceChildren(uguale(conto));
+      await chiedi("Quale moltiplicazione conviene fare prima? Cerca quella che fa un numero tondo.", coppie, coppie[prima ? 0 : 1]);
+      // tanti gruppi quanto il numero rimasto fuori; in ogni gruppo uno schieramento della coppia
+      const gruppi = Array.from({ length: fuori }, () => oggetti(s, o));
+      scena.replaceChildren(el("div", { class: "gruppi-m" + (r > 20 ? " tanti" : "") },
+        gruppi.map(g => el("div", { class: "gruppo-m" }, schieramento(q, g)))));
+      coperta();
+      for (const g of gruppi) await compari(g, fermato);
+      strumenti.replaceChildren(tasto("↺ Conta da capo", azzeraConta));
+      await chiedi("In ogni gruppo: " + coppie[prima ? 0 : 1] + " = ?", opzioniNumeri(s, [p + q]), String(s));
+      const dopo = prima ? s + " × " + x.c : x.a + " × " + s;
+      await chiedi("I gruppi sono " + fuori + ": " + dopo + " = ?", opzioniNumeri(r, [s + fuori]), String(r));
+      await avanti([uguale((prima ? "(" + coppie[0] + ") × " + x.c : x.a + " × (" + coppie[1] + ")") + " = " + dopo + " = " + r), regola(x.prop),
+        consiglio("Cerca la coppia che fa 10: moltiplicare per 10 è facile.")]);
+    },
+
+    // il contrario dell'associativa: b si spezza in c × (b : c), e si vedono b : c gruppi, ognuno con a righe da c
+    async "dissociativa-moltiplicazione"(x, o) {
+      const volte = x.b / x.c, s = x.a * x.c, r = x.a * x.b;
+      const doppio = x.c === 2 && volte === 2;
+      titolo(x.a + " × " + x.b + ": spezzo il " + x.b + " in " + x.c + " × " + volte);
+      scena.replaceChildren(uguale(x.a + " × " + x.b));
+      await chiedi("Spezzo il " + x.b + " in una moltiplicazione: " + x.b + " = " + x.c + " × ?", opzioniNumeri(volte, [x.b - x.c]), String(volte));
+      const gruppi = Array.from({ length: volte }, () => oggetti(s, o));
+      scena.replaceChildren(el("div", { class: "gruppi-m" + (r > 20 ? " tanti" : "") },
+        gruppi.map(g => el("div", { class: "gruppo-m" }, schieramento(x.c, g)))));
+      coperta();
+      await compari(gruppi[0], fermato);
+      await chiedi("Nel primo gruppo: " + x.a + " × " + x.c + " = ?", opzioniNumeri(s, [x.a + x.c]), String(s));
+      for (const g of gruppi.slice(1)) await compari(g, fermato);
+      strumenti.replaceChildren(tasto("↺ Conta da capo", azzeraConta));
+      await chiedi("I gruppi sono " + volte + ": " + s + " × " + volte + " = ?", opzioniNumeri(r, [s + volte]), String(r));
+      await avanti([uguale(x.a + " × " + x.b + " = " + x.a + " × " + x.c + " × " + volte + " = " + s + " × " + volte + " = " + r), regola(x.prop),
+        consiglio(doppio ? "Per moltiplicare per 4 fai il doppio del doppio." : "Spezza il numero in una moltiplicazione più facile, come " + x.c + " × " + volte + ".")]);
+    },
+
+    async "distributiva-moltiplicazione"(x, o) {
+      if (x.c > x.b) return distributivaMeno(x, o);
+      const d = x.b - x.c, p1 = x.a * x.c, p2 = x.a * d, r = x.a * x.b;
+      titolo(x.a + " × " + x.b + ": spezzo il " + x.b + " in " + x.c + " + " + d);
+      const righe = righeDi(x.a, x.b, o);
+      const tutti = righe.flat();
+      scena.replaceChildren(schieramento(x.b, tutti));
+      coperta();
+      await compariRighe(righe);
+      await racconta(x.a + " righe da " + x.b + ". Spezzo ogni riga: " + x.c + " da una parte e " + d + " dall'altra.");
+      if (fermo) return;
+      const sinistra = righe.flatMap(riga => riga.slice(0, x.c)), destra = righe.flatMap(riga => riga.slice(x.c));
+      const parte = (colonne, nodi, scritta) => el("div", { class: "prop-parte" }, schieramento(colonne, nodi, r), el("span", { text: scritta }));
+      await riordina(tutti, () => {
+        scena.replaceChildren(el("div", { class: "prop-parti" }, parte(x.c, sinistra, x.a + " × " + x.c), parte(d, destra, x.a + " × " + d)));
+      });
+      destra.forEach(n => n.classList.add("nuovo"));
+      strumenti.replaceChildren(tasto("↺ Conta da capo", azzeraConta));
+      await chiedi(x.a + " × " + x.c + " = ?", opzioniNumeri(p1, [x.a + x.c]), String(p1));
+      await chiedi(x.a + " × " + d + " = ?", opzioniNumeri(p2, [x.a + d]), String(p2));
+      await chiedi("Ora sommo i due pezzi: " + p1 + " + " + p2 + " = ?", opzioniNumeri(r, [r - 10]), String(r));
+      await avanti([uguale(x.a + " × " + x.b + " = " + x.a + " × " + x.c + " + " + x.a + " × " + d + " = " + p1 + " + " + p2 + " = " + r), regola(x.prop),
+        consiglio("Spezza il numero difficile in pezzi facili: qui " + x.b + " = " + x.c + " + " + d + ".")]);
+    }
+  };
+
+  // la distributiva con il meno: a × b = a × c − a × (c − b), per esempio 6 × 9 = 6 × 10 − 6 × 1.
+  // Si costruisce lo schieramento più grande (c colonne) e si tolgono le colonne in più.
+  async function distributivaMeno(x, o) {
+    const d = x.c - x.b, p1 = x.a * x.c, p2 = x.a * d, r = x.a * x.b;
+    titolo(x.a + " × " + x.b + ": faccio " + x.a + " × " + x.c + " e poi tolgo " + x.a + " × " + d);
+    const righe = righeDi(x.a, x.c, o);
+    scena.replaceChildren(schieramento(x.c, righe.flat()));
+    coperta();
+    await compariRighe(righe);
+    await chiedi(x.a + " × " + x.c + " = ?", opzioniNumeri(p1, [x.a + x.c]), String(p1));
+    await racconta("Ma io volevo " + x.b + " in ogni riga, non " + x.c + ": tolgo " + d + " da ogni riga.");
+    for (const n of righe.flatMap(riga => riga.slice(x.b))) {
+      if (fermo) return;
+      n.classList.add("via");
+      await aspetta(120);
+    }
+    strumenti.replaceChildren(tasto("↺ Conta da capo", azzeraConta));
+    await chiedi("Quanti ne ho tolti? " + x.a + " × " + d + " = ?", opzioniNumeri(p2, [x.a + d]), String(p2));
+    await chiedi(p1 + " − " + p2 + " = ?", opzioniNumeri(r, [p1 + p2]), String(r));
+    await avanti([uguale(x.a + " × " + x.b + " = " + x.a + " × " + x.c + " − " + x.a + " × " + d + " = " + p1 + " − " + p2 + " = " + r), regola(x.prop),
+      consiglio(x.c === 10 && d === 1 ? "Per moltiplicare per 9: moltiplica per 10 e togli una volta il numero." : "Arriva a un numero tondo e poi togli quello che è in più.")]);
+  }
+
+  const proprieta = x => PROP[x.prop](x, es.dati.oggetto || MELA);
+
+  const GENERI = { conta, confronta, "prima-dopo": primaDopo, decine: decineUnita, operazione, colonna, proprieta, problema };
 
   (async () => {
     for (n = 0; n < scelti.length; n++) {

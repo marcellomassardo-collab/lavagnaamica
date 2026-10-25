@@ -1,7 +1,7 @@
 // Editor degli esercizi: tutto si prepara riempiendo dei campi, senza codice.
 
 import { el, immaginePicto } from "./ui.js";
-import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, GENERI_LETTURA, LIVELLI, OPERAZIONI, SCHEMI, ANIMAZIONI, giochiPer, valida } from "./modello.js";
+import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, GENERI_LETTURA, LIVELLI, OPERAZIONI, SCHEMI, PROPRIETA, ANIMAZIONI, giochiPer, valida } from "./modello.js";
 import { scegliPittogramma } from "./picto.js";
 
 const vuoto = () => ({ t: "" });
@@ -105,11 +105,19 @@ const NOMI_NUMERI = {
   confronto: ["Gruppo più grande", "Gruppo più piccolo"],
   gruppi: ["Quanti gruppi", "Quanti in ogni gruppo"],
   ripartizione: ["Quanti oggetti", "In quante parti"],
-  contenenza: ["Quanti oggetti", "Quanti in ogni gruppo"]
+  contenenza: ["Quanti oggetti", "Quanti in ogni gruppo"],
+  "commutativa-addizione": ["Primo numero", "Secondo numero"],
+  "associativa-addizione": ["Primo numero", "Secondo numero", "Terzo numero"],
+  "dissociativa-addizione": ["Primo numero", "Secondo numero (si spezza)", "Primo pezzo (vuoto: quello che arriva alla decina)"],
+  "invariantiva-sottrazione": ["Primo numero", "Secondo numero", "Quanto aggiungo (col meno: quanto tolgo)"],
+  "commutativa-moltiplicazione": ["Righe", "In ogni riga"],
+  "associativa-moltiplicazione": ["Primo numero", "Secondo numero", "Terzo numero"],
+  "dissociativa-moltiplicazione": ["Primo numero", "Secondo numero (si spezza)", "Si spezza in questo numero per…"],
+  "distributiva-moltiplicazione": ["Righe", "In ogni riga", "Primo pezzo della riga (più grande della riga = col meno: 10 per fare × 9)"]
 };
 
-function numero(valore, cambia, nome) {
-  const i = el("input", { type: "number", inputmode: "numeric", min: "0", max: "999", value: valore === undefined ? "" : valore, "aria-label": nome });
+function numero(valore, cambia, nome, min) {
+  const i = el("input", { type: "number", inputmode: "numeric", min: String(min === undefined ? 0 : min), max: "999", value: valore === undefined ? "" : valore, "aria-label": nome });
   i.addEventListener("input", () => cambia(i.value === "" ? undefined : Number(i.value)));
   return etichetta(nome, i);
 }
@@ -126,6 +134,7 @@ function campiDiMatematica(x, ridisegna) {
     Object.assign(x, { genere: v, a: 5 });
     if (v === "operazione") Object.assign(x, { op: "+", b: 3 });
     if (v === "colonna") Object.assign(x, { op: "+", a: 36, b: 27 });
+    if (v === "proprieta") Object.assign(x, { prop: "commutativa-addizione", a: 3, b: 8 });
     if (v === "confronta") x.b = 3;
     if (v === "prima-dopo") x.verso = "dopo";
     if (v === "problema") Object.assign(x, { schema: "aggiunta", b: 3, testo: ["", "", ""], oggetto: { t: "" } });
@@ -142,6 +151,12 @@ function campiDiMatematica(x, ridisegna) {
   }
   if (x.genere === "colonna") {
     campi.push(a(NOMI_NUMERI.operazione[0]), menu(x.op, { "+": "+", "-": "−" }, v => { x.op = v; }, "Operazione"), b(NOMI_NUMERI.operazione[1]));
+  }
+  if (x.genere === "proprieta") {
+    const nomi = NOMI_NUMERI[x.prop];
+    campi.push(menu(x.prop, Object.fromEntries(Object.entries(PROPRIETA).map(([k, p]) => [k, p.voce])), v => { x.prop = v; ridisegna(); }, "Quale proprietà"),
+      a(nomi[0]), b(nomi[1]));
+    if (nomi[2]) campi.push(numero(x.c, v => { x.c = v; }, nomi[2], x.prop === "invariantiva-sottrazione" ? -9 : 0));
   }
   if (x.genere === "problema") {
     if (!Array.isArray(x.testo)) x.testo = ["", "", ""];

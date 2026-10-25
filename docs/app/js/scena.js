@@ -95,6 +95,22 @@ export async function spostaInsieme(nodi, dove) {
   await aspetta(520);
 }
 
+// Cambia la disposizione degli oggetti (fai) e li fa scivolare dalle vecchie posizioni alle nuove:
+// per girare uno schieramento, spezzarlo in due, scambiare due gruppi.
+export async function riordina(nodi, fai) {
+  const prima = nodi.map(n => n.getBoundingClientRect());
+  fai();
+  if (movimentoRidotto() || !nodi.length || !nodi[0].animate) return;
+  nodi.forEach((n, k) => {
+    const dopo = n.getBoundingClientRect();
+    n.animate([
+      { transform: "translate(" + (prima[k].left - dopo.left) + "px," + (prima[k].top - dopo.top) + "px)" },
+      { transform: "none" }
+    ], { duration: 800, easing: "cubic-bezier(.3,.7,.4,1)" });
+  });
+  await aspetta(800);
+}
+
 export function linea(da, a, segnato) {
   const celle = [];
   for (let k = da; k <= a; k++) celle.push(el("span", { class: "tacca" + (k === segnato ? " segnata" : ""), "data-numero": k, text: String(k) }));

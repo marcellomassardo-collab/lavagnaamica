@@ -913,9 +913,302 @@ const TAVOLA = {
   }
 };
 
+/* ---------- le proprietà delle operazioni ---------- */
+// Pallini che si spostano: si vede che sono sempre gli stessi, quindi il risultato non cambia.
+// Ogni passo dice dove sta ogni pallino; le transizioni CSS fanno il movimento tra un passo e l'altro.
+const ROSSO = "#E0332B", BLU = "#2F6FD6", VERDE = "#2E9E5B";
+const pallino = (colore, r) => s("g", { class: "sp-blocco" },
+  s("circle", { cx: 0, cy: 0, r: r || 15, fill: colore, stroke: "#1D2329", "stroke-width": 1.5 }));
+const fondo = svg => svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+const pallini = (n, colore, r) => Array.from({ length: n }, () => pallino(colore, r));
+
+const COMMUTATIVA_ADD = {
+  passi: [
+    "Le proprietà delle operazioni sono come dei trucchi: il risultato non cambia, ma il calcolo diventa più facile.",
+    "Proprietà commutativa. Qui ci sono 3 pallini rossi e 8 blu: 3 + 8 fa 11.",
+    "Ora scambio i due gruppi: prima gli 8 blu, poi i 3 rossi. 8 + 3 fa sempre 11, perché i pallini sono gli stessi!",
+    "A cosa serve? Conviene partire dal numero più grande: da 8 conto solo 3 passi avanti. 9, 10, 11."
+  ],
+  crea(svg) {
+    fondo(svg);
+    const x = i => 125 + i * 55;
+    const rossi = pallini(3, ROSSO, 20), blu = pallini(8, BLU, 20);
+    const titolo = nascosto(etichetta(400, 120, "LE PROPRIETÀ DELLE OPERAZIONI", 34));
+    const scritte = ["3 + 8 = 11", "8 + 3 = 11", "8 + 3 = 11"].map(t => nascosto(etichetta(400, 340, t, 40)));
+    const contati = ["9", "10", "11"].map((t, i) => nascosto(etichetta(x(8 + i), 185, t, 28)));
+    svg.append(...rossi, ...blu, titolo, ...scritte, ...contati);
+    const metti = k => {
+      const scambiati = k >= 2;
+      rossi.forEach((g, i) => piazza(g, [x(scambiati ? 8 + i : i), 235]));
+      blu.forEach((g, i) => piazza(g, [x(scambiati ? i : 3 + i), 235]));
+    };
+    metti(0);
+    return {
+      vai(k) {
+        metti(k);
+        vedi(titolo, k === 0);
+        scritte.forEach((t, j) => vedi(t, k === j + 1));
+        contati.forEach(t => vedi(t, k === 3));
+      },
+      ferma() {}
+    };
+  }
+};
+
+const ASSOCIATIVA_ADD = {
+  passi: [
+    "Proprietà associativa. Devo fare 7 + 6 + 4.",
+    "Posso sommare prima due numeri vicini. Scelgo 6 + 4, perché insieme fanno 10: sono numeri amici.",
+    "Poi 7 + 10 fa 17. Il risultato non cambia, ma il calcolo è più facile."
+  ],
+  crea(svg) {
+    fondo(svg);
+    const gruppi = [pallini(7, ROSSO), pallini(6, BLU), pallini(4, VERDE)];
+    // separati: tre gruppi con uno spazio in mezzo; poi il 6 e il 4 si avvicinano e diventano una fila da 10
+    const inizio = (k, j) => (j === 0 ? 70 : j === 1 ? (k >= 1 ? 370 : 340) : (k >= 1 ? 586 : 600));
+    const scatola = nascosto(s("rect", { x: 348, y: 182, width: 368, height: 56, rx: 28, fill: "none", stroke: "#C0282B", "stroke-width": 4 }));
+    const dieci = nascosto(etichetta(532, 166, "10", 30));
+    const numeri = [[178, "7"], [430, "6"], [654, "4"]].map(([x, t]) => nascosto(etichetta(x, 270, t, 28)));
+    const scritte = ["7 + 6 + 4", "7 + (6 + 4)", "7 + 10 = 17"].map(t => nascosto(etichetta(400, 350, t, 40)));
+    svg.append(scatola, ...gruppi.flat(), dieci, ...numeri, ...scritte);
+    const metti = k => gruppi.forEach((g, j) => g.forEach((p, i) => piazza(p, [inizio(k, j) + i * 36, 210])));
+    metti(0);
+    return {
+      vai(k) {
+        metti(k);
+        vedi(scatola, k >= 1);
+        vedi(dieci, k >= 1);
+        numeri.forEach(n => vedi(n, k === 0));
+        scritte.forEach((t, j) => vedi(t, k === j));
+      },
+      ferma() {}
+    };
+  }
+};
+
+const DISSOCIATIVA_ADD = {
+  passi: [
+    "Proprietà dissociativa. Devo fare 8 + 5: 8 pallini rossi e 5 blu.",
+    "A 8 mancano 2 per arrivare a 10. Allora spezzo il 5 in 2 + 3, e con il 2 riempio la decina.",
+    "8 + 2 fa 10, e 10 + 3 fa 13. Quindi 8 + 5 = 13.",
+    "Con i numeri più grandi si spezza in decine e unità. 34 + 25: prima aggiungo le 2 decine, 34 + 20 fa 54. Poi le 5 unità: 54 + 5 fa 59."
+  ],
+  crea(svg) {
+    fondo(svg);
+    const disegno = s("g", { class: "sp-sfuma" });
+    svg.append(disegno);
+    // due «file da dieci»: 2 righe da 5 caselle
+    const L = 58;
+    const casella = (f, i) => [(f === 0 ? 100 : 470) + (i % 5) * L + L / 2, 110 + Math.floor(i / 5) * L + L / 2];
+    for (const f of [0, 1]) for (let i = 0; i < 10; i++) {
+      const [cx, cy] = casella(f, i);
+      disegno.append(s("rect", { x: cx - L / 2, y: cy - L / 2, width: L, height: L, fill: "#fff", stroke: "#9AA8B4", "stroke-width": 2 }));
+    }
+    const rossi = pallini(8, ROSSO, 20), blu = pallini(5, BLU, 20);
+    const anelli = [8, 9].map(i => nascosto(s("circle", { cx: casella(0, i)[0], cy: casella(0, i)[1], r: 26, fill: "none", stroke: "#C0282B", "stroke-width": 4 })));
+    const sotto = [[245, "10"], [615, "3"]].map(([x, t]) => nascosto(etichetta(x, 268, t, 30)));
+    const scritte = ["8 + 5", "8 + 5 = 8 + 2 + 3", "10 + 3 = 13"].map(t => nascosto(etichetta(400, 400, t, 40)));
+    const decine = ["34 + 25", "34 + 20 + 5", "54 + 5 = 59"].map((t, j) => nascosto(etichetta(400, 120 + j * 100, t, 44)));
+    disegno.append(...rossi, ...blu, ...anelli, ...sotto);
+    svg.append(...scritte, ...decine);
+    const metti = k => {
+      rossi.forEach((g, i) => piazza(g, casella(0, i)));
+      blu.forEach((g, i) => piazza(g, k === 0 ? [499 + i * 58, 320] : i < 2 ? casella(0, 8 + i) : casella(1, i - 2)));
+    };
+    metti(0);
+    return {
+      vai(k) {
+        metti(k);
+        vedi(disegno, k <= 2);
+        anelli.forEach(a => vedi(a, k >= 1));
+        sotto.forEach(t => vedi(t, k === 2));
+        scritte.forEach((t, j) => vedi(t, k === j));
+        decine.forEach(t => vedi(t, k === 3));
+      },
+      ferma() {}
+    };
+  }
+};
+
+const INVARIANTIVA = {
+  passi: [
+    "Nella sottrazione non si possono scambiare i numeri: 7 − 3 fa 4, ma 3 − 7 non si può fare con i numeri che usiamo adesso.",
+    "La sottrazione dice quanta differenza c'è tra due numeri. 13 − 9: sopra 13 pallini, sotto 9. Quelli senza compagno sono 4.",
+    "Proprietà invariantiva: aggiungo 1 pallino a tutte e due le file. Adesso è 14 − 10, e quelli senza compagno sono sempre 4.",
+    "A cosa serve? 14 − 10 è più facile di 13 − 9, perché il numero da togliere è tondo. Quindi anche 13 − 9 fa 4.",
+    "Funziona anche togliendo lo stesso numero a tutti e due: 25 − 11 diventa 24 − 10, che fa 14."
+  ],
+  crea(svg) {
+    fondo(svg);
+    const x = i => 130 + i * 40;
+    const file = nascosto(s("g", {}));
+    // la differenza: un rettangolo giallo dietro i pallini senza compagno, che si sposta quando se ne aggiunge uno
+    const giallo = s("g", { class: "sp-blocco" },
+      s("rect", { x: x(9) - 20, y: 142, width: 160, height: 56, rx: 14, fill: "#FFE36A", stroke: "#B8860B", "stroke-width": 2 }),
+      etichetta(x(9) + 60, 132, "4", 28));
+    const compagni = Array.from({ length: 10 }, (_, i) => s("line", { x1: x(i), x2: x(i), y1: 186, y2: 234, stroke: "#9AA8B4", "stroke-width": 3, class: "sp-sfuma" }));
+    const sopra = pallini(14, ROSSO), sotto = pallini(10, BLU);
+    // i due pallini aggiunti hanno l'anello arancio, come gli oggetti nuovi negli esercizi
+    [sopra[13], sotto[9]].forEach(p => { p.firstChild.setAttribute("stroke", "#F28C1B"); p.firstChild.setAttribute("stroke-width", 5); });
+    sopra.forEach((p, i) => piazza(p, [x(i), 170]));
+    sotto.forEach((p, i) => piazza(p, [x(i), 250]));
+    file.append(giallo, ...compagni, ...sopra, ...sotto);
+    const scritte = ["13 − 9 = 4", "14 − 10 = 4", "13 − 9 = 14 − 10 = 4"].map(t => nascosto(etichetta(400, 350, t, 40)));
+    const inizio = [nascosto(etichetta(400, 170, "7 − 3 = 4", 44)), nascosto(etichetta(400, 280, "3 − 7  non si può", 40))];
+    inizio[1].setAttribute("fill", "#C0282B");
+    const togliendo = [nascosto(etichetta(400, 150, "25 − 11", 44)), nascosto(etichetta(400, 225, "−1 a tutti e due", 26)), nascosto(etichetta(400, 310, "24 − 10 = 14", 44))];
+    svg.append(file, ...scritte, ...inizio, ...togliendo);
+    return {
+      vai(k) {
+        vedi(file, k >= 1 && k <= 3);
+        const aggiunto = k >= 2;
+        vedi(sopra[13], aggiunto);
+        vedi(sotto[9], aggiunto);
+        vedi(compagni[9], aggiunto);
+        piazza(giallo, [aggiunto ? 40 : 0, 0]);
+        scritte.forEach((t, j) => vedi(t, k === j + 1));
+        inizio.forEach(t => vedi(t, k === 0));
+        togliendo.forEach(t => vedi(t, k === 4));
+      },
+      ferma() {}
+    };
+  }
+};
+
+const COMMUTATIVA_MOLT = {
+  passi: [
+    "Proprietà commutativa della moltiplicazione. 3 × 5 vuol dire 3 righe da 5 pallini: in tutto sono 15.",
+    "Se giro lo schieramento, diventano 5 righe da 3: 5 × 3. I pallini sono sempre 15!",
+    "A cosa serve? Se sai 3 × 8, sai anche 8 × 3. Così le tabelline da imparare sono quasi la metà."
+  ],
+  crea(svg) {
+    fondo(svg);
+    const L = 56;
+    const colori = [ROSSO, BLU, VERDE];   // un colore per riga: quando si gira, le righe diventano colonne
+    const tutti = Array.from({ length: 15 }, (_, i) => pallino(colori[Math.floor(i / 5)], 20));
+    // un quarto di giro: il pallino della riga r, colonna c va nella riga c, colonna 2 − r
+    const dritto = i => [400 - 2 * L + (i % 5) * L, 140 + Math.floor(i / 5) * L];
+    const girato = i => [400 - L + (2 - Math.floor(i / 5)) * L, 85 + (i % 5) * L];
+    const scritte = ["3 × 5 = 15", "5 × 3 = 15", "3 × 8 = 8 × 3 = 24"].map(t => nascosto(etichetta(400, 405, t, 40)));
+    svg.append(...tutti, ...scritte);
+    tutti.forEach((p, i) => piazza(p, dritto(i)));
+    return {
+      vai(k) {
+        tutti.forEach((p, i) => piazza(p, k >= 1 ? girato(i) : dritto(i)));
+        scritte.forEach((t, j) => vedi(t, k === j));
+      },
+      ferma() {}
+    };
+  }
+};
+
+const ASSOCIATIVA_MOLT = {
+  passi: [
+    "Proprietà associativa. 3 × 2 × 5: posso moltiplicare prima due numeri vicini. 2 × 5 fa 10: in ogni scatola ci sono 2 righe da 5.",
+    "Le scatole sono 3, e in ognuna ce ne sono 10: 3 × 10 fa 30. Il risultato non cambia, ma il calcolo è più facile."
+  ],
+  crea(svg) {
+    fondo(svg);
+    const scatole = [70, 300, 530];
+    scatole.forEach(x => svg.append(s("rect", { x, y: 110, width: 200, height: 120, rx: 16, fill: "#fff", stroke: "#9AA8B4", "stroke-width": 3, "stroke-dasharray": "10 7" })));
+    scatole.forEach(x => {
+      for (let i = 0; i < 10; i++) {
+        const p = pallino(ROSSO, 14);
+        piazza(p, [x + 32 + (i % 5) * 34, 145 + Math.floor(i / 5) * 50]);
+        svg.append(p);
+      }
+    });
+    const sotto = [0, 1].map(k => scatole.map(x => nascosto(etichetta(x + 100, 270, k === 0 ? "2 × 5 = 10" : "10", k === 0 ? 24 : 30))));
+    const scritte = ["3 × (2 × 5)", "3 × 10 = 30"].map(t => nascosto(etichetta(400, 360, t, 42)));
+    svg.append(...sotto.flat(), ...scritte);
+    return {
+      vai(k) {
+        sotto.forEach((riga, j) => riga.forEach(t => vedi(t, k === j)));
+        scritte.forEach((t, j) => vedi(t, k === j));
+      },
+      ferma() {}
+    };
+  }
+};
+
+const DISSOCIATIVA_MOLT = {
+  passi: [
+    "Proprietà dissociativa della moltiplicazione. 7 × 4: spezzo il 4 in 2 × 2. Prima faccio 7 × 2, che fa 14.",
+    "Poi raddoppio: 14 × 2 fa 28. Per moltiplicare per 4 basta fare il doppio del doppio."
+  ],
+  crea(svg) {
+    fondo(svg);
+    // due scatole uguali con 14 pallini (2 righe da 7): la seconda arriva al secondo passo
+    const scatola = x => {
+      const g = s("g", { class: "sp-sfuma" }, s("rect", { x, y: 110, width: 300, height: 120, rx: 16, fill: "#fff", stroke: "#9AA8B4", "stroke-width": 3, "stroke-dasharray": "10 7" }));
+      for (let i = 0; i < 14; i++) {
+        const p = pallino(ROSSO, 15);
+        piazza(p, [x + 42 + (i % 7) * 36, 145 + Math.floor(i / 7) * 50]);
+        g.append(p);
+      }
+      return g;
+    };
+    const prima = scatola(70), seconda = scatola(430);
+    const sotto = [nascosto(etichetta(220, 270, "7 × 2 = 14", 28)), nascosto(etichetta(580, 270, "14", 28))];
+    const scritte = ["7 × 4 = 7 × 2 × 2", "14 × 2 = 28"].map(t => nascosto(etichetta(400, 370, t, 42)));
+    svg.append(prima, seconda, ...sotto, ...scritte);
+    return {
+      vai(k) {
+        vedi(seconda, k >= 1);
+        vedi(sotto[0], true);
+        vedi(sotto[1], k >= 1);
+        scritte.forEach((t, j) => vedi(t, k === j));
+      },
+      ferma() {}
+    };
+  }
+};
+
+const DISTRIBUTIVA = {
+  passi: [
+    "Proprietà distributiva. 6 × 12 è difficile: sono 6 righe da 12 pallini.",
+    "Spezzo il 12 in 10 + 2: diventano due schieramenti, 6 × 10 e 6 × 2.",
+    "6 × 10 fa 60 e 6 × 2 fa 12. Poi sommo i due pezzi: 60 + 12 fa 72. Quindi 6 × 12 = 72.",
+    "Si può spezzare anche con il meno. 6 × 9 è come 6 × 10, meno 6 × 1: 60 − 6 fa 54. Per moltiplicare per 9: moltiplica per 10 e togli una volta il numero."
+  ],
+  crea(svg) {
+    fondo(svg);
+    const P = 32;
+    const tutti = pallini(72, ROSSO, 11);
+    const posto = (i, spezzato) => {
+      const c = i % 12, r = Math.floor(i / 12);
+      return [(spezzato ? 175 : 224) + c * P + (spezzato && c >= 10 ? 70 : 0), 70 + r * P];
+    };
+    const sinistra = nascosto(etichetta(175 + 4.5 * P, 290, "6 × 10", 30)), destra = nascosto(etichetta(175 + 10.5 * P + 70, 290, "6 × 2", 30));
+    const risultati = [nascosto(etichetta(175 + 4.5 * P, 330, "= 60", 30)), nascosto(etichetta(175 + 10.5 * P + 70, 330, "= 12", 30))];
+    const scritte = ["6 × 12 = ?", "6 × 12 = 6 × 10 + 6 × 2", "60 + 12 = 72"].map(t => nascosto(etichetta(400, 405, t, 38)));
+    const meno = ["6 × 9", "6 × 10 − 6 × 1", "60 − 6 = 54"].map((t, j) => nascosto(etichetta(400, 120 + j * 100, t, 44)));
+    const disegno = s("g", { class: "sp-sfuma" }, ...tutti, sinistra, destra, ...risultati);
+    svg.append(disegno, ...scritte, ...meno);
+    tutti.forEach((p, i) => piazza(p, posto(i, false)));
+    return {
+      vai(k) {
+        vedi(disegno, k <= 2);
+        meno.forEach(t => vedi(t, k === 3));
+        tutti.forEach((p, i) => {
+          piazza(p, posto(i, k >= 1));
+          p.firstChild.setAttribute("fill", k >= 1 && i % 12 >= 10 ? BLU : ROSSO);
+        });
+        vedi(sinistra, k >= 1);
+        vedi(destra, k >= 1);
+        risultati.forEach(t => vedi(t, k === 2));
+        scritte.forEach((t, j) => vedi(t, k === j));
+      },
+      ferma() {}
+    };
+  }
+};
+
 const SPIEGAZIONI = { "stati-materia": STATI, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
-  fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE };
+  fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
+  "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,
+  "proprieta-moltiplicazione": insieme(COMMUTATIVA_MOLT, ASSOCIATIVA_MOLT, DISSOCIATIVA_MOLT, DISTRIBUTIVA) };
 
 // Un video libero dell'archivio Wikimedia Commons: niente pubblicità. Si carica solo quando qualcuno lo chiede,
 // e accanto c'è il link alla sua pagina, dove ci sono autore e licenza.

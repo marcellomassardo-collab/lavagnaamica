@@ -47,7 +47,10 @@ export const ANIMAZIONI = {
   prestito: "Il prestito, in colonna",
   "tavola-pitagorica": "Come si usa la tavola pitagorica",
   moltiplicazione: "Che cos'è la moltiplicazione",
-  tabelline: "La moltiplicazione e la tavola pitagorica"
+  tabelline: "La moltiplicazione e la tavola pitagorica",
+  "proprieta-addizione": "Le proprietà dell'addizione",
+  "proprieta-sottrazione": "La proprietà invariantiva della sottrazione",
+  "proprieta-moltiplicazione": "Le proprietà della moltiplicazione"
 };
 
 export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Inglese", "Arte e immagine", "Musica", "Altro"];
@@ -249,6 +252,7 @@ export const GENERI = {
   decine:       { nome: "Decine e unità",        spiega: "Il numero fatto con le decine (barrette da dieci) e le unità." },
   operazione:   { nome: "Operazione",            spiega: "Un calcolo che si vede con gli oggetti." },
   colonna:      { nome: "In colonna",            spiega: "Addizione o sottrazione in colonna, fino a 999: con i quadrati delle centinaia, le barrette delle decine e i cubetti delle unità si vede il cambio (riporto e prestito)." },
+  proprieta:    { nome: "Proprietà",             spiega: "Una proprietà delle operazioni, vista con gli oggetti: lo stesso calcolo fatto in un modo più facile." },
   problema:     { nome: "Problema",              spiega: "Una piccola storia da guardare e capire prima di scegliere l'operazione." }
 };
 
@@ -266,6 +270,68 @@ export const SCHEMI = {
   ripartizione: { op: ":", nome: "Si dividono in parti uguali" },
   contenenza:   { op: ":", nome: "Si fanno gruppi uguali e si contano i gruppi" }
 };
+
+// Le proprietà delle operazioni. I numeri di ogni esercizio:
+// commutativa: a e b, che si scambiano; associativa: a, b, c, e una delle due coppie vicine fa 10, 20, 30… (si fa prima quella);
+// dissociativa dell'addizione: a + b, e b si spezza in c + (b − c), oppure, senza c, nel pezzo che porta a alla decina dopo;
+// invariantiva: a − b, e c si aggiunge (o si toglie, se è negativo) a tutti e due, così b diventa tondo;
+// dissociativa della moltiplicazione: a × b, e b si spezza in c × (b : c); distributiva: a × b, e b si spezza in c + (b − c),
+// oppure, se c è più grande di b, in c − (c − b) (per esempio × 9 = × 10 − × 1).
+export const PROPRIETA = {
+  "commutativa-addizione":       { op: "+", voce: "Commutativa dell'addizione", nome: "Proprietà commutativa",
+    regola: "se cambio l'ordine dei numeri, il risultato non cambia." },
+  "associativa-addizione":       { op: "+", voce: "Associativa dell'addizione", nome: "Proprietà associativa",
+    regola: "se sommo prima due numeri vicini, il risultato non cambia." },
+  "dissociativa-addizione":      { op: "+", voce: "Dissociativa dell'addizione", nome: "Proprietà dissociativa",
+    regola: "se spezzo un numero in due parti, il risultato non cambia." },
+  "invariantiva-sottrazione":    { op: "-", voce: "Invariantiva della sottrazione", nome: "Proprietà invariantiva",
+    regola: "se aggiungo o tolgo lo stesso numero a tutti e due i numeri, il risultato non cambia." },
+  "commutativa-moltiplicazione": { op: "x", voce: "Commutativa della moltiplicazione", nome: "Proprietà commutativa",
+    regola: "se cambio l'ordine dei numeri, il risultato non cambia." },
+  "associativa-moltiplicazione": { op: "x", voce: "Associativa della moltiplicazione", nome: "Proprietà associativa",
+    regola: "se moltiplico prima due numeri vicini, il risultato non cambia." },
+  "dissociativa-moltiplicazione": { op: "x", voce: "Dissociativa della moltiplicazione", nome: "Proprietà dissociativa",
+    regola: "se spezzo un numero in una moltiplicazione, il risultato non cambia." },
+  "distributiva-moltiplicazione": { op: "x", voce: "Distributiva della moltiplicazione", nome: "Proprietà distributiva",
+    regola: "se spezzo un numero in un'addizione (o in una sottrazione), moltiplico ogni parte e poi sommo (o sottraggo), il risultato non cambia." }
+};
+
+function controllaProprieta(x, a, b, c, no) {
+  const intero = (n, min, max) => Number.isInteger(n) && n >= min && n <= max;
+  const tondo = n => n > 0 && n % 10 === 0;
+  if (!intero(a, 1, 60) || !intero(b, 1, 60)) no("i numeri vanno da 1 a 60.");
+  if (x === "commutativa-addizione" && a + b > MAX_OGGETTI) no("con più di " + MAX_OGGETTI + " oggetti non si vedono bene.");
+  if (x === "associativa-addizione") {
+    if (!intero(c, 1, 60) || a + b + c > MAX_OGGETTI) no("servono tre numeri, in tutto al massimo " + MAX_OGGETTI + ".");
+    if (tondo(a + b) === tondo(b + c)) no("una sola delle due coppie vicine (il primo col secondo, o il secondo col terzo) deve fare 10, 20, 30…");
+  }
+  if (x === "dissociativa-addizione") {
+    if (c === undefined) {
+      if (a % 10 === 0) no("il primo numero non deve essere già tondo.");
+      if (a % 10 + b <= 10) no("il secondo numero deve superare la decina dopo il primo.");
+    } else if (!Number.isInteger(c) || c < 1 || c >= b) no("il pezzo in cui si spezza il secondo numero va da 1 a " + (b - 1) + ".");
+    if (a + b > MAX_OGGETTI) no("con più di " + MAX_OGGETTI + " oggetti non si vedono bene.");
+  }
+  if (x === "invariantiva-sottrazione") {
+    if (b > a) no("il secondo numero non può essere più grande del primo.");
+    if (!Number.isInteger(c) || c === 0 || Math.abs(c) > 9) no("il numero da aggiungere (o da togliere, col meno) va da 1 a 9.");
+    if (!tondo(b + c)) no("aggiungendo o togliendo, il secondo numero deve diventare tondo (10, 20, 30…).");
+    if (a + c > 40) no("al massimo 40 nella prima fila.");
+  }
+  if (x === "commutativa-moltiplicazione" && (a > 10 || b > 10)) no("al massimo 10 righe da 10.");
+  if (x === "associativa-moltiplicazione") {
+    if (!intero(c, 1, 10) || a > 10 || b > 10 || a * b * c > MAX_OGGETTI) no("servono tre numeri fino a 10, che moltiplicati fanno al massimo " + MAX_OGGETTI + ".");
+    if (tondo(a * b) === tondo(b * c)) no("una sola delle due coppie vicine deve fare 10, 20, 30…");
+  }
+  if (x === "dissociativa-moltiplicazione") {
+    if (a > 10 || b > 10 || a * b > MAX_OGGETTI) no("numeri fino a 10, che moltiplicati fanno al massimo " + MAX_OGGETTI + ".");
+    if (!Number.isInteger(c) || c < 2 || c >= b || b % c !== 0) no("il secondo numero si deve spezzare in una moltiplicazione: il pezzo deve starci un numero esatto di volte.");
+  }
+  if (x === "distributiva-moltiplicazione") {
+    if (a > 10 || b > 20 || a * Math.max(b, c || 0) > 100) no("al massimo 10 righe da 20, e al massimo 100 oggetti.");
+    if (!Number.isInteger(c) || c < 1 || c === b || c > 20) no("il pezzo in cui si spezza il secondo numero va da 1 a 20, diverso dal numero.");
+  }
+}
 
 export function risultato(op, a, b) {
   return op === "+" ? a + b : op === "-" ? a - b : op === "x" ? a * b : a / b;
@@ -310,6 +376,15 @@ function esercizioDiMatematica(x, i) {
     if (!Number.isInteger(a) || !Number.isInteger(b) || a < 1 || b < 1 || a > 999 || b > 999) errore(inizio + "i due numeri vanno da 1 a 999.");
     if (m.op === "+" && a + b > 999) errore(inizio + "il risultato deve stare entro 999.");
     if (m.op === "-" && b > a) errore(inizio + "il secondo numero non può essere più grande del primo.");
+  }
+  if (x.genere === "proprieta") {
+    m.prop = PROPRIETA[x.prop] ? x.prop : errore(inizio + "scegli la proprietà.");
+    m.b = b;
+    const facoltativo = m.prop === "dissociativa-addizione" && (x.c === undefined || x.c === null || x.c === "");
+    const c = facoltativo ? undefined : Number(x.c);
+    if (["associativa-addizione", "dissociativa-addizione", "invariantiva-sottrazione", "associativa-moltiplicazione",
+      "dissociativa-moltiplicazione", "distributiva-moltiplicazione"].includes(m.prop) && c !== undefined) m.c = c;
+    controllaProprieta(m.prop, a, b, c, msg => errore(inizio + msg));
   }
   if (x.genere === "problema") {
     m.schema = SCHEMI[x.schema] ? x.schema : errore(inizio + "scegli che cosa succede nel problema.");

@@ -328,6 +328,8 @@ input[type="text"], input[type="search"], select {
 .cesti { display: grid; gap: 14px; grid-template-columns: repeat(var(--gruppi), minmax(0, 1fr)); flex: 1; }
 .cesto { border: 3px dashed var(--bordo); border-radius: 22px; padding: 10px; display: flex; flex-direction: column; gap: 10px; min-height: 220px; background: var(--zona); }
 .cesto-testa { --picto: clamp(44px, 5vw, 72px); background: var(--lavagna); color: var(--su-lavagna); border-color: var(--lavagna); flex-direction: row; min-height: 0; }
+/* nomi lunghi (COMMUTATIVA) su quattro cesti: carattere un po' più piccolo e, se proprio non ci stanno, a capo col trattino */
+.cesto-testa { padding-inline: 8px; font-size: clamp(.85rem, .55rem + 1vw, 1.15rem); hyphens: auto; overflow-wrap: break-word; }
 .cesto-dentro { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-content: flex-start; flex: 1; }
 .cesto-dentro .carta { --picto: clamp(36px, 4vw, 60px); --carta-min: clamp(72px, 7vw, 110px); padding: 6px 8px; font-size: .85em; box-shadow: none; }
 
@@ -362,6 +364,10 @@ input[type="text"], input[type="search"], select {
 .mat-opzione.sbagliata { opacity: .35; }
 .mat-uguale { margin: 0; font-size: clamp(1.6rem, 1.2rem + 2vw, 2.8rem); font-weight: 800; text-align: center; color: var(--lavagna); letter-spacing: .04em; }
 .mat-risposta { margin: 0; text-align: center; font-weight: 700; font-size: 1.15em; }
+.mat-consiglio { margin: 0; text-align: center; font-size: 1.05em; }
+.prop-parti { display: flex; gap: clamp(18px, 4vw, 56px); justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+.prop-parte { display: grid; gap: 10px; justify-items: center; }
+.prop-parte > span { font-weight: 800; font-size: 1.4em; color: var(--lavagna); }
 
 .ogg {
   --ogg: clamp(32px, 4.2vw, 68px);
