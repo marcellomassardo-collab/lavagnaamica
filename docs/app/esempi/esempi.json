@@ -8447,6 +8447,212 @@
   }
  },
  {
+  "id": "addizioni-entro-20",
+  "materia": "Matematica",
+  "livello": 1,
+  "titolo": "Addizioni entro 20",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Gli oggetti nuovi arrivano e riempiono le file da dieci: quanti sono in tutto?",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "biscotto",
+    "p": 8295
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 6,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 9,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 8,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 7,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 11,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 9,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 13,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 8,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 14,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 12,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 6,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 15,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 7,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "+",
+     "a": 16,
+     "b": 4
+    }
+   ]
+  }
+ },
+ {
+  "id": "sottrazioni-entro-20",
+  "materia": "Matematica",
+  "livello": 1,
+  "titolo": "Sottrazioni entro 20",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Togli gli oggetti: quanti ne restano?",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "caramella",
+    "p": 2686
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 9,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 11,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 12,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 14,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 13,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 15,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 16,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 17,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 18,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 20,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 19,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 14,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 20,
+     "b": 11
+    },
+    {
+     "genere": "operazione",
+     "op": "-",
+     "a": 15,
+     "b": 6
+    }
+   ]
+  }
+ },
+ {
   "id": "colonna-addizioni",
   "materia": "Matematica",
   "livello": 2,
@@ -8513,6 +8719,96 @@
   }
  },
  {
+  "id": "colonna-addizioni-riporto",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Addizioni in colonna con il riporto",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Prima le unità, poi le decine. In tutte le unità fanno 10 o più: 10 unità diventano 1 decina.",
+  "scopri": {
+   "animazione": "riporto"
+  },
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 29,
+     "b": 19
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 44,
+     "b": 26
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 38,
+     "b": 23
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 66,
+     "b": 14
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 49,
+     "b": 13
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 35,
+     "b": 48
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 27,
+     "b": 53
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 34,
+     "b": 57
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 23,
+     "b": 67
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 66,
+     "b": 18
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 12,
+     "b": 79
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 69,
+     "b": 12
+    }
+   ]
+  }
+ },
+ {
   "id": "colonna-addizioni-centinaia",
   "materia": "Matematica",
   "livello": 3,
@@ -8564,6 +8860,84 @@
   },
   "scopri": {
    "animazione": "riporto"
+  }
+ },
+ {
+  "id": "colonna-addizioni-due-riporti",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Addizioni in colonna con due riporti",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Unità, decine, centinaia. Qui il cambio c'è due volte: dalle unità alle decine e dalle decine alle centinaia.",
+  "scopri": {
+   "animazione": "riporto"
+  },
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 158,
+     "b": 267
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 276,
+     "b": 148
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 389,
+     "b": 245
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 467,
+     "b": 286
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 195,
+     "b": 238
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 348,
+     "b": 377
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 529,
+     "b": 186
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 657,
+     "b": 278
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 284,
+     "b": 159
+    },
+    {
+     "genere": "colonna",
+     "op": "+",
+     "a": 436,
+     "b": 397
+    }
+   ]
   }
  },
  {
@@ -8633,6 +9007,96 @@
   }
  },
  {
+  "id": "colonna-sottrazioni-prestito",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Sottrazioni in colonna con il prestito",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Prima le unità, poi le decine. In tutte servono più unità: 1 decina diventa 10 unità.",
+  "scopri": {
+   "animazione": "prestito"
+  },
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 50,
+     "b": 33
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 77,
+     "b": 58
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 81,
+     "b": 67
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 70,
+     "b": 58
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 33,
+     "b": 15
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 76,
+     "b": 29
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 74,
+     "b": 47
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 71,
+     "b": 55
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 84,
+     "b": 69
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 74,
+     "b": 39
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 72,
+     "b": 46
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 51,
+     "b": 37
+    }
+   ]
+  }
+ },
+ {
   "id": "colonna-sottrazioni-centinaia",
   "materia": "Matematica",
   "livello": 3,
@@ -8684,6 +9148,162 @@
   },
   "scopri": {
    "animazione": "prestito"
+  }
+ },
+ {
+  "id": "colonna-sottrazioni-due-prestiti",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Sottrazioni in colonna con due prestiti",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Unità, decine, centinaia. Qui il prestito serve due volte: alle unità e alle decine.",
+  "scopri": {
+   "animazione": "prestito"
+  },
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 423,
+     "b": 158
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 532,
+     "b": 267
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 641,
+     "b": 385
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 724,
+     "b": 456
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 813,
+     "b": 547
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 352,
+     "b": 186
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 615,
+     "b": 239
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 931,
+     "b": 678
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 462,
+     "b": 194
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 754,
+     "b": 289
+    }
+   ]
+  }
+ },
+ {
+  "id": "colonna-sottrazioni-zero",
+  "materia": "Matematica",
+  "livello": 4,
+  "titolo": "Sottrazioni in colonna con lo zero",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Quando nella colonna vicina c'è uno zero, il prestito si chiede ancora più a sinistra: alle centinaia.",
+  "scopri": {
+   "animazione": "prestito"
+  },
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 300,
+     "b": 124
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 402,
+     "b": 157
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 500,
+     "b": 263
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 605,
+     "b": 238
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 703,
+     "b": 446
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 800,
+     "b": 375
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 204,
+     "b": 89
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 901,
+     "b": 456
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 406,
+     "b": 178
+    },
+    {
+     "genere": "colonna",
+     "op": "-",
+     "a": 700,
+     "b": 352
+    }
+   ]
   }
  },
  {
@@ -8819,6 +9439,1207 @@
      "op": "x",
      "a": 10,
      "b": 9
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabellina-2",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La tabellina del 2",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "fragola",
+    "p": 2400
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 1
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabellina-3",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La tabellina del 3",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "mela",
+    "p": 2462
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 1
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabellina-4",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La tabellina del 4",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "fiore",
+    "p": 7104
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 1
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabellina-5",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La tabellina del 5",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "caramella",
+    "p": 2686
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 1
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabellina-6",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La tabellina del 6",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "biscotto",
+    "p": 8295
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 1
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabellina-7",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La tabellina del 7",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "matita",
+    "p": 2440
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 1
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabellina-8",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La tabellina dell'8",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "fragola",
+    "p": 2400
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 1
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabellina-9",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La tabellina del 9",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "fiore",
+    "p": 7104
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 1
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabellina-10",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La tabellina del 10",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "mela",
+    "p": 2462
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 1
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabelline-2-5-10",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Le tabelline del 2, del 5 e del 10",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "caramella",
+    "p": 2686
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 10
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 9
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabelline-3-4-6",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Le tabelline del 3, del 4 e del 6",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "mela",
+    "p": 2462
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 10
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 10
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 10
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 9
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabelline-7-8-9",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Le tabelline del 7, dell'8 e del 9",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "fiore",
+    "p": 7104
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 10
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 10
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 5
+    }
+   ]
+  }
+ },
+ {
+  "id": "tabelline-in-disordine",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Tutte le tabelline, in disordine",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Ogni riga ha lo stesso numero di oggetti: conta le righe e quanti ce ne sono in ogni riga.",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "fragola",
+    "p": 2400
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 10,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 10
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 6,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 10
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 9,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 8,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 7,
+     "b": 7
     }
    ]
   }
@@ -9202,6 +11023,109 @@
      "op": ":",
      "a": 18,
      "b": 3
+    }
+   ]
+  }
+ },
+ {
+  "id": "divisioni-tabelline",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Divisioni con le tabelline",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Dai un oggetto a ogni piatto, uno alla volta. Poi pensa: quale tabellina c'era dentro?",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "caramella",
+    "p": 2686
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 12,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 14,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 15,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 16,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 18,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 20,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 21,
+     "b": 7
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 24,
+     "b": 6
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 25,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 27,
+     "b": 9
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 28,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 30,
+     "b": 10
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 24,
+     "b": 8
+    },
+    {
+     "genere": "operazione",
+     "op": ":",
+     "a": 30,
+     "b": 6
     }
    ]
   }
