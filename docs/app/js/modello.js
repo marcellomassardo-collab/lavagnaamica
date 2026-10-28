@@ -97,6 +97,8 @@ export function valida(v) {
     dati: {}
   };
   if (MATERIE.includes(v.materia)) es.materia = v.materia;
+  // il livello dell'esercizio, da 1 (i primi passi) a 4 (il più difficile): divide la pagina della materia
+  if (LIVELLI[v.livello]) es.livello = Number(v.livello);
   // testi o immagini protetti da diritti: si usano solo in classe (art. 70 e 70-bis L. 633/1941),
   // quindi l'esercizio non si pubblica nel catalogo e non si condivide con un link
   if (v.privato) es.privato = true;

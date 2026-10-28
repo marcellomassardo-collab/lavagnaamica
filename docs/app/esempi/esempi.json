@@ -64,7 +64,8 @@
     ]
    ]
   },
-  "materia": "Scienze"
+  "materia": "Scienze",
+  "livello": 1
  },
  {
   "id": "leggere-1-vocali",
@@ -74,6 +75,7 @@
   "gioco": "lettura",
   "consegna": "Ascolta la parola: con che vocale inizia?",
   "materia": "Italiano",
+  "livello": 1,
   "dati": {
    "esercizi": [
     {
@@ -195,6 +197,7 @@
   "gioco": "abbina",
   "consegna": "Abbina ogni lettera maiuscola alla sua minuscola.",
   "materia": "Italiano",
+  "livello": 1,
   "dati": {
    "coppie": [
     [
@@ -328,6 +331,7 @@
   "gioco": "lettura",
   "consegna": "Ascolta la parola: con che lettera inizia?",
   "materia": "Italiano",
+  "livello": 1,
   "dati": {
    "esercizi": [
     {
@@ -441,6 +445,7 @@
   "gioco": "lettura",
   "consegna": "Guarda le lettere che si uniscono e leggi la sillaba.",
   "materia": "Italiano",
+  "livello": 1,
   "dati": {
    "esercizi": [
     {
@@ -574,6 +579,7 @@
   "gioco": "lettura",
   "consegna": "Ascolta la parola: con che sillaba inizia?",
   "materia": "Italiano",
+  "livello": 1,
   "dati": {
    "esercizi": [
     {
@@ -687,6 +693,7 @@
   "gioco": "lettura",
   "consegna": "Metti in ordine le sillabe e componi la parola.",
   "materia": "Italiano",
+  "livello": 1,
   "dati": {
    "esercizi": [
     {
@@ -780,6 +787,7 @@
   "gioco": "lettura",
   "consegna": "Metti in ordine le sillabe e componi la parola.",
   "materia": "Italiano",
+  "livello": 1,
   "dati": {
    "esercizi": [
     {
@@ -881,6 +889,7 @@
   "gioco": "lettura",
   "consegna": "Leggi la parola e tocca l'immagine giusta.",
   "materia": "Italiano",
+  "livello": 1,
   "dati": {
    "esercizi": [
     {
@@ -984,6 +993,7 @@
   "gioco": "lettura",
   "consegna": "Metti in ordine le parole e componi la frase.",
   "materia": "Italiano",
+  "livello": 1,
   "dati": {
    "esercizi": [
     {
@@ -1055,6 +1065,7 @@
   "gioco": "lettura",
   "consegna": "Leggi la frase e tocca l'immagine giusta.",
   "materia": "Italiano",
+  "livello": 1,
   "dati": {
    "esercizi": [
     {
@@ -4289,6 +4300,7 @@
   "gioco": "abbina",
   "consegna": "Porta il nome del verso vicino al suo animale.",
   "materia": "Italiano",
+  "livello": 2,
   "dati": {
    "coppie": [
     [
@@ -4428,6 +4440,7 @@
   "gioco": "completa",
   "consegna": "Completa la frase: che cosa fa l'animale e come si chiama il suo verso.",
   "materia": "Italiano",
+  "livello": 3,
   "dati": {
    "frasi": [
     "La mucca fa «muuu»: [muggisce]. Il suo verso si chiama [muggito].",
@@ -4501,7 +4514,8 @@
     ]
    ]
   },
-  "materia": "Italiano"
+  "materia": "Italiano",
+  "livello": 1
  },
  {
   "id": "frutta-verdura",
@@ -4565,7 +4579,8 @@
     }
    ]
   },
-  "materia": "Scienze"
+  "materia": "Scienze",
+  "livello": 1
  },
  {
   "id": "colori",
@@ -4677,7 +4692,8 @@
     }
    ]
   },
-  "materia": "Italiano"
+  "materia": "Italiano",
+  "livello": 1
  },
  {
   "id": "giornata",
@@ -4714,7 +4730,8 @@
     }
    ]
   },
-  "materia": "Storia"
+  "materia": "Storia",
+  "livello": 1
  },
  {
   "id": "articoli",
@@ -4736,11 +4753,13 @@
     "una"
    ]
   },
-  "materia": "Italiano"
+  "materia": "Italiano",
+  "livello": 2
  },
  {
   "id": "sillabe",
   "materia": "Italiano",
+  "livello": 1,
   "titolo": "Con che sillaba inizia?",
   "scrittura": "maiuscolo",
   "tipo": "domande",
@@ -5237,6 +5256,7 @@
  {
   "id": "bosco",
   "materia": "Italiano",
+  "livello": 1,
   "titolo": "Le parole del bosco",
   "scrittura": "maiuscolo",
   "tipo": "coppie",
@@ -5346,6 +5366,7 @@
  {
   "id": "cinque-sensi",
   "materia": "Scienze",
+  "livello": 1,
   "titolo": "I cinque sensi",
   "scrittura": "maiuscolo",
   "tipo": "coppie",
@@ -5414,6 +5435,7 @@
   "gioco": "raggruppa",
   "consegna": "Metti ogni cosa nel gruppo giusto.",
   "materia": "Scienze",
+  "livello": 2,
   "dati": {
    "gruppi": [
     {
@@ -5485,6 +5507,7 @@
   "gioco": "raggruppa",
   "consegna": "Metti ogni cosa nel suo stato.",
   "materia": "Scienze",
+  "livello": 3,
   "dati": {
    "gruppi": [
     {
@@ -5555,6 +5578,7 @@
   "gioco": "abbina",
   "consegna": "Abbina ogni parola a quello che succede.",
   "materia": "Scienze",
+  "livello": 3,
   "dati": {
    "coppie": [
     [
@@ -5603,6 +5627,7 @@
   "gioco": "sequenza",
   "consegna": "Metti in ordine il viaggio dell'acqua, dal mare.",
   "materia": "Scienze",
+  "livello": 3,
   "dati": {
    "passi": [
     {
@@ -5631,6 +5656,7 @@
   "gioco": "sequenza",
   "consegna": "Metti in ordine: come nasce e cresce una pianta.",
   "materia": "Scienze",
+  "livello": 2,
   "dati": {
    "passi": [
     {
@@ -5667,6 +5693,7 @@
   "gioco": "abbina",
   "consegna": "Abbina ogni parte della pianta a quello che fa.",
   "materia": "Scienze",
+  "livello": 2,
   "dati": {
    "coppie": [
     [
@@ -5728,6 +5755,7 @@
   "gioco": "raggruppa",
   "consegna": "Che cosa mangia? Metti ogni animale nel gruppo giusto.",
   "materia": "Scienze",
+  "livello": 3,
   "dati": {
    "gruppi": [
     {
@@ -5804,6 +5832,7 @@
   "gioco": "sequenza",
   "consegna": "Chi mangia chi? Metti in ordine, dalla pianta.",
   "materia": "Scienze",
+  "livello": 3,
   "dati": {
    "passi": [
     {
@@ -5837,6 +5866,7 @@
   "gioco": "raggruppa",
   "consegna": "Metti ogni animale nella sua classe. Attenzione alle sorprese!",
   "materia": "Scienze",
+  "livello": 4,
   "dati": {
    "gruppi": [
     {
@@ -5927,6 +5957,7 @@
   "gioco": "raggruppa",
   "consegna": "Ha la colonna vertebrale? Metti ogni animale nel gruppo giusto.",
   "materia": "Scienze",
+  "livello": 3,
   "dati": {
    "gruppi": [
     {
@@ -5994,6 +6025,7 @@
   "gioco": "abbina",
   "consegna": "Abbina ogni parte del corpo a quello che fa.",
   "materia": "Scienze",
+  "livello": 4,
   "dati": {
    "coppie": [
     [
@@ -6061,6 +6093,7 @@
   "gioco": "sequenza",
   "consegna": "Metti in ordine i pianeti, dal più vicino al Sole.",
   "materia": "Scienze",
+  "livello": 4,
   "dati": {
    "passi": [
     {
@@ -6109,6 +6142,7 @@
   "gioco": "sequenza",
   "consegna": "Metti in ordine, dal più piccolo al più grande.",
   "materia": "Scienze",
+  "livello": 4,
   "dati": {
    "passi": [
     {
@@ -6142,6 +6176,7 @@
   "gioco": "raggruppa",
   "consegna": "Questa fonte di energia finisce o si rinnova? Mettila nel gruppo giusto.",
   "materia": "Scienze",
+  "livello": 4,
   "dati": {
    "gruppi": [
     {
@@ -6186,6 +6221,7 @@
  {
   "id": "autunno-sensi",
   "materia": "Italiano",
+  "livello": 2,
   "titolo": "L'autunno con i cinque sensi",
   "scrittura": "maiuscolo",
   "tipo": "frasi",
@@ -6210,6 +6246,7 @@
  {
   "id": "fonti-storiche",
   "materia": "Storia",
+  "livello": 2,
   "titolo": "Le fonti storiche",
   "scrittura": "maiuscolo",
   "tipo": "gruppi",
@@ -6336,6 +6373,7 @@
   "gioco": "sequenza",
   "consegna": "Metti in ordine, dal più piccolo al più grande.",
   "materia": "Storia",
+  "livello": 1,
   "dati": {
    "passi": [
     {
@@ -6369,6 +6407,7 @@
   "gioco": "sequenza",
   "consegna": "Metti in ordine i giorni, da lunedì a domenica.",
   "materia": "Storia",
+  "livello": 1,
   "dati": {
    "passi": [
     {
@@ -6403,6 +6442,7 @@
   "gioco": "scelta",
   "consegna": "Scegli la risposta giusta.",
   "materia": "Storia",
+  "livello": 2,
   "dati": {
    "domande": [
     {
@@ -6535,6 +6575,7 @@
   "gioco": "scelta",
   "consegna": "Guarda bene: che tipo di fonte è?",
   "materia": "Storia",
+  "livello": 3,
   "dati": {
    "domande": [
     {
@@ -6670,6 +6711,7 @@
   "gioco": "abbina",
   "consegna": "Abbina ogni esperto a quello che studia.",
   "materia": "Storia",
+  "livello": 3,
   "dati": {
    "coppie": [
     [
@@ -6725,6 +6767,7 @@
   "gioco": "sequenza",
   "consegna": "Metti in ordine, da quello che è successo prima.",
   "materia": "Storia",
+  "livello": 3,
   "dati": {
    "passi": [
     {
@@ -6762,6 +6805,7 @@
   "gioco": "raggruppa",
   "consegna": "Metti ogni cosa nel periodo giusto.",
   "materia": "Storia",
+  "livello": 3,
   "dati": {
    "gruppi": [
     {
@@ -6833,6 +6877,7 @@
   "gioco": "sequenza",
   "consegna": "Metti in ordine, dal periodo più antico.",
   "materia": "Storia",
+  "livello": 3,
   "dati": {
    "passi": [
     {
@@ -6866,6 +6911,7 @@
   "gioco": "abbina",
   "consegna": "Abbina ogni popolo al suo fiume.",
   "materia": "Storia",
+  "livello": 4,
   "dati": {
    "coppie": [
     [
@@ -6915,6 +6961,7 @@
   "gioco": "abbina",
   "consegna": "Abbina ogni reperto al popolo che l'ha fatto.",
   "materia": "Storia",
+  "livello": 4,
   "dati": {
    "coppie": [
     [
@@ -6977,6 +7024,7 @@
   "gioco": "raggruppa",
   "consegna": "Metti ogni cosa con il suo popolo.",
   "materia": "Storia",
+  "livello": 4,
   "dati": {
    "gruppi": [
     {
@@ -7047,6 +7095,7 @@
   "gioco": "sequenza",
   "consegna": "Metti in ordine, dalla più antica. Attenzione: prima di Cristo gli anni si contano all'indietro!",
   "materia": "Storia",
+  "livello": 4,
   "dati": {
    "passi": [
     {
@@ -7087,6 +7136,7 @@
   "gioco": "scelta",
   "consegna": "Guarda dove si trova il pallino rosso.",
   "materia": "Geografia",
+  "livello": 1,
   "dati": {
    "domande": [
     {
@@ -7185,6 +7235,7 @@
   "gioco": "raggruppa",
   "consegna": "Metti ogni elemento nel suo gruppo.",
   "materia": "Geografia",
+  "livello": 2,
   "dati": {
    "gruppi": [
     {
@@ -7256,6 +7307,7 @@
   "gioco": "abbina",
   "consegna": "Abbina ogni paesaggio alla sua descrizione.",
   "materia": "Geografia",
+  "livello": 3,
   "dati": {
    "coppie": [
     [
@@ -7341,6 +7393,7 @@
   "gioco": "abbina",
   "consegna": "Abbina ogni punto cardinale al suo altro nome.",
   "materia": "Geografia",
+  "livello": 3,
   "dati": {
    "coppie": [
     [
@@ -7389,6 +7442,7 @@
   "gioco": "scelta",
   "consegna": "Scegli la risposta giusta.",
   "materia": "Geografia",
+  "livello": 3,
   "dati": {
    "domande": [
     {
@@ -7492,6 +7546,7 @@
   "gioco": "abbina",
   "consegna": "Abbina ogni parola al suo significato.",
   "materia": "Geografia",
+  "livello": 3,
   "dati": {
    "coppie": [
     [
@@ -7556,6 +7611,7 @@
   "gioco": "scelta",
   "consegna": "Scegli la risposta giusta.",
   "materia": "Geografia",
+  "livello": 4,
   "dati": {
    "domande": [
     {
@@ -7720,6 +7776,7 @@
   "gioco": "abbina",
   "consegna": "Abbina ogni regione al suo capoluogo.",
   "materia": "Geografia",
+  "livello": 4,
   "dati": {
    "coppie": [
     [
@@ -7893,6 +7950,7 @@
   "gioco": "scelta",
   "consegna": "Scegli la risposta giusta.",
   "materia": "Geografia",
+  "livello": 4,
   "dati": {
    "domande": [
     {
@@ -8029,6 +8087,7 @@
  {
   "id": "conta-oggetti",
   "materia": "Matematica",
+  "livello": 1,
   "titolo": "Quanti sono?",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8079,6 +8138,7 @@
  {
   "id": "maggiore-minore",
   "materia": "Matematica",
+  "livello": 1,
   "titolo": "Di più, di meno o uguali?",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8127,6 +8187,7 @@
  {
   "id": "prima-dopo",
   "materia": "Matematica",
+  "livello": 1,
   "titolo": "Il numero prima e dopo",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8195,6 +8256,7 @@
  {
   "id": "decine-unita",
   "materia": "Matematica",
+  "livello": 2,
   "titolo": "Decine e unità",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8253,6 +8315,7 @@
  {
   "id": "addizioni",
   "materia": "Matematica",
+  "livello": 1,
   "titolo": "Addizioni con gli oggetti",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8319,6 +8382,7 @@
  {
   "id": "sottrazioni",
   "materia": "Matematica",
+  "livello": 1,
   "titolo": "Sottrazioni con gli oggetti",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8385,6 +8449,7 @@
  {
   "id": "colonna-addizioni",
   "materia": "Matematica",
+  "livello": 2,
   "titolo": "Addizioni in colonna",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8450,6 +8515,7 @@
  {
   "id": "colonna-addizioni-centinaia",
   "materia": "Matematica",
+  "livello": 3,
   "titolo": "Addizioni in colonna con le centinaia",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8503,6 +8569,7 @@
  {
   "id": "colonna-sottrazioni",
   "materia": "Matematica",
+  "livello": 2,
   "titolo": "Sottrazioni in colonna",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8568,6 +8635,7 @@
  {
   "id": "colonna-sottrazioni-centinaia",
   "materia": "Matematica",
+  "livello": 3,
   "titolo": "Sottrazioni in colonna con le centinaia",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8621,6 +8689,7 @@
  {
   "id": "moltiplicazioni",
   "materia": "Matematica",
+  "livello": 2,
   "titolo": "Moltiplicazioni con gli schieramenti",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8687,6 +8756,7 @@
  {
   "id": "tabelline-fino-al-10",
   "materia": "Matematica",
+  "livello": 2,
   "titolo": "Le tabelline fino al 10",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8756,6 +8826,7 @@
  {
   "id": "proprieta-addizione",
   "materia": "Matematica",
+  "livello": 3,
   "titolo": "Le proprietà dell'addizione",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8812,6 +8883,7 @@
  {
   "id": "proprieta-sottrazione",
   "materia": "Matematica",
+  "livello": 3,
   "titolo": "La proprietà invariantiva della sottrazione",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8871,6 +8943,7 @@
  {
   "id": "proprieta-moltiplicazione",
   "materia": "Matematica",
+  "livello": 3,
   "titolo": "Le proprietà della moltiplicazione",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -8929,6 +9002,7 @@
  {
   "id": "proprieta-riconosci-addizione",
   "materia": "Matematica",
+  "livello": 3,
   "titolo": "Che proprietà è? Addizione e sottrazione",
   "scrittura": "maiuscolo",
   "tipo": "gruppi",
@@ -8998,6 +9072,7 @@
  {
   "id": "proprieta-riconosci-moltiplicazione",
   "materia": "Matematica",
+  "livello": 3,
   "titolo": "Che proprietà è? Moltiplicazione",
   "scrittura": "maiuscolo",
   "tipo": "gruppi",
@@ -9067,6 +9142,7 @@
  {
   "id": "divisioni",
   "materia": "Matematica",
+  "livello": 3,
   "titolo": "Divisioni: in parti uguali",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -9133,6 +9209,7 @@
  {
   "id": "problemi-aggiungere-togliere",
   "materia": "Matematica",
+  "livello": 2,
   "titolo": "Problemi: aggiungere e togliere",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -9311,6 +9388,7 @@
  {
   "id": "problemi-gruppi-divisioni",
   "materia": "Matematica",
+  "livello": 3,
   "titolo": "Problemi: gruppi uguali e divisioni",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
@@ -9480,6 +9558,7 @@
  {
   "id": "numeri-parole",
   "materia": "Matematica",
+  "livello": 1,
   "titolo": "I numeri da 1 a 20",
   "scrittura": "maiuscolo",
   "tipo": "coppie",
@@ -9653,6 +9732,7 @@
  {
   "id": "orologio",
   "materia": "Matematica",
+  "livello": 2,
   "titolo": "Che ore sono?",
   "scrittura": "maiuscolo",
   "tipo": "coppie",

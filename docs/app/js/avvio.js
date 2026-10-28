@@ -53,7 +53,8 @@ function schedaEsercizio(es, origine) {
   const g = GIOCHI[es.gioco];
   const apri = el("a", { class: "scheda-apri", href: "#/gioca/" + origine + "/" + es.id },
     el("span", { class: "scheda-icona", "aria-hidden": "true", text: g.icona }),
-    el("span", { class: "scheda-titolo", text: es.titolo }),
+    // gli esercizi pronti stanno già sotto il loro livello: «Livello 2 · » nel titolo sarebbe un doppione
+    el("span", { class: "scheda-titolo", text: origine === "es" ? es.titolo.replace(/^Livello \d · /, "") : es.titolo }),
     el("span", { class: "scheda-info", text: g.nome + " · " + descrizione(es) + (es.catalogo ? " · nel catalogo" : "") + (es.privato ? " · 🔒 solo per la mia classe" : "") }));
   // le letture fino al livello 3 sono in stampatello maiuscolo e si aprono anche in minuscolo:
   // «~minuscolo» (o «~maiuscolo») dopo l'id cambia solo la scrittura
@@ -123,6 +124,57 @@ function sezioneCatalogo() {
     elenco, stato, altri);
 }
 
+/* ---------- esercizi pronti: un pulsante per materia, poi la materia divisa per livello ---------- */
+
+const ICONE_MATERIE = { "Italiano": "📖", "Italiano L2": "🗣️", "Matematica": "🔢", "Scienze": "🔬", "Storia": "🏛️",
+  "Geografia": "🗺️", "Inglese": "💬", "Arte e immagine": "🎨", "Musica": "🎵", "Altro": "⭐" };
+const NOMI_LIVELLI = { 1: "i primi passi", 2: "si va avanti", 3: "più impegnativo", 4: "il più difficile" };
+const materiaDi = es => es.materia || "Altro";
+const livelloDi = es => es.livello || es.dati.livello || 0;
+const indirizzoMateria = m => "#/materia/" + encodeURIComponent(m);
+let ultimoGiocato = null;  // tornando alla materia, la pagina si riapre sull'esercizio appena fatto
+
+function pulsantiMaterie(esempi) {
+  return el("ul", { class: "materie" }, MATERIE.map(m => {
+    const quanti = esempi.filter(e => materiaDi(e) === m).length;
+    return quanti ? el("li", {}, el("a", { class: "materia-tasto", style: "--colore:var(--m-" + MATERIE.indexOf(m) + ")", href: indirizzoMateria(m) },
+      el("span", { class: "materia-icona", "aria-hidden": "true", text: ICONE_MATERIE[m] }),
+      el("span", { class: "materia-nome", text: m }),
+      el("span", { class: "materia-quanti", text: quanti + (quanti === 1 ? " esercizio" : " esercizi") }))) : null;
+  }));
+}
+
+async function vistaMateria(m) {
+  const qui = (await caricaEsempi()).filter(e => materiaDi(e) === m);
+  if (!qui.length) {
+    location.hash = "#/";
+    return;
+  }
+  const livelli = [1, 2, 3, 4, 0].filter(n => qui.some(e => livelloDi(e) === n));
+  const sezioni = livelli.map(n => {
+    const tutti = qui.filter(e => livelloDi(e) === n);
+    const letture = tutti.filter(e => e.tipo === "brano");
+    const esercizi = tutti.filter(e => e.tipo !== "brano");
+    const elenco = lista => el("ul", { class: "schede" }, lista.map(e => schedaEsercizio(e, "es")));
+    return el("section", { class: "livello", id: "livello-" + n },
+      el("h2", {}, n ? el("span", { class: "livello-numero", text: String(n) }) : null,
+        n ? "Livello " + n : "Altri esercizi", n ? el("small", { text: NOMI_LIVELLI[n] }) : null),
+      // le letture a parte, se nello stesso livello ci sono anche esercizi
+      letture.length && esercizi.length
+        ? [el("h3", { class: "materia", text: "Esercizi" }), elenco(esercizi), el("h3", { class: "materia", text: "Letture" }), elenco(letture)]
+        : elenco(tutti));
+  });
+  vista(el("div", { class: "pagina" }, intestazione(), el("main", { class: "contenuto" },
+    el("a", { class: "tasto-piccolo indietro", href: "#/", text: "⟵ Tutte le materie" }),
+    el("h1", { class: "materia-titolo" }, el("span", { "aria-hidden": "true", text: ICONE_MATERIE[m] + " " }), m),
+    livelli.length > 1 ? el("nav", { class: "livelli-indice", "aria-label": "Vai al livello" }, livelli.map(n =>
+      el("button", { type: "button", class: "tasto-piccolo", on: { click: () => document.getElementById("livello-" + n).scrollIntoView({ behavior: "smooth" }) } },
+        n ? "Livello " + n : "Altri", el("span", { class: "tenue", text: " · " + qui.filter(e => livelloDi(e) === n).length })))) : null,
+    sezioni)));
+  const ultimo = ultimoGiocato && document.querySelector('.livello a[href="#/gioca/es/' + ultimoGiocato + '"]');
+  if (ultimo) ultimo.scrollIntoView({ block: "center" });
+}
+
 async function casa() {
   const miei = elencoMiei();
   const esempi = await caricaEsempi();
@@ -146,17 +198,15 @@ async function casa() {
         el("button", { type: "button", class: "pulsante secondario", text: "📂 Apri un file", on: { click: () => file.click() } }),
         file)),
     el("section", {},
+      el("h2", { text: "Esercizi pronti" }),
+      el("p", { class: "tenue", text: "Scegli la materia: dentro trovi tutti gli esercizi, divisi per livello dal più facile al più difficile." }),
+      pulsantiMaterie(esempi)),
+    el("section", {},
       el("h2", { text: "I miei esercizi" }),
       miei.length
         ? el("ul", { class: "schede" }, miei.map(e => schedaEsercizio(e, "mio")))
         : el("p", { class: "vuoto", text: "Qui troverai gli esercizi che crei. Restano salvati su questo dispositivo: per portarli altrove usa «Condividi» o «File»." })),
-    catalogoAttivo ? sezioneCatalogo() : null,
-    el("section", {},
-      el("h2", { text: "Esercizi pronti" }),
-      MATERIE.concat([undefined]).map(m => {
-        const qui = esempi.filter(e => e.materia === m);
-        return qui.length ? [el("h3", { class: "materia", text: m || "Altro" }), el("ul", { class: "schede" }, qui.map(e => schedaEsercizio(e, "es")))] : null;
-      })))));
+    catalogoAttivo ? sezioneCatalogo() : null)));
 }
 
 /* ---------- gioco ---------- */
@@ -252,7 +302,9 @@ async function giocaSalvato(origine, idScrittura, gioco) {
     return;
   }
   if (scrittura === "maiuscolo" || scrittura === "minuscolo") es = Object.assign({}, es, { scrittura });
-  gioca(es, "#/gioca/" + origine + "/" + idScrittura, "#/", gioco);
+  // un esercizio pronto si chiude tornando alla sua materia
+  if (origine === "es") ultimoGiocato = id;
+  gioca(es, "#/gioca/" + origine + "/" + idScrittura, origine === "es" ? indirizzoMateria(materiaDi(es)) : "#/", gioco);
 }
 
 /* ---------- esercizio del catalogo comune ---------- */
@@ -458,6 +510,7 @@ async function instrada() {
   const [pagina1, a, b, c] = location.hash.replace(/^#\/?/, "").split("/");
   try {
     if (!pagina1) await casa();
+    else if (pagina1 === "materia") await vistaMateria(decodeURIComponent(a || ""));
     else if (pagina1 === "gioca") await giocaSalvato(a, b, c);
     else if (pagina1 === "catalogo" && catalogoAttivo) await giocaCatalogo(a, b);
     else if (pagina1 === "link") await vistaLink(a || "", b, c);

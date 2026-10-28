@@ -108,6 +108,27 @@ html.contrasto .carta, html.contrasto .pulsante, html.contrasto .tasto { border-
 .vuoto { color: var(--tenue); }
 h3.materia { font-size: 1em; color: var(--lavagna); margin: 1.4em 0 .6em; text-transform: uppercase; letter-spacing: .06em; }
 
+/* ---------- esercizi pronti: un pulsante grande per materia, poi la materia divisa per livello ---------- */
+/* un colore per materia, nell'ordine di MATERIE: sta solo nel bordo, il testo resta scuro su chiaro */
+:root { --m-0: #E0332B; --m-1: #C2185B; --m-2: #2B7FC4; --m-3: #2E9E44; --m-4: #D9731A; --m-5: #7B4FC9; --m-6: #D63C8A; --m-7: #C99A00; --m-8: #12968A; --m-9: #6B7780; }
+.materie { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.materia-tasto {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  min-height: 150px; padding: 16px 10px; border-radius: 24px;
+  border: 3px solid var(--colore); border-top-width: 14px; background: var(--carta); color: var(--testo);
+  text-decoration: none; text-align: center; transition: transform .15s;
+}
+.materia-tasto:hover, .materia-tasto:focus-visible { transform: translateY(-3px); }
+.materia-icona { font-size: 3.2em; line-height: 1; }
+.materia-nome { font-size: 1.45em; font-weight: 800; }
+.materia-quanti { color: var(--tenue); font-size: .9em; }
+.indietro { margin: 8px 0 0; }
+.livelli-indice { position: sticky; top: 0; z-index: 5; display: flex; gap: 8px; flex-wrap: wrap; padding: 8px 0; background: var(--sfondo); }
+.livello { scroll-margin-top: 72px; }
+.livello h2 { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 1.4em; }
+.livello h2 small { color: var(--tenue); font-size: .62em; font-weight: 600; }
+.livello-numero { display: inline-grid; place-items: center; width: 1.7em; height: 1.7em; border-radius: 50%; background: var(--lavagna); color: var(--su-lavagna); }
+
 .pulsante, .tasto {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-height: 56px; padding: 8px 22px; border-radius: 14px;
@@ -202,7 +223,7 @@ input[type="text"], input[type="search"], select {
 .box-ed { border: 2px solid var(--bordo); border-radius: var(--raggio); padding: 12px 14px 14px; background: var(--carta); display: grid; gap: 8px; margin: 0; }
 .box-ed legend { font-weight: 700; padding: 0 6px; }
 .aggiungi { justify-self: start; min-height: 48px; padding: 6px 16px; border-radius: 12px; border: 2px dashed var(--lavagna); background: transparent; color: var(--lavagna); font-weight: 700; }
-.scelte-tipo { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+.scelte-tipo { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 .scelta-tipo, .scelta-scrittura {
   text-align: left; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--bordo); background: var(--carta);
   display: grid; gap: 2px; min-height: 56px;
