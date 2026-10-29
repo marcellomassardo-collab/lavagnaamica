@@ -4761,14 +4761,14 @@
   "materia": "Italiano",
   "livello": 2,
   "titolo": "Il, lo, la oppure l'?",
-  "scrittura": "maiuscolo",
+  "scrittura": "doppio",
   "tipo": "gruppi",
   "gioco": "raggruppa",
   "consegna": "Metti ogni nome nel cesto del suo articolo. LO va davanti a Z, a S più consonante, a GN e a PS. L' va davanti alle parole che cominciano per vocale.",
   "dati": {
    "gruppi": [
     {
-     "nome": "IL",
+     "nome": "il",
      "elementi": [
       {
        "t": "cane",
@@ -4805,7 +4805,7 @@
      ]
     },
     {
-     "nome": "LO",
+     "nome": "lo",
      "elementi": [
       {
        "t": "squalo",
@@ -4842,7 +4842,7 @@
      ]
     },
     {
-     "nome": "LA",
+     "nome": "la",
      "elementi": [
       {
        "t": "mela",
@@ -4879,7 +4879,7 @@
      ]
     },
     {
-     "nome": "L'",
+     "nome": "l'",
      "elementi": [
       {
        "t": "albero",
@@ -4923,14 +4923,14 @@
   "materia": "Italiano",
   "livello": 2,
   "titolo": "I, gli oppure le?",
-  "scrittura": "maiuscolo",
+  "scrittura": "doppio",
   "tipo": "gruppi",
   "gioco": "raggruppa",
   "consegna": "Quando le cose sono tante l'articolo cambia. GLI va con i nomi maschili che cominciano per vocale e con quelli che da soli vogliono LO. LE va con i nomi femminili.",
   "dati": {
    "gruppi": [
     {
-     "nome": "I",
+     "nome": "i",
      "elementi": [
       {
        "t": "cani"
@@ -4953,7 +4953,7 @@
      ]
     },
     {
-     "nome": "GLI",
+     "nome": "gli",
      "elementi": [
       {
        "t": "alberi"
@@ -4982,7 +4982,7 @@
      ]
     },
     {
-     "nome": "LE",
+     "nome": "le",
      "elementi": [
       {
        "t": "mele"
@@ -5018,7 +5018,7 @@
   "materia": "Italiano",
   "livello": 3,
   "titolo": "Completa con l'articolo: il, lo, la, l', i, gli, le",
-  "scrittura": "maiuscolo",
+  "scrittura": "doppio",
   "tipo": "frasi",
   "gioco": "completa",
   "consegna": "Scegli l'articolo giusto per ogni nome.",
@@ -5045,14 +5045,14 @@
   "materia": "Italiano",
   "livello": 3,
   "titolo": "Un, uno, una oppure un'?",
-  "scrittura": "maiuscolo",
+  "scrittura": "doppio",
   "tipo": "gruppi",
   "gioco": "raggruppa",
   "consegna": "Metti ogni nome nel cesto del suo articolo. UNO va davanti a Z e a S più consonante. Davanti a vocale: UN se la parola è maschile (un albero), UN' con l'apostrofo se è femminile (un'ape).",
   "dati": {
    "gruppi": [
     {
-     "nome": "UN",
+     "nome": "un",
      "elementi": [
       {
        "t": "cane",
@@ -5089,7 +5089,7 @@
      ]
     },
     {
-     "nome": "UNO",
+     "nome": "uno",
      "elementi": [
       {
        "t": "squalo",
@@ -5122,7 +5122,7 @@
      ]
     },
     {
-     "nome": "UNA",
+     "nome": "una",
      "elementi": [
       {
        "t": "mela",
@@ -5159,7 +5159,7 @@
      ]
     },
     {
-     "nome": "UN'",
+     "nome": "un'",
      "elementi": [
       {
        "t": "ape",
@@ -5195,7 +5195,7 @@
   "materia": "Italiano",
   "livello": 3,
   "titolo": "Completa con l'articolo: un, uno, una, un'",
-  "scrittura": "maiuscolo",
+  "scrittura": "doppio",
   "tipo": "frasi",
   "gioco": "completa",
   "consegna": "Scegli l'articolo giusto. Attenzione all'apostrofo: un albero, ma un'ape.",
@@ -5222,7 +5222,7 @@
   "materia": "Italiano",
   "livello": 3,
   "titolo": "Uno o tanti? Il singolare e il plurale",
-  "scrittura": "maiuscolo",
+  "scrittura": "doppio",
   "tipo": "coppie",
   "gioco": "abbina",
   "consegna": "Unisci ogni nome al suo plurale: insieme al nome cambia anche l'articolo.",
@@ -5332,14 +5332,14 @@
   "materia": "Italiano",
   "livello": 3,
   "titolo": "Determinativo o indeterminativo?",
-  "scrittura": "maiuscolo",
+  "scrittura": "doppio",
   "tipo": "gruppi",
   "gioco": "raggruppa",
   "consegna": "Gli articoli determinativi (il, lo, la, l', i, gli, le) parlano di una cosa precisa. Gli indeterminativi (un, uno, una, un') di una cosa qualsiasi.",
   "dati": {
    "gruppi": [
     {
-     "nome": "DETERMINATIVO",
+     "nome": "determinativo",
      "elementi": [
       {
        "t": "il gatto"
@@ -5368,7 +5368,7 @@
      ]
     },
     {
-     "nome": "INDETERMINATIVO",
+     "nome": "indeterminativo",
      "elementi": [
       {
        "t": "un gatto"

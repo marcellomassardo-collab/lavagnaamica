@@ -39,8 +39,13 @@ export function avvia(area, es, ctx) {
   let riga = null;
   let attesa = null;
 
-  const leggiFrase = () => Array.from(riga.childNodes)
-    .map(x => (x.classList && x.classList.contains("buco") && !x.textContent ? " … " : x.textContent)).join("");
+  // si legge la riga di sopra di ogni pezzo: con la scrittura doppia la riga di sotto ripete le stesse parole
+  const leggiFrase = () => Array.from(riga.childNodes).map(x =>
+    !x.classList ? x.textContent
+      : x.classList.contains("buco") ? (x.classList.contains("pieno") ? x.dataset.parola : " … ")
+      : x.classList.contains("due") ? x.querySelector(".alto").textContent : x.textContent).join("");
+  // ogni pezzo di frase passa da due(): con «MAIUSCOLO e minuscolo» si vede nei due modi; gli spazi restano fuori
+  const pezzo = t => [/^\s/.test(t) ? " " : null, due(t.trim()), /\s$/.test(t) ? " " : null];
 
   function mostra() {
     const f = frasi[n];
@@ -50,7 +55,7 @@ export function avvia(area, es, ctx) {
     restano = buchi.length;
     punti.children[n].classList.add("ora");
     riga = el("p", { class: "frase" },
-      f.map(x => (x.buco ? el("span", { class: "buco", "data-bersaglio": true, "data-parola": x.buco }) : x.t)));
+      f.map(x => (x.buco ? el("span", { class: "buco", "data-bersaglio": true, "data-parola": x.buco }) : pezzo(x.t))));
     scena.replaceChildren(
       el("div", { class: "frase-box" }, riga, pulsanteVoce(leggiFrase, "Ascolta la frase")),
       el("div", { class: "vasca" },
@@ -69,7 +74,7 @@ export function avvia(area, es, ctx) {
         ctx.riprova(k, giusto);
         return;
       }
-      buco.textContent = buco.dataset.parola;
+      buco.replaceChildren(due(buco.dataset.parola));
       buco.removeAttribute("data-bersaglio");
       buco.classList.add("pieno");
       // l'articolo con l'apostrofo si attacca alla parola dopo: «l'ape», non «l' ape»
