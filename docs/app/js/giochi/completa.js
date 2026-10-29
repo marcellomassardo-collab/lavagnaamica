@@ -72,6 +72,8 @@ export function avvia(area, es, ctx) {
       buco.textContent = buco.dataset.parola;
       buco.removeAttribute("data-bersaglio");
       buco.classList.add("pieno");
+      // l'articolo con l'apostrofo si attacca alla parola dopo: «l'ape», non «l' ape»
+      if (/['’]$/.test(buco.dataset.parola)) buco.classList.add("elisione");
       if (!sbagliati.has(buco)) giuste++;
       k.remove();
       if (--restano > 0) {

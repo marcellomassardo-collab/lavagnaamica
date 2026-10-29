@@ -4757,6 +4757,649 @@
   "livello": 2
  },
  {
+  "id": "articoli-il-lo-la",
+  "materia": "Italiano",
+  "livello": 2,
+  "titolo": "Il, lo, la oppure l'?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Metti ogni nome nel cesto del suo articolo. LO va davanti a Z, a S più consonante, a GN e a PS. L' va davanti alle parole che cominciano per vocale.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "IL",
+     "elementi": [
+      {
+       "t": "cane",
+       "p": 7202
+      },
+      {
+       "t": "gatto",
+       "p": 7114
+      },
+      {
+       "t": "leone",
+       "p": 25187
+      },
+      {
+       "t": "pesce",
+       "p": 2520
+      },
+      {
+       "t": "topo",
+       "p": 2546
+      },
+      {
+       "t": "fiore",
+       "p": 3127
+      },
+      {
+       "t": "sole",
+       "p": 7252
+      },
+      {
+       "t": "cavallo",
+       "p": 2294
+      }
+     ]
+    },
+    {
+     "nome": "LO",
+     "elementi": [
+      {
+       "t": "squalo",
+       "p": 2589
+      },
+      {
+       "t": "scheletro",
+       "p": 5727
+      },
+      {
+       "t": "zaino",
+       "p": 2475
+      },
+      {
+       "t": "specchio",
+       "p": 8573
+      },
+      {
+       "t": "scoiattolo",
+       "p": 25815
+      },
+      {
+       "t": "zucchero",
+       "p": 25560
+      },
+      {
+       "t": "stivale",
+       "p": 8299
+      },
+      {
+       "t": "struzzo",
+       "p": 2650
+      }
+     ]
+    },
+    {
+     "nome": "LA",
+     "elementi": [
+      {
+       "t": "mela",
+       "p": 2462
+      },
+      {
+       "t": "rana",
+       "p": 28473
+      },
+      {
+       "t": "casa",
+       "p": 2317
+      },
+      {
+       "t": "palla",
+       "p": 3241
+      },
+      {
+       "t": "matita",
+       "p": 2440
+      },
+      {
+       "t": "luna",
+       "p": 2933
+      },
+      {
+       "t": "tartaruga",
+       "p": 2596
+      },
+      {
+       "t": "farfalla",
+       "p": 2465
+      }
+     ]
+    },
+    {
+     "nome": "L'",
+     "elementi": [
+      {
+       "t": "albero",
+       "p": 3057
+      },
+      {
+       "t": "ape",
+       "p": 24823
+      },
+      {
+       "t": "uovo",
+       "p": 2427
+      },
+      {
+       "t": "orso",
+       "p": 2488
+      },
+      {
+       "t": "isola",
+       "p": 2966
+      },
+      {
+       "t": "uccello",
+       "p": 2490
+      },
+      {
+       "t": "aquila",
+       "p": 2638
+      },
+      {
+       "t": "arancia",
+       "p": 2483
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "articoli-i-gli-le",
+  "materia": "Italiano",
+  "livello": 2,
+  "titolo": "I, gli oppure le?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Quando le cose sono tante l'articolo cambia. GLI va con i nomi maschili che cominciano per vocale e con quelli che da soli vogliono LO. LE va con i nomi femminili.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "I",
+     "elementi": [
+      {
+       "t": "cani"
+      },
+      {
+       "t": "gatti"
+      },
+      {
+       "t": "leoni"
+      },
+      {
+       "t": "pesci"
+      },
+      {
+       "t": "topi"
+      },
+      {
+       "t": "fiori"
+      }
+     ]
+    },
+    {
+     "nome": "GLI",
+     "elementi": [
+      {
+       "t": "alberi"
+      },
+      {
+       "t": "uccelli"
+      },
+      {
+       "t": "orsi"
+      },
+      {
+       "t": "squali"
+      },
+      {
+       "t": "zaini"
+      },
+      {
+       "t": "scoiattoli"
+      },
+      {
+       "t": "specchi"
+      },
+      {
+       "t": "gnomi"
+      }
+     ]
+    },
+    {
+     "nome": "LE",
+     "elementi": [
+      {
+       "t": "mele"
+      },
+      {
+       "t": "rane"
+      },
+      {
+       "t": "case"
+      },
+      {
+       "t": "api"
+      },
+      {
+       "t": "isole"
+      },
+      {
+       "t": "arance"
+      },
+      {
+       "t": "farfalle"
+      },
+      {
+       "t": "matite"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "articoli-determinativi-frasi",
+  "materia": "Italiano",
+  "livello": 3,
+  "titolo": "Completa con l'articolo: il, lo, la, l', i, gli, le",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Scegli l'articolo giusto per ogni nome.",
+  "dati": {
+   "frasi": [
+    "[Lo] scoiattolo mangia le ghiande.",
+    "[Gli] alberi perdono le foglie in autunno.",
+    "[L']ape vola sul fiore.",
+    "[Le] api fanno il miele.",
+    "[I] bambini giocano in cortile.",
+    "[La] maestra legge una storia.",
+    "[Il] gatto dorme sul divano.",
+    "[Gli] zaini sono pesanti.",
+    "[L']orologio segna le otto.",
+    "[Lo] specchio è rotto.",
+    "[Le] isole sono in mezzo al mare.",
+    "[Gli] uccelli volano nel cielo."
+   ],
+   "extra": []
+  }
+ },
+ {
+  "id": "articoli-un-uno-una",
+  "materia": "Italiano",
+  "livello": 3,
+  "titolo": "Un, uno, una oppure un'?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Metti ogni nome nel cesto del suo articolo. UNO va davanti a Z e a S più consonante. Davanti a vocale: UN se la parola è maschile (un albero), UN' con l'apostrofo se è femminile (un'ape).",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "UN",
+     "elementi": [
+      {
+       "t": "cane",
+       "p": 7202
+      },
+      {
+       "t": "gatto",
+       "p": 7114
+      },
+      {
+       "t": "cavallo",
+       "p": 2294
+      },
+      {
+       "t": "albero",
+       "p": 3057
+      },
+      {
+       "t": "uovo",
+       "p": 2427
+      },
+      {
+       "t": "orso",
+       "p": 2488
+      },
+      {
+       "t": "uccello",
+       "p": 2490
+      },
+      {
+       "t": "pesce",
+       "p": 2520
+      }
+     ]
+    },
+    {
+     "nome": "UNO",
+     "elementi": [
+      {
+       "t": "squalo",
+       "p": 2589
+      },
+      {
+       "t": "scheletro",
+       "p": 5727
+      },
+      {
+       "t": "zaino",
+       "p": 2475
+      },
+      {
+       "t": "specchio",
+       "p": 8573
+      },
+      {
+       "t": "scoiattolo",
+       "p": 25815
+      },
+      {
+       "t": "struzzo",
+       "p": 2650
+      },
+      {
+       "t": "stivale",
+       "p": 8299
+      }
+     ]
+    },
+    {
+     "nome": "UNA",
+     "elementi": [
+      {
+       "t": "mela",
+       "p": 2462
+      },
+      {
+       "t": "rana",
+       "p": 28473
+      },
+      {
+       "t": "casa",
+       "p": 2317
+      },
+      {
+       "t": "palla",
+       "p": 3241
+      },
+      {
+       "t": "matita",
+       "p": 2440
+      },
+      {
+       "t": "luna",
+       "p": 2933
+      },
+      {
+       "t": "farfalla",
+       "p": 2465
+      },
+      {
+       "t": "tartaruga",
+       "p": 2596
+      }
+     ]
+    },
+    {
+     "nome": "UN'",
+     "elementi": [
+      {
+       "t": "ape",
+       "p": 24823
+      },
+      {
+       "t": "isola",
+       "p": 2966
+      },
+      {
+       "t": "aquila",
+       "p": 2638
+      },
+      {
+       "t": "arancia",
+       "p": 2483
+      },
+      {
+       "t": "anatra",
+       "p": 28479
+      },
+      {
+       "t": "auto",
+       "p": 2339
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "articoli-indeterminativi-frasi",
+  "materia": "Italiano",
+  "livello": 3,
+  "titolo": "Completa con l'articolo: un, uno, una, un'",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Scegli l'articolo giusto. Attenzione all'apostrofo: un albero, ma un'ape.",
+  "dati": {
+   "frasi": [
+    "Nel prato c'è [un] cavallo.",
+    "Sull'albero c'è [uno] scoiattolo.",
+    "La nonna prepara [una] torta.",
+    "Sul fiore vola [un']ape.",
+    "Nel mare nuota [uno] squalo.",
+    "Nel nido c'è [un] uovo.",
+    "Il papà mi regala [un] libro.",
+    "In mezzo al lago c'è [un']isola.",
+    "Ho [uno] zaino nuovo.",
+    "Nel cielo vola [un']aquila.",
+    "Nel bosco vive [un] orso.",
+    "In classe arriva [una] nuova compagna."
+   ],
+   "extra": []
+  }
+ },
+ {
+  "id": "articoli-singolare-plurale",
+  "materia": "Italiano",
+  "livello": 3,
+  "titolo": "Uno o tanti? Il singolare e il plurale",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Unisci ogni nome al suo plurale: insieme al nome cambia anche l'articolo.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "il cane"
+     },
+     {
+      "t": "i cani"
+     }
+    ],
+    [
+     {
+      "t": "lo squalo"
+     },
+     {
+      "t": "gli squali"
+     }
+    ],
+    [
+     {
+      "t": "l'albero"
+     },
+     {
+      "t": "gli alberi"
+     }
+    ],
+    [
+     {
+      "t": "l'ape"
+     },
+     {
+      "t": "le api"
+     }
+    ],
+    [
+     {
+      "t": "la mela"
+     },
+     {
+      "t": "le mele"
+     }
+    ],
+    [
+     {
+      "t": "lo zaino"
+     },
+     {
+      "t": "gli zaini"
+     }
+    ],
+    [
+     {
+      "t": "l'isola"
+     },
+     {
+      "t": "le isole"
+     }
+    ],
+    [
+     {
+      "t": "il fiore"
+     },
+     {
+      "t": "i fiori"
+     }
+    ],
+    [
+     {
+      "t": "la rana"
+     },
+     {
+      "t": "le rane"
+     }
+    ],
+    [
+     {
+      "t": "l'uccello"
+     },
+     {
+      "t": "gli uccelli"
+     }
+    ],
+    [
+     {
+      "t": "lo scoiattolo"
+     },
+     {
+      "t": "gli scoiattoli"
+     }
+    ],
+    [
+     {
+      "t": "l'arancia"
+     },
+     {
+      "t": "le arance"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "articoli-determinativi-indeterminativi",
+  "materia": "Italiano",
+  "livello": 3,
+  "titolo": "Determinativo o indeterminativo?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Gli articoli determinativi (il, lo, la, l', i, gli, le) parlano di una cosa precisa. Gli indeterminativi (un, uno, una, un') di una cosa qualsiasi.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "DETERMINATIVO",
+     "elementi": [
+      {
+       "t": "il gatto"
+      },
+      {
+       "t": "lo zaino"
+      },
+      {
+       "t": "la mela"
+      },
+      {
+       "t": "l'albero"
+      },
+      {
+       "t": "i topi"
+      },
+      {
+       "t": "gli orsi"
+      },
+      {
+       "t": "le case"
+      },
+      {
+       "t": "l'ape"
+      }
+     ]
+    },
+    {
+     "nome": "INDETERMINATIVO",
+     "elementi": [
+      {
+       "t": "un gatto"
+      },
+      {
+       "t": "uno zaino"
+      },
+      {
+       "t": "una mela"
+      },
+      {
+       "t": "un albero"
+      },
+      {
+       "t": "un'ape"
+      },
+      {
+       "t": "uno squalo"
+      },
+      {
+       "t": "una rana"
+      },
+      {
+       "t": "un uovo"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
   "id": "sillabe",
   "materia": "Italiano",
   "livello": 1,
