@@ -867,3 +867,6 @@ button.logica-tessera:disabled { opacity: .4; }
 .logica-tessera.giusta { opacity: 1; border-color: var(--giusto); box-shadow: 0 0 0 4px var(--giusto-chiaro); }
 .logica-figura { width: 100%; height: 100%; }
 .logica-vuota { font-size: 2.4rem; font-weight: 800; color: #C0282B; border-style: dashed; }
+
+/* ---------- gioco con un sensore ---------- */
+.sensore-luce { outline: 7px solid #F2B600 !important; outline-offset: 5px; box-shadow: 0 0 0 14px rgba(242, 182, 0, .35) !important; position: relative; z-index: 2; }

@@ -11,14 +11,16 @@ const BASE = {
   elementi: 6,      // carte per partita
   risposte: 3,      // risposte tra cui scegliere
   voceScelta: "",   // nome della voce del dispositivo; vuoto = la più naturale disponibile
-  velocita: 0.85    // un po' più lenta del normale
+  velocita: 0.85,   // un po' più lenta del normale
+  sensore: false,   // le scelte si illuminano una alla volta e si sceglie con un solo tasto
+  ritmo: 2          // secondi per ogni scelta illuminata
 };
 
 export const VELOCITA = [[0.7, "Lenta"], [0.85, "Calma"], [1, "Normale"]];
 
 export const TEMI = [["chiaro", "Chiaro"], ["scuro", "Scuro"], ["auto", "Come il dispositivo"]];
 
-export const LIMITI = { elementi: [3, 10], risposte: [2, 4] };
+export const LIMITI = { elementi: [3, 10], risposte: [2, 4], ritmo: [1, 5] };
 
 function carica() {
   try {

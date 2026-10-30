@@ -11,6 +11,7 @@ import { lineaDelTempo } from "./linea.js";
 import { spiegazione } from "./animazioni.js";
 import { vistaStrumenti } from "./strumenti.js";
 import { registra, daRipassare, prossimo, azzera } from "./ripasso.js";
+import { avviaSensore } from "./sensore.js";
 import { catalogo, catalogoAttivo, insegnante } from "./catalogo.js";
 import { vistaInsegnanti, vistaModerazione, schedaCatalogo, pubblica, copiaLink } from "./insegnanti.js";
 import { editor, bozzaDa } from "./editor.js";
@@ -323,8 +324,10 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
         el("button", { type: "button", class: "tasto", "aria-label": "Ricomincia", on: { click: inizia } }, "↻", el("span", { class: "etichetta", text: "Ricomincia" })),
         cambiaGioco,
         schermo))));
+  const fermaSensore = impostazioni.sensore ? avviaSensore() : null;
   quandoSiEsce(() => {
     if (ferma) ferma();
+    if (fermaSensore) fermaSensore();
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
   });
   if (es.scopri && !giocoChiesto) spiega(); else inizia();
@@ -513,6 +516,8 @@ function vistaImpostazioni() {
       interruttore("aiuto", "Aiuto dopo un errore", "Mostra per un momento dove va la carta."),
       sceltaTema(),
       interruttore("contrasto", "Alto contrasto", "Colori più forti e bordi più spessi. Vale al posto del tema."),
+      interruttore("sensore", "Gioco con un sensore", "Le scelte si illuminano una alla volta: si sceglie con un sensore collegato come tasto, con la barra spaziatrice o con Invio."),
+      numero("ritmo", "Secondi per ogni scelta", "Quanto resta illuminata ogni scelta, con il sensore."),
       numero("elementi", "Carte per partita", "Quante carte o domande in ogni partita."),
       numero("risposte", "Risposte tra cui scegliere", "Nella scelta multipla e nelle frasi da completare.")),
     el("p", {}, el("button", { type: "button", class: "tasto-piccolo", text: "🔁 Azzera il ripasso", on: { click: () => { azzera(); avviso("Ripasso azzerato."); } } }),
