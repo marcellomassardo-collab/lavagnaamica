@@ -9,6 +9,7 @@ import { el, creaContesto, pulsanteVoce, avviso, finestra } from "./ui.js";
 import { vista, pagina, intestazione, quandoSiEsce } from "./pagine.js";
 import { lineaDelTempo } from "./linea.js";
 import { spiegazione } from "./animazioni.js";
+import { vistaStrumenti } from "./strumenti.js";
 import { catalogo, catalogoAttivo, insegnante } from "./catalogo.js";
 import { vistaInsegnanti, vistaModerazione, schedaCatalogo, pubblica, copiaLink } from "./insegnanti.js";
 import { editor, bozzaDa } from "./editor.js";
@@ -199,6 +200,7 @@ async function casa() {
       el("p", { text: "Per la LIM, il tablet e il telefono. Gratis, senza pubblicità, senza account." }),
       el("div", { class: "azioni" },
         el("a", { class: "pulsante", href: "#/crea", text: "＋ Crea un esercizio" }),
+        el("a", { class: "pulsante secondario", href: "#/strumenti", text: "🧰 Strumenti per la LIM" }),
         el("button", { type: "button", class: "pulsante secondario", text: "📂 Apri un file", on: { click: () => file.click() } }),
         file)),
     el("section", {},
@@ -526,6 +528,7 @@ async function instrada() {
     }
     else if (pagina1 === "insegnanti" && catalogoAttivo) await vistaInsegnanti();
     else if (pagina1 === "moderazione" && catalogoAttivo) await vistaModerazione();
+    else if (pagina1 === "strumenti") vistaStrumenti(a);
     else if (pagina1 === "impostazioni") vistaImpostazioni();
     else if (pagina1 === "info") info();
     else location.hash = "#/";

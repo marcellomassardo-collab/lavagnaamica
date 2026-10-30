@@ -793,3 +793,48 @@ textarea { font: inherit; color: inherit; padding: 10px 14px; border: 2px solid 
 .sq-classifica li { --colore: #888; display: flex; justify-content: space-between; gap: 20px; padding: 10px 18px; border-radius: 14px;
   background: var(--colore); color: #fff; font-weight: 800; font-size: 1.3em; }
 .sq-classifica li:first-child { box-shadow: 0 0 0 5px var(--evidenzia); }
+
+/* ---------- strumenti per la LIM ---------- */
+.strumenti { max-width: 1400px; }
+.st-scelta { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 16px; }
+.st-voce { display: inline-flex; gap: 8px; align-items: center; padding: 8px 14px; border-radius: 999px; border: 2px solid var(--bordo);
+  background: var(--carta); color: var(--testo); text-decoration: none; font-weight: 700; }
+.st-voce.attiva { background: var(--lavagna); border-color: var(--lavagna); color: var(--su-lavagna); }
+.st-lavagna h2 { margin: 0 0 10px; }
+.st-comandi { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+.st-comandi .tasto-piccolo.acceso { background: var(--lavagna); color: var(--su-lavagna); border-color: var(--lavagna); }
+.st-area { --testo: #1D2329; --tenue: #4A5560; background: #FBF8F1; color: #1D2329; border: 3px solid #DDD5C3; border-radius: 22px;
+  padding: clamp(12px, 2vw, 28px); display: grid; justify-items: center; gap: 14px; min-height: 50vh; }
+.st-area .tenue { color: #4A5560; margin: 0; text-align: center; }
+.st-numero { margin: 0; font-size: clamp(1.6rem, 1rem + 2.4vw, 3.4rem); font-weight: 800; min-height: 1.2em; text-align: center; }
+.st-etichetta { display: inline-flex; gap: 8px; align-items: center; font-weight: 700; }
+.st-campo { width: 6em; min-height: 40px; font: inherit; }
+.st-largo { max-width: 1100px; }
+.st-cornici { display: flex; gap: clamp(14px, 3vw, 40px); flex-wrap: wrap; justify-content: center; }
+.st-cornice { display: grid; grid-template-columns: repeat(5, clamp(54px, 7vw, 96px)); border: 5px solid #1D2329; background: #fff; }
+.st-casella { aspect-ratio: 1; border: 2px solid #1D2329; background: #fff; padding: 0; cursor: pointer; position: relative; }
+.st-casella.rosso::after, .st-casella.blu::after { content: ""; position: absolute; inset: 14%; border-radius: 50%; background: #E0332B; }
+.st-casella.blu::after { background: #2F6FD6; }
+.st-retta { width: min(1100px, 100%); height: auto; }
+.st-tacca { cursor: pointer; }
+.st-tacca.scelta line { stroke: #E0332B; stroke-width: 9; }
+.st-geopiano { width: min(560px, 100%, 60vh); height: auto; }
+.st-chiodo { cursor: pointer; }
+.st-frazioni .fr-figura.fr-cerchio { width: min(380px, 70vw); }
+.st-orologio { width: min(420px, 80vw, 52vh); height: auto; touch-action: none; cursor: grab; }
+.st-cassa, .st-vassoio { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.st-vassoio { min-height: 110px; width: 100%; border: 3px dashed #B9A98A; border-radius: 16px; padding: 10px; }
+.st-soldo { border: 0; background: none; padding: 0; cursor: pointer; }
+.st-soldo img { width: clamp(56px, 6vw, 84px); height: clamp(56px, 6vw, 84px); object-fit: contain; }
+.st-timer { width: min(420px, 80vw, 50vh); height: auto; }
+.st-semaforo { display: grid; gap: 14px; padding: 18px; background: #2B2F33; border-radius: 30px; }
+.st-luce { width: clamp(90px, 14vh, 150px); aspect-ratio: 1; border-radius: 50%; opacity: .22; cursor: pointer; }
+.st-rosso { background: #E0332B; } .st-giallo { background: #F2C200; } .st-verde { background: #2E9E5B; }
+.st-luce.accesa { opacity: 1; box-shadow: 0 0 40px currentColor; }
+.st-tavolo { border: 0; background: none; padding: 0; cursor: pointer; }
+.st-dadi { display: flex; gap: 20px; }
+.st-dado { width: clamp(90px, 14vw, 170px); height: auto; }
+.st-dadi.rotola .st-dado { animation: rotola .6s ease-out; }
+@keyframes rotola { 0% { transform: rotate(-200deg) scale(.6); } 100% { transform: none; } }
+.st-estratto { margin: 0; font-size: clamp(6rem, 3rem + 12vw, 16rem); font-weight: 800; line-height: 1; color: #1E6B52; }
+.st-estratto.nuovo { animation: vf-entra .5s; }
