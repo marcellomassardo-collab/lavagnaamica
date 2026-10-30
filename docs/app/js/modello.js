@@ -62,7 +62,8 @@ export const ANIMAZIONI = {
   "linee-rette": "Segmenti, semirette, rette",
   angoli: "Gli angoli e l'angolo campione",
   simmetria: "La simmetria",
-  perimetro: "Il perimetro"
+  perimetro: "Il perimetro",
+  barre: "I problemi con le barre"
 };
 
 export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Inglese", "Arte e immagine", "Musica", "Altro"];
@@ -274,8 +275,16 @@ export const GENERI = {
   linee:        { nome: "Linee e rette",         spiega: "Una linea disegnata, anche girata: segmento, semiretta o retta; curva, spezzata o mista; rette parallele, incidenti o perpendicolari." },
   angolo:       { nome: "Angolo",                spiega: "Un angolo da riconoscere: acuto, retto, ottuso o piatto. Alla fine si confronta con l'angolo campione." },
   simmetria:    { nome: "Simmetria",             spiega: "Una figura a quadretti a sinistra dell'asse: si colora a destra la parte simmetrica." },
-  perimetro:    { nome: "Perimetro",             spiega: "Un rettangolo sul quaderno a quadretti: quanto misura il contorno? Alla fine si conta il giro insieme." }
+  perimetro:    { nome: "Perimetro",             spiega: "Un rettangolo sul quaderno a quadretti: quanto misura il contorno? Alla fine si conta il giro insieme." },
+  barre:        { nome: "Problema con le barre", spiega: "Si legge il problema, si sceglie il disegno a barre che lo racconta, poi l'operazione e il risultato." },
+  veloce:       { nome: "Calcolo veloce",        spiega: "Un giro di conti da imparare a memoria, uno dopo l'altro. Il tempo c'è solo se lo metti tu." },
+  logica:       { nome: "Logica senza parole",   spiega: "Figure e colori: che cosa viene dopo nella sequenza, oppure quale non c'entra. Non serve leggere." }
 };
+
+export const SCHEMI_BARRE = { unione: "Si mettono insieme due parti: quanto fa il tutto?", parte: "Si conosce il tutto e una parte: quanto è l'altra?",
+  confronto: "Si confrontano due quantità: quanto di più?", gruppi: "Gruppi uguali: quanto fa in tutto?", ripartizione: "Il tutto diviso in parti uguali: quanto è una parte?" };
+export const FATTI = { "amici-10": "Gli amici del 10", "amici-100": "Gli amici del 100", doppi: "Il doppio", meta: "La metà", "piu-meno-10": "Più 10 e meno 10",
+  "piu-meno-100": "Più 100 e meno 100", "entro-20": "Più e meno entro 20", tabelline: "Le tabelline", divisioni: "Le divisioni delle tabelline" };
 
 export const LINEE = { segmento: "segmento", semiretta: "semiretta", retta: "retta", curva: "linea curva", spezzata: "linea spezzata",
   mista: "linea mista", parallele: "rette parallele", incidenti: "rette incidenti", perpendicolari: "rette perpendicolari" };
@@ -454,6 +463,34 @@ function esercizioDiMatematica(x, i) {
   if (x.genere === "perimetro") {
     if (!(Number.isInteger(a) && a >= 1 && a <= 10 && Number.isInteger(b) && b >= 1 && b <= 6)) errore(inizio + "il rettangolo: base da 1 a 10 quadretti, altezza da 1 a 6.");
     m.b = b;
+  }
+  if (x.genere === "barre") {
+    m.schema = SCHEMI_BARRE[x.schema] ? x.schema : errore(inizio + "scegli che cosa succede nel problema.");
+    m.b = b;
+    if (!(Number.isInteger(a) && Number.isInteger(b) && a >= 1 && b >= 1 && a <= 9999 && b <= 9999)) errore(inizio + "servono due numeri interi, fino a 9999.");
+    if ((m.schema === "parte" || m.schema === "confronto") && b >= a) errore(inizio + "il primo numero deve essere più grande del secondo.");
+    if (m.schema === "unione" && a + b > 9999) errore(inizio + "il tutto deve stare entro 9999.");
+    if (m.schema === "gruppi" && (a < 2 || a > 10)) errore(inizio + "da 2 a 10 gruppi uguali.");
+    if (m.schema === "ripartizione" && (b < 2 || b > 10 || a % b !== 0)) errore(inizio + "si divide in 2-10 parti uguali, senza resto.");
+    m.testo = (Array.isArray(x.testo) ? x.testo : []).map(t => testo(t, 200)).filter(Boolean).slice(0, 4);
+    if (!m.testo.length) errore(inizio + "manca il testo del problema.");
+    const risposta = testo(x.risposta, 200);
+    if (risposta) m.risposta = risposta;
+  }
+  if (x.genere === "veloce") {
+    delete m.a;
+    m.fatto = FATTI[x.fatto] ? x.fatto : errore(inizio + "scegli i conti.");
+    m.quante = Math.max(3, Math.min(20, Math.round(Number(x.quante) || 10)));
+    const t = Math.round(Number(x.tempo) || 0);
+    if (t > 0) m.tempo = Math.max(10, Math.min(300, t));
+    const n = Number(x.n);
+    if ((m.fatto === "tabelline" || m.fatto === "divisioni") && Number.isInteger(n) && n >= 2 && n <= 10) m.n = n;
+  }
+  if (x.genere === "logica") {
+    delete m.a;
+    m.prova = x.prova === "intruso" ? "intruso" : "sequenza";
+    m.per = x.per === "colore" ? "colore" : "forma";
+    if (m.prova === "sequenza") m.schema = ["AB", "AAB", "ABB", "ABC", "AABB"].includes(x.schema) ? x.schema : "AB";
   }
   if (x.genere === "problema") {
     m.schema = SCHEMI[x.schema] ? x.schema : errore(inizio + "scegli che cosa succede nel problema.");

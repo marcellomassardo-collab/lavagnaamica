@@ -1077,8 +1077,201 @@ export function avvia(area, es, ctx) {
       el("p", { class: "mat-consiglio", text: "💡 Il perimetro è il giro intorno. I quadretti dentro sono un'altra cosa: sono la superficie." })]);
   }
 
+  /* ---------- problemi con il modello a barre ---------- */
+  // Prima di fare il conto si sceglie il disegno che racconta il problema: le barre mostrano le parti e il tutto.
+  // Le risposte sbagliate sono gli stessi numeri messi nel posto sbagliato (lo schema di un altro problema).
+  const OPERAZIONE_SCHEMA = { unione: "+", parte: "-", confronto: "-", gruppi: "x", ripartizione: ":" };
+  const SBAGLI_SCHEMA = { unione: ["parte", "confronto"], parte: ["unione", "confronto"], confronto: ["unione", "parte"],
+    gruppi: ["unione", "ripartizione"], ripartizione: ["gruppi", "parte"] };
+  function disegnoBarre(schema, a, b, piccolo) {
+    const W = 700, X0 = 40, LARGA = 620, H = schema === "confronto" ? 200 : 170;
+    const svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, class: "barre" + (piccolo ? " piccole" : "") });
+    const scritta = (x, y, t, colore) => {
+      const n = svgEl("text", { x, y, "text-anchor": "middle", "font-size": 30, "font-weight": 800, fill: colore || NERO });
+      n.textContent = t;
+      svg.append(n);
+    };
+    const barra = (x, y, w, colore, testoBarra, tratteggio) => {
+      svg.append(svgEl("rect", { x, y, width: Math.max(w, 4), height: 54, rx: 6, fill: colore, stroke: NERO, "stroke-width": 3,
+        "stroke-dasharray": tratteggio ? "10 7" : "none", "fill-opacity": tratteggio ? 0.25 : 1 }));
+      scritta(x + w / 2, y + 38, testoBarra);
+    };
+    const graffa = (x1, x2, y, t) => {
+      svg.append(svgEl("path", { d: "M" + x1 + "," + (y + 14) + " Q" + x1 + "," + y + " " + (x1 + 14) + "," + y + " L" + ((x1 + x2) / 2 - 10) + "," + y +
+        " L" + (x1 + x2) / 2 + "," + (y - 12) + " L" + ((x1 + x2) / 2 + 10) + "," + y + " L" + (x2 - 14) + "," + y + " Q" + x2 + "," + y + " " + x2 + "," + (y + 14),
+        fill: "none", stroke: NERO, "stroke-width": 3 }));
+      scritta((x1 + x2) / 2, y - 20, t, "#C0282B");
+    };
+    const BLU = "#9CC3F5", VERDE = "#A8DDB5", GIALLO = "#FFE08A";
+    if (schema === "unione" || schema === "parte") {
+      // il tutto in alto, le due parti dentro la barra
+      const tutto = schema === "unione" ? a + b : a, p1 = schema === "unione" ? a : b, p2 = tutto - p1;
+      const w1 = Math.max(80, Math.min(LARGA - 80, LARGA * p1 / Math.max(tutto, 1)));
+      barra(X0, 90, w1, BLU, String(p1));
+      barra(X0 + w1, 90, LARGA - w1, VERDE, schema === "unione" ? String(p2) : "?");
+      graffa(X0, X0 + LARGA, 66, schema === "unione" ? "?" : String(tutto));
+    } else if (schema === "confronto") {
+      const grande = Math.max(a, b), piccola = Math.min(a, b);
+      const wp = Math.max(80, Math.min(LARGA - 80, LARGA * piccola / Math.max(grande, 1)));
+      barra(X0, 30, LARGA, BLU, String(grande));
+      barra(X0, 110, wp, VERDE, String(piccola));
+      barra(X0 + wp, 110, LARGA - wp, GIALLO, "?", true);
+    } else {
+      // gruppi uguali: a pezzi da b (il tutto è ?), oppure il tutto a diviso in b pezzi (un pezzo è ?)
+      const pezzi = schema === "gruppi" ? a : b;
+      const w = LARGA / pezzi;
+      for (let k = 0; k < pezzi; k++) barra(X0 + k * w, 90, w, k % 2 ? VERDE : BLU, schema === "gruppi" ? String(b) : k === 0 ? "?" : "");
+      graffa(X0, X0 + LARGA, 66, schema === "gruppi" ? "?" : String(a));
+    }
+    return svg;
+  }
+
+  async function barre(x) {
+    const op = OPERAZIONE_SCHEMA[x.schema];
+    const r = risultato(op, x.a, x.b);
+    testo.replaceChildren(...x.testo.map(t => el("p", {}, el("span", { text: t }))));
+    scena.replaceChildren(el("p", { class: "barre-invito", text: "Leggi il problema e guarda i disegni qui sotto." }));
+    // 1. quale disegno racconta il problema?
+    const schemi = mescola([x.schema].concat(SBAGLI_SCHEMA[x.schema]));
+    const disegni = schemi.map(sc => el("button", { type: "button", class: "barre-scelta", "aria-label": "disegno" }, disegnoBarre(sc, x.a, x.b, true)));
+    const giusto = disegni[schemi.indexOf(x.schema)];
+    scena.replaceChildren(el("div", { class: "barre-scelte" }, disegni));
+    await toccaGiusto("Quale disegno racconta il problema?", disegni, giusto);
+    scena.replaceChildren(disegnoBarre(x.schema, x.a, x.b));
+    // 2. che operazione serve? 3. quanto fa?
+    const segni = Object.keys(OPERAZIONI).map(k => OPERAZIONI[k]);
+    await chiedi("Che operazione serve per trovare il «?»", segni, OPERAZIONI[op]);
+    const conto = x.a + " " + OPERAZIONI[op] + " " + x.b;
+    await chiedi(conto + " = ?", opzioniNumeri(r, [op === "+" ? Math.abs(x.a - x.b) : x.a + x.b]), String(r), uguale(conto + " = …", true));
+    await avanti([uguale(conto + " = " + r), x.risposta ? el("p", { class: "mat-risposta", text: x.risposta }) : null]);
+  }
+
+  /* ---------- calcolo veloce ---------- */
+  // Un giro di fatti da automatizzare, uno dietro l'altro, grandi. Il tempo c'è solo se l'insegnante lo mette.
+  const caso = (da, a) => da + Math.floor(Math.random() * (a - da + 1));
+  const FATTI = {
+    "amici-10": () => { const n = caso(0, 10); return [n + " + ? = 10", 10 - n]; },
+    "amici-100": () => { const n = caso(1, 9) * 10; return [n + " + ? = 100", 100 - n]; },
+    doppi: () => { const n = caso(2, 25); return ["il doppio di " + n, 2 * n]; },
+    meta: () => { const n = caso(1, 25) * 2; return ["la metà di " + n, n / 2]; },
+    "piu-meno-10": () => { const n = caso(10, 89), piu = Math.random() < 0.5; return [n + (piu ? " + 10" : " − 10"), piu ? n + 10 : n - 10]; },
+    "piu-meno-100": () => { const n = caso(100, 899), piu = Math.random() < 0.5; return [n + (piu ? " + 100" : " − 100"), piu ? n + 100 : n - 100]; },
+    "entro-20": () => { const a = caso(1, 19); if (Math.random() < 0.5) { const b = caso(1, 20 - a); return [a + " + " + b, a + b]; } const b = caso(1, a); return [a + " − " + b, a - b]; },
+    tabelline: x => { const a = x.n || caso(2, 10), b = caso(1, 10); return [a + " × " + b, a * b]; },
+    divisioni: x => { const b = x.n || caso(2, 10), q = caso(1, 10); return [b * q + " : " + b, q]; }
+  };
+  async function veloce(x) {
+    const quante = x.quante;
+    testo.replaceChildren(el("p", {}, el("span", { text: "Calcolo veloce: " + quante + " conti, uno dopo l'altro." + (x.tempo ? " Hai " + x.tempo + " secondi." : "") })));
+    const grande = el("p", { class: "veloce-conto" });
+    const barra = el("div", { class: "veloce-tempo" }, el("span"));
+    const contati = el("p", { class: "veloce-quanti" });
+    scena.replaceChildren(el("div", { class: "veloce" }, x.tempo ? barra : null, grande, contati));
+    let finito = false, fatte = 0, primo = 0;
+    let fineTempo = null;
+    if (x.tempo) {
+      const inizio = performance.now();
+      const id = setInterval(() => {
+        const q = Math.max(0, 1 - (performance.now() - inizio) / (x.tempo * 1000));
+        barra.firstChild.style.width = (q * 100) + "%";
+        if (q <= 0 || finito || fermo) { clearInterval(id); if (q <= 0 && !finito) { finito = true; if (fineTempo) fineTempo(); } }
+      }, 200);
+    }
+    for (let k = 0; k < quante && !finito && !fermo; k++) {
+      const [domanda, giusta] = FATTI[x.fatto](x);
+      grande.textContent = domanda.includes("?") ? domanda : domanda + " = ?";
+      contati.textContent = (k + 1) + " di " + quante;
+      const altre = [giusta + 1, giusta - 1, giusta + 10, giusta - 10, giusta + 2].filter(v => v >= 0 && v !== giusta);
+      const opzioni = mescola([giusta].concat(mescola(altre).slice(0, 3))).map(String);
+      totale++;
+      const fatto = await new Promise(ok => {
+        fineTempo = () => ok(false);
+        let sbagliato = false;
+        const bottoni = opzioni.map(o => el("button", { type: "button", class: "mat-opzione veloce-opzione", text: o }));
+        bottoni.forEach(b => b.addEventListener("click", () => {
+          if (b.textContent !== String(giusta)) { b.disabled = true; sbagliato = true; ctx.riprova(b); return; }
+          bottoni.forEach(q => { q.disabled = true; });
+          ctx.giusto(b);
+          setTimeout(() => ok(!sbagliato), 350);
+        }));
+        pannello.replaceChildren(el("div", { class: "mat-opzioni", style: "--quante:4" }, bottoni));
+        ctx.leggi(domanda.replace("×", "per").replace(":", "diviso").replace("−", "meno").replace("?", "quanto"));
+      });
+      if (fatto) { giuste++; primo++; }
+      if (!finito || fatto) fatte++;
+    }
+    finito = true;
+    await avanti([uguale(primo + " giusti al primo colpo su " + quante + (x.tempo && fatte < quante ? " (il tempo è finito)" : ""))]);
+  }
+
+  /* ---------- logica senza parole: sequenze e intrusi ---------- */
+  const FORME = {
+    cerchio: () => svgEl("circle", { cx: 50, cy: 50, r: 38 }),
+    quadrato: () => svgEl("rect", { x: 14, y: 14, width: 72, height: 72, rx: 4 }),
+    triangolo: () => svgEl("path", { d: "M50,10 L90,86 L10,86 Z" }),
+    stella: () => svgEl("path", { d: "M50,6 L61,38 L95,38 L67,58 L78,92 L50,71 L22,92 L33,58 L5,38 L39,38 Z" }),
+    cuore: () => svgEl("path", { d: "M50,88 C10,60 4,34 22,20 C36,10 48,20 50,30 C52,20 64,10 78,20 C96,34 90,60 50,88 Z" })
+  };
+  const TINTE = { rosso: "#E0332B", blu: "#2F6FD6", verde: "#2E9E5B", giallo: "#F2B600", viola: "#8E44AD" };
+  const tessera = ([forma, tinta], classe) => {
+    const svg = svgEl("svg", { viewBox: "0 0 100 100", class: "logica-figura" });
+    const f = FORME[forma]();
+    f.setAttribute("fill", TINTE[tinta]);
+    f.setAttribute("stroke", NERO);
+    f.setAttribute("stroke-width", 4);
+    svg.append(f);
+    return el(classe ? "button" : "span", Object.assign({ class: "logica-tessera" + (classe ? " " + classe : "") }, classe ? { type: "button", "aria-label": tinta + " " + forma } : {}), svg);
+  };
+  const SCHEMI_SEQUENZA = { AB: [0, 1], AAB: [0, 0, 1], ABB: [0, 1, 1], ABC: [0, 1, 2], AABB: [0, 0, 1, 1] };
+  async function logica(x) {
+    const forme = mescola(Object.keys(FORME)), tinte = mescola(Object.keys(TINTE));
+    if (x.prova === "intruso") {
+      // tre uguali per una cosa (forma o colore), uno diverso; l'altra cosa cambia per tutti e quattro
+      const perForma = x.per !== "colore";
+      const pezzi = [0, 1, 2, 3].map(k => perForma ? [k < 3 ? forme[0] : forme[1], tinte[k]] : [forme[k], k < 3 ? tinte[0] : tinte[1]]);
+      const ordine = mescola([0, 1, 2, 3]);
+      const bottoni = ordine.map(k => tessera(pezzi[k], "logica-scelta"));
+      const intruso = bottoni[ordine.indexOf(3)];
+      testo.replaceChildren(el("p", {}, el("span", { text: "🔍 Quale non c'entra?" })));
+      scena.replaceChildren(el("div", { class: "logica-fila" }, bottoni));
+      await toccaGiusto("Quale non c'entra?", bottoni, intruso);
+      await avanti([el("p", { class: "mat-consiglio", text: "💡 " + (perForma ? "Gli altri hanno la stessa forma." : "Gli altri hanno lo stesso colore.") })]);
+      return;
+    }
+    // la sequenza: il motivo si ripete, l'ultimo posto è da indovinare
+    const motivo = SCHEMI_SEQUENZA[x.schema] || SCHEMI_SEQUENZA.AB;
+    const perForma = x.per !== "colore";
+    const pezzo = i => perForma ? [forme[i], tinte[0]] : [forme[0], tinte[i]];
+    const lunga = Math.max(motivo.length * 2 + 1, 6);
+    const fila = Array.from({ length: lunga }, (_, k) => motivo[k % motivo.length]);
+    const giusta = fila.pop();
+    const usati = [...new Set(motivo)];
+    const altre = mescola(usati.filter(i => i !== giusta).concat([3])).slice(0, 2);
+    const scelte = mescola([giusta].concat(altre));
+    const bottoni = scelte.map(i => tessera(pezzo(i), "logica-scelta"));
+    testo.replaceChildren(el("p", {}, el("span", { text: "➡️ Che cosa viene dopo?" })));
+    scena.replaceChildren(el("div", { class: "logica-fila" }, fila.map(i => tessera(pezzo(i))), el("span", { class: "logica-tessera logica-vuota", text: "?" })));
+    pannello.replaceChildren();
+    const domanda = "Che cosa viene dopo?";
+    await new Promise(ok => {
+      totale++;
+      let sbagliato = false;
+      bottoni.forEach((b, k) => b.addEventListener("click", () => {
+        if (scelte[k] !== giusta) { b.disabled = true; sbagliato = true; ctx.riprova(b); return; }
+        bottoni.forEach(q => { q.disabled = true; });
+        ctx.giusto(b);
+        if (!sbagliato) giuste++;
+        scena.querySelector(".logica-vuota").replaceWith(tessera(pezzo(giusta)));
+        setTimeout(ok, 700);
+      }));
+      pannello.replaceChildren(el("p", { class: "mat-chiede" }, el("span", { text: domanda }), pulsanteVoce(domanda, "Ascolta")), el("div", { class: "logica-fila" }, bottoni));
+      ctx.leggi(domanda);
+    });
+    await avanti([el("p", { class: "mat-consiglio", text: "💡 Il motivo si ripete: " + x.schema.split("").join(" ") + ", " + x.schema.split("").join(" ") + "…" })]);
+  }
+
   const GENERI = { conta, confronta, "prima-dopo": primaDopo, decine: decineUnita, operazione, colonna, proprieta, problema, retta, blocchi, frazione,
-    linee, angolo, simmetria, perimetro };
+    linee, angolo, simmetria, perimetro, barre, veloce, logica };
 
   (async () => {
     for (n = 0; n < scelti.length; n++) {

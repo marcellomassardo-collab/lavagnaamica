@@ -844,3 +844,26 @@ textarea { font: inherit; color: inherit; padding: 10px 14px; border: 2px solid 
 .festa-prossimo:empty { display: none; }
 .festa-consiglio { margin: 0; font-weight: 700; }
 .ripasso h2 { margin-bottom: 4px; }
+
+/* ---------- problemi con le barre, calcolo veloce, logica ---------- */
+.barre { width: min(700px, 100%); height: auto; }
+.barre-scelte { display: grid; gap: 10px; width: 100%; }
+.barre-scelta { border: 3px solid #DDD5C3; border-radius: 14px; background: #fff; padding: 4px; cursor: pointer; }
+.barre-scelta .barre { width: 100%; max-height: 16vh; }
+.barre-scelta.giusta { border-color: var(--giusto); box-shadow: 0 0 0 4px var(--giusto-chiaro); }
+.barre-scelta.suggerito, .logica-tessera.suggerito { box-shadow: 0 0 0 5px var(--evidenzia); }
+.barre-invito { margin: 0; }
+.veloce { display: grid; gap: 10px; justify-items: center; width: 100%; }
+.veloce-conto { margin: 0; font-size: clamp(2.4rem, 1.4rem + 4vw, 5rem); font-weight: 800; }
+.veloce-quanti { margin: 0; color: #4A5560; font-weight: 700; }
+.veloce-tempo { width: 100%; height: 14px; background: #E6E1D6; border-radius: 99px; overflow: hidden; }
+.veloce-tempo span { display: block; height: 100%; width: 100%; background: #E0332B; transition: width .2s linear; }
+.veloce-opzione { font-size: clamp(1.4rem, 1rem + 1.6vw, 2.6rem); }
+.logica-fila { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
+.logica-tessera { display: inline-grid; place-items: center; width: clamp(56px, 7vw, 96px); height: clamp(56px, 7vw, 96px);
+  background: #fff; border: 3px solid #DDD5C3; border-radius: 14px; padding: 4px; }
+button.logica-tessera { cursor: pointer; }
+button.logica-tessera:disabled { opacity: .4; }
+.logica-tessera.giusta { opacity: 1; border-color: var(--giusto); box-shadow: 0 0 0 4px var(--giusto-chiaro); }
+.logica-figura { width: 100%; height: 100%; }
+.logica-vuota { font-size: 2.4rem; font-weight: 800; color: #C0282B; border-style: dashed; }

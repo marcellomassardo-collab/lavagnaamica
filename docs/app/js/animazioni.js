@@ -1604,7 +1604,41 @@ const PERIMETRO = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- il modello a barre ---------- */
+const BARRE = {
+  passi: [
+    "Luca ha 15 figurine. Disegniamo le sue figurine come una barra lunga: è il tutto.",
+    "Luca ne regala 6 a Sara: sono un pezzo della barra.",
+    "Il pezzo che resta è quello che cerchiamo: ci mettiamo il punto di domanda.",
+    "Si vede subito: il tutto meno un pezzo. 15 − 6 = 9. A Luca restano 9 figurine.",
+    "Con le barre il problema si disegna prima di fare il conto: si vede se serve +, −, × oppure :."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const X = 100, L = 600, Y = 200, w6 = L * 6 / 15;
+    const tutto = s("rect", { x: X, y: Y, width: L, height: 70, rx: 8, fill: "#9CC3F5", stroke: INCHIOSTRO, "stroke-width": 4 });
+    const regalate = nascosto(s("g", {}, s("rect", { x: X, y: Y, width: w6, height: 70, rx: 8, fill: "#FFE08A", stroke: INCHIOSTRO, "stroke-width": 4 }),
+      scritta(X + w6 / 2, Y + 47, "6", { "font-size": 34, "font-weight": 800, fill: INCHIOSTRO }), etichetta(X + w6 / 2, Y + 110, "a Sara", 24)));
+    const resto = nascosto(s("g", {}, scritta(X + w6 + (L - w6) / 2, Y + 47, "?", { "font-size": 38, "font-weight": 800, fill: "#C0282B" }),
+      etichetta(X + w6 + (L - w6) / 2, Y + 110, "restano", 24)));
+    const quindici = s("g", {}, s("path", { d: "M" + X + "," + (Y - 16) + " L" + X + "," + (Y - 30) + " L" + (X + L) + "," + (Y - 30) + " L" + (X + L) + "," + (Y - 16),
+      fill: "none", stroke: INCHIOSTRO, "stroke-width": 4 }), etichetta(X + L / 2, Y - 44, "15 figurine", 30));
+    const conto = nascosto(etichetta(400, 400, "15 − 6 = 9", 40));
+    const nove = nascosto(scritta(X + w6 + (L - w6) / 2, Y + 47, "9", { "font-size": 38, "font-weight": 800, fill: "#1E6B52" }));
+    svg.append(tutto, quindici, regalate, resto, nove, conto);
+    return {
+      vai(k) {
+        vedi(regalate, k >= 1);
+        vedi(resto, k === 2);
+        vedi(nove, k >= 3);
+        vedi(conto, k >= 3);
+      },
+      ferma() {}
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

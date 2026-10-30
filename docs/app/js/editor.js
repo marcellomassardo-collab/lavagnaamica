@@ -1,7 +1,7 @@
 // Editor degli esercizi: tutto si prepara riempiendo dei campi, senza codice.
 
 import { el, immaginePicto } from "./ui.js";
-import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, GENERI_LETTURA, LIVELLI, OPERAZIONI, SCHEMI, PROPRIETA, ANIMAZIONI, PASSI_RETTA, LINEE, giochiPer, valida } from "./modello.js";
+import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, GENERI_LETTURA, LIVELLI, OPERAZIONI, SCHEMI, PROPRIETA, ANIMAZIONI, PASSI_RETTA, LINEE, SCHEMI_BARRE, FATTI, giochiPer, valida } from "./modello.js";
 import { scegliPittogramma } from "./picto.js";
 
 const vuoto = () => ({ t: "" });
@@ -144,6 +144,9 @@ function campiDiMatematica(x, ridisegna) {
     if (v === "angolo") Object.assign(x, { a: 45, giro: 0 });
     if (v === "simmetria") Object.assign(x, { celle: [[1, 3], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3], [4, 3]] });
     if (v === "perimetro") Object.assign(x, { a: 5, b: 3 });
+    if (v === "barre") Object.assign(x, { schema: "parte", a: 15, b: 6, testo: ["", "", ""], risposta: "" });
+    if (v === "veloce") { delete x.a; Object.assign(x, { fatto: "amici-10", quante: 10, tempo: 0 }); }
+    if (v === "logica") { delete x.a; Object.assign(x, { prova: "sequenza", per: "forma", schema: "AB" }); }
     if (v === "problema") Object.assign(x, { schema: "aggiunta", b: 3, testo: ["", "", ""], oggetto: { t: "" } });
     ridisegna();
   }, "Che cosa");
@@ -164,6 +167,26 @@ function campiDiMatematica(x, ridisegna) {
   const giro = () => numero(x.giro, v => { x.giro = v; }, "Girata di (gradi, da −90 a 90)", -90);
   if (x.genere === "linee") campi.push(menu(x.cosa, LINEE, v => { x.cosa = v; }, "Quale linea"), giro());
   if (x.genere === "angolo") campi.push(a("Apertura in gradi (acuto 10-75, retto 90, ottuso 105-170, piatto 180)"), giro());
+  if (x.genere === "barre") {
+    if (!Array.isArray(x.testo)) x.testo = ["", "", ""];
+    while (x.testo.length < 3) x.testo.push("");
+    campi.push(menu(x.schema, SCHEMI_BARRE, v => { x.schema = v; }, "Che cosa succede nel problema"),
+      etichetta("Prima frase", testoLibero(x.testo[0], v => { x.testo[0] = v; }, { placeholder: "Luca ha 15 figurine." })),
+      etichetta("Seconda frase", testoLibero(x.testo[1], v => { x.testo[1] = v; }, { placeholder: "Ne regala 6 a Sara." })),
+      etichetta("La domanda", testoLibero(x.testo[2], v => { x.testo[2] = v; }, { placeholder: "Quante figurine gli restano?" })),
+      a("Primo numero (il tutto, il più grande o i gruppi)"), b("Secondo numero"),
+      etichetta("La risposta, a parole (facoltativa)", testoLibero(x.risposta, v => { x.risposta = v; }, { placeholder: "A Luca restano 9 figurine." })));
+  }
+  if (x.genere === "veloce") {
+    campi.push(menu(x.fatto, FATTI, v => { x.fatto = v; }, "Quali conti"), numero(x.quante, v => { x.quante = v; }, "Quanti conti (da 3 a 20)"),
+      numero(x.n, v => { x.n = v; }, "Solo la tabellina del… (per le tabelline e le divisioni; vuoto = tutte)"),
+      numero(x.tempo, v => { x.tempo = v; }, "Tempo in secondi (0 = senza tempo)"));
+  }
+  if (x.genere === "logica") {
+    campi.push(menu(x.prova, { sequenza: "Che cosa viene dopo? (sequenza)", intruso: "Quale non c'entra? (intruso)" }, v => { x.prova = v; }, "Che gioco"),
+      menu(x.per, { forma: "Cambia la forma", colore: "Cambia il colore" }, v => { x.per = v; }, "Che cosa cambia"),
+      menu(x.schema, { AB: "A B A B", AAB: "A A B", ABB: "A B B", ABC: "A B C", AABB: "A A B B" }, v => { x.schema = v; }, "Il motivo della sequenza"));
+  }
   if (x.genere === "perimetro") campi.push(a("Base (quadretti, fino a 10)"), b("Altezza (quadretti, fino a 6)"));
   if (x.genere === "simmetria") {
     if (!Array.isArray(x.celle)) x.celle = [];

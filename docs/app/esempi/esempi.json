@@ -14988,5 +14988,359 @@
   "scopri": {
    "animazione": "perimetro"
   }
+ },
+ {
+  "id": "problemi-barre-facili",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Problemi con le barre: i primi",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Leggi il problema e scegli il disegno che lo racconta.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "barre",
+     "schema": "parte",
+     "a": 12,
+     "b": 5,
+     "testo": [
+      "Anna ha 12 caramelle.",
+      "Ne mangia 5.",
+      "Quante caramelle le restano?"
+     ],
+     "risposta": "Ad Anna restano 7 caramelle."
+    },
+    {
+     "genere": "barre",
+     "schema": "unione",
+     "a": 8,
+     "b": 7,
+     "testo": [
+      "Nel cortile ci sono 8 bambini.",
+      "Ne arrivano altri 7.",
+      "Quanti bambini ci sono adesso?"
+     ],
+     "risposta": "Adesso ci sono 15 bambini."
+    },
+    {
+     "genere": "barre",
+     "schema": "confronto",
+     "a": 14,
+     "b": 9,
+     "testo": [
+      "Luca ha 14 biglie, Sara ne ha 9.",
+      "Quante biglie ha Luca più di Sara?"
+     ],
+     "risposta": "Luca ha 5 biglie più di Sara."
+    },
+    {
+     "genere": "barre",
+     "schema": "gruppi",
+     "a": 3,
+     "b": 5,
+     "testo": [
+      "Ci sono 3 vasi.",
+      "In ogni vaso ci sono 5 fiori.",
+      "Quanti fiori ci sono in tutto?"
+     ],
+     "risposta": "In tutto ci sono 15 fiori."
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "barre"
+  }
+ },
+ {
+  "id": "problemi-barre",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Problemi con le barre",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Leggi il problema e scegli il disegno che lo racconta. Poi fai il conto.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "barre",
+     "schema": "parte",
+     "a": 15,
+     "b": 6,
+     "testo": [
+      "Luca ha 15 figurine.",
+      "Ne regala 6 a Sara.",
+      "Quante figurine gli restano?"
+     ],
+     "risposta": "A Luca restano 9 figurine."
+    },
+    {
+     "genere": "barre",
+     "schema": "unione",
+     "a": 24,
+     "b": 18,
+     "testo": [
+      "In un vaso ci sono 24 rose rosse e 18 rose gialle.",
+      "Quante rose ci sono in tutto?"
+     ],
+     "risposta": "In tutto ci sono 42 rose."
+    },
+    {
+     "genere": "barre",
+     "schema": "confronto",
+     "a": 35,
+     "b": 20,
+     "testo": [
+      "Marta ha 35 euro, Paolo ne ha 20.",
+      "Quanti euro ha Marta più di Paolo?"
+     ],
+     "risposta": "Marta ha 15 euro più di Paolo."
+    },
+    {
+     "genere": "barre",
+     "schema": "gruppi",
+     "a": 4,
+     "b": 6,
+     "testo": [
+      "Ci sono 4 scatole.",
+      "In ogni scatola ci sono 6 pennarelli.",
+      "Quanti pennarelli ci sono in tutto?"
+     ],
+     "risposta": "In tutto ci sono 24 pennarelli."
+    },
+    {
+     "genere": "barre",
+     "schema": "ripartizione",
+     "a": 30,
+     "b": 5,
+     "testo": [
+      "La maestra ha 30 caramelle.",
+      "Le divide in parti uguali tra 5 bambini.",
+      "Quante caramelle riceve ogni bambino?"
+     ],
+     "risposta": "Ogni bambino riceve 6 caramelle."
+    },
+    {
+     "genere": "barre",
+     "schema": "parte",
+     "a": 52,
+     "b": 37,
+     "testo": [
+      "Il pullman ha 52 posti.",
+      "Sono già seduti 37 bambini.",
+      "Quanti posti sono ancora liberi?"
+     ],
+     "risposta": "Sono liberi 15 posti."
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "barre"
+  }
+ },
+ {
+  "id": "calcolo-veloce-10",
+  "materia": "Matematica",
+  "livello": 1,
+  "titolo": "Calcolo veloce: amici del 10 ed entro 20",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Un conto dopo l'altro: quanto fa?",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "veloce",
+     "fatto": "amici-10",
+     "quante": 10
+    },
+    {
+     "genere": "veloce",
+     "fatto": "entro-20",
+     "quante": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "calcolo-veloce-doppi",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Calcolo veloce: doppi, metà, più e meno 10",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Un conto dopo l'altro: quanto fa?",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "veloce",
+     "fatto": "doppi",
+     "quante": 10
+    },
+    {
+     "genere": "veloce",
+     "fatto": "meta",
+     "quante": 10
+    },
+    {
+     "genere": "veloce",
+     "fatto": "piu-meno-10",
+     "quante": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "calcolo-veloce-tabelline",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Calcolo veloce: tabelline e divisioni",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Un conto dopo l'altro: quanto fa?",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "veloce",
+     "fatto": "tabelline",
+     "quante": 15
+    },
+    {
+     "genere": "veloce",
+     "fatto": "divisioni",
+     "quante": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "calcolo-veloce-100",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Calcolo veloce: amici del 100, più e meno 100",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Un conto dopo l'altro: quanto fa?",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "veloce",
+     "fatto": "amici-100",
+     "quante": 10
+    },
+    {
+     "genere": "veloce",
+     "fatto": "piu-meno-100",
+     "quante": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "logica-sequenze",
+  "materia": "Matematica",
+  "livello": 1,
+  "titolo": "Che cosa viene dopo?",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda le figure: che cosa viene dopo?",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "logica",
+     "prova": "sequenza",
+     "per": "forma",
+     "schema": "AB"
+    },
+    {
+     "genere": "logica",
+     "prova": "sequenza",
+     "per": "colore",
+     "schema": "AB"
+    },
+    {
+     "genere": "logica",
+     "prova": "sequenza",
+     "per": "forma",
+     "schema": "AAB"
+    },
+    {
+     "genere": "logica",
+     "prova": "sequenza",
+     "per": "colore",
+     "schema": "ABB"
+    },
+    {
+     "genere": "logica",
+     "prova": "sequenza",
+     "per": "forma",
+     "schema": "ABC"
+    },
+    {
+     "genere": "logica",
+     "prova": "sequenza",
+     "per": "colore",
+     "schema": "AABB"
+    }
+   ]
+  }
+ },
+ {
+  "id": "logica-intruso",
+  "materia": "Matematica",
+  "livello": 1,
+  "titolo": "Quale non c'entra?",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda le figure: quale non c'entra?",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "logica",
+     "prova": "intruso",
+     "per": "forma"
+    },
+    {
+     "genere": "logica",
+     "prova": "intruso",
+     "per": "colore"
+    },
+    {
+     "genere": "logica",
+     "prova": "intruso",
+     "per": "forma"
+    },
+    {
+     "genere": "logica",
+     "prova": "intruso",
+     "per": "colore"
+    },
+    {
+     "genere": "logica",
+     "prova": "intruso",
+     "per": "forma"
+    },
+    {
+     "genere": "logica",
+     "prova": "intruso",
+     "per": "colore"
+    }
+   ]
+  }
  }
 ]
