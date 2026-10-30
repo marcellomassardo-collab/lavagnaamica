@@ -2,7 +2,7 @@
 // I file dell'app si chiedono prima alla rete (così si vede sempre l'ultima versione)
 // e solo se la rete non risponde in tempo si prendono dalla copia salvata.
 
-const VERSIONE = "app-31";
+const VERSIONE = "app-32";
 const PITTOGRAMMI = "pittogrammi";
 const MAX_PITTOGRAMMI = 400;
 const ATTESA_RETE = 3500;
@@ -10,7 +10,7 @@ const ATTESA_RETE = 3500;
 const FILE = [
   "./", "index.html", "stile.css", "manifest.webmanifest",
   "js/animazioni.js", "js/avvio.js", "js/catalogo.js", "js/config.js", "js/dati.js", "js/editor.js", "js/impostazioni.js", "js/insegnanti.js", "js/linea.js",
-  "js/modello.js", "js/pagine.js", "js/picto.js", "js/scena.js", "js/strumenti.js", "js/ripasso.js", "js/sensore.js", "js/suoni.js", "js/trascina.js", "js/ui.js", "js/voce.js",
+  "js/modello.js", "js/pagine.js", "js/picto.js", "js/scena.js", "js/strumenti.js", "js/ripasso.js", "js/sensore.js", "js/stampa.js", "js/suoni.js", "js/trascina.js", "js/ui.js", "js/voce.js",
   "js/giochi/abbina.js", "js/giochi/brano.js", "js/giochi/completa.js", "js/giochi/lettura.js", "js/giochi/matematica.js", "js/giochi/memory.js", "js/giochi/palloncini.js", "js/giochi/quiz.js", "js/giochi/raggruppa.js", "js/giochi/ruota.js", "js/giochi/scelta.js", "js/giochi/sequenza.js", "js/giochi/vero.js",
   "esempi/esempi.json", "font/corsivo-scuola.woff2", "font/andika-400.woff2", "font/andika-700.woff2",
   "foto/alfabeto-fenicio.jpg", "foto/amigdala.jpg", "foto/anfora-greca.jpg", "foto/argo.jpg", "foto/ascia-di-bronzo.jpg", "foto/augusto.jpg", "foto/bedford-peter-pan.jpg", "foto/birket-foster-girotondo.jpg", "foto/bruegel-caduta-icaro.jpg", "foto/codice-hammurabi.jpg", "foto/colosseo.jpg", "foto/crane-gigante.jpg", "foto/denslow-casa-ciclone.jpg", "foto/dore-cicala-formica.jpg", "foto/dore-lupo-agnello.jpg", "foto/elmo-corinzio.jpg", "foto/ettore-astianatte.jpg", "foto/fenrir.jpg", "foto/grimm-pappa-dolce.jpg", "foto/kalila-leone-lepre.jpg", "foto/leighton-persefone.jpg", "foto/mazzanti-pinocchio.jpg", "foto/moneta-romana.jpg", "foto/mosaico-romano.jpg", "foto/musicanti-brema.jpg", "foto/novembre-tres-riches-heures.jpg", "foto/partenone.jpg", "foto/pedersen-anatroccolo.jpg", "foto/piramidi.jpg", "foto/pittura-rupestre.jpg", "foto/polifemo.jpg", "foto/poussin-mida.jpg", "foto/rackham-lepre-tartaruga.jpg", "foto/rackham-volpe-uva.jpg", "foto/rembrandt-filemone.jpg", "foto/stele-egizia.jpg", "foto/tavoletta-cuneiforme.jpg", "foto/thor-sposa.jpg", "foto/tiepolo-cavallo.jpg", "foto/ubbelohde-folletti.jpg", "foto/velazquez-filatrici.jpg", "foto/waterhouse-sirene.jpg",

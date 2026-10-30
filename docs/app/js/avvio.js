@@ -12,6 +12,7 @@ import { spiegazione } from "./animazioni.js";
 import { vistaStrumenti } from "./strumenti.js";
 import { registra, daRipassare, prossimo, azzera } from "./ripasso.js";
 import { avviaSensore } from "./sensore.js";
+import { stampa } from "./stampa.js";
 import { catalogo, catalogoAttivo, insegnante } from "./catalogo.js";
 import { vistaInsegnanti, vistaModerazione, schedaCatalogo, pubblica, copiaLink } from "./insegnanti.js";
 import { editor, bozzaDa } from "./editor.js";
@@ -166,6 +167,8 @@ async function vistaMateria(m) {
     return el("section", { class: "livello", id: "livello-" + n },
       el("h2", {}, n ? el("span", { class: "livello-numero", text: String(n) }) : null,
         n ? "Livello " + n : "Altri esercizi", n ? el("small", { text: NOMI_LIVELLI[n] }) : null),
+      el("button", { type: "button", class: "tasto-piccolo stampa-livello", text: "🖨 Stampa le schede di questo livello (" + tutti.length + ")",
+        on: { click: () => stampa(tutti) } }),
       // le letture a parte, se nello stesso livello ci sono anche esercizi
       letture.length && esercizi.length
         ? [el("h3", { class: "materia", text: "Esercizi" }), elenco(esercizi), el("h3", { class: "materia", text: "Letture" }), elenco(letture)]
@@ -323,6 +326,8 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
         el("a", { class: "tasto", href: uscita, "aria-label": "Esci" }, "⟵", el("span", { class: "etichetta", text: "Esci" })),
         el("button", { type: "button", class: "tasto", "aria-label": "Ricomincia", on: { click: inizia } }, "↻", el("span", { class: "etichetta", text: "Ricomincia" })),
         cambiaGioco,
+        el("button", { type: "button", class: "tasto", title: "Stampa la scheda", "aria-label": "Stampa la scheda", on: { click: () => stampa([es]) } },
+          "🖨", el("span", { class: "etichetta", text: "Stampa" })),
         schermo))));
   const fermaSensore = impostazioni.sensore ? avviaSensore() : null;
   quandoSiEsce(() => {

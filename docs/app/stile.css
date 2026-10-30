@@ -870,3 +870,68 @@ button.logica-tessera:disabled { opacity: .4; }
 
 /* ---------- gioco con un sensore ---------- */
 .sensore-luce { outline: 7px solid #F2B600 !important; outline-offset: 5px; box-shadow: 0 0 0 14px rgba(242, 182, 0, .35) !important; position: relative; z-index: 2; }
+
+/* ---------- schede da stampare ---------- */
+.stampa-livello { margin: 0 0 10px; }
+@media screen { #stampa { display: none; } }
+@media print {
+  @page { size: A4; margin: 14mm; }
+  html, body { background: #fff !important; color: #000 !important; }
+  body > *:not(#stampa) { display: none !important; }
+  #stampa { display: block; font-family: "Lettura", system-ui, sans-serif; font-size: 14pt; color: #000; }
+  .foglio { break-after: page; }
+  .foglio:last-child { break-after: auto; }
+  .foglio.s-maiuscolo { text-transform: uppercase; }
+  .foglio.s-corsivo { font-family: "Corsivo Scuola", cursive; }
+  .foglio .due .basso { display: none; }
+  .foglio.s-doppio .due { display: inline-flex; flex-direction: column; }
+  .foglio.s-doppio .due .alto { text-transform: uppercase; }
+  .foglio.s-doppio .due .basso { display: inline; font-size: .9em; }
+  .foglio h1 { font-size: 20pt; margin: 4mm 0 2mm; }
+  .st-nome { font-size: 11pt; margin: 0; text-transform: none; }
+  .st-consegna { font-style: italic; margin: 0 0 4mm; }
+  .st-carta { display: inline-flex; align-items: center; gap: 2mm; vertical-align: middle; }
+  .st-carta img, .st-foto { filter: grayscale(1); }
+  .st-carta img { width: 18mm; height: 18mm; object-fit: contain; }
+  .st-foto { max-width: 70mm; max-height: 55mm; float: right; margin: 0 0 3mm 4mm; }
+  .st-collega { display: flex; justify-content: space-between; gap: 30mm; }
+  .st-colonna-carte { list-style: none; padding: 0; margin: 0; display: grid; gap: 5mm; }
+  .st-colonna-carte li { display: flex; align-items: center; gap: 3mm; min-height: 14mm; }
+  .st-pallino { width: 3mm; height: 3mm; border-radius: 50%; background: #000; }
+  .st-banca { display: flex; flex-wrap: wrap; gap: 3mm 6mm; padding: 3mm; border: 1px solid #000; border-radius: 3mm; }
+  .st-parola { padding: 1mm 3mm; border: 1px dashed #000; border-radius: 2mm; }
+  .st-gruppi { width: 100%; border-collapse: collapse; margin-top: 4mm; }
+  .st-gruppi th, .st-gruppi td { border: 1px solid #000; padding: 2mm; vertical-align: top; }
+  .st-gruppi td { height: 60mm; }
+  .st-frasi { padding-left: 7mm; display: grid; gap: 5mm; }
+  .st-domande { list-style: none; counter-reset: es; padding: 0; display: grid; gap: 5mm; }
+  .st-domande > li { counter-increment: es; }
+  .st-domande > li::before { content: counter(es) "."; display: block; font-weight: 800; margin-bottom: 1mm; }
+  .st-domande > li, .st-esercizio { break-inside: avoid; }
+  .st-opzioni { display: flex; flex-wrap: wrap; gap: 3mm 8mm; margin: 1mm 0; }
+  .st-opzioni > span, .st-lettera { display: inline-flex; align-items: center; gap: 1.5mm; margin-right: 4mm; }
+  .st-casella-x { font-size: 16pt; }
+  .st-sequenza { list-style: none; padding: 0; display: grid; gap: 4mm; }
+  .st-sequenza li { display: flex; align-items: center; gap: 4mm; }
+  .st-quadro { width: 10mm; height: 10mm; border: 1.5px solid #000; }
+  .st-frasi li { line-height: 2.2; }
+  .st-brano p { margin: 0 0 2mm; line-height: 1.6; }
+  .st-brano.poesia p { margin: 0; }
+  .st-stacco { height: 3mm; }
+  .st-fonte { font-size: 10pt; font-style: italic; text-transform: none; }
+  .st-grande { font-size: 22pt; margin: 0; }
+  .st-disegno { display: block; max-width: 110mm; max-height: 48mm; margin: 2mm 0; }
+  .st-disegno.st-largo { max-width: 170mm; }
+  .st-punti { max-width: 90mm; }
+  .st-chiede { margin: 1mm 0; }
+  .st-conto { font-size: 18pt; margin: 1mm 0; }
+  .st-colonna { border-collapse: collapse; font-size: 18pt; margin: 2mm 0; }
+  .st-colonna td, .st-colonna th { width: 11mm; height: 11mm; text-align: center; border: 1px solid #bbb; }
+  .st-colonna th { font-size: 10pt; text-transform: none; }
+  .st-colonna .st-risultato td { border-top: 2px solid #000; }
+  .st-spazio { height: 30mm; border: 1px dashed #999; border-radius: 2mm; margin: 2mm 0; }
+  .st-conti { columns: 2; font-size: 16pt; line-height: 2; }
+  .st-fila { display: flex; flex-wrap: wrap; gap: 3mm; align-items: center; }
+  .st-logica { width: 16mm; height: 16mm; }
+  .st-vuoto { width: 16mm; height: 16mm; border: 1.5px dashed #000; display: inline-grid; place-items: center; font-size: 16pt; }
+}
