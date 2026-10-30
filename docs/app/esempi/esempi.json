@@ -12405,5 +12405,1733 @@
     ]
    ]
   }
+ },
+ {
+  "id": "monete-euro",
+  "materia": "Matematica",
+  "livello": 1,
+  "titolo": "Le monete dell'euro",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni moneta vicino al suo nome.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 4775
+     },
+     {
+      "t": "1 centesimo"
+     }
+    ],
+    [
+     {
+      "p": 4777
+     },
+     {
+      "t": "2 centesimi"
+     }
+    ],
+    [
+     {
+      "p": 4779
+     },
+     {
+      "t": "5 centesimi"
+     }
+    ],
+    [
+     {
+      "p": 4781
+     },
+     {
+      "t": "10 centesimi"
+     }
+    ],
+    [
+     {
+      "p": 4783
+     },
+     {
+      "t": "20 centesimi"
+     }
+    ],
+    [
+     {
+      "p": 4785
+     },
+     {
+      "t": "50 centesimi"
+     }
+    ],
+    [
+     {
+      "p": 4776
+     },
+     {
+      "t": "1 euro"
+     }
+    ],
+    [
+     {
+      "p": 10279
+     },
+     {
+      "t": "2 euro"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "banconote-euro",
+  "materia": "Matematica",
+  "livello": 1,
+  "titolo": "Le banconote dell'euro",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni banconota vicino al suo valore.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 4780
+     },
+     {
+      "t": "5 euro"
+     }
+    ],
+    [
+     {
+      "p": 4782
+     },
+     {
+      "t": "10 euro"
+     }
+    ],
+    [
+     {
+      "p": 4784
+     },
+     {
+      "t": "20 euro"
+     }
+    ],
+    [
+     {
+      "p": 4786
+     },
+     {
+      "t": "50 euro"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "figure-piane",
+  "materia": "Matematica",
+  "livello": 1,
+  "titolo": "Le figure: quadrato, rettangolo, triangolo, cerchio",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni figura vicino al suo nome.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 4616
+     },
+     {
+      "t": "quadrato"
+     }
+    ],
+    [
+     {
+      "p": 4731
+     },
+     {
+      "t": "rettangolo"
+     }
+    ],
+    [
+     {
+      "p": 4763
+     },
+     {
+      "t": "triangolo"
+     }
+    ],
+    [
+     {
+      "p": 4603
+     },
+     {
+      "t": "cerchio"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "pari-dispari",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Pari o dispari?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Metti ogni numero nel gruppo giusto: i pari si dividono in due parti uguali, i dispari no.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "numeri pari",
+     "p": 34643,
+     "elementi": [
+      {
+       "t": "2"
+      },
+      {
+       "t": "8"
+      },
+      {
+       "t": "10"
+      },
+      {
+       "t": "14"
+      },
+      {
+       "t": "16"
+      },
+      {
+       "t": "20"
+      }
+     ]
+    },
+    {
+     "nome": "numeri dispari",
+     "p": 34773,
+     "elementi": [
+      {
+       "t": "3"
+      },
+      {
+       "t": "5"
+      },
+      {
+       "t": "9"
+      },
+      {
+       "t": "11"
+      },
+      {
+       "t": "17"
+      },
+      {
+       "t": "19"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "amici-del-10",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Gli amici del 10",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni numero vicino al suo amico: insieme fanno 10.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "1"
+     },
+     {
+      "t": "9"
+     }
+    ],
+    [
+     {
+      "t": "2"
+     },
+     {
+      "t": "8"
+     }
+    ],
+    [
+     {
+      "t": "3"
+     },
+     {
+      "t": "7"
+     }
+    ],
+    [
+     {
+      "t": "4"
+     },
+     {
+      "t": "6"
+     }
+    ],
+    [
+     {
+      "t": "10"
+     },
+     {
+      "t": "0"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "doppio-meta",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Il doppio e la metà",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Il doppio è due volte il numero, la metà è una delle due parti uguali.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "il doppio di 2"
+     },
+     {
+      "t": "4"
+     }
+    ],
+    [
+     {
+      "t": "il doppio di 6"
+     },
+     {
+      "t": "12"
+     }
+    ],
+    [
+     {
+      "t": "il doppio di 8"
+     },
+     {
+      "t": "16"
+     }
+    ],
+    [
+     {
+      "t": "il doppio di 10"
+     },
+     {
+      "t": "20"
+     }
+    ],
+    [
+     {
+      "t": "la metà di 14"
+     },
+     {
+      "t": "7"
+     }
+    ],
+    [
+     {
+      "t": "la metà di 18"
+     },
+     {
+      "t": "9"
+     }
+    ],
+    [
+     {
+      "t": "la metà di 6"
+     },
+     {
+      "t": "3"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "conta-a-salti",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Contiamo a salti",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Conta a salti e metti al suo posto il numero che manca.",
+  "dati": {
+   "frasi": [
+    "Di 2 in 2: 2, 4, 6, [8], 10, [12].",
+    "Di 5 in 5: 5, 10, 15, [20], 25, [30].",
+    "Di 10 in 10: 10, 20, 30, [40], 50, [60].",
+    "Di 3 in 3: 3, 6, 9, [12], 15, [18].",
+    "Indietro di 2 in 2: 20, 18, 16, [14], 12, [10]."
+   ]
+  }
+ },
+ {
+  "id": "figure-lati",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Le figure: lati e angoli",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Guarda la figura e scegli la risposta giusta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Quanti lati ha il triangolo?",
+      "p": 4763
+     },
+     "giusta": {
+      "t": "3"
+     },
+     "sbagliate": [
+      {
+       "t": "4"
+      },
+      {
+       "t": "5"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quanti lati ha il quadrato?",
+      "p": 4616
+     },
+     "giusta": {
+      "t": "4"
+     },
+     "sbagliate": [
+      {
+       "t": "3"
+      },
+      {
+       "t": "6"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quanti angoli ha il triangolo?",
+      "p": 4763
+     },
+     "giusta": {
+      "t": "3"
+     },
+     "sbagliate": [
+      {
+       "t": "2"
+      },
+      {
+       "t": "4"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quanti lati ha il cerchio?",
+      "p": 4603
+     },
+     "giusta": {
+      "t": "nessuno: è una linea curva"
+     },
+     "sbagliate": [
+      {
+       "t": "3"
+      },
+      {
+       "t": "4"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Come sono i lati del quadrato?",
+      "p": 4616
+     },
+     "giusta": {
+      "t": "tutti uguali"
+     },
+     "sbagliate": [
+      {
+       "t": "due lunghi e due corti"
+      },
+      {
+       "t": "tutti diversi"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Come sono i lati di questo rettangolo?",
+      "p": 4731
+     },
+     "giusta": {
+      "t": "due più lunghi e due più corti"
+     },
+     "sbagliate": [
+      {
+       "t": "tutti uguali"
+      },
+      {
+       "t": "tutti diversi"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "solidi-oggetti",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Che forma ha? I solidi intorno a noi",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni oggetto vicino al solido che gli somiglia.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "il dado",
+      "p": 2731
+     },
+     {
+      "t": "cubo",
+      "p": 9115
+     }
+    ],
+    [
+     {
+      "t": "il pallone",
+      "p": 2269
+     },
+     {
+      "t": "sfera",
+      "p": 9113
+     }
+    ],
+    [
+     {
+      "t": "la lattina",
+      "p": 6545
+     },
+     {
+      "t": "cilindro",
+      "p": 9111
+     }
+    ],
+    [
+     {
+      "t": "il cono gelato",
+      "p": 2420
+     },
+     {
+      "t": "cono",
+      "p": 9112
+     }
+    ],
+    [
+     {
+      "t": "le piramidi d'Egitto",
+      "p": 8190
+     },
+     {
+      "t": "piramide",
+      "p": 9110
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "strumenti-misura",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Con che cosa si misura?",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni strumento vicino a quello che misura.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "il metro",
+      "p": 2913
+     },
+     {
+      "t": "quanto è lungo"
+     }
+    ],
+    [
+     {
+      "t": "la bilancia",
+      "p": 36883
+     },
+     {
+      "t": "quanto pesa"
+     }
+    ],
+    [
+     {
+      "t": "la caraffa graduata",
+      "p": 32466
+     },
+     {
+      "t": "quanto liquido c'è"
+     }
+    ],
+    [
+     {
+      "t": "l'orologio",
+      "p": 7229
+     },
+     {
+      "t": "quanto tempo passa"
+     }
+    ],
+    [
+     {
+      "t": "il termometro",
+      "p": 2789
+     },
+     {
+      "t": "quanto fa caldo o freddo"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "centinaia-decine-unita",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Centinaia, decine e unità",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni numero vicino alle sue centinaia, decine e unità.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "3 centinaia, 4 decine, 5 unità"
+     },
+     {
+      "t": "345"
+     }
+    ],
+    [
+     {
+      "t": "5 centinaia, 2 unità"
+     },
+     {
+      "t": "502"
+     }
+    ],
+    [
+     {
+      "t": "2 centinaia, 7 decine"
+     },
+     {
+      "t": "270"
+     }
+    ],
+    [
+     {
+      "t": "8 centinaia, 1 decina, 6 unità"
+     },
+     {
+      "t": "816"
+     }
+    ],
+    [
+     {
+      "t": "1 centinaio, 9 decine, 9 unità"
+     },
+     {
+      "t": "199"
+     }
+    ],
+    [
+     {
+      "t": "6 centinaia"
+     },
+     {
+      "t": "600"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "valore-cifra",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Quanto vale la cifra?",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "La stessa cifra vale di più o di meno secondo il posto dove si trova.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Nel numero 472, quanto vale la cifra 7?"
+     },
+     "giusta": {
+      "t": "7 decine = 70"
+     },
+     "sbagliate": [
+      {
+       "t": "7 unità = 7"
+      },
+      {
+       "t": "7 centinaia = 700"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Nel numero 358, quanto vale la cifra 3?"
+     },
+     "giusta": {
+      "t": "3 centinaia = 300"
+     },
+     "sbagliate": [
+      {
+       "t": "3 unità = 3"
+      },
+      {
+       "t": "3 decine = 30"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Nel numero 609, quanto vale la cifra 9?"
+     },
+     "giusta": {
+      "t": "9 unità = 9"
+     },
+     "sbagliate": [
+      {
+       "t": "9 decine = 90"
+      },
+      {
+       "t": "9 centinaia = 900"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Nel numero 815, quanto vale la cifra 1?"
+     },
+     "giusta": {
+      "t": "1 decina = 10"
+     },
+     "sbagliate": [
+      {
+       "t": "1 unità = 1"
+      },
+      {
+       "t": "1 centinaio = 100"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Nel numero 940, quanto vale la cifra 4?"
+     },
+     "giusta": {
+      "t": "4 decine = 40"
+     },
+     "sbagliate": [
+      {
+       "t": "4 unità = 4"
+      },
+      {
+       "t": "4 centinaia = 400"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Nel numero 237, quanto vale la cifra 2?"
+     },
+     "giusta": {
+      "t": "2 centinaia = 200"
+     },
+     "sbagliate": [
+      {
+       "t": "2 unità = 2"
+      },
+      {
+       "t": "2 decine = 20"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "confronta-fino-a-1000",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Maggiore, minore o uguale?",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Scegli il segno giusto: < minore, > maggiore, = uguale.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Confronta 345 e 354: quale segno ci va?"
+     },
+     "giusta": {
+      "t": "345 < 354"
+     },
+     "sbagliate": [
+      {
+       "t": "345 > 354"
+      },
+      {
+       "t": "345 = 354"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Confronta 810 e 801: quale segno ci va?"
+     },
+     "giusta": {
+      "t": "810 > 801"
+     },
+     "sbagliate": [
+      {
+       "t": "810 < 801"
+      },
+      {
+       "t": "810 = 801"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Confronta 299 e 300: quale segno ci va?"
+     },
+     "giusta": {
+      "t": "299 < 300"
+     },
+     "sbagliate": [
+      {
+       "t": "299 > 300"
+      },
+      {
+       "t": "299 = 300"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Confronta 560 e 560: quale segno ci va?"
+     },
+     "giusta": {
+      "t": "560 = 560"
+     },
+     "sbagliate": [
+      {
+       "t": "560 < 560"
+      },
+      {
+       "t": "560 > 560"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Confronta 708 e 780: quale segno ci va?"
+     },
+     "giusta": {
+      "t": "708 < 780"
+     },
+     "sbagliate": [
+      {
+       "t": "708 > 780"
+      },
+      {
+       "t": "708 = 780"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Confronta 999 e 99: quale segno ci va?"
+     },
+     "giusta": {
+      "t": "999 > 99"
+     },
+     "sbagliate": [
+      {
+       "t": "999 < 99"
+      },
+      {
+       "t": "999 = 99"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "ordina-fino-a-1000",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Dal più piccolo al più grande",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti i numeri in ordine, dal più piccolo al più grande. Attenzione: hanno le stesse cifre!",
+  "dati": {
+   "passi": [
+    {
+     "t": "109"
+    },
+    {
+     "t": "190"
+    },
+    {
+     "t": "199"
+    },
+    {
+     "t": "901"
+    },
+    {
+     "t": "910"
+    },
+    {
+     "t": "919"
+    }
+   ]
+  }
+ },
+ {
+  "id": "numerazioni-fino-a-1000",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Avanti e indietro fino a 1000",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Conta in avanti o all'indietro e metti al suo posto il numero che manca.",
+  "dati": {
+   "frasi": [
+    "Di 100 in 100: 100, 200, 300, [400], 500, [600].",
+    "Di 50 in 50: 50, 100, 150, [200], 250, [300].",
+    "Di 25 in 25: 25, 50, 75, [100], 125, [150].",
+    "Indietro di 10 in 10: 530, 520, 510, [500], 490, [480].",
+    "Indietro di 100 in 100: 900, 800, 700, [600], 500, [400]."
+   ]
+  }
+ },
+ {
+  "id": "termini-operazioni",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "I nomi delle operazioni",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Ogni operazione ha i suoi nomi: metti ogni parola nel gruppo giusto.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "addizione +",
+     "elementi": [
+      {
+       "t": "addendo"
+      },
+      {
+       "t": "somma"
+      }
+     ]
+    },
+    {
+     "nome": "sottrazione −",
+     "elementi": [
+      {
+       "t": "minuendo"
+      },
+      {
+       "t": "sottraendo"
+      },
+      {
+       "t": "differenza"
+      }
+     ]
+    },
+    {
+     "nome": "moltiplicazione ×",
+     "elementi": [
+      {
+       "t": "fattore"
+      },
+      {
+       "t": "prodotto"
+      }
+     ]
+    },
+    {
+     "nome": "divisione :",
+     "elementi": [
+      {
+       "t": "dividendo"
+      },
+      {
+       "t": "divisore"
+      },
+      {
+       "t": "quoziente"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "per-10-e-100",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Per 10, per 100, diviso 10",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Per 10 si aggiunge uno zero, per 100 due zeri; diviso 10 se ne toglie uno.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "7 × 10"
+     },
+     {
+      "t": "70"
+     }
+    ],
+    [
+     {
+      "t": "7 × 100"
+     },
+     {
+      "t": "700"
+     }
+    ],
+    [
+     {
+      "t": "35 × 10"
+     },
+     {
+      "t": "350"
+     }
+    ],
+    [
+     {
+      "t": "4 × 100"
+     },
+     {
+      "t": "400"
+     }
+    ],
+    [
+     {
+      "t": "80 : 10"
+     },
+     {
+      "t": "8"
+     }
+    ],
+    [
+     {
+      "t": "600 : 100"
+     },
+     {
+      "t": "6"
+     }
+    ],
+    [
+     {
+      "t": "250 : 10"
+     },
+     {
+      "t": "25"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "frazioni-quarti",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Le frazioni: i quarti",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Il cerchio è diviso in 4 parti uguali: quante parti sono colorate?",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 5436
+     },
+     {
+      "t": "un quarto 1/4"
+     }
+    ],
+    [
+     {
+      "p": 5516
+     },
+     {
+      "t": "due quarti 2/4"
+     }
+    ],
+    [
+     {
+      "p": 9047
+     },
+     {
+      "t": "tre quarti 3/4"
+     }
+    ],
+    [
+     {
+      "p": 5455
+     },
+     {
+      "t": "quattro quarti 4/4: l'intero"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "frazioni-parti-uguali",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Le frazioni: le parti uguali",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi e scegli la frazione giusta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Una torta è divisa in 2 parti uguali. Una parte è…",
+      "p": 2502
+     },
+     "giusta": {
+      "t": "un mezzo, la metà: 1/2"
+     },
+     "sbagliate": [
+      {
+       "t": "un terzo: 1/3"
+      },
+      {
+       "t": "un quarto: 1/4"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Una pizza è divisa in 4 parti uguali. Ne mangio 1: quanta pizza ho mangiato?",
+      "p": 2527
+     },
+     "giusta": {
+      "t": "un quarto: 1/4"
+     },
+     "sbagliate": [
+      {
+       "t": "un mezzo: 1/2"
+      },
+      {
+       "t": "quattro quarti: 4/4"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Divido una tavoletta di cioccolato in 3 parti uguali e ne prendo 2. Ne ho preso…"
+     },
+     "giusta": {
+      "t": "due terzi: 2/3"
+     },
+     "sbagliate": [
+      {
+       "t": "un terzo: 1/3"
+      },
+      {
+       "t": "tre mezzi: 3/2"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Nella frazione 3/4, il numero sotto la linea (il denominatore) dice…"
+     },
+     "giusta": {
+      "t": "in quante parti uguali divido l'intero"
+     },
+     "sbagliate": [
+      {
+       "t": "quante parti prendo"
+      },
+      {
+       "t": "quanto è grande l'intero"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Nella frazione 3/4, il numero sopra la linea (il numeratore) dice…"
+     },
+     "giusta": {
+      "t": "quante parti prendo"
+     },
+     "sbagliate": [
+      {
+       "t": "in quante parti uguali divido l'intero"
+      },
+      {
+       "t": "quanto è grande l'intero"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quanti quarti servono per fare un intero?"
+     },
+     "giusta": {
+      "t": "4"
+     },
+     "sbagliate": [
+      {
+       "t": "2"
+      },
+      {
+       "t": "3"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "euro-quanto-fa",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Monete e banconote: quanto fa?",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Guarda la moneta o la banconota e scegli la risposta giusta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Quante monete da 50 centesimi servono per fare 1 euro?",
+      "p": 4785
+     },
+     "giusta": {
+      "t": "2"
+     },
+     "sbagliate": [
+      {
+       "t": "5"
+      },
+      {
+       "t": "50"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quante monete da 10 centesimi servono per fare 1 euro?",
+      "p": 4781
+     },
+     "giusta": {
+      "t": "10"
+     },
+     "sbagliate": [
+      {
+       "t": "5"
+      },
+      {
+       "t": "100"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quanti centesimi ci sono in 1 euro?",
+      "p": 4776
+     },
+     "giusta": {
+      "t": "100"
+     },
+     "sbagliate": [
+      {
+       "t": "10"
+      },
+      {
+       "t": "1000"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quante monete da 2 euro servono per fare 10 euro?",
+      "p": 10279
+     },
+     "giusta": {
+      "t": "5"
+     },
+     "sbagliate": [
+      {
+       "t": "2"
+      },
+      {
+       "t": "20"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quante banconote da 10 euro servono per fare 20 euro?",
+      "p": 4782
+     },
+     "giusta": {
+      "t": "2"
+     },
+     "sbagliate": [
+      {
+       "t": "10"
+      },
+      {
+       "t": "20"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quante banconote da 5 euro servono per fare 50 euro?",
+      "p": 4780
+     },
+     "giusta": {
+      "t": "10"
+     },
+     "sbagliate": [
+      {
+       "t": "5"
+      },
+      {
+       "t": "25"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "problemi-quanto-costa",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Problemi: quanto costa?",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi il problema, fai il conto e scegli la risposta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Un quaderno costa 2 euro. Quanto costano 4 quaderni?"
+     },
+     "giusta": {
+      "t": "8 euro"
+     },
+     "sbagliate": [
+      {
+       "t": "6 euro"
+      },
+      {
+       "t": "2 euro"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "3 gelati costano 9 euro. Quanto costa un gelato?"
+     },
+     "giusta": {
+      "t": "3 euro"
+     },
+     "sbagliate": [
+      {
+       "t": "6 euro"
+      },
+      {
+       "t": "12 euro"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Ho 10 euro e compro un libro da 7 euro. Quanto mi resta?"
+     },
+     "giusta": {
+      "t": "3 euro"
+     },
+     "sbagliate": [
+      {
+       "t": "17 euro"
+      },
+      {
+       "t": "7 euro"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Una penna costa 1 euro e un astuccio 6 euro. Quanto spendo in tutto?"
+     },
+     "giusta": {
+      "t": "7 euro"
+     },
+     "sbagliate": [
+      {
+       "t": "5 euro"
+      },
+      {
+       "t": "6 euro"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "5 biglietti dell'autobus costano 10 euro. Quanto costa un biglietto?"
+     },
+     "giusta": {
+      "t": "2 euro"
+     },
+     "sbagliate": [
+      {
+       "t": "5 euro"
+      },
+      {
+       "t": "50 euro"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "certo-possibile-impossibile",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Certo, possibile o impossibile?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Succederà di sicuro, forse, o non può succedere mai?",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "certo",
+     "elementi": [
+      {
+       "t": "dopo il lunedì viene il martedì"
+      },
+      {
+       "t": "lancio un dado: esce un numero da 1 a 6"
+      },
+      {
+       "t": "nel sacchetto ci sono solo palline rosse: ne pesco una rossa"
+      }
+     ]
+    },
+    {
+     "nome": "possibile",
+     "elementi": [
+      {
+       "t": "lancio un dado: esce 6"
+      },
+      {
+       "t": "domani piove"
+      },
+      {
+       "t": "lancio una moneta: esce testa"
+      }
+     ]
+    },
+    {
+     "nome": "impossibile",
+     "elementi": [
+      {
+       "t": "lancio un dado: esce 7"
+      },
+      {
+       "t": "nel sacchetto ci sono solo palline rosse: ne pesco una blu"
+      },
+      {
+       "t": "una settimana ha 10 giorni"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "misure-quale-unita",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Metri, litri o chilogrammi?",
+  "scrittura": "minuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Che cosa si misura? La lunghezza, la capacità o il peso?",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "lunghezza: metro (m)",
+     "p": 2913,
+     "elementi": [
+      {
+       "t": "quanto è lunga la lavagna"
+      },
+      {
+       "t": "quanto è alta la porta"
+      },
+      {
+       "t": "quanto è lungo il corridoio"
+      }
+     ]
+    },
+    {
+     "nome": "capacità: litro (l)",
+     "p": 32466,
+     "elementi": [
+      {
+       "t": "l'acqua nella bottiglia"
+      },
+      {
+       "t": "il latte nel cartone"
+      },
+      {
+       "t": "l'acqua nella vasca"
+      }
+     ]
+    },
+    {
+     "nome": "peso: chilogrammo (kg)",
+     "p": 36883,
+     "elementi": [
+      {
+       "t": "quanto pesa lo zaino"
+      },
+      {
+       "t": "quanto pesa un sacco di patate"
+      },
+      {
+       "t": "quanto pesa il cane"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "equivalenze-semplici",
+  "materia": "Matematica",
+  "livello": 4,
+  "titolo": "Le prime equivalenze",
+  "scrittura": "minuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni misura vicino alla misura uguale.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "1 m"
+     },
+     {
+      "t": "10 dm"
+     }
+    ],
+    [
+     {
+      "t": "1 dm"
+     },
+     {
+      "t": "10 cm"
+     }
+    ],
+    [
+     {
+      "t": "1 cm"
+     },
+     {
+      "t": "10 mm"
+     }
+    ],
+    [
+     {
+      "t": "1 kg"
+     },
+     {
+      "t": "1000 g"
+     }
+    ],
+    [
+     {
+      "t": "1 l"
+     },
+     {
+      "t": "10 dl"
+     }
+    ],
+    [
+     {
+      "t": "1 ora"
+     },
+     {
+      "t": "60 minuti"
+     }
+    ],
+    [
+     {
+      "t": "1 giorno"
+     },
+     {
+      "t": "24 ore"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "problemi-dati-inutili",
+  "materia": "Matematica",
+  "livello": 4,
+  "titolo": "Problemi: il dato che non serve",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi il problema: c'è un dato che non serve per rispondere. Trovalo!",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Luca ha 9 anni e 24 figurine. Ne regala 6 a Sara. Quante figurine gli restano? Quale dato non serve?"
+     },
+     "giusta": {
+      "t": "9 anni"
+     },
+     "sbagliate": [
+      {
+       "t": "24 figurine"
+      },
+      {
+       "t": "6 figurine"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "In classe ci sono 12 bambine e 10 bambini. La maestra ha 2 gatti. Quanti sono gli alunni? Quale dato non serve?"
+     },
+     "giusta": {
+      "t": "2 gatti"
+     },
+     "sbagliate": [
+      {
+       "t": "12 bambine"
+      },
+      {
+       "t": "10 bambini"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Alle 8 un pullman parte con 30 persone. Alla prima fermata ne salgono 5. Quante persone ci sono ora? Quale dato non serve?"
+     },
+     "giusta": {
+      "t": "alle 8"
+     },
+     "sbagliate": [
+      {
+       "t": "30 persone"
+      },
+      {
+       "t": "5 persone"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Luca ha 24 figurine e ne regala 6 a Sara. Quante figurine gli restano?"
+     },
+     "giusta": {
+      "t": "18"
+     },
+     "sbagliate": [
+      {
+       "t": "30"
+      },
+      {
+       "t": "6"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Compro 2 dozzine di uova. Una dozzina sono 12 uova. Quante uova ho comprato?"
+     },
+     "giusta": {
+      "t": "24"
+     },
+     "sbagliate": [
+      {
+       "t": "12"
+      },
+      {
+       "t": "14"
+      }
+     ]
+    }
+   ]
+  }
  }
 ]
