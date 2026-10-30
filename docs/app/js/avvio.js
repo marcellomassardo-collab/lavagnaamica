@@ -135,7 +135,7 @@ function sezioneCatalogo() {
 /* ---------- esercizi pronti: un pulsante per materia, poi la materia divisa per livello ---------- */
 
 const ICONE_MATERIE = { "Italiano": "📖", "Italiano L2": "🗣️", "Matematica": "🔢", "Scienze": "🔬", "Storia": "🏛️",
-  "Geografia": "🗺️", "Inglese": "💬", "Arte e immagine": "🎨", "Musica": "🎵", "Altro": "⭐" };
+  "Geografia": "🗺️", "Educazione affettiva": "💛", "Inglese": "💬", "Arte e immagine": "🎨", "Musica": "🎵", "Altro": "⭐" };
 const NOMI_LIVELLI = { 1: "i primi passi", 2: "si va avanti", 3: "più impegnativo", 4: "il più difficile" };
 const materiaDi = es => es.materia || "Altro";
 const livelloDi = es => es.livello || es.dati.livello || 0;

@@ -1638,7 +1638,62 @@ const BARRE = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- le emozioni ---------- */
+const immagine = (id, x, y, l) => s("image", { href: picto(id), x, y, width: l, height: l });
+const EMOZIONI = {
+  passi: [
+    "Le emozioni sono quello che sentiamo dentro: gioia, tristezza, paura, rabbia, sorpresa, disgusto. Tutte le emozioni sono normali, anche quelle che non ci piacciono.",
+    "La rabbia sale come in un termometro: verde, poi giallo, poi rosso. Prima di arrivare al rosso ci si può fermare.",
+    "Il respiro del palloncino: si prende l'aria piano, contando fino a 4, e la si lascia uscire piano, contando fino a 4. Il palloncino si gonfia e si sgonfia, e la rabbia scende.",
+    "Le emozioni si possono dire con le parole: «Io sento… quando…». Così gli altri capiscono che cosa ci succede.",
+    "Se un'emozione è troppo grande, si chiede aiuto a un adulto di cui ci fidiamo: la maestra, la mamma, il papà, i nonni."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const facce = [[35547, "gioia"], [35545, "tristezza"], [35535, "paura"], [35539, "rabbia"], [35529, "sorpresa"], [30964, "disgusto"]];
+    const tutte = nascosto(s("g", {}, facce.map(([id, nome], i) => s("g", {}, immagine(id, 30 + i * 125, 120, 110), etichetta(85 + i * 125, 270, nome, 22)))));
+    // il termometro della rabbia
+    const livello = s("rect", { x: 370, y: 380, width: 60, height: 0, rx: 12, fill: "#2E9E5B", class: "sp-blocco" });
+    const termometro = nascosto(s("g", {}, s("rect", { x: 362, y: 60, width: 76, height: 330, rx: 38, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 5 }), livello,
+      etichetta(520, 340, "verde: calmo", 22), etichetta(520, 230, "giallo: mi sto arrabbiando", 22), etichetta(520, 120, "rosso: fermati!", 22), immagine(35539, 160, 150, 140)));
+    const palloncino = s("circle", { cx: 400, cy: 210, r: 60, fill: "#E0332B" });
+    const respiro = nascosto(s("g", {}, palloncino, s("path", { d: "M400,270 C390,320 410,350 400,400", stroke: INCHIOSTRO, "stroke-width": 3, fill: "none" })));
+    const conta = scritta(400, 430, "", { "font-size": 30, "font-weight": 800, fill: "#1E6B52" });
+    respiro.append(conta);
+    const nuvola = nascosto(s("g", {}, immagine(35545, 90, 150, 150), s("path", { d: "M280,120 h420 a20,20 0 0 1 20,20 v120 a20,20 0 0 1 -20,20 h-360 l-40,40 l0,-40 h-20 a20,20 0 0 1 -20,-20 v-120 a20,20 0 0 1 20,-20 Z", fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 4 }),
+      etichetta(490, 190, "Io sento tristezza", 30), etichetta(490, 240, "quando nessuno gioca con me.", 26)));
+    const aiuto = nascosto(s("g", {}, immagine(2456, 150, 110, 200), immagine(6023, 450, 110, 200)));
+    svg.append(tutte, termometro, respiro, nuvola, aiuto);
+    let ferma = () => {};
+    return {
+      vai(k) {
+        ferma();
+        vedi(tutte, k === 0);
+        vedi(termometro, k === 1);
+        livello.style.transition = "height 3s, y 3s, fill 3s";
+        // altezza e colore come proprietà di stile, così il termometro sale piano
+        livello.style.height = (k === 1 ? 250 : 0) + "px";
+        livello.style.y = (k === 1 ? 130 : 380) + "px";
+        livello.style.fill = k === 1 ? "#E0332B" : "#2E9E5B";
+        vedi(respiro, k === 2);
+        vedi(nuvola, k === 3);
+        vedi(aiuto, k === 4);
+        if (k === 2) {
+          // 4 secondi per gonfiare, 4 per sgonfiare
+          ferma = ciclo(t => {
+            const fase = (t / 1000) % 8, dentro = fase < 4;
+            const q = dentro ? fase / 4 : 1 - (fase - 4) / 4;
+            palloncino.setAttribute("r", (50 + q * 80).toFixed(1));
+            conta.textContent = (dentro ? "dentro " : "fuori ") + (Math.floor(fase % 4) + 1);
+          });
+        }
+      },
+      ferma() { ferma(); }
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, emozioni: EMOZIONI, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

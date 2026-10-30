@@ -110,7 +110,7 @@ h3.materia { font-size: 1em; color: var(--lavagna); margin: 1.4em 0 .6em; text-t
 
 /* ---------- esercizi pronti: un pulsante grande per materia, poi la materia divisa per livello ---------- */
 /* un colore per materia, nell'ordine di MATERIE: sta solo nel bordo, il testo resta scuro su chiaro */
-:root { --m-0: #E0332B; --m-1: #C2185B; --m-2: #2B7FC4; --m-3: #2E9E44; --m-4: #D9731A; --m-5: #7B4FC9; --m-6: #D63C8A; --m-7: #C99A00; --m-8: #12968A; --m-9: #6B7780; }
+:root { --m-0: #E0332B; --m-1: #C2185B; --m-2: #2B7FC4; --m-3: #2E9E44; --m-4: #D9731A; --m-5: #7B4FC9; --m-6: #E35D6A; --m-7: #D63C8A; --m-8: #C99A00; --m-9: #12968A; --m-10: #6B7780; }
 .materie { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 .materia-tasto {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;

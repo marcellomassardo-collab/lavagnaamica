@@ -15342,5 +15342,787 @@
     }
    ]
   }
+ },
+ {
+  "id": "emozioni-nomi",
+  "materia": "Educazione affettiva",
+  "livello": 1,
+  "titolo": "Le emozioni: come si chiamano?",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Guarda la faccia: che emozione è?",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 35547
+     },
+     {
+      "t": "gioia"
+     }
+    ],
+    [
+     {
+      "p": 35545
+     },
+     {
+      "t": "tristezza"
+     }
+    ],
+    [
+     {
+      "p": 35539
+     },
+     {
+      "t": "rabbia"
+     }
+    ],
+    [
+     {
+      "p": 35535
+     },
+     {
+      "t": "paura"
+     }
+    ],
+    [
+     {
+      "p": 35529
+     },
+     {
+      "t": "sorpresa"
+     }
+    ],
+    [
+     {
+      "p": 30964
+     },
+     {
+      "t": "disgusto"
+     }
+    ]
+   ]
+  },
+  "scopri": {
+   "animazione": "emozioni"
+  }
+ },
+ {
+  "id": "emozioni-situazioni",
+  "materia": "Educazione affettiva",
+  "livello": 1,
+  "titolo": "Che emozione sente?",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi che cosa succede: che emozione sente?",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Marco ha perso il suo pupazzo preferito."
+     },
+     "giusta": {
+      "t": "tristezza",
+      "p": 35545
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "sorpresa",
+       "p": 35529
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Oggi è la festa di Sara e arrivano tutti i suoi amici."
+     },
+     "giusta": {
+      "t": "gioia",
+      "p": 35547
+     },
+     "sbagliate": [
+      {
+       "t": "tristezza",
+       "p": 35545
+      },
+      {
+       "t": "rabbia",
+       "p": 35539
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Di notte si sente un rumore forte e strano."
+     },
+     "giusta": {
+      "t": "paura",
+      "p": 35535
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "disgusto",
+       "p": 30964
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Un compagno butta giù apposta la torre di Luca."
+     },
+     "giusta": {
+      "t": "rabbia",
+      "p": 35539
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "sorpresa",
+       "p": 35529
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Nello zaino, Anna trova un regalo che non si aspettava."
+     },
+     "giusta": {
+      "t": "sorpresa",
+      "p": 35529
+     },
+     "sbagliate": [
+      {
+       "t": "rabbia",
+       "p": 35539
+      },
+      {
+       "t": "tristezza",
+       "p": 35545
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Nel piatto c'è un cibo che puzza tanto."
+     },
+     "giusta": {
+      "t": "disgusto",
+      "p": 30964
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "paura",
+       "p": 35535
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "rabbia-cosa-fare",
+  "materia": "Educazione affettiva",
+  "livello": 2,
+  "titolo": "Quando sento rabbia, che cosa posso fare?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Che cosa aiuta a calmarsi? Che cosa invece fa male a me o agli altri?",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "mi aiuta a calmarmi",
+     "p": 37828,
+     "elementi": [
+      {
+       "t": "respiro piano"
+      },
+      {
+       "t": "conto fino a 10"
+      },
+      {
+       "t": "dico come mi sento"
+      },
+      {
+       "t": "chiedo aiuto a un adulto"
+      },
+      {
+       "t": "mi allontano un momento"
+      },
+      {
+       "t": "stringo forte un cuscino"
+      }
+     ]
+    },
+    {
+     "nome": "fa male a me o agli altri",
+     "elementi": [
+      {
+       "t": "do uno spintone"
+      },
+      {
+       "t": "dico le parolacce"
+      },
+      {
+       "t": "rompo le cose"
+      },
+      {
+       "t": "urlo contro un compagno"
+      },
+      {
+       "t": "tiro un calcio"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "emozioni"
+  }
+ },
+ {
+  "id": "gentile-o-no",
+  "materia": "Educazione affettiva",
+  "livello": 2,
+  "titolo": "Gentile o non gentile?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "palloncini",
+  "consegna": "Che cosa fa stare bene gli altri? Che cosa li fa stare male?",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "gentile",
+     "p": 2255,
+     "elementi": [
+      {
+       "t": "aiuto chi è caduto"
+      },
+      {
+       "t": "dico grazie"
+      },
+      {
+       "t": "presto la mia gomma"
+      },
+      {
+       "t": "invito a giocare chi è solo"
+      },
+      {
+       "t": "chiedo scusa"
+      }
+     ]
+    },
+    {
+     "nome": "non gentile",
+     "elementi": [
+      {
+       "t": "prendo in giro"
+      },
+      {
+       "t": "non lascio giocare qualcuno"
+      },
+      {
+       "t": "rido di chi sbaglia"
+      },
+      {
+       "t": "rompo il disegno di un compagno"
+      },
+      {
+       "t": "dico «sei stupido»"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "io-sento",
+  "materia": "Educazione affettiva",
+  "livello": 2,
+  "titolo": "Io sento… quando…",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Le emozioni si dicono con le parole. Metti ogni parola al suo posto.",
+  "dati": {
+   "frasi": [
+    "Io sento [tristezza] quando nessuno gioca con me.",
+    "Io sento [gioia] quando gioco con i miei amici.",
+    "Io sento [rabbia] quando qualcuno rompe le mie cose.",
+    "Io sento [paura] quando c'è un temporale forte.",
+    "Quando sento rabbia, posso [respirare] piano e contare fino a 10.",
+    "Quando un'emozione è troppo grande, chiedo [aiuto] a un adulto."
+   ],
+   "extra": [
+    "sorpresa",
+    "spingere"
+   ]
+  },
+  "scopri": {
+   "animazione": "emozioni"
+  }
+ },
+ {
+  "id": "chi-mi-aiuta",
+  "materia": "Educazione affettiva",
+  "livello": 2,
+  "titolo": "Chi mi aiuta? Che cosa faccio?",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi e scegli la risposta giusta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "A scuola hai un pensiero che ti preoccupa. A chi lo puoi dire?"
+     },
+     "giusta": {
+      "t": "alla maestra o al maestro",
+      "p": 2456
+     },
+     "sbagliate": [
+      {
+       "t": "a nessuno"
+      },
+      {
+       "t": "a un estraneo in strada"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Un compagno è solo in cortile e nessuno gioca con lui. Che cosa puoi fare?"
+     },
+     "giusta": {
+      "t": "lo invito a giocare"
+     },
+     "sbagliate": [
+      {
+       "t": "faccio finta di niente"
+      },
+      {
+       "t": "rido di lui"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Senza volerlo hai fatto male a un amico. Che cosa gli dici?"
+     },
+     "giusta": {
+      "t": "scusa, ti sei fatto male?"
+     },
+     "sbagliate": [
+      {
+       "t": "è colpa tua"
+      },
+      {
+       "t": "niente, me ne vado"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Un amico è triste. Che cosa puoi fare?"
+     },
+     "giusta": {
+      "t": "gli chiedo che cosa ha e lo ascolto"
+     },
+     "sbagliate": [
+      {
+       "t": "gli dico di smettere"
+      },
+      {
+       "t": "lo prendo in giro"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Un segreto ti fa stare male. Che cosa fai?"
+     },
+     "giusta": {
+      "t": "lo racconto a un adulto di cui mi fido"
+     },
+     "sbagliate": [
+      {
+       "t": "lo tengo per me"
+      },
+      {
+       "t": "cerco di dimenticarlo"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Qualcuno ti tocca e non ti piace. Che cosa puoi fare?"
+     },
+     "giusta": {
+      "t": "dico «no», mi allontano e lo racconto a un adulto"
+     },
+     "sbagliate": [
+      {
+       "t": "sto zitto"
+      },
+      {
+       "t": "penso che sia colpa mia"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "brano-emozioni-domande",
+  "materia": "Educazione affettiva",
+  "titolo": "Livello 2 · Le emozioni: domande e risposte",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "Tutte le emozioni vanno bene?",
+    "Sì. Gioia, tristezza, paura, rabbia, sorpresa, disgusto: sono tutte normali. Quello che conta è che cosa facciamo quando le sentiamo.",
+    "",
+    "Anche i grandi si arrabbiano e hanno paura?",
+    "Sì, tutti. Anche le maestre, i papà, le mamme e i nonni. Crescendo si impara a capire le emozioni e a farle diventare più piccole.",
+    "",
+    "Piangere è da piccoli?",
+    "No. Piangere è normale a tutte le età: spesso, dopo, ci si sente meglio.",
+    "",
+    "Che cosa posso fare quando sono triste?",
+    "Puoi dirlo a qualcuno, chiedere un abbraccio, fare una cosa che ti piace. La tristezza, piano piano, passa.",
+    "",
+    "Che cos'è l'empatia?",
+    "È capire come si sente un'altra persona, come se fossimo al suo posto. Chi ha empatia sa consolare e aiutare."
+   ],
+   "domande": [
+    {
+     "d": "Tutte le emozioni sono normali?",
+     "giusta": "Sì, anche la rabbia e la paura.",
+     "sbagliate": [
+      "No, solo la gioia.",
+      "Solo per i bambini."
+     ]
+    },
+    {
+     "d": "Anche i grandi si arrabbiano?",
+     "giusta": "Sì, tutti.",
+     "sbagliate": [
+      "No, mai.",
+      "Solo le maestre."
+     ]
+    },
+    {
+     "d": "Piangere è da piccoli?",
+     "giusta": "No, è normale a tutte le età.",
+     "sbagliate": [
+      "Sì, solo da piccoli.",
+      "Non si deve mai piangere."
+     ]
+    },
+    {
+     "d": "Che cosa puoi fare quando sei triste?",
+     "giusta": "Dirlo a qualcuno o chiedere un abbraccio.",
+     "sbagliate": [
+      "Restare sempre da solo.",
+      "Arrabbiarmi con tutti."
+     ]
+    },
+    {
+     "d": "Che cos'è l'empatia?",
+     "giusta": "Capire come si sente un'altra persona.",
+     "sbagliate": [
+      "Essere sempre felici.",
+      "Vincere a un gioco."
+     ]
+    }
+   ],
+   "nota": "Testo di Lavagna Amica."
+  }
+ },
+ {
+  "id": "brano-torre-tommaso",
+  "materia": "Educazione affettiva",
+  "titolo": "Livello 3 · La torre di Tommaso",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Tommaso aveva costruito una torre altissima con i mattoncini. Ci aveva lavorato tutta la mattina.",
+    "Mentre correva, Leo inciampò e la torre crollò. Tutti i mattoncini finirono sul pavimento.",
+    "Tommaso diventò rosso. Sentiva la rabbia salire, salire, come in un termometro. Avrebbe voluto dare un calcio ai mattoncini, e anche a Leo.",
+    "La maestra si avvicinò e si sedette accanto a lui. «Facciamo il respiro del palloncino?» gli disse.",
+    "Tommaso prese l'aria piano, contando fino a quattro, e la lasciò uscire piano. Una volta, due volte, tre volte. La rabbia cominciò a scendere.",
+    "Allora Tommaso disse: «Io sento rabbia, perché la mia torre era bellissima.»",
+    "Leo abbassò gli occhi: «Scusa, non l'ho fatto apposta. Ti aiuto a rifarla?»",
+    "Quel pomeriggio costruirono insieme una torre ancora più alta."
+   ],
+   "domande": [
+    {
+     "d": "Perché Tommaso si arrabbia?",
+     "giusta": "Perché la sua torre è crollata.",
+     "sbagliate": [
+      "Perché ha perso a un gioco.",
+      "Perché la maestra lo ha sgridato."
+     ]
+    },
+    {
+     "d": "Che cosa avrebbe voluto fare?",
+     "giusta": "Dare un calcio ai mattoncini e a Leo.",
+     "sbagliate": [
+      "Andare a casa.",
+      "Mettersi a ridere."
+     ]
+    },
+    {
+     "d": "Che cosa gli propone la maestra?",
+     "giusta": "Il respiro del palloncino.",
+     "sbagliate": [
+      "Di uscire in cortile.",
+      "Di non pensarci."
+     ]
+    },
+    {
+     "d": "Leo aveva fatto crollare la torre apposta?",
+     "giusta": "No, era inciampato.",
+     "sbagliate": [
+      "Sì, apposta.",
+      "Non c'era nessuna torre."
+     ]
+    },
+    {
+     "d": "Come finisce la storia?",
+     "giusta": "Costruiscono insieme una torre ancora più alta.",
+     "sbagliate": [
+      "Tommaso non parla più con Leo.",
+      "La maestra porta via i mattoncini."
+     ]
+    }
+   ],
+   "nota": "Testo di Lavagna Amica."
+  }
+ },
+ {
+  "id": "brano-nuovo-compagno",
+  "materia": "Educazione affettiva",
+  "titolo": "Livello 3 · Il nuovo compagno",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Un lunedì mattina arrivò in classe un bambino nuovo. Si chiamava Samir e veniva da un paese lontano. Parlava ancora poche parole di italiano.",
+    "Samir stava zitto al suo banco e guardava il pavimento. A ricreazione rimase in un angolo, da solo.",
+    "Elena pensò: «Io, al suo posto, come mi sentirei?» E le venne un po' di tristezza.",
+    "Allora si avvicinò, sorrise e gli mostrò la palla. Samir capì subito: non servivano parole per giocare.",
+    "Nei giorni dopo la classe gli insegnò tante parole nuove: palla, merenda, amico. E Samir insegnò a tutti un gioco del suo paese, con cinque sassolini.",
+    "Alla fine del mese, in cortile, giocavano tutti insieme al gioco dei sassolini."
+   ],
+   "domande": [
+    {
+     "d": "Perché Samir stava zitto?",
+     "giusta": "Parlava ancora poche parole di italiano.",
+     "sbagliate": [
+      "Era arrabbiato con tutti.",
+      "Aveva mal di gola."
+     ]
+    },
+    {
+     "d": "Che cosa si chiede Elena?",
+     "giusta": "Come si sentirebbe al suo posto.",
+     "sbagliate": [
+      "Che cosa c'è per merenda.",
+      "Quando finisce la scuola."
+     ]
+    },
+    {
+     "d": "Come si chiama questo modo di pensare agli altri?",
+     "giusta": "Empatia.",
+     "sbagliate": [
+      "Rabbia.",
+      "Fretta."
+     ]
+    },
+    {
+     "d": "Che cosa insegna Samir alla classe?",
+     "giusta": "Un gioco con cinque sassolini.",
+     "sbagliate": [
+      "A disegnare.",
+      "Una canzone."
+     ]
+    },
+    {
+     "d": "Che cosa ci insegna la storia?",
+     "giusta": "Accogliere chi è nuovo fa stare bene tutti.",
+     "sbagliate": [
+      "Bisogna giocare sempre da soli.",
+      "I nuovi devono arrangiarsi."
+     ]
+    }
+   ],
+   "nota": "Testo di Lavagna Amica."
+  }
+ },
+ {
+  "id": "brano-parole-che-fanno-male",
+  "materia": "Educazione affettiva",
+  "titolo": "Livello 3 · Le parole che fanno male",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Giulia aveva gli occhiali nuovi, rossi e rotondi. Appena entrò in classe, Paolo rise: «Ecco quattrocchi!» Qualcuno rise con lui.",
+    "Giulia si sedette in silenzio. Dentro sentiva un nodo: tristezza e vergogna insieme.",
+    "Il giorno dopo successe di nuovo, e quello dopo ancora. Giulia non voleva più venire a scuola.",
+    "Matteo aveva visto tutto. Non rideva: sentiva che non era giusto. Così disse forte: «Basta, Paolo. Le parole possono fare male.»",
+    "Poi Matteo andò dalla maestra e le raccontò che cosa succedeva. Non era fare la spia: era aiutare una compagna.",
+    "La maestra parlò con tutta la classe. Paolo capì quanto male aveva fatto e chiese scusa a Giulia.",
+    "Da quel giorno, quando qualcuno prende in giro un compagno, in quella classe c'è sempre qualcuno che dice: «Basta.»"
+   ],
+   "domande": [
+    {
+     "d": "Che cosa fa Paolo?",
+     "giusta": "Prende in giro Giulia per gli occhiali.",
+     "sbagliate": [
+      "Presta i suoi occhiali a Giulia.",
+      "Aiuta Giulia a fare i compiti."
+     ]
+    },
+    {
+     "d": "Come si sente Giulia?",
+     "giusta": "Triste e piena di vergogna.",
+     "sbagliate": [
+      "Felice.",
+      "Annoiata."
+     ]
+    },
+    {
+     "d": "Che cosa fa Matteo?",
+     "giusta": "Dice «basta» e lo racconta alla maestra.",
+     "sbagliate": [
+      "Ride insieme a Paolo.",
+      "Fa finta di non vedere."
+     ]
+    },
+    {
+     "d": "Raccontare alla maestra è fare la spia?",
+     "giusta": "No, è aiutare una compagna.",
+     "sbagliate": [
+      "Sì, non si fa mai.",
+      "Solo se lo dice la mamma."
+     ]
+    },
+    {
+     "d": "Che cosa possiamo fare se vediamo qualcuno preso in giro?",
+     "giusta": "Dire «basta» e chiedere aiuto a un adulto.",
+     "sbagliate": [
+      "Ridere anche noi.",
+      "Andare via senza dire niente."
+     ]
+    }
+   ],
+   "nota": "Testo di Lavagna Amica."
+  }
+ },
+ {
+  "id": "brano-segreti",
+  "materia": "Educazione affettiva",
+  "titolo": "Livello 3 · Segreti belli e segreti brutti",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Ci sono segreti belli e segreti brutti.",
+    "Un segreto bello è una sorpresa che fa felici: un regalo per la mamma, una festa per il nonno. Prima o poi si svela, e tutti sorridono.",
+    "Un segreto brutto, invece, ti fa sentire male, confuso o spaventato. Qualcuno magari ti dice: «Non dirlo a nessuno.»",
+    "I segreti brutti non si tengono: si raccontano sempre a un adulto di cui ti fidi, come la maestra, la mamma, il papà o i nonni.",
+    "Il tuo corpo è tuo. Se qualcuno ti tocca e non ti piace, puoi dire «no», andare via e raccontarlo.",
+    "Se succede qualcosa di brutto, non è mai colpa tua.",
+    "Se non sai a chi dirlo, puoi chiamare il 114: è un numero per i bambini, è gratis e risponde sempre."
+   ],
+   "domande": [
+    {
+     "d": "Che cos'è un segreto bello?",
+     "giusta": "Una sorpresa che fa felici, come un regalo.",
+     "sbagliate": [
+      "Una cosa che fa paura.",
+      "Una cosa che non si dice mai."
+     ]
+    },
+    {
+     "d": "Come ti fa sentire un segreto brutto?",
+     "giusta": "Male, confuso o spaventato.",
+     "sbagliate": [
+      "Felice.",
+      "Tranquillo."
+     ]
+    },
+    {
+     "d": "Che cosa si fa con un segreto brutto?",
+     "giusta": "Si racconta a un adulto di cui ci si fida.",
+     "sbagliate": [
+      "Si tiene per sempre.",
+      "Si dimentica."
+     ]
+    },
+    {
+     "d": "Se qualcuno ti tocca e non ti piace, che cosa puoi fare?",
+     "giusta": "Dire «no», andare via e raccontarlo.",
+     "sbagliate": [
+      "Stare zitto.",
+      "Pensare che sia colpa tua."
+     ]
+    },
+    {
+     "d": "Se succede qualcosa di brutto, di chi è la colpa?",
+     "giusta": "Non è mai colpa del bambino.",
+     "sbagliate": [
+      "È colpa del bambino.",
+      "Non si sa."
+     ]
+    },
+    {
+     "d": "Che numero puoi chiamare se non sai a chi dirlo?",
+     "giusta": "Il 114.",
+     "sbagliate": [
+      "Un numero a caso.",
+      "Nessuno."
+     ]
+    }
+   ],
+   "nota": "Testo di Lavagna Amica."
+  }
  }
 ]

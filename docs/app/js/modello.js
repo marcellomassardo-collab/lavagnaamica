@@ -63,10 +63,11 @@ export const ANIMAZIONI = {
   angoli: "Gli angoli e l'angolo campione",
   simmetria: "La simmetria",
   perimetro: "Il perimetro",
-  barre: "I problemi con le barre"
+  barre: "I problemi con le barre",
+  emozioni: "Le emozioni e come stare meglio"
 };
 
-export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Inglese", "Arte e immagine", "Musica", "Altro"];
+export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Educazione affettiva", "Inglese", "Arte e immagine", "Musica", "Altro"];
 
 export function giochiPer(tipo) {
   return Object.keys(GIOCHI).filter(g => GIOCHI[g].tipi.includes(tipo));
