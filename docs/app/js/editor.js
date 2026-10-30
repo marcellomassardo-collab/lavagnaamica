@@ -449,7 +449,39 @@ export function editor(bozza, { salva, annulla }) {
   mostraGiochi();
   ridisegna();
 
-  const materia = el("select", { on: { change: e => { bozza.materia = e.target.value || undefined; } } },
+  // il periodo sulla linea del tempo: solo per la storia, e solo quando si parla di fatti storici
+  const periodo = { da: (bozza.epoca || [])[0], a: (bozza.epoca || [])[1] };
+  const avvisoEpoca = el("small", { class: "errore" });
+  function aggiornaEpoca() {
+    const pieno = Number.isFinite(periodo.da) && Number.isFinite(periodo.a);
+    bozza.epoca = pieno && periodo.da < periodo.a ? [periodo.da, periodo.a] : undefined;
+    avvisoEpoca.textContent = pieno && periodo.da >= periodo.a ? "Il secondo anno deve venire dopo il primo." : "";
+  }
+  const anno = (chiave, nome) => {
+    const v = periodo[chiave];
+    const numero = el("input", { type: "number", min: "1", step: "1", inputmode: "numeric", class: "anno-numero",
+      value: Number.isFinite(v) ? String(Math.abs(v)) : "", "aria-label": nome });
+    const era = el("select", { "aria-label": nome + ": avanti o dopo Cristo" },
+      el("option", { value: "-1", text: "a.C.", selected: v < 0 }), el("option", { value: "1", text: "d.C.", selected: !(v < 0) }));
+    const cambia = () => {
+      const n = parseInt(numero.value, 10);
+      periodo[chiave] = n > 0 ? n * Number(era.value) : undefined;
+      aggiornaEpoca();
+    };
+    numero.addEventListener("input", cambia);
+    era.addEventListener("change", cambia);
+    return el("span", { class: "anno" }, numero, era);
+  };
+  const campoEpoca = el("div", { class: "campo", hidden: bozza.materia !== "Storia" },
+    el("span", { class: "campo-nome", text: "Periodo sulla linea del tempo (facoltativo)" }),
+    el("div", { class: "periodo" }, "dall'anno", anno("da", "Dall'anno"), "all'anno", anno("a", "All'anno")),
+    el("small", { text: "Solo se l'esercizio parla di fatti storici: in basso compare la linea del tempo con questo periodo. Lascialo vuoto per la giornata, la settimana, le fonti." }),
+    avvisoEpoca);
+
+  const materia = el("select", { on: { change: e => {
+    bozza.materia = e.target.value || undefined;
+    campoEpoca.hidden = bozza.materia !== "Storia";
+  } } },
     el("option", { value: "", text: "Scegli la materia…" }),
     MATERIE.map(m => el("option", { value: m, selected: m === bozza.materia, text: m })));
 
@@ -475,6 +507,7 @@ export function editor(bozza, { salva, annulla }) {
     el("h1", { text: bozza.id ? "Modifica l'esercizio" : "Nuovo esercizio" }),
     etichetta("Titolo", testoLibero(bozza.titolo, v => { bozza.titolo = v; }, { placeholder: "Per esempio: Gli animali e i loro versi", maxlength: "120" })),
     etichetta("Materia", materia),
+    campoEpoca,
     el("div", { class: "campo" }, el("span", { class: "campo-nome", text: "Scrittura" }), scritture),
     el("div", { class: "campo" }, el("span", { class: "campo-nome", text: "Che cosa vuoi preparare?" }), tipi, spiegaTipo),
     contenuto,

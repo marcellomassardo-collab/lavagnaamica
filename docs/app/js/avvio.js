@@ -272,7 +272,8 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
     } } })
     : null;
 
-  const storia = es.materia === "Storia";
+  // la linea del tempo compare quando si parla di fatti storici, cioè quando l'esercizio ha un periodo
+  const storia = es.materia === "Storia" && Array.isArray(es.epoca);
   vista(el("div", { class: "gioco s-" + es.scrittura + (storia ? " con-linea" : "") },
     el("header", { class: "gioco-testa" },
       el("h1", { text: es.titolo }),

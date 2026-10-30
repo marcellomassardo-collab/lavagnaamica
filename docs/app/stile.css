@@ -206,6 +206,9 @@ input[type="text"], input[type="search"], select {
 .campo { display: grid; gap: 6px; margin: 20px 0; }
 .campo-nome { font-weight: 700; }
 .campo small { color: var(--tenue); }
+.periodo { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.periodo .anno { display: inline-flex; gap: 6px; }
+.periodo .anno-numero { width: 9em; }
 
 .editor { max-width: 900px; }
 .editor-contenuto { display: grid; gap: 10px; }
