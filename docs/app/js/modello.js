@@ -23,7 +23,9 @@ export const GIOCHI = {
   brano:     { nome: "Leggi e rispondi",   icona: "📚", tipi: ["brano"],                      consegna: "Leggi il testo, poi rispondi alle domande." },
   scelta:    { nome: "Scelta multipla",    icona: "✅", tipi: ["domande", "coppie", "gruppi"], consegna: "Scegli la risposta giusta." },
   vero:      { nome: "Vero o falso",       icona: "⚖️", tipi: ["coppie"],                      consegna: "Vanno insieme? Tocca Vero o Falso." },
-  palloncini: { nome: "Palloncini",        icona: "🎈", tipi: ["gruppi"],                      consegna: "Scoppia solo i palloncini del gruppo giusto." }
+  palloncini: { nome: "Palloncini",        icona: "🎈", tipi: ["gruppi"],                      consegna: "Scoppia solo i palloncini del gruppo giusto." },
+  quiz:      { nome: "Quiz a squadre",     icona: "🏆", tipi: ["domande", "coppie", "gruppi"], consegna: "A turno ogni squadra risponde: chi indovina prende un punto." },
+  ruota:     { nome: "Ruota della fortuna", icona: "🎡", tipi: ["domande", "coppie", "gruppi"], consegna: "Gira la ruota e rispondi alla domanda che esce." }
 };
 // L'ordine conta: il primo gioco adatto a un tipo è quello con cui l'esercizio si apre.
 
@@ -56,7 +58,11 @@ export const ANIMAZIONI = {
   "valore-posizionale": "Unità, decine e centinaia",
   frazioni: "Le frazioni: parti uguali",
   "pari-dispari": "Pari e dispari",
-  "retta-numeri": "La retta dei numeri"
+  "retta-numeri": "La retta dei numeri",
+  "linee-rette": "Segmenti, semirette, rette",
+  angoli: "Gli angoli e l'angolo campione",
+  simmetria: "La simmetria",
+  perimetro: "Il perimetro"
 };
 
 export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Inglese", "Arte e immagine", "Musica", "Altro"];
@@ -264,8 +270,16 @@ export const GENERI = {
   problema:     { nome: "Problema",              spiega: "Una piccola storia da guardare e capire prima di scegliere l'operazione." },
   retta:        { nome: "La retta dei numeri",   spiega: "Una retta con 11 tacche: la freccia indica un numero da leggere, oppure si tocca la tacca del numero. Alla fine si vedono tutti i salti." },
   blocchi:      { nome: "Blocchi: centinaia, decine, unità", spiega: "Il numero con i quadrati delle centinaia, le barrette delle decine e i cubetti delle unità: da leggere, oppure da costruire con + e −." },
-  frazione:     { nome: "Frazione",              spiega: "Un cerchio o una barra divisi in parti uguali: si colorano le parti, oppure si riconosce la frazione colorata." }
+  frazione:     { nome: "Frazione",              spiega: "Un cerchio o una barra divisi in parti uguali: si colorano le parti, oppure si riconosce la frazione colorata." },
+  linee:        { nome: "Linee e rette",         spiega: "Una linea disegnata, anche girata: segmento, semiretta o retta; curva, spezzata o mista; rette parallele, incidenti o perpendicolari." },
+  angolo:       { nome: "Angolo",                spiega: "Un angolo da riconoscere: acuto, retto, ottuso o piatto. Alla fine si confronta con l'angolo campione." },
+  simmetria:    { nome: "Simmetria",             spiega: "Una figura a quadretti a sinistra dell'asse: si colora a destra la parte simmetrica." },
+  perimetro:    { nome: "Perimetro",             spiega: "Un rettangolo sul quaderno a quadretti: quanto misura il contorno? Alla fine si conta il giro insieme." }
 };
+
+export const LINEE = { segmento: "segmento", semiretta: "semiretta", retta: "retta", curva: "linea curva", spezzata: "linea spezzata",
+  mista: "linea mista", parallele: "rette parallele", incidenti: "rette incidenti", perpendicolari: "rette perpendicolari" };
+const giro = v => Math.max(-90, Math.min(90, Math.round(Number(v) || 0)));
 
 export const PASSI_RETTA = [1, 2, 5, 10, 20, 25, 50, 100];
 
@@ -417,6 +431,29 @@ function esercizioDiMatematica(x, i) {
     if (!(Number.isInteger(b) && b >= 2 && b <= 12)) errore(inizio + "le parti uguali vanno da 2 a 12.");
     if (!(Number.isInteger(a) && a >= 1 && a <= b)) errore(inizio + "le parti colorate vanno da 1 al numero delle parti.");
     Object.assign(m, { b, forma: x.forma === "barra" ? "barra" : "cerchio", modo: x.modo === "colora" ? "colora" : "leggi" });
+  }
+  if (x.genere === "linee") {
+    delete m.a;
+    m.cosa = LINEE[x.cosa] ? x.cosa : errore(inizio + "scegli la linea da disegnare.");
+    m.giro = giro(x.giro);
+  }
+  if (x.genere === "angolo") {
+    // lontano dal retto, perché si veda bene senza goniometro
+    if (!(Number.isInteger(a) && ((a >= 10 && a <= 75) || a === 90 || (a >= 105 && a <= 170) || a === 180))) {
+      errore(inizio + "l'angolo: da 10 a 75 gradi (acuto), 90 (retto), da 105 a 170 (ottuso) o 180 (piatto).");
+    }
+    m.giro = giro(x.giro);
+  }
+  if (x.genere === "simmetria") {
+    delete m.a;
+    const buone = (Array.isArray(x.celle) ? x.celle : []).filter(c => Array.isArray(c) && [0, 1].every(k => Number.isInteger(c[k])) &&
+      c[0] >= 0 && c[0] < 6 && c[1] >= 0 && c[1] < 4);
+    m.celle = [...new Map(buone.map(c => [c[0] + "," + c[1], [c[0], c[1]]])).values()];
+    if (m.celle.length < 2 || m.celle.length > 16) errore(inizio + "colora da 2 a 16 quadretti a sinistra dell'asse.");
+  }
+  if (x.genere === "perimetro") {
+    if (!(Number.isInteger(a) && a >= 1 && a <= 10 && Number.isInteger(b) && b >= 1 && b <= 6)) errore(inizio + "il rettangolo: base da 1 a 10 quadretti, altezza da 1 a 6.");
+    m.b = b;
   }
   if (x.genere === "problema") {
     m.schema = SCHEMI[x.schema] ? x.schema : errore(inizio + "scegli che cosa succede nel problema.");

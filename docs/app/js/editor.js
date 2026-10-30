@@ -1,7 +1,7 @@
 // Editor degli esercizi: tutto si prepara riempiendo dei campi, senza codice.
 
 import { el, immaginePicto } from "./ui.js";
-import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, GENERI_LETTURA, LIVELLI, OPERAZIONI, SCHEMI, PROPRIETA, ANIMAZIONI, PASSI_RETTA, giochiPer, valida } from "./modello.js";
+import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, GENERI_LETTURA, LIVELLI, OPERAZIONI, SCHEMI, PROPRIETA, ANIMAZIONI, PASSI_RETTA, LINEE, giochiPer, valida } from "./modello.js";
 import { scegliPittogramma } from "./picto.js";
 
 const vuoto = () => ({ t: "" });
@@ -140,6 +140,10 @@ function campiDiMatematica(x, ridisegna) {
     if (v === "retta") Object.assign(x, { a: 30, da: 0, passo: 10, modo: "leggi" });
     if (v === "blocchi") Object.assign(x, { a: 243, modo: "costruisci" });
     if (v === "frazione") Object.assign(x, { a: 3, b: 4, forma: "cerchio", modo: "colora" });
+    if (v === "linee") Object.assign(x, { cosa: "segmento", giro: 0 });
+    if (v === "angolo") Object.assign(x, { a: 45, giro: 0 });
+    if (v === "simmetria") Object.assign(x, { celle: [[1, 3], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3], [4, 3]] });
+    if (v === "perimetro") Object.assign(x, { a: 5, b: 3 });
     if (v === "problema") Object.assign(x, { schema: "aggiunta", b: 3, testo: ["", "", ""], oggetto: { t: "" } });
     ridisegna();
   }, "Che cosa");
@@ -156,6 +160,27 @@ function campiDiMatematica(x, ridisegna) {
     campi.push(a("Numero"), numero(x.da, v => { x.da = v; }, "La retta parte da"),
       menu(String(x.passo), Object.fromEntries(PASSI_RETTA.map(p => [p, "di " + p + " in " + p])), v => { x.passo = Number(v); }, "Ogni tacca vale"),
       menu(x.modo, { leggi: "La freccia indica il numero: quale?", trova: "Si tocca la tacca del numero" }, v => { x.modo = v; }, "Che cosa chiedere"));
+  }
+  const giro = () => numero(x.giro, v => { x.giro = v; }, "Girata di (gradi, da −90 a 90)", -90);
+  if (x.genere === "linee") campi.push(menu(x.cosa, LINEE, v => { x.cosa = v; }, "Quale linea"), giro());
+  if (x.genere === "angolo") campi.push(a("Apertura in gradi (acuto 10-75, retto 90, ottuso 105-170, piatto 180)"), giro());
+  if (x.genere === "perimetro") campi.push(a("Base (quadretti, fino a 10)"), b("Altezza (quadretti, fino a 6)"));
+  if (x.genere === "simmetria") {
+    if (!Array.isArray(x.celle)) x.celle = [];
+    const griglia = el("div", { class: "sim-griglia sim-editor" });
+    for (let r = 0; r < 6; r++) {
+      for (let c = 0; c < 8; c++) {
+        if (c >= 4) { griglia.append(el("span", { class: "sim-cella" })); continue; }
+        const piena = () => x.celle.some(q => q[0] === r && q[1] === c);
+        const cella = el("button", { type: "button", class: "sim-cella" + (piena() ? " piena" : ""), "aria-label": "riga " + (r + 1) + ", colonna " + (c + 1) });
+        cella.addEventListener("click", () => {
+          x.celle = piena() ? x.celle.filter(q => !(q[0] === r && q[1] === c)) : x.celle.concat([[r, c]]);
+          cella.classList.toggle("piena");
+        });
+        griglia.append(cella);
+      }
+    }
+    campi.push(el("div", { class: "campo" }, el("span", { class: "campo-nome", text: "Colora la figura a sinistra dell'asse (da 2 a 16 quadretti)" }), griglia));
   }
   if (x.genere === "blocchi") {
     campi.push(a("Numero"), menu(x.modo, { costruisci: "Si costruisce il numero con i blocchi", leggi: "Si guardano i blocchi e si legge il numero" }, v => { x.modo = v; }, "Che cosa fare"));

@@ -23,8 +23,10 @@ import * as lettura from "./giochi/lettura.js";
 import * as brano from "./giochi/brano.js";
 import * as vero from "./giochi/vero.js";
 import * as palloncini from "./giochi/palloncini.js";
+import * as quiz from "./giochi/quiz.js";
+import * as ruota from "./giochi/ruota.js";
 
-const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura, brano, vero, palloncini };
+const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura, brano, vero, palloncini, quiz, ruota };
 
 /* ---------- inizio ---------- */
 

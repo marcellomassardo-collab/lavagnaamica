@@ -1430,7 +1430,181 @@ const RETTA = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- geometria: linee, angoli, simmetria, perimetro ---------- */
+const INCHIOSTRO = "#1D2329";
+const riga = (x1, y1, x2, y2, extra) => s("line", Object.assign({ x1, y1, x2, y2, stroke: INCHIOSTRO, "stroke-width": 6, "stroke-linecap": "round" }, extra || {}));
+const puntini = (x1, y1, x2, y2) => riga(x1, y1, x2, y2, { "stroke-dasharray": "1 14" });
+const punto = (x, y) => s("circle", { cx: x, cy: y, r: 9, fill: "#E0332B" });
+// una retta che continua da tutte e due le parti
+const rettaIntera = (x1, y1, x2, y2) => {
+  const p = t => [x1 + (x2 - x1) * t, y1 + (y2 - y1) * t];
+  return s("g", {}, puntini(...p(0), ...p(0.15)), riga(...p(0.15), ...p(0.85)), puntini(...p(0.85), ...p(1)));
+};
+
+const LINEE_RETTE = {
+  passi: [
+    "Il segmento ha un inizio e una fine, i due puntini rossi: si può misurare con il righello.",
+    "La semiretta ha un inizio, l'origine, ma non ha fine: continua per sempre da una parte. I puntini neri vogliono dire «continua».",
+    "La retta non ha né inizio né fine: continua per sempre, da tutte e due le parti.",
+    "Due rette che non si incontrano mai sono parallele, come i binari del treno.",
+    "Due rette che si incontrano sono incidenti. Se si incontrano formando quattro angoli retti sono perpendicolari, come le righe del quaderno a quadretti."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const pieno = riga(160, 200, 640, 200);
+    const sx = nascosto(puntini(40, 200, 160, 200)), dx = nascosto(puntini(640, 200, 760, 200));
+    const pA = nascosto(punto(160, 200)), pB = nascosto(punto(640, 200));
+    const nomi = ["segmento", "semiretta", "retta"].map(t => nascosto(etichetta(400, 300, t, 34)));
+    const una = s("g", { class: "sp-sfuma" }, pieno, sx, dx, pA, pB, ...nomi);
+    const parallele = nascosto(s("g", {}, rettaIntera(40, 150, 760, 150), rettaIntera(40, 290, 760, 290), etichetta(400, 380, "rette parallele", 32)));
+    const incrocio = nascosto(s("g", {}, rettaIntera(50, 330, 370, 110), rettaIntera(50, 120, 370, 320), etichetta(210, 410, "incidenti", 30),
+      rettaIntera(430, 220, 770, 220), rettaIntera(600, 50, 600, 390),
+      s("path", { d: "M600,190 L630,190 L630,220", stroke: "#E0332B", "stroke-width": 4, fill: "none" }), etichetta(600, 432, "perpendicolari", 30)));
+    svg.append(una, parallele, incrocio);
+    return {
+      vai(k) {
+        vedi(una, k <= 2);
+        vedi(pA, k <= 1);
+        vedi(pB, k === 0);
+        vedi(sx, k === 2);
+        vedi(dx, k === 1 || k === 2);
+        nomi.forEach((n, i) => vedi(n, i === k));
+        vedi(parallele, k === 3);
+        vedi(incrocio, k === 4);
+      },
+      ferma() {}
+    };
+  }
+};
+
+const ANGOLI = {
+  passi: [
+    "Un angolo è l'apertura tra due semirette che partono dallo stesso punto: il vertice.",
+    "Pieghiamo un foglio due volte: il suo angolo è l'angolo retto. È il nostro angolo campione.",
+    "Un angolo più chiuso dell'angolo retto si chiama acuto.",
+    "Un angolo più aperto dell'angolo retto si chiama ottuso.",
+    "Se i due lati sono uno il proseguimento dell'altro, l'angolo è piatto: è come due angoli retti."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const V = [400, 340], GRADI = [55, 90, 40, 130, 180];
+    const arco = s("path", { fill: "#FFD23F", stroke: "#E0332B", "stroke-width": 3 });
+    const campione = nascosto(s("rect", { x: V[0], y: V[1] - 130, width: 130, height: 130, fill: "#2F6FD6", "fill-opacity": 0.25, stroke: "#2F6FD6", "stroke-width": 3 }));
+    const lato = s("g", { class: "sp-blocco" }, riga(V[0], V[1], V[0] + 300, V[1]));
+    lato.style.transformOrigin = V[0] + "px " + V[1] + "px";
+    lato.style.transformBox = "view-box";
+    const nomi = ["vertice", "angolo retto", "acuto", "ottuso", "piatto"].map((t, i) => nascosto(etichetta(i === 0 ? V[0] : 400, i === 0 ? V[1] + 50 : 70, t, 34)));
+    svg.append(campione, arco, riga(V[0], V[1], V[0] + 300, V[1]), lato, punto(...V), ...nomi);
+    return {
+      vai(k) {
+        const g = GRADI[k], r = 70, rad = g * Math.PI / 180;
+        lato.style.transform = "rotate(" + (-g) + "deg)";
+        arco.setAttribute("d", "M" + V[0] + "," + V[1] + " L" + (V[0] + r) + "," + V[1] + " A" + r + "," + r + " 0 0 0 " +
+          (V[0] + r * Math.cos(rad)).toFixed(1) + "," + (V[1] - r * Math.sin(rad)).toFixed(1) + " Z");
+        vedi(campione, k >= 1);
+        nomi.forEach((n, i) => vedi(n, i === k));
+      },
+      ferma() {}
+    };
+  }
+};
+
+const SIMMETRIA = {
+  passi: [
+    "Questa farfalla ha un asse di simmetria: una linea che la divide in due parti uguali.",
+    "Se la pieghiamo lungo l'asse, le due ali combaciano perfettamente.",
+    "Ogni punto ha il suo gemello dall'altra parte, alla stessa distanza dall'asse.",
+    "Sul quaderno a quadretti si contano i quadretti dall'asse, e si colora alla stessa distanza dall'altra parte."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const ala = () => s("g", {}, s("path", { d: "M400,215 C470,50 650,60 630,185 C620,240 520,236 400,232 Z", fill: "#F2A300", stroke: INCHIOSTRO, "stroke-width": 4 }),
+      s("path", { d: "M400,245 C520,245 610,300 570,370 C530,415 445,340 400,268 Z", fill: "#E0532B", stroke: INCHIOSTRO, "stroke-width": 4 }),
+      s("circle", { cx: 560, cy: 150, r: 22, fill: "#2F6FD6" }));
+    const destra = ala(), sinistra = ala();
+    sinistra.classList.add("sp-blocco");
+    sinistra.style.transform = "matrix(-1,0,0,1,800,0)";
+    const corpo = s("g", {}, s("ellipse", { cx: 400, cy: 250, rx: 11, ry: 105, fill: INCHIOSTRO }),
+      s("path", { d: "M396,152 C380,110 360,95 345,90 M404,152 C420,110 440,95 455,90", stroke: INCHIOSTRO, "stroke-width": 4, fill: "none" }));
+    const farfalla = s("g", { class: "sp-sfuma" }, destra, sinistra, corpo);
+    const asse = s("line", { x1: 400, y1: 30, x2: 400, y2: 430, stroke: "#C0282B", "stroke-width": 4, "stroke-dasharray": "14 10" });
+    const gemelli = nascosto(s("g", {}, punto(560, 150), punto(240, 150),
+      riga(400, 150, 548, 150, { "stroke-width": 3, "stroke-dasharray": "6 6" }), riga(252, 150, 400, 150, { "stroke-width": 3, "stroke-dasharray": "6 6" }),
+      etichetta(475, 135, "uguale", 20), etichetta(325, 135, "uguale", 20)));
+    // il quaderno: 5 colonne per parte, la figura a sinistra e la sua gemella a destra
+    const Q = 36, X0 = 400 - 5 * Q, Y0 = 110;
+    const quaderno = nascosto(s("g", {}));
+    for (let i = 0; i <= 10; i++) quaderno.append(s("line", { x1: X0 + i * Q, x2: X0 + i * Q, y1: Y0, y2: Y0 + 6 * Q, stroke: "#B9D3F0", "stroke-width": 1.5 }));
+    for (let j = 0; j <= 6; j++) quaderno.append(s("line", { x1: X0, x2: X0 + 10 * Q, y1: Y0 + j * Q, y2: Y0 + j * Q, stroke: "#B9D3F0", "stroke-width": 1.5 }));
+    const forma = [[1, 4], [2, 3], [2, 4], [3, 2], [3, 3], [3, 4], [4, 4]];
+    forma.forEach(([r, c]) => quaderno.append(s("rect", { x: X0 + c * Q, y: Y0 + r * Q, width: Q, height: Q, fill: "#2F6FD6" }),
+      s("rect", { x: X0 + (9 - c) * Q, y: Y0 + r * Q, width: Q, height: Q, fill: "#F2A300" })));
+    svg.append(farfalla, quaderno, gemelli, asse);
+    return {
+      vai(k) {
+        vedi(farfalla, k <= 2);
+        sinistra.style.transform = k === 1 ? "matrix(1,0,0,1,0,0)" : "matrix(-1,0,0,1,800,0)";
+        vedi(gemelli, k === 2);
+        vedi(quaderno, k === 3);
+      },
+      ferma() {}
+    };
+  }
+};
+
+const PERIMETRO = {
+  passi: [
+    "Il perimetro è la lunghezza del contorno di una figura: il giro tutto intorno.",
+    "Una formica cammina sul contorno del rettangolo e conta i lati dei quadretti: 5 in alto, poi 3 a destra…",
+    "…poi 5 in basso e 3 a sinistra. È tornata al punto di partenza.",
+    "In tutto: 5 + 3 + 5 + 3 = 16. Il perimetro è 16 lati di quadretto.",
+    "I quadretti dentro sono un'altra cosa: sono 15, e misurano la superficie."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const u = 50, X = 275, Y = 110;
+    for (let i = 0; i <= 16; i++) svg.append(s("line", { x1: i * u, x2: i * u, y1: 0, y2: 450, stroke: "#D5E4F5", "stroke-width": 1.5 }));
+    for (let j = 0; j <= 9; j++) svg.append(s("line", { x1: 0, x2: 800, y1: 10 + j * u, y2: 10 + j * u, stroke: "#D5E4F5", "stroke-width": 1.5 }));
+    const dentro = nascosto(s("g", {}));
+    for (let r = 0; r < 3; r++) for (let c = 0; c < 5; c++) dentro.append(s("rect", { x: X + c * u + 4, y: Y + r * u + 4, width: u - 8, height: u - 8, rx: 6, fill: "#FFD23F" }));
+    svg.append(dentro, s("rect", { x: X, y: Y, width: 5 * u, height: 3 * u, fill: "none", stroke: "#E0332B", "stroke-width": 6, "stroke-linejoin": "round" }));
+    // i numeri del giro, uno per lato di quadretto, che compaiono uno dopo l'altro
+    const giro = [];
+    const n = (x, y) => { const t = nascosto(scritta(x, y + 8, String(giro.length + 1), { "font-size": 22, "font-weight": 800, fill: "#1E6B52" })); giro.push(t); svg.append(t); };
+    for (let i = 0; i < 5; i++) n(X + i * u + u / 2, Y - 20);
+    for (let j = 0; j < 3; j++) n(X + 5 * u + 22, Y + j * u + u / 2);
+    for (let i = 4; i >= 0; i--) n(X + i * u + u / 2, Y + 3 * u + 22);
+    for (let j = 2; j >= 0; j--) n(X - 22, Y + j * u + u / 2);
+    const formica = s("text", { x: 0, y: 0, "font-size": 34, "text-anchor": "middle", class: "sp-blocco" }, "🐜");
+    const conto = nascosto(etichetta(400, 420, "5 + 3 + 5 + 3 = 16", 34));
+    const superficie = nascosto(etichetta(400, 420, "15 quadretti dentro: la superficie", 30));
+    svg.append(formica, conto, superficie);
+    const angoli = [[X, Y], [X + 5 * u, Y], [X + 5 * u, Y + 3 * u], [X, Y + 3 * u]];
+    const verso = ([x, y]) => ({ transform: "translate(" + x + "px," + (y + 12) + "px)" });
+    formica.classList.remove("sp-blocco");
+    formica.style.transform = verso(angoli[0]).transform;
+    return {
+      vai(k) {
+        giro.forEach((t, i) => {
+          t.style.transitionDelay = k === 1 ? (i * 0.25) + "s" : k === 2 ? ((i - 8) * 0.25) + "s" : "0s";
+          vedi(t, (k === 1 && i < 8) || k >= 2);
+        });
+        // la formica gira lungo il contorno, lato per lato (mai in diagonale)
+        const tappe = k === 1 ? [0, 1, 2] : k === 2 ? [2, 3, 0] : [0];
+        formica.style.transform = verso(angoli[tappe[tappe.length - 1]]).transform;
+        if (tappe.length > 1 && formica.animate && !movimentoRidotto()) {
+          formica.animate(tappe.map(i => verso(angoli[i])), { duration: 2000, easing: "linear" });
+        }
+        vedi(conto, k === 3);
+        vedi(dentro, k === 4);
+        vedi(superficie, k === 4);
+      },
+      ferma() {}
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

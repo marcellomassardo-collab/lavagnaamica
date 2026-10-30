@@ -13670,7 +13670,7 @@
   "titolo": "Monete e banconote: quanto fa?",
   "scrittura": "maiuscolo",
   "tipo": "domande",
-  "gioco": "scelta",
+  "gioco": "ruota",
   "consegna": "Guarda la moneta o la banconota e scegli la risposta giusta.",
   "dati": {
    "domande": [
@@ -13786,7 +13786,7 @@
   "titolo": "Problemi: quanto costa?",
   "scrittura": "maiuscolo",
   "tipo": "domande",
-  "gioco": "scelta",
+  "gioco": "quiz",
   "consegna": "Leggi il problema, fai il conto e scegli la risposta.",
   "dati": {
    "domande": [
@@ -14534,6 +14534,459 @@
   },
   "scopri": {
    "animazione": "frazioni"
+  }
+ },
+ {
+  "id": "linee-rette",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Segmento, semiretta o retta?",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda dove inizia e dove finisce la linea: i puntini vogliono dire «continua».",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "linee",
+     "cosa": "segmento",
+     "giro": 0
+    },
+    {
+     "genere": "linee",
+     "cosa": "retta",
+     "giro": 30
+    },
+    {
+     "genere": "linee",
+     "cosa": "semiretta",
+     "giro": -20
+    },
+    {
+     "genere": "linee",
+     "cosa": "segmento",
+     "giro": 60
+    },
+    {
+     "genere": "linee",
+     "cosa": "retta",
+     "giro": 90
+    },
+    {
+     "genere": "linee",
+     "cosa": "semiretta",
+     "giro": -60
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "linee-rette"
+  }
+ },
+ {
+  "id": "linee-curve",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Linee curve, spezzate e miste",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "La linea ha pezzi dritti, pezzi curvi, o tutti e due?",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "linee",
+     "cosa": "curva",
+     "giro": 0
+    },
+    {
+     "genere": "linee",
+     "cosa": "spezzata",
+     "giro": 20
+    },
+    {
+     "genere": "linee",
+     "cosa": "mista",
+     "giro": -15
+    },
+    {
+     "genere": "linee",
+     "cosa": "spezzata",
+     "giro": -40
+    },
+    {
+     "genere": "linee",
+     "cosa": "curva",
+     "giro": 45
+    },
+    {
+     "genere": "linee",
+     "cosa": "mista",
+     "giro": 30
+    }
+   ]
+  }
+ },
+ {
+  "id": "rette-posizioni",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Rette parallele, incidenti o perpendicolari?",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Le due rette si incontrano? Come?",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "linee",
+     "cosa": "parallele",
+     "giro": 0
+    },
+    {
+     "genere": "linee",
+     "cosa": "perpendicolari",
+     "giro": 30
+    },
+    {
+     "genere": "linee",
+     "cosa": "incidenti",
+     "giro": 0
+    },
+    {
+     "genere": "linee",
+     "cosa": "parallele",
+     "giro": 60
+    },
+    {
+     "genere": "linee",
+     "cosa": "perpendicolari",
+     "giro": 0
+    },
+    {
+     "genere": "linee",
+     "cosa": "incidenti",
+     "giro": -40
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "linee-rette"
+  }
+ },
+ {
+  "id": "angoli",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Acuto, retto, ottuso o piatto?",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Confronta l'apertura con l'angolo retto, l'angolo di un foglio piegato due volte.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "angolo",
+     "a": 45,
+     "giro": 0
+    },
+    {
+     "genere": "angolo",
+     "a": 90,
+     "giro": 30
+    },
+    {
+     "genere": "angolo",
+     "a": 130,
+     "giro": 0
+    },
+    {
+     "genere": "angolo",
+     "a": 30,
+     "giro": -20
+    },
+    {
+     "genere": "angolo",
+     "a": 180,
+     "giro": 0
+    },
+    {
+     "genere": "angolo",
+     "a": 150,
+     "giro": 15
+    },
+    {
+     "genere": "angolo",
+     "a": 90,
+     "giro": -45
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "angoli"
+  }
+ },
+ {
+  "id": "simmetria-quadretti",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "La simmetria sul quaderno a quadretti",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Colora a destra dell'asse, alla stessa distanza, i quadretti gemelli.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "simmetria",
+     "celle": [
+      [
+       2,
+       3
+      ],
+      [
+       3,
+       2
+      ],
+      [
+       3,
+       3
+      ]
+     ]
+    },
+    {
+     "genere": "simmetria",
+     "celle": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       1
+      ],
+      [
+       2,
+       2
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       3,
+       3
+      ],
+      [
+       4,
+       3
+      ]
+     ]
+    },
+    {
+     "genere": "simmetria",
+     "celle": [
+      [
+       0,
+       0
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       1
+      ],
+      [
+       2,
+       1
+      ],
+      [
+       2,
+       2
+      ],
+      [
+       3,
+       2
+      ],
+      [
+       4,
+       2
+      ],
+      [
+       4,
+       3
+      ]
+     ]
+    },
+    {
+     "genere": "simmetria",
+     "celle": [
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       1
+      ],
+      [
+       2,
+       2
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       3,
+       1
+      ],
+      [
+       3,
+       3
+      ],
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       2
+      ],
+      [
+       4,
+       3
+      ]
+     ]
+    },
+    {
+     "genere": "simmetria",
+     "celle": [
+      [
+       1,
+       1
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       2,
+       0
+      ],
+      [
+       2,
+       1
+      ],
+      [
+       2,
+       2
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       3,
+       1
+      ],
+      [
+       3,
+       2
+      ],
+      [
+       3,
+       3
+      ],
+      [
+       4,
+       2
+      ],
+      [
+       4,
+       3
+      ],
+      [
+       5,
+       3
+      ]
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "simmetria"
+  }
+ },
+ {
+  "id": "perimetro-quadretti",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Il perimetro sul quaderno a quadretti",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Conta i lati dei quadretti lungo tutto il contorno.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "perimetro",
+     "a": 4,
+     "b": 2
+    },
+    {
+     "genere": "perimetro",
+     "a": 5,
+     "b": 3
+    },
+    {
+     "genere": "perimetro",
+     "a": 3,
+     "b": 3
+    },
+    {
+     "genere": "perimetro",
+     "a": 6,
+     "b": 2
+    },
+    {
+     "genere": "perimetro",
+     "a": 7,
+     "b": 4
+    },
+    {
+     "genere": "perimetro",
+     "a": 2,
+     "b": 5
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "perimetro"
   }
  }
 ]

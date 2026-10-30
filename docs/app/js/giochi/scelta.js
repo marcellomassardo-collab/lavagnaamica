@@ -5,7 +5,7 @@ import { el, carta, mescola, pulsanteVoce } from "../ui.js";
 
 const testaGruppo = g => (g.p ? { t: g.nome, p: g.p } : { t: g.nome });
 
-function domandeDa(es, quante) {
+export function domandeDa(es, quante) {
   const d = es.dati;
   if (es.tipo === "domande") return d.domande;
   if (es.tipo === "coppie") {

@@ -2,7 +2,7 @@
 // Nei problemi l'operazione nasce da ciò che succede nella storia, non dalle parole del testo.
 
 import { el, mescola, pulsanteVoce } from "../ui.js";
-import { OPERAZIONI, SCHEMI, PROPRIETA, risultato } from "../modello.js";
+import { OPERAZIONI, SCHEMI, PROPRIETA, LINEE, risultato } from "../modello.js";
 import { oggetto, oggetti, file10, compari, sposta, spostaInsieme, riordina, aspetta, contaToccando, gruppo, decine, barretta, cubetto, centinaio, linea } from "../scena.js";
 
 const MELA = { t: "mela", p: 2462 };
@@ -925,7 +925,160 @@ export function avvia(area, es, ctx) {
         "Sopra c'è " + x.a + ", il numeratore: quante parti si prendono." })]);
   }
 
-  const GENERI = { conta, confronta, "prima-dopo": primaDopo, decine: decineUnita, operazione, colonna, proprieta, problema, retta, blocchi, frazione };
+  /* ---------- geometria: linee, angoli, simmetria, perimetro, con disegni nostri ---------- */
+  // Le figure si disegnano anche girate (giro, in gradi): una retta è retta anche in obliquo,
+  // un angolo retto è retto anche se non ha un lato orizzontale.
+  const NERO = "#1D2329";
+  const tratto = (attr, extra) => svgEl(attr.d ? "path" : "line", Object.assign({ stroke: NERO, "stroke-width": 6, "stroke-linecap": "round",
+    "stroke-linejoin": "round", fill: "none" }, attr, extra || {}));
+  const pallino = (x, y) => svgEl("circle", { cx: x, cy: y, r: 9, fill: "#E0332B" });
+  function figura(viewBox, giro, cx, cy) {
+    const svg = svgEl("svg", { viewBox, class: "geo-figura" });
+    const g = svgEl("g", { transform: "rotate(" + (giro || 0) + " " + cx + " " + cy + ")" });
+    svg.append(g);
+    scena.replaceChildren(el("div", { class: "geo-scena" }, svg));
+    return g;
+  }
+  // segmento, semiretta, retta: i puntini dicono che la linea continua
+  function rettaSvg(g, x1, y1, x2, y2, tipo) {
+    const p = t => [x1 + (x2 - x1) * t, y1 + (y2 - y1) * t];
+    const pezzo = (a, b, puntini) => {
+      const [ax, ay] = p(a), [bx, by] = p(b);
+      g.append(tratto({ x1: ax, y1: ay, x2: bx, y2: by }, puntini ? { "stroke-dasharray": "1 14" } : {}));
+    };
+    if (tipo === "segmento") pezzo(0.12, 0.88);
+    else {
+      pezzo(0.15, 0.85);
+      pezzo(0.85, 1, true);
+      if (tipo === "retta") pezzo(0, 0.15, true);
+    }
+    if (tipo === "segmento") g.append(pallino(...p(0.12)), pallino(...p(0.88)));
+    if (tipo === "semiretta") g.append(pallino(...p(0.15)));
+  }
+  const DISEGNI_LINEE = {
+    segmento: g => rettaSvg(g, 40, 150, 560, 150, "segmento"),
+    semiretta: g => rettaSvg(g, 40, 150, 560, 150, "semiretta"),
+    retta: g => rettaSvg(g, 40, 150, 560, 150, "retta"),
+    curva: g => g.append(tratto({ d: "M60,190 C160,30 250,40 300,150 S450,270 540,110" })),
+    spezzata: g => g.append(tratto({ d: "M60,200 L170,90 L270,210 L380,80 L540,170" })),
+    mista: g => g.append(tratto({ d: "M60,200 L170,90 L270,210 C320,40 470,40 540,170" })),
+    parallele: g => { rettaSvg(g, 40, 100, 560, 100, "retta"); rettaSvg(g, 40, 200, 560, 200, "retta"); },
+    incidenti: g => { rettaSvg(g, 60, 240, 540, 60, "retta"); rettaSvg(g, 60, 80, 540, 220, "retta"); },
+    perpendicolari: g => {
+      rettaSvg(g, 40, 150, 560, 150, "retta");
+      rettaSvg(g, 300, 0, 300, 300, "retta");
+      g.append(svgEl("path", { d: "M300,122 L328,122 L328,150", stroke: "#E0332B", "stroke-width": 4, fill: "none" }));
+    }
+  };
+  const SPIEGA_LINEE = {
+    segmento: "Il segmento ha un inizio e una fine: si può misurare.",
+    semiretta: "La semiretta ha un inizio, l'origine, ma non ha fine: continua da una parte sola.",
+    retta: "La retta non ha né inizio né fine: continua sempre, da tutte e due le parti.",
+    curva: "La linea curva non ha pezzi dritti: gira sempre.",
+    spezzata: "La linea spezzata è fatta di segmenti dritti, uno dopo l'altro.",
+    mista: "La linea mista ha pezzi dritti e pezzi curvi.",
+    parallele: "Le rette parallele non si incontrano mai: restano sempre alla stessa distanza, come i binari del treno.",
+    incidenti: "Le rette incidenti si incontrano in un punto.",
+    perpendicolari: "Le rette perpendicolari si incontrano formando quattro angoli retti."
+  };
+  const FAMIGLIE = [["segmento", "semiretta", "retta"], ["curva", "spezzata", "mista"], ["parallele", "incidenti", "perpendicolari"]];
+
+  async function linee(x) {
+    const g = figura("0 0 600 300", x.giro, 300, 150);
+    DISEGNI_LINEE[x.cosa](g);
+    testo.replaceChildren(el("p", {}, el("span", { text: "Guarda bene la linea: che cos'è?" })));
+    const famiglia = FAMIGLIE.find(f => f.includes(x.cosa));
+    await chiedi("Che cos'è?", mescola(famiglia.map(k => LINEE[k])), LINEE[x.cosa]);
+    await avanti([uguale(LINEE[x.cosa].replace(/^./, c => c.toUpperCase())), el("p", { class: "mat-consiglio", text: "💡 " + SPIEGA_LINEE[x.cosa] })]);
+  }
+
+  // l'angolo: il vertice, un lato fisso e l'altro aperto di x.a gradi
+  const tipoAngolo = a => (a < 90 ? "acuto" : a === 90 ? "retto" : a < 180 ? "ottuso" : "piatto");
+  async function angolo(x) {
+    const V = [300, 230], L = 230, r = 62;
+    const rad = x.a * Math.PI / 180;
+    const fine = [V[0] + L * Math.cos(rad), V[1] - L * Math.sin(rad)];
+    const g = figura("0 0 600 330", x.giro, V[0], V[1]);
+    const arco = x.a === 90
+      ? svgEl("path", { d: "M" + (V[0] + 40) + "," + V[1] + " L" + (V[0] + 40) + "," + (V[1] - 40) + " L" + V[0] + "," + (V[1] - 40), stroke: "#E0332B", "stroke-width": 4, fill: "#FFD23F" })
+      : svgEl("path", { d: "M" + V[0] + "," + V[1] + " L" + (V[0] + r) + "," + V[1] + " A" + r + "," + r + " 0 0 0 " +
+        (V[0] + r * Math.cos(rad)).toFixed(1) + "," + (V[1] - r * Math.sin(rad)).toFixed(1) + " Z", fill: "#FFD23F", stroke: "#E0332B", "stroke-width": 3 });
+    // l'angolo campione: un foglio piegato due volte, appoggiato sul vertice
+    const campione = svgEl("rect", { x: V[0], y: V[1] - 110, width: 110, height: 110, fill: "#2F6FD6", "fill-opacity": 0.28, stroke: "#2F6FD6", "stroke-width": 3, class: "geo-campione" });
+    g.append(arco, tratto({ x1: V[0], y1: V[1], x2: V[0] + L, y2: V[1] }), tratto({ x1: V[0], y1: V[1], x2: fine[0].toFixed(1), y2: fine[1].toFixed(1) }), pallino(...V));
+    testo.replaceChildren(el("p", {}, el("span", { text: "Guarda l'apertura tra i due lati: che angolo è?" })));
+    const tipo = tipoAngolo(x.a);
+    await chiedi("Che angolo è?", ["acuto", "retto", "ottuso", "piatto"], tipo);
+    g.append(campione);
+    const confronto = { acuto: "È più chiuso dell'angolo retto.", retto: "È proprio come l'angolo campione.", ottuso: "È più aperto dell'angolo retto.",
+      piatto: "I due lati sono uno il proseguimento dell'altro: è come due angoli retti." }[tipo];
+    await avanti([uguale("Angolo " + tipo), el("p", { class: "mat-consiglio", text: "💡 In blu c'è l'angolo campione, l'angolo retto: un foglio piegato due volte. " + confronto })]);
+  }
+
+  // la simmetria: a sinistra dell'asse la figura, a destra si colora la parte simmetrica
+  async function simmetria(x) {
+    const piene = new Set(x.celle.map(c => c[0] + "," + (7 - c[1])));
+    const celle = [];
+    const griglia = el("div", { class: "sim-griglia" });
+    for (let rr = 0; rr < 6; rr++) {
+      for (let c = 0; c < 8; c++) {
+        const sinistra = c < 4;
+        const b = el("button", { type: "button", class: "sim-cella" + (sinistra && x.celle.some(q => q[0] === rr && q[1] === c) ? " piena" : ""),
+          "aria-label": "riga " + (rr + 1) + ", colonna " + (c + 1), "data-cella": rr + "," + c });
+        if (sinistra) b.disabled = true;
+        else { b.addEventListener("click", () => { if (!b.classList.contains("ferma")) b.classList.toggle("piena"); }); celle.push(b); }
+        griglia.append(b);
+      }
+    }
+    scena.replaceChildren(el("div", { class: "sim-scena" }, griglia));
+    testo.replaceChildren(el("p", {}, el("span", { text: "La linea rossa è l'asse di simmetria. Colora a destra la parte simmetrica." })));
+    const giuste = () => celle.filter(b => b.classList.contains("piena") === piene.has(b.dataset.cella)).length === celle.length;
+    await controlla("Conta i quadretti dall'asse e colora alla stessa distanza dall'altra parte. Poi tocca Fatto.", () => (giuste() ? 1 : 0), 1, () => {
+      const messe = celle.filter(b => b.classList.contains("piena"));
+      const bene = messe.filter(b => piene.has(b.dataset.cella)).length;
+      return "Al posto giusto ce ne sono " + bene + " su " + piene.size + (messe.length > bene ? ", e " + (messe.length - bene) + " sono fuori posto" : "") + ". Guarda la distanza dall'asse.";
+    });
+    celle.forEach(b => b.classList.add("ferma"));
+    await avanti([uguale("Le due parti sono uguali, come allo specchio.")]);
+  }
+
+  // il perimetro: un rettangolo sul quaderno a quadretti
+  async function perimetro(x) {
+    const u = 40, W = (x.a + 2) * u, H = (x.b + 2) * u;
+    const svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, class: "geo-figura geo-quadretti" });
+    for (let i = 0; i <= x.a + 2; i++) svg.append(svgEl("line", { x1: i * u, x2: i * u, y1: 0, y2: H, stroke: "#B9D3F0", "stroke-width": 1.5 }));
+    for (let j = 0; j <= x.b + 2; j++) svg.append(svgEl("line", { y1: j * u, y2: j * u, x1: 0, x2: W, stroke: "#B9D3F0", "stroke-width": 1.5 }));
+    svg.append(svgEl("rect", { x: u, y: u, width: x.a * u, height: x.b * u, fill: "#FFF1A8", stroke: "#E0332B", "stroke-width": 6, "stroke-linejoin": "round" }));
+    // i numeri del giro, lato per lato: base, altezza, base, altezza
+    const numeri = [];
+    const scrivi = (cx, cy) => {
+      const t = svgEl("text", { x: cx, y: cy, "text-anchor": "middle", "dominant-baseline": "middle", "font-size": 17, "font-weight": 800, fill: "#1E6B52", class: "geo-conta" });
+      t.textContent = String(numeri.length + 1);
+      numeri.push(t);
+      svg.append(t);
+    };
+    for (let i = 0; i < x.a; i++) scrivi(u + i * u + u / 2, u - 14);
+    for (let j = 0; j < x.b; j++) scrivi(u + x.a * u + 16, u + j * u + u / 2);
+    for (let i = x.a - 1; i >= 0; i--) scrivi(u + i * u + u / 2, u + x.b * u + 16);
+    for (let j = x.b - 1; j >= 0; j--) scrivi(u - 16, u + j * u + u / 2);
+    scena.replaceChildren(el("div", { class: "geo-scena" }, svg));
+    const contaGiro = async () => {
+      numeri.forEach(t => t.classList.remove("vista"));
+      for (const t of numeri) { if (fermo) return; t.classList.add("vista"); await aspetta(160); }
+    };
+    strumenti.replaceChildren(tasto("👣 Contiamo insieme il giro", contaGiro));
+    testo.replaceChildren(el("p", {}, el("span", { text: "Il perimetro è la lunghezza del contorno. Quanti lati di quadretto misura?" })));
+    const P = 2 * (x.a + x.b);
+    const scelte = [P];
+    [x.a * x.b, x.a + x.b, P + 2, P - 2, P + 4].forEach(v => { if (v > 0 && !scelte.includes(v) && scelte.length < ctx.opz.risposte) scelte.push(v); });
+    await chiedi("Quanto misura il perimetro?", mescola(scelte.map(String)), String(P));
+    await contaGiro();
+    await avanti([uguale(x.a + " + " + x.b + " + " + x.a + " + " + x.b + " = " + P),
+      el("p", { class: "mat-consiglio", text: "💡 Il perimetro è il giro intorno. I quadretti dentro sono un'altra cosa: sono la superficie." })]);
+  }
+
+  const GENERI = { conta, confronta, "prima-dopo": primaDopo, decine: decineUnita, operazione, colonna, proprieta, problema, retta, blocchi, frazione,
+    linee, angolo, simmetria, perimetro };
 
   (async () => {
     for (n = 0; n < scelti.length; n++) {
