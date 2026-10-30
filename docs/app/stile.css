@@ -838,3 +838,9 @@ textarea { font: inherit; color: inherit; padding: 10px 14px; border: 2px solid 
 @keyframes rotola { 0% { transform: rotate(-200deg) scale(.6); } 100% { transform: none; } }
 .st-estratto { margin: 0; font-size: clamp(6rem, 3rem + 12vw, 16rem); font-weight: 800; line-height: 1; color: #1E6B52; }
 .st-estratto.nuovo { animation: vf-entra .5s; }
+
+/* ---------- ripasso e prossimo esercizio ---------- */
+.festa-prossimo { display: grid; gap: 8px; justify-items: center; }
+.festa-prossimo:empty { display: none; }
+.festa-consiglio { margin: 0; font-weight: 700; }
+.ripasso h2 { margin-bottom: 4px; }

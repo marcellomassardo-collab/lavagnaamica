@@ -10,6 +10,7 @@ import { vista, pagina, intestazione, quandoSiEsce } from "./pagine.js";
 import { lineaDelTempo } from "./linea.js";
 import { spiegazione } from "./animazioni.js";
 import { vistaStrumenti } from "./strumenti.js";
+import { registra, daRipassare, prossimo, azzera } from "./ripasso.js";
 import { catalogo, catalogoAttivo, insegnante } from "./catalogo.js";
 import { vistaInsegnanti, vistaModerazione, schedaCatalogo, pubblica, copiaLink } from "./insegnanti.js";
 import { editor, bozzaDa } from "./editor.js";
@@ -180,6 +181,19 @@ async function vistaMateria(m) {
   if (ultimo) ultimo.scrollIntoView({ block: "center" });
 }
 
+// gli esercizi da rivedere oggi: gli esempi e i miei (quelli del catalogo no, possono cambiare)
+function sezioneRipasso(esempi) {
+  const schede = daRipassare().map(k => {
+    const [origine, id] = k.split(":");
+    const es = origine === "es" ? esempi.find(e => e.id === id) : origine === "mio" ? trovaMio(id) : null;
+    return es ? schedaEsercizio(es, origine) : null;
+  }).filter(Boolean).slice(0, 8);
+  return schede.length ? el("section", { class: "ripasso" },
+    el("h2", { text: "🔁 Da ripassare oggi" }),
+    el("p", { class: "tenue", text: "Gli esercizi da rivedere: presto quelli andati meno bene, più avanti quelli andati bene. Il ripasso resta solo su questo dispositivo." }),
+    el("ul", { class: "schede" }, schede)) : null;
+}
+
 async function casa() {
   const miei = elencoMiei();
   const esempi = await caricaEsempi();
@@ -203,6 +217,7 @@ async function casa() {
         el("a", { class: "pulsante secondario", href: "#/strumenti", text: "🧰 Strumenti per la LIM" }),
         el("button", { type: "button", class: "pulsante secondario", text: "📂 Apri un file", on: { click: () => file.click() } }),
         file)),
+    sezioneRipasso(esempi),
     el("section", {},
       el("h2", { text: "Esercizi pronti" }),
       el("p", { class: "tenue", text: "Scegli la materia: dentro trovi tutti gli esercizi, divisi per livello dal più facile al più difficile." }),
@@ -249,6 +264,19 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
     if (impostazioni.voce) setTimeout(() => parla("Ce l'hai fatta!"), 900);
     const quota = r.coppie ? r.coppie / Math.max(r.tentativi, 1) : r.giuste / Math.max(r.totale, 1);
     const stelle = quota >= (r.coppie ? 0.75 : 0.9) ? 3 : quota >= (r.coppie ? 0.5 : 0.6) ? 2 : 1;
+    // per il ripasso conta la stessa misura delle stelle: tre stelle = «molto bene»
+    const misura = stelle === 3 ? 1 : stelle === 2 ? 0.75 : 0.4;
+    const chiave = base.replace(/^#\/(gioca\/)?/, "").replace("/", ":");
+    registra(chiave, misura);
+    const consiglio = el("div", { class: "festa-prossimo" });
+    if (base.startsWith("#/gioca/es/")) {
+      caricaEsempi().then(tutti => {
+        const p = prossimo(es, misura, tutti);
+        if (!p) return;
+        consiglio.append(el("p", { class: "festa-consiglio", text: p.salto > 0 ? "Bravissimo! Si sale di livello." : p.salto < 0 ? "Proviamo con uno un po' più facile." : "Un altro dello stesso livello:" }),
+          el("a", { class: "pulsante", href: "#/gioca/es/" + p.es.id, text: "▶ " + p.es.titolo }));
+      });
+    }
     const punteggio = r.coppie
       ? el("p", { class: "festa-punteggio" }, el("b", { text: r.coppie + " coppie" }), " trovate in " + r.tentativi + " tentativi")
       : el("p", { class: "festa-punteggio" }, el("b", { text: r.giuste + " su " + r.totale }), " giuste al primo tentativo");
@@ -262,6 +290,7 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
       el("p", { class: "festa-stelle", "aria-label": stelle + (stelle === 1 ? " stella" : " stelle") + " su 3" },
         [1, 2, 3].map(k => el("span", { class: k <= stelle ? "accesa" : "", style: "animation-delay:" + (0.5 + k * 0.25) + "s", text: "★" }))),
       punteggio,
+      consiglio,
       el("div", { class: "azioni" },
         el("button", { type: "button", class: "pulsante", text: "↻ Gioca ancora", on: { click: inizia } }),
         el("a", { class: "pulsante secondario", href: "#/", text: "🏠 Home" }),
@@ -485,14 +514,16 @@ function vistaImpostazioni() {
       sceltaTema(),
       interruttore("contrasto", "Alto contrasto", "Colori più forti e bordi più spessi. Vale al posto del tema."),
       numero("elementi", "Carte per partita", "Quante carte o domande in ogni partita."),
-      numero("risposte", "Risposte tra cui scegliere", "Nella scelta multipla e nelle frasi da completare."))));
+      numero("risposte", "Risposte tra cui scegliere", "Nella scelta multipla e nelle frasi da completare.")),
+    el("p", {}, el("button", { type: "button", class: "tasto-piccolo", text: "🔁 Azzera il ripasso", on: { click: () => { azzera(); avviso("Ripasso azzerato."); } } }),
+      el("small", { class: "tenue", text: " Cancella da questo dispositivo il ricordo di come sono andati gli esercizi." }))));
 }
 
 function info() {
   vista(pagina("Lavagna Amica",
     el("p", { text: "Esercizi interattivi gratuiti, pensati per il sostegno e per la LIM. Nessuna funzione a pagamento, niente pubblicità, niente tracciamento." }),
     el("h2", { text: "I tuoi dati" }),
-    el("p", { text: "Per giocare non serve un account e non raccogliamo nulla. Gli esercizi che crei e le impostazioni restano su questo dispositivo. Un esercizio esce dal dispositivo solo se lo condividi tu, con un link o un file, o se lo pubblichi nel catalogo." }),
+    el("p", { text: "Per giocare non serve un account e non raccogliamo nulla. Gli esercizi che crei, le impostazioni e il ripasso (com'è andato ogni esercizio, senza nomi) restano su questo dispositivo. Un esercizio esce dal dispositivo solo se lo condividi tu, con un link o un file, o se lo pubblichi nel catalogo." }),
     catalogoAttivo ? el("p", { text: "Il catalogo comune sta su un server di Cloudflare. Gli insegnanti accedono con Google: salviamo la loro email, che non viene mai mostrata, e il nome che scelgono di mostrare. Una segnalazione anonima salva solo il motivo, un numero a caso di questo dispositivo e un'impronta della rete che cambia ogni giorno, per frenare gli abusi." }) : null,
     el("p", { text: "Le immagini arrivano dall'archivio pubblico di pittogrammi ARASAAC, che vede quindi le richieste delle immagini." }),
     el("p", { text: "La lettura ad alta voce usa le voci del dispositivo. Le voci «in rete» mandano il testo da leggere al servizio di chi le fornisce." }),
