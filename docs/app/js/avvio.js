@@ -21,8 +21,10 @@ import * as completa from "./giochi/completa.js";
 import * as matematica from "./giochi/matematica.js";
 import * as lettura from "./giochi/lettura.js";
 import * as brano from "./giochi/brano.js";
+import * as vero from "./giochi/vero.js";
+import * as palloncini from "./giochi/palloncini.js";
 
-const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura, brano };
+const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura, brano, vero, palloncini };
 
 /* ---------- inizio ---------- */
 

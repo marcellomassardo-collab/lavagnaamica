@@ -21,7 +21,9 @@ export const GIOCHI = {
   matematica: { nome: "Matematica con gli oggetti", icona: "🧮", tipi: ["matematica"],       consegna: "Guarda, conta e rispondi." },
   lettura:   { nome: "Impariamo a leggere", icona: "📖", tipi: ["lettura"],                  consegna: "Guarda, ascolta e leggi." },
   brano:     { nome: "Leggi e rispondi",   icona: "📚", tipi: ["brano"],                      consegna: "Leggi il testo, poi rispondi alle domande." },
-  scelta:    { nome: "Scelta multipla",    icona: "✅", tipi: ["domande", "coppie", "gruppi"], consegna: "Scegli la risposta giusta." }
+  scelta:    { nome: "Scelta multipla",    icona: "✅", tipi: ["domande", "coppie", "gruppi"], consegna: "Scegli la risposta giusta." },
+  vero:      { nome: "Vero o falso",       icona: "⚖️", tipi: ["coppie"],                      consegna: "Vanno insieme? Tocca Vero o Falso." },
+  palloncini: { nome: "Palloncini",        icona: "🎈", tipi: ["gruppi"],                      consegna: "Scoppia solo i palloncini del gruppo giusto." }
 };
 // L'ordine conta: il primo gioco adatto a un tipo è quello con cui l'esercizio si apre.
 
@@ -50,7 +52,11 @@ export const ANIMAZIONI = {
   tabelline: "La moltiplicazione e la tavola pitagorica",
   "proprieta-addizione": "Le proprietà dell'addizione",
   "proprieta-sottrazione": "La proprietà invariantiva della sottrazione",
-  "proprieta-moltiplicazione": "Le proprietà della moltiplicazione"
+  "proprieta-moltiplicazione": "Le proprietà della moltiplicazione",
+  "valore-posizionale": "Unità, decine e centinaia",
+  frazioni: "Le frazioni: parti uguali",
+  "pari-dispari": "Pari e dispari",
+  "retta-numeri": "La retta dei numeri"
 };
 
 export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Inglese", "Arte e immagine", "Musica", "Altro"];
@@ -255,8 +261,13 @@ export const GENERI = {
   operazione:   { nome: "Operazione",            spiega: "Un calcolo che si vede con gli oggetti." },
   colonna:      { nome: "In colonna",            spiega: "Addizione o sottrazione in colonna, fino a 999: con i quadrati delle centinaia, le barrette delle decine e i cubetti delle unità si vede il cambio (riporto e prestito)." },
   proprieta:    { nome: "Proprietà",             spiega: "Una proprietà delle operazioni, vista con gli oggetti: lo stesso calcolo fatto in un modo più facile." },
-  problema:     { nome: "Problema",              spiega: "Una piccola storia da guardare e capire prima di scegliere l'operazione." }
+  problema:     { nome: "Problema",              spiega: "Una piccola storia da guardare e capire prima di scegliere l'operazione." },
+  retta:        { nome: "La retta dei numeri",   spiega: "Una retta con 11 tacche: la freccia indica un numero da leggere, oppure si tocca la tacca del numero. Alla fine si vedono tutti i salti." },
+  blocchi:      { nome: "Blocchi: centinaia, decine, unità", spiega: "Il numero con i quadrati delle centinaia, le barrette delle decine e i cubetti delle unità: da leggere, oppure da costruire con + e −." },
+  frazione:     { nome: "Frazione",              spiega: "Un cerchio o una barra divisi in parti uguali: si colorano le parti, oppure si riconosce la frazione colorata." }
 };
+
+export const PASSI_RETTA = [1, 2, 5, 10, 20, 25, 50, 100];
 
 export const OPERAZIONI = { "+": "+", "-": "−", "x": "×", ":": ":" };
 
@@ -387,6 +398,25 @@ function esercizioDiMatematica(x, i) {
     if (["associativa-addizione", "dissociativa-addizione", "invariantiva-sottrazione", "associativa-moltiplicazione",
       "dissociativa-moltiplicazione", "distributiva-moltiplicazione"].includes(m.prop) && c !== undefined) m.c = c;
     controllaProprieta(m.prop, a, b, c, msg => errore(inizio + msg));
+  }
+  if (x.genere === "retta") {
+    const passo = Number(x.passo);
+    const da = Number(x.da || 0);
+    if (!PASSI_RETTA.includes(passo)) errore(inizio + "ogni tacca vale 1, 2, 5, 10, 20, 25, 50 o 100.");
+    if (!(Number.isInteger(da) && da >= 0 && da + 10 * passo <= 1000)) errore(inizio + "la retta parte da 0 o da un numero intero, e arriva al massimo a 1000.");
+    if (!(Number.isInteger(a) && a >= da && a <= da + 10 * passo && (a - da) % passo === 0)) {
+      errore(inizio + "il numero deve stare su una tacca, tra " + da + " e " + (da + 10 * passo) + ".");
+    }
+    Object.assign(m, { passo, da, modo: x.modo === "trova" ? "trova" : "leggi" });
+  }
+  if (x.genere === "blocchi") {
+    if (!(Number.isInteger(a) && a >= 1 && a <= 999)) errore(inizio + "il numero va da 1 a 999.");
+    m.modo = x.modo === "costruisci" ? "costruisci" : "leggi";
+  }
+  if (x.genere === "frazione") {
+    if (!(Number.isInteger(b) && b >= 2 && b <= 12)) errore(inizio + "le parti uguali vanno da 2 a 12.");
+    if (!(Number.isInteger(a) && a >= 1 && a <= b)) errore(inizio + "le parti colorate vanno da 1 al numero delle parti.");
+    Object.assign(m, { b, forma: x.forma === "barra" ? "barra" : "cerchio", modo: x.modo === "colora" ? "colora" : "leggi" });
   }
   if (x.genere === "problema") {
     m.schema = SCHEMI[x.schema] ? x.schema : errore(inizio + "scegli che cosa succede nel problema.");

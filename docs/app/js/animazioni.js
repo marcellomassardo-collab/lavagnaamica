@@ -1204,7 +1204,233 @@ const DISTRIBUTIVA = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- il valore posizionale: unità, decine, centinaia ---------- */
+// Dieci cubetti diventano una barretta, dieci barrette un quadrato; poi un numero in colonna, cifra per cifra.
+const GIALLO = "#F7C900", BRUNO = "#8A6D00";
+const mettiA = (g, x, y) => { g.style.transform = "translate(" + x + "px," + y + "px)"; };
+const cubo = l => s("rect", { width: l, height: l, rx: 2, fill: GIALLO, stroke: BRUNO, "stroke-width": 1.5 });
+function barra(l, verticale) {
+  const g = s("g", {}, s("rect", { width: verticale ? l : l * 10, height: verticale ? l * 10 : l, rx: 3, fill: GIALLO, stroke: BRUNO, "stroke-width": 1.5 }));
+  for (let j = 1; j < 10; j++) {
+    g.append(verticale ? s("line", { x1: 1, x2: l - 1, y1: j * l, y2: j * l, stroke: BRUNO, "stroke-width": 1 })
+      : s("line", { x1: j * l, x2: j * l, y1: 1, y2: l - 1, stroke: BRUNO, "stroke-width": 1 }));
+  }
+  return g;
+}
+function quadrato(l) {
+  const g = s("g", {}, s("rect", { width: l * 10, height: l * 10, rx: 3, fill: GIALLO, stroke: BRUNO, "stroke-width": 2 }));
+  for (let j = 1; j < 10; j++) {
+    g.append(s("line", { x1: j * l, x2: j * l, y1: 0, y2: l * 10, stroke: BRUNO, "stroke-width": 1 }),
+      s("line", { x1: 0, x2: l * 10, y1: j * l, y2: j * l, stroke: BRUNO, "stroke-width": 1 }));
+  }
+  return g;
+}
+
+const VALORE = {
+  passi: [
+    "Un cubetto è un'unità. Mettiamone dieci in fila: 1, 2, 3… fino a 10.",
+    "Dieci unità si attaccano e diventano una barretta: 10 unità fanno 1 decina.",
+    "Ora mettiamo insieme dieci barrette, cioè dieci decine…",
+    "…e diventano un quadrato: 10 decine fanno 1 centinaio, cioè 100 unità.",
+    "Ecco un numero: 2 centinaia, 4 decine e 3 unità. Si scrive 243: a sinistra le centinaia, poi le decine, poi le unità.",
+    "La stessa cifra vale di più se sta più a sinistra: in 243 il 2 vale 200, il 4 vale 40 e il 3 vale 3."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const L = 22, X = 290;
+    const cubi = Array.from({ length: 10 }, (_, i) => { const g = s("g", { class: "sp-blocco" }, cubo(L)); mettiA(g, X + i * L, 214); return g; });
+    const barre = Array.from({ length: 10 }, (_, j) => {
+      const g = s("g", { class: "sp-blocco" }, barra(L));
+      mettiA(g, j === 0 ? X : X + 420, j === 0 ? 214 : 104 + j * L);
+      vedi(g, false);
+      return g;
+    });
+    const grande = s("g", { class: "sp-blocco" }, quadrato(L));
+    mettiA(grande, X, 104);
+    vedi(grande, false);
+    const scritte = ["10 unità", "10 unità = 1 decina", "10 decine", "10 decine = 1 centinaio = 100 unità"].map(t => nascosto(etichetta(400, 405, t, 30)));
+    // il numero 243, in colonna
+    const colonne = s("g", { class: "sp-sfuma" });
+    [[50, 290, "h"], [355, 200, "da"], [570, 180, "u"]].forEach(([x, w, t]) => colonne.append(
+      s("rect", { x, y: 45, width: w, height: 225, rx: 14, fill: "#FFF1A8" }),
+      scritta(x + w / 2, 34, t, { "font-size": 26, "font-weight": 800, fill: "#5B6670" })));
+    [70, 200].forEach(x => { const q = quadrato(12); q.setAttribute("transform", "translate(" + x + ",95)"); colonne.append(q); });
+    for (let j = 0; j < 4; j++) { const b = barra(12, true); b.setAttribute("transform", "translate(" + (395 + j * 32) + ",95)"); colonne.append(b); }
+    for (let j = 0; j < 3; j++) { const c = cubo(20); c.setAttribute("x", 597 + j * 44); c.setAttribute("y", 150); colonne.append(c); }
+    [[195, "2"], [455, "4"], [660, "3"]].forEach(([x, t]) => colonne.append(cifraCol(x, 330, t)));
+    const valori = s("g", { class: "sp-sfuma" }, [[195, "200"], [455, "40"], [660, "3"]].map(([x, t]) => etichetta(x, 375, "= " + t, 26)),
+      etichetta(400, 432, "243 = 200 + 40 + 3", 30));
+    vedi(colonne, false);
+    vedi(valori, false);
+    svg.append(...cubi, ...barre, grande, ...scritte, colonne, valori);
+    return {
+      vai(k) {
+        cubi.forEach(g => vedi(g, k === 0));
+        // la prima barretta nasce dove c'erano i cubetti; le altre arrivano da destra e si mettono sotto
+        barre.forEach((g, j) => {
+          vedi(g, (k === 1 && j === 0) || k === 2);
+          if (k <= 1) mettiA(g, j === 0 ? X : X + 420, j === 0 ? 214 : 104 + j * L);
+          else mettiA(g, X, 104 + j * L);
+        });
+        vedi(grande, k === 3);
+        scritte.forEach((t, i) => vedi(t, i === k));
+        vedi(colonne, k >= 4);
+        vedi(valori, k === 5);
+      },
+      ferma() {}
+    };
+  }
+};
+
+/* ---------- le frazioni: parti uguali di un intero ---------- */
+function spicchio(cx, cy, r, da, a) {
+  const p = t => (cx + r * Math.cos(t)).toFixed(1) + "," + (cy + r * Math.sin(t)).toFixed(1);
+  return "M" + cx + "," + cy + " L" + p(da) + " A" + r + "," + r + " 0 0 1 " + p(a) + " Z";
+}
+const PIZZA = "#F4C27A", CROSTA = "#C9822B", POMODORO = "#E0532B";
+const FRAZIONI = {
+  passi: [
+    "Questa è una pizza intera: è l'intero.",
+    "La tagliamo in 4 parti uguali: ogni parte è un quarto. Si scrive 1/4.",
+    "Attenzione: le parti devono essere uguali! Questa pizza è tagliata in 4 pezzi, ma non sono uguali: non sono quarti.",
+    "Prendiamo 3 parti uguali: abbiamo preso tre quarti. Si scrive 3/4.",
+    "Sotto la linea c'è il denominatore: in quante parti uguali dividiamo l'intero. Sopra c'è il numeratore: quante parti prendiamo."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const cx = 250, cy = 225, r = 150;
+    svg.append(s("circle", { cx, cy, r, fill: PIZZA, stroke: CROSTA, "stroke-width": 12 }));
+    const fette = [0, 1, 2, 3].map(k => s("path", { d: spicchio(cx, cy, r - 6, -Math.PI / 2 + k * Math.PI / 2, k * Math.PI / 2), fill: POMODORO, class: "sp-sfuma" }));
+    const tagli = nascosto(s("g", {}, s("line", { x1: cx, x2: cx, y1: cy - r, y2: cy + r, stroke: "#7A3E0C", "stroke-width": 5 }),
+      s("line", { x1: cx - r, x2: cx + r, y1: cy, y2: cy, stroke: "#7A3E0C", "stroke-width": 5 })));
+    // la pizza tagliata male: 4 pezzi, ma di grandezza diversa
+    const storta = nascosto(s("g", {}, s("circle", { cx: 600, cy: 230, r: 105, fill: PIZZA, stroke: CROSTA, "stroke-width": 10 }),
+      s("line", { x1: 560, x2: 560, y1: 132, y2: 328, stroke: "#7A3E0C", "stroke-width": 5 }),
+      s("line", { x1: 497, x2: 703, y1: 265, y2: 265, stroke: "#7A3E0C", "stroke-width": 5 }),
+      scritta(705, 120, "✘", { "font-size": 64, "font-weight": 800, fill: "#C0282B" })));
+    const sopra = scritta(630, 200, "1", { "font-size": 76, "font-weight": 800, fill: "#1D2329" });
+    const sotto = scritta(630, 300, "4", { "font-size": 76, "font-weight": 800, fill: "#1D2329" });
+    const frazione = nascosto(s("g", {}, sopra, s("line", { x1: 585, x2: 675, y1: 225, y2: 225, stroke: "#1D2329", "stroke-width": 6 }), sotto));
+    const nomi = nascosto(s("g", {}, etichetta(630, 110, "numeratore:", 22), etichetta(630, 138, "quante parti prendo", 19),
+      etichetta(630, 352, "denominatore:", 22), etichetta(630, 380, "in quante parti uguali", 19)));
+    fette.forEach(f => vedi(f, false));
+    svg.append(...fette, tagli, storta, frazione, nomi);
+    return {
+      vai(k) {
+        vedi(tagli, k >= 1);
+        fette.forEach((f, i) => vedi(f, (k === 1 && i === 0) || (k >= 3 && i < 3)));
+        vedi(storta, k === 2);
+        vedi(frazione, k === 1 || k >= 3);
+        sopra.textContent = k >= 3 ? "3" : "1";
+        vedi(nomi, k === 4);
+      },
+      ferma() {}
+    };
+  }
+};
+
+/* ---------- pari e dispari: in coppia, a due a due ---------- */
+const COLORI_OMINI = ["#2F6FD6", "#E0332B", "#2E9E5B", "#F2A300", "#8E44AD", "#16A3B8", "#E4609B"];
+function omino(colore) {
+  return s("g", { class: "sp-blocco" }, s("circle", { cx: 0, cy: -46, r: 20, fill: "#F5C9A5", stroke: "#8A5A3C", "stroke-width": 2 }),
+    s("rect", { x: -22, y: -24, width: 44, height: 66, rx: 16, fill: colore }));
+}
+const PARI = {
+  passi: [
+    "Ecco 6 bambini. Facciamo le coppie: si danno la mano a due a due.",
+    "Tutti hanno un compagno, nessuno resta solo: 6 è un numero pari.",
+    "Ora i bambini sono 7. Facciamo di nuovo le coppie…",
+    "…e uno resta senza compagno: 7 è un numero dispari.",
+    "I numeri pari finiscono con 0, 2, 4, 6, 8. I numeri dispari finiscono con 1, 3, 5, 7, 9."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const bimbi = COLORI_OMINI.map(omino);
+    const fila = (i, n) => [400 + (i - (n - 1) / 2) * 92, 250];
+    bimbi.forEach((b, i) => { mettiA(b, ...fila(Math.min(i, 5), 6)); vedi(b, i < 6); });
+    const coppia = (i, n) => {
+      const quante = Math.ceil(n / 2), p = Math.floor(i / 2);
+      return [400 + (p - (quante - 1) / 2) * 180 + (i % 2 ? 32 : -32), 250];
+    };
+    const mani = [0, 1, 2].map(() => nascosto(s("line", { x1: -14, x2: 14, y1: 0, y2: 0, stroke: "#8A5A3C", "stroke-width": 8, "stroke-linecap": "round" })));
+    const solo = nascosto(s("circle", { r: 70, fill: "none", stroke: "#C0282B", "stroke-width": 5, "stroke-dasharray": "10 8" }));
+    const dice = [nascosto(etichetta(400, 395, "6 → tutti in coppia: PARI", 30)), nascosto(etichetta(400, 395, "7 → uno resta solo: DISPARI", 30))];
+    const tabella = nascosto(s("g", {},
+      etichetta(400, 150, "pari:  0   2   4   6   8", 44), etichetta(400, 290, "dispari:  1   3   5   7   9", 44)));
+    tabella.firstChild.setAttribute("fill", "#2F6FD6");
+    tabella.lastChild.setAttribute("fill", "#C0282B");
+    svg.append(...mani, solo, ...bimbi, ...dice, tabella);
+    return {
+      vai(k) {
+        const n = k <= 1 ? 6 : 7;
+        const inCoppia = k === 1 || k === 3;
+        bimbi.forEach((b, i) => {
+          vedi(b, i < n && k < 4);
+          const [x, y] = inCoppia ? coppia(i, n) : fila(Math.min(i, n - 1), n);
+          mettiA(b, x, y);
+        });
+        mani.forEach((m, p) => {
+          const [x] = coppia(p * 2, n);
+          m.setAttribute("transform", "translate(" + (x + 32) + ",262)");
+          vedi(m, inCoppia && k < 4);
+        });
+        const [sx] = coppia(6, 7);
+        solo.setAttribute("cx", sx);
+        solo.setAttribute("cy", 240);
+        vedi(solo, k === 3);
+        vedi(dice[0], k === 1);
+        vedi(dice[1], k === 3);
+        vedi(tabella, k === 4);
+      },
+      ferma() {}
+    };
+  }
+};
+
+/* ---------- la retta dei numeri ---------- */
+const RETTA = {
+  passi: [
+    "Sulla retta i numeri stanno in fila, in ordine, tutti alla stessa distanza.",
+    "Qui ogni tacca vale 10: da una tacca alla successiva si fa un salto di 10.",
+    "Per trovare 70 partiamo da 0 e facciamo 7 salti da 10: 10, 20, 30, 40, 50, 60, 70.",
+    "Più si va a destra, più il numero è grande: 70 sta a destra di 40, quindi 70 è più grande di 40."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }),
+      s("line", { x1: 40, x2: 760, y1: 260, y2: 260, stroke: "#1D2329", "stroke-width": 5 }),
+      s("path", { d: "M760,248 L784,260 L760,272 Z", fill: "#1D2329" }));
+    const X = k => 70 + k * 66;
+    const numeri = [];
+    for (let k = 0; k <= 10; k++) {
+      const t = scritta(X(k), 305, String(k), { "font-size": 26, "font-weight": 800, fill: "#1D2329" });
+      numeri.push(t);
+      svg.append(s("line", { x1: X(k), x2: X(k), y1: 244, y2: 276, stroke: "#1D2329", "stroke-width": 4 }), t);
+    }
+    const salti = Array.from({ length: 7 }, (_, k) => {
+      const a = nascosto(s("path", { d: "M" + X(k) + ",244 Q" + (X(k) + 33) + ",180 " + X(k + 1) + ",244", fill: "none", stroke: "#E0332B", "stroke-width": 4 }));
+      a.style.transitionDelay = (k * 0.35) + "s";
+      svg.append(a, nascosto(scritta(X(k) + 33, 196, "+10", { "font-size": 18, "font-weight": 800, fill: "#C0282B" })));
+      return a;
+    });
+    const piu = Array.from(svg.querySelectorAll("text")).filter(t => t.textContent === "+10");
+    const punto = (k, colore) => nascosto(s("circle", { cx: X(k), cy: 260, r: 13, fill: colore, stroke: "#fff", "stroke-width": 3 }));
+    const settanta = punto(7, "#E0332B"), quaranta = punto(4, "#2F6FD6");
+    const confronto = nascosto(etichetta(400, 400, "40 < 70", 40));
+    svg.append(settanta, quaranta, confronto);
+    return {
+      vai(k) {
+        numeri.forEach((t, i) => { t.textContent = String(k === 0 ? i : i * 10); });
+        salti.forEach((a, i) => { vedi(a, k === 2); vedi(piu[i], k === 2); });
+        vedi(settanta, k >= 2);
+        vedi(quaranta, k === 3);
+        vedi(confronto, k === 3);
+      },
+      ferma() {}
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

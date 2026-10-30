@@ -748,7 +748,184 @@ export function avvia(area, es, ctx) {
 
   const proprieta = x => PROP[x.prop](x, es.dati.oggetto || MELA);
 
-  const GENERI = { conta, confronta, "prima-dopo": primaDopo, decine: decineUnita, operazione, colonna, proprieta, problema };
+  /* ---------- la retta, i blocchi, le frazioni: si tocca e si costruisce ---------- */
+
+  // le risposte sbagliate stanno sulle tacche vicine: un salto in più, uno in meno
+  function opzioniPasso(giusto, passo) {
+    const scelte = [giusto];
+    [giusto + passo, giusto - passo, giusto + 2 * passo, giusto - 2 * passo, giusto + 5 * passo].forEach(v => {
+      if (v >= 0 && !scelte.includes(v) && scelte.length < ctx.opz.risposte) scelte.push(v);
+    });
+    return mescola(scelte.map(String));
+  }
+
+  // una domanda che si risponde toccando la scena: si va avanti solo con il pezzo giusto
+  function toccaGiusto(domanda, pezzi, giusto) {
+    return new Promise(ok => {
+      totale++;
+      let sbagliato = false;
+      pezzi.forEach(p => p.addEventListener("click", () => {
+        if (p !== giusto) { sbagliato = true; ctx.riprova(p, giusto); return; }
+        pezzi.forEach(q => { q.disabled = true; });
+        ctx.giusto(p);
+        if (!sbagliato) giuste++;
+        setTimeout(ok, 650);
+      }));
+      pannello.replaceChildren(el("p", { class: "mat-chiede" }, el("span", { text: domanda }), pulsanteVoce(domanda, "Ascolta")));
+      ctx.leggi(domanda);
+    });
+  }
+
+  // si costruisce (blocchi, parti colorate) e poi si tocca «Fatto»: se non va, si dice che cosa si è fatto
+  function controlla(domanda, conta, giusto, sbaglio) {
+    return new Promise(ok => {
+      totale++;
+      let sbagliato = false;
+      const frase = el("span", { text: domanda });
+      const fatto = el("button", { type: "button", class: "pulsante", text: "✔ Fatto", on: { click: () => {
+        const n = conta();
+        if (n !== giusto) {
+          sbagliato = true;
+          frase.textContent = sbaglio(n);
+          ctx.riprova(fatto);
+          ctx.leggi(frase.textContent);
+          return;
+        }
+        fatto.disabled = true;
+        ctx.giusto(fatto);
+        if (!sbagliato) giuste++;
+        setTimeout(ok, 650);
+      } } });
+      pannello.replaceChildren(el("p", { class: "mat-chiede" }, frase, pulsanteVoce(() => frase.textContent, "Ascolta")), fatto);
+      ctx.leggi(domanda);
+    });
+  }
+
+  // la retta dei numeri: 11 tacche, scritti solo il primo, quello di mezzo e l'ultimo
+  async function retta(x) {
+    const valori = Array.from({ length: 11 }, (_, k) => x.da + k * x.passo);
+    const scritti = [valori[0], valori[5], valori[10]];
+    const tacche = valori.map(v => el("button", { type: "button", class: "rt-tacca", "data-numero": v, "aria-label": scritti.includes(v) ? String(v) : "tacca" },
+      el("span", { class: "rt-segno", "aria-hidden": "true" }), el("span", { class: "rt-num", text: scritti.includes(v) ? String(v) : "" })));
+    const giusta = tacche[(x.a - x.da) / x.passo];
+    scena.replaceChildren(el("div", { class: "retta" }, el("div", { class: "rt-linea", "aria-hidden": "true" }), tacche));
+    testo.replaceChildren(el("p", {}, el("span", { text: x.passo === 1 ? "La retta dei numeri: ogni tacca è un numero." :
+      "Guarda i numeri scritti: quanto vale ogni salto da una tacca all'altra?" })));
+    if (x.modo === "trova") await toccaGiusto("Tocca la tacca del numero " + x.a + ".", tacche, giusta);
+    else {
+      tacche.forEach(t => { t.disabled = true; });
+      giusta.classList.add("freccia");
+      await chiedi("Che numero indica la freccia?", opzioniPasso(x.a, x.passo), String(x.a));
+    }
+    // si scrivono tutti i numeri, di salto in salto
+    giusta.classList.add("freccia");
+    for (const t of tacche) {
+      if (fermo) return;
+      t.querySelector(".rt-num").textContent = t.dataset.numero;
+      t.classList.add("vista");
+      await aspetta(120);
+    }
+    const salti = (x.a - x.da) / x.passo;
+    await avanti([uguale(salti === 0 ? "È il primo numero: " + x.a + "." :
+      "Da " + x.da + ", " + salti + (salti === 1 ? " salto" : " salti") + " da " + x.passo + ": " + x.a + ".")]);
+  }
+
+  // i blocchi: da leggere, oppure da costruire con + e −
+  async function blocchi(x) {
+    const cifre = { h: Math.floor(x.a / 100), d: Math.floor(x.a / 10) % 10, u: x.a % 10 };
+    const fai = { h: centinaio, d: barretta, u: cubetto };
+    const nomi = { h: ["h", "centinaia"], d: ["da", "decine"], u: ["u", "unità"] };
+    const pezzi = { h: el("div", { class: "mb-pezzi" }), d: el("div", { class: "mb-pezzi" }), u: el("div", { class: "mb-pezzi" }) };
+    const quanti = { h: 0, d: 0, u: 0 };
+    const tasti = [];
+    const colonna = k => {
+      const metti = piu => {
+        if (piu && quanti[k] < 9) { quanti[k]++; const b = fai[k](); pezzi[k].append(b); compari([b], fermato); }
+        if (!piu && quanti[k] > 0) { quanti[k]--; pezzi[k].lastChild.remove(); }
+      };
+      const comandi = x.modo === "costruisci" ? el("div", { class: "mb-tasti" },
+        tasti[tasti.push(tasto("−", () => metti(false))) - 1], tasti[tasti.push(tasto("+", () => metti(true))) - 1]) : null;
+      return el("div", { class: "mb-colonna mb-" + k }, el("span", { class: "mb-nome" }, el("b", { text: nomi[k][0] }), " " + nomi[k][1]), comandi, pezzi[k]);
+    };
+    scena.replaceChildren(el("div", { class: "multibase" }, colonna("h"), colonna("d"), colonna("u")));
+    if (x.modo === "costruisci") {
+      testo.replaceChildren(el("p", {}, el("span", { text: "Costruisci il numero " + x.a + " con i blocchi." })));
+      await controlla("Metti i blocchi con + e −, poi tocca Fatto.", () => quanti.h * 100 + quanti.d * 10 + quanti.u, x.a,
+        n => "Con questi blocchi hai fatto " + n + ". Ti serve " + x.a + ": guarda le centinaia, le decine e le unità.");
+      tasti.forEach(t => { t.disabled = true; });
+    } else {
+      testo.replaceChildren(el("p", {}, el("span", { text: "Che numero formano i blocchi? Tocca per contare." })));
+      const tutti = ["h", "d", "u"].map(k => Array.from({ length: cifre[k] }, () => { const b = fai[k](); pezzi[k].append(b); return b; }));
+      coperta();
+      for (const g of tutti) await compari(g, fermato);
+      if (x.a >= 100) await chiedi("Quante centinaia?", opzioniNumeri(cifre.h, [cifre.d, cifre.u]), String(cifre.h));
+      await chiedi("Quante decine?", opzioniNumeri(cifre.d, [cifre.u, cifre.h]), String(cifre.d));
+      await chiedi("Quante unità?", opzioniNumeri(cifre.u, [cifre.d]), String(cifre.u));
+      const scambi = [cifre.h * 100 + cifre.u * 10 + cifre.d, cifre.d * 100 + cifre.h * 10 + cifre.u, cifre.u * 100 + cifre.d * 10 + cifre.h];
+      await chiedi("Che numero è?", opzioniNumeri(x.a, scambi.filter(v => v !== x.a && v > 0)), String(x.a));
+    }
+    await avanti([uguale(x.a + " = " + cifre.h + " h + " + cifre.d + " da + " + cifre.u + " u"),
+      uguale(x.a + " = " + cifre.h * 100 + " + " + cifre.d * 10 + " + " + cifre.u)]);
+  }
+
+  // le frazioni: un cerchio o una barra divisi in parti uguali
+  const PARTE = { 2: ["mezzo", "mezzi"], 3: ["terzo", "terzi"], 4: ["quarto", "quarti"], 5: ["quinto", "quinti"], 6: ["sesto", "sesti"],
+    7: ["settimo", "settimi"], 8: ["ottavo", "ottavi"], 9: ["nono", "noni"], 10: ["decimo", "decimi"], 11: ["undicesimo", "undicesimi"], 12: ["dodicesimo", "dodicesimi"] };
+  const PAROLE = ["zero", "un", "due", "tre", "quattro", "cinque", "sei", "sette", "otto", "nove", "dieci", "undici", "dodici"];
+  const nomeFrazione = (a, b) => (a === 1 ? "un " + PARTE[b][0] : PAROLE[a] + " " + PARTE[b][1]);
+  const svgEl = (tag, attr) => {
+    const n = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    Object.entries(attr).forEach(([k, v]) => n.setAttribute(k, v));
+    return n;
+  };
+  function figuraFrazione(b, forma) {
+    const svg = svgEl("svg", { viewBox: forma === "barra" ? "0 0 420 120" : "0 0 240 240", class: "fr-figura fr-" + forma });
+    const parti = Array.from({ length: b }, (_, k) => {
+      let p;
+      if (forma === "barra") p = svgEl("rect", { x: (10 + k * 400 / b).toFixed(2), y: 10, width: (400 / b).toFixed(2), height: 100 });
+      else {
+        const r = 110, c = 120, a0 = -Math.PI / 2 + k * 2 * Math.PI / b, a1 = a0 + 2 * Math.PI / b;
+        const punto = t => (c + r * Math.cos(t)).toFixed(2) + "," + (c + r * Math.sin(t)).toFixed(2);
+        p = svgEl("path", { d: "M" + c + "," + c + " L" + punto(a0) + " A" + r + "," + r + " 0 0 1 " + punto(a1) + " Z" });
+      }
+      p.setAttribute("class", "fr-parte");
+      svg.append(p);
+      return p;
+    });
+    return { svg, parti };
+  }
+
+  async function frazione(x) {
+    const { svg, parti } = figuraFrazione(x.b, x.forma);
+    scena.replaceChildren(el("div", { class: "fr-scena" }, svg));
+    const scritta = x.a + "/" + x.b;
+    if (x.modo === "colora") {
+      testo.replaceChildren(el("p", {}, el("span", { text: "Colora " + scritta + ": " + nomeFrazione(x.a, x.b) + ". Tocca le parti." })));
+      parti.forEach(p => {
+        const cambia = () => { if (!p.classList.contains("ferma")) p.classList.toggle("colorata"); };
+        p.setAttribute("tabindex", "0");
+        p.setAttribute("role", "button");
+        p.setAttribute("aria-label", "una parte");
+        p.addEventListener("click", cambia);
+        p.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); cambia(); } });
+      });
+      await controlla("Colora " + nomeFrazione(x.a, x.b) + ", poi tocca Fatto.", () => parti.filter(p => p.classList.contains("colorata")).length, x.a,
+        n => "Hai colorato " + n + (n === 1 ? " parte" : " parti") + " su " + x.b + ". Ne servono " + x.a + ".");
+      parti.forEach(p => p.classList.add("ferma"));
+    } else {
+      testo.replaceChildren(el("p", {}, el("span", { text: "La figura è divisa in parti uguali. Quante sono? Quante sono colorate?" })));
+      parti.slice(0, x.a).forEach(p => p.classList.add("colorata"));
+      const altre = [(x.b - x.a) + "/" + x.b, x.b + "/" + x.a, x.a + "/" + (x.b - x.a), x.a + "/" + (x.b + 1)]
+        .filter(f => f !== scritta && !f.startsWith("0/") && !f.endsWith("/0"));
+      const opzioni = mescola([scritta].concat([...new Set(altre)].slice(0, ctx.opz.risposte - 1)));
+      await chiedi("Quale frazione è colorata?", opzioni, scritta);
+    }
+    await avanti([uguale(scritta + " = " + nomeFrazione(x.a, x.b)),
+      el("p", { class: "mat-consiglio", text: "💡 Sotto la linea c'è " + x.b + ", il denominatore: in quante parti uguali è diviso l'intero. " +
+        "Sopra c'è " + x.a + ", il numeratore: quante parti si prendono." })]);
+  }
+
+  const GENERI = { conta, confronta, "prima-dopo": primaDopo, decine: decineUnita, operazione, colonna, proprieta, problema, retta, blocchi, frazione };
 
   (async () => {
     for (n = 0; n < scelti.length; n++) {

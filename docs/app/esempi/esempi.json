@@ -12583,7 +12583,7 @@
   "titolo": "Pari o dispari?",
   "scrittura": "maiuscolo",
   "tipo": "gruppi",
-  "gioco": "raggruppa",
+  "gioco": "palloncini",
   "consegna": "Metti ogni numero nel gruppo giusto: i pari si dividono in due parti uguali, i dispari no.",
   "dati": {
    "gruppi": [
@@ -12636,6 +12636,9 @@
      ]
     }
    ]
+  },
+  "scopri": {
+   "animazione": "pari-dispari"
   }
  },
  {
@@ -12699,7 +12702,7 @@
   "titolo": "Il doppio e la metà",
   "scrittura": "maiuscolo",
   "tipo": "coppie",
-  "gioco": "abbina",
+  "gioco": "vero",
   "consegna": "Il doppio è due volte il numero, la metà è una delle due parti uguali.",
   "dati": {
    "coppie": [
@@ -13080,6 +13083,9 @@
      }
     ]
    ]
+  },
+  "scopri": {
+   "animazione": "valore-posizionale"
   }
  },
  {
@@ -13190,6 +13196,9 @@
      ]
     }
    ]
+  },
+  "scopri": {
+   "animazione": "valore-posizionale"
   }
  },
  {
@@ -13300,6 +13309,9 @@
      ]
     }
    ]
+  },
+  "scopri": {
+   "animazione": "retta-numeri"
   }
  },
  {
@@ -13424,7 +13436,7 @@
   "titolo": "Per 10, per 100, diviso 10",
   "scrittura": "maiuscolo",
   "tipo": "coppie",
-  "gioco": "abbina",
+  "gioco": "vero",
   "consegna": "Per 10 si aggiunge uno zero, per 100 due zeri; diviso 10 se ne toglie uno.",
   "dati": {
    "coppie": [
@@ -13531,6 +13543,9 @@
      }
     ]
    ]
+  },
+  "scopri": {
+   "animazione": "frazioni"
   }
  },
  {
@@ -13643,6 +13658,9 @@
      ]
     }
    ]
+  },
+  "scopri": {
+   "animazione": "frazioni"
   }
  },
  {
@@ -13862,7 +13880,7 @@
   "titolo": "Certo, possibile o impossibile?",
   "scrittura": "maiuscolo",
   "tipo": "gruppi",
-  "gioco": "raggruppa",
+  "gioco": "palloncini",
   "consegna": "Succederà di sicuro, forse, o non può succedere mai?",
   "dati": {
    "gruppi": [
@@ -14132,6 +14150,390 @@
      ]
     }
    ]
+  }
+ },
+ {
+  "id": "retta-fino-a-20",
+  "materia": "Matematica",
+  "livello": 1,
+  "titolo": "La retta dei numeri fino a 20",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda la retta: leggi il numero della freccia, o tocca la tacca giusta.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "retta",
+     "a": 7,
+     "da": 0,
+     "passo": 1,
+     "modo": "leggi"
+    },
+    {
+     "genere": "retta",
+     "a": 4,
+     "da": 0,
+     "passo": 1,
+     "modo": "trova"
+    },
+    {
+     "genere": "retta",
+     "a": 13,
+     "da": 10,
+     "passo": 1,
+     "modo": "leggi"
+    },
+    {
+     "genere": "retta",
+     "a": 18,
+     "da": 10,
+     "passo": 1,
+     "modo": "trova"
+    },
+    {
+     "genere": "retta",
+     "a": 16,
+     "da": 10,
+     "passo": 1,
+     "modo": "leggi"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "retta-numeri"
+  }
+ },
+ {
+  "id": "retta-fino-a-100",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La retta dei numeri fino a 100",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda i numeri scritti: quanto vale ogni salto?",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "retta",
+     "a": 30,
+     "da": 0,
+     "passo": 10,
+     "modo": "leggi"
+    },
+    {
+     "genere": "retta",
+     "a": 70,
+     "da": 0,
+     "passo": 10,
+     "modo": "trova"
+    },
+    {
+     "genere": "retta",
+     "a": 35,
+     "da": 0,
+     "passo": 5,
+     "modo": "leggi"
+    },
+    {
+     "genere": "retta",
+     "a": 15,
+     "da": 0,
+     "passo": 5,
+     "modo": "trova"
+    },
+    {
+     "genere": "retta",
+     "a": 80,
+     "da": 0,
+     "passo": 10,
+     "modo": "leggi"
+    },
+    {
+     "genere": "retta",
+     "a": 45,
+     "da": 0,
+     "passo": 5,
+     "modo": "trova"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "retta-numeri"
+  }
+ },
+ {
+  "id": "retta-fino-a-1000",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "La retta dei numeri fino a 1000",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda i numeri scritti: quanto vale ogni salto?",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "retta",
+     "a": 400,
+     "da": 0,
+     "passo": 100,
+     "modo": "leggi"
+    },
+    {
+     "genere": "retta",
+     "a": 800,
+     "da": 0,
+     "passo": 100,
+     "modo": "trova"
+    },
+    {
+     "genere": "retta",
+     "a": 360,
+     "da": 300,
+     "passo": 10,
+     "modo": "leggi"
+    },
+    {
+     "genere": "retta",
+     "a": 330,
+     "da": 300,
+     "passo": 10,
+     "modo": "trova"
+    },
+    {
+     "genere": "retta",
+     "a": 250,
+     "da": 0,
+     "passo": 50,
+     "modo": "leggi"
+    },
+    {
+     "genere": "retta",
+     "a": 175,
+     "da": 0,
+     "passo": 25,
+     "modo": "trova"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "retta-numeri"
+  }
+ },
+ {
+  "id": "blocchi-leggi",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "I blocchi: che numero è?",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Conta i quadrati, le barrette e i cubetti: che numero formano?",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "blocchi",
+     "a": 96,
+     "modo": "leggi"
+    },
+    {
+     "genere": "blocchi",
+     "a": 132,
+     "modo": "leggi"
+    },
+    {
+     "genere": "blocchi",
+     "a": 205,
+     "modo": "leggi"
+    },
+    {
+     "genere": "blocchi",
+     "a": 340,
+     "modo": "leggi"
+    },
+    {
+     "genere": "blocchi",
+     "a": 418,
+     "modo": "leggi"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "valore-posizionale"
+  }
+ },
+ {
+  "id": "blocchi-costruisci",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Costruisci il numero con i blocchi",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Con + e − metti i quadrati delle centinaia, le barrette delle decine e i cubetti delle unità.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "blocchi",
+     "a": 124,
+     "modo": "costruisci"
+    },
+    {
+     "genere": "blocchi",
+     "a": 251,
+     "modo": "costruisci"
+    },
+    {
+     "genere": "blocchi",
+     "a": 306,
+     "modo": "costruisci"
+    },
+    {
+     "genere": "blocchi",
+     "a": 470,
+     "modo": "costruisci"
+    },
+    {
+     "genere": "blocchi",
+     "a": 99,
+     "modo": "costruisci"
+    },
+    {
+     "genere": "blocchi",
+     "a": 503,
+     "modo": "costruisci"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "valore-posizionale"
+  }
+ },
+ {
+  "id": "frazioni-colora",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Colora la frazione",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Tocca le parti per colorarle, poi tocca Fatto.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "frazione",
+     "a": 1,
+     "b": 2,
+     "forma": "cerchio",
+     "modo": "colora"
+    },
+    {
+     "genere": "frazione",
+     "a": 1,
+     "b": 4,
+     "forma": "cerchio",
+     "modo": "colora"
+    },
+    {
+     "genere": "frazione",
+     "a": 3,
+     "b": 4,
+     "forma": "cerchio",
+     "modo": "colora"
+    },
+    {
+     "genere": "frazione",
+     "a": 2,
+     "b": 3,
+     "forma": "barra",
+     "modo": "colora"
+    },
+    {
+     "genere": "frazione",
+     "a": 3,
+     "b": 5,
+     "forma": "barra",
+     "modo": "colora"
+    },
+    {
+     "genere": "frazione",
+     "a": 5,
+     "b": 8,
+     "forma": "barra",
+     "modo": "colora"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "frazioni"
+  }
+ },
+ {
+  "id": "frazioni-riconosci",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Che frazione è colorata?",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Conta le parti uguali e quelle colorate.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "frazione",
+     "a": 1,
+     "b": 3,
+     "forma": "cerchio",
+     "modo": "leggi"
+    },
+    {
+     "genere": "frazione",
+     "a": 2,
+     "b": 4,
+     "forma": "cerchio",
+     "modo": "leggi"
+    },
+    {
+     "genere": "frazione",
+     "a": 3,
+     "b": 8,
+     "forma": "barra",
+     "modo": "leggi"
+    },
+    {
+     "genere": "frazione",
+     "a": 5,
+     "b": 6,
+     "forma": "cerchio",
+     "modo": "leggi"
+    },
+    {
+     "genere": "frazione",
+     "a": 7,
+     "b": 10,
+     "forma": "barra",
+     "modo": "leggi"
+    },
+    {
+     "genere": "frazione",
+     "a": 4,
+     "b": 5,
+     "forma": "barra",
+     "modo": "leggi"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "frazioni"
   }
  }
 ]

@@ -1,7 +1,7 @@
 // Editor degli esercizi: tutto si prepara riempiendo dei campi, senza codice.
 
 import { el, immaginePicto } from "./ui.js";
-import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, GENERI_LETTURA, LIVELLI, OPERAZIONI, SCHEMI, PROPRIETA, ANIMAZIONI, giochiPer, valida } from "./modello.js";
+import { TIPI, GIOCHI, SCRITTURE, MATERIE, GENERI, GENERI_LETTURA, LIVELLI, OPERAZIONI, SCHEMI, PROPRIETA, ANIMAZIONI, PASSI_RETTA, giochiPer, valida } from "./modello.js";
 import { scegliPittogramma } from "./picto.js";
 
 const vuoto = () => ({ t: "" });
@@ -137,6 +137,9 @@ function campiDiMatematica(x, ridisegna) {
     if (v === "proprieta") Object.assign(x, { prop: "commutativa-addizione", a: 3, b: 8 });
     if (v === "confronta") x.b = 3;
     if (v === "prima-dopo") x.verso = "dopo";
+    if (v === "retta") Object.assign(x, { a: 30, da: 0, passo: 10, modo: "leggi" });
+    if (v === "blocchi") Object.assign(x, { a: 243, modo: "costruisci" });
+    if (v === "frazione") Object.assign(x, { a: 3, b: 4, forma: "cerchio", modo: "colora" });
     if (v === "problema") Object.assign(x, { schema: "aggiunta", b: 3, testo: ["", "", ""], oggetto: { t: "" } });
     ridisegna();
   }, "Che cosa");
@@ -148,6 +151,19 @@ function campiDiMatematica(x, ridisegna) {
   if (x.genere === "prima-dopo") campi.push(a("Numero"), menu(x.verso, { dopo: "Il numero dopo", prima: "Il numero prima" }, v => { x.verso = v; }, "Che cosa chiedere"));
   if (x.genere === "operazione") {
     campi.push(a(NOMI_NUMERI.operazione[0]), menu(x.op, OPERAZIONI, v => { x.op = v; }, "Operazione"), b(NOMI_NUMERI.operazione[1]));
+  }
+  if (x.genere === "retta") {
+    campi.push(a("Numero"), numero(x.da, v => { x.da = v; }, "La retta parte da"),
+      menu(String(x.passo), Object.fromEntries(PASSI_RETTA.map(p => [p, "di " + p + " in " + p])), v => { x.passo = Number(v); }, "Ogni tacca vale"),
+      menu(x.modo, { leggi: "La freccia indica il numero: quale?", trova: "Si tocca la tacca del numero" }, v => { x.modo = v; }, "Che cosa chiedere"));
+  }
+  if (x.genere === "blocchi") {
+    campi.push(a("Numero"), menu(x.modo, { costruisci: "Si costruisce il numero con i blocchi", leggi: "Si guardano i blocchi e si legge il numero" }, v => { x.modo = v; }, "Che cosa fare"));
+  }
+  if (x.genere === "frazione") {
+    campi.push(b("In quante parti uguali (denominatore)"), a("Quante parti colorate (numeratore)"),
+      menu(x.forma, { cerchio: "Cerchio (una pizza, una torta)", barra: "Barra (una tavoletta di cioccolato)" }, v => { x.forma = v; }, "Figura"),
+      menu(x.modo, { colora: "Si colorano le parti", leggi: "Si riconosce la frazione colorata" }, v => { x.modo = v; }, "Che cosa fare"));
   }
   if (x.genere === "colonna") {
     campi.push(a(NOMI_NUMERI.operazione[0]), menu(x.op, { "+": "+", "-": "−" }, v => { x.op = v; }, "Operazione"), b(NOMI_NUMERI.operazione[1]));
