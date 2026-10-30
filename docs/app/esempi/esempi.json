@@ -4293,6 +4293,160 @@
   }
  },
  {
+  "id": "brano-capra-cane-mucca",
+  "titolo": "Livello 2 · La Capra, il Cane e la Mucca",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "La Capra, il Cane e la Mucca erano grandi amici. Un giorno partirono per un viaggio in taxi.",
+    "Alla fine del viaggio, l'autista chiese a tutti di pagare. La Mucca pagò il suo biglietto.",
+    "Il Cane diede più soldi del dovuto, perché non aveva i soldi giusti: aspettava il resto.",
+    "L'autista stava per dargli il resto, quando all'improvviso la Capra scappò via senza pagare.",
+    "L'autista si arrabbiò moltissimo e ripartì senza dare il resto al Cane.",
+    "Per questo, ancora oggi, il Cane corre verso le macchine e guarda dentro: cerca l'autista che gli deve il resto.",
+    "La Capra, invece, scappa quando sente il rumore di una macchina: ha paura di essere presa, perché non ha pagato.",
+    "E la Mucca? Le macchine non la preoccupano. Attraversa la strada con calma: lei sa di aver pagato tutto."
+   ],
+   "domande": [
+    {
+     "d": "Come viaggiavano i tre amici?",
+     "giusta": "In taxi.",
+     "sbagliate": [
+      "A piedi.",
+      "In treno."
+     ]
+    },
+    {
+     "d": "Perché il Cane aspettava il resto?",
+     "giusta": "Aveva dato più soldi del dovuto.",
+     "sbagliate": [
+      "Aveva perso il portafoglio.",
+      "Voleva un regalo."
+     ]
+    },
+    {
+     "d": "Che cosa fece la Capra?",
+     "giusta": "Scappò senza pagare.",
+     "sbagliate": [
+      "Pagò per tutti.",
+      "Si addormentò."
+     ]
+    },
+    {
+     "d": "Perché, nella storia, il Cane corre verso le macchine?",
+     "giusta": "Cerca l'autista che gli deve il resto.",
+     "sbagliate": [
+      "Vuole fare un giro.",
+      "Ha fame."
+     ]
+    },
+    {
+     "d": "Perché la Mucca attraversa con calma?",
+     "giusta": "Sa di aver pagato tutto.",
+     "sbagliate": [
+      "Non vede le macchine.",
+      "È stanca."
+     ]
+    },
+    {
+     "d": "Che storia è questa?",
+     "giusta": "Una storia inventata che spiega perché gli animali fanno certe cose.",
+     "sbagliate": [
+      "Un fatto vero del giornale.",
+      "Una ricetta."
+     ]
+    }
+   ],
+   "autore": "Fabian Wakholi",
+   "opera": "Goat, Dog and Cow (African Storybook)",
+   "anno": "2018",
+   "nota": "Racconto popolare dell'Africa orientale. Traduzione dall'inglese di Lavagna Amica. Testo e illustrazioni: African Storybook Initiative, licenza CC BY 4.0.",
+   "f": "visser-capra-cane-mucca.jpg",
+   "didascalia": "Illustrazione di Marleen Visser, African Storybook (CC BY 4.0)."
+  }
+ },
+ {
+  "id": "brano-ippopotamo",
+  "titolo": "Livello 3 · Perché l'ippopotamo non ha il pelo",
+  "scrittura": "minuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "materia": "Italiano",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Un giorno il Coniglio passeggiava lungo il fiume. Anche l'Ippopotamo era lì: faceva una passeggiata e mangiava erba verde e buona.",
+    "L'Ippopotamo non vide il Coniglio e, senza volerlo, gli pestò una zampa. Il Coniglio si mise a strillare: «Ippopotamo! Non vedi che mi stai pestando la zampa?»",
+    "L'Ippopotamo chiese scusa: «Mi dispiace tanto, non ti avevo visto. Perdonami!» Ma il Coniglio non volle ascoltare e gridò: «L'hai fatto apposta! Un giorno vedrai: me la pagherai!»",
+    "Il Coniglio andò dal Fuoco e gli disse: «Brucia l'Ippopotamo quando esce dall'acqua per mangiare l'erba. Mi ha pestato!» E il Fuoco rispose: «Va bene, amico Coniglio. Farò come dici.»",
+    "Più tardi l'Ippopotamo mangiava l'erba lontano dal fiume quando il Fuoco divampò, e le fiamme cominciarono a bruciargli il pelo.",
+    "L'Ippopotamo, piangendo, corse verso l'acqua. Il fuoco gli aveva bruciato tutto il pelo. «Il mio bel pelo non c'è più!»",
+    "Il Coniglio era contento. E da quel giorno, per paura del fuoco, l'ippopotamo non si allontana mai dall'acqua."
+   ],
+   "domande": [
+    {
+     "d": "Che cosa successe al Coniglio?",
+     "giusta": "L'Ippopotamo gli pestò una zampa senza volerlo.",
+     "sbagliate": [
+      "Cadde nel fiume.",
+      "Perse la strada."
+     ]
+    },
+    {
+     "d": "Che cosa fece l'Ippopotamo, dopo?",
+     "giusta": "Chiese scusa.",
+     "sbagliate": [
+      "Rise del Coniglio.",
+      "Scappò via."
+     ]
+    },
+    {
+     "d": "Il Coniglio accettò le scuse?",
+     "giusta": "No, volle vendicarsi.",
+     "sbagliate": [
+      "Sì, subito.",
+      "Non le sentì."
+     ]
+    },
+    {
+     "d": "Perché, nella storia, l'ippopotamo resta vicino all'acqua?",
+     "giusta": "Ha paura del fuoco.",
+     "sbagliate": [
+      "Ha sempre sete.",
+      "Lì ci sono i suoi amici."
+     ]
+    },
+    {
+     "d": "Secondo te, che cosa avrebbe potuto fare il Coniglio?",
+     "giusta": "Accettare le scuse: l'Ippopotamo non l'aveva fatto apposta.",
+     "sbagliate": [
+      "Chiedere al Fuoco di bruciarlo ancora.",
+      "Pestare la zampa all'Ippopotamo."
+     ]
+    },
+    {
+     "d": "Gli ippopotami veri hanno pochissimi peli per colpa del fuoco?",
+     "giusta": "No: è una storia inventata per spiegarlo.",
+     "sbagliate": [
+      "Sì, è vero.",
+      "Non lo sa nessuno."
+     ]
+    }
+   ],
+   "autore": "Basilio Gimo e David Ker",
+   "opera": "Why Hippos Have No Hair (African Storybook)",
+   "nota": "Racconto popolare del Mozambico. Traduzione dall'inglese di Lavagna Amica. Testo e illustrazioni: African Storybook, licenza CC BY 3.0. In realtà gli ippopotami stanno vicino all'acqua perché la loro pelle deve restare bagnata e fresca.",
+   "f": "liddiment-ippopotamo.jpg",
+   "didascalia": "Illustrazione di Carol Liddiment, Little Zebra Books, African Storybook (CC BY 3.0)."
+  }
+ },
+ {
   "id": "versi-nomi",
   "titolo": "Come si chiama il verso?",
   "scrittura": "maiuscolo",
