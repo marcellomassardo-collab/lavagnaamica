@@ -54,7 +54,7 @@ function gioca(area, es, ctx, conRuota) {
             chi.replaceWith(nuovo);
             chi = nuovo;
             disegnaTabellone();
-            ctx.leggi("Rimbalzo! " + diChi());
+            ctx.dici("Rimbalzo! " + diChi());
           }
           return;
         }
@@ -68,7 +68,7 @@ function gioca(area, es, ctx, conRuota) {
       disegnaTabellone();
       scena.replaceChildren(chi, el("div", { class: "domanda-grande" }, carta(q.d, "domanda-carta"), pulsanteVoce(q.d.t || "", "Ascolta la domanda")),
         el("div", { class: "opzioni", style: "--quante:" + opzioni.length }, bottoni));
-      ctx.leggi(diChi() + ". " + (q.d.t || ""));
+      ctx.leggi((ctx.lingua === "it" ? diChi() + ". " : "") + (q.d.t || ""));
     });
   }
 
@@ -105,13 +105,13 @@ function gioca(area, es, ctx, conRuota) {
         disco.style.transform = "rotate(" + angolo + "deg)";
         setTimeout(() => {
           if (fermo) return;
-          ctx.leggi("Domanda " + (k + 1));
+          ctx.dici("Domanda " + (k + 1));
           fatto(k);
         }, ridotto ? 300 : 3500);
       });
       disegnaTabellone();
       scena.replaceChildren(el("div", { class: "sq-riga" }, cartello(), bottone), svg);
-      ctx.leggi(diChi() + ": gira la ruota!");
+      ctx.dici(diChi() + ": gira la ruota!");
     });
   }
 
@@ -123,7 +123,7 @@ function gioca(area, es, ctx, conRuota) {
       el("ol", { class: "sq-classifica" }, ordine.map(sq => el("li", { style: "--colore:" + sq.colore },
         el("span", { text: sq.nome }), el("strong", { text: sq.punti + (sq.punti === 1 ? " punto" : " punti") })))),
       el("button", { type: "button", class: "pulsante", text: "Fine ▶", on: { click: () => ctx.fine({ giuste: primoColpo, totale: domande.length }) } })));
-    ctx.leggi(titolo);
+    ctx.dici(titolo);
   }
 
   async function partita() {
@@ -147,7 +147,7 @@ function gioca(area, es, ctx, conRuota) {
         if (n === 1) squadre[0] = { nome: "La classe", colore: "#1E6B52", punti: 0 };
         partita();
       } } })))));
-  ctx.leggi("Quante squadre giocano?");
+  ctx.dici("Quante squadre giocano?");
   return () => { fermo = true; };
 }
 

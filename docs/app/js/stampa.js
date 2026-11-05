@@ -14,7 +14,7 @@ function sv(tag, attr, ...figli) {
 }
 const testo = (t, tag, classe) => el(tag || "span", { class: classe || "" }, due(String(t)));
 const riga = "__________";
-const cartaStampa = e => el("span", { class: "st-carta" }, e.p ? immaginePicto(e.p, e.t || "") : null, e.t ? testo(e.t) : null);
+const cartaStampa = e => el("span", { class: "st-carta" }, e.f ? el("img", { src: "foto/" + e.f, alt: e.t || "" }) : e.p ? immaginePicto(e.p, e.t || "") : null, e.t ? testo(e.t) : null);
 const casella = () => el("span", { class: "st-casella-x", "aria-hidden": "true", text: "☐" });
 
 /* ---------- disegni a linee ---------- */

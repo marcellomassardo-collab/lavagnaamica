@@ -48,7 +48,7 @@ export function avvia(area, es, ctx) {
     si.addEventListener("click", () => rispondi(si, true));
     no.addEventListener("click", () => rispondi(no, false));
     scena.replaceChildren(coppia, el("p", { class: "vf-chiede", text: "Vanno insieme?" }), el("div", { class: "vf-tasti" }, si, no));
-    ctx.leggi([p.c[0].t, p.destra.t].filter(Boolean).join(" … ") + ". Vanno insieme?");
+    ctx.leggi([p.c[0].t, p.destra.t].filter(Boolean).join(" … ") + (ctx.lingua === "it" ? ". Vanno insieme?" : ""));
   }
 
   mostra();

@@ -407,11 +407,35 @@ function estrattore(area, comandi) {
   area.append(grande, lista, el("p", { class: "tenue", text: "Ogni alunno ha un numero: l'estrattore non usa mai i nomi." }));
 }
 
+/* ---------- tastiera ---------- */
+// Un'ottava da do a do: i tasti bianchi con il nome della nota, il suono nasce qui (niente registrazioni).
+const NOTE = [["do", 261.63], ["re", 293.66], ["mi", 329.63], ["fa", 349.23], ["sol", 392], ["la", 440], ["si", 493.88], ["do", 523.25]];
+function tastiera(area, comandi) {
+  let contesto = null;
+  let nomi = true;
+  function suona(f) {
+    contesto = contesto || new AudioContext();
+    const o = contesto.createOscillator(), g = contesto.createGain(), t = contesto.currentTime;
+    o.type = "triangle";
+    o.frequency.value = f;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.4, t + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 1.1);
+    o.connect(g).connect(contesto.destination);
+    o.start(t);
+    o.stop(t + 1.15);
+  }
+  const tasti = NOTE.map(([n, f]) => el("button", { type: "button", class: "st-tasto", "aria-label": n, text: n, on: { click: () => suona(f) } }));
+  comandi.append(interruttore("Mostra le note", nomi, v => { nomi = v; tasti.forEach((t, i) => { t.textContent = v ? NOTE[i][0] : ""; }); }));
+  area.append(el("div", { class: "st-tastiera" }, tasti), el("p", { class: "tenue", text: "Tocca i tasti: a sinistra i suoni gravi, a destra quelli acuti." }));
+  return () => { if (contesto) contesto.close(); };
+}
+
 const STRUMENTI = {
   cornici: ["🔟", "Cornici del 10", cornici], blocchi: ["🧱", "Blocchi h da u", blocchi], retta: ["📏", "Retta dei numeri", retta],
   geopiano: ["📌", "Geopiano", geopiano], frazioni: ["🍕", "Frazioni", frazioni], orologio: ["🕒", "Orologio", orologio],
   soldi: ["💶", "Monete e banconote", soldi], timer: ["⏳", "Timer", timer], rumore: ["🚦", "Semaforo del rumore", rumore],
-  dadi: ["🎲", "Dadi", dadi], estrattore: ["🔢", "Estrattore di numeri", estrattore]
+  dadi: ["🎲", "Dadi", dadi], estrattore: ["🔢", "Estrattore di numeri", estrattore], tastiera: ["🎹", "Tastiera", tastiera]
 };
 
 export function vistaStrumenti(scelto) {

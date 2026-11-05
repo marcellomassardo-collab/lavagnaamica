@@ -11,6 +11,7 @@ const BASE = {
   elementi: 6,      // carte per partita
   risposte: 3,      // risposte tra cui scegliere
   voceScelta: "",   // nome della voce del dispositivo; vuoto = la più naturale disponibile
+  voceInglese: "",  // la stessa cosa, per gli esercizi di inglese
   velocita: 0.85,   // un po' più lenta del normale
   sensore: false,   // le scelte si illuminano una alla volta e si sceglie con un solo tasto
   ritmo: 2          // secondi per ogni scelta illuminata

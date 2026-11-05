@@ -16278,5 +16278,3894 @@
    ],
    "nota": "Testo di Lavagna Amica."
   }
+ },
+ {
+  "id": "en-saluti",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Hello! Le prime parole",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo disegno. Tocca la parola per ascoltarla.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 6009
+     },
+     {
+      "t": "hello"
+     }
+    ],
+    [
+     {
+      "p": 6028
+     },
+     {
+      "t": "goodbye"
+     }
+    ],
+    [
+     {
+      "p": 8194
+     },
+     {
+      "t": "please"
+     }
+    ],
+    [
+     {
+      "p": 8129
+     },
+     {
+      "t": "thank you"
+     }
+    ],
+    [
+     {
+      "p": 11625
+     },
+     {
+      "t": "sorry"
+     }
+    ],
+    [
+     {
+      "p": 5584
+     },
+     {
+      "t": "yes"
+     }
+    ],
+    [
+     {
+      "p": 5526
+     },
+     {
+      "t": "no"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-colori",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Colours",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta il colore e tocca quello giusto.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2808
+     },
+     {
+      "t": "red"
+     }
+    ],
+    [
+     {
+      "p": 4869
+     },
+     {
+      "t": "blue"
+     }
+    ],
+    [
+     {
+      "p": 2648
+     },
+     {
+      "t": "yellow"
+     }
+    ],
+    [
+     {
+      "p": 4887
+     },
+     {
+      "t": "green"
+     }
+    ],
+    [
+     {
+      "p": 2888
+     },
+     {
+      "t": "orange"
+     }
+    ],
+    [
+     {
+      "p": 2807
+     },
+     {
+      "t": "pink"
+     }
+    ],
+    [
+     {
+      "p": 2907
+     },
+     {
+      "t": "purple"
+     }
+    ],
+    [
+     {
+      "p": 2886
+     },
+     {
+      "t": "black"
+     }
+    ],
+    [
+     {
+      "p": 2662
+     },
+     {
+      "t": "white"
+     }
+    ],
+    [
+     {
+      "p": 2923
+     },
+     {
+      "t": "brown"
+     }
+    ],
+    [
+     {
+      "p": 3340
+     },
+     {
+      "t": "grey"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-numeri-10",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Numbers 1-10",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo numero.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "1"
+     },
+     {
+      "t": "one"
+     }
+    ],
+    [
+     {
+      "t": "2"
+     },
+     {
+      "t": "two"
+     }
+    ],
+    [
+     {
+      "t": "3"
+     },
+     {
+      "t": "three"
+     }
+    ],
+    [
+     {
+      "t": "4"
+     },
+     {
+      "t": "four"
+     }
+    ],
+    [
+     {
+      "t": "5"
+     },
+     {
+      "t": "five"
+     }
+    ],
+    [
+     {
+      "t": "6"
+     },
+     {
+      "t": "six"
+     }
+    ],
+    [
+     {
+      "t": "7"
+     },
+     {
+      "t": "seven"
+     }
+    ],
+    [
+     {
+      "t": "8"
+     },
+     {
+      "t": "eight"
+     }
+    ],
+    [
+     {
+      "t": "9"
+     },
+     {
+      "t": "nine"
+     }
+    ],
+    [
+     {
+      "t": "10"
+     },
+     {
+      "t": "ten"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-animali",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Animals",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta il nome e tocca l'animale.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2517
+     },
+     {
+      "t": "dog"
+     }
+    ],
+    [
+     {
+      "p": 2406
+     },
+     {
+      "t": "cat"
+     }
+    ],
+    [
+     {
+      "p": 2490
+     },
+     {
+      "t": "bird"
+     }
+    ],
+    [
+     {
+      "p": 2520
+     },
+     {
+      "t": "fish"
+     }
+    ],
+    [
+     {
+      "p": 2351
+     },
+     {
+      "t": "rabbit"
+     }
+    ],
+    [
+     {
+      "p": 2294
+     },
+     {
+      "t": "horse"
+     }
+    ],
+    [
+     {
+      "p": 2609
+     },
+     {
+      "t": "cow"
+     }
+    ],
+    [
+     {
+      "p": 2327
+     },
+     {
+      "t": "pig"
+     }
+    ],
+    [
+     {
+      "p": 2489
+     },
+     {
+      "t": "sheep"
+     }
+    ],
+    [
+     {
+      "p": 2563
+     },
+     {
+      "t": "duck"
+     }
+    ],
+    [
+     {
+      "p": 2403
+     },
+     {
+      "t": "hen"
+     }
+    ],
+    [
+     {
+      "p": 2372
+     },
+     {
+      "t": "elephant"
+     }
+    ],
+    [
+     {
+      "p": 2449
+     },
+     {
+      "t": "lion"
+     }
+    ],
+    [
+     {
+      "p": 2477
+     },
+     {
+      "t": "monkey"
+     }
+    ],
+    [
+     {
+      "p": 2546
+     },
+     {
+      "t": "mouse"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-famiglia",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "My family",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo disegno. Tocca la parola per ascoltarla.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2458
+     },
+     {
+      "t": "mother"
+     }
+    ],
+    [
+     {
+      "p": 2497
+     },
+     {
+      "t": "father"
+     }
+    ],
+    [
+     {
+      "p": 2422
+     },
+     {
+      "t": "sister"
+     }
+    ],
+    [
+     {
+      "p": 2423
+     },
+     {
+      "t": "brother"
+     }
+    ],
+    [
+     {
+      "p": 2243
+     },
+     {
+      "t": "grandmother"
+     }
+    ],
+    [
+     {
+      "p": 2244
+     },
+     {
+      "t": "grandfather"
+     }
+    ],
+    [
+     {
+      "p": 2275
+     },
+     {
+      "t": "baby"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-scuola",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "At school",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo disegno. Tocca la parola per ascoltarla.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2450
+     },
+     {
+      "t": "book"
+     }
+    ],
+    [
+     {
+      "p": 10313
+     },
+     {
+      "t": "pen"
+     }
+    ],
+    [
+     {
+      "p": 2440
+     },
+     {
+      "t": "pencil"
+     }
+    ],
+    [
+     {
+      "p": 16341
+     },
+     {
+      "t": "rubber"
+     }
+    ],
+    [
+     {
+      "p": 2815
+     },
+     {
+      "t": "ruler"
+     }
+    ],
+    [
+     {
+      "p": 2475
+     },
+     {
+      "t": "schoolbag"
+     }
+    ],
+    [
+     {
+      "p": 3155
+     },
+     {
+      "t": "chair"
+     }
+    ],
+    [
+     {
+      "p": 2457
+     },
+     {
+      "t": "teacher"
+     }
+    ],
+    [
+     {
+      "p": 2591
+     },
+     {
+      "t": "scissors"
+     }
+    ],
+    [
+     {
+      "p": 2359
+     },
+     {
+      "t": "notebook"
+     }
+    ],
+    [
+     {
+      "p": 8575
+     },
+     {
+      "t": "pencil case"
+     }
+    ],
+    [
+     {
+      "p": 2526
+     },
+     {
+      "t": "board"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-corpo",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "My body",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta e tocca la parte del corpo.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2673
+     },
+     {
+      "t": "head"
+     }
+    ],
+    [
+     {
+      "p": 6573
+     },
+     {
+      "t": "eye"
+     }
+    ],
+    [
+     {
+      "p": 2887
+     },
+     {
+      "t": "nose"
+     }
+    ],
+    [
+     {
+      "p": 2663
+     },
+     {
+      "t": "mouth"
+     }
+    ],
+    [
+     {
+      "p": 2871
+     },
+     {
+      "t": "ear"
+     }
+    ],
+    [
+     {
+      "p": 2928
+     },
+     {
+      "t": "hand"
+     }
+    ],
+    [
+     {
+      "p": 2841
+     },
+     {
+      "t": "foot"
+     }
+    ],
+    [
+     {
+      "p": 8666
+     },
+     {
+      "t": "leg"
+     }
+    ],
+    [
+     {
+      "p": 2669
+     },
+     {
+      "t": "arm"
+     }
+    ],
+    [
+     {
+      "p": 2851
+     },
+     {
+      "t": "hair"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-cibo",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Food",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo disegno. Tocca la parola per ascoltarla.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2462
+     },
+     {
+      "t": "apple"
+     }
+    ],
+    [
+     {
+      "p": 2530
+     },
+     {
+      "t": "banana"
+     }
+    ],
+    [
+     {
+      "p": 2494
+     },
+     {
+      "t": "bread"
+     }
+    ],
+    [
+     {
+      "p": 2445
+     },
+     {
+      "t": "milk"
+     }
+    ],
+    [
+     {
+      "p": 2248
+     },
+     {
+      "t": "water"
+     }
+    ],
+    [
+     {
+      "p": 2541
+     },
+     {
+      "t": "cheese"
+     }
+    ],
+    [
+     {
+      "p": 2427
+     },
+     {
+      "t": "egg"
+     }
+    ],
+    [
+     {
+      "p": 2527
+     },
+     {
+      "t": "pizza"
+     }
+    ],
+    [
+     {
+      "p": 2420
+     },
+     {
+      "t": "ice cream"
+     }
+    ],
+    [
+     {
+      "p": 2579
+     },
+     {
+      "t": "cake"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-vestiti",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Clothes",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "memory",
+  "consegna": "Gira due carte e trova il disegno e la sua parola.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2309
+     },
+     {
+      "t": "t-shirt"
+     }
+    ],
+    [
+     {
+      "p": 2565
+     },
+     {
+      "t": "trousers"
+     }
+    ],
+    [
+     {
+      "p": 2622
+     },
+     {
+      "t": "shoes"
+     }
+    ],
+    [
+     {
+      "p": 2572
+     },
+     {
+      "t": "hat"
+     }
+    ],
+    [
+     {
+      "p": 2242
+     },
+     {
+      "t": "coat"
+     }
+    ],
+    [
+     {
+      "p": 2298
+     },
+     {
+      "t": "socks"
+     }
+    ],
+    [
+     {
+      "p": 2613
+     },
+     {
+      "t": "dress"
+     }
+    ],
+    [
+     {
+      "p": 2391
+     },
+     {
+      "t": "skirt"
+     }
+    ],
+    [
+     {
+      "p": 2436
+     },
+     {
+      "t": "jumper"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-giocattoli",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Toys",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta e tocca il giocattolo.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2269
+     },
+     {
+      "t": "ball"
+     }
+    ],
+    [
+     {
+      "p": 2482
+     },
+     {
+      "t": "doll"
+     }
+    ],
+    [
+     {
+      "p": 4945
+     },
+     {
+      "t": "teddy bear"
+     }
+    ],
+    [
+     {
+      "p": 2350
+     },
+     {
+      "t": "kite"
+     }
+    ],
+    [
+     {
+      "p": 2277
+     },
+     {
+      "t": "bike"
+     }
+    ],
+    [
+     {
+      "p": 2339
+     },
+     {
+      "t": "car"
+     }
+    ],
+    [
+     {
+      "p": 2603
+     },
+     {
+      "t": "train"
+     }
+    ],
+    [
+     {
+      "p": 6208
+     },
+     {
+      "t": "robot"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-numeri-20",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Numbers 11-20",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo numero.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "11"
+     },
+     {
+      "t": "eleven"
+     }
+    ],
+    [
+     {
+      "t": "12"
+     },
+     {
+      "t": "twelve"
+     }
+    ],
+    [
+     {
+      "t": "13"
+     },
+     {
+      "t": "thirteen"
+     }
+    ],
+    [
+     {
+      "t": "14"
+     },
+     {
+      "t": "fourteen"
+     }
+    ],
+    [
+     {
+      "t": "15"
+     },
+     {
+      "t": "fifteen"
+     }
+    ],
+    [
+     {
+      "t": "16"
+     },
+     {
+      "t": "sixteen"
+     }
+    ],
+    [
+     {
+      "t": "17"
+     },
+     {
+      "t": "seventeen"
+     }
+    ],
+    [
+     {
+      "t": "18"
+     },
+     {
+      "t": "eighteen"
+     }
+    ],
+    [
+     {
+      "t": "19"
+     },
+     {
+      "t": "nineteen"
+     }
+    ],
+    [
+     {
+      "t": "20"
+     },
+     {
+      "t": "twenty"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-numeri-100",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Tens: 10, 20, 30…",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "vero",
+  "consegna": "Il numero e la parola vanno insieme?",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "10"
+     },
+     {
+      "t": "ten"
+     }
+    ],
+    [
+     {
+      "t": "20"
+     },
+     {
+      "t": "twenty"
+     }
+    ],
+    [
+     {
+      "t": "30"
+     },
+     {
+      "t": "thirty"
+     }
+    ],
+    [
+     {
+      "t": "40"
+     },
+     {
+      "t": "forty"
+     }
+    ],
+    [
+     {
+      "t": "50"
+     },
+     {
+      "t": "fifty"
+     }
+    ],
+    [
+     {
+      "t": "60"
+     },
+     {
+      "t": "sixty"
+     }
+    ],
+    [
+     {
+      "t": "70"
+     },
+     {
+      "t": "seventy"
+     }
+    ],
+    [
+     {
+      "t": "80"
+     },
+     {
+      "t": "eighty"
+     }
+    ],
+    [
+     {
+      "t": "90"
+     },
+     {
+      "t": "ninety"
+     }
+    ],
+    [
+     {
+      "t": "100"
+     },
+     {
+      "t": "a hundred"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-giorni",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Days of the week",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti i giorni in ordine, da lunedì a domenica.",
+  "dati": {
+   "passi": [
+    {
+     "t": "Monday"
+    },
+    {
+     "t": "Tuesday"
+    },
+    {
+     "t": "Wednesday"
+    },
+    {
+     "t": "Thursday"
+    },
+    {
+     "t": "Friday"
+    },
+    {
+     "t": "Saturday"
+    },
+    {
+     "t": "Sunday"
+    }
+   ]
+  }
+ },
+ {
+  "id": "en-mesi",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Months of the year",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti i mesi in ordine, da gennaio a dicembre.",
+  "dati": {
+   "passi": [
+    {
+     "t": "January"
+    },
+    {
+     "t": "February"
+    },
+    {
+     "t": "March"
+    },
+    {
+     "t": "April"
+    },
+    {
+     "t": "May"
+    },
+    {
+     "t": "June"
+    },
+    {
+     "t": "July"
+    },
+    {
+     "t": "August"
+    },
+    {
+     "t": "September"
+    },
+    {
+     "t": "October"
+    },
+    {
+     "t": "November"
+    },
+    {
+     "t": "December"
+    }
+   ]
+  }
+ },
+ {
+  "id": "en-tempo",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "The weather",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo disegno. Tocca la parola per ascoltarla.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2796
+     },
+     {
+      "t": "sunny"
+     }
+    ],
+    [
+     {
+      "p": 2936
+     },
+     {
+      "t": "rainy"
+     }
+    ],
+    [
+     {
+      "p": 2882
+     },
+     {
+      "t": "cloudy"
+     }
+    ],
+    [
+     {
+      "p": 2779
+     },
+     {
+      "t": "windy"
+     }
+    ],
+    [
+     {
+      "p": 2884
+     },
+     {
+      "t": "snowy"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-stagioni",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "The seasons",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta e tocca la stagione.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 5553
+     },
+     {
+      "t": "spring"
+     }
+    ],
+    [
+     {
+      "p": 5604
+     },
+     {
+      "t": "summer"
+     }
+    ],
+    [
+     {
+      "p": 5531
+     },
+     {
+      "t": "autumn"
+     }
+    ],
+    [
+     {
+      "p": 5493
+     },
+     {
+      "t": "winter"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-casa",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "My house",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo disegno. Tocca la parola per ascoltarla.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 5965
+     },
+     {
+      "t": "kitchen"
+     }
+    ],
+    [
+     {
+      "p": 5988
+     },
+     {
+      "t": "bedroom"
+     }
+    ],
+    [
+     {
+      "p": 5921
+     },
+     {
+      "t": "bathroom"
+     }
+    ],
+    [
+     {
+      "p": 6211
+     },
+     {
+      "t": "living room"
+     }
+    ],
+    [
+     {
+      "p": 2434
+     },
+     {
+      "t": "garden"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-azioni",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Actions",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta e tocca l'azione.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2719
+     },
+     {
+      "t": "run"
+     }
+    ],
+    [
+     {
+      "p": 2804
+     },
+     {
+      "t": "jump"
+     }
+    ],
+    [
+     {
+      "p": 6568
+     },
+     {
+      "t": "swim"
+     }
+    ],
+    [
+     {
+      "p": 2315
+     },
+     {
+      "t": "sing"
+     }
+    ],
+    [
+     {
+      "p": 2652
+     },
+     {
+      "t": "dance"
+     }
+    ],
+    [
+     {
+      "p": 2447
+     },
+     {
+      "t": "read"
+     }
+    ],
+    [
+     {
+      "p": 2380
+     },
+     {
+      "t": "write"
+     }
+    ],
+    [
+     {
+      "p": 2349
+     },
+     {
+      "t": "eat"
+     }
+    ],
+    [
+     {
+      "p": 2369
+     },
+     {
+      "t": "sleep"
+     }
+    ],
+    [
+     {
+      "p": 2439
+     },
+     {
+      "t": "play"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-aggettivi",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Big and small",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo disegno. Tocca la parola per ascoltarla.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 4658
+     },
+     {
+      "t": "big"
+     }
+    ],
+    [
+     {
+      "p": 4716
+     },
+     {
+      "t": "small"
+     }
+    ],
+    [
+     {
+      "p": 4557
+     },
+     {
+      "t": "tall"
+     }
+    ],
+    [
+     {
+      "p": 4571
+     },
+     {
+      "t": "short"
+     }
+    ],
+    [
+     {
+      "p": 4583
+     },
+     {
+      "t": "hot"
+     }
+    ],
+    [
+     {
+      "p": 4652
+     },
+     {
+      "t": "cold"
+     }
+    ],
+    [
+     {
+      "p": 35547
+     },
+     {
+      "t": "happy"
+     }
+    ],
+    [
+     {
+      "p": 35545
+     },
+     {
+      "t": "sad"
+     }
+    ],
+    [
+     {
+      "p": 5306
+     },
+     {
+      "t": "fast"
+     }
+    ],
+    [
+     {
+      "p": 4676
+     },
+     {
+      "t": "slow"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-contrari",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Opposites",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo contrario.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "big"
+     },
+     {
+      "t": "small"
+     }
+    ],
+    [
+     {
+      "t": "tall"
+     },
+     {
+      "t": "short"
+     }
+    ],
+    [
+     {
+      "t": "hot"
+     },
+     {
+      "t": "cold"
+     }
+    ],
+    [
+     {
+      "t": "happy"
+     },
+     {
+      "t": "sad"
+     }
+    ],
+    [
+     {
+      "t": "fast"
+     },
+     {
+      "t": "slow"
+     }
+    ],
+    [
+     {
+      "t": "old"
+     },
+     {
+      "t": "new"
+     }
+    ],
+    [
+     {
+      "t": "up"
+     },
+     {
+      "t": "down"
+     }
+    ],
+    [
+     {
+      "t": "open"
+     },
+     {
+      "t": "closed"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-categorie",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Sort the words",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "palloncini",
+  "consegna": "Metti ogni parola nel suo gruppo.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "animals",
+     "p": 2517,
+     "elementi": [
+      {
+       "t": "cat"
+      },
+      {
+       "t": "horse"
+      },
+      {
+       "t": "duck"
+      },
+      {
+       "t": "lion"
+      },
+      {
+       "t": "fish"
+      }
+     ]
+    },
+    {
+     "nome": "food",
+     "p": 2462,
+     "elementi": [
+      {
+       "t": "bread"
+      },
+      {
+       "t": "milk"
+      },
+      {
+       "t": "cheese"
+      },
+      {
+       "t": "egg"
+      },
+      {
+       "t": "cake"
+      }
+     ]
+    },
+    {
+     "nome": "clothes",
+     "p": 2309,
+     "elementi": [
+      {
+       "t": "hat"
+      },
+      {
+       "t": "socks"
+      },
+      {
+       "t": "dress"
+      },
+      {
+       "t": "coat"
+      },
+      {
+       "t": "shoes"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "en-posizioni",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "In, on, under",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta e tocca il disegno giusto. Guarda dov'è la palla.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 5514
+     },
+     {
+      "t": "in"
+     }
+    ],
+    [
+     {
+      "p": 5451
+     },
+     {
+      "t": "on"
+     }
+    ],
+    [
+     {
+      "p": 5437
+     },
+     {
+      "t": "under"
+     }
+    ],
+    [
+     {
+      "p": 5367
+     },
+     {
+      "t": "next to"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-colori-frasi",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "What colour is it?",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Di che colore è? Metti la parola al suo posto.",
+  "dati": {
+   "frasi": [
+    "The sky is [blue].",
+    "The grass is [green].",
+    "The sun is [yellow].",
+    "Snow is [white].",
+    "An orange is [orange].",
+    "A cherry is [red]."
+   ],
+   "extra": [
+    "pink"
+   ]
+  }
+ },
+ {
+  "id": "en-domande-io",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Talk about you",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "quiz",
+  "consegna": "Leggi la domanda e scegli la risposta giusta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "What's your name?"
+     },
+     "giusta": {
+      "t": "My name is Tom."
+     },
+     "sbagliate": [
+      {
+       "t": "I'm nine."
+      },
+      {
+       "t": "It's blue."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "How old are you?"
+     },
+     "giusta": {
+      "t": "I'm nine."
+     },
+     "sbagliate": [
+      {
+       "t": "I'm fine, thank you."
+      },
+      {
+       "t": "My name is Tom."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "How are you?"
+     },
+     "giusta": {
+      "t": "I'm fine, thank you."
+     },
+     "sbagliate": [
+      {
+       "t": "I'm from Italy."
+      },
+      {
+       "t": "It's a dog."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Where are you from?"
+     },
+     "giusta": {
+      "t": "I'm from Italy."
+     },
+     "sbagliate": [
+      {
+       "t": "I'm nine."
+      },
+      {
+       "t": "Yes, I do."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "What's your favourite colour?"
+     },
+     "giusta": {
+      "t": "It's blue."
+     },
+     "sbagliate": [
+      {
+       "t": "My name is Tom."
+      },
+      {
+       "t": "I'm fine, thank you."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Have you got a pet?"
+     },
+     "giusta": {
+      "t": "Yes, I've got a dog."
+     },
+     "sbagliate": [
+      {
+       "t": "I'm from Italy."
+      },
+      {
+       "t": "It's blue."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "en-to-be",
+  "materia": "Inglese",
+  "livello": 3,
+  "titolo": "To be: am, is, are",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Metti am, is o are al posto giusto.",
+  "dati": {
+   "frasi": [
+    "I [am] a student.",
+    "You [are] my friend.",
+    "He [is] tall.",
+    "She [is] happy.",
+    "It [is] a dog.",
+    "We [are] at school.",
+    "They [are] in the garden."
+   ]
+  }
+ },
+ {
+  "id": "en-have-got",
+  "materia": "Inglese",
+  "livello": 3,
+  "titolo": "Have got",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Metti have o has al posto giusto.",
+  "dati": {
+   "frasi": [
+    "I [have] got a dog.",
+    "She [has] got a red bike.",
+    "We [have] got two cats.",
+    "He [has] got blue eyes.",
+    "They [have] got a big house."
+   ]
+  }
+ },
+ {
+  "id": "en-can",
+  "materia": "Inglese",
+  "livello": 3,
+  "titolo": "Can or can't?",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Che cosa sanno fare? Metti can o can't.",
+  "dati": {
+   "frasi": [
+    "A fish [can] swim.",
+    "A dog [can't] fly.",
+    "A bird [can] fly.",
+    "A cow [can't] read.",
+    "A monkey [can] jump.",
+    "A cat [can't] sing."
+   ]
+  }
+ },
+ {
+  "id": "en-like",
+  "materia": "Inglese",
+  "livello": 3,
+  "titolo": "I like, she likes",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Metti like o likes al posto giusto.",
+  "dati": {
+   "frasi": [
+    "I [like] pizza.",
+    "She [likes] ice cream.",
+    "We [like] apples.",
+    "He [likes] football.",
+    "They [like] music."
+   ]
+  }
+ },
+ {
+  "id": "en-there-is",
+  "materia": "Inglese",
+  "livello": 3,
+  "titolo": "There is, there are",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Uno: there is. Tanti: there are.",
+  "dati": {
+   "frasi": [
+    "There [is] a cat on the chair.",
+    "There [are] two books on the table.",
+    "There [is] a ball in the garden.",
+    "There [are] three birds in the tree."
+   ]
+  }
+ },
+ {
+  "id": "en-plurali",
+  "materia": "Inglese",
+  "livello": 3,
+  "titolo": "One and many",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo plurale.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "cat"
+     },
+     {
+      "t": "cats"
+     }
+    ],
+    [
+     {
+      "t": "box"
+     },
+     {
+      "t": "boxes"
+     }
+    ],
+    [
+     {
+      "t": "baby"
+     },
+     {
+      "t": "babies"
+     }
+    ],
+    [
+     {
+      "t": "child"
+     },
+     {
+      "t": "children"
+     }
+    ],
+    [
+     {
+      "t": "man"
+     },
+     {
+      "t": "men"
+     }
+    ],
+    [
+     {
+      "t": "woman"
+     },
+     {
+      "t": "women"
+     }
+    ],
+    [
+     {
+      "t": "foot"
+     },
+     {
+      "t": "feet"
+     }
+    ],
+    [
+     {
+      "t": "mouse"
+     },
+     {
+      "t": "mice"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-ore",
+  "materia": "Inglese",
+  "livello": 3,
+  "titolo": "What time is it?",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni ora vicino al suo orario.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "1:00"
+     },
+     {
+      "t": "one o'clock"
+     }
+    ],
+    [
+     {
+      "t": "3:00"
+     },
+     {
+      "t": "three o'clock"
+     }
+    ],
+    [
+     {
+      "t": "7:00"
+     },
+     {
+      "t": "seven o'clock"
+     }
+    ],
+    [
+     {
+      "t": "2:30"
+     },
+     {
+      "t": "half past two"
+     }
+    ],
+    [
+     {
+      "t": "5:30"
+     },
+     {
+      "t": "half past five"
+     }
+    ],
+    [
+     {
+      "t": "9:30"
+     },
+     {
+      "t": "half past nine"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-poesia-stella",
+  "materia": "Inglese",
+  "titolo": "Livello 2 · Twinkle, Twinkle, Little Star",
+  "scrittura": "maiuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "Twinkle, twinkle, little star,",
+    "How I wonder what you are!",
+    "Up above the world so high,",
+    "Like a diamond in the sky."
+   ],
+   "domande": [
+    {
+     "d": "What is little?",
+     "giusta": "The star.",
+     "sbagliate": [
+      "The sun.",
+      "The dog."
+     ]
+    },
+    {
+     "d": "Where is the star?",
+     "giusta": "In the sky.",
+     "sbagliate": [
+      "In the garden.",
+      "At school."
+     ]
+    },
+    {
+     "d": "The star is like a…",
+     "giusta": "Diamond.",
+     "sbagliate": [
+      "Banana.",
+      "Chair."
+     ]
+    }
+   ],
+   "autore": "Jane Taylor",
+   "opera": "The Star",
+   "anno": "1806",
+   "poesia": true
+  }
+ },
+ {
+  "id": "en-poesia-pioggia",
+  "materia": "Inglese",
+  "titolo": "Livello 2 · Rain, Rain, Go Away",
+  "scrittura": "maiuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "Rain, rain, go away,",
+    "Come again another day."
+   ],
+   "domande": [
+    {
+     "d": "What goes away?",
+     "giusta": "The rain.",
+     "sbagliate": [
+      "The sun.",
+      "The cat."
+     ]
+    },
+    {
+     "d": "When can it come again?",
+     "giusta": "Another day.",
+     "sbagliate": [
+      "Now.",
+      "Never."
+     ]
+    }
+   ],
+   "autore": "Filastrocca inglese tradizionale",
+   "poesia": true
+  }
+ },
+ {
+  "id": "en-mi-chiamo-anna",
+  "materia": "Inglese",
+  "titolo": "Livello 2 · My name is Anna",
+  "scrittura": "maiuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "Hello! My name is Anna. I am nine years old.",
+    "I have got a brother. His name is Luca.",
+    "I have got a cat. It is black and white.",
+    "I like pizza and ice cream. My favourite colour is purple."
+   ],
+   "domande": [
+    {
+     "d": "How old is Anna?",
+     "giusta": "She is nine.",
+     "sbagliate": [
+      "She is six.",
+      "She is ten."
+     ]
+    },
+    {
+     "d": "What is her brother's name?",
+     "giusta": "Luca.",
+     "sbagliate": [
+      "Tom.",
+      "Sam."
+     ]
+    },
+    {
+     "d": "What colour is the cat?",
+     "giusta": "Black and white.",
+     "sbagliate": [
+      "Red.",
+      "Yellow."
+     ]
+    },
+    {
+     "d": "What is her favourite colour?",
+     "giusta": "Purple.",
+     "sbagliate": [
+      "Blue.",
+      "Green."
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "en-la-mia-giornata",
+  "materia": "Inglese",
+  "titolo": "Livello 3 · My day",
+  "scrittura": "maiuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "I get up at seven o'clock. I have got milk and bread for breakfast.",
+    "I go to school at eight o'clock. My school is big and my teacher is kind.",
+    "At home I do my homework. Then I play in the garden with my dog.",
+    "In the evening I read a book. I go to bed at nine o'clock."
+   ],
+   "domande": [
+    {
+     "d": "When do I get up?",
+     "giusta": "At seven o'clock.",
+     "sbagliate": [
+      "At nine o'clock.",
+      "At eight o'clock."
+     ]
+    },
+    {
+     "d": "What do I have for breakfast?",
+     "giusta": "Milk and bread.",
+     "sbagliate": [
+      "Pizza.",
+      "Ice cream."
+     ]
+    },
+    {
+     "d": "Who is kind?",
+     "giusta": "My teacher.",
+     "sbagliate": [
+      "My cat.",
+      "My brother."
+     ]
+    },
+    {
+     "d": "What do I do in the garden?",
+     "giusta": "I play with my dog.",
+     "sbagliate": [
+      "I read a book.",
+      "I sleep."
+     ]
+    },
+    {
+     "d": "When do I go to bed?",
+     "giusta": "At nine o'clock.",
+     "sbagliate": [
+      "At seven o'clock.",
+      "At eight o'clock."
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "en-lepre-tartaruga",
+  "materia": "Inglese",
+  "titolo": "Livello 3 · The Hare and the Tortoise",
+  "scrittura": "maiuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "The hare is very fast. The tortoise is very slow.",
+    "The hare says: «You are slow! I can run and you can't!»",
+    "The tortoise says: «Let's have a race!»",
+    "They start. The hare runs and runs. Then she stops and she goes to sleep under a tree.",
+    "The tortoise walks and walks. She does not stop.",
+    "The hare wakes up and she runs, but it is too late. The tortoise is the winner!"
+   ],
+   "domande": [
+    {
+     "d": "Who is fast?",
+     "giusta": "The hare.",
+     "sbagliate": [
+      "The tortoise.",
+      "The tree."
+     ]
+    },
+    {
+     "d": "Who is slow?",
+     "giusta": "The tortoise.",
+     "sbagliate": [
+      "The hare.",
+      "The dog."
+     ]
+    },
+    {
+     "d": "What does the hare do under the tree?",
+     "giusta": "She goes to sleep.",
+     "sbagliate": [
+      "She eats a cake.",
+      "She sings."
+     ]
+    },
+    {
+     "d": "Who is the winner?",
+     "giusta": "The tortoise.",
+     "sbagliate": [
+      "The hare.",
+      "Nobody."
+     ]
+    }
+   ],
+   "autore": "Esopo",
+   "opera": "Favole",
+   "anno": "VI secolo a.C.",
+   "nota": "Riscrittura in inglese facile di Lavagna Amica."
+  }
+ },
+ {
+  "id": "en-humpty-dumpty",
+  "materia": "Inglese",
+  "titolo": "Livello 3 · Humpty Dumpty",
+  "scrittura": "maiuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Humpty Dumpty sat on a wall,",
+    "Humpty Dumpty had a great fall.",
+    "All the king's horses and all the king's men",
+    "Couldn't put Humpty together again."
+   ],
+   "domande": [
+    {
+     "d": "Where did Humpty Dumpty sit?",
+     "giusta": "On a wall.",
+     "sbagliate": [
+      "On a chair.",
+      "In the garden."
+     ]
+    },
+    {
+     "d": "What happened to him?",
+     "giusta": "He had a great fall.",
+     "sbagliate": [
+      "He went to sleep.",
+      "He ate a cake."
+     ]
+    },
+    {
+     "d": "Who tried to help?",
+     "giusta": "The king's horses and men.",
+     "sbagliate": [
+      "The teacher.",
+      "The cats."
+     ]
+    }
+   ],
+   "autore": "Filastrocca inglese tradizionale",
+   "poesia": true
+  }
+ },
+ {
+  "id": "l2-saluti",
+  "materia": "Italiano L2",
+  "livello": 1,
+  "titolo": "Ciao! Le prime parole",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo disegno. Tocca la parola per ascoltarla.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 6009
+     },
+     {
+      "t": "ciao"
+     }
+    ],
+    [
+     {
+      "p": 6028
+     },
+     {
+      "t": "arrivederci"
+     }
+    ],
+    [
+     {
+      "p": 8194
+     },
+     {
+      "t": "per favore"
+     }
+    ],
+    [
+     {
+      "p": 8129
+     },
+     {
+      "t": "grazie"
+     }
+    ],
+    [
+     {
+      "p": 11625
+     },
+     {
+      "t": "scusa"
+     }
+    ],
+    [
+     {
+      "p": 5584
+     },
+     {
+      "t": "sì"
+     }
+    ],
+    [
+     {
+      "p": 5526
+     },
+     {
+      "t": "no"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "l2-classe",
+  "materia": "Italiano L2",
+  "livello": 1,
+  "titolo": "Le cose della classe",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta la parola e tocca il disegno giusto.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2450
+     },
+     {
+      "t": "il libro"
+     }
+    ],
+    [
+     {
+      "p": 2359
+     },
+     {
+      "t": "il quaderno"
+     }
+    ],
+    [
+     {
+      "p": 10313
+     },
+     {
+      "t": "la penna"
+     }
+    ],
+    [
+     {
+      "p": 2440
+     },
+     {
+      "t": "la matita"
+     }
+    ],
+    [
+     {
+      "p": 16341
+     },
+     {
+      "t": "la gomma"
+     }
+    ],
+    [
+     {
+      "p": 2815
+     },
+     {
+      "t": "il righello"
+     }
+    ],
+    [
+     {
+      "p": 2475
+     },
+     {
+      "t": "lo zaino"
+     }
+    ],
+    [
+     {
+      "p": 8575
+     },
+     {
+      "t": "l'astuccio"
+     }
+    ],
+    [
+     {
+      "p": 2591
+     },
+     {
+      "t": "le forbici"
+     }
+    ],
+    [
+     {
+      "p": 2526
+     },
+     {
+      "t": "la lavagna"
+     }
+    ],
+    [
+     {
+      "p": 3155
+     },
+     {
+      "t": "la sedia"
+     }
+    ],
+    [
+     {
+      "p": 2456
+     },
+     {
+      "t": "la maestra"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "l2-comandi",
+  "materia": "Italiano L2",
+  "livello": 1,
+  "titolo": "Che cosa dice la maestra?",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta e tocca l'azione giusta.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2381
+     },
+     {
+      "t": "ascolta"
+     }
+    ],
+    [
+     {
+      "p": 2474
+     },
+     {
+      "t": "guarda"
+     }
+    ],
+    [
+     {
+      "p": 2380
+     },
+     {
+      "t": "scrivi"
+     }
+    ],
+    [
+     {
+      "p": 2447
+     },
+     {
+      "t": "leggi"
+     }
+    ],
+    [
+     {
+      "p": 8088
+     },
+     {
+      "t": "disegna"
+     }
+    ],
+    [
+     {
+      "p": 2801
+     },
+     {
+      "t": "siediti"
+     }
+    ],
+    [
+     {
+      "p": 4677
+     },
+     {
+      "t": "alzati"
+     }
+    ],
+    [
+     {
+      "p": 6874
+     },
+     {
+      "t": "apri il libro"
+     }
+    ],
+    [
+     {
+      "p": 6973
+     },
+     {
+      "t": "chiudi il libro"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "l2-frasi-utili",
+  "materia": "Italiano L2",
+  "livello": 2,
+  "titolo": "Le frasi che servono",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni frase vicino al suo disegno. Tocca la frase per ascoltarla.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2430
+     },
+     {
+      "t": "Posso andare in bagno?"
+     }
+    ],
+    [
+     {
+      "p": 7272
+     },
+     {
+      "t": "Ho fame."
+     }
+    ],
+    [
+     {
+      "p": 2276
+     },
+     {
+      "t": "Ho sete."
+     }
+    ],
+    [
+     {
+      "p": 7180
+     },
+     {
+      "t": "Non capisco."
+     }
+    ],
+    [
+     {
+      "p": 28753
+     },
+     {
+      "t": "Mi fa male la testa."
+     }
+    ],
+    [
+     {
+      "p": 39664
+     },
+     {
+      "t": "Mi fa male la pancia."
+     }
+    ],
+    [
+     {
+      "p": 4570
+     },
+     {
+      "t": "Puoi aiutarmi?"
+     }
+    ],
+    [
+     {
+      "p": 2369
+     },
+     {
+      "t": "Ho sonno."
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "l2-presentarsi",
+  "materia": "Italiano L2",
+  "livello": 2,
+  "titolo": "Come ti chiami?",
+  "scrittura": "doppio",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi la domanda e scegli la risposta giusta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Come ti chiami?"
+     },
+     "giusta": {
+      "t": "Mi chiamo Ali."
+     },
+     "sbagliate": [
+      {
+       "t": "Ho nove anni."
+      },
+      {
+       "t": "Sto bene, grazie."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quanti anni hai?"
+     },
+     "giusta": {
+      "t": "Ho nove anni."
+     },
+     "sbagliate": [
+      {
+       "t": "Mi chiamo Ali."
+      },
+      {
+       "t": "Abito a Genova."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Come stai?"
+     },
+     "giusta": {
+      "t": "Sto bene, grazie."
+     },
+     "sbagliate": [
+      {
+       "t": "Vengo dal Senegal."
+      },
+      {
+       "t": "Ho nove anni."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Dove abiti?"
+     },
+     "giusta": {
+      "t": "Abito a Genova."
+     },
+     "sbagliate": [
+      {
+       "t": "Sto bene, grazie."
+      },
+      {
+       "t": "Mi piace giocare a pallone."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Da dove vieni?"
+     },
+     "giusta": {
+      "t": "Vengo dal Senegal."
+     },
+     "sbagliate": [
+      {
+       "t": "Mi chiamo Ali."
+      },
+      {
+       "t": "Ho sonno."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Che cosa ti piace fare?"
+     },
+     "giusta": {
+      "t": "Mi piace giocare a pallone."
+     },
+     "sbagliate": [
+      {
+       "t": "Ho nove anni."
+      },
+      {
+       "t": "Abito a Genova."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "l2-essere-avere",
+  "materia": "Italiano L2",
+  "livello": 2,
+  "titolo": "Sono, ho: le parole più usate",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Metti ogni parola al suo posto.",
+  "dati": {
+   "frasi": [
+    "Io [sono] Sara.",
+    "Tu [sei] il mio amico.",
+    "Lei [è] la maestra.",
+    "Noi [siamo] in classe.",
+    "Io [ho] una matita.",
+    "Tu [hai] un libro.",
+    "Noi [abbiamo] fame."
+   ]
+  }
+ },
+ {
+  "id": "l2-primo-giorno",
+  "materia": "Italiano L2",
+  "titolo": "Livello 3 · Il primo giorno di Ali",
+  "scrittura": "doppio",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Oggi è il primo giorno di scuola per Ali.",
+    "La maestra dice: «Ciao! Come ti chiami?»",
+    "Ali risponde: «Mi chiamo Ali. Ho nove anni.»",
+    "Sara dice: «Ciao, Ali! Vuoi sedere vicino a me?»",
+    "Ali dice: «Sì, grazie.»",
+    "A mezzogiorno Ali ha fame. Mangia con Sara e con i compagni.",
+    "Poi giocano a pallone in cortile. Ali è contento."
+   ],
+   "domande": [
+    {
+     "d": "Chi è il bambino nuovo?",
+     "giusta": "Ali.",
+     "sbagliate": [
+      "Sara.",
+      "La maestra."
+     ]
+    },
+    {
+     "d": "Quanti anni ha Ali?",
+     "giusta": "Nove.",
+     "sbagliate": [
+      "Sette.",
+      "Dieci."
+     ]
+    },
+    {
+     "d": "Vicino a chi si siede Ali?",
+     "giusta": "Vicino a Sara.",
+     "sbagliate": [
+      "Vicino alla maestra.",
+      "Da solo."
+     ]
+    },
+    {
+     "d": "Dove giocano a pallone?",
+     "giusta": "In cortile.",
+     "sbagliate": [
+      "In classe.",
+      "In bagno."
+     ]
+    }
+   ],
+   "nota": "Testo di Lavagna Amica."
+  }
+ },
+ {
+  "id": "arte-strumenti",
+  "materia": "Arte e immagine",
+  "livello": 1,
+  "titolo": "Gli strumenti dell'artista",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni parola vicino al suo disegno. Tocca la parola per ascoltarla.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2670
+     },
+     {
+      "t": "il pennello"
+     }
+    ],
+    [
+     {
+      "p": 8644
+     },
+     {
+      "t": "la tavolozza"
+     }
+    ],
+    [
+     {
+      "p": 17016
+     },
+     {
+      "t": "i pastelli"
+     }
+    ],
+    [
+     {
+      "p": 2440
+     },
+     {
+      "t": "la matita"
+     }
+    ],
+    [
+     {
+      "p": 2510
+     },
+     {
+      "t": "la colla"
+     }
+    ],
+    [
+     {
+      "p": 2591
+     },
+     {
+      "t": "le forbici"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "arte-primari",
+  "materia": "Arte e immagine",
+  "livello": 1,
+  "titolo": "Colori primari e secondari",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "I primari non si ottengono mescolando; i secondari sì.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "colori primari",
+     "elementi": [
+      {
+       "t": "rosso",
+       "p": 2808
+      },
+      {
+       "t": "giallo",
+       "p": 2648
+      },
+      {
+       "t": "blu",
+       "p": 4869
+      }
+     ]
+    },
+    {
+     "nome": "colori secondari",
+     "elementi": [
+      {
+       "t": "arancione",
+       "p": 2888
+      },
+      {
+       "t": "verde",
+       "p": 4887
+      },
+      {
+       "t": "viola",
+       "p": 2907
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "arte-mescolare",
+  "materia": "Arte e immagine",
+  "livello": 2,
+  "titolo": "Mescoliamo i colori",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Che colore nasce mescolando i due colori?",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "rosso + giallo"
+     },
+     {
+      "t": "arancione",
+      "p": 2888
+     }
+    ],
+    [
+     {
+      "t": "giallo + blu"
+     },
+     {
+      "t": "verde",
+      "p": 4887
+     }
+    ],
+    [
+     {
+      "t": "rosso + blu"
+     },
+     {
+      "t": "viola",
+      "p": 2907
+     }
+    ],
+    [
+     {
+      "t": "bianco + nero"
+     },
+     {
+      "t": "grigio",
+      "p": 3340
+     }
+    ],
+    [
+     {
+      "t": "rosso + bianco"
+     },
+     {
+      "t": "rosa",
+      "p": 2807
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "arte-caldi-freddi",
+  "materia": "Arte e immagine",
+  "livello": 2,
+  "titolo": "Colori caldi e colori freddi",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "palloncini",
+  "consegna": "I colori caldi ricordano il fuoco e il sole; quelli freddi l'acqua e il ghiaccio.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "colori caldi",
+     "elementi": [
+      {
+       "t": "rosso",
+       "p": 2808
+      },
+      {
+       "t": "arancione",
+       "p": 2888
+      },
+      {
+       "t": "giallo",
+       "p": 2648
+      }
+     ]
+    },
+    {
+     "nome": "colori freddi",
+     "elementi": [
+      {
+       "t": "blu",
+       "p": 4869
+      },
+      {
+       "t": "verde",
+       "p": 4887
+      },
+      {
+       "t": "viola",
+       "p": 2907
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "arte-capolavori",
+  "materia": "Arte e immagine",
+  "livello": 3,
+  "titolo": "I capolavori: chi l'ha dipinto?",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni titolo vicino alla sua opera.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "f": "arte-gioconda.jpg"
+     },
+     {
+      "t": "La Gioconda, di Leonardo da Vinci"
+     }
+    ],
+    [
+     {
+      "f": "arte-notte-rodano.jpg"
+     },
+     {
+      "t": "Notte stellata sul Rodano, di Vincent van Gogh"
+     }
+    ],
+    [
+     {
+      "f": "arte-ragazza-perla.jpg"
+     },
+     {
+      "t": "Ragazza con l'orecchino di perla, di Jan Vermeer"
+     }
+    ],
+    [
+     {
+      "f": "arte-grande-onda.jpg"
+     },
+     {
+      "t": "La grande onda, di Hokusai"
+     }
+    ],
+    [
+     {
+      "f": "arte-vertumno.jpg"
+     },
+     {
+      "t": "Vertumno, di Giuseppe Arcimboldo"
+     }
+    ],
+    [
+     {
+      "f": "arte-ragazzo-canestra.jpg"
+     },
+     {
+      "t": "Ragazzo con canestra di frutta, di Caravaggio"
+     }
+    ],
+    [
+     {
+      "f": "arte-cacciatori-neve.jpg"
+     },
+     {
+      "t": "Cacciatori nella neve, di Pieter Bruegel"
+     }
+    ],
+    [
+     {
+      "f": "arte-girasoli.jpg"
+     },
+     {
+      "t": "I girasoli, di Vincent van Gogh"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "arte-generi",
+  "materia": "Arte e immagine",
+  "livello": 3,
+  "titolo": "Ritratto, paesaggio, natura morta, astratto",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Che cosa rappresenta il quadro? Mettilo nel gruppo giusto.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "ritratto",
+     "elementi": [
+      {
+       "t": "La Gioconda",
+       "f": "arte-gioconda.jpg"
+      },
+      {
+       "t": "Ragazza con l'orecchino di perla",
+       "f": "arte-ragazza-perla.jpg"
+      }
+     ]
+    },
+    {
+     "nome": "paesaggio",
+     "elementi": [
+      {
+       "t": "Cacciatori nella neve",
+       "f": "arte-cacciatori-neve.jpg"
+      },
+      {
+       "t": "Notte stellata sul Rodano",
+       "f": "arte-notte-rodano.jpg"
+      }
+     ]
+    },
+    {
+     "nome": "natura morta",
+     "elementi": [
+      {
+       "t": "I girasoli",
+       "f": "arte-girasoli.jpg"
+      },
+      {
+       "t": "Natura morta con mele",
+       "f": "arte-mele-cezanne.jpg"
+      }
+     ]
+    },
+    {
+     "nome": "arte astratta",
+     "elementi": [
+      {
+       "t": "Composizione II",
+       "f": "arte-mondrian.jpg"
+      },
+      {
+       "t": "Composizione VIII",
+       "f": "arte-kandinsky.jpg"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "arte-guarda",
+  "materia": "Arte e immagine",
+  "livello": 3,
+  "titolo": "Guarda bene il quadro",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Osserva l'opera e scegli la risposta giusta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Che stagione è in questo quadro?",
+      "f": "arte-cacciatori-neve.jpg"
+     },
+     "giusta": {
+      "t": "inverno"
+     },
+     "sbagliate": [
+      {
+       "t": "estate"
+      },
+      {
+       "t": "primavera"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Di che cosa è fatta questa faccia?",
+      "f": "arte-vertumno.jpg"
+     },
+     "giusta": {
+      "t": "di frutta, verdura e fiori"
+     },
+     "sbagliate": [
+      {
+       "t": "di pietra"
+      },
+      {
+       "t": "di stoffa"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Che momento della giornata è?",
+      "f": "arte-notte-rodano.jpg"
+     },
+     "giusta": {
+      "t": "la notte"
+     },
+     "sbagliate": [
+      {
+       "t": "il mattino"
+      },
+      {
+       "t": "il pomeriggio"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Che colori vedi?",
+      "f": "arte-mondrian.jpg"
+     },
+     "giusta": {
+      "t": "rosso, blu, giallo, bianco e nero"
+     },
+     "sbagliate": [
+      {
+       "t": "verde e marrone"
+      },
+      {
+       "t": "rosa e viola"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Che fiori ci sono nel vaso?",
+      "f": "arte-girasoli.jpg"
+     },
+     "giusta": {
+      "t": "girasoli"
+     },
+     "sbagliate": [
+      {
+       "t": "rose"
+      },
+      {
+       "t": "tulipani"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Che cosa si vede in questa stampa giapponese?",
+      "f": "arte-grande-onda.jpg"
+     },
+     "giusta": {
+      "t": "una grande onda"
+     },
+     "sbagliate": [
+      {
+       "t": "un bosco"
+      },
+      {
+       "t": "una città"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "mus-strumenti",
+  "materia": "Musica",
+  "livello": 1,
+  "titolo": "Gli strumenti musicali",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta il nome e tocca lo strumento.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2417
+     },
+     {
+      "t": "la chitarra"
+     }
+    ],
+    [
+     {
+      "p": 2615
+     },
+     {
+      "t": "il violino"
+     }
+    ],
+    [
+     {
+      "p": 2521
+     },
+     {
+      "t": "il pianoforte"
+     }
+    ],
+    [
+     {
+      "p": 2607
+     },
+     {
+      "t": "la tromba"
+     }
+    ],
+    [
+     {
+      "p": 2396
+     },
+     {
+      "t": "il flauto"
+     }
+    ],
+    [
+     {
+      "p": 2578
+     },
+     {
+      "t": "il tamburo"
+     }
+    ],
+    [
+     {
+      "p": 8493
+     },
+     {
+      "t": "l'arpa"
+     }
+    ],
+    [
+     {
+      "p": 4771
+     },
+     {
+      "t": "il violoncello"
+     }
+    ],
+    [
+     {
+      "p": 2616
+     },
+     {
+      "t": "lo xilofono"
+     }
+    ],
+    [
+     {
+      "p": 2559
+     },
+     {
+      "t": "il sassofono"
+     }
+    ],
+    [
+     {
+      "p": 2604
+     },
+     {
+      "t": "il triangolo"
+     }
+    ],
+    [
+     {
+      "p": 17214
+     },
+     {
+      "t": "il contrabbasso"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "mus-note",
+  "materia": "Musica",
+  "livello": 1,
+  "titolo": "Le sette note",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti le note in ordine, dalla più bassa alla più alta.",
+  "dati": {
+   "passi": [
+    {
+     "t": "do"
+    },
+    {
+     "t": "re"
+    },
+    {
+     "t": "mi"
+    },
+    {
+     "t": "fa"
+    },
+    {
+     "t": "sol"
+    },
+    {
+     "t": "la"
+    },
+    {
+     "t": "si"
+    }
+   ]
+  }
+ },
+ {
+  "id": "mus-famiglie",
+  "materia": "Musica",
+  "livello": 2,
+  "titolo": "Le famiglie degli strumenti",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Come si fa nascere il suono? Con le corde, con il fiato, o battendo?",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "a corde",
+     "elementi": [
+      {
+       "t": "chitarra",
+       "p": 2417
+      },
+      {
+       "t": "violino",
+       "p": 2615
+      },
+      {
+       "t": "arpa",
+       "p": 8493
+      },
+      {
+       "t": "violoncello",
+       "p": 4771
+      }
+     ]
+    },
+    {
+     "nome": "a fiato",
+     "elementi": [
+      {
+       "t": "tromba",
+       "p": 2607
+      },
+      {
+       "t": "flauto",
+       "p": 2396
+      },
+      {
+       "t": "sassofono",
+       "p": 2559
+      }
+     ]
+    },
+    {
+     "nome": "a percussione",
+     "elementi": [
+      {
+       "t": "tamburo",
+       "p": 2578
+      },
+      {
+       "t": "xilofono",
+       "p": 2616
+      },
+      {
+       "t": "triangolo",
+       "p": 2604
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "mus-acuti-gravi",
+  "materia": "Musica",
+  "livello": 2,
+  "titolo": "Suoni acuti e suoni gravi",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "palloncini",
+  "consegna": "Acuto è un suono sottile, grave è un suono profondo.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "suoni acuti",
+     "elementi": [
+      {
+       "t": "il fischietto",
+       "p": 35364
+      },
+      {
+       "t": "il canto di un uccellino",
+       "p": 2490
+      },
+      {
+       "t": "il triangolo",
+       "p": 2604
+      }
+     ]
+    },
+    {
+     "nome": "suoni gravi",
+     "elementi": [
+      {
+       "t": "il tuono",
+       "p": 11389
+      },
+      {
+       "t": "il contrabbasso",
+       "p": 17214
+      },
+      {
+       "t": "il tamburo grande",
+       "p": 2578
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "mus-forte-piano",
+  "materia": "Musica",
+  "livello": 2,
+  "titolo": "Forte o piano?",
+  "scrittura": "maiuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "In musica, «piano» vuol dire con poco volume.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "forte",
+     "elementi": [
+      {
+       "t": "il tuono"
+      },
+      {
+       "t": "un urlo"
+      },
+      {
+       "t": "la sirena dell'ambulanza"
+      }
+     ]
+    },
+    {
+     "nome": "piano",
+     "elementi": [
+      {
+       "t": "un sussurro"
+      },
+      {
+       "t": "una goccia d'acqua"
+      },
+      {
+       "t": "le foglie mosse dal vento"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "mus-domande",
+  "materia": "Musica",
+  "livello": 3,
+  "titolo": "Domande di musica",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "quiz",
+  "consegna": "Leggi la domanda e scegli la risposta giusta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Quante righe ha il pentagramma?"
+     },
+     "giusta": {
+      "t": "5"
+     },
+     "sbagliate": [
+      {
+       "t": "4"
+      },
+      {
+       "t": "7"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quante sono le note: do, re, mi, fa, sol, la, si?"
+     },
+     "giusta": {
+      "t": "7"
+     },
+     "sbagliate": [
+      {
+       "t": "5"
+      },
+      {
+       "t": "10"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Chi guida l'orchestra?",
+      "p": 11240
+     },
+     "giusta": {
+      "t": "il direttore d'orchestra"
+     },
+     "sbagliate": [
+      {
+       "t": "il pianista"
+      },
+      {
+       "t": "il cantante"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Tante persone che cantano insieme sono…",
+      "p": 2717
+     },
+     "giusta": {
+      "t": "un coro"
+     },
+     "sbagliate": [
+      {
+       "t": "un'orchestra"
+      },
+      {
+       "t": "una banda"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Tanti musicisti che suonano insieme sono…",
+      "p": 2870
+     },
+     "giusta": {
+      "t": "un'orchestra"
+     },
+     "sbagliate": [
+      {
+       "t": "un coro"
+      },
+      {
+       "t": "un duetto"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "In musica, «piano» vuol dire…"
+     },
+     "giusta": {
+      "t": "con poco volume"
+     },
+     "sbagliate": [
+      {
+       "t": "il pianoforte"
+      },
+      {
+       "t": "molto veloce"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "mus-fra-martino",
+  "materia": "Musica",
+  "titolo": "Livello 2 · Fra Martino",
+  "scrittura": "maiuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi e canta, poi rispondi alle domande.",
+  "dati": {
+   "livello": 2,
+   "poesia": true,
+   "autore": "Canzone popolare",
+   "testo": [
+    "Fra Martino, campanaro,",
+    "dormi tu? Dormi tu?",
+    "Suona le campane, suona le campane:",
+    "din, don, dan, din, don, dan."
+   ],
+   "domande": [
+    {
+     "d": "Chi è Fra Martino?",
+     "giusta": "Il campanaro.",
+     "sbagliate": [
+      "Il maestro.",
+      "Il cuoco."
+     ]
+    },
+    {
+     "d": "Che cosa fa Fra Martino?",
+     "giusta": "Dorme.",
+     "sbagliate": [
+      "Mangia.",
+      "Corre."
+     ]
+    },
+    {
+     "d": "Che cosa deve suonare?",
+     "giusta": "Le campane.",
+     "sbagliate": [
+      "La chitarra.",
+      "Il tamburo."
+     ]
+    }
+   ]
+  }
  }
 ]

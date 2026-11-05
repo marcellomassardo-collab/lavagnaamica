@@ -5,10 +5,14 @@ import { impostazioni } from "./impostazioni.js";
 
 const sintesi = window.speechSynthesis;
 let vociItaliane = [];
+let vociInglesi = [];
 let turno = 0;
+// La lingua di quello che si legge: negli esercizi di inglese le carte le legge una voce inglese.
+let linguaGioco = "it";
 
 function aggiornaVoci() {
   vociItaliane = sintesi.getVoices().filter(v => /^it(-|_|$)/i.test(v.lang));
+  vociInglesi = sintesi.getVoices().filter(v => /^en(-|_|$)/i.test(v.lang));
 }
 if (sintesi) {
   aggiornaVoci();
@@ -23,6 +27,17 @@ export function vociDelDispositivo() {
   if (sintesi && !vociItaliane.length) aggiornaVoci();   // alcuni browser le caricano dopo, senza avvisare
   return vociItaliane.slice().sort((a, b) => qualita(b) - qualita(a));
 }
+
+// A scuola si impara l'inglese britannico: a parità di qualità, prima quello.
+const qualitaInglese = v => (/natural|neural|premium|enhanced/i.test(v.name) ? 4 : 0) + (v.localService ? 0 : 3) + (/^en[-_]GB$/i.test(v.lang) ? 2 : 0);
+
+export function vociInglesiDelDispositivo() {
+  if (sintesi && !vociInglesi.length) aggiornaVoci();
+  return vociInglesi.slice().sort((a, b) => qualitaInglese(b) - qualitaInglese(a));
+}
+
+export const impostaLingua = l => { linguaGioco = l === "en" ? "en" : "it"; };
+export const linguaAttuale = () => linguaGioco;
 
 export function quandoCambianoLeVoci(fn) {
   if (sintesi && sintesi.addEventListener) sintesi.addEventListener("voiceschanged", fn);
@@ -54,16 +69,22 @@ export function perLaVoce(t) {
     .toLocaleLowerCase("it");
 }
 
-function leggi(testo) {
+// In inglese il testo resta com'è (le parole «più», «fa», «diviso» sono italiane): si tolgono solo simboli e buchi.
+const perLaVoceInglese = t => String(t).replace(/[🔊🎉]/gu, "").replace(/_{2,}|…/g, ", ").replace(/\s+/g, " ").trim();
+
+function leggi(testo, lingua) {
   const mio = ++turno;
   if (sintesi) sintesi.cancel();
+  const inglese = (lingua || linguaGioco) === "en";
   return new Promise(fine => {
-    const t = perLaVoce(testo || "");
+    const t = inglese ? perLaVoceInglese(testo || "") : perLaVoce(testo || "");
     if (!sintesi || !t) return fine();
+    const voci = inglese ? vociInglesiDelDispositivo() : vociDelDispositivo();
+    // meglio il silenzio di una voce italiana che insegna la pronuncia sbagliata
+    if (inglese && !voci.length) return fine();
     const u = new SpeechSynthesisUtterance(t);
-    const voci = vociDelDispositivo();
-    const scelta = voci.find(v => v.name === impostazioni.voceScelta) || voci[0];
-    u.lang = "it-IT";
+    const scelta = voci.find(v => v.name === (inglese ? impostazioni.voceInglese : impostazioni.voceScelta)) || voci[0];
+    u.lang = inglese ? "en-GB" : "it-IT";
     if (scelta) u.voice = scelta;
     u.rate = impostazioni.velocita;
     u.onend = u.onerror = fine;
@@ -71,8 +92,8 @@ function leggi(testo) {
   });
 }
 
-export function parla(testo) {
-  leggi(testo);
+export function parla(testo, lingua) {
+  leggi(testo, lingua);
 }
 
 // Legge e aspetta la fine della frase, per far andare la storia insieme alla voce.

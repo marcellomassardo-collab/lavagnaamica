@@ -3,7 +3,7 @@
 import { GIOCHI, TIPI, MOTIVI, MATERIE, giochiPer, consegnaDi, valida } from "./modello.js";
 import { caricaEsempi, elencoMiei, trovaMio, salvaMio, eliminaMio, inLink, daLink, scaricaFile, apriFile } from "./dati.js";
 import { impostazioni, applica, cambia, LIMITI, VELOCITA, TEMI } from "./impostazioni.js";
-import { parla, zitto, voceDisponibile, vociDelDispositivo, quandoCambianoLeVoci } from "./voce.js";
+import { parla, zitto, voceDisponibile, vociDelDispositivo, vociInglesiDelDispositivo, impostaLingua, quandoCambianoLeVoci } from "./voce.js";
 import { suonoFesta } from "./suoni.js";
 import { el, creaContesto, pulsanteVoce, avviso, finestra } from "./ui.js";
 import { vista, pagina, intestazione, quandoSiEsce } from "./pagine.js";
@@ -29,8 +29,9 @@ import * as vero from "./giochi/vero.js";
 import * as palloncini from "./giochi/palloncini.js";
 import * as quiz from "./giochi/quiz.js";
 import * as ruota from "./giochi/ruota.js";
+import * as ascolta from "./giochi/ascolta.js";
 
-const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura, brano, vero, palloncini, quiz, ruota };
+const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura, brano, vero, palloncini, quiz, ruota, ascolta };
 
 /* ---------- inizio ---------- */
 
@@ -265,7 +266,7 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
   // Le stelle (da 1 a 3) dicono com'è andata a colpo d'occhio, anche a chi non legge.
   function finito(r) {
     suonoFesta();
-    if (impostazioni.voce) setTimeout(() => parla("Ce l'hai fatta!"), 900);
+    if (impostazioni.voce) setTimeout(() => parla("Ce l'hai fatta!", "it"), 900);
     const quota = r.coppie ? r.coppie / Math.max(r.tentativi, 1) : r.giuste / Math.max(r.totale, 1);
     const stelle = quota >= (r.coppie ? 0.75 : 0.9) ? 3 : quota >= (r.coppie ? 0.5 : 0.6) ? 2 : 1;
     // per il ripasso conta la stessa misura delle stelle: tre stelle = «molto bene»
@@ -316,7 +317,7 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
   vista(el("div", { class: "gioco s-" + es.scrittura + (storia ? " con-linea" : "") },
     el("header", { class: "gioco-testa" },
       el("h1", { text: es.titolo }),
-      el("p", { class: "consegna" }, el("span", { text: consegna }), pulsanteVoce(consegna, "Ascolta la consegna")),
+      el("p", { class: "consegna" }, el("span", { text: consegna }), pulsanteVoce(consegna, "Ascolta la consegna", "it")),
       es.scopri ? el("button", { type: "button", class: "tasto-piccolo rivedi", text: "🎬 Rivedi la spiegazione", on: { click: spiega } }) : null),
     sopra || null,
     area,
@@ -330,7 +331,13 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
           "🖨", el("span", { class: "etichetta", text: "Stampa" })),
         schermo))));
   const fermaSensore = impostazioni.sensore ? avviaSensore() : null;
+  // l'inglese si legge con una voce inglese; la consegna e le frasi dell'app restano in italiano
+  impostaLingua(es.materia === "Inglese" ? "en" : "it");
+  if (es.materia === "Inglese" && impostazioni.voce && voceDisponibile) {
+    setTimeout(() => { if (!vociInglesiDelDispositivo().length) avviso("Su questo dispositivo non c'è una voce inglese: le parole non vengono lette ad alta voce."); }, 1500);
+  }
   quandoSiEsce(() => {
+    impostaLingua("it");
     if (ferma) ferma();
     if (fermaSensore) fermaSensore();
     if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
@@ -509,6 +516,26 @@ function sceltaTema() {
     tema);
 }
 
+// la voce degli esercizi di inglese
+function sceltaVoceInglese() {
+  const voce = el("select", { "aria-label": "Voce inglese" });
+  const box = el("div", { class: "numero voce-scelta" },
+    el("span", {}, el("b", { text: "La voce per l'inglese" }),
+      el("small", { text: "Legge le carte degli esercizi di inglese. Se manca, le parole inglesi non vengono lette: meglio il silenzio di una pronuncia sbagliata." })),
+    el("div", { class: "voce-comandi" }, voce,
+      el("button", { type: "button", class: "tasto-piccolo", text: "▶ Prova", on: { click: () => parla("Hello! My name is Tom. How are you?", "en") } })));
+  function riempi() {
+    const voci = vociInglesiDelDispositivo();
+    voce.replaceChildren(el("option", { value: "", text: voci.length ? "Automatica: la più naturale" : "Nessuna voce inglese" }),
+      ...voci.map(v => el("option", { value: v.name, selected: v.name === impostazioni.voceInglese, text: v.name + (v.localService ? "" : " (in rete)") })));
+  }
+  riempi();
+  quandoCambianoLeVoci(riempi);
+  [300, 1000, 2500].forEach(ms => setTimeout(() => { if (voce.options.length === 1) riempi(); }, ms));
+  voce.addEventListener("change", () => cambia("voceInglese", voce.value));
+  return box;
+}
+
 function vistaImpostazioni() {
   vista(pagina("Impostazioni",
     el("p", { text: "Valgono per questo dispositivo." }),
@@ -517,6 +544,7 @@ function vistaImpostazioni() {
         ? "Legge le carte quando le tocchi e le domande quando compaiono."
         : "Questo dispositivo non ha una voce per leggere.", voceDisponibile),
       voceDisponibile ? sceltaVoce() : null,
+      voceDisponibile ? sceltaVoceInglese() : null,
       interruttore("suoni", "Suoni", "Un suono a ogni risposta e una festa alla fine."),
       interruttore("aiuto", "Aiuto dopo un errore", "Mostra per un momento dove va la carta."),
       sceltaTema(),

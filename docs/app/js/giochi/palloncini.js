@@ -53,7 +53,7 @@ export function avvia(area, es, ctx) {
       return b;
     });
     cielo.replaceChildren(...palloni);
-    ctx.leggi("Scoppia i palloncini: " + g.nome);
+    ctx.leggi((ctx.lingua === "it" ? "Scoppia i palloncini: " : "") + g.nome);
   }
 
   giro();

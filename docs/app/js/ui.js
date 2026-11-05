@@ -1,7 +1,7 @@
 // Pezzi d'interfaccia condivisi da giochi, editor e pagine.
 
 import { impostazioni } from "./impostazioni.js";
-import { parla, parlaEAspetta, voceDisponibile } from "./voce.js";
+import { linguaAttuale, parla, parlaEAspetta, voceDisponibile } from "./voce.js";
 import { suonoGiusto, suonoRiprova } from "./suoni.js";
 
 export function el(tag, attr, ...figli) {
@@ -61,12 +61,12 @@ export function carta(e, classe, attr) {
     e.t ? el("span", { class: "carta-testo" }, due(e.t)) : null);
 }
 
-export function pulsanteVoce(testo, etichetta) {
+export function pulsanteVoce(testo, etichetta, lingua) {
   const b = el("button", { type: "button", class: "voce", "aria-label": etichetta || "Ascolta", text: "🔊" });
   if (!voceDisponibile) b.hidden = true;
   b.addEventListener("click", e => {
     e.stopPropagation();
-    parla(typeof testo === "function" ? testo() : testo);
+    parla(typeof testo === "function" ? testo() : testo, lingua);
   });
   return b;
 }
@@ -75,7 +75,10 @@ export function pulsanteVoce(testo, etichetta) {
 export function creaContesto(fine) {
   return {
     opz: impostazioni,
+    get lingua() { return linguaAttuale(); },
     leggi(testo) { if (impostazioni.voce) parla(testo); },
+    // le frasi dell'app, che restano in italiano anche negli esercizi di inglese
+    dici(testo) { if (impostazioni.voce) parla(testo, "it"); },
     // racconta una frase e aspetta che finisca (o un momento, se la voce è spenta)
     racconta(testo) {
       return impostazioni.voce && voceDisponibile ? parlaEAspetta(testo) : new Promise(r => setTimeout(r, 1200));

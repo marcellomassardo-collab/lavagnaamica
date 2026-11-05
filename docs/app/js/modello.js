@@ -25,7 +25,8 @@ export const GIOCHI = {
   vero:      { nome: "Vero o falso",       icona: "⚖️", tipi: ["coppie"],                      consegna: "Vanno insieme? Tocca Vero o Falso." },
   palloncini: { nome: "Palloncini",        icona: "🎈", tipi: ["gruppi"],                      consegna: "Scoppia solo i palloncini del gruppo giusto." },
   quiz:      { nome: "Quiz a squadre",     icona: "🏆", tipi: ["domande", "coppie", "gruppi"], consegna: "A turno ogni squadra risponde: chi indovina prende un punto." },
-  ruota:     { nome: "Ruota della fortuna", icona: "🎡", tipi: ["domande", "coppie", "gruppi"], consegna: "Gira la ruota e rispondi alla domanda che esce." }
+  ruota:     { nome: "Ruota della fortuna", icona: "🎡", tipi: ["domande", "coppie", "gruppi"], consegna: "Gira la ruota e rispondi alla domanda che esce." },
+  ascolta:   { nome: "Ascolta e tocca",    icona: "👂", tipi: ["coppie"],                      consegna: "Ascolta la parola e tocca quella giusta." }
 };
 // L'ordine conta: il primo gioco adatto a un tipo è quello con cui l'esercizio si apre.
 

@@ -1763,7 +1763,7 @@ export function spiegazione(scopri, fine) {
     Array.from(punti.children).forEach((x, j) => { x.className = j < k ? "fatto" : j === k ? "ora" : ""; });
     indietro.disabled = k === 0;
     avanti.textContent = k === passi.length - 1 ? "Inizia l'esercizio ▶" : "Avanti ▶";
-    if (impostazioni.voce) parla(p.t);
+    if (impostazioni.voce) parla(p.t, "it");
   }
   function ferma() {
     ctrl.ferma();
@@ -1776,7 +1776,7 @@ export function spiegazione(scopri, fine) {
   }
   return {
     el: el("div", { class: "spiegazione" }, scena, testo,
-      el("div", { class: "sp-comandi" }, indietro, pulsanteVoce(() => (passi[i] ? passi[i].t : ""), "Ascolta"), avanti),
+      el("div", { class: "sp-comandi" }, indietro, pulsanteVoce(() => (passi[i] ? passi[i].t : ""), "Ascolta", "it"), avanti),
       punti,
       el("button", { type: "button", class: "tasto-piccolo", text: "Salta la spiegazione ▶▶", on: { click: chiudi } })),
     parti: () => vai(0),

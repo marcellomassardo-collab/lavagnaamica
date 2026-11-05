@@ -935,3 +935,11 @@ button.logica-tessera:disabled { opacity: .4; }
   .st-logica { width: 16mm; height: 16mm; }
   .st-vuoto { width: 16mm; height: 16mm; border: 1.5px dashed #000; display: inline-grid; place-items: center; font-size: 16pt; }
 }
+
+/* ---------- tastiera e ascolta e tocca ---------- */
+.st-tastiera { display: flex; gap: 4px; justify-content: center; width: 100%; }
+.st-tasto { flex: 1 1 0; max-width: 110px; height: clamp(180px, 42vh, 340px); background: #fff; border: 3px solid #1D2329; border-radius: 0 0 12px 12px;
+  display: flex; align-items: flex-end; justify-content: center; padding-bottom: 12px; font: inherit; font-weight: 800; font-size: 1.3rem; color: #1D2329; cursor: pointer; }
+.st-tasto:active { background: #FFD23F; }
+.asc-ascolta { font-size: clamp(1.4rem, 1rem + 1.6vw, 2.4rem); padding: .5em 1.2em; }
+@media print { .st-carta img[src^="foto/"] { width: 40mm; height: 40mm; } }
