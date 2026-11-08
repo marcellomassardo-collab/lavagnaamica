@@ -144,6 +144,7 @@ function campiDiMatematica(x, ridisegna) {
     if (v === "angolo") Object.assign(x, { a: 45, giro: 0 });
     if (v === "simmetria") Object.assign(x, { celle: [[1, 3], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3], [4, 3]] });
     if (v === "perimetro") Object.assign(x, { a: 5, b: 3 });
+    if (v === "divisione") Object.assign(x, { a: 72, b: 3 });
     if (v === "barre") Object.assign(x, { schema: "parte", a: 15, b: 6, testo: ["", "", ""], risposta: "" });
     if (v === "veloce") { delete x.a; Object.assign(x, { fatto: "amici-10", quante: 10, tempo: 0 }); }
     if (v === "logica") { delete x.a; Object.assign(x, { prova: "sequenza", per: "forma", schema: "AB" }); }
@@ -187,6 +188,7 @@ function campiDiMatematica(x, ridisegna) {
       menu(x.per, { forma: "Cambia la forma", colore: "Cambia il colore" }, v => { x.per = v; }, "Che cosa cambia"),
       menu(x.schema, { AB: "A B A B", AAB: "A A B", ABB: "A B B", ABC: "A B C", AABB: "A A B B" }, v => { x.schema = v; }, "Il motivo della sequenza"));
   }
+  if (x.genere === "divisione") campi.push(a("Dividendo (fino a 999)"), b("Divisore (da 2 a 9)"));
   if (x.genere === "perimetro") campi.push(a("Base (quadretti, fino a 10)"), b("Altezza (quadretti, fino a 6)"));
   if (x.genere === "simmetria") {
     if (!Array.isArray(x.celle)) x.celle = [];

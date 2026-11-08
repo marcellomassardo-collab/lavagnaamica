@@ -1693,7 +1693,135 @@ const EMOZIONI = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, emozioni: EMOZIONI, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- la divisione: parti uguali ---------- */
+// Le caramelle si danno a turno, una per piatto, finché finiscono: si vede che le parti vengono uguali.
+const COLORI_CARAMELLE = ["#E0332B", "#2F6FD6", "#2E9E5B", "#F2A300", "#8E44AD", "#E4609B"];
+function caramella(colore) {
+  return s("g", { class: "sp-blocco" },
+    s("path", { d: "M-21,-9 L-11,0 L-21,9 Z M21,-9 L11,0 L21,9 Z", fill: colore, stroke: INCHIOSTRO, "stroke-width": 1.5 }),
+    s("circle", { r: 12, fill: colore, stroke: INCHIOSTRO, "stroke-width": 2 }),
+    s("circle", { cx: -4, cy: -4, r: 3, fill: "#fff", "fill-opacity": 0.7 }));
+}
+const DIVISIONE = {
+  passi: [
+    "Dividere vuol dire fare parti uguali. Ci sono 12 caramelle e 3 bambini.",
+    "Si danno le caramelle a turno: una a te, una a te, una a te… finché finiscono.",
+    "Ognuno ha 4 caramelle: le parti sono tutte uguali. 12 diviso 3 fa 4: 12 : 3 = 4.",
+    "Si può dividere anche così: 12 caramelle in sacchetti da 4. Quanti sacchetti servono? 3. Infatti 12 : 4 = 3.",
+    "La divisione è il contrario della moltiplicazione: 3 file da 4 fanno 12, quindi 12 : 3 = 4 e 12 : 4 = 3.",
+    "A volte qualcosa avanza. 13 caramelle tra 3 bambini: 4 a testa, e ne avanza 1. Quella che avanza si chiama resto.",
+    "I nomi: 12 è il dividendo, 3 è il divisore, 4 è il quoziente. E quello che avanza è il resto."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const PX = [200, 400, 600];
+    const piatti = s("g", { class: "sp-sfuma" }, PX.map(x => s("ellipse", { cx: x, cy: 285, rx: 90, ry: 26, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 3 })));
+    const bimbi = PX.map((x, i) => { const b = omino(COLORI_OMINI[i]); mettiA(b, x, 392); return b; });
+    const caramelle = Array.from({ length: 13 }, (_, i) => caramella(COLORI_CARAMELLE[i % 6]));
+    const mucchio = i => [310 + (i % 6) * 36, 60 + Math.floor(i / 6) * 34];
+    const nelPiatto = i => [PX[i % 3] - 54 + Math.floor(i / 3) * 36, 281];
+    const sacchetto = i => [162 + Math.floor(i / 4) * 220 + (i % 2) * 36, 212 + Math.floor((i % 4) / 2) * 38];
+    const fila = i => [310 + (i % 4) * 60, 120 + Math.floor(i / 4) * 66];
+    caramelle.forEach((c, i) => { mettiA(c, ...mucchio(i)); vedi(c, i < 12); });
+    const sacchi = nascosto(s("g", {}, [0, 1, 2].map(k => s("rect", { x: 130 + k * 220, y: 178, width: 104, height: 112, rx: 24, fill: "none", stroke: "#8A6D00", "stroke-width": 4, "stroke-dasharray": "10 6" }))));
+    const cerchioResto = nascosto(s("circle", { cx: 400, cy: 110, r: 30, fill: "none", stroke: "#C0282B", "stroke-width": 4, "stroke-dasharray": "8 6" }));
+    const scritte = { 2: nascosto(etichetta(400, 170, "12 : 3 = 4", 40)), 3: nascosto(etichetta(400, 120, "12 : 4 = 3 sacchetti", 38)),
+      4: nascosto(etichetta(400, 370, "3 × 4 = 12   →   12 : 3 = 4", 34)), 5: nascosto(etichetta(400, 195, "13 : 3 = 4   resto 1", 38)) };
+    const grande = (x, t) => scritta(x, 250, t, { "font-size": 92, "font-weight": 800, fill: INCHIOSTRO });
+    const nomi = nascosto(s("g", {}, grande(240, "12"), grande(330, ":"), grande(400, "3"), grande(470, "="), grande(550, "4"),
+      etichetta(240, 330, "dividendo", 28), etichetta(400, 140, "divisore", 28), etichetta(550, 330, "quoziente", 28),
+      s("path", { d: "M240,300 L240,272 M400,152 L400,170 M550,300 L550,272", stroke: "#C0282B", "stroke-width": 4, "stroke-linecap": "round" }),
+      etichetta(400, 410, "e quello che avanza è il resto", 26)));
+    svg.append(piatti, ...bimbi, sacchi, cerchioResto, ...caramelle, ...Object.values(scritte), nomi);
+    return {
+      vai(k) {
+        const conPiatti = k <= 2 || k === 5;
+        vedi(piatti, conPiatti);
+        bimbi.forEach(b => vedi(b, conPiatti));
+        vedi(sacchi, k === 3);
+        vedi(cerchioResto, k === 5);
+        caramelle.forEach((c, i) => {
+          const ultima = i === 12;
+          vedi(c, k < 6 && (!ultima || k === 5));
+          // nei passi 1 e 5 partono una alla volta, a turno tra i piatti
+          c.style.transitionDelay = (k === 1 || k === 5) && !ultima ? (i * 0.3) + "s" : "0s";
+          mettiA(c, ...(k === 0 ? mucchio(i) : k === 3 ? sacchetto(i) : k === 4 ? fila(i) : ultima ? [400, 110] : nelPiatto(i)));
+        });
+        Object.entries(scritte).forEach(([n, t]) => vedi(t, Number(n) === k));
+        vedi(nomi, k === 6);
+      },
+      ferma() {}
+    };
+  }
+};
+
+/* ---------- la divisione in colonna, con i blocchi ---------- */
+// 72 : 3 tra tre amici: prima le decine (le barrette), poi la decina che avanza si cambia in 10 unità.
+// A destra la colonna si scrive un passo alla volta, come sul quaderno.
+const DIVISIONE_COLONNA = {
+  passi: [
+    "Facciamo 72 : 3 in colonna. Il 72 è fatto di 7 decine, le barrette, e di 2 unità, i cubetti. Lo dividiamo tra 3 amici.",
+    "Si comincia dalle decine: 7 decine tra 3 amici. Ne toccano 2 a testa, perché 2 × 3 = 6. Ne avanza 1.",
+    "La decina che avanza non si può dividere tra 3: si cambia in 10 unità.",
+    "Ora le unità sono 10 + 2 = 12. Nella colonna si abbassa il 2 accanto all'1: viene 12.",
+    "12 unità tra 3 amici: 4 a testa, perché 4 × 3 = 12. Non avanza niente: il resto è 0.",
+    "Ognuno ha 2 decine e 4 unità: 24. Quindi 72 : 3 = 24. La prova: 24 × 3 = 72."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }), s("line", { x1: 485, x2: 485, y1: 20, y2: 430, stroke: "#DDD5C3", "stroke-width": 3 }));
+    const L = 11, PX = [90, 240, 390];
+    const piatti = PX.map(x => s("ellipse", { cx: x, cy: 405, rx: 66, ry: 18, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 3 }));
+    svg.append(...piatti, ...PX.map((x, i) => etichetta(x, 444, ["1° amico", "2° amico", "3° amico"][i], 18)));
+    const barrette = Array.from({ length: 7 }, (_, i) => { const g = s("g", { class: "sp-blocco" }, barra(L, true)); mettiA(g, 40 + i * 22, 30); return g; });
+    const cubetti = Array.from({ length: 12 }, (_, j) => { const g = s("g", { class: "sp-blocco" }, cubo(L)); return g; });
+    // i primi 10 cubetti nascono dal cambio, gli ultimi 2 sono le unità del 72
+    const sopra = j => (j < 10 ? [196 + (j % 2) * 15, 40 + Math.floor(j / 2) * 15] : [250 + (j - 10) * 16, 129]);
+    const insieme = j => [250 + (j % 4) * 16, 60 + Math.floor(j / 4) * 16];
+    const nelPiattoU = j => { const posto = Math.floor(j / 3); return [PX[j % 3] + 6 + (posto % 2) * 15, 360 + Math.floor(posto / 2) * 15]; };
+    const nelPiattoD = i => [PX[i % 3] - 50 + Math.floor(i / 3) * 18, 285];
+    cubetti.forEach((g, j) => { mettiA(g, ...sopra(j)); vedi(g, j >= 10); });
+    const cornice = nascosto(s("rect", { x: 166, y: 24, width: 23, height: 122, rx: 4, fill: "none", stroke: "#C0282B", "stroke-width": 3 }));
+    const dida = ["7 decine e 2 unità", "2 decine a testa, ne avanza 1", "1 decina = 10 unità", "10 + 2 = 12 unità", "4 unità a testa", "2 decine e 4 unità = 24"]
+      .map(t => nascosto(etichetta(240, 220, t, 24)));
+    // la colonna scritta
+    const cif = (x, y, t, colore) => scritta(x, y, t, { "font-size": 44, "font-weight": 800, fill: colore || INCHIOSTRO });
+    const luce = (x, y, w) => nascosto(s("rect", { x, y, width: w, height: 50, rx: 8, fill: "#FFE08A" }));
+    const luce7 = luce(540, 52, 42), luce12 = luce(540, 165, 82);
+    svg.append(luce7, luce12, cif(560, 90, "7"), cif(600, 90, "2"), s("line", { x1: 628, x2: 628, y1: 48, y2: 330, stroke: INCHIOSTRO, "stroke-width": 4 }),
+      cif(670, 90, "3"), s("line", { x1: 628, x2: 770, y1: 104, y2: 104, stroke: INCHIOSTRO, "stroke-width": 4 }));
+    const passo1 = nascosto(s("g", {}, cif(670, 150, "2", "#1E6B52"), cif(560, 150, "6"), s("line", { x1: 536, x2: 616, y1: 162, y2: 162, stroke: INCHIOSTRO, "stroke-width": 3 }), cif(560, 205, "1", "#C0282B")));
+    const abbasso = nascosto(s("g", {}, cif(600, 205, "2", "#C0282B"), s("path", { d: "M600,102 L600,166 M592,156 L600,168 L608,156", fill: "none", stroke: "#C0282B", "stroke-width": 3, "stroke-dasharray": "6 5" })));
+    const passo4 = nascosto(s("g", {}, cif(710, 150, "4", "#1E6B52"), cif(560, 260, "1"), cif(600, 260, "2"), s("line", { x1: 536, x2: 616, y1: 272, y2: 272, stroke: INCHIOSTRO, "stroke-width": 3 }), cif(600, 315, "0")));
+    const fine = nascosto(s("g", {}, etichetta(640, 385, "72 : 3 = 24", 34), etichetta(640, 425, "prova: 24 × 3 = 72", 22)));
+    svg.append(...barrette, ...cubetti, cornice, ...dida, passo1, abbasso, passo4, fine);
+    return {
+      vai(k) {
+        barrette.forEach((g, i) => {
+          // le prime 6 vanno nei piatti, 2 a testa; la settima avanza e poi diventa 10 cubetti
+          g.style.transitionDelay = k === 1 && i < 6 ? (i * 0.3) + "s" : "0s";
+          mettiA(g, ...(k >= 1 && i < 6 ? nelPiattoD(i) : [40 + i * 22, 30]));
+          vedi(g, i < 6 || k <= 1);
+        });
+        cubetti.forEach((g, j) => {
+          g.style.transitionDelay = k === 4 ? (j * 0.22) + "s" : k === 2 && j < 10 ? (0.3 + j * 0.05) + "s" : "0s";
+          mettiA(g, ...(k <= 2 ? sopra(j) : k === 3 ? insieme(j) : nelPiattoU(j)));
+          vedi(g, j >= 10 || k >= 2);
+        });
+        vedi(cornice, k === 1 || k === 2);
+        dida.forEach((d, i) => vedi(d, i === k));
+        vedi(luce7, k === 1);
+        vedi(luce12, k === 3 || k === 4);
+        vedi(passo1, k >= 1);
+        vedi(abbasso, k >= 3);
+        vedi(passo4, k >= 4);
+        vedi(fine, k === 5);
+      },
+      ferma() {}
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

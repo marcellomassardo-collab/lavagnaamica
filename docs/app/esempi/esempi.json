@@ -11822,6 +11822,9 @@
      "b": 3
     }
    ]
+  },
+  "scopri": {
+   "animazione": "divisione"
   }
  },
  {
@@ -11925,6 +11928,201 @@
      "b": 6
     }
    ]
+  },
+  "scopri": {
+   "animazione": "divisione"
+  }
+ },
+ {
+  "id": "divisioni-con-resto",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Divisioni con il resto",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Dividi in colonna: a volte qualcosa avanza, ed è il resto.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "divisione",
+     "a": 13,
+     "b": 3
+    },
+    {
+     "genere": "divisione",
+     "a": 17,
+     "b": 5
+    },
+    {
+     "genere": "divisione",
+     "a": 22,
+     "b": 4
+    },
+    {
+     "genere": "divisione",
+     "a": 29,
+     "b": 6
+    },
+    {
+     "genere": "divisione",
+     "a": 35,
+     "b": 8
+    },
+    {
+     "genere": "divisione",
+     "a": 47,
+     "b": 9
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "divisione"
+  }
+ },
+ {
+  "id": "divisioni-in-colonna",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Divisioni in colonna",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Dividi in colonna, un passo alla volta: prima le decine, poi le unità.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "divisione",
+     "a": 84,
+     "b": 4
+    },
+    {
+     "genere": "divisione",
+     "a": 96,
+     "b": 3
+    },
+    {
+     "genere": "divisione",
+     "a": 72,
+     "b": 3
+    },
+    {
+     "genere": "divisione",
+     "a": 65,
+     "b": 5
+    },
+    {
+     "genere": "divisione",
+     "a": 92,
+     "b": 4
+    },
+    {
+     "genere": "divisione",
+     "a": 78,
+     "b": 6
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "divisione-colonna"
+  }
+ },
+ {
+  "id": "divisioni-in-colonna-resto",
+  "materia": "Matematica",
+  "livello": 4,
+  "titolo": "Divisioni in colonna con il resto",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Dividi in colonna: alla fine guarda che cosa avanza.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "divisione",
+     "a": 85,
+     "b": 4
+    },
+    {
+     "genere": "divisione",
+     "a": 97,
+     "b": 3
+    },
+    {
+     "genere": "divisione",
+     "a": 75,
+     "b": 2
+    },
+    {
+     "genere": "divisione",
+     "a": 58,
+     "b": 5
+    },
+    {
+     "genere": "divisione",
+     "a": 89,
+     "b": 6
+    },
+    {
+     "genere": "divisione",
+     "a": 67,
+     "b": 8
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "divisione-colonna"
+  }
+ },
+ {
+  "id": "divisioni-in-colonna-centinaia",
+  "materia": "Matematica",
+  "livello": 4,
+  "titolo": "Divisioni in colonna con le centinaia",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Dividi in colonna: se all'inizio il divisore non ci sta, prendi due cifre.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "divisione",
+     "a": 368,
+     "b": 2
+    },
+    {
+     "genere": "divisione",
+     "a": 525,
+     "b": 5
+    },
+    {
+     "genere": "divisione",
+     "a": 936,
+     "b": 3
+    },
+    {
+     "genere": "divisione",
+     "a": 248,
+     "b": 4
+    },
+    {
+     "genere": "divisione",
+     "a": 714,
+     "b": 7
+    },
+    {
+     "genere": "divisione",
+     "a": 845,
+     "b": 6
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "divisione-colonna"
   }
  },
  {
@@ -12274,6 +12472,9 @@
      "risposta": "FA 3 MAZZI."
     }
    ]
+  },
+  "scopri": {
+   "animazione": "divisione"
   }
  },
  {

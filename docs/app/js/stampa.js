@@ -178,6 +178,7 @@ function matematica(x, oggetto) {
     case "linee": parti.push(lineeStampa(x)); chiede("Che cos'è? " + riga + riga); break;
     case "angolo": parti.push(angoloStampa(x)); chiede("☐ acuto   ☐ retto   ☐ ottuso   ☐ piatto"); break;
     case "simmetria": parti.push(quadrettiStampa(8, 6, x.celle, 4)); chiede("Colora a destra la parte simmetrica."); break;
+    case "divisione": conto(x.a + " : " + x.b + " = ___   resto ___"); parti.push(el("div", { class: "st-spazio" })); break;
     case "perimetro": parti.push(quadrettiStampa(x.a + 2, x.b + 2, null, 0, [x.a, x.b])); chiede("Perimetro = ___ + ___ + ___ + ___ = " + riga); break;
     case "veloce": parti.push(el("ol", { class: "st-conti" }, Array.from({ length: x.quante }, () => el("li", { text: CONTI[x.fatto](x) })))); break;
     case "logica": {

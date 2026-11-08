@@ -1270,8 +1270,84 @@ export function avvia(area, es, ctx) {
     await avanti([el("p", { class: "mat-consiglio", text: "💡 Il motivo si ripete: " + x.schema.split("").join(" ") + ", " + x.schema.split("").join(" ") + "…" })]);
   }
 
+  /* ---------- la divisione in colonna ---------- */
+  // Il metodo del quaderno: quante volte il divisore ci sta, il prodotto sotto, la sottrazione, poi si abbassa
+  // la cifra dopo. Se all'inizio il divisore non ci sta, si prendono due cifre. Si arriva anche al resto.
+  const nel = n => (n === 0 ? "nello 0" : /^8/.test(String(n)) || n === 11 ? "nell'" + n : "nel " + n);
+  function opzioniVolte(q) {
+    const scelte = [q];
+    [q + 1, q - 1, q + 2].forEach(v => { if (v >= 0 && !scelte.includes(v) && scelte.length < ctx.opz.risposte) scelte.push(v); });
+    return mescola(scelte.map(String));
+  }
+  async function divisione(x) {
+    const cifre = String(x.a).split("").map(Number), n = cifre.length, b = x.b;
+    const righe = [cifre.map(String)];
+    const linee = new Set();
+    const quoziente = [];
+    let accese = [];
+    const foglio = el("div", { class: "dc" });
+    function disegna() {
+      const sx = el("div", { class: "dc-sx", style: "--colonne:" + n });
+      righe.forEach((r, ri) => r.forEach((c, ci) => sx.append(el("span", {
+        class: "dc-cella" + (linee.has(ri) ? " dc-linea" : "") + (accese.some(([ra, ca]) => ra === ri && ca === ci) ? " dc-accesa" : ""), text: c || "" }))));
+      foglio.replaceChildren(sx, el("div", { class: "dc-dx" }, el("span", { class: "dc-divisore", text: String(b) }), el("span", { class: "dc-quoziente", text: quoziente.join("") })));
+    }
+    const nuovaRiga = () => righe.push(Array(n).fill("")) - 1;
+    const scrivi = (ri, fine, numero) => { const t = String(numero); for (let k = 0; k < t.length; k++) righe[ri][fine - t.length + 1 + k] = t[k]; };
+    const luce = (ri, da, a) => { accese = []; for (let c = da; c <= a; c++) accese.push([ri, c]); };
+    scena.replaceChildren(foglio);
+    testo.replaceChildren(el("p", {}, el("span", { text: x.a + " : " + b + " in colonna, un passo alla volta." })));
+    let pos = 0, cur = cifre[0], riga = 0, inizio = 0;
+    luce(0, 0, 0);
+    disegna();
+    if (cur < b) {
+      await chiedi("Il " + b + " ci sta " + nel(cur) + "?", ["Sì", "No"], "No");
+      pos = 1;
+      cur = cifre[0] * 10 + cifre[1];
+      luce(0, 0, 1);
+      disegna();
+      pannello.replaceChildren(el("p", { class: "mat-chiede" }, el("span", { text: "Allora si prendono due cifre: " + cur + "." })));
+      ctx.leggi("Allora si prendono due cifre: " + cur);
+      await aspetta(1600);
+    }
+    let resto = 0;
+    for (;;) {
+      if (fermo) return;
+      const q = Math.floor(cur / b);
+      await chiedi("Quante volte il " + b + " sta " + nel(cur) + "?", opzioniVolte(q), String(q));
+      quoziente.push(q);
+      disegna();
+      const p = q * b;
+      await chiedi(q + " × " + b + " = ?", opzioniNumeri(p, [p + b, Math.max(0, p - b)]), String(p));
+      const rp = nuovaRiga();
+      scrivi(rp, pos, p);
+      linee.add(rp);
+      luce(rp, pos - String(p).length + 1, pos);
+      disegna();
+      const r = cur - p;
+      await chiedi(cur + " − " + p + " = ?", opzioniNumeri(r, [r + 1, r + b]), String(r));
+      riga = nuovaRiga();
+      scrivi(riga, pos, r);
+      inizio = pos - String(r).length + 1;
+      if (pos === n - 1) { resto = r; luce(riga, inizio, pos); disegna(); break; }
+      // si abbassa la cifra dopo, accanto al resto
+      pos++;
+      righe[riga][pos] = String(cifre[pos]);
+      cur = r * 10 + cifre[pos];
+      luce(riga, inizio, pos);
+      disegna();
+      const detto = "Si abbassa il " + cifre[pos] + ": ora c'è " + cur + ".";
+      pannello.replaceChildren(el("p", { class: "mat-chiede" }, el("span", { text: detto })));
+      ctx.leggi(detto);
+      await aspetta(1600);
+    }
+    const Q = Math.floor(x.a / b);
+    await avanti([uguale(x.a + " : " + b + " = " + Q + (resto ? " resto " + resto : "")),
+      el("p", { class: "mat-consiglio", text: "💡 La prova: " + Q + " × " + b + (resto ? " + " + resto : "") + " = " + x.a + "." })]);
+  }
+
   const GENERI = { conta, confronta, "prima-dopo": primaDopo, decine: decineUnita, operazione, colonna, proprieta, problema, retta, blocchi, frazione,
-    linee, angolo, simmetria, perimetro, barre, veloce, logica };
+    linee, angolo, simmetria, perimetro, barre, veloce, logica, divisione };
 
   (async () => {
     for (n = 0; n < scelti.length; n++) {

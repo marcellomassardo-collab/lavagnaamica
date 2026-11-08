@@ -943,3 +943,13 @@ button.logica-tessera:disabled { opacity: .4; }
 .st-tasto:active { background: #FFD23F; }
 .asc-ascolta { font-size: clamp(1.4rem, 1rem + 1.6vw, 2.4rem); padding: .5em 1.2em; }
 @media print { .st-carta img[src^="foto/"] { width: 40mm; height: 40mm; } }
+
+/* ---------- divisione in colonna ---------- */
+.dc { display: flex; align-items: flex-start; font-size: clamp(2rem, 1.3rem + 2.6vw, 3.6rem); font-weight: 800; font-variant-numeric: tabular-nums; color: #1D2329; }
+.dc-sx { display: grid; grid-template-columns: repeat(var(--colonne), .9em); padding-right: .25em; border-right: 4px solid currentColor; }
+.dc-cella { height: 1.25em; line-height: 1.25em; text-align: center; border-radius: 6px; transition: background .3s; }
+.dc-linea { border-bottom: 4px solid currentColor; border-radius: 0; }
+.dc-accesa { background: #FFE08A; }
+.dc-dx { display: grid; min-width: 2.2em; }
+.dc-divisore { padding: 0 .3em; height: 1.25em; line-height: 1.25em; border-bottom: 4px solid currentColor; }
+.dc-quoziente { padding: 0 .3em; height: 1.25em; line-height: 1.25em; color: #1E6B52; }

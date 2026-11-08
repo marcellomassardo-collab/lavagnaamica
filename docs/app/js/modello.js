@@ -65,7 +65,9 @@ export const ANIMAZIONI = {
   simmetria: "La simmetria",
   perimetro: "Il perimetro",
   barre: "I problemi con le barre",
-  emozioni: "Le emozioni e come stare meglio"
+  emozioni: "Le emozioni e come stare meglio",
+  divisione: "Che cos'è la divisione",
+  "divisione-colonna": "La divisione in colonna"
 };
 
 export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Educazione affettiva", "Inglese", "Arte e immagine", "Musica", "Altro"];
@@ -280,6 +282,7 @@ export const GENERI = {
   perimetro:    { nome: "Perimetro",             spiega: "Un rettangolo sul quaderno a quadretti: quanto misura il contorno? Alla fine si conta il giro insieme." },
   barre:        { nome: "Problema con le barre", spiega: "Si legge il problema, si sceglie il disegno a barre che lo racconta, poi l'operazione e il risultato." },
   veloce:       { nome: "Calcolo veloce",        spiega: "Un giro di conti da imparare a memoria, uno dopo l'altro. Il tempo c'è solo se lo metti tu." },
+  divisione:    { nome: "Divisione in colonna",  spiega: "La divisione in colonna, un passo alla volta: quante volte ci sta, il prodotto sotto, il resto, poi si abbassa la cifra dopo. Anche con il resto." },
   logica:       { nome: "Logica senza parole",   spiega: "Figure e colori: che cosa viene dopo nella sequenza, oppure quale non c'entra. Non serve leggere." }
 };
 
@@ -478,6 +481,10 @@ function esercizioDiMatematica(x, i) {
     if (!m.testo.length) errore(inizio + "manca il testo del problema.");
     const risposta = testo(x.risposta, 200);
     if (risposta) m.risposta = risposta;
+  }
+  if (x.genere === "divisione") {
+    if (!(Number.isInteger(a) && Number.isInteger(b) && b >= 2 && b <= 9 && a >= b && a <= 999)) errore(inizio + "il dividendo va da 2 a 999, il divisore da 2 a 9 (e non più grande del dividendo).");
+    m.b = b;
   }
   if (x.genere === "veloce") {
     delete m.a;
