@@ -1346,8 +1346,298 @@ export function avvia(area, es, ctx) {
       el("p", { class: "mat-consiglio", text: "💡 La prova: " + Q + " × " + b + (resto ? " + " + resto : "") + " = " + x.a + "." })]);
   }
 
+  /* ---------- la moltiplicazione in colonna ---------- */
+  // Dalle unità verso sinistra: il prodotto, il riporto scritto piccolo sopra, poi il riporto aggiunto.
+  // Con il secondo fattore di due cifre: la seconda riga comincia con uno 0, poi si sommano le righe.
+  async function moltiplica(x) {
+    const A = String(x.a), B = String(x.b), r = x.a * x.b;
+    const W = Math.max(String(r).length, A.length, B.length + 1) + 1;
+    const vuota = () => Array(W).fill("");
+    const righe = [];
+    const linee = new Set(), zeri = new Set();
+    let accese = [];
+    const metti = (riga, fine, testoNumero) => { const t = String(testoNumero); for (let k = 0; k < t.length; k++) riga[fine - t.length + 1 + k] = t[k]; };
+    const riporti = vuota();
+    const ra = vuota(); metti(ra, W - 1, A);
+    const rb = vuota(); metti(rb, W - 1, B); rb[W - 1 - B.length] = "×";
+    righe.push(riporti, ra, rb);
+    linee.add(2);
+    const foglio = el("div", { class: "mc", style: "--colonne:" + W });
+    function disegna() {
+      foglio.replaceChildren(...righe.flatMap((riga, ri) => riga.map((c, ci) => el("span", {
+        class: "mc-cella" + (ri === 0 ? " mc-riporto" : "") + (linee.has(ri) ? " dc-linea" : "") + (zeri.has(ri + ":" + ci) ? " mc-zero" : "") +
+          (accese.some(([a2, c2]) => a2 === ri && c2 === ci) ? " dc-accesa" : ""), text: c }))));
+    }
+    scena.replaceChildren(foglio);
+    testo.replaceChildren(el("p", {}, el("span", { text: x.a + " × " + x.b + " in colonna: si comincia dalle unità." })));
+    disegna();
+    const parziali = [];
+    for (let j = 0; j < B.length; j++) {
+      if (fermo) return;
+      const d = Number(B[B.length - 1 - j]);
+      const riga = vuota();
+      righe.push(riga);
+      const ri = righe.length - 1;
+      riporti.fill("");
+      if (j > 0) {
+        // si moltiplica per le decine: al posto delle unità si scrive uno 0
+        riga[W - 1] = "0";
+        zeri.add(ri + ":" + (W - 1));
+        disegna();
+        const detto = "Ora si moltiplica per " + d + " decine: al posto delle unità si scrive uno 0.";
+        pannello.replaceChildren(el("p", { class: "mat-chiede" }, el("span", { text: detto })));
+        ctx.leggi(detto);
+        await aspetta(2000);
+      }
+      let riporto = 0;
+      for (let k = 0; k < A.length; k++) {
+        if (fermo) return;
+        const ca = W - 1 - k, cifra = Number(A[A.length - 1 - k]);
+        accese = [[1, ca], [2, W - 1 - j]];
+        disegna();
+        const p = d * cifra;
+        await chiedi(d + " × " + cifra + " = ?", opzioniNumeri(p, [p + d, Math.max(0, p - d), p + 10]), String(p));
+        let tot = p;
+        if (riporto) {
+          tot = p + riporto;
+          accese = [[0, ca]];
+          disegna();
+          await chiedi(p + " + " + riporto + " di riporto = ?", opzioniNumeri(tot, [p, tot + 1]), String(tot));
+        }
+        const colonna = ca - j;
+        if (k === A.length - 1) { metti(riga, colonna, tot); riporto = 0; }
+        else {
+          riga[colonna] = String(tot % 10);
+          riporto = Math.floor(tot / 10);
+          if (riporto) {
+            riporti[ca - 1] = String(riporto);
+            const detto = "Scrivo " + (tot % 10) + " e riporto " + riporto + ".";
+            pannello.replaceChildren(el("p", { class: "mat-chiede" }, el("span", { text: detto })));
+            ctx.leggi(detto);
+          }
+        }
+        accese = [];
+        disegna();
+        if (riporto) await aspetta(1500);
+      }
+      parziali.push(x.a * d * (j ? 10 : 1));
+    }
+    riporti.fill("");
+    if (B.length > 1) {
+      linee.add(righe.length - 1);
+      const somma = vuota();
+      righe.push(somma);
+      disegna();
+      await chiedi("Ora si sommano le due righe: " + parziali.join(" + ") + " = ?", opzioniNumeri(r, [r + 10, r - 10, parziali[0]]), String(r));
+      metti(somma, W - 1, r);
+      disegna();
+    }
+    await avanti([uguale(x.a + " × " + x.b + " = " + r), el("p", { class: "mat-consiglio", text: "💡 " + (B.length === 1
+      ? "A pezzi: " + x.a + " × " + x.b + " = " + A.split("").map((c, i) => c + "0".repeat(A.length - 1 - i)).filter(v => Number(v) > 0).map(v => v + " × " + x.b).join(" + ") + " = " + r + "."
+      : x.a + " × " + x.b + " = " + x.a + " × " + B[1] + " + " + x.a + " × " + B[0] + "0 = " + parziali.join(" + ") + " = " + r + ".") })]);
+  }
+
+  /* ---------- fare 10: la «ciliegina» ---------- */
+  // Due cornici da 10. Nell'addizione si riempie prima la cornice (il secondo numero si spezza in due);
+  // nella sottrazione si scende prima a 10. Sotto, la ciliegina: un numero che si divide in due.
+  function cornici10(rossi) {
+    const caselle = [[], []];
+    const vista = el("div", { class: "f10" }, [0, 1].map(c => el("div", { class: "f10-cornice" }, Array.from({ length: 10 }, (_, i) => {
+      const cella = el("span", { class: "f10-cella" });
+      caselle[c].push(cella);
+      const n = c * 10 + i;
+      if (n < rossi) cella.append(el("i", { class: "f10-pallino rosso" }));
+      return cella;
+    }))));
+    return { vista, caselle };
+  }
+  function ciliegia(tutto, sotto) {
+    const svg = svgEl("svg", { viewBox: sotto ? "-45 0 260 160" : "0 0 170 130", class: "ciliegia" + (sotto ? " con-scritte" : "") });
+    const cerchio = (cx, cy) => {
+      const t = svgEl("text", { x: cx, y: cy + 10, "text-anchor": "middle", "font-size": 30, "font-weight": 800, fill: NERO });
+      svg.append(svgEl("circle", { cx, cy, r: 24, fill: "#fff", stroke: NERO, "stroke-width": 3 }), t);
+      return t;
+    };
+    svg.append(svgEl("path", { d: "M85,46 L42,84 M85,46 L128,84", stroke: "#2E9E5B", "stroke-width": 5, fill: "none" }));
+    const su = cerchio(85, 26), sx = cerchio(42, 102), dx = cerchio(128, 102);
+    su.textContent = String(tutto);
+    sx.textContent = dx.textContent = "?";
+    (sotto || []).forEach((t, i) => {
+      const n = svgEl("text", { x: i ? 152 : 18, y: 153, "text-anchor": "middle", "font-size": 17, "font-weight": 700, fill: "#4A5560" });
+      n.textContent = t;
+      svg.append(n);
+    });
+    return { svg, sx, dx };
+  }
+  async function fai10(x) {
+    const somma = x.op !== "-";
+    const { vista, caselle } = cornici10(x.a);
+    const pezzo1 = somma ? 10 - x.a : x.a - 10, pezzo2 = x.b - pezzo1;
+    const ris = somma ? x.a + x.b : x.a - x.b;
+    const cil = ciliegia(x.b, somma ? ["per fare 10", "rimangono"] : ["per fare 10", "mancano"]);
+    scena.replaceChildren(el("div", { class: "f10-scena" }, vista, cil.svg));
+    testo.replaceChildren(el("p", {}, el("span", { text: x.a + (somma ? " + " : " − ") + x.b + ": passiamo dal 10!" })));
+    if (somma) {
+      // i blu del secondo numero aspettano nella seconda cornice
+      const blu = Array.from({ length: x.b }, (_, i) => { const p = el("i", { class: "f10-pallino blu" }); caselle[1][i].append(p); return p; });
+      caselle[0].slice(x.a).forEach(c => c.classList.add("f10-manca"));
+      await chiedi("Quante ne mancano a " + x.a + " per fare 10?", opzioniNumeri(pezzo1, [pezzo2]), String(pezzo1));
+      cil.sx.textContent = String(pezzo1);
+      await chiedi("Dal " + x.b + " ne prendi " + pezzo1 + " per fare 10: quante unità rimangono?", opzioniNumeri(pezzo2, [pezzo1]), String(pezzo2));
+      cil.dx.textContent = String(pezzo2);
+      // i primi blu volano a riempire la prima cornice
+      await riordina(blu, () => {
+        blu.slice(0, pezzo1).forEach((p, i) => caselle[0][x.a + i].append(p));
+        blu.slice(pezzo1).forEach((p, i) => caselle[1][i].append(p));
+      });
+      caselle[0].forEach(c => c.classList.remove("f10-manca"));
+      await aspetta(500);
+      await chiedi("10 + " + pezzo2 + " = ?", opzioniNumeri(ris, [ris + 10]), String(ris));
+      await avanti([uguale(x.a + " + " + x.b + " = " + x.a + " + " + pezzo1 + " + " + pezzo2 + " = 10 + " + pezzo2 + " = " + ris),
+        el("p", { class: "mat-consiglio", text: "💡 Prima si arriva a 10, poi si aggiunge quello che resta." })]);
+    } else {
+      // tutti rossi: 10 nella prima cornice, il resto nella seconda; si tolgono prima quelli della seconda
+      const tutti = caselle.flat().map(c => c.firstChild).filter(Boolean);
+      await chiedi("Per fare 10, da " + x.a + " quante ne togli?", opzioniNumeri(pezzo1, [pezzo2]), String(pezzo1));
+      tutti.slice(10).forEach(p => p.classList.add("via"));
+      cil.sx.textContent = String(pezzo1);
+      await chiedi("Ne dovevi togliere " + x.b + ": quante ne mancano ancora?", opzioniNumeri(pezzo2, [pezzo1]), String(pezzo2));
+      cil.dx.textContent = String(pezzo2);
+      tutti.slice(10 - pezzo2, 10).forEach(p => p.classList.add("via"));
+      await aspetta(500);
+      await chiedi("10 − " + pezzo2 + " = ? Quante ne rimangono?", opzioniNumeri(ris, [ris + 1]), String(ris));
+      await avanti([uguale(x.a + " − " + x.b + " = " + x.a + " − " + pezzo1 + " − " + pezzo2 + " = 10 − " + pezzo2 + " = " + ris),
+        el("p", { class: "mat-consiglio", text: "💡 Prima si scende a 10, poi si toglie quello che resta." })]);
+    }
+  }
+
+  /* ---------- la linea vuota dei salti ---------- */
+  // Si segnano solo i numeri che servono. Addizione e sottrazione: prima le decine, poi le unità.
+  // «Contando in avanti»: la sottrazione come distanza, dal numero piccolo al grande, come chi dà il resto.
+  function percorso(x) {
+    if (x.op === "differenza") {
+      const tappe = [x.b];
+      let v = x.b;
+      const prossimaDecina = Math.ceil(v / 10) * 10;
+      if (prossimaDecina > v && prossimaDecina <= x.a) tappe.push(v = prossimaDecina);
+      const decineSotto = Math.floor(x.a / 10) * 10;
+      if (decineSotto > v) tappe.push(v = decineSotto);
+      if (x.a > v) tappe.push(x.a);
+      return tappe;
+    }
+    const s = x.op === "-" ? -1 : 1, decine = Math.floor(x.b / 10) * 10, unita = x.b % 10;
+    const tappe = [x.a];
+    if (decine) tappe.push(x.a + s * decine);
+    if (unita) tappe.push(tappe[tappe.length - 1] + s * unita);
+    return tappe;
+  }
+  async function salti(x) {
+    const tappe = percorso(x);
+    const min = Math.min(...tappe), max = Math.max(...tappe);
+    const X = v => 50 + (max === min ? 300 : (v - min) * 600 / (max - min));
+    const svg = svgEl("svg", { viewBox: "0 0 700 210", class: "salti" });
+    svg.append(svgEl("line", { x1: 15, x2: 685, y1: 160, y2: 160, stroke: NERO, "stroke-width": 5 }));
+    const segna = (v, colore) => {
+      const t = svgEl("text", { x: X(v), y: 198, "text-anchor": "middle", "font-size": 26, "font-weight": 800, fill: colore || NERO });
+      t.textContent = String(v);
+      svg.append(svgEl("line", { x1: X(v), x2: X(v), y1: 146, y2: 174, stroke: NERO, "stroke-width": 4 }), t);
+    };
+    const arco = (da, a, etichetta) => {
+      const alto = 160 - Math.min(120, 45 + Math.abs(X(a) - X(da)) * 0.25);
+      const t = svgEl("text", { x: (X(da) + X(a)) / 2, y: alto + 52, "text-anchor": "middle", "font-size": 24, "font-weight": 800, fill: "#C0282B" });
+      t.textContent = etichetta;
+      svg.append(svgEl("path", { d: "M" + X(da) + ",152 Q" + (X(da) + X(a)) / 2 + "," + (alto - 30) + " " + X(a) + ",152", fill: "none", stroke: "#E0332B", "stroke-width": 4 }), t);
+    };
+    scena.replaceChildren(el("div", { class: "geo-scena" }, svg));
+    const segno = x.op === "-" ? " − " : x.op === "+" ? " + " : " − ";
+    testo.replaceChildren(el("p", {}, el("span", { text: x.op === "differenza"
+      ? x.a + " − " + x.b + ": si conta in avanti, dal " + x.b + " al " + x.a + "."
+      : x.a + segno + x.b + ": prima le decine, poi le unità." })));
+    segna(tappe[0], "#1E6B52");
+    const passi = [];
+    for (let i = 1; i < tappe.length; i++) {
+      if (fermo) return;
+      const da = tappe[i - 1], a = tappe[i], salto = Math.abs(a - da);
+      if (x.op === "differenza") {
+        await chiedi("Dal " + da + " al " + a + " quanto manca?", opzioniNumeri(salto, [salto + 10, salto - 1]), String(salto));
+        passi.push(salto);
+        arco(da, a, "+" + salto);
+      } else {
+        const piu = x.op === "+";
+        await chiedi("Dal " + da + " salto di " + (piu ? "+" : "−") + salto + ": dove arrivo?", opzioniNumeri(a, [piu ? a - 10 : a + 10, piu ? a + 1 : a - 1]), String(a));
+        arco(da, a, (piu ? "+" : "−") + salto);
+      }
+      segna(a, i === tappe.length - 1 ? "#1E6B52" : NERO);
+    }
+    if (x.op === "differenza") {
+      const tot = x.a - x.b;
+      await chiedi("In tutto: " + passi.join(" + ") + " = ?", opzioniNumeri(tot, [tot + 10, tot - 1]), String(tot));
+      await avanti([uguale(x.a + " − " + x.b + " = " + tot), el("p", { class: "mat-consiglio", text: "💡 La sottrazione è anche la distanza tra due numeri: si può contare in avanti." })]);
+    } else {
+      const r = x.op === "+" ? x.a + x.b : x.a - x.b;
+      await avanti([uguale(x.a + segno + x.b + " = " + r), el("p", { class: "mat-consiglio", text: "💡 Sulla linea vuota si segnano solo i numeri che servono: prima le decine, poi le unità." })]);
+    }
+  }
+
+  /* ---------- a colpo d'occhio, con il pallottoliere ---------- */
+  // Il pallottoliere a due file da 10 (5 rossi e 5 bianchi per fila) si vede per un momento: quanti erano?
+  // I gruppi da 5 aiutano a vedere il numero senza contare uno per uno.
+  function pallottoliere(n) {
+    const svg = svgEl("svg", { viewBox: "0 0 620 190", class: "pallottoliere" });
+    svg.append(svgEl("rect", { x: 4, y: 4, width: 612, height: 182, rx: 16, fill: "#C9A26B" }));
+    [62, 128].forEach((y, fila) => {
+      svg.append(svgEl("line", { x1: 20, x2: 600, y1: y, y2: y, stroke: "#5B3A1A", "stroke-width": 4 }));
+      const quanti = Math.max(0, Math.min(10, n - fila * 10));
+      for (let k = 0; k < 10; k++) {
+        const spinta = k < quanti;
+        const cx = spinta ? 44 + k * 30 + (k >= 5 ? 6 : 0) : 316 + k * 28;
+        svg.append(svgEl("circle", { cx, cy: y, r: 14, fill: k < 5 ? "#E0332B" : "#FFFFFF", stroke: NERO, "stroke-width": 2, opacity: spinta ? 1 : 0.35 }));
+      }
+    });
+    return svg;
+  }
+  async function flash(x) {
+    const vista = el("div", { class: "flash-vista" }, pallottoliere(x.a));
+    const velo = el("div", { class: "flash-velo", text: "?" });
+    const box = el("div", { class: "flash" }, vista, velo);
+    scena.replaceChildren(box);
+    testo.replaceChildren(el("p", {}, el("span", { text: "Guarda bene: il pallottoliere si vede solo per un momento!" })));
+    // il tempo vale anche con «meno movimento»: qui non è un'animazione, è il gioco
+    const mostra = async () => { box.classList.add("vede"); await new Promise(ok => setTimeout(ok, x.secondi * 1000)); box.classList.remove("vede"); };
+    await aspetta(800);
+    await mostra();
+    strumenti.replaceChildren(tasto("👀 Fammelo rivedere", mostra));
+    const altre = [x.a + 1, x.a - 1, x.a + 5, x.a - 5, x.a + 10].filter(v => v >= 1 && v <= 20);
+    await chiedi("Quante palline erano spinte a sinistra?", opzioniNumeri(x.a, altre), String(x.a));
+    box.classList.add("vede");
+    strumenti.replaceChildren();
+    const come = x.a <= 5 ? x.a + " rosse" : x.a <= 10 ? "5 rosse e " + (x.a - 5) + " bianche" : "una fila intera, 10, e " + (x.a - 10) + " sotto";
+    await avanti([uguale("Erano " + x.a + "."), el("p", { class: "mat-consiglio", text: "💡 " + come + ": con i gruppi da 5 si vede subito, senza contare." })]);
+  }
+
+  /* ---------- le famiglie di fatti ---------- */
+  // Tre numeri, quattro operazioni: la «ciliegina» con il tutto sopra e le due parti sotto.
+  async function famiglia(x) {
+    const per = x.op === "x";
+    const tutto = per ? x.a * x.b : x.a + x.b;
+    const cil = ciliegia(tutto);
+    cil.sx.textContent = String(x.a);
+    cil.dx.textContent = String(x.b);
+    const lista = el("div", { class: "famiglia-lista" });
+    scena.replaceChildren(el("div", { class: "f10-scena" }, cil.svg, lista));
+    testo.replaceChildren(el("p", {}, el("span", { text: "Una famiglia di numeri: " + x.a + ", " + x.b + " e " + tutto + ". Quante operazioni si scrivono?" })));
+    const S = per ? ["×", ":"] : ["+", "−"];
+    const conti = [[x.a + " " + S[0] + " " + x.b, tutto], [x.b + " " + S[0] + " " + x.a, tutto], [tutto + " " + S[1] + " " + x.a, x.b], [tutto + " " + S[1] + " " + x.b, x.a]];
+    for (const [conto, giusto] of conti) {
+      if (fermo) return;
+      await chiedi(conto + " = ?", opzioniNumeri(giusto, [giusto === tutto ? x.a : tutto]), String(giusto));
+      lista.append(el("p", { class: "mat-uguale", text: conto + " = " + giusto }));
+    }
+    await avanti([el("p", { class: "mat-consiglio", text: "💡 Con tre numeri si scrivono quattro operazioni: " + (per ? "la divisione è il contrario della moltiplicazione." : "la sottrazione è il contrario dell'addizione.") })]);
+  }
+
   const GENERI = { conta, confronta, "prima-dopo": primaDopo, decine: decineUnita, operazione, colonna, proprieta, problema, retta, blocchi, frazione,
-    linee, angolo, simmetria, perimetro, barre, veloce, logica, divisione };
+    linee, angolo, simmetria, perimetro, barre, veloce, logica, divisione, moltiplica, fai10, salti, flash, famiglia };
 
   (async () => {
     for (n = 0; n < scelti.length; n++) {

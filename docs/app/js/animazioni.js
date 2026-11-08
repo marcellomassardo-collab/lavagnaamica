@@ -1821,7 +1821,191 @@ const DIVISIONE_COLONNA = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- la moltiplicazione in colonna, con il modello ad area ---------- */
+// 23 × 4: quattro file da 23 fatte di barrette e cubetti, che diventano un rettangolo diviso in due pezzi
+// (4 × 20 e 4 × 3). A destra la colonna, con il riporto scritto piccolo.
+const MOLTIPLICAZIONE_COLONNA = {
+  passi: [
+    "Facciamo 23 × 4. Vuol dire 4 volte 23: quattro file, e ogni fila ha 2 decine e 3 unità.",
+    "Le file insieme fanno un rettangolo. Lo tagliamo in due pezzi: a sinistra le decine, 4 × 20; a destra le unità, 4 × 3.",
+    "4 × 20 = 80 e 4 × 3 = 12. Insieme: 80 + 12 = 92.",
+    "In colonna si comincia dalle unità: 4 × 3 = 12. Si scrive 2 e si riporta 1 decina, scritta piccola sopra il 2.",
+    "Poi le decine: 4 × 2 = 8, più 1 di riporto, fa 9. Il risultato è 92: lo stesso del rettangolo."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }), s("line", { x1: 470, x2: 470, y1: 20, y2: 430, stroke: "#DDD5C3", "stroke-width": 3 }));
+    const L = 13, Y = r => 90 + r * 62;
+    const file = [0, 1, 2, 3].map(r => s("g", {}, [0, 1].map(k => { const b = barra(L); b.setAttribute("transform", "translate(" + (40 + k * 138) + "," + Y(r) + ")"); return b; }),
+      [0, 1, 2].map(k => { const c = cubo(L); c.setAttribute("x", 330 + k * 20); c.setAttribute("y", Y(r)); return c; })));
+    const pezzoD = nascosto(s("rect", { x: 30, y: 74, width: 288, height: 220, rx: 10, fill: "#9CC3F5", "fill-opacity": 0.35, stroke: "#2F6FD6", "stroke-width": 4 }));
+    const pezzoU = nascosto(s("rect", { x: 322, y: 74, width: 78, height: 220, rx: 10, fill: "#A8DDB5", "fill-opacity": 0.45, stroke: "#2E9E5B", "stroke-width": 4 }));
+    const lati = nascosto(s("g", {}, etichetta(174, 62, "20", 26), etichetta(361, 62, "3", 26), etichetta(16, 190, "4", 26)));
+    const conti = nascosto(s("g", {}, etichetta(174, 330, "4 × 20 = 80", 26), etichetta(361, 330, "4 × 3 = 12", 22)));
+    const somma = nascosto(etichetta(235, 395, "80 + 12 = 92", 34));
+    const cif = (x, y, t, colore, misura) => scritta(x, y, t, { "font-size": misura || 54, "font-weight": 800, fill: colore || INCHIOSTRO });
+    svg.append(cif(640, 130, "2"), cif(690, 130, "3"), cif(575, 200, "×"), cif(690, 200, "4"), s("line", { x1: 545, x2: 730, y1: 220, y2: 220, stroke: INCHIOSTRO, "stroke-width": 5 }));
+    const unita = nascosto(s("g", {}, cif(690, 285, "2", "#1E6B52"), cif(640, 72, "1", "#C0282B", 30)));
+    const decine = nascosto(cif(640, 285, "9", "#1E6B52"));
+    const luceU = nascosto(s("rect", { x: 668, y: 82, width: 44, height: 128, rx: 10, fill: "#FFE08A" }));
+    const luceD = nascosto(s("rect", { x: 618, y: 40, width: 44, height: 108, rx: 10, fill: "#FFE08A" }));
+    const fine = nascosto(etichetta(640, 380, "23 × 4 = 92", 34));
+    svg.insertBefore(luceU, svg.children[2]);
+    svg.insertBefore(luceD, svg.children[2]);
+    svg.append(pezzoD, pezzoU, ...file, lati, conti, somma, unita, decine, fine);
+    return {
+      vai(k) {
+        vedi(pezzoD, k >= 1);
+        vedi(pezzoU, k >= 1);
+        vedi(lati, k >= 1);
+        vedi(conti, k >= 2);
+        vedi(somma, k >= 2);
+        vedi(luceU, k === 3);
+        vedi(luceD, k === 4);
+        vedi(unita, k >= 3);
+        vedi(decine, k >= 4);
+        vedi(fine, k === 4);
+      },
+      ferma() {}
+    };
+  }
+};
+
+/* ---------- fare 10 con la ciliegina ---------- */
+// 8 + 5: alla prima cornice mancano 2 pallini; il 5 si spezza in 2 e 3; i 2 riempiono la cornice: 10 + 3.
+const FARE_10 = {
+  passi: [
+    "Facciamo 8 + 5. Nella prima cornice ci sono 8 pallini rossi, nella seconda 5 blu.",
+    "Alla prima cornice mancano 2 pallini per essere piena, cioè per fare 10.",
+    "Allora dal 5 ne prendiamo 2 per fare 10: di unità ne rimangono 3. La ciliegina lo fa vedere.",
+    "I 2 pallini blu vanno a riempire la prima cornice: ora è piena, fa 10.",
+    "Restano 3 pallini: 10 + 3 = 13. Quindi 8 + 5 = 13. Passando dal 10 è tutto più facile!"
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const cornice = x0 => s("g", {}, s("rect", { x: x0, y: 60, width: 250, height: 100, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 4 }),
+      [1, 2, 3, 4].map(i => s("line", { x1: x0 + i * 50, x2: x0 + i * 50, y1: 60, y2: 160, stroke: INCHIOSTRO, "stroke-width": 2 })),
+      s("line", { x1: x0, x2: x0 + 250, y1: 110, y2: 110, stroke: INCHIOSTRO, "stroke-width": 2 }));
+    const posto = (c, i) => [(c ? 420 : 80) + (i % 5) * 50 + 25, 60 + Math.floor(i / 5) * 50 + 25];
+    const mancano = nascosto(s("g", {}, [8, 9].map(i => { const [x, y] = posto(0, i); return s("circle", { cx: x, cy: y, r: 19, fill: "none", stroke: "#C0282B", "stroke-width": 3, "stroke-dasharray": "6 5" }); })));
+    svg.append(cornice(80), cornice(420), mancano);
+    const pallino = colore => s("g", { class: "sp-blocco" }, s("circle", { r: 18, fill: colore, stroke: INCHIOSTRO, "stroke-width": 2 }));
+    const rossi = Array.from({ length: 8 }, (_, i) => { const p = pallino("#E0332B"); mettiA(p, ...posto(0, i)); return p; });
+    const blu = Array.from({ length: 5 }, (_, i) => { const p = pallino("#2F6FD6"); mettiA(p, ...posto(1, i)); return p; });
+    const cil = nascosto(s("g", {}, s("path", { d: "M545,262 L500,320 M545,262 L590,320", stroke: "#2E9E5B", "stroke-width": 6, fill: "none" }),
+      ...[[545, 240, "5"], [500, 342, "2"], [590, 342, "3"]].map(([x, y, t]) => s("g", {}, s("circle", { cx: x, cy: y, r: 26, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 3 }),
+        scritta(x, y + 11, t, { "font-size": 32, "font-weight": 800, fill: INCHIOSTRO })))));
+    const dieci = nascosto(etichetta(205, 210, "10", 40));
+    const conto = nascosto(etichetta(400, 420, "8 + 5 = 8 + 2 + 3 = 10 + 3 = 13", 30));
+    svg.append(cil, ...rossi, ...blu, dieci, conto);
+    return {
+      vai(k) {
+        vedi(mancano, k === 1);
+        vedi(cil, k >= 2);
+        blu.forEach((p, i) => {
+          p.style.transitionDelay = k === 3 && i < 2 ? (i * 0.4) + "s" : "0s";
+          // i primi due vanno nei posti vuoti della prima cornice; gli altri tre si spostano all'inizio della seconda
+          mettiA(p, ...(k >= 3 ? (i < 2 ? posto(0, 8 + i) : posto(1, i - 2)) : posto(1, i)));
+        });
+        vedi(dieci, k >= 3);
+        vedi(conto, k === 4);
+      },
+      ferma() {}
+    };
+  }
+};
+
+/* ---------- la linea vuota ---------- */
+// Si segnano solo i numeri che servono: 38 + 25 a salti (prima le decine, poi le unità);
+// poi 52 − 37 contando in avanti, come chi dà il resto.
+const LINEA_VUOTA = {
+  passi: [
+    "Sulla linea vuota si segnano solo i numeri che servono. Facciamo 38 + 25: si parte dal 38.",
+    "Prima si salta delle decine, + 20: dal 38 si arriva a 58.",
+    "Poi delle unità, + 5: dal 58 si arriva a 63. Quindi 38 + 25 = 63.",
+    "Una sottrazione si può fare contando in avanti, come chi dà il resto: 52 − 37. Dal 37 al 40 mancano 3…",
+    "…dal 40 al 50 ci sono 10, dal 50 al 52 ancora 2. In tutto 3 + 10 + 2 = 15. Quindi 52 − 37 = 15."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const tacca = (x, y, t, colore) => s("g", {}, s("line", { x1: x, x2: x, y1: y - 14, y2: y + 14, stroke: INCHIOSTRO, "stroke-width": 4 }),
+      scritta(x, y + 44, t, { "font-size": 26, "font-weight": 800, fill: colore || INCHIOSTRO }));
+    const arco = (x1, x2, y, t, alto) => nascosto(s("g", {}, s("path", { d: "M" + x1 + "," + (y - 8) + " Q" + (x1 + x2) / 2 + "," + (y - alto) + " " + x2 + "," + (y - 8), fill: "none", stroke: "#E0332B", "stroke-width": 4 }),
+      scritta((x1 + x2) / 2, y - alto / 2 - 10, t, { "font-size": 24, "font-weight": 800, fill: "#C0282B" })));
+    // la prima linea: l'addizione
+    const A = v => 80 + (v - 34) * 20;
+    const sopra = s("g", { class: "sp-sfuma" }, s("line", { x1: 40, x2: 760, y1: 200, y2: 200, stroke: INCHIOSTRO, "stroke-width": 5 }), tacca(A(38), 200, "38", "#1E6B52"));
+    const t58 = nascosto(tacca(A(58), 200, "58")), t63 = nascosto(tacca(A(63), 200, "63", "#1E6B52"));
+    const s1 = arco(A(38), A(58), 200, "+20", 150), s2 = arco(A(58), A(63), 200, "+5", 80);
+    const r1 = nascosto(etichetta(400, 330, "38 + 25 = 63", 36));
+    sopra.append(t58, t63, s1, s2, r1);
+    // la seconda: contare in avanti
+    const B = v => 80 + (v - 35) * 38;
+    const sotto = nascosto(s("g", {}, s("line", { x1: 40, x2: 760, y1: 200, y2: 200, stroke: INCHIOSTRO, "stroke-width": 5 }), tacca(B(37), 200, "37", "#1E6B52")));
+    const u40 = nascosto(tacca(B(40), 200, "40")), u50 = nascosto(tacca(B(50), 200, "50")), u52 = nascosto(tacca(B(52), 200, "52", "#1E6B52"));
+    const d1 = arco(B(37), B(40), 200, "+3", 70), d2 = arco(B(40), B(50), 200, "+10", 150), d3 = arco(B(50), B(52), 200, "+2", 60);
+    const r2 = nascosto(etichetta(400, 330, "3 + 10 + 2 = 15   →   52 − 37 = 15", 30));
+    sotto.append(u40, u50, u52, d1, d2, d3, r2);
+    svg.append(sopra, sotto);
+    return {
+      vai(k) {
+        vedi(sopra, k <= 2);
+        vedi(t58, k >= 1); vedi(s1, k >= 1);
+        vedi(t63, k >= 2); vedi(s2, k >= 2); vedi(r1, k === 2);
+        vedi(sotto, k >= 3);
+        vedi(u40, k >= 3); vedi(d1, k >= 3);
+        vedi(u50, k >= 4); vedi(d2, k >= 4); vedi(u52, k >= 4); vedi(d3, k >= 4); vedi(r2, k === 4);
+      },
+      ferma() {}
+    };
+  }
+};
+
+/* ---------- la moltiplicazione giapponese, con le linee ---------- */
+// 12 × 13: le linee del 12 in un verso, quelle del 13 nell'altro; si contano gli incroci a gruppi.
+// Gli incroci sono gli stessi pezzi del rettangolo: decine × decine, decine × unità, unità × unità.
+const GIAPPONESE = {
+  passi: [
+    "In Giappone, a volte, si moltiplica con le linee. Facciamo 12 × 13.",
+    "Il 12: una linea per la decina e, un po' più in là, due linee per le unità.",
+    "Il 13: una linea e tre linee, nell'altro verso, che incrociano le prime.",
+    "Ora si contano gli incroci, a gruppi: a sinistra 1, in mezzo 2 + 3 = 5, a destra 6.",
+    "Si leggono i gruppi da sinistra: 1, 5, 6. Quindi 12 × 13 = 156. Gli incroci sono i pezzi del rettangolo: decine per decine, decine per unità, unità per unità."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const DX = 240;
+    // linee del 12: y = (x − DX) + c; linee del 13: y = −(x − DX) + k
+    const C = { decine: [120], unita: [-60, -95] }, K = { decine: [380], unita: [565, 600, 635] };
+    const lineaA = c => s("line", { x1: DX + 40 - c, y1: 40, x2: DX + 420 - c, y2: 420, stroke: "#2F6FD6", "stroke-width": 5, "stroke-linecap": "round" });
+    const lineaB = k => s("line", { x1: DX + k - 40, y1: 40, x2: DX + k - 420, y2: 420, stroke: "#E0332B", "stroke-width": 5, "stroke-linecap": "round" });
+    const dodici = nascosto(s("g", {}, [...C.decine, ...C.unita].map(lineaA), etichetta(DX + 30 - 120, 60, "12", 30)));
+    const tredici = nascosto(s("g", {}, [...K.decine, ...K.unita].map(lineaB), etichetta(DX + 700 - 40 - 200, 60, "13", 30)));
+    const incrocio = (c, k) => [DX + (k - c) / 2, (k + c) / 2];
+    const gruppi = [[C.decine, K.decine, "#8E44AD"], [C.decine, K.unita, "#F2A300"], [C.unita, K.decine, "#F2A300"], [C.unita, K.unita, "#2E9E5B"]];
+    const punti = nascosto(s("g", {}, gruppi.flatMap(([cc, kk, colore]) => cc.flatMap(c => kk.map(k => {
+      const [x, y] = incrocio(c, k);
+      return s("circle", { cx: x, cy: y, r: 10, fill: colore, stroke: "#fff", "stroke-width": 3 });
+    })))));
+    const tondi = nascosto(s("g", {}, s("ellipse", { cx: DX + 130, cy: 250, rx: 40, ry: 40, fill: "none", stroke: "#8E44AD", "stroke-width": 3, "stroke-dasharray": "8 6" }),
+      s("ellipse", { cx: DX + 232, cy: 258, rx: 42, ry: 140, fill: "none", stroke: "#F2A300", "stroke-width": 3, "stroke-dasharray": "8 6" }),
+      s("ellipse", { cx: DX + 333, cy: 262, rx: 52, ry: 52, fill: "none", stroke: "#2E9E5B", "stroke-width": 3, "stroke-dasharray": "8 6" }),
+      etichetta(DX + 130, 440, "1", 30), etichetta(DX + 232, 440, "5", 30), etichetta(DX + 333, 440, "6", 30)));
+    const risultato = nascosto(etichetta(690, 250, "156", 56));
+    svg.append(dodici, tredici, punti, tondi, risultato);
+    return {
+      vai(k) {
+        vedi(dodici, k >= 1);
+        vedi(tredici, k >= 2);
+        vedi(punti, k >= 3);
+        vedi(tondi, k >= 3);
+        vedi(risultato, k === 4);
+      },
+      ferma() {}
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

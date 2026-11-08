@@ -145,6 +145,11 @@ function campiDiMatematica(x, ridisegna) {
     if (v === "simmetria") Object.assign(x, { celle: [[1, 3], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3], [4, 3]] });
     if (v === "perimetro") Object.assign(x, { a: 5, b: 3 });
     if (v === "divisione") Object.assign(x, { a: 72, b: 3 });
+    if (v === "moltiplica") Object.assign(x, { a: 23, b: 4 });
+    if (v === "fai10") Object.assign(x, { a: 8, b: 5, op: "+" });
+    if (v === "salti") Object.assign(x, { a: 38, b: 25, op: "+" });
+    if (v === "flash") Object.assign(x, { a: 7, secondi: 2 });
+    if (v === "famiglia") Object.assign(x, { a: 8, b: 5, op: "+" });
     if (v === "barre") Object.assign(x, { schema: "parte", a: 15, b: 6, testo: ["", "", ""], risposta: "" });
     if (v === "veloce") { delete x.a; Object.assign(x, { fatto: "amici-10", quante: 10, tempo: 0 }); }
     if (v === "logica") { delete x.a; Object.assign(x, { prova: "sequenza", per: "forma", schema: "AB" }); }
@@ -188,6 +193,11 @@ function campiDiMatematica(x, ridisegna) {
       menu(x.per, { forma: "Cambia la forma", colore: "Cambia il colore" }, v => { x.per = v; }, "Che cosa cambia"),
       menu(x.schema, { AB: "A B A B", AAB: "A A B", ABB: "A B B", ABC: "A B C", AABB: "A A B B" }, v => { x.schema = v; }, "Il motivo della sequenza"));
   }
+  if (x.genere === "moltiplica") campi.push(a("Primo fattore (fino a 999)"), b("Secondo fattore (fino a 99)"));
+  if (x.genere === "fai10") campi.push(a("Primo numero"), menu(x.op, { "+": "+ (si riempie la cornice)", "-": "− (si scende a 10)" }, v => { x.op = v; }, "Operazione"), b("Secondo numero"));
+  if (x.genere === "salti") campi.push(a("Primo numero"), menu(x.op, { "+": "+ addizione", "-": "− sottrazione a salti", differenza: "− contando in avanti" }, v => { x.op = v; }, "Operazione"), b("Secondo numero"));
+  if (x.genere === "flash") campi.push(a("Quante palline (da 1 a 20)"), numero(x.secondi, v => { x.secondi = v; }, "Secondi per guardare (da 1 a 5)"));
+  if (x.genere === "famiglia") campi.push(a("Primo numero"), menu(x.op, { "+": "+ e −", x: "× e :" }, v => { x.op = v; }, "Operazioni"), b("Secondo numero"));
   if (x.genere === "divisione") campi.push(a("Dividendo (fino a 999)"), b("Divisore (da 2 a 9)"));
   if (x.genere === "perimetro") campi.push(a("Base (quadretti, fino a 10)"), b("Altezza (quadretti, fino a 6)"));
   if (x.genere === "simmetria") {

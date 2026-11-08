@@ -67,7 +67,11 @@ export const ANIMAZIONI = {
   barre: "I problemi con le barre",
   emozioni: "Le emozioni e come stare meglio",
   divisione: "Che cos'è la divisione",
-  "divisione-colonna": "La divisione in colonna"
+  "divisione-colonna": "La divisione in colonna",
+  "moltiplicazione-colonna": "La moltiplicazione in colonna (con il rettangolo)",
+  "fare-10": "Fare 10 con la ciliegina",
+  "linea-vuota": "La linea vuota dei salti",
+  "moltiplicazione-giapponese": "La moltiplicazione giapponese con le linee"
 };
 
 export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Educazione affettiva", "Inglese", "Arte e immagine", "Musica", "Altro"];
@@ -283,6 +287,11 @@ export const GENERI = {
   barre:        { nome: "Problema con le barre", spiega: "Si legge il problema, si sceglie il disegno a barre che lo racconta, poi l'operazione e il risultato." },
   veloce:       { nome: "Calcolo veloce",        spiega: "Un giro di conti da imparare a memoria, uno dopo l'altro. Il tempo c'è solo se lo metti tu." },
   divisione:    { nome: "Divisione in colonna",  spiega: "La divisione in colonna, un passo alla volta: quante volte ci sta, il prodotto sotto, il resto, poi si abbassa la cifra dopo. Anche con il resto." },
+  moltiplica:   { nome: "Moltiplicazione in colonna", spiega: "La moltiplicazione in colonna, cifra per cifra, con il riporto. Con il secondo fattore di due cifre si fanno due righe e si sommano." },
+  fai10:        { nome: "Fare 10 (la ciliegina)", spiega: "Due cornici da 10: nell'addizione si riempie prima la cornice, nella sottrazione si scende prima a 10. La ciliegina mostra quante ne mancano per fare 10 e quante unità rimangono." },
+  salti:        { nome: "Linea vuota dei salti", spiega: "Si segnano solo i numeri che servono: prima le decine, poi le unità. La sottrazione si può fare anche contando in avanti." },
+  flash:        { nome: "A colpo d'occhio",      spiega: "Il pallottoliere a due file da 10 si vede per un momento: quante palline erano? I gruppi da 5 aiutano a vederle senza contare." },
+  famiglia:     { nome: "Famiglia di fatti",     spiega: "Tre numeri, quattro operazioni: per esempio 8 + 5, 5 + 8, 13 − 5, 13 − 8." },
   logica:       { nome: "Logica senza parole",   spiega: "Figure e colori: che cosa viene dopo nella sequenza, oppure quale non c'entra. Non serve leggere." }
 };
 
@@ -485,6 +494,35 @@ function esercizioDiMatematica(x, i) {
   if (x.genere === "divisione") {
     if (!(Number.isInteger(a) && Number.isInteger(b) && b >= 2 && b <= 9 && a >= b && a <= 999)) errore(inizio + "il dividendo va da 2 a 999, il divisore da 2 a 9 (e non più grande del dividendo).");
     m.b = b;
+  }
+  if (x.genere === "moltiplica") {
+    if (!(Number.isInteger(a) && Number.isInteger(b) && a >= 2 && a <= 999 && b >= 2 && b <= 99)) errore(inizio + "il primo fattore va da 2 a 999, il secondo da 2 a 99.");
+    if (b >= 10 && a > 99) errore(inizio + "con il secondo fattore di due cifre, il primo arriva a 99.");
+    m.b = b;
+  }
+  if (x.genere === "fai10") {
+    m.op = x.op === "-" ? "-" : "+";
+    m.b = b;
+    if (m.op === "+" && !(Number.isInteger(a) && Number.isInteger(b) && a >= 2 && a <= 9 && b >= 2 && b <= 9 && a + b > 10)) errore(inizio + "due numeri da 2 a 9 che insieme superano 10 (per esempio 8 + 5).");
+    if (m.op === "-" && !(Number.isInteger(a) && Number.isInteger(b) && a >= 11 && a <= 18 && b >= 2 && b <= 9 && a - b < 10)) errore(inizio + "un numero da 11 a 18 e uno da 2 a 9, che scende sotto il 10 (per esempio 13 − 5).");
+  }
+  if (x.genere === "salti") {
+    m.op = ["+", "-", "differenza"].includes(x.op) ? x.op : "+";
+    m.b = b;
+    if (!(Number.isInteger(a) && Number.isInteger(b) && a >= 0 && b >= 1 && a <= 100 && b <= 100)) errore(inizio + "numeri da 0 a 100.");
+    if (m.op === "+" && a + b > 100) errore(inizio + "il risultato deve stare entro 100.");
+    if (m.op !== "+" && b >= a) errore(inizio + "il secondo numero deve essere più piccolo del primo.");
+  }
+  if (x.genere === "flash") {
+    if (!(Number.isInteger(a) && a >= 1 && a <= 20)) errore(inizio + "da 1 a 20 palline.");
+    m.secondi = Math.max(1, Math.min(5, Math.round(Number(x.secondi) || 2)));
+  }
+  if (x.genere === "famiglia") {
+    m.op = x.op === "x" ? "x" : "+";
+    m.b = b;
+    if (!(Number.isInteger(a) && Number.isInteger(b) && a >= 1 && b >= 1)) errore(inizio + "servono due numeri interi.");
+    if (m.op === "+" && a + b > 100) errore(inizio + "la somma deve stare entro 100.");
+    if (m.op === "x" && (a > 10 || b > 10)) errore(inizio + "numeri fino a 10, come nelle tabelline.");
   }
   if (x.genere === "veloce") {
     delete m.a;

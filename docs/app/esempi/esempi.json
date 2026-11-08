@@ -15699,6 +15699,658 @@
   }
  },
  {
+  "id": "fare-10",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Fare 10 con la ciliegina",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Passa dal 10: prima riempi la cornice, poi aggiungi quello che resta.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "fai10",
+     "a": 8,
+     "b": 5,
+     "op": "+"
+    },
+    {
+     "genere": "fai10",
+     "a": 9,
+     "b": 4,
+     "op": "+"
+    },
+    {
+     "genere": "fai10",
+     "a": 7,
+     "b": 6,
+     "op": "+"
+    },
+    {
+     "genere": "fai10",
+     "a": 8,
+     "b": 7,
+     "op": "+"
+    },
+    {
+     "genere": "fai10",
+     "a": 9,
+     "b": 6,
+     "op": "+"
+    },
+    {
+     "genere": "fai10",
+     "a": 6,
+     "b": 5,
+     "op": "+"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "fare-10"
+  }
+ },
+ {
+  "id": "scendere-a-10",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Togliere passando dal 10",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Passa dal 10: prima scendi a 10, poi togli quello che resta.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "fai10",
+     "a": 13,
+     "b": 5,
+     "op": "-"
+    },
+    {
+     "genere": "fai10",
+     "a": 12,
+     "b": 6,
+     "op": "-"
+    },
+    {
+     "genere": "fai10",
+     "a": 15,
+     "b": 8,
+     "op": "-"
+    },
+    {
+     "genere": "fai10",
+     "a": 14,
+     "b": 5,
+     "op": "-"
+    },
+    {
+     "genere": "fai10",
+     "a": 11,
+     "b": 4,
+     "op": "-"
+    },
+    {
+     "genere": "fai10",
+     "a": 17,
+     "b": 9,
+     "op": "-"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "fare-10"
+  }
+ },
+ {
+  "id": "a-colpo-d-occhio",
+  "materia": "Matematica",
+  "livello": 1,
+  "titolo": "A colpo d'occhio fino a 10",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda il pallottoliere: si vede solo per un momento!",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "flash",
+     "a": 5,
+     "secondi": 2
+    },
+    {
+     "genere": "flash",
+     "a": 7,
+     "secondi": 2
+    },
+    {
+     "genere": "flash",
+     "a": 3,
+     "secondi": 2
+    },
+    {
+     "genere": "flash",
+     "a": 9,
+     "secondi": 2
+    },
+    {
+     "genere": "flash",
+     "a": 6,
+     "secondi": 2
+    },
+    {
+     "genere": "flash",
+     "a": 10,
+     "secondi": 2
+    }
+   ]
+  }
+ },
+ {
+  "id": "a-colpo-d-occhio-20",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "A colpo d'occhio fino a 20",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda il pallottoliere: si vede solo per un momento!",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "flash",
+     "a": 12,
+     "secondi": 2
+    },
+    {
+     "genere": "flash",
+     "a": 15,
+     "secondi": 2
+    },
+    {
+     "genere": "flash",
+     "a": 17,
+     "secondi": 2
+    },
+    {
+     "genere": "flash",
+     "a": 19,
+     "secondi": 2
+    },
+    {
+     "genere": "flash",
+     "a": 14,
+     "secondi": 2
+    },
+    {
+     "genere": "flash",
+     "a": 20,
+     "secondi": 2
+    }
+   ]
+  }
+ },
+ {
+  "id": "famiglie-addizione",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Famiglie di numeri: + e −",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Tre numeri, quattro operazioni.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "famiglia",
+     "a": 8,
+     "b": 5,
+     "op": "+"
+    },
+    {
+     "genere": "famiglia",
+     "a": 6,
+     "b": 7,
+     "op": "+"
+    },
+    {
+     "genere": "famiglia",
+     "a": 9,
+     "b": 4,
+     "op": "+"
+    },
+    {
+     "genere": "famiglia",
+     "a": 12,
+     "b": 6,
+     "op": "+"
+    },
+    {
+     "genere": "famiglia",
+     "a": 15,
+     "b": 7,
+     "op": "+"
+    },
+    {
+     "genere": "famiglia",
+     "a": 20,
+     "b": 30,
+     "op": "+"
+    }
+   ]
+  }
+ },
+ {
+  "id": "famiglie-moltiplicazione",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Famiglie di numeri: × e :",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Tre numeri, quattro operazioni: la divisione è il contrario della moltiplicazione.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "famiglia",
+     "a": 3,
+     "b": 4,
+     "op": "x"
+    },
+    {
+     "genere": "famiglia",
+     "a": 6,
+     "b": 7,
+     "op": "x"
+    },
+    {
+     "genere": "famiglia",
+     "a": 5,
+     "b": 8,
+     "op": "x"
+    },
+    {
+     "genere": "famiglia",
+     "a": 9,
+     "b": 6,
+     "op": "x"
+    },
+    {
+     "genere": "famiglia",
+     "a": 7,
+     "b": 8,
+     "op": "x"
+    },
+    {
+     "genere": "famiglia",
+     "a": 4,
+     "b": 9,
+     "op": "x"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "divisione"
+  }
+ },
+ {
+  "id": "linea-vuota-addizioni",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La linea vuota: addizioni a salti",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Salta prima delle decine, poi delle unità.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "salti",
+     "a": 38,
+     "b": 25,
+     "op": "+"
+    },
+    {
+     "genere": "salti",
+     "a": 46,
+     "b": 32,
+     "op": "+"
+    },
+    {
+     "genere": "salti",
+     "a": 27,
+     "b": 18,
+     "op": "+"
+    },
+    {
+     "genere": "salti",
+     "a": 55,
+     "b": 36,
+     "op": "+"
+    },
+    {
+     "genere": "salti",
+     "a": 19,
+     "b": 43,
+     "op": "+"
+    },
+    {
+     "genere": "salti",
+     "a": 64,
+     "b": 28,
+     "op": "+"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "linea-vuota"
+  }
+ },
+ {
+  "id": "linea-vuota-sottrazioni",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "La linea vuota: sottrazioni a salti",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Salta all'indietro: prima le decine, poi le unità.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "salti",
+     "a": 63,
+     "b": 25,
+     "op": "-"
+    },
+    {
+     "genere": "salti",
+     "a": 81,
+     "b": 34,
+     "op": "-"
+    },
+    {
+     "genere": "salti",
+     "a": 72,
+     "b": 18,
+     "op": "-"
+    },
+    {
+     "genere": "salti",
+     "a": 95,
+     "b": 47,
+     "op": "-"
+    },
+    {
+     "genere": "salti",
+     "a": 50,
+     "b": 23,
+     "op": "-"
+    },
+    {
+     "genere": "salti",
+     "a": 86,
+     "b": 52,
+     "op": "-"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "linea-vuota"
+  }
+ },
+ {
+  "id": "contare-in-avanti",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Sottrazioni contando in avanti",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Come chi dà il resto: dal numero piccolo, conta in avanti fino al grande.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "salti",
+     "a": 52,
+     "b": 37,
+     "op": "differenza"
+    },
+    {
+     "genere": "salti",
+     "a": 41,
+     "b": 28,
+     "op": "differenza"
+    },
+    {
+     "genere": "salti",
+     "a": 70,
+     "b": 46,
+     "op": "differenza"
+    },
+    {
+     "genere": "salti",
+     "a": 63,
+     "b": 58,
+     "op": "differenza"
+    },
+    {
+     "genere": "salti",
+     "a": 90,
+     "b": 65,
+     "op": "differenza"
+    },
+    {
+     "genere": "salti",
+     "a": 100,
+     "b": 73,
+     "op": "differenza"
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "linea-vuota"
+  }
+ },
+ {
+  "id": "moltiplicazioni-in-colonna",
+  "materia": "Matematica",
+  "livello": 3,
+  "titolo": "Moltiplicazioni in colonna",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Moltiplica in colonna: si comincia dalle unità, e il riporto si scrive piccolo sopra.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "moltiplica",
+     "a": 23,
+     "b": 4
+    },
+    {
+     "genere": "moltiplica",
+     "a": 31,
+     "b": 3
+    },
+    {
+     "genere": "moltiplica",
+     "a": 42,
+     "b": 2
+    },
+    {
+     "genere": "moltiplica",
+     "a": 26,
+     "b": 3
+    },
+    {
+     "genere": "moltiplica",
+     "a": 15,
+     "b": 6
+    },
+    {
+     "genere": "moltiplica",
+     "a": 34,
+     "b": 5
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "moltiplicazione-colonna"
+  }
+ },
+ {
+  "id": "moltiplicazioni-in-colonna-centinaia",
+  "materia": "Matematica",
+  "livello": 4,
+  "titolo": "Moltiplicazioni in colonna con le centinaia",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Moltiplica in colonna: unità, decine, centinaia.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "moltiplica",
+     "a": 123,
+     "b": 3
+    },
+    {
+     "genere": "moltiplica",
+     "a": 214,
+     "b": 4
+    },
+    {
+     "genere": "moltiplica",
+     "a": 305,
+     "b": 2
+    },
+    {
+     "genere": "moltiplica",
+     "a": 156,
+     "b": 5
+    },
+    {
+     "genere": "moltiplica",
+     "a": 248,
+     "b": 3
+    },
+    {
+     "genere": "moltiplica",
+     "a": 417,
+     "b": 2
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "moltiplicazione-colonna"
+  }
+ },
+ {
+  "id": "moltiplicazioni-due-cifre",
+  "materia": "Matematica",
+  "livello": 4,
+  "titolo": "Moltiplicazioni con due cifre",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Due righe: prima per le unità, poi per le decine (con lo 0), poi si sommano.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "moltiplica",
+     "a": 23,
+     "b": 14
+    },
+    {
+     "genere": "moltiplica",
+     "a": 32,
+     "b": 12
+    },
+    {
+     "genere": "moltiplica",
+     "a": 25,
+     "b": 11
+    },
+    {
+     "genere": "moltiplica",
+     "a": 34,
+     "b": 21
+    },
+    {
+     "genere": "moltiplica",
+     "a": 41,
+     "b": 23
+    },
+    {
+     "genere": "moltiplica",
+     "a": 18,
+     "b": 15
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "moltiplicazione-colonna"
+  }
+ },
+ {
+  "id": "moltiplicare-con-le-linee",
+  "materia": "Matematica",
+  "livello": 4,
+  "titolo": "Moltiplicare con le linee, come in Giappone",
+  "scrittura": "maiuscolo",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Prima guarda come si fa con le linee; poi fai la moltiplicazione in colonna.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "moltiplica",
+     "a": 12,
+     "b": 13
+    },
+    {
+     "genere": "moltiplica",
+     "a": 11,
+     "b": 12
+    },
+    {
+     "genere": "moltiplica",
+     "a": 21,
+     "b": 12
+    },
+    {
+     "genere": "moltiplica",
+     "a": 13,
+     "b": 12
+    },
+    {
+     "genere": "moltiplica",
+     "a": 22,
+     "b": 11
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "moltiplicazione-giapponese"
+  }
+ },
+ {
   "id": "emozioni-nomi",
   "materia": "Educazione affettiva",
   "livello": 1,

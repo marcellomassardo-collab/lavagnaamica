@@ -953,3 +953,33 @@ button.logica-tessera:disabled { opacity: .4; }
 .dc-dx { display: grid; min-width: 2.2em; }
 .dc-divisore { padding: 0 .3em; height: 1.25em; line-height: 1.25em; border-bottom: 4px solid currentColor; }
 .dc-quoziente { padding: 0 .3em; height: 1.25em; line-height: 1.25em; color: #1E6B52; }
+
+/* ---------- moltiplicazione in colonna, fare 10, linea vuota, colpo d'occhio ---------- */
+.mc { display: grid; grid-template-columns: repeat(var(--colonne), .9em); font-size: clamp(2rem, 1.3rem + 2.6vw, 3.6rem); font-weight: 800;
+  font-variant-numeric: tabular-nums; color: #1D2329; }
+.mc-cella { height: 1.2em; line-height: 1.2em; text-align: center; border-radius: 6px; }
+.mc-riporto { height: .8em; line-height: .8em; font-size: .55em; color: #C0282B; }
+.mc-zero { color: #9AA3AB; }
+.f10-scena { display: flex; flex-wrap: wrap; gap: clamp(14px, 3vw, 40px); align-items: center; justify-content: center; }
+.f10 { display: flex; gap: clamp(10px, 2vw, 24px); flex-wrap: wrap; justify-content: center; }
+.f10-cornice { display: grid; grid-template-columns: repeat(5, clamp(38px, 4.6vw, 60px)); border: 4px solid #1D2329; background: #fff; }
+.f10-cella { aspect-ratio: 1; border: 1.5px solid #1D2329; display: grid; place-items: center; }
+.f10-cella.f10-manca { background: #FFF1A8; box-shadow: inset 0 0 0 3px #C0282B; }
+.f10-pallino { width: 72%; aspect-ratio: 1; border-radius: 50%; display: block; border: 2px solid #1D2329; }
+.f10-pallino.rosso { background: #E0332B; }
+.f10-pallino.blu { background: #2F6FD6; }
+.f10-pallino.via { opacity: .25; position: relative; }
+.ciliegia { width: clamp(130px, 16vw, 190px); height: auto; }
+.famiglia-lista { display: grid; gap: 4px; }
+.famiglia-lista .mat-uguale { margin: 0; }
+.salti { width: min(700px, 100%); height: auto; }
+.flash { position: relative; display: grid; place-items: center; width: 100%; }
+.flash-vista { visibility: hidden; width: min(620px, 100%); }
+.flash.vede .flash-vista { visibility: visible; }
+.flash-velo { position: absolute; inset: 0; display: grid; place-items: center; font-size: 4rem; font-weight: 800; color: #9AA3AB; }
+.flash.vede .flash-velo { display: none; }
+.pallottoliere, .st-pallottoliere { width: 100%; height: auto; }
+.st-pallottoliere { max-width: 900px; }
+.st-pallina { cursor: pointer; transition: cx .25s; }
+@media print { .st-linea { height: 18mm; border-bottom: 2px solid #000; margin: 4mm 0; } }
+.ciliegia.con-scritte { width: clamp(190px, 24vw, 280px); }

@@ -431,11 +431,39 @@ function tastiera(area, comandi) {
   return () => { if (contesto) contesto.close(); };
 }
 
+/* ---------- pallottoliere a due file ---------- */
+// Due file da 10, con 5 palline rosse e 5 bianche: si tocca una pallina e si sposta insieme a quelle accanto.
+function pallottoliereLim(area, comandi) {
+  let mostra = true;
+  const sx = [0, 0];
+  const numero = el("p", { class: "st-numero" });
+  const svg = sv("svg", { viewBox: "0 0 760 230", class: "st-pallottoliere" });
+  svg.append(sv("rect", { x: 4, y: 4, width: 752, height: 222, rx: 18, fill: "#C9A26B" }));
+  const palline = [[], []];
+  [75, 155].forEach((y, f) => {
+    svg.append(sv("line", { x1: 24, x2: 736, y1: y, y2: y, stroke: "#5B3A1A", "stroke-width": 5 }));
+    for (let k = 0; k < 10; k++) {
+      const p = sv("circle", { r: 20, cy: y, fill: k < 5 ? "#E0332B" : "#FFFFFF", stroke: "#1D2329", "stroke-width": 2.5, class: "st-pallina" });
+      // a sinistra: le prime sx palline; toccando una pallina si portano a sinistra (o a destra) anche quelle prima
+      p.addEventListener("click", () => { sx[f] = k < sx[f] ? k : k + 1; disegna(); });
+      palline[f].push(p);
+      svg.append(p);
+    }
+  });
+  function disegna() {
+    palline.forEach((fila, f) => fila.forEach((p, k) => p.setAttribute("cx", k < sx[f] ? 54 + k * 42 + (k >= 5 ? 8 : 0) : 304 + k * 42)));
+    numero.textContent = mostra ? (sx[1] ? sx[0] + " + " + sx[1] + " = " + (sx[0] + sx[1]) : String(sx[0])) : "";
+  }
+  comandi.append(tasto("Tutte a destra", () => { sx[0] = sx[1] = 0; disegna(); }), interruttore("Mostra il numero", mostra, v => { mostra = v; disegna(); }));
+  area.append(svg, numero, el("p", { class: "tenue", text: "Tocca una pallina: va a sinistra con tutte quelle prima di lei. I gruppi da 5 aiutano a vedere i numeri." }));
+  disegna();
+}
+
 const STRUMENTI = {
   cornici: ["🔟", "Cornici del 10", cornici], blocchi: ["🧱", "Blocchi h da u", blocchi], retta: ["📏", "Retta dei numeri", retta],
   geopiano: ["📌", "Geopiano", geopiano], frazioni: ["🍕", "Frazioni", frazioni], orologio: ["🕒", "Orologio", orologio],
   soldi: ["💶", "Monete e banconote", soldi], timer: ["⏳", "Timer", timer], rumore: ["🚦", "Semaforo del rumore", rumore],
-  dadi: ["🎲", "Dadi", dadi], estrattore: ["🔢", "Estrattore di numeri", estrattore], tastiera: ["🎹", "Tastiera", tastiera]
+  dadi: ["🎲", "Dadi", dadi], estrattore: ["🔢", "Estrattore di numeri", estrattore], tastiera: ["🎹", "Tastiera", tastiera], pallottoliere: ["🧮", "Pallottoliere", pallottoliereLim]
 };
 
 export function vistaStrumenti(scelto) {
