@@ -70,6 +70,7 @@ export const ANIMAZIONI = {
   "divisione-colonna": "La divisione in colonna",
   "moltiplicazione-colonna": "La moltiplicazione in colonna (con il rettangolo)",
   "fare-10": "Fare 10 con la ciliegina",
+  "togliere-10": "Togliere dal 10",
   "linea-vuota": "La linea vuota dei salti",
   "moltiplicazione-giapponese": "La moltiplicazione giapponese con le linee"
 };
@@ -288,7 +289,7 @@ export const GENERI = {
   veloce:       { nome: "Calcolo veloce",        spiega: "Un giro di conti da imparare a memoria, uno dopo l'altro. Il tempo c'è solo se lo metti tu." },
   divisione:    { nome: "Divisione in colonna",  spiega: "La divisione in colonna, un passo alla volta: quante volte ci sta, il prodotto sotto, il resto, poi si abbassa la cifra dopo. Anche con il resto." },
   moltiplica:   { nome: "Moltiplicazione in colonna", spiega: "La moltiplicazione in colonna, cifra per cifra, con il riporto. Con il secondo fattore di due cifre si fanno due righe e si sommano." },
-  fai10:        { nome: "Fare 10 (la ciliegina)", spiega: "Due cornici da 10: nell'addizione si riempie prima la cornice, nella sottrazione si scende prima a 10. La ciliegina mostra quante ne mancano per fare 10 e quante unità rimangono." },
+  fai10:        { nome: "Fare 10 (la ciliegina)", spiega: "Come nei libri giapponesi. Addizione: all'8 quanto manca per fare 10? Si arriva a 10, poi si aggiunge il resto. Sottrazione: il 13 è 10 e 3; si toglie dal 10, poi si aggiungono le unità." },
   salti:        { nome: "Linea vuota dei salti", spiega: "Si segnano solo i numeri che servono: prima le decine, poi le unità. La sottrazione si può fare anche contando in avanti." },
   flash:        { nome: "A colpo d'occhio",      spiega: "Il pallottoliere a due file da 10 si vede per un momento: quante palline erano? I gruppi da 5 aiutano a vederle senza contare." },
   famiglia:     { nome: "Famiglia di fatti",     spiega: "Tre numeri, quattro operazioni: per esempio 8 + 5, 5 + 8, 13 − 5, 13 − 8." },

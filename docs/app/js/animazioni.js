@@ -1875,10 +1875,10 @@ const MOLTIPLICAZIONE_COLONNA = {
 const FARE_10 = {
   passi: [
     "Facciamo 8 + 5. Nella prima cornice ci sono 8 pallini rossi, nella seconda 5 blu.",
-    "Alla prima cornice mancano 2 pallini per essere piena, cioè per fare 10.",
-    "Allora dal 5 ne prendiamo 2 per fare 10: di unità ne rimangono 3. La ciliegina lo fa vedere.",
-    "I 2 pallini blu vanno a riempire la prima cornice: ora è piena, fa 10.",
-    "Restano 3 pallini: 10 + 3 = 13. Quindi 8 + 5 = 13. Passando dal 10 è tutto più facile!"
+    "All'8, quanto manca per fare 10? Mancano 2: sono i due posti vuoti.",
+    "Allora il 5 lo pensiamo come 2 e 3: la ciliegina lo fa vedere.",
+    "8 e 2 fanno 10: i 2 pallini blu riempiono la prima cornice.",
+    "10 e 3 fanno 13. Quindi 8 + 5 = 13. Passando dal 10 è più facile!"
   ],
   crea(svg) {
     svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
@@ -1895,7 +1895,7 @@ const FARE_10 = {
       ...[[545, 240, "5"], [500, 342, "2"], [590, 342, "3"]].map(([x, y, t]) => s("g", {}, s("circle", { cx: x, cy: y, r: 26, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 3 }),
         scritta(x, y + 11, t, { "font-size": 32, "font-weight": 800, fill: INCHIOSTRO })))));
     const dieci = nascosto(etichetta(205, 210, "10", 40));
-    const conto = nascosto(etichetta(400, 420, "8 + 5 = 8 + 2 + 3 = 10 + 3 = 13", 30));
+    const conto = nascosto(etichetta(400, 420, "8 + 2 = 10   →   10 + 3 = 13", 30));
     svg.append(cil, ...rossi, ...blu, dieci, conto);
     return {
       vai(k) {
@@ -2005,7 +2005,46 @@ const GIAPPONESE = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- togliere dal 10 ---------- */
+// 13 − 5 come nei libri giapponesi: il 13 è 10 e 3; dal 10 si tolgono 5 e ne restano 5; 5 e 3 fanno 8.
+const TOGLIERE_10 = {
+  passi: [
+    "Facciamo 13 − 5. Il 13 è una cornice piena, 10, e 3 pallini nella seconda.",
+    "Il 13 lo pensiamo come 10 e 3: la ciliegina lo fa vedere.",
+    "Dal 10 togliamo 5: nella prima cornice ne restano 5.",
+    "Ora mettiamo insieme: 5 e 3 fanno 8. Quindi 13 − 5 = 8.",
+    "Funziona sempre: per togliere 7, 8 o 9, si toglie dal 10 e poi si aggiungono le unità rimaste da parte."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const cornice = x0 => s("g", {}, s("rect", { x: x0, y: 60, width: 250, height: 100, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 4 }),
+      [1, 2, 3, 4].map(i => s("line", { x1: x0 + i * 50, x2: x0 + i * 50, y1: 60, y2: 160, stroke: INCHIOSTRO, "stroke-width": 2 })),
+      s("line", { x1: x0, x2: x0 + 250, y1: 110, y2: 110, stroke: INCHIOSTRO, "stroke-width": 2 }));
+    const posto = (c, i) => [(c ? 420 : 80) + (i % 5) * 50 + 25, 60 + Math.floor(i / 5) * 50 + 25];
+    svg.append(cornice(80), cornice(420));
+    const pallini = Array.from({ length: 13 }, (_, i) => s("circle", { cx: posto(i < 10 ? 0 : 1, i % 10)[0], cy: posto(i < 10 ? 0 : 1, i % 10)[1], r: 18, fill: "#E0332B", stroke: INCHIOSTRO, "stroke-width": 2, class: "sp-sfuma" }));
+    const croci = nascosto(s("g", {}, [5, 6, 7, 8, 9].map(i => { const [x, y] = posto(0, i); return s("path", { d: "M" + (x - 14) + "," + (y - 14) + " L" + (x + 14) + "," + (y + 14) + " M" + (x + 14) + "," + (y - 14) + " L" + (x - 14) + "," + (y + 14), stroke: INCHIOSTRO, "stroke-width": 5 }); })));
+    const cil = nascosto(s("g", {}, s("path", { d: "M400,262 L330,320 M400,262 L470,320", stroke: "#2E9E5B", "stroke-width": 6, fill: "none" }),
+      ...[[400, 240, "13"], [330, 342, "10"], [470, 342, "3"]].map(([x, y, t]) => s("g", {}, s("circle", { cx: x, cy: y, r: 28, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 3 }),
+        scritta(x, y + 11, t, { "font-size": 30, "font-weight": 800, fill: INCHIOSTRO })))));
+    const gruppo = nascosto(s("g", {}, s("rect", { x: 84, y: 64, width: 242, height: 42, rx: 12, fill: "none", stroke: "#2E9E5B", "stroke-width": 4 }),
+      s("rect", { x: 424, y: 64, width: 142, height: 42, rx: 12, fill: "none", stroke: "#2E9E5B", "stroke-width": 4 })));
+    const scritte = [null, null, nascosto(etichetta(205, 205, "10 − 5 = 5", 30)), nascosto(etichetta(400, 420, "10 − 5 = 5   →   5 + 3 = 8", 30)), null];
+    svg.append(...pallini, croci, cil, gruppo, ...scritte.filter(Boolean));
+    return {
+      vai(k) {
+        vedi(cil, k >= 1);
+        vedi(croci, k >= 2);
+        pallini.forEach((p, i) => p.style.opacity = k >= 2 && i >= 5 && i < 10 ? 0.25 : 1);
+        vedi(gruppo, k >= 3);
+        scritte.forEach((t, i) => t && vedi(t, i === k || (i === 3 && k === 4)));
+      },
+      ferma() {}
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

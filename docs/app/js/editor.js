@@ -194,7 +194,7 @@ function campiDiMatematica(x, ridisegna) {
       menu(x.schema, { AB: "A B A B", AAB: "A A B", ABB: "A B B", ABC: "A B C", AABB: "A A B B" }, v => { x.schema = v; }, "Il motivo della sequenza"));
   }
   if (x.genere === "moltiplica") campi.push(a("Primo fattore (fino a 999)"), b("Secondo fattore (fino a 99)"));
-  if (x.genere === "fai10") campi.push(a("Primo numero"), menu(x.op, { "+": "+ (si riempie la cornice)", "-": "− (si scende a 10)" }, v => { x.op = v; }, "Operazione"), b("Secondo numero"));
+  if (x.genere === "fai10") campi.push(a("Primo numero"), menu(x.op, { "+": "+ (si riempie la cornice)", "-": "− (si toglie dal 10)" }, v => { x.op = v; }, "Operazione"), b("Secondo numero"));
   if (x.genere === "salti") campi.push(a("Primo numero"), menu(x.op, { "+": "+ addizione", "-": "− sottrazione a salti", differenza: "− contando in avanti" }, v => { x.op = v; }, "Operazione"), b("Secondo numero"));
   if (x.genere === "flash") campi.push(a("Quante palline (da 1 a 20)"), numero(x.secondi, v => { x.secondi = v; }, "Secondi per guardare (da 1 a 5)"));
   if (x.genere === "famiglia") campi.push(a("Primo numero"), menu(x.op, { "+": "+ e −", x: "× e :" }, v => { x.op = v; }, "Operazioni"), b("Secondo numero"));

@@ -15706,7 +15706,7 @@
   "scrittura": "maiuscolo",
   "tipo": "matematica",
   "gioco": "matematica",
-  "consegna": "Passa dal 10: prima riempi la cornice, poi aggiungi quello che resta.",
+  "consegna": "Quanto manca per fare 10? Prima arriva a 10, poi aggiungi il resto.",
   "dati": {
    "aiuto": "sempre",
    "esercizi": [
@@ -15756,11 +15756,11 @@
   "id": "scendere-a-10",
   "materia": "Matematica",
   "livello": 2,
-  "titolo": "Togliere passando dal 10",
+  "titolo": "Togliere dal 10",
   "scrittura": "maiuscolo",
   "tipo": "matematica",
   "gioco": "matematica",
-  "consegna": "Passa dal 10: prima scendi a 10, poi togli quello che resta.",
+  "consegna": "Il numero è 10 e qualche unità: togli dal 10, poi aggiungi le unità.",
   "dati": {
    "aiuto": "sempre",
    "esercizi": [
@@ -15803,7 +15803,7 @@
    ]
   },
   "scopri": {
-   "animazione": "fare-10"
+   "animazione": "togliere-10"
   }
  },
  {

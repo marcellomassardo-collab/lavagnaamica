@@ -179,7 +179,8 @@ function matematica(x, oggetto) {
     case "angolo": parti.push(angoloStampa(x)); chiede("☐ acuto   ☐ retto   ☐ ottuso   ☐ piatto"); break;
     case "simmetria": parti.push(quadrettiStampa(8, 6, x.celle, 4)); chiede("Colora a destra la parte simmetrica."); break;
     case "moltiplica": conto(x.a + " × " + x.b + " = ___"); parti.push(el("div", { class: "st-spazio" })); break;
-    case "fai10": conto(x.op === "-" ? x.a + " − " + x.b + " = " + x.a + " − ___ − ___ = 10 − ___ = ___" : x.a + " + " + x.b + " = " + x.a + " + ___ + ___ = 10 + ___ = ___"); break;
+    case "fai10": conto(x.op === "-" ? x.a + " − " + x.b + ":   " + x.a + " = 10 e ___   10 − " + x.b + " = ___   ___ + ___ = ___"
+      : x.a + " + " + x.b + ":   " + x.a + " + ___ = 10   10 + ___ = ___"); break;
     case "salti": chiede("Disegna i salti sulla linea:"); parti.push(el("div", { class: "st-linea" })); conto(x.a + (x.op === "+" ? " + " : " − ") + x.b + " = ___"); break;
     case "flash": parti.push(puntiN(x.a)); chiede("Quanti sono? " + riga); break;
     case "famiglia": {

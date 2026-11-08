@@ -1469,45 +1469,51 @@ export function avvia(area, es, ctx) {
     });
     return { svg, sx, dx };
   }
+  // «all'8» ma «al 6»; «l'8» e «l'11» ma «il 5»: si legge come si dice
+  const conVocale = n => n === 8 || n === 11;
+  const al = n => (conVocale(n) ? "all'" : "al ") + n;
+  const il = n => (conVocale(n) ? "L'" : "Il ") + n;
   async function fai10(x) {
     const somma = x.op !== "-";
     const { vista, caselle } = cornici10(x.a);
-    const pezzo1 = somma ? 10 - x.a : x.a - 10, pezzo2 = x.b - pezzo1;
-    const ris = somma ? x.a + x.b : x.a - x.b;
-    const cil = ciliegia(x.b, somma ? ["per fare 10", "rimangono"] : ["per fare 10", "mancano"]);
-    scena.replaceChildren(el("div", { class: "f10-scena" }, vista, cil.svg));
-    testo.replaceChildren(el("p", {}, el("span", { text: x.a + (somma ? " + " : " − ") + x.b + ": passiamo dal 10!" })));
     if (somma) {
-      // i blu del secondo numero aspettano nella seconda cornice
+      // 8 + 5: i blu del 5 aspettano nella seconda cornice; la ciliegina sta sotto il 5
+      const manca = 10 - x.a, resto = x.b - manca, ris = x.a + x.b;
+      const cil = ciliegia(x.b);
+      scena.replaceChildren(el("div", { class: "f10-scena" }, vista, cil.svg));
+      testo.replaceChildren(el("p", {}, el("span", { text: x.a + " + " + x.b + ": prima si arriva a 10." })));
       const blu = Array.from({ length: x.b }, (_, i) => { const p = el("i", { class: "f10-pallino blu" }); caselle[1][i].append(p); return p; });
       caselle[0].slice(x.a).forEach(c => c.classList.add("f10-manca"));
-      await chiedi("Quante ne mancano a " + x.a + " per fare 10?", opzioniNumeri(pezzo1, [pezzo2]), String(pezzo1));
-      cil.sx.textContent = String(pezzo1);
-      await chiedi("Dal " + x.b + " ne prendi " + pezzo1 + " per fare 10: quante unità rimangono?", opzioniNumeri(pezzo2, [pezzo1]), String(pezzo2));
-      cil.dx.textContent = String(pezzo2);
-      // i primi blu volano a riempire la prima cornice
+      await chiedi(al(x.a).replace(/^a/, "A") + ", quanto manca per fare 10?", opzioniNumeri(manca, [resto]), String(manca));
+      cil.sx.textContent = String(manca);
+      await chiedi(il(x.b) + " è " + manca + " e…?", opzioniNumeri(resto, [manca]), String(resto));
+      cil.dx.textContent = String(resto);
+      await chiedi(x.a + " e " + manca + " fanno…?", opzioniNumeri(10, [x.a + x.b]), "10");
+      // i blu che servono vanno a riempire la prima cornice
       await riordina(blu, () => {
-        blu.slice(0, pezzo1).forEach((p, i) => caselle[0][x.a + i].append(p));
-        blu.slice(pezzo1).forEach((p, i) => caselle[1][i].append(p));
+        blu.slice(0, manca).forEach((p, i) => caselle[0][x.a + i].append(p));
+        blu.slice(manca).forEach((p, i) => caselle[1][i].append(p));
       });
       caselle[0].forEach(c => c.classList.remove("f10-manca"));
-      await aspetta(500);
-      await chiedi("10 + " + pezzo2 + " = ?", opzioniNumeri(ris, [ris + 10]), String(ris));
-      await avanti([uguale(x.a + " + " + x.b + " = " + x.a + " + " + pezzo1 + " + " + pezzo2 + " = 10 + " + pezzo2 + " = " + ris),
-        el("p", { class: "mat-consiglio", text: "💡 Prima si arriva a 10, poi si aggiunge quello che resta." })]);
+      await chiedi("10 e " + resto + " fanno…?", opzioniNumeri(ris, [ris + 10]), String(ris));
+      await avanti([uguale(x.a + " + " + x.b + "  →  " + x.a + " + " + manca + " = 10  →  10 + " + resto + " = " + ris),
+        el("p", { class: "mat-consiglio", text: "💡 Prima si arriva a 10, poi si aggiunge il resto." })]);
     } else {
-      // tutti rossi: 10 nella prima cornice, il resto nella seconda; si tolgono prima quelli della seconda
-      const tutti = caselle.flat().map(c => c.firstChild).filter(Boolean);
-      await chiedi("Per fare 10, da " + x.a + " quante ne togli?", opzioniNumeri(pezzo1, [pezzo2]), String(pezzo1));
-      tutti.slice(10).forEach(p => p.classList.add("via"));
-      cil.sx.textContent = String(pezzo1);
-      await chiedi("Ne dovevi togliere " + x.b + ": quante ne mancano ancora?", opzioniNumeri(pezzo2, [pezzo1]), String(pezzo2));
-      cil.dx.textContent = String(pezzo2);
-      tutti.slice(10 - pezzo2, 10).forEach(p => p.classList.add("via"));
-      await aspetta(500);
-      await chiedi("10 − " + pezzo2 + " = ? Quante ne rimangono?", opzioniNumeri(ris, [ris + 1]), String(ris));
-      await avanti([uguale(x.a + " − " + x.b + " = " + x.a + " − " + pezzo1 + " − " + pezzo2 + " = 10 − " + pezzo2 + " = " + ris),
-        el("p", { class: "mat-consiglio", text: "💡 Prima si scende a 10, poi si toglie quello che resta." })]);
+      // 13 − 5: il 13 è 10 e 3 (la ciliegina sta sotto il 13); si toglie dal 10, poi si aggiungono le unità
+      const unita = x.a - 10, dal10 = 10 - x.b, ris = x.a - x.b;
+      const cil = ciliegia(x.a);
+      scena.replaceChildren(el("div", { class: "f10-scena" }, vista, cil.svg));
+      testo.replaceChildren(el("p", {}, el("span", { text: x.a + " − " + x.b + ": si toglie dal 10." })));
+      const pallini = caselle.flat().map(c => c.firstChild).filter(Boolean);
+      await chiedi(il(x.a) + " è 10 e…?", opzioniNumeri(unita, [unita + 1, x.b]), String(unita));
+      cil.sx.textContent = "10";
+      cil.dx.textContent = String(unita);
+      await chiedi("Dal 10 togli " + x.b + ": quanto resta?", opzioniNumeri(dal10, [x.b, dal10 + 1]), String(dal10));
+      pallini.slice(10 - x.b, 10).forEach(p => p.classList.add("via"));
+      await aspetta(400);
+      await chiedi(dal10 + " e " + unita + " fanno…?", opzioniNumeri(ris, [ris + 1, ris - 1]), String(ris));
+      await avanti([uguale(x.a + " − " + x.b + "  →  10 − " + x.b + " = " + dal10 + "  →  " + dal10 + " + " + unita + " = " + ris),
+        el("p", { class: "mat-consiglio", text: "💡 Si toglie dal 10, poi si aggiungono le unità che erano rimaste da parte." })]);
     }
   }
 
