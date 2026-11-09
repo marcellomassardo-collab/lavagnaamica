@@ -3,6 +3,7 @@
 import { impostazioni } from "./impostazioni.js";
 import { linguaAttuale, parla, parlaEAspetta, voceDisponibile } from "./voce.js";
 import { suonoGiusto, suonoRiprova } from "./suoni.js";
+import { inSillabe } from "./sillabe.js";
 
 export function el(tag, attr, ...figli) {
   const n = document.createElement(tag);
@@ -47,9 +48,15 @@ export function fotoCarta(file, alt) {
 // Un testo per la scrittura «doppia»: sopra in stampato maiuscolo, sotto com'è scritto (minuscolo,
 // con la maiuscola a inizio frase). Con le altre scritture si vede una riga sola.
 // «evidenzia»: quanti caratteri iniziali mettere in grassetto.
+// Le sillabe colorate (se sono accese nelle impostazioni): blu e rosso alternati, ogni parola comincia dal blu.
+function aSillabe(t) {
+  return inSillabe(String(t)).map(p => (p.sillabe ? p.sillabe.map((x, j) => el("span", { class: j % 2 ? "sil-b" : "sil-a", text: x })) : p.t));
+}
+
 export function due(t, evidenzia) {
+  const colori = !evidenzia && impostazioni.sillabe && linguaAttuale() !== "en" && /\p{L}/u.test(String(t));
   const riga = classe => el("span", { class: classe },
-    evidenzia ? [el("b", { text: t.slice(0, evidenzia) }), t.slice(evidenzia)] : t);
+    evidenzia ? [el("b", { text: t.slice(0, evidenzia) }), t.slice(evidenzia)] : colori ? aSillabe(t) : t);
   return el("span", { class: "due" }, riga("alto"), riga("basso"));
 }
 

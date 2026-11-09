@@ -222,7 +222,10 @@ export const GENERI_LETTURA = {
   fusione: { nome: "Unisci le lettere", spiega: "Le lettere si avvicinano e si legge la sillaba che formano insieme." },
   parola: { nome: "Componi la parola", spiega: "Si mettono in ordine le sillabe per formare la parola dell'immagine." },
   frase: { nome: "Metti in ordine la frase", spiega: "Si mettono in ordine le parole per formare la frase." },
-  leggi: { nome: "Leggi e trova l'immagine", spiega: "Si legge una parola o una frase (la voce non la dice) e si sceglie l'immagine giusta." }
+  leggi: { nome: "Leggi e trova l'immagine", spiega: "Si legge una parola o una frase (la voce non la dice) e si sceglie l'immagine giusta." },
+  lampo: { nome: "Lettura lampo", spiega: "La parola si vede solo per un attimo, poi si sceglie quale era tra parole simili. Il tempo si accorcia quando si legge bene e si allunga dopo un errore." },
+  suono: { nome: "Suoni e lettere, giro veloce", spiega: "La voce dice una sillaba o una vocale e si tocca quella scritta. Le scelte crescono da 2 a 4 quando si va bene." },
+  piramide: { nome: "Piramide di parole", spiega: "La frase cresce di una parola a ogni riga: si legge ogni riga ad alta voce, poi si riconosce la frase intera." }
 };
 
 const minuscola = s => s.toLocaleLowerCase("it");
@@ -261,6 +264,26 @@ function esercizioDiLettura(x, i) {
     e.p = picto(x.p) || errore(inizio + "serve l'immagine giusta.");
     e.altre = [...new Set((Array.isArray(x.altre) ? x.altre : []).map(picto).filter(p => p && p !== e.p))];
     if (!e.altre.length) errore(inizio + "serve almeno un'immagine sbagliata.");
+  }
+  if (x.genere === "lampo") {
+    e.parole = [...new Set(lista(x.parole, 20))];
+    if (e.parole.length < 3 || e.parole.length > 20) errore(inizio + "servono da 3 a 20 parole diverse.");
+    const ms = Number(x.ms);
+    e.ms = Number.isFinite(ms) && ms > 0 ? Math.min(3000, Math.max(300, Math.round(ms))) : 1000;
+  }
+  if (x.genere === "suono") {
+    e.pezzi = [...new Set(lista(x.pezzi, 4).map(minuscola))];
+    if (e.pezzi.length < 3 || e.pezzi.length > 30) errore(inizio + "servono da 3 a 30 sillabe o vocali diverse.");
+    // una consonante da sola la voce la dice con il suo nome («emme»), non con il suono
+    const senza = e.pezzi.find(p => !/[aeiouàèéìíòóùú]/.test(p));
+    if (senza) errore(inizio + "«" + senza + "» non ha vocali: la voce direbbe il nome della lettera, non il suono.");
+    const q = Math.round(Number(x.quante));
+    e.quante = Number.isFinite(q) && q > 0 ? Math.min(20, Math.max(5, q)) : 10;
+  }
+  if (x.genere === "piramide") {
+    e.frase = testo(x.frase, 120) || errore(inizio + "manca la frase.");
+    const n = e.frase.split(" ").length;
+    if (n < 3 || n > 12) errore(inizio + "la frase deve avere da 3 a 12 parole.");
   }
   return e;
 }

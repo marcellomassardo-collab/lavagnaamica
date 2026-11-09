@@ -1144,6 +1144,362 @@
   }
  },
  {
+  "id": "leggere-11-suoni-vocali",
+  "titolo": "Leggere 11 · Suoni veloci: le vocali",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Ascolta e tocca la vocale che senti.",
+  "materia": "Italiano",
+  "livello": 1,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "suono",
+     "pezzi": [
+      "a",
+      "e",
+      "i",
+      "o",
+      "u"
+     ],
+     "quante": 10
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-12-suoni-m-p-t",
+  "titolo": "Leggere 12 · Suoni veloci: m, p, t",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Ascolta e tocca la sillaba che senti.",
+  "materia": "Italiano",
+  "livello": 1,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "suono",
+     "pezzi": [
+      "ma",
+      "me",
+      "mi",
+      "mo",
+      "mu",
+      "pa",
+      "pe",
+      "pi",
+      "po",
+      "pu",
+      "ta",
+      "te",
+      "ti",
+      "to",
+      "tu"
+     ],
+     "quante": 12
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-13-suoni-simili",
+  "titolo": "Leggere 13 · Suoni simili: p e b, t e d, c e g, f e v",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Ascolta bene: i suoni si somigliano. Tocca la sillaba che senti.",
+  "materia": "Italiano",
+  "livello": 2,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "suono",
+     "pezzi": [
+      "pa",
+      "ba",
+      "po",
+      "bo",
+      "ta",
+      "da",
+      "te",
+      "de",
+      "ca",
+      "ga",
+      "co",
+      "go",
+      "fa",
+      "va",
+      "fe",
+      "ve"
+     ],
+     "quante": 12
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-14-suoni-difficili",
+  "titolo": "Leggere 14 · Suoni difficili: gn, gl, sc, ch, gh",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Ascolta e tocca la sillaba che senti.",
+  "materia": "Italiano",
+  "livello": 3,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "suono",
+     "pezzi": [
+      "gna",
+      "gno",
+      "gni",
+      "gli",
+      "sca",
+      "sci",
+      "sce",
+      "sco",
+      "che",
+      "chi",
+      "ghe",
+      "ghi",
+      "cia",
+      "cio",
+      "gia",
+      "gio"
+     ],
+     "quante": 12
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-15-lampo-sillabe",
+  "titolo": "Leggere 15 · Lettura lampo: sillabe",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Guarda il centro: la sillaba si vede per un attimo. Quale era?",
+  "materia": "Italiano",
+  "livello": 1,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "lampo",
+     "parole": [
+      "ma",
+      "am",
+      "pa",
+      "ap",
+      "la",
+      "al",
+      "sa",
+      "as",
+      "ni",
+      "in",
+      "ro",
+      "or"
+     ],
+     "ms": 1400
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-16-lampo-parole",
+  "titolo": "Leggere 16 · Lettura lampo: parole simili",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Guarda il centro: la parola si vede per un attimo. Quale era?",
+  "materia": "Italiano",
+  "livello": 2,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "lampo",
+     "parole": [
+      "casa",
+      "cosa",
+      "cassa",
+      "case",
+      "cane",
+      "pane",
+      "palla",
+      "pala"
+     ],
+     "ms": 1200
+    },
+    {
+     "genere": "lampo",
+     "parole": [
+      "mela",
+      "vela",
+      "rana",
+      "lana",
+      "nido",
+      "dito",
+      "topo",
+      "tipo"
+     ],
+     "ms": 1200
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-17-lampo-parole-frequenti",
+  "titolo": "Leggere 17 · Lettura lampo: le parole che si incontrano più spesso",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Sono le parole che si trovano in tutti i libri: riconoscile al volo!",
+  "materia": "Italiano",
+  "livello": 2,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "lampo",
+     "parole": [
+      "che",
+      "non",
+      "per",
+      "con",
+      "una",
+      "sono",
+      "come",
+      "anche"
+     ],
+     "ms": 1000
+    },
+    {
+     "genere": "lampo",
+     "parole": [
+      "dove",
+      "quando",
+      "molto",
+      "tutto",
+      "dopo",
+      "sempre",
+      "ancora",
+      "perché"
+     ],
+     "ms": 1000
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-18-lampo-parole-lunghe",
+  "titolo": "Leggere 18 · Lettura lampo: parole lunghe",
+  "scrittura": "minuscolo",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Parole lunghe che cominciano allo stesso modo: guarda bene fino in fondo!",
+  "materia": "Italiano",
+  "livello": 3,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "lampo",
+     "parole": [
+      "farfalla",
+      "fragola",
+      "finestra",
+      "fontana",
+      "formica",
+      "foresta"
+     ],
+     "ms": 1000
+    },
+    {
+     "genere": "lampo",
+     "parole": [
+      "cappello",
+      "cappotto",
+      "cammello",
+      "campanello",
+      "ombrello",
+      "ombrellone",
+      "tartaruga",
+      "tartufo"
+     ],
+     "ms": 1000
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-19-piramidi",
+  "titolo": "Leggere 19 · Piramidi di parole",
+  "scrittura": "doppio",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "La frase cresce di una parola a ogni riga: leggi ogni riga ad alta voce.",
+  "materia": "Italiano",
+  "livello": 2,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "piramide",
+     "frase": "Il gatto dorme sul divano."
+    },
+    {
+     "genere": "piramide",
+     "frase": "Il cane corre nel prato verde."
+    },
+    {
+     "genere": "piramide",
+     "frase": "La nonna legge una bella storia."
+    },
+    {
+     "genere": "piramide",
+     "frase": "Oggi il sole splende nel cielo."
+    },
+    {
+     "genere": "piramide",
+     "frase": "Marco porta a scuola il suo zaino nuovo."
+    }
+   ]
+  }
+ },
+ {
+  "id": "leggere-20-piramidi-lunghe",
+  "titolo": "Leggere 20 · Piramidi di parole lunghe",
+  "scrittura": "minuscolo",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Frasi più lunghe: leggi ogni riga ad alta voce, senza fretta.",
+  "materia": "Italiano",
+  "livello": 3,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "piramide",
+     "frase": "Ogni mattina il piccolo riccio cerca le fragole nel bosco."
+    },
+    {
+     "genere": "piramide",
+     "frase": "Quando piove forte, le rane cantano felici nello stagno."
+    },
+    {
+     "genere": "piramide",
+     "frase": "Il treno lungo e rosso parte dalla stazione alle otto."
+    },
+    {
+     "genere": "piramide",
+     "frase": "La maestra ha portato in classe un libro pieno di animali."
+    },
+    {
+     "genere": "piramide",
+     "frase": "Sotto il vecchio ponte di pietra scorre un fiume limpido."
+    }
+   ]
+  }
+ },
+ {
   "id": "brano-giro-tondo",
   "titolo": "Livello 1 · Giro giro tondo",
   "scrittura": "maiuscolo",

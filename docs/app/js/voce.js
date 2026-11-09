@@ -72,7 +72,10 @@ export function perLaVoce(t) {
 // In inglese il testo resta com'è (le parole «più», «fa», «diviso» sono italiane): si tolgono solo simboli e buchi.
 const perLaVoceInglese = t => String(t).replace(/[🔊🎉]/gu, "").replace(/_{2,}|…/g, ", ").replace(/\s+/g, " ").trim();
 
-function leggi(testo, lingua) {
+// Le parole come le conta il lettore di brani: l'apostrofo tiene unite le due parti (l'albero).
+export const PAROLA = /[\p{L}\d]+(?:['’][\p{L}\d]+)*/gu;
+
+function leggi(testo, lingua, alConfine) {
   const mio = ++turno;
   if (sintesi) sintesi.cancel();
   const inglese = (lingua || linguaGioco) === "en";
@@ -88,6 +91,16 @@ function leggi(testo, lingua) {
     if (scelta) u.voice = scelta;
     u.rate = impostazioni.velocita;
     u.onend = u.onerror = fine;
+    // a ogni parola detta, il numero della parola (non tutte le voci lo dicono: chi non lo dice, legge e basta)
+    if (alConfine) {
+      const inizi = [...t.matchAll(PAROLA)].map(m => m.index);
+      u.onboundary = e => {
+        if (e.name && e.name !== "word") return;
+        let k = 0;
+        while (k + 1 < inizi.length && inizi[k + 1] <= e.charIndex) k++;
+        alConfine(k);
+      };
+    }
     if (mio === turno) sintesi.speak(u); else fine();
   });
 }
@@ -99,6 +112,12 @@ export function parla(testo, lingua) {
 // Legge e aspetta la fine della frase, per far andare la storia insieme alla voce.
 export function parlaEAspetta(testo) {
   return Promise.race([leggi(testo), new Promise(r => setTimeout(r, 15000))]);
+}
+
+// Legge una frase e dice quale parola sta dicendo; aspetta la fine (con un tetto, se la voce non avvisa).
+export function leggiRiga(testo, alConfine) {
+  const tetto = 3000 + String(testo).length * 170 / (impostazioni.velocita || 1);
+  return Promise.race([leggi(testo, undefined, alConfine), new Promise(r => setTimeout(r, tetto))]);
 }
 
 export function zitto() {

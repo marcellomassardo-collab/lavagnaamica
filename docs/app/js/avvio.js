@@ -548,20 +548,26 @@ function vistaImpostazioni() {
       interruttore("suoni", "Suoni", "Un suono a ogni risposta e una festa alla fine."),
       interruttore("aiuto", "Aiuto dopo un errore", "Mostra per un momento dove va la carta."),
       sceltaTema(),
+      interruttore("sillabe", "Sillabe colorate", "Le parole divise in sillabe, blu e rosso alternati. Si accendono anche dai brani, con «Sillabe»."),
       interruttore("contrasto", "Alto contrasto", "Colori più forti e bordi più spessi. Vale al posto del tema."),
       interruttore("sensore", "Gioco con un sensore", "Le scelte si illuminano una alla volta: si sceglie con un sensore collegato come tasto, con la barra spaziatrice o con Invio."),
       numero("ritmo", "Secondi per ogni scelta", "Quanto resta illuminata ogni scelta, con il sensore."),
       numero("elementi", "Carte per partita", "Quante carte o domande in ogni partita."),
       numero("risposte", "Risposte tra cui scegliere", "Nella scelta multipla e nelle frasi da completare.")),
     el("p", {}, el("button", { type: "button", class: "tasto-piccolo", text: "🔁 Azzera il ripasso", on: { click: () => { azzera(); avviso("Ripasso azzerato."); } } }),
-      el("small", { class: "tenue", text: " Cancella da questo dispositivo il ricordo di come sono andati gli esercizi." }))));
+      el("small", { class: "tenue", text: " Cancella da questo dispositivo il ricordo di come sono andati gli esercizi." })),
+    el("p", {}, el("button", { type: "button", class: "tasto-piccolo", text: "⏱ Cancella i tempi di lettura", on: { click: () => {
+      try { localStorage.removeItem("lavagna-amica-tempi"); } catch (e) {}
+      avviso("Tempi di lettura cancellati.");
+    } } }),
+      el("small", { class: "tenue", text: " Cancella da questo dispositivo i tempi di «Leggo a tempo» nei brani." }))));
 }
 
 function info() {
   vista(pagina("Lavagna Amica",
     el("p", { text: "Esercizi interattivi gratuiti, pensati per il sostegno e per la LIM. Nessuna funzione a pagamento, niente pubblicità, niente tracciamento." }),
     el("h2", { text: "I tuoi dati" }),
-    el("p", { text: "Per giocare non serve un account e non raccogliamo nulla. Gli esercizi che crei, le impostazioni e il ripasso (com'è andato ogni esercizio, senza nomi) restano su questo dispositivo. Un esercizio esce dal dispositivo solo se lo condividi tu, con un link o un file, o se lo pubblichi nel catalogo." }),
+    el("p", { text: "Per giocare non serve un account e non raccogliamo nulla. Gli esercizi che crei, le impostazioni, il ripasso (com'è andato ogni esercizio, senza nomi) e i tempi di «Leggo a tempo» (senza nomi) restano su questo dispositivo. Un esercizio esce dal dispositivo solo se lo condividi tu, con un link o un file, o se lo pubblichi nel catalogo." }),
     catalogoAttivo ? el("p", { text: "Il catalogo comune sta su un server di Cloudflare. Gli insegnanti accedono con Google: salviamo la loro email, che non viene mai mostrata, e il nome che scelgono di mostrare. Una segnalazione anonima salva solo il motivo, un numero a caso di questo dispositivo e un'impronta della rete che cambia ogni giorno, per frenare gli abusi." }) : null,
     el("p", { text: "Le immagini arrivano dall'archivio pubblico di pittogrammi ARASAAC, che vede quindi le richieste delle immagini." }),
     el("p", { text: "La lettura ad alta voce usa le voci del dispositivo. Le voci «in rete» mandano il testo da leggere al servizio di chi le fornisce." }),

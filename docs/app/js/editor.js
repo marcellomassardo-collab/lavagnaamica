@@ -284,6 +284,9 @@ function campiDiLettura(x, ridisegna) {
     if (v === "fusione") Object.assign(x, { pezzi: ["m", "a"], altre: ["am", "mo"] });
     if (v === "parola" || v === "frase") x.pezzi = [];
     if (v === "leggi") Object.assign(x, { testo: "", altre: [] });
+    if (v === "lampo") Object.assign(x, { parole: [], ms: 1000 });
+    if (v === "suono") Object.assign(x, { pezzi: [], quante: 10 });
+    if (v === "piramide") x.frase = "";
     ridisegna();
   }, "Che cosa");
   const campi = [genere, el("small", { class: "spiega", text: GENERI_LETTURA[x.genere].spiega })];
@@ -318,6 +321,18 @@ function campiDiLettura(x, ridisegna) {
       etichetta("La parola o la frase da leggere", testoLibero(x.testo, v => { x.testo = v; }, { placeholder: "Il bambino dorme." })),
       campoPicto(x, "p", () => x.testo, "l'immagine giusta"),
       scegliSbagliata("a", "un'immagine sbagliata"), scegliSbagliata("b", "un'altra immagine sbagliata (facoltativa)"));
+  }
+  if (x.genere === "lampo") {
+    campi.push(lista("Le parole", "parole", ",", "casa, cosa, cassa, case, rosa", "Da 3 a 20, separate da virgole. Le scelte sbagliate si prendono tra queste: metti parole che si somigliano."),
+      numero(x.ms, v => { x.ms = v; }, "Millisecondi della prima parola (da 300 a 3000)", 300));
+  }
+  if (x.genere === "suono") {
+    campi.push(lista("Le sillabe o le vocali", "pezzi", ",", "ma, me, mi, mo, mu, na, ne", "Da 3 a 30, separate da virgole, ognuna con una vocale. Le scelte sbagliate sono le più simili."),
+      numero(x.quante, v => { x.quante = v; }, "Quante in un giro (da 5 a 20)", 5));
+  }
+  if (x.genere === "piramide") {
+    campi.push(etichetta("La frase", testoLibero(x.frase, v => { x.frase = v; }, { placeholder: "Il gatto dorme sul divano." }),
+      "Da 3 a 12 parole, con la maiuscola e il punto."));
   }
   return campi;
 }

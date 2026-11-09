@@ -251,6 +251,13 @@ function corpo(es) {
         if (x.genere === "fusione") return el("li", {}, el("p", {}, testo(x.pezzi.join(" + ") + " = " + riga)));
         if (x.genere === "parola" || x.genere === "frase") return el("li", {}, cartaStampa({ p: x.p }), el("p", {}, mescola(x.pezzi.slice()).map(p => el("span", { class: "st-parola" }, testo(p)))), el("p", { text: "Scrivi: " + riga + riga + riga }));
         if (x.genere === "leggi") return el("li", {}, el("p", { class: "st-grande" }, testo(x.testo)), el("p", {}, "Fai una X sul disegno giusto: ", mescola([x.p].concat(x.altre)).map(p => cartaStampa({ p }))));
+        // sulla carta la lettura lampo diventa una tabella di parole da leggere veloci, i suoni una tabella di sillabe
+        if (x.genere === "lampo") return el("li", {}, el("p", { text: "Leggi veloce, riga per riga:" }), el("p", { class: "st-griglia-parole" }, x.parole.map(p => el("span", {}, testo(p)))));
+        if (x.genere === "suono") return el("li", {}, el("p", { text: "Leggi ad alta voce:" }), el("p", { class: "st-griglia-parole" }, mescola(x.pezzi.concat(x.pezzi)).slice(0, 24).map(p => el("span", {}, testo(p)))));
+        if (x.genere === "piramide") {
+          const parole = x.frase.split(" ");
+          return el("li", {}, el("p", { text: "Leggi ogni riga ad alta voce:" }), el("div", { class: "st-piramide" }, parole.map((_, k) => el("p", {}, testo(parole.slice(0, k + 1).join(" "))))));
+        }
         return null;
       }));
     case "matematica":
