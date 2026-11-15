@@ -22786,5 +22786,723 @@
   "scopri": {
    "animazione": "moltiplicazione"
   }
+ },
+ {
+  "id": "emozioni-sul-viso",
+  "materia": "Educazione affettiva",
+  "livello": 1,
+  "titolo": "Le emozioni sul viso",
+  "scrittura": "doppio",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Guarda la spiegazione. Poi tocca il viso giusto.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Tocca la gioia."
+     },
+     "giusta": {
+      "t": "gioia",
+      "p": 35547
+     },
+     "sbagliate": [
+      {
+       "t": "tristezza",
+       "p": 35545
+      },
+      {
+       "t": "paura",
+       "p": 35535
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Tocca la tristezza."
+     },
+     "giusta": {
+      "t": "tristezza",
+      "p": 35545
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "sorpresa",
+       "p": 35529
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Tocca la rabbia."
+     },
+     "giusta": {
+      "t": "rabbia",
+      "p": 35539
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "disgusto",
+       "p": 30964
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Tocca la paura."
+     },
+     "giusta": {
+      "t": "paura",
+      "p": 35535
+     },
+     "sbagliate": [
+      {
+       "t": "rabbia",
+       "p": 35539
+      },
+      {
+       "t": "gioia",
+       "p": 35547
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Tocca la sorpresa."
+     },
+     "giusta": {
+      "t": "sorpresa",
+      "p": 35529
+     },
+     "sbagliate": [
+      {
+       "t": "tristezza",
+       "p": 35545
+      },
+      {
+       "t": "rabbia",
+       "p": 35539
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Tocca il disgusto."
+     },
+     "giusta": {
+      "t": "disgusto",
+      "p": 30964
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "paura",
+       "p": 35535
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "facce-emozioni"
+  }
+ },
+ {
+  "id": "emozioni-indizi-viso",
+  "materia": "Educazione affettiva",
+  "livello": 2,
+  "titolo": "Che emozione è? Gli indizi del viso",
+  "scrittura": "doppio",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi gli indizi e tocca l'emozione.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "La bocca sorride, gli occhi diventano piccoli."
+     },
+     "giusta": {
+      "t": "gioia",
+      "p": 35547
+     },
+     "sbagliate": [
+      {
+       "t": "rabbia",
+       "p": 35539
+      },
+      {
+       "t": "paura",
+       "p": 35535
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "La bocca va giù, arrivano le lacrime."
+     },
+     "giusta": {
+      "t": "tristezza",
+      "p": 35545
+     },
+     "sbagliate": [
+      {
+       "t": "sorpresa",
+       "p": 35529
+      },
+      {
+       "t": "gioia",
+       "p": 35547
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Le sopracciglia si abbassano, il viso diventa rosso."
+     },
+     "giusta": {
+      "t": "rabbia",
+      "p": 35539
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "tristezza",
+       "p": 35545
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Gli occhi si spalancano, la bocca si tira."
+     },
+     "giusta": {
+      "t": "paura",
+      "p": 35535
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "disgusto",
+       "p": 30964
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Bocca aperta e tonda, sopracciglia in alto, dura poco."
+     },
+     "giusta": {
+      "t": "sorpresa",
+      "p": 35529
+     },
+     "sbagliate": [
+      {
+       "t": "tristezza",
+       "p": 35545
+      },
+      {
+       "t": "rabbia",
+       "p": 35539
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Il naso si arriccia, come per un cattivo odore."
+     },
+     "giusta": {
+      "t": "disgusto",
+      "p": 30964
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "paura",
+       "p": 35535
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "facce-emozioni"
+  }
+ },
+ {
+  "id": "emozioni-nel-corpo",
+  "materia": "Educazione affettiva",
+  "livello": 2,
+  "titolo": "Le emozioni nel corpo",
+  "scrittura": "doppio",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni sensazione del corpo vicino alla sua emozione.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "il cuore batte veloce"
+     },
+     {
+      "t": "paura",
+      "p": 35535
+     }
+    ],
+    [
+     {
+      "t": "le mani fanno il pugno"
+     },
+     {
+      "t": "rabbia",
+      "p": 35539
+     }
+    ],
+    [
+     {
+      "t": "vengono le lacrime"
+     },
+     {
+      "t": "tristezza",
+      "p": 35545
+     }
+    ],
+    [
+     {
+      "t": "ho voglia di saltare"
+     },
+     {
+      "t": "gioia",
+      "p": 35547
+     }
+    ],
+    [
+     {
+      "t": "apro la bocca e gli occhi"
+     },
+     {
+      "t": "sorpresa",
+      "p": 35529
+     }
+    ],
+    [
+     {
+      "t": "arriccio il naso"
+     },
+     {
+      "t": "disgusto",
+      "p": 30964
+     }
+    ]
+   ]
+  },
+  "scopri": {
+   "animazione": "corpo-emozioni"
+  }
+ },
+ {
+  "id": "calmarsi-cosa-aiuta",
+  "materia": "Educazione affettiva",
+  "livello": 1,
+  "titolo": "Che cosa mi aiuta a tornare calmo?",
+  "scrittura": "doppio",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Guarda la spiegazione. Poi metti ogni azione nel suo gruppo.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "mi aiuta",
+     "elementi": [
+      {
+       "t": "respiro piano"
+      },
+      {
+       "t": "conto fino a 10"
+      },
+      {
+       "t": "bevo un po' d'acqua"
+      },
+      {
+       "t": "chiedo aiuto"
+      },
+      {
+       "t": "apro e chiudo le mani"
+      },
+      {
+       "t": "vado nell'angolo tranquillo"
+      }
+     ]
+    },
+    {
+     "nome": "non mi aiuta",
+     "elementi": [
+      {
+       "t": "urlo forte"
+      },
+      {
+       "t": "picchio"
+      },
+      {
+       "t": "rompo le cose"
+      },
+      {
+       "t": "dico parolacce"
+      },
+      {
+       "t": "scappo da solo"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "calmarsi"
+  }
+ },
+ {
+  "id": "calmarsi-che-cosa-faccio",
+  "materia": "Educazione affettiva",
+  "livello": 2,
+  "titolo": "Che cosa posso fare?",
+  "scrittura": "doppio",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi e scegli che cosa ti aiuta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Sono arrabbiato perché ho perso a un gioco."
+     },
+     "giusta": {
+      "t": "respiro piano e conto fino a 10"
+     },
+     "sbagliate": [
+      {
+       "t": "butto il gioco per terra"
+      },
+      {
+       "t": "spingo il compagno"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Ho paura del temporale."
+     },
+     "giusta": {
+      "t": "lo dico a un adulto"
+     },
+     "sbagliate": [
+      {
+       "t": "mi nascondo e non parlo con nessuno"
+      },
+      {
+       "t": "urlo"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Sono triste perché il mio amico è malato."
+     },
+     "giusta": {
+      "t": "gli faccio un disegno"
+     },
+     "sbagliate": [
+      {
+       "t": "rompo i colori"
+      },
+      {
+       "t": "non parlo più"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Un compito è difficile e mi arrabbio."
+     },
+     "giusta": {
+      "t": "chiedo aiuto alla maestra"
+     },
+     "sbagliate": [
+      {
+       "t": "strappo il foglio"
+      },
+      {
+       "t": "dico parolacce"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Il cuore batte forte e mi tremano le mani."
+     },
+     "giusta": {
+      "t": "faccio il respiro del quadrato"
+     },
+     "sbagliate": [
+      {
+       "t": "corro via senza dire niente"
+      },
+      {
+       "t": "picchio il banco"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "calmarsi"
+  }
+ },
+ {
+  "id": "empatia-come-aiuto",
+  "materia": "Educazione affettiva",
+  "livello": 2,
+  "titolo": "Come si sente? Come posso aiutare?",
+  "scrittura": "doppio",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi e scegli la cosa gentile da fare.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Un compagno piange perché è caduto."
+     },
+     "giusta": {
+      "t": "gli chiedo se si è fatto male"
+     },
+     "sbagliate": [
+      {
+       "t": "rido"
+      },
+      {
+       "t": "faccio finta di niente"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Una bambina è da sola in cortile."
+     },
+     "giusta": {
+      "t": "le chiedo se vuole giocare"
+     },
+     "sbagliate": [
+      {
+       "t": "la prendo in giro"
+      },
+      {
+       "t": "vado via"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Un compagno è arrabbiato."
+     },
+     "giusta": {
+      "t": "lo lascio calmare e poi gli parlo"
+     },
+     "sbagliate": [
+      {
+       "t": "lo spingo"
+      },
+      {
+       "t": "gli urlo contro"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Un amico ha paura del buio."
+     },
+     "giusta": {
+      "t": "gli dico che lo capisco"
+     },
+     "sbagliate": [
+      {
+       "t": "gli dico che è un fifone"
+      },
+      {
+       "t": "spengo la luce"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Una compagna è contenta per un bel voto."
+     },
+     "giusta": {
+      "t": "le dico «brava!»"
+     },
+     "sbagliate": [
+      {
+       "t": "le dico che non vale niente"
+      },
+      {
+       "t": "non la guardo"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "empatia"
+  }
+ },
+ {
+  "id": "empatia-come-si-sente",
+  "materia": "Educazione affettiva",
+  "livello": 1,
+  "titolo": "Come si sente?",
+  "scrittura": "doppio",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi che cosa succede e tocca come si sente il bambino.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Marco riceve un regalo."
+     },
+     "giusta": {
+      "t": "gioia",
+      "p": 35547
+     },
+     "sbagliate": [
+      {
+       "t": "tristezza",
+       "p": 35545
+      },
+      {
+       "t": "rabbia",
+       "p": 35539
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Il gelato di Sara cade per terra."
+     },
+     "giusta": {
+      "t": "tristezza",
+      "p": 35545
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "sorpresa",
+       "p": 35529
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Un compagno rompe il disegno di Luca."
+     },
+     "giusta": {
+      "t": "rabbia",
+      "p": 35539
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "paura",
+       "p": 35535
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Fuori c'è un tuono fortissimo."
+     },
+     "giusta": {
+      "t": "paura",
+      "p": 35535
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "disgusto",
+       "p": 30964
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Entra in classe un cane!"
+     },
+     "giusta": {
+      "t": "sorpresa",
+      "p": 35529
+     },
+     "sbagliate": [
+      {
+       "t": "tristezza",
+       "p": 35545
+      },
+      {
+       "t": "rabbia",
+       "p": 35539
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Il latte puzza."
+     },
+     "giusta": {
+      "t": "disgusto",
+      "p": 30964
+     },
+     "sbagliate": [
+      {
+       "t": "gioia",
+       "p": 35547
+      },
+      {
+       "t": "paura",
+       "p": 35535
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "empatia"
+  }
  }
 ]

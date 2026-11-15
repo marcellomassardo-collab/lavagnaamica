@@ -2044,6 +2044,213 @@ const TOGLIERE_10 = {
   }
 };
 
+/* ---------- un viso disegnato che cambia emozione ---------- */
+// Bocca, occhi e sopracciglia passano piano da un'emozione all'altra: si vede che cosa cambia nel viso.
+const VISI = {
+  calma:     { c: 0.25, a: 0,    w: 70, tilt: 0,    su: 0,    occhi: 1,    rosso: 0, verde: 0, lacrime: 0, sudore: 0 },
+  gioia:     { c: 1,    a: 0.55, w: 78, tilt: 0,    su: 0.2,  occhi: 0.6,  rosso: 0, verde: 0, lacrime: 0, sudore: 0 },
+  tristezza: { c: -0.8, a: 0,    w: 60, tilt: -0.8, su: 0.2,  occhi: 0.7,  rosso: 0, verde: 0, lacrime: 1, sudore: 0 },
+  rabbia:    { c: -0.5, a: 0.15, w: 62, tilt: 1,    su: -0.4, occhi: 0.7,  rosso: 1, verde: 0, lacrime: 0, sudore: 0 },
+  paura:     { c: -0.35, a: 0.7, w: 66, tilt: -0.6, su: 1,    occhi: 1.45, rosso: 0, verde: 0, lacrime: 0, sudore: 1 },
+  sorpresa:  { c: 0,    a: 1,    w: 34, tilt: 0,    su: 1.2,  occhi: 1.45, rosso: 0, verde: 0, lacrime: 0, sudore: 0 },
+  disgusto:  { c: -0.35, a: 0.12, w: 48, tilt: 0.15, su: 0,    occhi: 0.55, rosso: 0, verde: 1, lacrime: 0, sudore: 0 }
+};
+function viso(cx, cy, grande) {
+  const g = s("g", { transform: "translate(" + cx + "," + cy + ") scale(" + grande + ")" });
+  const testa = s("circle", { r: 120, fill: "#FFD45C", stroke: INCHIOSTRO, "stroke-width": 5 });
+  const occhi = [-45, 45].map(x => s("ellipse", { cx: x, cy: -25, rx: 13, ry: 16, fill: INCHIOSTRO }));
+  const ciglia = [-1, 1].map(() => s("path", { stroke: INCHIOSTRO, "stroke-width": 8, "stroke-linecap": "round", fill: "none" }));
+  const bocca = s("path", { stroke: INCHIOSTRO, "stroke-width": 6, "stroke-linejoin": "round", "stroke-linecap": "round", fill: "#8B1E2B" });
+  const naso = s("path", { d: "M-9,12 a4,4 0 1 0 0.01 0 Z M9,12 a4,4 0 1 0 0.01 0 Z", stroke: INCHIOSTRO, "stroke-width": 3, fill: INCHIOSTRO, "stroke-linecap": "round" });
+  const lacrime = [-48, 48].map(x => s("path", { d: "M" + x + ",-6 q-9,16 0,22 q9,-6 0,-22 Z", fill: "#4FA3E8", stroke: "#1F5E99", "stroke-width": 2 }));
+  const sudore = s("path", { d: "M95,-70 q-10,18 0,25 q10,-7 0,-25 Z", fill: "#9CD3FF", stroke: "#1F5E99", "stroke-width": 2 });
+  g.append(testa, ...lacrime, sudore, ...occhi, ...ciglia, naso, bocca);
+  const ora = Object.assign({}, VISI.calma);
+  let meta = VISI.calma, prima = 0;
+  function disegna(v, tempo) {
+    const r = Math.round(255 - v.verde * 60), gg = Math.round(212 - v.rosso * 90 + v.verde * 10), b = Math.round(92 - v.rosso * 40 + v.verde * 20);
+    testa.setAttribute("fill", "rgb(" + r + "," + gg + "," + b + ")");
+    occhi.forEach(o => { o.setAttribute("ry", (16 * v.occhi).toFixed(1)); o.setAttribute("rx", (11 + 3 * Math.min(v.occhi, 1.2)).toFixed(1)); });
+    const base = -62 - v.su * 22;
+    ciglia.forEach((c, i) => {
+      const lato = i ? 1 : -1, dentro = base + v.tilt * 16, fuori = base - v.tilt * 8;
+      c.setAttribute("d", "M" + (lato * 75) + "," + fuori.toFixed(1) + " L" + (lato * 22) + "," + dentro.toFixed(1));
+    });
+    const y = 62, fine = y - v.c * 14, w = v.w;
+    const sopra = y + v.c * 34 - v.a * 22, sotto = y + v.c * 34 + v.a * 46;
+    bocca.setAttribute("d", "M" + (-w) + "," + fine.toFixed(1) + " Q0," + sopra.toFixed(1) + " " + w + "," + fine.toFixed(1) +
+      " Q0," + sotto.toFixed(1) + " " + (-w) + "," + fine.toFixed(1) + " Z");
+    bocca.setAttribute("fill", v.a > 0.05 ? "#8B1E2B" : "none");
+    naso.setAttribute("d", v.verde > 0.3 ? "M-20,-2 q10,-8 20,0 q10,-8 20,0 M-9,12 a4,4 0 1 0 0.01 0 Z M9,12 a4,4 0 1 0 0.01 0 Z" : "M-9,12 a4,4 0 1 0 0.01 0 Z M9,12 a4,4 0 1 0 0.01 0 Z");
+    const cade = ((tempo || 0) / 1400) % 1;
+    lacrime.forEach(l => { l.style.opacity = v.lacrime; l.setAttribute("transform", "translate(0," + (cade * 40).toFixed(1) + ")"); });
+    sudore.style.opacity = v.sudore;
+  }
+  disegna(ora, 0);
+  return {
+    g,
+    porta(nome) { meta = VISI[nome] || VISI.calma; if (movimentoRidotto()) { Object.assign(ora, meta); disegna(ora, 0); } },
+    passo(tempo) {
+      // circa un secondo per cambiare espressione, anche se lo schermo disegna pochi fotogrammi
+      const dt = Math.min(1000, Math.max(0, tempo - (prima || tempo))); prima = tempo;
+      const f = 1 - Math.exp(-dt / 280);
+      for (const k in meta) ora[k] += (meta[k] - ora[k]) * f;
+      disegna(ora, tempo);
+    }
+  };
+}
+// Spiegazione fatta di visi: regia.visi(k) dice in che emozione va ogni viso; crea/sopra/vai/anima disegnano il resto.
+function scenaVisi(passi, posti, regia) {
+  return {
+    passi,
+    crea(svg) {
+      svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+      const v = posti.map(([x, y, gr]) => viso(x, y, gr));
+      const sotto = regia.crea ? regia.crea(svg) : {};
+      v.forEach(f => svg.append(f.g));
+      const sopra = regia.sopra ? regia.sopra(svg) : {};
+      const nome = etichetta(400, 435, "", 30);
+      svg.append(nome);
+      let k = 0;
+      const ferma = ciclo(t => { v.forEach(f => f.passo(t)); if (regia.anima) regia.anima(k, t, v, sotto, sopra); });
+      return {
+        vai(n) {
+          k = n;
+          regia.visi(n).forEach((st, i) => v[i].porta(st));
+          nome.textContent = regia.nome ? regia.nome(n) || "" : "";
+          if (regia.vai) regia.vai(n, v, sotto, sopra);
+          if (movimentoRidotto() && regia.anima) regia.anima(n, 0, v, sotto, sopra);
+        },
+        ferma
+      };
+    }
+  };
+}
+
+const NOMI_FACCE = ["calma", "gioia", "tristezza", "rabbia", "paura", "sorpresa", "disgusto", "calma"];
+const FACCE_EMOZIONI = scenaVisi([
+  "Il viso ci dice come ci sentiamo. Guardiamo la bocca, gli occhi e le sopracciglia. Questo viso è calmo.",
+  "Gioia: la bocca sorride, le guance salgono e gli occhi diventano piccoli.",
+  "Tristezza: la bocca va giù, le sopracciglia si alzano nel mezzo, e a volte arrivano le lacrime.",
+  "Rabbia: le sopracciglia si abbassano e si avvicinano, la bocca si stringe, il viso diventa rosso.",
+  "Paura: gli occhi si spalancano, le sopracciglia vanno in alto, la bocca si apre e si tira.",
+  "Sorpresa: occhi grandi, sopracciglia in alto, bocca aperta e tonda. La sorpresa dura poco.",
+  "Disgusto: il naso si arriccia e la bocca si storce, come quando sentiamo un cattivo odore.",
+  "Tutte le emozioni sono normali: arrivano e poi passano. Il viso torna calmo."
+], [[400, 205, 1.3]], {
+  visi: k => [NOMI_FACCE[k]],
+  nome: k => NOMI_FACCE[k]
+});
+
+const CORPO_EMOZIONI = scenaVisi([
+  "Le emozioni si sentono anche nel corpo. Quando siamo calmi il cuore batte piano.",
+  "Con la paura il cuore batte forte e veloce, e le mani sudano.",
+  "Con la rabbia il corpo si scalda e le mani si stringono a pugno.",
+  "Con la tristezza il corpo è pesante, si ha voglia di stare fermi, e vengono le lacrime.",
+  "Con la gioia il corpo è leggero e viene voglia di saltare.",
+  "Se ascoltiamo il corpo, capiamo prima quale emozione sta arrivando."
+], [[260, 210, 1.1]], {
+  visi: k => [["calma", "paura", "rabbia", "tristezza", "gioia", "calma"][k]],
+  nome: k => ["calma", "paura", "rabbia", "tristezza", "gioia", "ascolto il corpo"][k],
+  crea(svg) {
+    const gc = s("g", { transform: "translate(600,150)" },
+      s("path", { d: "M0,30 C-60,-10 -40,-60 0,-30 C40,-60 60,-10 0,30 Z", fill: "#E0332B", stroke: INCHIOSTRO, "stroke-width": 4 }));
+    const battito = etichetta(600, 240, "", 24);
+    const pugno = nascosto(s("g", {}, s("rect", { x: 545, y: 290, width: 110, height: 80, rx: 30, fill: "#FFD45C", stroke: INCHIOSTRO, "stroke-width": 4 }),
+      [0, 1, 2].map(i => s("line", { x1: 575 + i * 25, x2: 575 + i * 25, y1: 292, y2: 330, stroke: INCHIOSTRO, "stroke-width": 3 }))));
+    const caldo = nascosto(s("g", {}, [-1, 0, 1].map(i => s("path", { d: "M" + (260 + i * 50) + ",70 q-12,-20 0,-40 q12,-20 0,-40", stroke: "#E0332B", "stroke-width": 5, fill: "none", "stroke-linecap": "round" }))));
+    svg.append(gc, battito, pugno, caldo);
+    return { gc, battito, pugno, caldo };
+  },
+  vai(k, v, o) {
+    o.battito.textContent = ["batte piano", "batte veloce!", "batte forte", "batte piano", "batte allegro", ""][k];
+    vedi(o.pugno, k === 2);
+    vedi(o.caldo, k === 2);
+  },
+  anima(k, t, v, o) {
+    const veloce = [0.9, 2.6, 2, 0.7, 1.4, 0.9][k];
+    const b = Math.max(0, Math.sin(t / 1000 * Math.PI * 2 * veloce));
+    o.gc.setAttribute("transform", "translate(600,150) scale(" + (1 + b * 0.18).toFixed(3) + ")");
+    const salto = k === 4 ? Math.abs(Math.sin(t / 300)) * 30 : 0;
+    v[0].g.setAttribute("transform", "translate(260," + (210 - salto).toFixed(1) + ") scale(1.1)");
+  }
+});
+
+const CALMARSI = scenaVisi([
+  "Quando un'emozione è troppo forte, ci sono modi per tornare calmi.",
+  "Il respiro del quadrato: il pallino gira sul quadrato. Prendi aria contando 4, tieni 4, butta fuori 4, aspetta 4.",
+  "Contare piano fino a 10, un numero per volta.",
+  "Stringere forte i pugni, contare fino a 3, poi aprire piano le mani.",
+  "Bere un po' d'acqua, oppure andare un momento in un angolo tranquillo.",
+  "Se l'emozione resta grande, si chiede aiuto a un adulto. Piano piano il viso torna calmo."
+], [[200, 215, 0.95]], {
+  visi: k => [["rabbia", "rabbia", "tristezza", "calma", "calma", "gioia"][k]],
+  nome: k => ["", "respiro del quadrato", "conto fino a 10", "pugni e mani aperte", "acqua e angolo tranquillo", "chiedo aiuto"][k],
+  crea(svg) {
+    const quadrato = nascosto(s("g", {}, s("rect", { x: 450, y: 100, width: 220, height: 220, fill: "none", stroke: "#2F6FD6", "stroke-width": 8, rx: 6 }),
+      etichetta(560, 86, "prendi aria 4", 22), etichetta(730, 215, "tieni 4", 22), etichetta(560, 350, "butta fuori 4", 22), etichetta(560, 215, "aspetta 4", 20)));
+    const pallino = s("circle", { r: 18, fill: "#E0332B", stroke: INCHIOSTRO, "stroke-width": 3 });
+    quadrato.append(pallino);
+    const numero = nascosto(scritta(560, 270, "", { "font-size": 160, "font-weight": 800, fill: "#2E9E5B" }));
+    const mano = nascosto(s("g", { transform: "translate(560,230)" }));
+    const dita = [-42, -14, 14, 42].map(x => s("rect", { x: x - 12, y: -40, width: 24, height: 10, rx: 12, fill: "#FFD45C", stroke: INCHIOSTRO, "stroke-width": 4 }));
+    const palmo = s("rect", { x: -55, y: -30, width: 110, height: 100, rx: 34, fill: "#FFD45C", stroke: INCHIOSTRO, "stroke-width": 4 });
+    mano.append(...dita, palmo);
+    const acqua = nascosto(s("g", {}, s("path", { d: "M510,120 L610,120 L595,320 L525,320 Z", fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 5 }),
+      s("path", { d: "M517,190 L603,190 L595,318 L525,318 Z", fill: "#9CD3FF" })));
+    const adulto = viso(600, 250, 0.7);
+    const aiuto = nascosto(s("g", {}, adulto.g,
+      s("path", { d: "M410,60 h300 a16,16 0 0 1 16,16 v50 a16,16 0 0 1 -16,16 h-260 l-20,24 v-24 h-20 a16,16 0 0 1 -16,-16 v-50 a16,16 0 0 1 16,-16 Z", fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 3 }),
+      etichetta(560, 112, "Mi aiuti, per favore?", 24)));
+    svg.append(quadrato, numero, mano, acqua, aiuto);
+    return { quadrato, pallino, numero, mano, dita, acqua, aiuto };
+  },
+  vai(k, v, o) {
+    vedi(o.quadrato, k === 1); vedi(o.numero, k === 2); vedi(o.mano, k === 3); vedi(o.acqua, k === 4); vedi(o.aiuto, k === 5);
+  },
+  anima(k, t, v, o) {
+    const sec = t / 1000;
+    if (k === 1) {
+      const f = (sec % 16) / 4, lato = Math.floor(f), q = f - lato;
+      const [x, y] = [[450 + q * 220, 100], [670, 100 + q * 220], [670 - q * 220, 320], [450, 320 - q * 220]][lato];
+      o.pallino.setAttribute("cx", x.toFixed(1)); o.pallino.setAttribute("cy", y.toFixed(1));
+    }
+    if (k === 2) o.numero.textContent = String(1 + Math.floor(sec % 10));
+    if (k === 3) {
+      const f = sec % 6, aperta = f < 3 ? 0 : Math.min(1, (f - 3) / 1.5);
+      o.dita.forEach((d, i) => {
+        const h = 14 + aperta * (i === 0 || i === 3 ? 60 : 78);
+        d.setAttribute("height", h.toFixed(1)); d.setAttribute("y", (-26 - h).toFixed(1));
+      });
+    }
+  }
+});
+
+const EMPATIA = scenaVisi([
+  "Guardiamo il viso degli altri. Questo bambino è triste: è da solo e piange.",
+  "Un compagno se ne accorge, si avvicina piano e chiede: «Come stai? Vuoi giocare con me?»",
+  "Poi ascolta la risposta, senza ridere e senza fretta.",
+  "Il bambino si sente meno solo e sorride. Anche il compagno è contento.",
+  "Capire come si sentono gli altri e aiutarli si chiama empatia."
+], [[230, 240, 0.85], [640, 240, 0.85]], {
+  visi: k => [["tristezza", "calma"], ["tristezza", "calma"], ["tristezza", "calma"], ["gioia", "gioia"], ["gioia", "gioia"]][k],
+  nome: k => ["", "", "ascolto", "", "empatia"][k],
+  sopra(svg) {
+    const fumetto = nascosto(s("g", {}, s("path", { d: "M330,20 h300 a16,16 0 0 1 16,16 v66 a16,16 0 0 1 -16,16 h-90 l20,26 l-50,-26 h-180 a16,16 0 0 1 -16,-16 v-66 a16,16 0 0 1 16,-16 Z", fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 3 }),
+      etichetta(480, 60, "Come stai?", 26), etichetta(480, 96, "Vuoi giocare con me?", 22)));
+    const puntini = nascosto(etichetta(350, 100, "…", 50));
+    svg.append(fumetto, puntini);
+    return { fumetto, puntini };
+  },
+  vai(k, v, o, so) { vedi(so.fumetto, k === 1); vedi(so.puntini, k === 2); },
+  anima(k, t, v) {
+    const x = k === 0 ? 640 : 480;
+    const g = v[1].g, ora = Number(g.dataset.x || 640), nuovo = movimentoRidotto() ? x : ora + (x - ora) * 0.05;
+    g.dataset.x = nuovo;
+    g.setAttribute("transform", "translate(" + nuovo.toFixed(1) + ",240) scale(0.85)");
+  }
+});
+
 /* ---------- analisi grammaticale e analisi logica ---------- */
 // La frase in riquadri; a ogni passo alcune parole (o gruppi) si colorano e ricevono il loro nome sotto.
 function fraseAnalizzata(pezzi, colori) {
@@ -2113,7 +2320,7 @@ const ANALISI_LOGICA = Object.assign(fraseAnalizzata([
   ]
 });
 
-const SPIEGAZIONI = { "stati-materia": STATI, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+const SPIEGAZIONI = { "stati-materia": STATI, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "facce-emozioni": FACCE_EMOZIONI, "corpo-emozioni": CORPO_EMOZIONI, calmarsi: CALMARSI, empatia: EMPATIA, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,
