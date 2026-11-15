@@ -22440,5 +22440,351 @@
     }
    ]
   }
+ },
+ {
+  "id": "moltiplicazione-gruppi-uguali",
+  "materia": "Matematica",
+  "livello": 1,
+  "titolo": "Che cos'è la moltiplicazione: gruppi uguali",
+  "scrittura": "doppio",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Guarda la spiegazione. Poi conta: quante righe, quante mele in ogni riga, quante in tutto?",
+  "dati": {
+   "aiuto": "sempre",
+   "oggetto": {
+    "t": "mela",
+    "p": 2462
+   },
+   "esercizi": [
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 3,
+     "b": 3
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 4
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 4,
+     "b": 2
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 2,
+     "b": 5
+    },
+    {
+     "genere": "operazione",
+     "op": "x",
+     "a": 5,
+     "b": 2
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "moltiplicazione"
+  }
+ },
+ {
+  "id": "moltiplicazione-addizione-ripetuta",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "La moltiplicazione è un'addizione ripetuta",
+  "scrittura": "doppio",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Porta ogni addizione vicino alla sua moltiplicazione.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "2 + 2 + 2"
+     },
+     {
+      "t": "3 × 2"
+     }
+    ],
+    [
+     {
+      "t": "5 + 5"
+     },
+     {
+      "t": "2 × 5"
+     }
+    ],
+    [
+     {
+      "t": "4 + 4 + 4"
+     },
+     {
+      "t": "3 × 4"
+     }
+    ],
+    [
+     {
+      "t": "3 + 3 + 3 + 3"
+     },
+     {
+      "t": "4 × 3"
+     }
+    ],
+    [
+     {
+      "t": "10 + 10 + 10"
+     },
+     {
+      "t": "3 × 10"
+     }
+    ],
+    [
+     {
+      "t": "6 + 6"
+     },
+     {
+      "t": "2 × 6"
+     }
+    ]
+   ]
+  },
+  "scopri": {
+   "animazione": "moltiplicazione"
+  }
+ },
+ {
+  "id": "moltiplicazione-quale-operazione",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Gruppi uguali: quale moltiplicazione?",
+  "scrittura": "doppio",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi e scegli la moltiplicazione giusta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "3 piatti, in ogni piatto 2 biscotti."
+     },
+     "giusta": {
+      "t": "3 × 2"
+     },
+     "sbagliate": [
+      {
+       "t": "3 + 2"
+      },
+      {
+       "t": "3 − 2"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "4 macchine, ogni macchina ha 4 ruote."
+     },
+     "giusta": {
+      "t": "4 × 4"
+     },
+     "sbagliate": [
+      {
+       "t": "4 + 4"
+      },
+      {
+       "t": "4 − 4"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "2 mani, ogni mano ha 5 dita."
+     },
+     "giusta": {
+      "t": "2 × 5"
+     },
+     "sbagliate": [
+      {
+       "t": "2 + 5"
+      },
+      {
+       "t": "5 − 2"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "5 vasi, in ogni vaso 3 fiori."
+     },
+     "giusta": {
+      "t": "5 × 3"
+     },
+     "sbagliate": [
+      {
+       "t": "5 + 3"
+      },
+      {
+       "t": "5 − 3"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "3 + 3 + 3 + 3 si può scrivere..."
+     },
+     "giusta": {
+      "t": "4 × 3"
+     },
+     "sbagliate": [
+      {
+       "t": "3 × 3"
+      },
+      {
+       "t": "4 + 3"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "6 + 6 si può scrivere..."
+     },
+     "giusta": {
+      "t": "2 × 6"
+     },
+     "sbagliate": [
+      {
+       "t": "6 × 6"
+      },
+      {
+       "t": "2 + 6"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "moltiplicazione"
+  }
+ },
+ {
+  "id": "moltiplicazione-problemi-gruppi",
+  "materia": "Matematica",
+  "livello": 2,
+  "titolo": "Problemi con gruppi uguali",
+  "scrittura": "doppio",
+  "tipo": "matematica",
+  "gioco": "matematica",
+  "consegna": "Leggi il problema, guarda i gruppi e trova quanti sono in tutto.",
+  "dati": {
+   "aiuto": "sempre",
+   "esercizi": [
+    {
+     "genere": "problema",
+     "schema": "gruppi",
+     "a": 3,
+     "b": 2,
+     "testo": [
+      "Ci sono 3 piatti.",
+      "In ogni piatto ci sono 2 biscotti.",
+      "Quanti biscotti in tutto?"
+     ],
+     "oggetto": {
+      "t": "biscotto",
+      "p": 8295
+     },
+     "risposta": "In tutto ci sono 6 biscotti."
+    },
+    {
+     "genere": "problema",
+     "schema": "gruppi",
+     "a": 2,
+     "b": 5,
+     "testo": [
+      "Ci sono 2 cestini.",
+      "In ogni cestino ci sono 5 mele.",
+      "Quante mele in tutto?"
+     ],
+     "oggetto": {
+      "t": "mela",
+      "p": 2462
+     },
+     "risposta": "In tutto ci sono 10 mele."
+    },
+    {
+     "genere": "problema",
+     "schema": "gruppi",
+     "a": 4,
+     "b": 3,
+     "testo": [
+      "Ci sono 4 vasi.",
+      "In ogni vaso ci sono 3 fiori.",
+      "Quanti fiori in tutto?"
+     ],
+     "oggetto": {
+      "t": "fiore",
+      "p": 7104
+     },
+     "risposta": "In tutto ci sono 12 fiori."
+    },
+    {
+     "genere": "problema",
+     "schema": "gruppi",
+     "a": 5,
+     "b": 2,
+     "testo": [
+      "Ci sono 5 bambini.",
+      "Ogni bambino ha 2 palle.",
+      "Quante palle in tutto?"
+     ],
+     "oggetto": {
+      "t": "palla",
+      "p": 3241
+     },
+     "risposta": "In tutto ci sono 10 palle."
+    },
+    {
+     "genere": "problema",
+     "schema": "gruppi",
+     "a": 3,
+     "b": 4,
+     "testo": [
+      "Ci sono 3 coppette.",
+      "In ogni coppetta ci sono 4 fragole.",
+      "Quante fragole in tutto?"
+     ],
+     "oggetto": {
+      "t": "fragola",
+      "p": 2400
+     },
+     "risposta": "In tutto ci sono 12 fragole."
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "moltiplicazione"
+  }
  }
 ]
