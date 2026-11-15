@@ -2044,7 +2044,76 @@ const TOGLIERE_10 = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- analisi grammaticale e analisi logica ---------- */
+// La frase in riquadri; a ogni passo alcune parole (o gruppi) si colorano e ricevono il loro nome sotto.
+function fraseAnalizzata(pezzi, colori) {
+  return {
+    crea(svg) {
+      svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+      const pieno = pezzi.map(p => p.t.length * 24 + 34), spazio = 14;
+      const scala = Math.min(1, (760 - spazio * (pezzi.length - 1)) / pieno.reduce((a, b) => a + b, 0));
+      const largo = pieno.map(l => l * scala);
+      let x = (800 - largo.reduce((a, b) => a + b, 0) - spazio * (pezzi.length - 1)) / 2;
+      const box = pezzi.map((p, i) => {
+        const r = s("rect", { x, y: 130, width: largo[i], height: 80, rx: 14, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 3 });
+        const g = s("g", {}, r, scritta(x + largo[i] / 2, 170 + 14 * scala, p.t, { "font-size": Math.round(40 * scala), "font-weight": 800, fill: INCHIOSTRO }));
+        const nome = nascosto(etichetta(x + largo[i] / 2, 262, "", 24));
+        const dom = nascosto(etichetta(x + largo[i] / 2, 110, "", 24));
+        svg.append(g, nome, dom);
+        x += largo[i] + spazio;
+        return { r, nome, dom };
+      });
+      return {
+        vai(k) {
+          box.forEach((b, i) => {
+            const v = pezzi[i].passi.find(q => q[0] <= k && (q[1] === undefined || k <= q[1]));
+            b.r.setAttribute("fill", v ? colori[v[2]] : "#fff");
+            b.nome.textContent = v ? v[2] : "";
+            vedi(b.nome, !!v);
+            b.dom.textContent = v && v[3] ? v[3] : "";
+            vedi(b.dom, !!(v && v[3]));
+          });
+        },
+        ferma() {}
+      };
+    }
+  };
+}
+const COLORI_GRAMMATICA = { articolo: "#FFE08A", nome: "#9FD3FF", aggettivo: "#B8E6B0", verbo: "#FFB3A7" };
+// [dal passo, al passo (facoltativo), nome, domanda]
+const ANALISI_GRAMMATICALE = Object.assign(fraseAnalizzata([
+  { t: "Il", passi: [[2, undefined, "articolo"]] },
+  { t: "gatto", passi: [[1, undefined, "nome"]] },
+  { t: "nero", passi: [[3, undefined, "aggettivo"]] },
+  { t: "mangia", passi: [[4, undefined, "verbo"]] },
+  { t: "la", passi: [[2, undefined, "articolo"]] },
+  { t: "pappa", passi: [[1, undefined, "nome"]] }
+], COLORI_GRAMMATICA), {
+  passi: [
+    "L'analisi grammaticale guarda le parole una per una e dice che tipo di parola è ciascuna.",
+    "Il nome indica una persona, un animale o una cosa. Gatto e pappa sono nomi.",
+    "L'articolo sta davanti al nome: il, lo, la, i, gli, le, un, uno, una. Qui gli articoli sono il e la.",
+    "L'aggettivo dice com'è il nome. Nero dice com'è il gatto.",
+    "Il verbo dice che cosa si fa o che cosa succede. Mangia è il verbo.",
+    "Ogni parola ha il suo nome. Questa è l'analisi grammaticale."
+  ]
+});
+const COLORI_LOGICA = { soggetto: "#9FD3FF", predicato: "#FFB3A7", "complemento oggetto": "#B8E6B0" };
+const ANALISI_LOGICA = Object.assign(fraseAnalizzata([
+  { t: "Il gatto nero", passi: [[2, undefined, "soggetto", "chi?"]] },
+  { t: "mangia", passi: [[1, undefined, "predicato", "che cosa fa?"]] },
+  { t: "la pappa", passi: [[3, undefined, "complemento oggetto", "che cosa?"]] }
+], COLORI_LOGICA), {
+  passi: [
+    "L'analisi logica guarda i gruppi di parole e dice che compito ha ogni gruppo nella frase.",
+    "Prima si cerca il verbo: mangia. È il predicato, dice che cosa fa il soggetto.",
+    "Poi si chiede: chi mangia? Il gatto nero. Questo gruppo è il soggetto.",
+    "Poi si chiede: mangia che cosa? La pappa. È il complemento oggetto.",
+    "L'analisi grammaticale guarda le singole parole. L'analisi logica guarda i gruppi di parole e il loro compito."
+  ]
+});
+
+const SPIEGAZIONI = { "stati-materia": STATI, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

@@ -66,6 +66,8 @@ export const ANIMAZIONI = {
   perimetro: "Il perimetro",
   barre: "I problemi con le barre",
   emozioni: "Le emozioni e come stare meglio",
+  "analisi-grammaticale": "Che cos'è l'analisi grammaticale",
+  "analisi-logica": "Che cos'è l'analisi logica",
   divisione: "Che cos'è la divisione",
   "divisione-colonna": "La divisione in colonna",
   "moltiplicazione-colonna": "La moltiplicazione in colonna (con il rettangolo)",

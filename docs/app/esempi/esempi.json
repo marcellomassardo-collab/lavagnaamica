@@ -21854,5 +21854,591 @@
     }
    ]
   }
+ },
+ {
+  "id": "articoli-frasi-il-lo-la",
+  "materia": "Italiano",
+  "livello": 2,
+  "titolo": "Completa con l'articolo: il, lo, la, i, gli, le",
+  "scrittura": "doppio",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Scegli l'articolo giusto davanti al nome.",
+  "dati": {
+   "frasi": [
+    "[Il] gatto dorme sul divano.",
+    "[La] mamma prepara la cena.",
+    "[Lo] zaino è pesante.",
+    "[I] bambini giocano in cortile.",
+    "[Gli] alberi sono alti.",
+    "[Le] mele sono rosse.",
+    "[L'] elefante ha la proboscide.",
+    "[Gli] zaini sono nuovi."
+   ]
+  }
+ },
+ {
+  "id": "articoli-frasi-un-uno-una",
+  "materia": "Italiano",
+  "livello": 2,
+  "titolo": "Completa con l'articolo: un, uno, una",
+  "scrittura": "doppio",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Scegli l'articolo giusto davanti al nome.",
+  "dati": {
+   "frasi": [
+    "Ho visto [un] cane.",
+    "Mangio [una] banana.",
+    "In classe c'è [uno] scaffale.",
+    "Leggo [un] libro.",
+    "Disegno [una] casa.",
+    "Nel prato c'è [uno] scoiattolo.",
+    "Bevo [un'] aranciata."
+   ]
+  }
+ },
+ {
+  "id": "articoli-due-famiglie",
+  "materia": "Italiano",
+  "livello": 3,
+  "titolo": "Articoli determinativi e indeterminativi",
+  "scrittura": "doppio",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Gli articoli determinativi indicano una cosa precisa, quelli indeterminativi una cosa qualsiasi. Metti ogni articolo nel suo gruppo.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "determinativi",
+     "elementi": [
+      {
+       "t": "il"
+      },
+      {
+       "t": "lo"
+      },
+      {
+       "t": "la"
+      },
+      {
+       "t": "i"
+      },
+      {
+       "t": "gli"
+      },
+      {
+       "t": "le"
+      }
+     ]
+    },
+    {
+     "nome": "indeterminativi",
+     "elementi": [
+      {
+       "t": "un"
+      },
+      {
+       "t": "uno"
+      },
+      {
+       "t": "una"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "nomi-o-aggettivi",
+  "materia": "Italiano",
+  "livello": 2,
+  "titolo": "Nome o aggettivo?",
+  "scrittura": "doppio",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Il nome dice chi o che cosa, l'aggettivo dice com'è. Metti ogni parola nel suo gruppo.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "nomi",
+     "elementi": [
+      {
+       "t": "cane"
+      },
+      {
+       "t": "sole"
+      },
+      {
+       "t": "scuola"
+      },
+      {
+       "t": "fiore"
+      },
+      {
+       "t": "pane"
+      },
+      {
+       "t": "amico"
+      },
+      {
+       "t": "mare"
+      }
+     ]
+    },
+    {
+     "nome": "aggettivi",
+     "elementi": [
+      {
+       "t": "grande"
+      },
+      {
+       "t": "piccolo"
+      },
+      {
+       "t": "rosso"
+      },
+      {
+       "t": "felice"
+      },
+      {
+       "t": "caldo"
+      },
+      {
+       "t": "buono"
+      },
+      {
+       "t": "veloce"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "parti-del-discorso",
+  "materia": "Italiano",
+  "livello": 3,
+  "titolo": "Articolo, nome, aggettivo o verbo?",
+  "scrittura": "doppio",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Guarda la spiegazione, poi metti ogni parola nel suo gruppo.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "articoli",
+     "elementi": [
+      {
+       "t": "il"
+      },
+      {
+       "t": "la"
+      },
+      {
+       "t": "gli"
+      },
+      {
+       "t": "una"
+      }
+     ]
+    },
+    {
+     "nome": "nomi",
+     "elementi": [
+      {
+       "t": "gatto"
+      },
+      {
+       "t": "pappa"
+      },
+      {
+       "t": "bambina"
+      },
+      {
+       "t": "libro"
+      }
+     ]
+    },
+    {
+     "nome": "aggettivi",
+     "elementi": [
+      {
+       "t": "nero"
+      },
+      {
+       "t": "bella"
+      },
+      {
+       "t": "lungo"
+      },
+      {
+       "t": "allegri"
+      }
+     ]
+    },
+    {
+     "nome": "verbi",
+     "elementi": [
+      {
+       "t": "mangia"
+      },
+      {
+       "t": "corre"
+      },
+      {
+       "t": "legge"
+      },
+      {
+       "t": "dormono"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "analisi-grammaticale"
+  }
+ },
+ {
+  "id": "analisi-grammaticale-prime",
+  "materia": "Italiano",
+  "livello": 3,
+  "titolo": "Prima analisi grammaticale",
+  "scrittura": "doppio",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Leggi la frase e scegli che tipo di parola è.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "«Il cane corre.» Cane è un..."
+     },
+     "giusta": {
+      "t": "nome"
+     },
+     "sbagliate": [
+      {
+       "t": "verbo"
+      },
+      {
+       "t": "articolo"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«Il cane corre.» Corre è un..."
+     },
+     "giusta": {
+      "t": "verbo"
+     },
+     "sbagliate": [
+      {
+       "t": "nome"
+      },
+      {
+       "t": "aggettivo"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«La casa è grande.» La è un..."
+     },
+     "giusta": {
+      "t": "articolo"
+     },
+     "sbagliate": [
+      {
+       "t": "nome"
+      },
+      {
+       "t": "verbo"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«La casa è grande.» Grande è un..."
+     },
+     "giusta": {
+      "t": "aggettivo"
+     },
+     "sbagliate": [
+      {
+       "t": "articolo"
+      },
+      {
+       "t": "nome"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«Una bambina canta.» Una è un..."
+     },
+     "giusta": {
+      "t": "articolo"
+     },
+     "sbagliate": [
+      {
+       "t": "aggettivo"
+      },
+      {
+       "t": "verbo"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«Il sole caldo splende.» Caldo è un..."
+     },
+     "giusta": {
+      "t": "aggettivo"
+     },
+     "sbagliate": [
+      {
+       "t": "nome"
+      },
+      {
+       "t": "verbo"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«I bambini giocano.» Bambini è un..."
+     },
+     "giusta": {
+      "t": "nome"
+     },
+     "sbagliate": [
+      {
+       "t": "verbo"
+      },
+      {
+       "t": "articolo"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«Lo zaino è pesante.» Lo è un..."
+     },
+     "giusta": {
+      "t": "articolo"
+     },
+     "sbagliate": [
+      {
+       "t": "nome"
+      },
+      {
+       "t": "aggettivo"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "analisi-logica-prime",
+  "materia": "Italiano",
+  "livello": 3,
+  "titolo": "Prima analisi logica: chi? che cosa fa?",
+  "scrittura": "doppio",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Guarda la spiegazione, poi cerca il soggetto e il predicato.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "«Il gatto nero mangia la pappa.» Chi mangia? Il soggetto è..."
+     },
+     "giusta": {
+      "t": "il gatto nero"
+     },
+     "sbagliate": [
+      {
+       "t": "la pappa"
+      },
+      {
+       "t": "mangia"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«Il gatto nero mangia la pappa.» Il predicato è..."
+     },
+     "giusta": {
+      "t": "mangia"
+     },
+     "sbagliate": [
+      {
+       "t": "il gatto nero"
+      },
+      {
+       "t": "la pappa"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«Il gatto nero mangia la pappa.» Mangia che cosa? Il complemento oggetto è..."
+     },
+     "giusta": {
+      "t": "la pappa"
+     },
+     "sbagliate": [
+      {
+       "t": "il gatto nero"
+      },
+      {
+       "t": "mangia"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«Marco legge un libro.» Il soggetto è..."
+     },
+     "giusta": {
+      "t": "Marco"
+     },
+     "sbagliate": [
+      {
+       "t": "un libro"
+      },
+      {
+       "t": "legge"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«Marco legge un libro.» Il predicato è..."
+     },
+     "giusta": {
+      "t": "legge"
+     },
+     "sbagliate": [
+      {
+       "t": "Marco"
+      },
+      {
+       "t": "un libro"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«La maestra scrive.» Il soggetto è..."
+     },
+     "giusta": {
+      "t": "la maestra"
+     },
+     "sbagliate": [
+      {
+       "t": "scrive"
+      },
+      {
+       "t": "nessuno"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«I bambini cantano una canzone.» Il complemento oggetto è..."
+     },
+     "giusta": {
+      "t": "una canzone"
+     },
+     "sbagliate": [
+      {
+       "t": "i bambini"
+      },
+      {
+       "t": "cantano"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "«Il cane abbaia.» Il predicato è..."
+     },
+     "giusta": {
+      "t": "abbaia"
+     },
+     "sbagliate": [
+      {
+       "t": "il cane"
+      },
+      {
+       "t": "la cuccia"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "analisi-logica"
+  }
+ },
+ {
+  "id": "soggetto-o-predicato",
+  "materia": "Italiano",
+  "livello": 3,
+  "titolo": "Soggetto o predicato?",
+  "scrittura": "doppio",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Il soggetto è chi fa l'azione, il predicato dice che cosa fa. Metti ogni pezzo nel suo gruppo.",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "soggetto",
+     "elementi": [
+      {
+       "t": "il gatto"
+      },
+      {
+       "t": "la mamma"
+      },
+      {
+       "t": "i bambini"
+      },
+      {
+       "t": "Luca"
+      },
+      {
+       "t": "il sole"
+      }
+     ]
+    },
+    {
+     "nome": "predicato",
+     "elementi": [
+      {
+       "t": "dorme"
+      },
+      {
+       "t": "cucina"
+      },
+      {
+       "t": "giocano"
+      },
+      {
+       "t": "corre"
+      },
+      {
+       "t": "splende"
+      }
+     ]
+    }
+   ]
+  }
  }
 ]
