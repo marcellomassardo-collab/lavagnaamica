@@ -356,6 +356,8 @@ async function giocaSalvato(origine, idScrittura, gioco) {
   // un esercizio pronto si chiude tornando alla sua materia
   if (origine === "es") ultimoGiocato = id;
   gioca(es, "#/gioca/" + origine + "/" + idScrittura, origine === "es" ? indirizzoMateria(materiaDi(es)) : "#/", gioco);
+  // «~stampa» dopo l'id: si apre subito la stampa della scheda in bianco e nero (per i link dei compiti)
+  if (scrittura === "stampa") setTimeout(() => document.querySelector('[aria-label="Stampa la scheda"]')?.click(), 600);
 }
 
 /* ---------- esercizio del catalogo comune ---------- */
