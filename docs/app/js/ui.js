@@ -78,8 +78,65 @@ export function pulsanteVoce(testo, etichetta, lingua) {
   return b;
 }
 
+// ---------- un po' di movimento: le scelte entrano una dopo l'altra, la risposta giusta salta e manda stelline ----------
+const fermi = () => !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+const ENTRANO = ".carta, .opzione, .let-opzione, .let-tessera, .let-pezzo, .brano-opzione, .mat-opzione, .vf-coppia, .vf-tasto, .barre-scelta, .logica-tessera, .piramide-riga";
+const viste = new WeakSet();
+
+// Le carte nuove entrano una alla volta, ma solo la prima volta: quando si spostano (trascinate, rimesse nel mucchio) non rientrano.
+export function animaEntrate(area) {
+  if (fermi() || !window.MutationObserver) return () => {};
+  let fila = 0, azzera = null;
+  const entra = n => {
+    if (viste.has(n)) return;
+    viste.add(n);
+    n.style.animationDelay = Math.min(fila++, 10) * 60 + "ms";
+    n.classList.add("entra");
+    n.addEventListener("animationend", () => { n.classList.remove("entra"); n.style.animationDelay = ""; }, { once: true });
+    clearTimeout(azzera);
+    azzera = setTimeout(() => { fila = 0; }, 120);
+  };
+  const guarda = radice => {
+    if (radice.nodeType !== 1) return;
+    if (radice.matches(ENTRANO)) entra(radice);
+    radice.querySelectorAll(ENTRANO).forEach(entra);
+  };
+  // quelle che ci sono già al primo giro non devono «entrare» di nuovo dopo
+  const o = new MutationObserver(lista => lista.forEach(m => m.addedNodes.forEach(guarda)));
+  o.observe(area, { childList: true, subtree: true });
+  guarda(area);
+  return () => o.disconnect();
+}
+
+// Stelline che partono dalla risposta giusta.
+function stelline(n) {
+  if (fermi() || !n || !n.getBoundingClientRect) return;
+  const r = n.getBoundingClientRect();
+  if (!r.width) return;
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const colori = ["#FFD23F", "#1E8A4C", "#2B7FC4", "#E0332B", "#7B4FC9"];
+  for (let i = 0; i < 10; i++) {
+    const a = (i / 10) * Math.PI * 2 + Math.random() * 0.4;
+    const d = 60 + Math.random() * 50;
+    const s = el("span", { class: "stellina", "aria-hidden": "true", text: i % 2 ? "★" : "✦" });
+    s.style.cssText = "left:" + cx + "px;top:" + cy + "px;color:" + colori[i % colori.length] +
+      ";--dx:" + (Math.cos(a) * d).toFixed(0) + "px;--dy:" + (Math.sin(a) * d).toFixed(0) + "px";
+    document.body.append(s);
+    setTimeout(() => s.remove(), 900);
+  }
+}
+
+// Le risposte giuste di fila, al primo colpo: a 3, 5, 10, 15… compare una scritta che salta.
+function filaDiGiuste(quante) {
+  if (![3, 5, 10, 15, 20].includes(quante)) return;
+  const s = el("div", { class: "di-fila", role: "status", text: "🔥 " + quante + " di fila!" });
+  document.body.append(s);
+  setTimeout(() => s.remove(), 1600);
+}
+
 // Ciò che ogni gioco riceve per parlare, dare un riscontro e dire che ha finito.
 export function creaContesto(fine) {
+  let fila = 0, sbagliato = false;
   return {
     opz: impostazioni,
     get lingua() { return linguaAttuale(); },
@@ -92,10 +149,21 @@ export function creaContesto(fine) {
     },
     giusto(n) {
       suonoGiusto();
-      if (n) n.classList.add("giusta");
+      fila = sbagliato ? 0 : fila + 1;
+      sbagliato = false;
+      filaDiGiuste(fila);
+      if (n) {
+        n.classList.add("giusta");
+        n.classList.remove("evviva");
+        void n.offsetWidth;
+        n.classList.add("evviva");
+        stelline(n);
+      }
     },
     riprova(n, dove) {
       suonoRiprova();
+      sbagliato = true;
+      fila = 0;
       if (n) {
         n.classList.remove("scuoti");
         void n.offsetWidth;

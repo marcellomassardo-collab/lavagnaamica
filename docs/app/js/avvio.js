@@ -5,7 +5,7 @@ import { caricaEsempi, elencoMiei, trovaMio, salvaMio, eliminaMio, inLink, daLin
 import { impostazioni, applica, cambia, LIMITI, VELOCITA, TEMI } from "./impostazioni.js";
 import { parla, zitto, voceDisponibile, soloVociVecchie, vociDelDispositivo, vociInglesiDelDispositivo, impostaLingua, quandoCambianoLeVoci } from "./voce.js";
 import { suonoFesta } from "./suoni.js";
-import { el, creaContesto, pulsanteVoce, avviso, finestra } from "./ui.js";
+import { el, creaContesto, animaEntrate, pulsanteVoce, avviso, finestra } from "./ui.js";
 import { vista, pagina, intestazione, quandoSiEsce } from "./pagine.js";
 import { lineaDelTempo } from "./linea.js";
 import { spiegazione } from "./animazioni.js";
@@ -27,11 +27,12 @@ import * as lettura from "./giochi/lettura.js";
 import * as brano from "./giochi/brano.js";
 import * as vero from "./giochi/vero.js";
 import * as palloncini from "./giochi/palloncini.js";
+import * as talpa from "./giochi/talpa.js";
 import * as quiz from "./giochi/quiz.js";
 import * as ruota from "./giochi/ruota.js";
 import * as ascolta from "./giochi/ascolta.js";
 
-const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura, brano, vero, palloncini, quiz, ruota, ascolta };
+const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura, brano, vero, palloncini, talpa, quiz, ruota, ascolta };
 
 /* ---------- inizio ---------- */
 
@@ -248,7 +249,9 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
     if (ferma) ferma();
     zitto();
     area.replaceChildren();
-    ferma = MOTORI[gioco].avvia(area, es, creaContesto(finito)) || null;
+    const fermaGioco = MOTORI[gioco].avvia(area, es, creaContesto(finito)) || null;
+    const fermaEntrate = animaEntrate(area);
+    ferma = () => { fermaEntrate(); if (fermaGioco) fermaGioco(); };
   }
 
   // la spiegazione animata: parte da sola prima dell'esercizio e si può rivedere

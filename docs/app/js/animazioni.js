@@ -2398,7 +2398,84 @@ const QUADRILINEA = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, "maiuscolo-minuscolo": MAIUSCOLO_MINUSCOLO, quadrilinea: QUADRILINEA, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "facce-emozioni": FACCE_EMOZIONI, "corpo-emozioni": CORPO_EMOZIONI, calmarsi: CALMARSI, empatia: EMPATIA, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- inglese: a o an, i pronomi, -ing ---------- */
+const parolaEn = (x, y, testo, misura, colore) => s("text", { x, y, "text-anchor": "middle", "font-size": misura || 44, "font-weight": 800,
+  fill: colore || "#1D2329", "font-family": "Lettura, system-ui, sans-serif" }, testo);
+// una parola con l'inizio (o la fine) in rosso: «a» + cat, «an» + apple, read + «ing»
+const dueColori = (x, y, nero, rosso, misura, rossoPrima) => s("text", { x, y, "text-anchor": "middle", "font-size": misura || 44, "font-weight": 800,
+  "font-family": "Lettura, system-ui, sans-serif", fill: "#1D2329" },
+  rossoPrima ? [s("tspan", { fill: "#E0332B" }, rosso), nero] : [nero, s("tspan", { fill: "#E0332B" }, rosso)]);
+const scena3 = (voci, y) => voci.map(([id, testo, rosso, rossoPrima], i) => s("g", {},
+  immagine(id, 95 + i * 230, y, 150), dueColori(170 + i * 230, y + 205, testo, rosso, 40, rossoPrima)));
+
+const A_AN = {
+  passi: [
+    "In inglese «un» e «una» si dicono a oppure an. Quale si usa dipende dal suono con cui comincia la parola dopo.",
+    "Si usa a davanti a una parola che comincia con il suono di una consonante: a cat, a dog, a banana.",
+    "Si usa an davanti a una parola che comincia con il suono di una vocale: an apple, an egg, an owl.",
+    "Conta il suono, non la lettera: an hour, perché la h non si pronuncia; a uniform, perché comincia con il suono «iu»."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const g0 = nascosto(s("g", {}, dueColori(260, 230, "", "a", 150, true), parolaEn(400, 215, "oppure", 36, "#4A5560"), dueColori(540, 230, "", "an", 150, true),
+      etichetta(400, 340, "un, una", 34)));
+    const g1 = nascosto(s("g", {}, scena3([[2406, " cat", "a ", true], [2517, " dog", "a ", true], [2530, " banana", "a ", true]], 70)));
+    const g2 = nascosto(s("g", {}, scena3([[2462, "apple", "an ", true], [2427, "egg", "an ", true], [2671, "owl", "an ", true]], 70)));
+    const g3 = nascosto(s("g", {}, dueColori(230, 200, "hour", "an ", 70, true), etichetta(230, 260, "la h non si sente", 26),
+      dueColori(570, 200, "uniform", "a ", 70, true), etichetta(570, 260, "si sente «iu»", 26)));
+    const gruppi = [g0, g1, g2, g3];
+    svg.append(...gruppi);
+    return { vai(k) { gruppi.forEach((g, i) => vedi(g, i === k)); }, ferma() {} };
+  }
+};
+
+const PRONOMI_EN = {
+  passi: [
+    "Al posto del nome si possono usare parole brevi: I, you, he, she, it, we, they.",
+    "He si usa per un maschio, she per una femmina: Tom diventa he, Anna diventa she.",
+    "It si usa per un animale o una cosa: il gatto diventa it, la palla diventa it.",
+    "They si usa per più persone, animali o cose: Tom e Anna diventano they. I vuol dire io, we vuol dire noi, you vuol dire tu oppure voi."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const freccia = (x, y) => parolaEn(x, y, "→", 54, "#4A5560");
+    const g0 = nascosto(s("g", {}, ["I", "you", "he", "she", "it", "we", "they"].map((t, i) => parolaEn(90 + i * 104, 240, t, 56, i % 2 ? "#E0332B" : "#1E6B52"))));
+    const g1 = nascosto(s("g", {}, parolaEn(190, 170, "Tom", 60), freccia(330, 170), parolaEn(450, 170, "he", 70, "#E0332B"),
+      parolaEn(190, 330, "Anna", 60), freccia(330, 330), parolaEn(450, 330, "she", 70, "#E0332B")));
+    const g2 = nascosto(s("g", {}, immagine(2406, 120, 70, 140), freccia(330, 150), parolaEn(450, 160, "it", 70, "#E0332B"),
+      immagine(3241, 120, 240, 140), freccia(330, 320), parolaEn(450, 330, "it", 70, "#E0332B")));
+    const g3 = nascosto(s("g", {}, parolaEn(250, 150, "Tom and Anna", 52), freccia(470, 150), parolaEn(580, 155, "they", 70, "#E0332B"),
+      parolaEn(160, 320, "I = io", 44), parolaEn(400, 320, "we = noi", 44), parolaEn(640, 320, "you = tu, voi", 40)));
+    const gruppi = [g0, g1, g2, g3];
+    svg.append(...gruppi);
+    return { vai(k) { gruppi.forEach((g, i) => vedi(g, i === k)); }, ferma() {} };
+  }
+};
+
+const ING_EN = {
+  passi: [
+    "Per dire che cosa sta succedendo adesso, in inglese si usa am, is oppure are, e poi il verbo con -ing.",
+    "A molti verbi si aggiunge solo -ing: read diventa reading, eat diventa eating, sing diventa singing.",
+    "Così: I am eating, she is reading, they are singing.",
+    "Attenzione: run diventa running e swim diventa swimming, con la consonante doppia; dance diventa dancing, senza la e."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const g0 = nascosto(s("g", {}, parolaEn(400, 160, "am · is · are", 60, "#1E6B52"), parolaEn(400, 240, "+", 60, "#4A5560"), dueColori(400, 330, "verbo", "-ing", 64)));
+    const g1 = nascosto(s("g", {}, [["read", "reading"], ["eat", "eating"], ["sing", "singing"]].map(([a, b], i) => s("g", {},
+      parolaEn(220, 140 + i * 110, a, 52), parolaEn(380, 140 + i * 110, "→", 50, "#4A5560"), dueColori(560, 140 + i * 110, b.slice(0, -3), "ing", 56)))));
+    const g2 = nascosto(s("g", {}, [["I am eat", "ing."], ["She is read", "ing."], ["They are sing", "ing."]].map(([a, b], i) =>
+      dueColori(400, 140 + i * 110, a, b, 56))));
+    const g3 = nascosto(s("g", {}, immagine(2719, 40, 120, 160),
+      dueColori(470, 140, "run", "ning", 52), dueColori(470, 240, "swim", "ming", 52), dueColori(470, 340, "danc", "ing", 52),
+      etichetta(700, 140, "nn", 30), etichetta(700, 240, "mm", 30), etichetta(700, 340, "senza e", 26)));
+    const gruppi = [g0, g1, g2, g3];
+    svg.append(...gruppi);
+    return { vai(k) { gruppi.forEach((g, i) => vedi(g, i === k)); }, ferma() {} };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, "a-an": A_AN, "pronomi-inglese": PRONOMI_EN, "ing-inglese": ING_EN, "maiuscolo-minuscolo": MAIUSCOLO_MINUSCOLO, quadrilinea: QUADRILINEA, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "facce-emozioni": FACCE_EMOZIONI, "corpo-emozioni": CORPO_EMOZIONI, calmarsi: CALMARSI, empatia: EMPATIA, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

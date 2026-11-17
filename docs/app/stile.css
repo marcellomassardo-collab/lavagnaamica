@@ -296,7 +296,45 @@ input[type="text"], input[type="search"], select {
 .carta.in-viaggio { opacity: .3; }
 .fantasma { position: fixed; z-index: 1000; margin: 0; pointer-events: none; box-shadow: 0 14px 30px rgba(0, 0, 0, .25); opacity: .95; }
 .giusta { border-color: var(--giusto) !important; background: var(--giusto-chiaro) !important; }
-.scuoti { animation: scuoti .4s; }
+.scuoti { animation: scuoti .4s, rosso .5s; }
+@keyframes rosso { 30% { box-shadow: 0 0 0 6px rgba(178, 58, 58, .45); } }
+/* movimento: le scelte entrano, la risposta giusta salta, le stelline volano, i puntini si gonfiano */
+.entra { animation: entra .42s cubic-bezier(.2, 1.4, .4, 1) backwards; }
+@keyframes entra { from { opacity: 0; transform: translateY(18px) scale(.85); } }
+.evviva { animation: evviva .6s cubic-bezier(.2, 1.6, .4, 1); position: relative; z-index: 2; }
+@keyframes evviva { 0% { transform: scale(1); } 35% { transform: scale(1.14) rotate(-2deg); box-shadow: 0 0 0 10px rgba(30, 138, 76, .25); } 70% { transform: scale(.97) rotate(1deg); } 100% { transform: scale(1); } }
+.stellina { position: fixed; z-index: 2000; pointer-events: none; font-size: 22px; line-height: 1; margin: -11px 0 0 -11px;
+  animation: stellina .85s ease-out forwards; }
+@keyframes stellina { from { transform: translate(0, 0) scale(.4); opacity: 1; } to { transform: translate(var(--dx), var(--dy)) scale(1.1) rotate(180deg); opacity: 0; } }
+.punti span { transition: background-color .3s; }
+.punti span.ora { animation: puntino 1.2s ease-in-out infinite; }
+.punti span.fatto { animation: fatto .45s cubic-bezier(.2, 1.8, .4, 1); }
+@keyframes puntino { 50% { transform: scale(1.35); } }
+@keyframes fatto { 50% { transform: scale(1.7); } }
+.di-fila { position: fixed; left: 50%; top: 18%; z-index: 2100; pointer-events: none; padding: 10px 22px; border-radius: 999px;
+  background: var(--evidenzia); color: #1D2329; font-weight: 900; font-size: clamp(1.4rem, 1rem + 2vw, 2.6rem); box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+  transform: translateX(-50%); animation: di-fila 1.6s cubic-bezier(.2, 1.5, .4, 1) forwards; }
+@keyframes di-fila { 0% { transform: translateX(-50%) scale(.3); opacity: 0; } 18% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+  30% { transform: translateX(-50%) scale(1); } 80% { opacity: 1; } 100% { transform: translateX(-50%) translateY(-30px); opacity: 0; } }
+/* acchiappa la talpa */
+.talpa-testa { display: flex; justify-content: center; }
+.talpa-chiede { margin: 0; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; font-weight: 800; font-size: clamp(1.1rem, .95rem + .8vw, 1.6rem); }
+.talpa-modello { border-color: var(--evidenzia); box-shadow: 0 0 0 4px var(--evidenzia-chiaro); }
+.talpa-prato { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2.4vw, 34px) clamp(10px, 2vw, 28px); width: min(100%, 900px); margin: 0 auto;
+  padding: clamp(14px, 2vw, 26px); border-radius: 26px; background: linear-gradient(#8BC86A, #5FA548); }
+.talpa-tana { position: relative; height: clamp(130px, 14vw, 165px); overflow: hidden; border-radius: 0 0 50% 50% / 0 0 26% 26%; }
+.talpa-buco { position: absolute; left: 6%; right: 6%; bottom: 0; height: 30px; border-radius: 50%; background: radial-gradient(#3B2615 55%, #5A3A20); z-index: 2; pointer-events: none; }
+.talpa { position: absolute; left: 50%; bottom: 0; width: 70%; transform: translate(-50%, 110%); transition: transform .28s cubic-bezier(.3, 1.4, .5, 1);
+  border: 0; padding: 30px 0 34px; background: #9B6B43; border-radius: 48% 48% 14px 14px; cursor: pointer; z-index: 1; color: inherit; font: inherit; }
+.talpa.su { transform: translate(-50%, 0); }
+.talpa-muso { position: absolute; top: 4px; left: 50%; width: 46%; height: 24px; transform: translateX(-50%);
+  background: radial-gradient(circle at 25% 40%, #1D2329 9%, transparent 10%), radial-gradient(circle at 75% 40%, #1D2329 9%, transparent 10%), radial-gradient(ellipse at 50% 85%, #E4609B 18%, transparent 20%); }
+.talpa .carta { margin: 0 6% 6%; min-height: 0; min-width: 0; padding: 6px; }
+.talpa .carta.breve .carta-testo { font-size: clamp(1.4rem, 1rem + 1.5vw, 2.4rem); }
+.talpa .picto, .talpa img { max-height: clamp(40px, 5vw, 64px); }
+.talpa.colpita { filter: grayscale(.8); }
+.talpa.presa { animation: evviva .6s; }
+:where(html.scuro) .talpa .carta { --carta: #FFFFFF; --testo: #1D2329; color: #1D2329; }
 @keyframes scuoti { 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
 .suggerito { animation: suggerisci .8s 2; }
 @keyframes suggerisci { 50% { box-shadow: 0 0 0 7px var(--evidenzia); } }
