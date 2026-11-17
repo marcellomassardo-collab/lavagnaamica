@@ -2320,7 +2320,85 @@ const ANALISI_LOGICA = Object.assign(fraseAnalizzata([
   ]
 });
 
-const SPIEGAZIONI = { "stati-materia": STATI, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "facce-emozioni": FACCE_EMOZIONI, "corpo-emozioni": CORPO_EMOZIONI, calmarsi: CALMARSI, empatia: EMPATIA, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- maiuscolo e minuscolo ---------- */
+// La stessa lettera in due modi: la maiuscola (grande) e la minuscola (piccola, quella dei libri).
+const letteraGrande = (t, x, y, misura, colore) => s("text", { x, y, "text-anchor": "middle", "font-size": misura, "font-weight": 700,
+  fill: colore || "#1D2329", "font-family": "Lettura, system-ui, sans-serif" }, t);
+// una maiuscola e la sua minuscola, una accanto all'altra (dx = quanto stanno lontane dal centro)
+const coppiaLettere = (M, m, x, y, misura, dx) => s("g", {},
+  letteraGrande(M, x - (dx || 40), y, misura, "#1E6B52"), letteraGrande(m, x + (dx || 40), y, misura, "#E0332B"));
+
+const MAIUSCOLO_MINUSCOLO = {
+  passi: [
+    "Ogni lettera si scrive in due modi: la maiuscola, grande, e la minuscola, piccola. Sono la stessa lettera.",
+    "Nei libri le parole si scrivono quasi tutte con le minuscole. La maiuscola si usa all'inizio della frase e per i nomi di persone e di luoghi.",
+    "Alcune minuscole sono uguali alla maiuscola, solo più piccole: la c, la o, la s, la u, la v, la w, la x, la z.",
+    "Altre cambiano un po' la forma: la a, la e, la m, la n, la r, la t. Queste si imparano una per una.",
+    "Altre lettere hanno un'asta che sale, come la b, la d, la f, la h, la k, la l. Altre hanno una coda che scende, come la g, la j, la p, la q, la y. La i ha il puntino.",
+    "L'alfabeto italiano ha 21 lettere, in quest'ordine. La j, la k, la w, la x e la y si usano nelle parole straniere."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const g0 = nascosto(s("g", {}, letteraGrande("A", 250, 250, 200, "#1E6B52"), letteraGrande("=", 400, 240, 90),
+      letteraGrande("a", 550, 250, 200, "#E0332B"), etichetta(400, 360, "la stessa lettera", 34)));
+    const g1 = nascosto(s("g", {}, letteraGrande("A", 200, 240, 190, "#1E6B52"), etichetta(200, 330, "maiuscola", 32),
+      letteraGrande("a", 600, 240, 190, "#E0332B"), etichetta(600, 330, "minuscola", 32),
+      etichetta(400, 400, "nei libri quasi tutto è in minuscolo", 28)));
+    const g2 = nascosto(s("g", {}, etichetta(400, 60, "uguali, solo più piccole", 32),
+      [["C", "c"], ["O", "o"], ["S", "s"], ["U", "u"]].map(([M, m], i) => coppiaLettere(M, m, 120 + i * 190, 185, 130, 46)),
+      [["V", "v"], ["W", "w"], ["X", "x"], ["Z", "z"]].map(([M, m], i) => coppiaLettere(M, m, 120 + i * 190, 355, 130, 46))));
+    const g3 = nascosto(s("g", {}, etichetta(400, 60, "cambiano un po' la forma", 32),
+      [["A", "a"], ["E", "e"], ["M", "m"]].map(([M, m], i) => coppiaLettere(M, m, 135 + i * 270, 200, 120, 58)),
+      [["N", "n"], ["R", "r"], ["T", "t"]].map(([M, m], i) => coppiaLettere(M, m, 135 + i * 270, 350, 120, 58))));
+    const g4 = nascosto(s("g", {}, etichetta(400, 70, "asta che sale", 30),
+      ["b", "d", "f", "h", "k", "l"].map((t, i) => letteraGrande(t, 110 + i * 120, 190, 130)),
+      ["g", "j", "p", "q", "y"].map((t, i) => letteraGrande(t, 150 + i * 130, 340, 130)),
+      etichetta(400, 425, "coda che scende · la i ha il puntino", 28)));
+    const g5 = nascosto(s("g", {}, etichetta(400, 60, "21 lettere italiane", 32),
+      "a b c d e f g h i l m".split(" ").map((t, i) => letteraGrande(t, 70 + i * 66, 165, 80)),
+      "n o p q r s t u v z".split(" ").map((t, i) => letteraGrande(t, 103 + i * 66, 290, 80)),
+      "j k w x y".split(" ").map((t, i) => letteraGrande(t, 280 + i * 60, 385, 80, "#8A949B")),
+      etichetta(400, 425, "j, k, w, x, y: parole straniere", 28)));
+    const gruppi = [g0, g1, g2, g3, g4, g5];
+    svg.append(...gruppi);
+    return { vai(k) { gruppi.forEach((g, i) => vedi(g, i === k)); }, ferma() {} };
+  }
+};
+
+/* ---------- le righe: la quadrilinea ---------- */
+// Il foglio a quattro righe: le lettere con l'asta salgono alla prima, le piccole stanno nel mezzo, le code scendono alla quarta.
+const QUADRILINEA = {
+  passi: [
+    "Per scrivere si usa un foglio a quattro righe: si chiama quadrilinea. Le righe si contano dall'alto in basso.",
+    "La prima riga è la più alta. Qui arrivano le lettere con l'asta che sale, come la b, la d, la l.",
+    "Tra la seconda e la terza riga stanno le lettere piccole, come la a, la e, la o: è la parte che conta di più.",
+    "La terza riga è la base: le lettere piccole poggiano sopra di lei.",
+    "La quarta riga è la più bassa. Qui scende la coda delle lettere come la g, la p, la q, la y."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const Y = { 1: 120, 2: 178, 3: 290, 4: 343 };
+    const riga = (n, colore, spessore) => s("line", { x1: 60, x2: 740, y1: Y[n], y2: Y[n], stroke: colore || "#9AA7AE", "stroke-width": spessore || 3 });
+    const numeri = [1, 2, 3, 4].map(n => scritta(28, Y[n] + 9, String(n), { "font-size": 26, "font-weight": 800, fill: "#4A5560" }));
+    svg.append(s("g", {}, [1, 2, 3, 4].map(n => riga(n)), numeri));
+    const lettere = (testi, xs) => testi.map((t, i) => letteraGrande(t, xs[i], 290, 230));
+    const fascia = () => s("rect", { x: 60, y: Y[2], width: 680, height: Y[3] - Y[2], fill: "#1E6B52", opacity: 0.14 });
+    const g0 = nascosto(etichetta(400, 75, "quadrilinea: quattro righe", 32));
+    const g1 = nascosto(s("g", {}, riga(1, "#E0332B", 6), lettere(["b", "d", "l"], [160, 390, 620]),
+      etichetta(400, 410, "la prima riga, la più alta", 28)));
+    const g2 = nascosto(s("g", {}, fascia(), lettere(["a", "e", "o"], [160, 390, 620]),
+      etichetta(400, 410, "tra la seconda e la terza riga", 28)));
+    const g3 = nascosto(s("g", {}, fascia(), riga(3, "#2B7FC4", 6), lettere(["a", "e", "o"], [160, 390, 620]),
+      etichetta(400, 410, "la terza riga: la base", 28)));
+    const g4 = nascosto(s("g", {}, riga(4, "#E0332B", 6), lettere(["g", "p", "q", "y"], [120, 300, 480, 660]),
+      etichetta(400, 410, "la quarta riga, la più bassa", 28)));
+    const gruppi = [g0, g1, g2, g3, g4];
+    svg.append(...gruppi);
+    return { vai(k) { gruppi.forEach((g, i) => vedi(g, i === k)); }, ferma() {} };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, "maiuscolo-minuscolo": MAIUSCOLO_MINUSCOLO, quadrilinea: QUADRILINEA, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "facce-emozioni": FACCE_EMOZIONI, "corpo-emozioni": CORPO_EMOZIONI, calmarsi: CALMARSI, empatia: EMPATIA, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

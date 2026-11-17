@@ -324,6 +324,1183 @@
   }
  },
  {
+  "id": "minuscolo-1-stessa-forma",
+  "titolo": "Minuscolo 1 · Lettere uguali, solo più piccole",
+  "scrittura": "minuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina la maiuscola alla minuscola che le somiglia: è la stessa lettera, solo più piccola.",
+  "materia": "Italiano",
+  "livello": 1,
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "C"
+     },
+     {
+      "t": "c"
+     }
+    ],
+    [
+     {
+      "t": "O"
+     },
+     {
+      "t": "o"
+     }
+    ],
+    [
+     {
+      "t": "S"
+     },
+     {
+      "t": "s"
+     }
+    ],
+    [
+     {
+      "t": "U"
+     },
+     {
+      "t": "u"
+     }
+    ],
+    [
+     {
+      "t": "V"
+     },
+     {
+      "t": "v"
+     }
+    ],
+    [
+     {
+      "t": "W"
+     },
+     {
+      "t": "w"
+     }
+    ],
+    [
+     {
+      "t": "X"
+     },
+     {
+      "t": "x"
+     }
+    ],
+    [
+     {
+      "t": "Z"
+     },
+     {
+      "t": "z"
+     }
+    ]
+   ]
+  },
+  "scopri": {
+   "animazione": "maiuscolo-minuscolo"
+  }
+ },
+ {
+  "id": "minuscolo-2-forma-diversa",
+  "titolo": "Minuscolo 2 · Lettere che cambiano forma",
+  "scrittura": "minuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni maiuscola alla sua minuscola. Queste cambiano un po' la forma: guarda bene.",
+  "materia": "Italiano",
+  "livello": 1,
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "A"
+     },
+     {
+      "t": "a"
+     }
+    ],
+    [
+     {
+      "t": "E"
+     },
+     {
+      "t": "e"
+     }
+    ],
+    [
+     {
+      "t": "M"
+     },
+     {
+      "t": "m"
+     }
+    ],
+    [
+     {
+      "t": "N"
+     },
+     {
+      "t": "n"
+     }
+    ],
+    [
+     {
+      "t": "R"
+     },
+     {
+      "t": "r"
+     }
+    ],
+    [
+     {
+      "t": "T"
+     },
+     {
+      "t": "t"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "minuscolo-3-righe",
+  "titolo": "Minuscolo 3 · Dove stanno le lettere sulle righe",
+  "scrittura": "minuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Metti ogni lettera piccola nel gruppo giusto: guarda dove sta sulle righe.",
+  "materia": "Italiano",
+  "livello": 2,
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "Nel mezzo",
+     "elementi": [
+      {
+       "t": "a"
+      },
+      {
+       "t": "e"
+      },
+      {
+       "t": "m"
+      },
+      {
+       "t": "o"
+      },
+      {
+       "t": "s"
+      },
+      {
+       "t": "u"
+      }
+     ]
+    },
+    {
+     "nome": "In alto",
+     "elementi": [
+      {
+       "t": "b"
+      },
+      {
+       "t": "d"
+      },
+      {
+       "t": "f"
+      },
+      {
+       "t": "h"
+      },
+      {
+       "t": "k"
+      },
+      {
+       "t": "l"
+      }
+     ]
+    },
+    {
+     "nome": "In basso",
+     "elementi": [
+      {
+       "t": "g"
+      },
+      {
+       "t": "p"
+      },
+      {
+       "t": "q"
+      },
+      {
+       "t": "y"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "quadrilinea"
+  }
+ },
+ {
+  "id": "minuscolo-4-trova-la-minuscola",
+  "titolo": "Minuscolo 4 · Trova la minuscola",
+  "scrittura": "minuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Guarda la lettera grande: quale lettera piccola è la sua?",
+  "materia": "Italiano",
+  "livello": 1,
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "D"
+     },
+     "giusta": {
+      "t": "d"
+     },
+     "sbagliate": [
+      {
+       "t": "b"
+      },
+      {
+       "t": "p"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "B"
+     },
+     "giusta": {
+      "t": "b"
+     },
+     "sbagliate": [
+      {
+       "t": "d"
+      },
+      {
+       "t": "p"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "P"
+     },
+     "giusta": {
+      "t": "p"
+     },
+     "sbagliate": [
+      {
+       "t": "b"
+      },
+      {
+       "t": "q"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Q"
+     },
+     "giusta": {
+      "t": "q"
+     },
+     "sbagliate": [
+      {
+       "t": "p"
+      },
+      {
+       "t": "g"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "G"
+     },
+     "giusta": {
+      "t": "g"
+     },
+     "sbagliate": [
+      {
+       "t": "q"
+      },
+      {
+       "t": "y"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "H"
+     },
+     "giusta": {
+      "t": "h"
+     },
+     "sbagliate": [
+      {
+       "t": "n"
+      },
+      {
+       "t": "k"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "N"
+     },
+     "giusta": {
+      "t": "n"
+     },
+     "sbagliate": [
+      {
+       "t": "m"
+      },
+      {
+       "t": "h"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "M"
+     },
+     "giusta": {
+      "t": "m"
+     },
+     "sbagliate": [
+      {
+       "t": "n"
+      },
+      {
+       "t": "w"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "T"
+     },
+     "giusta": {
+      "t": "t"
+     },
+     "sbagliate": [
+      {
+       "t": "f"
+      },
+      {
+       "t": "l"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "F"
+     },
+     "giusta": {
+      "t": "f"
+     },
+     "sbagliate": [
+      {
+       "t": "t"
+      },
+      {
+       "t": "l"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "I"
+     },
+     "giusta": {
+      "t": "i"
+     },
+     "sbagliate": [
+      {
+       "t": "l"
+      },
+      {
+       "t": "j"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "L"
+     },
+     "giusta": {
+      "t": "l"
+     },
+     "sbagliate": [
+      {
+       "t": "i"
+      },
+      {
+       "t": "t"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Y"
+     },
+     "giusta": {
+      "t": "y"
+     },
+     "sbagliate": [
+      {
+       "t": "j"
+      },
+      {
+       "t": "g"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "K"
+     },
+     "giusta": {
+      "t": "k"
+     },
+     "sbagliate": [
+      {
+       "t": "h"
+      },
+      {
+       "t": "x"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "J"
+     },
+     "giusta": {
+      "t": "j"
+     },
+     "sbagliate": [
+      {
+       "t": "i"
+      },
+      {
+       "t": "y"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "R"
+     },
+     "giusta": {
+      "t": "r"
+     },
+     "sbagliate": [
+      {
+       "t": "n"
+      },
+      {
+       "t": "a"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "minuscolo-5-stessa-lettera",
+  "titolo": "Minuscolo 5 · Sono la stessa lettera?",
+  "scrittura": "minuscolo",
+  "tipo": "coppie",
+  "gioco": "vero",
+  "consegna": "Le due lettere sono la stessa lettera? Tocca Vero o Falso.",
+  "materia": "Italiano",
+  "livello": 1,
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "A"
+     },
+     {
+      "t": "a"
+     }
+    ],
+    [
+     {
+      "t": "B"
+     },
+     {
+      "t": "b"
+     }
+    ],
+    [
+     {
+      "t": "D"
+     },
+     {
+      "t": "d"
+     }
+    ],
+    [
+     {
+      "t": "P"
+     },
+     {
+      "t": "p"
+     }
+    ],
+    [
+     {
+      "t": "Q"
+     },
+     {
+      "t": "q"
+     }
+    ],
+    [
+     {
+      "t": "G"
+     },
+     {
+      "t": "g"
+     }
+    ],
+    [
+     {
+      "t": "F"
+     },
+     {
+      "t": "f"
+     }
+    ],
+    [
+     {
+      "t": "H"
+     },
+     {
+      "t": "h"
+     }
+    ],
+    [
+     {
+      "t": "L"
+     },
+     {
+      "t": "l"
+     }
+    ],
+    [
+     {
+      "t": "T"
+     },
+     {
+      "t": "t"
+     }
+    ],
+    [
+     {
+      "t": "M"
+     },
+     {
+      "t": "m"
+     }
+    ],
+    [
+     {
+      "t": "N"
+     },
+     {
+      "t": "n"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "minuscolo-6-ordine-alfabeto",
+  "titolo": "Minuscolo 6 · L'ordine delle lettere",
+  "scrittura": "minuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti le lettere nell'ordine dell'alfabeto. Attenzione: dopo la i viene la l.",
+  "materia": "Italiano",
+  "livello": 1,
+  "dati": {
+   "passi": [
+    {
+     "t": "e"
+    },
+    {
+     "t": "f"
+    },
+    {
+     "t": "g"
+    },
+    {
+     "t": "h"
+    },
+    {
+     "t": "i"
+    },
+    {
+     "t": "l"
+    }
+   ]
+  }
+ },
+ {
+  "id": "minuscolo-7-completa-lettera",
+  "titolo": "Minuscolo 7 · Completa con la lettera piccola",
+  "scrittura": "minuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Scegli la lettera piccola che manca all'inizio della parola.",
+  "materia": "Italiano",
+  "livello": 2,
+  "dati": {
+   "frasi": [
+    "Il [c]ane abbaia.",
+    "La [m]ela è rossa.",
+    "Il [s]ole è caldo.",
+    "Il [l]upo ulula.",
+    "La [p]era è gialla.",
+    "Il [t]opo è piccolo.",
+    "La [r]ana salta.",
+    "Il [g]atto miagola."
+   ],
+   "extra": [
+    "b",
+    "d",
+    "v",
+    "z",
+    "f"
+   ]
+  }
+ },
+ {
+  "id": "minuscolo-8-lettura-lampo",
+  "titolo": "Minuscolo 8 · Lettura lampo: le lettere piccole",
+  "scrittura": "minuscolo",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Guarda il centro: la lettera si vede per un attimo. Quale era?",
+  "materia": "Italiano",
+  "livello": 1,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "lampo",
+     "parole": [
+      "b",
+      "d",
+      "p",
+      "q",
+      "h",
+      "n"
+     ],
+     "ms": 1100
+    },
+    {
+     "genere": "lampo",
+     "parole": [
+      "m",
+      "n",
+      "u",
+      "a",
+      "e",
+      "r"
+     ],
+     "ms": 1100
+    },
+    {
+     "genere": "lampo",
+     "parole": [
+      "g",
+      "y",
+      "j",
+      "f",
+      "t",
+      "l"
+     ],
+     "ms": 1100
+    }
+   ]
+  }
+ },
+ {
+  "id": "minuscolo-9-leggi-parola",
+  "titolo": "Minuscolo 9 · Leggi la parola piccola",
+  "scrittura": "minuscolo",
+  "tipo": "lettura",
+  "gioco": "lettura",
+  "consegna": "Leggi la parola in minuscolo e tocca l'immagine giusta.",
+  "materia": "Italiano",
+  "livello": 1,
+  "dati": {
+   "esercizi": [
+    {
+     "genere": "leggi",
+     "testo": "bosco",
+     "p": 2666,
+     "altre": [
+      2561,
+      2520
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "pera",
+     "p": 2561,
+     "altre": [
+      2666,
+      3241
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "palla",
+     "p": 3241,
+     "altre": [
+      2561,
+      2268
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "balena",
+     "p": 2268,
+     "altre": [
+      2520,
+      2610
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "bicchiere",
+     "p": 2610,
+     "altre": [
+      3241,
+      2666
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "gatto",
+     "p": 7114,
+     "altre": [
+      7202,
+      2403
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "gallina",
+     "p": 2403,
+     "altre": [
+      7114,
+      2520
+     ]
+    },
+    {
+     "genere": "leggi",
+     "testo": "cane",
+     "p": 7202,
+     "altre": [
+      7114,
+      2317
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "minuscolo-10-memory",
+  "titolo": "Minuscolo 10 · Memory delle lettere",
+  "scrittura": "minuscolo",
+  "tipo": "coppie",
+  "gioco": "memory",
+  "consegna": "Trova la maiuscola e la minuscola uguali.",
+  "materia": "Italiano",
+  "livello": 1,
+  "dati": {
+   "coppie": [
+    [
+     {
+      "t": "A"
+     },
+     {
+      "t": "a"
+     }
+    ],
+    [
+     {
+      "t": "E"
+     },
+     {
+      "t": "e"
+     }
+    ],
+    [
+     {
+      "t": "G"
+     },
+     {
+      "t": "g"
+     }
+    ],
+    [
+     {
+      "t": "R"
+     },
+     {
+      "t": "r"
+     }
+    ],
+    [
+     {
+      "t": "B"
+     },
+     {
+      "t": "b"
+     }
+    ],
+    [
+     {
+      "t": "D"
+     },
+     {
+      "t": "d"
+     }
+    ],
+    [
+     {
+      "t": "P"
+     },
+     {
+      "t": "p"
+     }
+    ],
+    [
+     {
+      "t": "Q"
+     },
+     {
+      "t": "q"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "minuscolo-11-dove-sta",
+  "titolo": "Minuscolo 11 · Dove sta la lettera?",
+  "scrittura": "minuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Guarda la lettera piccola: dove si trova sulle righe?",
+  "materia": "Italiano",
+  "livello": 2,
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "b"
+     },
+     "giusta": {
+      "t": "in alto"
+     },
+     "sbagliate": [
+      {
+       "t": "nel mezzo"
+      },
+      {
+       "t": "in basso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "a"
+     },
+     "giusta": {
+      "t": "nel mezzo"
+     },
+     "sbagliate": [
+      {
+       "t": "in alto"
+      },
+      {
+       "t": "in basso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "g"
+     },
+     "giusta": {
+      "t": "in basso"
+     },
+     "sbagliate": [
+      {
+       "t": "nel mezzo"
+      },
+      {
+       "t": "in alto"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "d"
+     },
+     "giusta": {
+      "t": "in alto"
+     },
+     "sbagliate": [
+      {
+       "t": "nel mezzo"
+      },
+      {
+       "t": "in basso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "e"
+     },
+     "giusta": {
+      "t": "nel mezzo"
+     },
+     "sbagliate": [
+      {
+       "t": "in alto"
+      },
+      {
+       "t": "in basso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "p"
+     },
+     "giusta": {
+      "t": "in basso"
+     },
+     "sbagliate": [
+      {
+       "t": "nel mezzo"
+      },
+      {
+       "t": "in alto"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "l"
+     },
+     "giusta": {
+      "t": "in alto"
+     },
+     "sbagliate": [
+      {
+       "t": "nel mezzo"
+      },
+      {
+       "t": "in basso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "o"
+     },
+     "giusta": {
+      "t": "nel mezzo"
+     },
+     "sbagliate": [
+      {
+       "t": "in alto"
+      },
+      {
+       "t": "in basso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "q"
+     },
+     "giusta": {
+      "t": "in basso"
+     },
+     "sbagliate": [
+      {
+       "t": "nel mezzo"
+      },
+      {
+       "t": "in alto"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "h"
+     },
+     "giusta": {
+      "t": "in alto"
+     },
+     "sbagliate": [
+      {
+       "t": "nel mezzo"
+      },
+      {
+       "t": "in basso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "n"
+     },
+     "giusta": {
+      "t": "nel mezzo"
+     },
+     "sbagliate": [
+      {
+       "t": "in alto"
+      },
+      {
+       "t": "in basso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "y"
+     },
+     "giusta": {
+      "t": "in basso"
+     },
+     "sbagliate": [
+      {
+       "t": "nel mezzo"
+      },
+      {
+       "t": "in alto"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "f"
+     },
+     "giusta": {
+      "t": "in alto"
+     },
+     "sbagliate": [
+      {
+       "t": "nel mezzo"
+      },
+      {
+       "t": "in basso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "s"
+     },
+     "giusta": {
+      "t": "nel mezzo"
+     },
+     "sbagliate": [
+      {
+       "t": "in alto"
+      },
+      {
+       "t": "in basso"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "j"
+     },
+     "giusta": {
+      "t": "in basso"
+     },
+     "sbagliate": [
+      {
+       "t": "nel mezzo"
+      },
+      {
+       "t": "in alto"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "u"
+     },
+     "giusta": {
+      "t": "nel mezzo"
+     },
+     "sbagliate": [
+      {
+       "t": "in alto"
+      },
+      {
+       "t": "in basso"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "minuscolo-12-ordine-fine",
+  "titolo": "Minuscolo 12 · L'ordine delle lettere, fino in fondo",
+  "scrittura": "minuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti le lettere nell'ordine dell'alfabeto. Attenzione: dopo la v viene la z.",
+  "materia": "Italiano",
+  "livello": 2,
+  "dati": {
+   "passi": [
+    {
+     "t": "s"
+    },
+    {
+     "t": "t"
+    },
+    {
+     "t": "u"
+    },
+    {
+     "t": "v"
+    },
+    {
+     "t": "z"
+    }
+   ]
+  }
+ },
+ {
   "id": "leggere-3-consonanti",
   "titolo": "Leggere 3 · La prima lettera",
   "scrittura": "doppio",

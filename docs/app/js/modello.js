@@ -40,6 +40,8 @@ export const SCRITTURE = {
 // Le spiegazioni animate che si possono mettere prima di un esercizio (sono in animazioni.js).
 export const ANIMAZIONI = {
   "stati-materia": "Solidi, liquidi e gas",
+  "maiuscolo-minuscolo": "Maiuscolo e minuscolo",
+  quadrilinea: "Le righe: la quadrilinea",
   "ciclo-acqua": "Il ciclo dell'acqua",
   pianta: "Dal seme al frutto",
   "sistema-solare": "Il sistema solare",
