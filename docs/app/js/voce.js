@@ -21,7 +21,20 @@ if (sintesi) {
 
 export const voceDisponibile = !!sintesi;
 
-const qualita = v => (/natural|neural|premium|enhanced/i.test(v.name) ? 4 : 0) + (v.localService ? 0 : 3) + (/^it[-_]IT$/i.test(v.lang) ? 1 : 0);
+// Le voci preferite, in ordine: dall'elenco pubblico delle voci consigliate per la sintesi vocale del web (progetto Readium).
+// Sono tutte voci del sistema o del browser: niente servizi esterni. Su Windows le «Online (Natural)» ci sono in Edge,
+// in Chrome c'è la voce Google; le voci vecchie di Windows (Elsa, Cosimo) vengono dopo.
+const PREFERITE_IT = [/Isabella Online \(Natural\)/i, /Elsa Online \(Natural\)/i, /Diego Online \(Natural\)/i, /Giuseppe.*Online \(Natural\)/i,
+  /Google italiano \d \(Natural\)/i, /it-it-x-.*-network/i, /^Google italiano$/i, /^Federica/i, /^Emma/i, /^Alice/i, /^Paola/i, /^Luca/i];
+const PREFERITE_EN = [/Sonia Online \(Natural\)/i, /Libby Online \(Natural\)/i, /Ryan Online \(Natural\)/i, /Maisie Online \(Natural\)/i, /Thomas Online \(Natural\)/i,
+  /Google UK English \d \(Natural\)/i, /en-gb-x-.*-network/i, /^Google UK English (Female|Male)$/i, /^(Serena|Kate|Daniel|Jamie|Oliver|Stephanie|Arthur|Martha)/i,
+  /(Emma|Ava|Andrew|Brian|Jenny|Aria|Guy).*Online \(Natural\)/i, /^Google US English/i];
+const posto = (v, elenco) => { const i = elenco.findIndex(r => r.test(v.name)); return i < 0 ? 0 : 100 - i; };
+
+const qualita = v => posto(v, PREFERITE_IT) + (/natural|neural|premium|enhanced/i.test(v.name) ? 4 : 0) + (v.localService ? 0 : 3) + (/^it[-_]IT$/i.test(v.lang) ? 1 : 0);
+
+// Le voci vecchie di Windows suonano robotiche: se sono le sole, nelle impostazioni si consiglia Edge.
+export const soloVociVecchie = () => { const v = vociDelDispositivo(); return v.length > 0 && v.every(x => x.localService && /^Microsoft /i.test(x.name) && !/Natural/i.test(x.name)); };
 
 export function vociDelDispositivo() {
   if (sintesi && !vociItaliane.length) aggiornaVoci();   // alcuni browser le caricano dopo, senza avvisare
@@ -29,7 +42,7 @@ export function vociDelDispositivo() {
 }
 
 // A scuola si impara l'inglese britannico: a parità di qualità, prima quello.
-const qualitaInglese = v => (/natural|neural|premium|enhanced/i.test(v.name) ? 4 : 0) + (v.localService ? 0 : 3) + (/^en[-_]GB$/i.test(v.lang) ? 2 : 0);
+const qualitaInglese = v => posto(v, PREFERITE_EN) + (/natural|neural|premium|enhanced/i.test(v.name) ? 4 : 0) + (v.localService ? 0 : 3) + (/^en[-_]GB$/i.test(v.lang) ? 2 : 0);
 
 export function vociInglesiDelDispositivo() {
   if (sintesi && !vociInglesi.length) aggiornaVoci();

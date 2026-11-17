@@ -21084,6 +21084,1167 @@
   }
  },
  {
+  "id": "en-frutta",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Fruit",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta la parola inglese e tocca il frutto giusto.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2483
+     },
+     {
+      "t": "orange"
+     }
+    ],
+    [
+     {
+      "p": 3247
+     },
+     {
+      "t": "grapes"
+     }
+    ],
+    [
+     {
+      "p": 2561
+     },
+     {
+      "t": "pear"
+     }
+    ],
+    [
+     {
+      "p": 2400
+     },
+     {
+      "t": "strawberry"
+     }
+    ],
+    [
+     {
+      "p": 3022
+     },
+     {
+      "t": "lemon"
+     }
+    ],
+    [
+     {
+      "p": 2557
+     },
+     {
+      "t": "watermelon"
+     }
+    ],
+    [
+     {
+      "p": 2525
+     },
+     {
+      "t": "pineapple"
+     }
+    ],
+    [
+     {
+      "p": 8303
+     },
+     {
+      "t": "cherry"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-frutta-vero",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Fruit: yes or no?",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "vero",
+  "consegna": "Il disegno e la parola vanno insieme? Tocca Vero o Falso.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2483
+     },
+     {
+      "t": "orange"
+     }
+    ],
+    [
+     {
+      "p": 3247
+     },
+     {
+      "t": "grapes"
+     }
+    ],
+    [
+     {
+      "p": 2561
+     },
+     {
+      "t": "pear"
+     }
+    ],
+    [
+     {
+      "p": 2400
+     },
+     {
+      "t": "strawberry"
+     }
+    ],
+    [
+     {
+      "p": 3022
+     },
+     {
+      "t": "lemon"
+     }
+    ],
+    [
+     {
+      "p": 2557
+     },
+     {
+      "t": "watermelon"
+     }
+    ],
+    [
+     {
+      "p": 2525
+     },
+     {
+      "t": "pineapple"
+     }
+    ],
+    [
+     {
+      "p": 8303
+     },
+     {
+      "t": "cherry"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-animali-selvatici",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Wild animals",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni animale alla sua parola inglese.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2449
+     },
+     {
+      "t": "lion"
+     }
+    ],
+    [
+     {
+      "p": 2590
+     },
+     {
+      "t": "tiger"
+     }
+    ],
+    [
+     {
+      "p": 2372
+     },
+     {
+      "t": "elephant"
+     }
+    ],
+    [
+     {
+      "p": 2437
+     },
+     {
+      "t": "giraffe"
+     }
+    ],
+    [
+     {
+      "p": 2477
+     },
+     {
+      "t": "monkey"
+     }
+    ],
+    [
+     {
+      "p": 2324
+     },
+     {
+      "t": "zebra"
+     }
+    ],
+    [
+     {
+      "p": 2343
+     },
+     {
+      "t": "crocodile"
+     }
+    ],
+    [
+     {
+      "p": 2568
+     },
+     {
+      "t": "snake"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-mezzi",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Transport",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta la parola inglese e tocca il mezzo giusto.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2339
+     },
+     {
+      "t": "car"
+     }
+    ],
+    [
+     {
+      "p": 2262
+     },
+     {
+      "t": "bus"
+     }
+    ],
+    [
+     {
+      "p": 2603
+     },
+     {
+      "t": "train"
+     }
+    ],
+    [
+     {
+      "p": 2264
+     },
+     {
+      "t": "plane"
+     }
+    ],
+    [
+     {
+      "p": 2273
+     },
+     {
+      "t": "boat"
+     }
+    ],
+    [
+     {
+      "p": 2277
+     },
+     {
+      "t": "bike"
+     }
+    ],
+    [
+     {
+      "p": 2480
+     },
+     {
+      "t": "motorbike"
+     }
+    ],
+    [
+     {
+      "p": 2306
+     },
+     {
+      "t": "lorry"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-forme",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Shapes",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta la parola inglese e tocca la forma giusta.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 4603
+     },
+     {
+      "t": "circle"
+     }
+    ],
+    [
+     {
+      "p": 4616
+     },
+     {
+      "t": "square"
+     }
+    ],
+    [
+     {
+      "p": 4763
+     },
+     {
+      "t": "triangle"
+     }
+    ],
+    [
+     {
+      "p": 4731
+     },
+     {
+      "t": "rectangle"
+     }
+    ],
+    [
+     {
+      "p": 4644
+     },
+     {
+      "t": "star"
+     }
+    ],
+    [
+     {
+      "p": 4613
+     },
+     {
+      "t": "heart"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-emozioni",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "How do you feel?",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni faccia alla sua parola inglese.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 3245
+     },
+     {
+      "t": "happy"
+     }
+    ],
+    [
+     {
+      "p": 2606
+     },
+     {
+      "t": "sad"
+     }
+    ],
+    [
+     {
+      "p": 2374
+     },
+     {
+      "t": "angry"
+     }
+    ],
+    [
+     {
+      "p": 2261
+     },
+     {
+      "t": "scared"
+     }
+    ],
+    [
+     {
+      "p": 2314
+     },
+     {
+      "t": "tired"
+     }
+    ],
+    [
+     {
+      "p": 2574
+     },
+     {
+      "t": "surprised"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-comandi",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "Classroom English",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta che cosa dice la maestra in inglese e tocca il disegno giusto.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 6548
+     },
+     {
+      "t": "stand up"
+     }
+    ],
+    [
+     {
+      "p": 6611
+     },
+     {
+      "t": "sit down"
+     }
+    ],
+    [
+     {
+      "p": 6874
+     },
+     {
+      "t": "open your book"
+     }
+    ],
+    [
+     {
+      "p": 2381
+     },
+     {
+      "t": "listen"
+     }
+    ],
+    [
+     {
+      "p": 5936
+     },
+     {
+      "t": "be quiet"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-cose-questa",
+  "materia": "Inglese",
+  "livello": 1,
+  "titolo": "What's this?",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Guarda il disegno: che cos'è? Scegli la frase giusta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "What's this?",
+      "p": 2406
+     },
+     "giusta": {
+      "t": "It's a cat."
+     },
+     "sbagliate": [
+      {
+       "t": "It's a dog."
+      },
+      {
+       "t": "It's an egg."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "What's this?",
+      "p": 2517
+     },
+     "giusta": {
+      "t": "It's a dog."
+     },
+     "sbagliate": [
+      {
+       "t": "It's a cat."
+      },
+      {
+       "t": "It's an owl."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "What's this?",
+      "p": 2462
+     },
+     "giusta": {
+      "t": "It's an apple."
+     },
+     "sbagliate": [
+      {
+       "t": "It's an egg."
+      },
+      {
+       "t": "It's a banana."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "What's this?",
+      "p": 2427
+     },
+     "giusta": {
+      "t": "It's an egg."
+     },
+     "sbagliate": [
+      {
+       "t": "It's an apple."
+      },
+      {
+       "t": "It's an ant."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "What's this?",
+      "p": 2500
+     },
+     "giusta": {
+      "t": "It's an umbrella."
+     },
+     "sbagliate": [
+      {
+       "t": "It's an owl."
+      },
+      {
+       "t": "It's a bike."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "What's this?",
+      "p": 2671
+     },
+     "giusta": {
+      "t": "It's an owl."
+     },
+     "sbagliate": [
+      {
+       "t": "It's an ant."
+      },
+      {
+       "t": "It's a cat."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "What's this?",
+      "p": 2425
+     },
+     "giusta": {
+      "t": "It's an ant."
+     },
+     "sbagliate": [
+      {
+       "t": "It's an owl."
+      },
+      {
+       "t": "It's a dog."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "en-sport",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Sports",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "memory",
+  "consegna": "Trova lo sport e la sua parola inglese.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 7137
+     },
+     {
+      "t": "football"
+     }
+    ],
+    [
+     {
+      "p": 10158
+     },
+     {
+      "t": "tennis"
+     }
+    ],
+    [
+     {
+      "p": 4918
+     },
+     {
+      "t": "basketball"
+     }
+    ],
+    [
+     {
+      "p": 25038
+     },
+     {
+      "t": "swimming"
+     }
+    ],
+    [
+     {
+      "p": 16701
+     },
+     {
+      "t": "skiing"
+     }
+    ],
+    [
+     {
+      "p": 9699
+     },
+     {
+      "t": "cycling"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-mestieri",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Jobs",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "abbina",
+  "consegna": "Abbina ogni lavoro alla sua parola inglese.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2467
+     },
+     {
+      "t": "doctor"
+     }
+    ],
+    [
+     {
+      "p": 2457
+     },
+     {
+      "t": "teacher"
+     }
+    ],
+    [
+     {
+      "p": 2342
+     },
+     {
+      "t": "cook"
+     }
+    ],
+    [
+     {
+      "p": 2982
+     },
+     {
+      "t": "farmer"
+     }
+    ],
+    [
+     {
+      "p": 2664
+     },
+     {
+      "t": "firefighter"
+     }
+    ],
+    [
+     {
+      "p": 2824
+     },
+     {
+      "t": "police officer"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-luoghi",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "Places in town",
+  "scrittura": "maiuscolo",
+  "tipo": "coppie",
+  "gioco": "ascolta",
+  "consegna": "Ascolta la parola inglese e tocca il posto giusto.",
+  "dati": {
+   "coppie": [
+    [
+     {
+      "p": 2859
+     },
+     {
+      "t": "park"
+     }
+    ],
+    [
+     {
+      "p": 3082
+     },
+     {
+      "t": "school"
+     }
+    ],
+    [
+     {
+      "p": 3116
+     },
+     {
+      "t": "hospital"
+     }
+    ],
+    [
+     {
+      "p": 8986
+     },
+     {
+      "t": "shop"
+     }
+    ],
+    [
+     {
+      "p": 2826
+     },
+     {
+      "t": "beach"
+     }
+    ],
+    [
+     {
+      "p": 4773
+     },
+     {
+      "t": "zoo"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "id": "en-emozioni-frasi",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "I'm happy!",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Guarda la faccia: come si sente? Scegli la frase giusta.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "How do you feel?",
+      "p": 3245
+     },
+     "giusta": {
+      "t": "I'm happy."
+     },
+     "sbagliate": [
+      {
+       "t": "I'm sad."
+      },
+      {
+       "t": "I'm angry."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "How do you feel?",
+      "p": 2606
+     },
+     "giusta": {
+      "t": "I'm sad."
+     },
+     "sbagliate": [
+      {
+       "t": "I'm happy."
+      },
+      {
+       "t": "I'm tired."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "How do you feel?",
+      "p": 2374
+     },
+     "giusta": {
+      "t": "I'm angry."
+     },
+     "sbagliate": [
+      {
+       "t": "I'm happy."
+      },
+      {
+       "t": "I'm surprised."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "How do you feel?",
+      "p": 2261
+     },
+     "giusta": {
+      "t": "I'm scared."
+     },
+     "sbagliate": [
+      {
+       "t": "I'm happy."
+      },
+      {
+       "t": "I'm tired."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "How do you feel?",
+      "p": 2314
+     },
+     "giusta": {
+      "t": "I'm tired."
+     },
+     "sbagliate": [
+      {
+       "t": "I'm angry."
+      },
+      {
+       "t": "I'm surprised."
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "How do you feel?",
+      "p": 2574
+     },
+     "giusta": {
+      "t": "I'm surprised."
+     },
+     "sbagliate": [
+      {
+       "t": "I'm sad."
+      },
+      {
+       "t": "I'm scared."
+      }
+     ]
+    }
+   ]
+  }
+ },
+ {
+  "id": "en-giornata",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "My day",
+  "scrittura": "maiuscolo",
+  "tipo": "sequenza",
+  "gioco": "sequenza",
+  "consegna": "Metti in ordine la giornata, dalla mattina alla sera.",
+  "dati": {
+   "passi": [
+    {
+     "t": "I get up",
+     "p": 8989
+    },
+    {
+     "t": "I have breakfast",
+     "p": 4626
+    },
+    {
+     "t": "I go to school",
+     "p": 36473
+    },
+    {
+     "t": "I have lunch",
+     "p": 4611
+    },
+    {
+     "t": "I do my homework",
+     "p": 32556
+    },
+    {
+     "t": "I go to bed",
+     "p": 6479
+    }
+   ]
+  }
+ },
+ {
+  "id": "en-a-an",
+  "materia": "Inglese",
+  "livello": 2,
+  "titolo": "A or an?",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Si usa «an» davanti a una parola che comincia con il suono di una vocale, «a» davanti alle altre.",
+  "dati": {
+   "frasi": [
+    "It's [an] apple.",
+    "It's [a] cat.",
+    "It's [an] egg.",
+    "It's [a] dog.",
+    "It's [an] umbrella.",
+    "It's [a] banana.",
+    "It's [an] owl.",
+    "It's [a] train."
+   ],
+   "extra": [
+    "the"
+   ]
+  }
+ },
+ {
+  "id": "en-pronomi",
+  "materia": "Inglese",
+  "livello": 3,
+  "titolo": "He, she, it, they",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Scegli la parola giusta: he, she, it, we, they, I.",
+  "dati": {
+   "frasi": [
+    "Tom is my brother. [He] is ten.",
+    "Anna is my sister. [She] is seven.",
+    "The cat is black. [It] is small.",
+    "Tom and Anna are my friends. [They] play football.",
+    "My name is Luca. [I] like pizza.",
+    "You and I are in class 3. [We] go to school together."
+   ],
+   "extra": [
+    "you"
+   ]
+  }
+ },
+ {
+  "id": "en-adesso",
+  "materia": "Inglese",
+  "livello": 3,
+  "titolo": "What are they doing?",
+  "scrittura": "maiuscolo",
+  "tipo": "frasi",
+  "gioco": "completa",
+  "consegna": "Che cosa stanno facendo? Scegli la parola che finisce con -ing.",
+  "dati": {
+   "frasi": [
+    "She is [running] in the park.",
+    "They are [swimming] in the sea.",
+    "He is [reading] a book.",
+    "I am [eating] an apple.",
+    "We are [singing] a song.",
+    "The dog is [sleeping]."
+   ],
+   "extra": [
+    "run",
+    "swims",
+    "read"
+   ]
+  }
+ },
+ {
+  "id": "en-il-mio-cane",
+  "materia": "Inglese",
+  "titolo": "Livello 2 · My dog Max",
+  "scrittura": "maiuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 2,
+   "testo": [
+    "I have got a dog. His name is Max.",
+    "Max is brown and white. He is small and very funny.",
+    "Max likes balls. Every day he runs in the park with me.",
+    "In the evening Max is tired. He sleeps in his bed."
+   ],
+   "domande": [
+    {
+     "d": "What is Max?",
+     "giusta": "A dog.",
+     "sbagliate": [
+      "A cat.",
+      "A fish."
+     ]
+    },
+    {
+     "d": "What colour is Max?",
+     "giusta": "Brown and white.",
+     "sbagliate": [
+      "Black.",
+      "Grey."
+     ]
+    },
+    {
+     "d": "What does Max like?",
+     "giusta": "Balls.",
+     "sbagliate": [
+      "Apples.",
+      "Books."
+     ]
+    },
+    {
+     "d": "Where does Max run?",
+     "giusta": "In the park.",
+     "sbagliate": [
+      "At school.",
+      "In the kitchen."
+     ]
+    },
+    {
+     "d": "Where does Max sleep?",
+     "giusta": "In his bed.",
+     "sbagliate": [
+      "In the garden.",
+      "On the bus."
+     ]
+    }
+   ],
+   "p": 2517,
+   "autore": "Testo scritto per Lavagna Amica"
+  }
+ },
+ {
+  "id": "en-allo-zoo",
+  "materia": "Inglese",
+  "titolo": "Livello 3 · At the zoo",
+  "scrittura": "maiuscolo",
+  "tipo": "brano",
+  "gioco": "brano",
+  "consegna": "Leggi con calma, poi rispondi alle domande.",
+  "dati": {
+   "livello": 3,
+   "testo": [
+    "Today is Saturday. Anna and her dad go to the zoo.",
+    "First they see the lions. The lions are big and they are sleeping.",
+    "Then they see the monkeys. The monkeys are funny: they are jumping and eating bananas.",
+    "The giraffes are very tall. Anna looks up and laughs.",
+    "At the end Anna has got an ice cream. It is a great day!"
+   ],
+   "domande": [
+    {
+     "d": "When do they go to the zoo?",
+     "giusta": "On Saturday.",
+     "sbagliate": [
+      "On Monday.",
+      "On Sunday."
+     ]
+    },
+    {
+     "d": "Who goes with Anna?",
+     "giusta": "Her dad.",
+     "sbagliate": [
+      "Her mum.",
+      "Her brother."
+     ]
+    },
+    {
+     "d": "What are the lions doing?",
+     "giusta": "They are sleeping.",
+     "sbagliate": [
+      "They are eating.",
+      "They are jumping."
+     ]
+    },
+    {
+     "d": "What are the monkeys eating?",
+     "giusta": "Bananas.",
+     "sbagliate": [
+      "Apples.",
+      "Ice cream."
+     ]
+    },
+    {
+     "d": "Which animals are very tall?",
+     "giusta": "The giraffes.",
+     "sbagliate": [
+      "The lions.",
+      "The monkeys."
+     ]
+    }
+   ],
+   "p": 4773,
+   "autore": "Testo scritto per Lavagna Amica"
+  }
+ },
+ {
   "id": "l2-saluti",
   "materia": "Italiano L2",
   "livello": 1,

@@ -3,7 +3,7 @@
 import { GIOCHI, TIPI, MOTIVI, MATERIE, giochiPer, consegnaDi, valida } from "./modello.js";
 import { caricaEsempi, elencoMiei, trovaMio, salvaMio, eliminaMio, inLink, daLink, scaricaFile, apriFile } from "./dati.js";
 import { impostazioni, applica, cambia, LIMITI, VELOCITA, TEMI } from "./impostazioni.js";
-import { parla, zitto, voceDisponibile, vociDelDispositivo, vociInglesiDelDispositivo, impostaLingua, quandoCambianoLeVoci } from "./voce.js";
+import { parla, zitto, voceDisponibile, soloVociVecchie, vociDelDispositivo, vociInglesiDelDispositivo, impostaLingua, quandoCambianoLeVoci } from "./voce.js";
 import { suonoFesta } from "./suoni.js";
 import { el, creaContesto, pulsanteVoce, avviso, finestra } from "./ui.js";
 import { vista, pagina, intestazione, quandoSiEsce } from "./pagine.js";
@@ -508,7 +508,11 @@ function sceltaVoce() {
   const voce = el("select", { "aria-label": "Voce" });
   const velocita = el("select", { "aria-label": "Velocità" },
     VELOCITA.map(([v, nome]) => el("option", { value: v, selected: v === impostazioni.velocita, text: nome })));
+  // su Windows, con le sole voci vecchie (Chrome senza rete, Firefox): Edge ha le voci «Natural», gratis
+  const consiglio = el("small", { class: "consiglio-voce", hidden: true,
+    text: "Su questo computer ci sono solo le voci vecchie di Windows, che suonano robotiche. Aprendo Lavagna Amica con Edge si sentono le voci «Natural» (Isabella, Elsa, Diego), più naturali." });
   function riempi() {
+    consiglio.hidden = !soloVociVecchie();
     voce.replaceChildren(el("option", { value: "", text: "Automatica: la più naturale" }),
       ...vociDelDispositivo().map(v => el("option", { value: v.name, selected: v.name === impostazioni.voceScelta,
         text: v.name.replace(/\s*-\s*Italian.*$/i, "") + (v.localService ? "" : " (in rete)") })));
@@ -520,7 +524,8 @@ function sceltaVoce() {
   velocita.addEventListener("change", () => cambia("velocita", Number(velocita.value)));
   return el("div", { class: "numero voce-scelta" },
     el("span", {}, el("b", { text: "La voce" }),
-      el("small", { text: "Le voci «in rete» o «Natural» di solito sono le più naturali. Cambiano da un browser all'altro: provale." })),
+      el("small", { text: "Le voci «in rete» o «Natural» di solito sono le più naturali. Cambiano da un browser all'altro: provale." }),
+      consiglio),
     el("div", { class: "voce-comandi" }, voce, velocita,
       el("button", { type: "button", class: "tasto-piccolo", text: "▶ Prova", on: { click: () =>
         parla("Ciao! Sono la voce di Lavagna Amica. Nel cesto ci sono 15 mele: la mamma ne prende 6. Quante mele restano?") } })));
