@@ -3,7 +3,8 @@
 const CHIAVE = "la.impostazioni";
 
 const BASE = {
-  voce: true,       // legge le carte quando le tocchi e le domande quando compaiono
+  voce: false,      // lettura assistita: legge le carte quando le tocchi e le domande quando compaiono (spenta all'inizio)
+  voceSpenta: true, // segno che il nuovo «spenta all'inizio» è già stato applicato
   suoni: true,
   aiuto: true,      // dopo un errore mostra dove va la carta
   contrasto: false,
@@ -26,7 +27,10 @@ export const LIMITI = { elementi: [3, 10], risposte: [2, 4], ritmo: [1, 5] };
 
 function carica() {
   try {
-    return Object.assign({}, BASE, JSON.parse(localStorage.getItem(CHIAVE)));
+    const salvate = JSON.parse(localStorage.getItem(CHIAVE)) || {};
+    // la lettura assistita ora parte spenta: chi aveva salvato le impostazioni prima la trova spenta una volta
+    if (!salvate.voceSpenta) Object.assign(salvate, { voce: false, voceSpenta: true });
+    return Object.assign({}, BASE, salvate);
   } catch (e) {
     return Object.assign({}, BASE);
   }

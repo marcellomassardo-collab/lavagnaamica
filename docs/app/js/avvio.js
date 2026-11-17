@@ -306,6 +306,22 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
     ? el("select", { class: "tasto", "aria-label": "Cambia gioco", on: { change: e => { location.hash = base + "/" + e.target.value; } } },
       giochi.map(g => el("option", { value: g, selected: g === gioco, text: GIOCHI[g].icona + " " + GIOCHI[g].nome })))
     : null;
+  // la lettura assistita si accende e si spegne da qui, senza andare nelle impostazioni
+  const tastoVoce = () => {
+    const b = el("button", { type: "button", class: "tasto" });
+    const mostra = () => {
+      b.replaceChildren(impostazioni.voce ? "🔊" : "🔇", el("span", { class: "etichetta", text: impostazioni.voce ? "Voce sì" : "Voce no" }));
+      b.setAttribute("aria-pressed", String(!!impostazioni.voce));
+      b.setAttribute("aria-label", "Lettura assistita " + (impostazioni.voce ? "accesa" : "spenta"));
+    };
+    b.addEventListener("click", () => {
+      cambia("voce", !impostazioni.voce);
+      if (impostazioni.voce) parla("Lettura assistita accesa.", "it"); else zitto();
+      mostra();
+    });
+    mostra();
+    return b;
+  };
   const schermo = document.documentElement.requestFullscreen
     ? el("button", { type: "button", class: "tasto", text: "⛶", title: "Schermo intero", "aria-label": "Schermo intero", on: { click: () => {
       if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => {});
@@ -329,6 +345,7 @@ function gioca(es, base, uscita, giocoChiesto, sopra) {
         cambiaGioco,
         el("button", { type: "button", class: "tasto", title: "Stampa la scheda", "aria-label": "Stampa la scheda", on: { click: () => stampa([es]) } },
           "🖨", el("span", { class: "etichetta", text: "Stampa" })),
+        voceDisponibile ? tastoVoce() : null,
         schermo))));
   const fermaSensore = impostazioni.sensore ? avviaSensore() : null;
   // l'inglese si legge con una voce inglese; la consegna e le frasi dell'app restano in italiano
@@ -542,8 +559,8 @@ function vistaImpostazioni() {
   vista(pagina("Impostazioni",
     el("p", { text: "Valgono per questo dispositivo." }),
     el("div", { class: "impostazioni" },
-      interruttore("voce", "Lettura ad alta voce", voceDisponibile
-        ? "Legge le carte quando le tocchi e le domande quando compaiono."
+      interruttore("voce", "Lettura assistita (ad alta voce)", voceDisponibile
+        ? "Legge le carte quando le tocchi e le domande quando compaiono. Spenta all'inizio; si accende anche dal tasto 🔇 in fondo a ogni esercizio."
         : "Questo dispositivo non ha una voce per leggere.", voceDisponibile),
       voceDisponibile ? sceltaVoce() : null,
       voceDisponibile ? sceltaVoceInglese() : null,
