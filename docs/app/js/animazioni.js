@@ -2475,7 +2475,181 @@ const ING_EN = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, "a-an": A_AN, "pronomi-inglese": PRONOMI_EN, "ing-inglese": ING_EN, "maiuscolo-minuscolo": MAIUSCOLO_MINUSCOLO, quadrilinea: QUADRILINEA, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "facce-emozioni": FACCE_EMOZIONI, "corpo-emozioni": CORPO_EMOZIONI, calmarsi: CALMARSI, empatia: EMPATIA, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- un'ottava di pianoforte: si tocca un tasto e compare il nome della nota ---------- */
+// I tasti funzionano in tutti i passi, con il mouse e con il dito. Il suono è un'onda semplice con lo
+// smorzamento, fatta dal browser: niente file da scaricare.
+const NOTE_BIANCHE = [["do", 261.63], ["re", 293.66], ["mi", 329.63], ["fa", 349.23], ["sol", 392.0], ["la", 440.0], ["si", 493.88], ["do", 523.25]];
+const NOTE_NERE = [[0, "do♯ / re♭", 277.18], [1, "re♯ / mi♭", 311.13], [3, "fa♯ / sol♭", 369.99], [4, "sol♯ / la♭", 415.3], [5, "la♯ / si♭", 466.16]];
+let contestoAudio = null;
+function suonaNota(freq) {
+  // timbro da pianoforte semplice: la fondamentale più cinque armoniche, ognuna si spegne più in fretta
+  // della precedente, e un filtro che chiude piano piano come le corde dopo il colpo del martelletto.
+  try {
+    contestoAudio = contestoAudio || new (window.AudioContext || window.webkitAudioContext)();
+    const c = contestoAudio, t = c.currentTime;
+    const uscita = c.createGain(), filtro = c.createBiquadFilter();
+    filtro.type = "lowpass";
+    filtro.frequency.setValueAtTime(Math.min(freq * 10, 9000), t);
+    filtro.frequency.exponentialRampToValueAtTime(Math.max(freq * 2, 600), t + 1.2);
+    uscita.gain.value = 0.32;
+    filtro.connect(uscita); uscita.connect(c.destination);
+    const armoniche = [[1, 1, 2.2], [2, 0.55, 1.4], [3, 0.3, 0.9], [4, 0.18, 0.6], [5, 0.1, 0.45], [6, 0.06, 0.35]];
+    for (const [n, forza, durata] of armoniche) {
+      const o = c.createOscillator(), g = c.createGain();
+      o.type = "sine";
+      o.frequency.value = freq * n * (1 + 0.0004 * n * n);   // le corde vere sono un filo «stirate» verso l'alto
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(forza, t + 0.004);
+      g.gain.exponentialRampToValueAtTime(forza * 0.4, t + 0.12);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + durata);
+      o.connect(g); g.connect(filtro);
+      o.start(t); o.stop(t + durata + 0.05);
+    }
+  } catch (e) { /* senza audio si vede comunque il nome */ }
+}
+const TASTIERA = {
+  passi: [
+    "Questa è un'ottava del pianoforte: otto tasti bianchi, dal do al do più acuto. Tocca un tasto: compare il nome della nota.",
+    "I tasti bianchi si chiamano do, re, mi, fa, sol, la, si. Poi si ricomincia con il do, più acuto.",
+    "I tasti neri stanno a gruppi: due e poi tre. Il do è il tasto bianco subito prima dei due tasti neri.",
+    "Andando verso destra i suoni diventano più acuti, verso sinistra più gravi. Ora prova tu: tocca i tasti e leggi le note."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const X0 = 80, L = 80, Y = 120, H = 270, LN = 50, HN = 170;
+    const nome = scritta(400, 78, "", { "font-size": 56, "font-weight": 800, fill: "#1E6B52" });
+    const bianchi = NOTE_BIANCHE.map(([n, f], i) => {
+      const r = s("rect", { x: X0 + i * L, y: Y, width: L, height: H, rx: 6, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 3, style: "cursor:pointer" });
+      return { r, n, f, i };
+    });
+    const nomiBianchi = nascosto(s("g", {}, NOTE_BIANCHE.map(([n], i) => etichetta(X0 + i * L + L / 2, Y + H - 22, n, 24))));
+    const neri = NOTE_NERE.map(([dopo, n, f]) => {
+      const r = s("rect", { x: X0 + (dopo + 1) * L - LN / 2, y: Y, width: LN, height: HN, rx: 5, fill: INCHIOSTRO, style: "cursor:pointer" });
+      return { r, n, f };
+    });
+    const gruppi = nascosto(s("g", {},
+      s("rect", { x: X0 + L - LN / 2 - 8, y: Y - 14, width: L + LN + 16, height: 10, rx: 5, fill: "#2F6FD6" }),
+      s("rect", { x: X0 + 4 * L - LN / 2 - 8, y: Y - 14, width: 2 * L + LN + 16, height: 10, rx: 5, fill: "#E0332B" }),
+      etichetta(X0 + 1.5 * L, Y + H + 40, "2 neri", 22), etichetta(X0 + 5 * L, Y + H + 40, "3 neri", 22)));
+    const freccia = nascosto(s("g", {},
+      s("path", { d: `M${X0 + 20},${Y + H + 32} H${X0 + 8 * L - 20}`, stroke: "#1E6B52", "stroke-width": 5, fill: "none" }),
+      s("path", { d: `M${X0 + 8 * L - 34},${Y + H + 20} L${X0 + 8 * L - 18},${Y + H + 32} L${X0 + 8 * L - 34},${Y + H + 44}`, stroke: "#1E6B52", "stroke-width": 5, fill: "none" }),
+      etichetta(X0 + 70, Y + H + 62, "grave", 20), etichetta(X0 + 8 * L - 70, Y + H + 62, "acuto", 20)));
+    svg.append(nome, ...bianchi.map(b => b.r), nomiBianchi, ...neri.map(n => n.r), gruppi, freccia);
+    let spegni = null;
+    function premi(tasto, colore) {
+      nome.textContent = tasto.n;
+      suonaNota(tasto.f);
+      const prima = tasto.r.getAttribute("fill");
+      tasto.r.setAttribute("fill", colore);
+      clearTimeout(tasto.timer);
+      tasto.timer = setTimeout(() => tasto.r.setAttribute("fill", prima), 350);
+    }
+    bianchi.forEach(b => b.r.addEventListener("pointerdown", e => { e.preventDefault(); premi(b, "#FFD23F"); }));
+    neri.forEach(n => n.r.addEventListener("pointerdown", e => { e.preventDefault(); premi(n, "#2F6FD6"); }));
+    svg.style.touchAction = "manipulation";
+    return {
+      vai(k) {
+        if (spegni) { clearTimeout(spegni); spegni = null; }
+        vedi(nomiBianchi, k === 1 || k === 2);
+        vedi(gruppi, k === 2);
+        vedi(freccia, k === 3);
+        bianchi[0].r.setAttribute("fill", k === 2 ? "#FFE58A" : "#fff");
+        bianchi[7].r.setAttribute("fill", k === 2 ? "#FFE58A" : "#fff");
+        nome.textContent = k === 2 ? "do" : "";
+      },
+      ferma() { if (spegni) clearTimeout(spegni); }
+    };
+  }
+};
+
+/* ---------- suona con me: il tasto giusto si illumina, una nota alla volta ---------- */
+// Melodie della tradizione, libere da diritti, tutte dentro un'ottava sui tasti bianchi
+// (0 = do, 1 = re, 2 = mi, 3 = fa, 4 = sol, 5 = la, 6 = si, 7 = do acuto).
+// Un tasto sbagliato suona lo stesso e non conta come errore: si aspetta il tasto illuminato.
+const MELODIE = [
+  ["Inno alla gioia", [2, 2, 3, 4, 4, 3, 2, 1, 0, 0, 1, 2, 2, 1, 1, 2, 2, 3, 4, 4, 3, 2, 1, 0, 0, 1, 2, 1, 0, 0]],
+  ["Brilla brilla stellina", [0, 0, 4, 4, 5, 5, 4, 3, 3, 2, 2, 1, 1, 0, 4, 4, 3, 3, 2, 2, 1, 4, 4, 3, 3, 2, 2, 1, 0, 0, 4, 4, 5, 5, 4, 3, 3, 2, 2, 1, 1, 0]],
+  ["Jingle Bells", [2, 2, 2, 2, 2, 2, 2, 4, 0, 1, 2, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 2, 1, 4, 2, 2, 2, 2, 2, 2, 2, 4, 0, 1, 2, 3, 3, 3, 3, 3, 2, 2, 2, 4, 4, 3, 1, 0]],
+  ["Al chiaro di luna", [0, 0, 0, 1, 2, 1, 0, 2, 1, 1, 0, 0, 0, 0, 1, 2, 1, 0, 2, 1, 1, 0]]
+];
+const SUONA = {
+  passi: [
+    "Suoniamo insieme! Il tasto da premere si illumina di giallo e sopra compare il nome della nota. Prova: tocca il tasto illuminato.",
+    "Inno alla gioia. Tocca il tasto giallo, una nota alla volta.",
+    "Brilla brilla stellina. Tocca il tasto giallo, una nota alla volta.",
+    "Jingle Bells. Tocca il tasto giallo, una nota alla volta.",
+    "Al chiaro di luna. Tocca il tasto giallo, una nota alla volta."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const X0 = 80, L = 80, Y = 150, H = 250, LN = 50, HN = 155;
+    const titolo = scritta(400, 50, "", { "font-size": 30, "font-weight": 800, fill: "#5B6670" });
+    const nome = scritta(400, 112, "", { "font-size": 52, "font-weight": 800, fill: "#1E6B52" });
+    const avanzamento = s("rect", { x: X0, y: Y + H + 22, width: 0, height: 10, rx: 5, fill: "#2E9E5B" });
+    const binario = s("rect", { x: X0, y: Y + H + 22, width: 8 * L, height: 10, rx: 5, fill: "#E5DFD2" });
+    const bianchi = NOTE_BIANCHE.map(([n, f], i) => ({ n, f, i, r: s("rect", { x: X0 + i * L, y: Y, width: L, height: H, rx: 6, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 3, style: "cursor:pointer" }) }));
+    const neri = NOTE_NERE.map(([dopo, n, f]) => ({ n, f, r: s("rect", { x: X0 + (dopo + 1) * L - LN / 2, y: Y, width: LN, height: HN, rx: 5, fill: INCHIOSTRO, style: "cursor:pointer" }) }));
+    const nomiBianchi = s("g", {}, NOTE_BIANCHE.map(([n], i) => etichetta(X0 + i * L + L / 2, Y + H - 20, n, 22)));
+    svg.append(titolo, nome, ...bianchi.map(b => b.r), nomiBianchi, ...neri.map(n => n.r), binario, avanzamento);
+    svg.style.touchAction = "manipulation";
+    let brano = null, pos = 0, finito = false;
+    function colora() {
+      bianchi.forEach(b => b.r.setAttribute("fill", "#fff"));
+      if (!brano || finito) return;
+      const k = brano[1][pos];
+      bianchi[k].r.setAttribute("fill", "#FFD23F");
+      nome.textContent = NOTE_BIANCHE[k][0];
+      avanzamento.setAttribute("width", (8 * L * pos / brano[1].length).toFixed(1));
+    }
+    function lampo(tasto, colore, dopo) {
+      tasto.r.setAttribute("fill", colore);
+      clearTimeout(tasto.timer);
+      tasto.timer = setTimeout(dopo, 220);
+    }
+    bianchi.forEach(b => b.r.addEventListener("pointerdown", e => {
+      e.preventDefault();
+      suonaNota(b.f);
+      if (!brano) { lampo(b, "#FFD23F", colora); nome.textContent = b.n; return; }
+      if (finito) { finito = false; pos = 0; colora(); return; }
+      if (b.i !== brano[1][pos]) { lampo(b, "#F3C3BE", colora); return; }   // tasto diverso: suona, e si aspetta quello giallo
+      pos++;
+      if (pos >= brano[1].length) {
+        finito = true;
+        avanzamento.setAttribute("width", 8 * L);
+        nome.textContent = "Bravo! Fine";
+        lampo(b, "#9BE3B8", colora);
+        return;
+      }
+      lampo(b, "#9BE3B8", colora);
+    }));
+    neri.forEach(n => n.r.addEventListener("pointerdown", e => {
+      e.preventDefault();
+      suonaNota(n.f);
+      n.r.setAttribute("fill", "#2F6FD6");
+      clearTimeout(n.timer);
+      n.timer = setTimeout(() => n.r.setAttribute("fill", INCHIOSTRO), 220);
+    }));
+    return {
+      vai(k) {
+        brano = k === 0 ? null : MELODIE[k - 1];
+        pos = 0; finito = false;
+        titolo.textContent = brano ? brano[0] : "";
+        nome.textContent = "";
+        avanzamento.setAttribute("width", 0);
+        vedi(binario, !!brano); vedi(avanzamento, !!brano);
+        if (k === 0) {
+          bianchi.forEach(b => b.r.setAttribute("fill", "#fff"));
+          bianchi[0].r.setAttribute("fill", "#FFD23F");
+          nome.textContent = "do";
+        } else colora();
+      },
+      ferma() {}
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, tastiera: TASTIERA, suona: SUONA, "a-an": A_AN, "pronomi-inglese": PRONOMI_EN, "ing-inglese": ING_EN, "maiuscolo-minuscolo": MAIUSCOLO_MINUSCOLO, quadrilinea: QUADRILINEA, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "facce-emozioni": FACCE_EMOZIONI, "corpo-emozioni": CORPO_EMOZIONI, calmarsi: CALMARSI, empatia: EMPATIA, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

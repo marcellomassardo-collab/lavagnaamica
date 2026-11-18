@@ -72,6 +72,8 @@ export const ANIMAZIONI = {
   perimetro: "Il perimetro",
   barre: "I problemi con le barre",
   emozioni: "Le emozioni e come stare meglio",
+  tastiera: "Un'ottava del pianoforte",
+  suona: "Suona con me: il tasto si illumina",
   "facce-emozioni": "Le emozioni sul viso",
   "corpo-emozioni": "Le emozioni nel corpo",
   calmarsi: "Come tornare calmi",

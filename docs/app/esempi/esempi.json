@@ -23379,7 +23379,7 @@
   "scrittura": "maiuscolo",
   "tipo": "sequenza",
   "gioco": "sequenza",
-  "consegna": "Metti le note in ordine, dalla più bassa alla più alta.",
+  "consegna": "Guarda la tastiera e prova i tasti. Poi metti le note in ordine, dalla più bassa alla più alta.",
   "dati": {
    "passi": [
     {
@@ -23404,6 +23404,122 @@
      "t": "si"
     }
    ]
+  },
+  "scopri": {
+   "animazione": "tastiera"
+  }
+ },
+ {
+  "id": "mus-suona-tastiera",
+  "materia": "Musica",
+  "livello": 1,
+  "titolo": "Suona con me: la tastiera",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "quiz",
+  "consegna": "Suona i brani toccando il tasto che si illumina. Poi rispondi alle domande.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "Quale nota viene dopo il do?"
+     },
+     "giusta": {
+      "t": "re"
+     },
+     "sbagliate": [
+      {
+       "t": "mi"
+      },
+      {
+       "t": "si"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quale nota viene prima del sol?"
+     },
+     "giusta": {
+      "t": "fa"
+     },
+     "sbagliate": [
+      {
+       "t": "la"
+      },
+      {
+       "t": "mi"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Il do è il tasto bianco subito prima di…"
+     },
+     "giusta": {
+      "t": "due tasti neri"
+     },
+     "sbagliate": [
+      {
+       "t": "tre tasti neri"
+      },
+      {
+       "t": "un tasto bianco"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Andando verso destra, i suoni diventano…"
+     },
+     "giusta": {
+      "t": "più acuti"
+     },
+     "sbagliate": [
+      {
+       "t": "più gravi"
+      },
+      {
+       "t": "più forti"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Quante sono le note musicali?"
+     },
+     "giusta": {
+      "t": "sette"
+     },
+     "sbagliate": [
+      {
+       "t": "cinque"
+      },
+      {
+       "t": "dieci"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "Con quale nota comincia l'Inno alla gioia?"
+     },
+     "giusta": {
+      "t": "mi"
+     },
+     "sbagliate": [
+      {
+       "t": "do"
+      },
+      {
+       "t": "sol"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "suona"
   }
  },
  {
