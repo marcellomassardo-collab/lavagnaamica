@@ -26,6 +26,7 @@ export const GIOCHI = {
   talpa:     { nome: "Acchiappa la talpa", icona: "🐹", tipi: ["coppie"],                      consegna: "Tocca la talpa che porta la coppia giusta." },
   palloncini: { nome: "Palloncini",        icona: "🎈", tipi: ["gruppi"],                      consegna: "Scoppia solo i palloncini del gruppo giusto." },
   quiz:      { nome: "Quiz a squadre",     icona: "🏆", tipi: ["domande", "coppie", "gruppi"], consegna: "A turno ogni squadra risponde: chi indovina prende un punto." },
+  scatole:   { nome: "Apri la scatola",    icona: "🎁", tipi: ["domande", "coppie", "gruppi"], consegna: "Scegli una scatola, aprila e rispondi alla domanda." },
   ruota:     { nome: "Ruota della fortuna", icona: "🎡", tipi: ["domande", "coppie", "gruppi"], consegna: "Gira la ruota e rispondi alla domanda che esce." },
   ascolta:   { nome: "Ascolta e tocca",    icona: "👂", tipi: ["coppie"],                      consegna: "Ascolta la parola e tocca quella giusta." }
 };

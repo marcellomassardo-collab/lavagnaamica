@@ -334,6 +334,21 @@ input[type="text"], input[type="search"], select {
 .talpa .carta { margin: 0 6% 6%; min-height: 0; min-width: 0; padding: 6px; }
 .talpa .carta.breve .carta-testo { font-size: clamp(1.4rem, 1rem + 1.5vw, 2.4rem); }
 .talpa .picto, .talpa img { max-height: clamp(40px, 5vw, 64px); }
+.sc-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(96px, 13vw, 150px), 1fr)); gap: clamp(14px, 2vw, 26px); width: min(100%, 980px); margin: auto; }
+.sc-scatola { --colore: #E0332B; position: relative; aspect-ratio: 1; border: 0; border-radius: 14px; cursor: pointer; color: #fff; font: inherit;
+  background: linear-gradient(90deg, transparent 43%, rgba(255, 255, 255, .55) 43% 57%, transparent 57%), var(--colore); box-shadow: 0 6px 0 rgba(0, 0, 0, .25); transition: transform .15s; }
+.sc-scatola:hover:not(:disabled) { transform: translateY(-4px) rotate(-1deg); }
+.sc-coperchio { position: absolute; left: -6%; right: -6%; top: -4%; height: 26%; border-radius: 10px; background: var(--colore); filter: brightness(.82);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, .25); transform-origin: 10% 100%; transition: transform .5s cubic-bezier(.3, 1.6, .5, 1), opacity .5s; }
+.sc-numero { position: relative; font-size: clamp(2rem, 1.4rem + 2.4vw, 3.6rem); font-weight: 900; text-shadow: 0 3px 0 rgba(0, 0, 0, .3); }
+.sc-scatola.sc-aperta .sc-coperchio { transform: translate(-10%, -70%) rotate(-35deg); opacity: 0; }
+.sc-scatola.sc-aperta { cursor: default; animation: evviva .5s; }
+.sc-scatola.sc-stella { background: linear-gradient(#FFE07A, #F2A300); color: #7A4B00; }
+.sc-scatola.sc-fatta { filter: grayscale(.6) brightness(1.1); }
+.sc-scena { display: grid; justify-items: center; gap: clamp(12px, 2vw, 22px); width: 100%; }
+.sc-quale { margin: 0; font-weight: 800; color: var(--tenue); }
+.sc-domanda { display: flex; align-items: center; gap: 12px; }
+.sc-opzioni { display: grid; grid-template-columns: repeat(var(--quante), minmax(0, 1fr)); gap: 14px; width: min(100%, 900px); }
 .talpa.colpita { filter: grayscale(.8); }
 .talpa.presa { animation: evviva .6s; }
 :where(html.scuro) .talpa .carta { --carta: #FFFFFF; --testo: #1D2329; color: #1D2329; }
