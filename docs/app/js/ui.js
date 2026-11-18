@@ -89,7 +89,7 @@ export function animaEntrate(area) {
   let fila = 0, azzera = null;
   const entra = n => {
     // le facce delle carte da girare non entrano da sole: entra la carta intera (un'animazione lì dentro rompe la girata)
-    if (viste.has(n) || n.closest(".gi-faccia, .talpa")) return;
+    if (viste.has(n) || n.closest(".gi-faccia, .talpa, .lab-cella")) return;
     viste.add(n);
     n.style.animationDelay = Math.min(fila++, 10) * 60 + "ms";
     n.classList.add("entra");
