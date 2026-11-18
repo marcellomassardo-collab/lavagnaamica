@@ -87,7 +87,7 @@ export const ANIMAZIONI = {
   "moltiplicazione-giapponese": "La moltiplicazione giapponese con le linee"
 };
 
-export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Educazione affettiva", "Inglese", "Arte e immagine", "Musica", "Altro"];
+export const MATERIE = ["Italiano", "Italiano L2", "Matematica", "Scienze", "Storia", "Geografia", "Emozioni", "Inglese", "Arte e immagine", "Musica", "Altro"];
 
 export function giochiPer(tipo) {
   return Object.keys(GIOCHI).filter(g => GIOCHI[g].tipi.includes(tipo));
@@ -130,6 +130,7 @@ export function valida(v) {
     gioco: giochiPer(tipo).includes(v.gioco) ? v.gioco : giochiPer(tipo)[0],
     dati: {}
   };
+  if (v.materia === "Educazione affettiva") v.materia = "Emozioni"; // nome di prima, per gli esercizi già salvati
   if (MATERIE.includes(v.materia)) es.materia = v.materia;
   // il livello dell'esercizio, da 1 (i primi passi) a 4 (il più difficile): divide la pagina della materia
   if (LIVELLI[v.livello]) es.livello = Number(v.livello);

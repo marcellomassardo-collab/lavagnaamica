@@ -17885,7 +17885,7 @@
  },
  {
   "id": "emozioni-nomi",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 1,
   "titolo": "Le emozioni: come si chiamano?",
   "scrittura": "maiuscolo",
@@ -17950,7 +17950,7 @@
  },
  {
   "id": "emozioni-situazioni",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 1,
   "titolo": "Che emozione sente?",
   "scrittura": "maiuscolo",
@@ -18078,7 +18078,7 @@
  },
  {
   "id": "rabbia-cosa-fare",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 2,
   "titolo": "Quando sento rabbia, che cosa posso fare?",
   "scrittura": "maiuscolo",
@@ -18139,7 +18139,7 @@
  },
  {
   "id": "gentile-o-no",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 2,
   "titolo": "Gentile o non gentile?",
   "scrittura": "maiuscolo",
@@ -18194,7 +18194,7 @@
  },
  {
   "id": "io-sento",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 2,
   "titolo": "Io sento… quando…",
   "scrittura": "maiuscolo",
@@ -18221,7 +18221,7 @@
  },
  {
   "id": "chi-mi-aiuta",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 2,
   "titolo": "Chi mi aiuta? Che cosa faccio?",
   "scrittura": "maiuscolo",
@@ -18332,7 +18332,7 @@
  },
  {
   "id": "brano-emozioni-domande",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "titolo": "Livello 2 · Le emozioni: domande e risposte",
   "scrittura": "minuscolo",
   "tipo": "brano",
@@ -18403,7 +18403,7 @@
  },
  {
   "id": "brano-torre-tommaso",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "titolo": "Livello 3 · La torre di Tommaso",
   "scrittura": "minuscolo",
   "tipo": "brano",
@@ -18468,7 +18468,7 @@
  },
  {
   "id": "brano-nuovo-compagno",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "titolo": "Livello 3 · Il nuovo compagno",
   "scrittura": "minuscolo",
   "tipo": "brano",
@@ -18531,7 +18531,7 @@
  },
  {
   "id": "brano-parole-che-fanno-male",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "titolo": "Livello 3 · Le parole che fanno male",
   "scrittura": "minuscolo",
   "tipo": "brano",
@@ -18595,7 +18595,7 @@
  },
  {
   "id": "brano-segreti",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "titolo": "Livello 3 · Segreti belli e segreti brutti",
   "scrittura": "minuscolo",
   "tipo": "brano",
@@ -25136,7 +25136,7 @@
  },
  {
   "id": "emozioni-sul-viso",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 1,
   "titolo": "Le emozioni sul viso",
   "scrittura": "doppio",
@@ -25267,7 +25267,7 @@
  },
  {
   "id": "emozioni-indizi-viso",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 2,
   "titolo": "Che emozione è? Gli indizi del viso",
   "scrittura": "doppio",
@@ -25398,7 +25398,7 @@
  },
  {
   "id": "emozioni-nel-corpo",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 2,
   "titolo": "Le emozioni nel corpo",
   "scrittura": "doppio",
@@ -25469,7 +25469,7 @@
  },
  {
   "id": "calmarsi-cosa-aiuta",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 1,
   "titolo": "Che cosa mi aiuta a tornare calmo?",
   "scrittura": "doppio",
@@ -25529,7 +25529,7 @@
  },
  {
   "id": "calmarsi-che-cosa-faccio",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 2,
   "titolo": "Che cosa posso fare?",
   "scrittura": "doppio",
@@ -25626,7 +25626,7 @@
  },
  {
   "id": "empatia-come-aiuto",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 2,
   "titolo": "Come si sente? Come posso aiutare?",
   "scrittura": "doppio",
@@ -25723,7 +25723,7 @@
  },
  {
   "id": "empatia-come-si-sente",
-  "materia": "Educazione affettiva",
+  "materia": "Emozioni",
   "livello": 1,
   "titolo": "Come si sente?",
   "scrittura": "doppio",
