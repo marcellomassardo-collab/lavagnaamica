@@ -2571,7 +2571,9 @@ const MELODIE = [
   ["Inno alla gioia", [2, 2, 3, 4, 4, 3, 2, 1, 0, 0, 1, 2, 2, 1, 1, 2, 2, 3, 4, 4, 3, 2, 1, 0, 0, 1, 2, 1, 0, 0]],
   ["Brilla brilla stellina", [0, 0, 4, 4, 5, 5, 4, 3, 3, 2, 2, 1, 1, 0, 4, 4, 3, 3, 2, 2, 1, 4, 4, 3, 3, 2, 2, 1, 0, 0, 4, 4, 5, 5, 4, 3, 3, 2, 2, 1, 1, 0]],
   ["Jingle Bells", [2, 2, 2, 2, 2, 2, 2, 4, 0, 1, 2, 3, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 2, 1, 4, 2, 2, 2, 2, 2, 2, 2, 4, 0, 1, 2, 3, 3, 3, 3, 3, 2, 2, 2, 4, 4, 3, 1, 0]],
-  ["Al chiaro di luna", [0, 0, 0, 1, 2, 1, 0, 2, 1, 1, 0, 0, 0, 0, 1, 2, 1, 0, 2, 1, 1, 0]]
+  ["Al chiaro di luna", [0, 0, 0, 1, 2, 1, 0, 2, 1, 1, 0, 0, 0, 0, 1, 2, 1, 0, 2, 1, 1, 0]],
+  ["Maria aveva un agnellino", [2, 1, 0, 1, 2, 2, 2, 1, 1, 1, 2, 4, 4, 2, 1, 0, 1, 2, 2, 2, 2, 1, 1, 2, 1, 0]],
+  ["Il ponte di Londra", [4, 5, 4, 3, 2, 3, 4, 1, 2, 3, 2, 3, 4, 4, 5, 4, 3, 2, 3, 4, 1, 4, 2, 0]]
 ];
 const SUONA = {
   passi: [
@@ -2579,7 +2581,9 @@ const SUONA = {
     "Inno alla gioia. Tocca il tasto giallo, una nota alla volta.",
     "Brilla brilla stellina. Tocca il tasto giallo, una nota alla volta.",
     "Jingle Bells. Tocca il tasto giallo, una nota alla volta.",
-    "Al chiaro di luna. Tocca il tasto giallo, una nota alla volta."
+    "Al chiaro di luna. Tocca il tasto giallo, una nota alla volta.",
+    "Maria aveva un agnellino. Tocca il tasto giallo, una nota alla volta.",
+    "Il ponte di Londra. Tocca il tasto giallo, una nota alla volta."
   ],
   crea(svg) {
     svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
