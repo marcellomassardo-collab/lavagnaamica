@@ -4,198 +4,248 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lavagna Amica</title>
-<meta name="description" content="Esercizi interattivi gratuiti per la scuola, pensati per il sostegno e per la LIM. Senza pubblicità, senza account per gli alunni, open source.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='8' width='60' height='48' rx='8' fill='%23B7793F'/%3E%3Crect x='8' y='14' width='48' height='36' rx='4' fill='%231E6B52'/%3E%3Ccircle cx='24' cy='28' r='3' fill='%23fff'/%3E%3Ccircle cx='40' cy='28' r='3' fill='%23fff'/%3E%3Cpath d='M22 37q10 9 20 0' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="description" content="Esercizi interattivi gratuiti per la scuola primaria, pensati per il sostegno e per la LIM. Senza pubblicità, senza account per gli alunni, open source.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='3' y='6' width='58' height='44' rx='3' fill='%23A86B35'/%3E%3Crect x='8' y='11' width='48' height='34' rx='1.5' fill='%232B5A45'/%3E%3Cpath d='M18 37 L25 18 L32 37 M21 30 H29' stroke='%23F4F1E8' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M38 33 q4 -6 8 0 t8 0' stroke='%23F4F1E8' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3Crect x='14' y='50' width='36' height='4' rx='1' fill='%23A86B35'/%3E%3Crect x='36' y='47' width='10' height='3' rx='1.5' fill='%23F4F1E8'/%3E%3C/svg%3E">
 <style>
   :root {
-    --bg: #F3EDE1;
-    --surface: #FFFFFF;
-    --text: #1D2329;
-    --muted: #4A5560;
-    --border: #E3DCCB;
-    --accent: #1E6B52;
-    --accent-ink: #FFFFFF;
-    --wood: #B7793F;
-    --chalk: #FFFFFF;
-    --highlight: #FFD23F;
-    --highlight-ink: #1D2329;
+    --lavagna: #22362C;
+    --lavagna-scura: #1A2A22;
+    --legno: #9C6331;
+    --legno-scuro: #7A4B24;
+    --gesso: #EEEBE1;
+    --gesso-tenue: #BFC8BF;
+    --gesso-giallo: #F2D570;
+    --gesso-azzurro: #A9D3E8;
+    --gesso-rosa: #F0B7B0;
+    --carta: #F6F1E4;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #121614;
-      --surface: #1B211E;
-      --text: #EEF1EC;
-      --muted: #B4BDB6;
-      --border: #2C3631;
-      --accent: #5FCB9F;
-      --accent-ink: #0D1A14;
-      --wood: #C98C52;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #121614;
-    --surface: #1B211E;
-    --text: #EEF1EC;
-    --muted: #B4BDB6;
-    --border: #2C3631;
-    --accent: #5FCB9F;
-    --accent-ink: #0D1A14;
-    --wood: #C98C52;
-  }
-
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; background: var(--legno); }
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--text);
+    min-height: 100vh;
+    color: var(--gesso);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: clamp(18px, 1rem + 0.45vw, 23px);
-    line-height: 1.55;
+    font-size: clamp(17px, 0.95rem + 0.35vw, 21px);
+    line-height: 1.6;
+    border: clamp(8px, 1.6vw, 16px) solid var(--legno);
+    border-bottom: 0;
+    background:
+      radial-gradient(ellipse 40% 18% at 75% 12%, rgba(238,235,225,.06), transparent 70%),
+      radial-gradient(ellipse 35% 14% at 15% 48%, rgba(238,235,225,.045), transparent 70%),
+      radial-gradient(ellipse 45% 20% at 80% 82%, rgba(238,235,225,.04), transparent 70%),
+      radial-gradient(ellipse at 50% 0%, rgba(0,0,0,0), rgba(0,0,0,.22) 100%),
+      var(--lavagna);
+    background-attachment: fixed;
   }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
-  a { color: var(--accent); text-underline-offset: 0.18em; }
-  a:focus-visible { outline: 3px solid var(--highlight); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+  a { color: var(--gesso-giallo); text-underline-offset: 0.22em; text-decoration-thickness: 1.5px; }
+  a:hover { color: #FFE592; }
+  a:focus-visible { outline: 3px dashed var(--gesso-giallo); outline-offset: 4px; border-radius: 3px; }
+  img { max-width: 100%; display: block; }
 
-  header { padding: clamp(40px, 7vw, 88px) 0 clamp(32px, 5vw, 56px); }
-  .hero { display: flex; align-items: center; gap: clamp(20px, 4vw, 44px); flex-wrap: wrap; }
-  .logo { width: clamp(112px, 18vw, 168px); height: auto; flex: none; }
-  .logo .frame { fill: var(--wood); }
-  .logo .board { fill: #1E6B52; }
-  .logo .chalk { fill: var(--chalk); }
-  .logo .chalk-line { stroke: var(--chalk); }
+  header { padding: clamp(34px, 6vw, 72px) 0 0; }
   h1 {
-    font-size: clamp(2.4rem, 1.6rem + 3.6vw, 4.2rem);
+    margin: 0;
+    font-size: clamp(2.3rem, 1.4rem + 4vw, 4.4rem);
+    letter-spacing: .07em;
     line-height: 1.05;
-    margin: 0 0 0.3em;
-    letter-spacing: -0.01em;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 0 0 1px rgba(238,235,225,.55), 0 0 6px rgba(238,235,225,.12);
   }
-  .tagline { font-size: 1.2em; color: var(--muted); margin: 0 0 0.9em; max-width: 30ch; }
-  .badge {
-    display: inline-block;
-    background: var(--highlight);
-    color: var(--highlight-ink);
-    font-weight: 700;
-    padding: 0.3em 0.8em;
-    border-radius: 999px;
-    font-size: 0.85em;
-  }
-
-  .apri { margin: 1.1em 0 0; }
+  .sottolineato { display: block; width: min(440px, 82%); height: 14px; margin: 8px 0 20px; }
+  .frase { font-size: 1.15em; margin: 0 0 1.3em; max-width: 36ch; }
   .bottone {
-    display: inline-flex; align-items: center; min-height: 56px; padding: 0.4em 1.3em; border-radius: 14px;
-    background: var(--accent); color: var(--accent-ink); font-weight: 700; text-decoration: none;
-  }
-
-  section { padding: clamp(28px, 4vw, 48px) 0; border-top: 1px solid var(--border); }
-  h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); margin: 0 0 0.8em; }
-  .why { font-size: 1.1em; max-width: 46ch; margin: 0; }
-
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px 22px;
-  }
-  .card h3 { margin: 0 0 0.35em; font-size: 1.1em; color: var(--accent); }
-  .card p { margin: 0; color: var(--muted); }
-
-  ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: passo; display: grid; gap: 14px; }
-  ol.steps li { counter-increment: passo; display: grid; grid-template-columns: 2.2em 1fr; gap: 0.7em; align-items: start; }
-  ol.steps li::before {
-    content: counter(passo);
-    width: 2.2em; height: 2.2em;
-    display: grid; place-items: center;
-    background: var(--accent); color: var(--accent-ink);
-    border-radius: 50%;
+    display: inline-block;
+    background: var(--gesso-giallo);
+    color: #23282C;
     font-weight: 700;
+    text-decoration: none;
+    padding: .65em 1.2em;
+    border-radius: 3px;
+    transform: rotate(-1.2deg);
+    box-shadow: 2px 3px 0 rgba(0,0,0,.3);
   }
-  ol.steps li span { padding-top: 0.25em; }
+  .bottone:hover { transform: rotate(0deg); color: #23282C; }
+  .scritte { display: none; }
+  @media (min-width: 1060px) {
+    header { position: relative; }
+    .scritte { display: block; position: absolute; right: 0; top: clamp(40px, 7vw, 84px); width: 330px; height: 300px; color: var(--gesso); pointer-events: none; }
+    .scritte span { position: absolute; white-space: nowrap; opacity: .82; text-shadow: 0 0 1px rgba(238,235,225,.5); }
+    .scritte .conto { right: 10px; top: 0; font-size: 2.1em; font-weight: 700; transform: rotate(-4deg); letter-spacing: .04em; }
+    .scritte .frase-gesso { right: 40px; top: 110px; font-size: 1.35em; transform: rotate(2deg); }
+    .scritte .frase-gesso b { font-weight: 700; }
+    .scritte .az { color: var(--gesso-azzurro); } .scritte .ro { color: var(--gesso-rosa); } .scritte .gi { color: var(--gesso-giallo); }
+    .scritte .lettere { right: 150px; top: 200px; font-size: 1.6em; letter-spacing: .3em; transform: rotate(-2deg); opacity: .6; }
+  }
+  .stato { color: var(--gesso-tenue); font-size: .9em; margin: 22px 0 0; }
+  .stato strong { color: var(--gesso); }
 
-  ul.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-  ul.ticks li { display: grid; grid-template-columns: 1.6em 1fr; gap: 0.6em; }
-  ul.ticks li::before { content: "✓"; color: var(--accent); font-weight: 800; font-size: 1.15em; line-height: 1.35; }
+  section { padding: clamp(36px, 6vw, 64px) 0 0; }
+  h2 {
+    font-size: clamp(1.25rem, 1.05rem + .9vw, 1.7rem);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin: 0 0 .8em;
+    display: inline-block;
+    padding-bottom: 6px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 10' preserveAspectRatio='none'%3E%3Cpath d='M2 6 C 50 2, 110 9, 170 5 S 260 3, 298 6' stroke='%23F2D570' stroke-width='2.6' fill='none' stroke-linecap='round' opacity='.9'/%3E%3C/svg%3E") left bottom / 100% 10px no-repeat;
+  }
+  p { margin: 0 0 1em; max-width: 62ch; }
 
-  footer { border-top: 1px solid var(--border); padding: 32px 0 48px; color: var(--muted); font-size: 0.9em; }
-  footer p { margin: 0 0 0.6em; }
+  /* fogli attaccati alla lavagna con lo scotch */
+  .schermate { display: grid; gap: 30px 26px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); align-items: start; margin-top: 10px; }
+  figure { margin: 0; }
+  .foglio { position: relative; background: var(--carta); padding: 8px 8px 10px; box-shadow: 0 6px 14px rgba(0,0,0,.35); }
+  .foglio img { width: 100%; height: auto; }
+  .foglio::before {
+    content: ""; position: absolute; top: -11px; left: 50%; width: 84px; height: 22px; margin-left: -42px;
+    background: rgba(240, 232, 205, .72); box-shadow: 0 1px 2px rgba(0,0,0,.15); transform: rotate(-3deg);
+  }
+  .schermate figure:nth-child(1) .foglio { transform: rotate(-1.4deg); }
+  .schermate figure:nth-child(2) .foglio { transform: rotate(.9deg); }
+  .schermate figure:nth-child(3) .foglio { transform: rotate(-.6deg); }
+  figcaption { margin-top: 14px; font-size: .92em; color: var(--gesso-tenue); }
+  figcaption a { font-weight: 700; }
+  .grande { margin-top: 40px; display: grid; gap: 28px; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: center; }
+  .grande .foglio { transform: rotate(.8deg); }
+  @media (max-width: 720px) { .grande { grid-template-columns: 1fr; } }
+
+  .prove { display: grid; gap: 6px 28px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .prove h3 { font-size: .95em; margin: .6em 0 .2em; text-transform: uppercase; letter-spacing: .05em; }
+  .prove div:nth-child(1) h3 { color: var(--gesso-azzurro); }
+  .prove div:nth-child(2) h3 { color: var(--gesso-rosa); }
+  .prove div:nth-child(3) h3 { color: #B9E0B0; }
+  .prove ul { margin: 0; padding-left: 1.1em; }
+  .prove li { margin: .2em 0; }
+
+  ul.semplice { margin: 0 0 1em; padding-left: 1.2em; max-width: 62ch; }
+  ul.semplice li { margin: .4em 0; }
+  ol.passi { margin: 0; padding-left: 1.4em; max-width: 62ch; }
+  ol.passi li { margin: .4em 0; padding-left: .2em; }
+
+  footer { margin-top: clamp(40px, 7vw, 72px); padding: 22px 0 18px; color: var(--gesso-tenue); font-size: .88em; border-top: 2px dashed rgba(238,235,225,.18); }
+  footer p { margin: 0 0 .6em; max-width: none; }
+  /* la mensola con il gessetto e il cancellino */
+  .mensola { position: relative; height: 26px; background: var(--legno); margin: 0 calc(-1 * clamp(8px, 1.6vw, 16px)); box-shadow: inset 0 3px 0 var(--legno-scuro); }
+  .gessetto { position: absolute; right: 16%; top: -7px; width: 48px; height: 9px; background: var(--gesso); border-radius: 4px; }
+  .gessetto.giallo { right: 12%; width: 30px; background: var(--gesso-giallo); }
+  .cancellino { position: absolute; right: 24%; top: -11px; width: 62px; height: 15px; background: #5B4636; border-radius: 3px; }
+  .cancellino::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: #D9D2C3; border-radius: 0 0 3px 3px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="hero">
-      <svg class="logo" viewBox="0 0 64 64" role="img" aria-label="Una lavagna che sorride">
-        <rect class="frame" x="2" y="8" width="60" height="48" rx="8"/>
-        <rect class="board" x="8" y="14" width="48" height="36" rx="4"/>
-        <circle class="chalk" cx="24" cy="28" r="3"/>
-        <circle class="chalk" cx="40" cy="28" r="3"/>
-        <path class="chalk-line" d="M22 37q10 9 20 0" stroke-width="3" fill="none" stroke-linecap="round"/>
-      </svg>
-      <div>
-        <h1>Lavagna Amica</h1>
-        <p class="tagline">Esercizi interattivi gratuiti, pensati per il sostegno e per la LIM.</p>
-        <span class="badge">Anteprima</span>
-        <p class="apri"><a class="bottone" href="app/">Apri Lavagna Amica</a></p>
-      </div>
+    <h1>Lavagna Amica</h1>
+    <svg class="sottolineato" viewBox="0 0 440 14" aria-hidden="true">
+      <path d="M3 9 C 60 4, 130 11, 200 7 S 350 4, 437 8" stroke="#EEEBE1" stroke-width="3.2" fill="none" stroke-linecap="round" opacity=".85"/>
+    </svg>
+    <p class="frase">Esercizi interattivi gratuiti per la scuola primaria, pensati per il sostegno e per la LIM.</p>
+    <a class="bottone" href="app/">Apri Lavagna Amica</a>
+    <p class="stato"><strong>Anteprima</strong> · 353 esercizi · ultimo aggiornamento 18 novembre 2026</p>
+    <div class="scritte" aria-hidden="true">
+      <span class="conto">3 × 4 = 12</span>
+      <span class="frase-gesso"><b class="gi">il</b> <b class="az">gatto</b> <b>nero</b> <b class="ro">mangia</b></span>
+      <span class="lettere">A B C</span>
     </div>
   </header>
 
   <main>
-    <section aria-labelledby="perche">
-      <h2 id="perche">Perché esiste</h2>
-      <p class="why">Molti strumenti per creare esercizi interattivi fanno pagare le funzioni migliori. Per un uso didattico dovrebbero essere di tutti.</p>
-    </section>
-
-    <section aria-labelledby="promesse">
-      <h2 id="promesse">Le promesse</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Gratis per sempre</h3>
-          <p>Nessuna funzione a pagamento, nessun abbonamento.</p>
-        </div>
-        <div class="card">
-          <h3>Niente pubblicità</h3>
-          <p>E niente tracciamento: nessuno ti segue mentre giochi.</p>
-        </div>
-        <div class="card">
-          <h3>Nessun dato degli alunni</h3>
-          <p>Per giocare non serve un account: a scuola, a casa, con i genitori.</p>
-        </div>
-        <div class="card">
-          <h3>Di tutti</h3>
-          <p>Il codice è aperto e gli esercizi pubblicati restano liberi.</p>
+    <section aria-labelledby="come-sono">
+      <h2 id="come-sono">Come sono gli esercizi</h2>
+      <p>Molti esercizi partono da una spiegazione animata, da guardare insieme alla LIM. Poi si gioca: si tocca la risposta, si trascina, si raggruppa.</p>
+      <div class="schermate">
+        <figure>
+          <div class="foglio"><img src="img/emozioni.jpg" width="680" height="290" alt="Spiegazione animata: un viso disegnato che sorride, con la scritta gioia" loading="lazy"></div>
+          <figcaption>Le emozioni sul viso: la faccia cambia espressione passo dopo passo. <a href="app/#/gioca/es/emozioni-sul-viso">Prova</a></figcaption>
+        </figure>
+        <figure>
+          <div class="foglio"><img src="img/moltiplicazione.jpg" width="680" height="290" alt="Spiegazione animata: tre piatti con quattro mele ciascuno" loading="lazy"></div>
+          <figcaption>La moltiplicazione come gruppi uguali, con le mele nei piatti. <a href="app/#/gioca/es/moltiplicazione-gruppi-uguali">Prova</a></figcaption>
+        </figure>
+        <figure>
+          <div class="foglio"><img src="img/grammatica.jpg" width="680" height="290" alt="Spiegazione animata: la frase il gatto nero mangia la pappa con ogni parola colorata secondo il tipo" loading="lazy"></div>
+          <figcaption>La prima analisi grammaticale: ogni tipo di parola ha il suo colore. <a href="app/#/gioca/es/parti-del-discorso">Prova</a></figcaption>
+        </figure>
+      </div>
+      <div class="grande">
+        <figure>
+          <div class="foglio"><img src="img/gioco.jpg" width="800" height="480" alt="Esercizio da raggruppare: le azioni che aiutano e che non aiutano a tornare calmi, scritte in stampato maiuscolo e minuscolo" loading="lazy"></div>
+        </figure>
+        <div>
+          <p>Le parole si possono mostrare in stampato maiuscolo, in minuscolo, in corsivo o in due scritture insieme, come qui.</p>
+          <p>Non c'è il tempo che scade e non c'è «hai perso». Se serve, si tolgono le risposte sbagliate e si gioca senza errore.</p>
         </div>
       </div>
     </section>
 
-    <section aria-labelledby="come">
-      <h2 id="come">Come funzionerà</h2>
-      <ol class="steps">
-        <li><span>Gli insegnanti si registrano con la loro email, creano gli esercizi e li pubblicano.</span></li>
-        <li><span>Un esercizio nuovo si gioca subito con il suo link ed entra nel catalogo comune dopo il controllo di altri insegnanti.</span></li>
-        <li><span>Chiunque può aprire il catalogo e giocare, senza registrarsi.</span></li>
-        <li><span>Gli insegnanti danno le stelle e segnalano i contenuti non validi: la moderazione è della comunità.</span></li>
-        <li><span>Funziona nel browser, anche senza connessione, e si installa come app su tablet, telefono e PC della LIM.</span></li>
-      </ol>
+    <section aria-labelledby="prova">
+      <h2 id="prova">Prova subito</h2>
+      <p>Non serve registrarsi: basta aprire un link.</p>
+      <div class="prove">
+        <div>
+          <h3>Italiano</h3>
+          <ul>
+            <li><a href="app/#/gioca/es/leggere-8-leggi-parole">Leggi la parola</a></li>
+            <li><a href="app/#/gioca/es/articoli-due-famiglie">Articoli determinativi e indeterminativi</a></li>
+            <li><a href="app/#/gioca/es/analisi-logica-prime">Prima analisi logica</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Matematica</h3>
+          <ul>
+            <li><a href="app/#/gioca/es/moltiplicazione-problemi-gruppi">Problemi con gruppi uguali</a></li>
+            <li><a href="app/#/gioca/es/tabelline-2-5-10">Le tabelline del 2, del 5 e del 10</a></li>
+            <li><a href="app/#/gioca/es/compiti-colonna-due-cifre">Operazioni in colonna a due cifre</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Emozioni e storia</h3>
+          <ul>
+            <li><a href="app/#/gioca/es/calmarsi-cosa-aiuta">Che cosa mi aiuta a tornare calmo?</a></li>
+            <li><a href="app/#/gioca/es/empatia-come-si-sente">Come si sente?</a></li>
+            <li><a href="app/#/gioca/es/fossili-come-si-formano">Come nasce un fossile</a></li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:1em">Tutti gli altri sono nel <a href="app/">catalogo</a>, divisi per materia e per livello.</p>
     </section>
 
     <section aria-labelledby="sostegno">
       <h2 id="sostegno">Pensata per il sostegno</h2>
-      <ul class="ticks">
-        <li><span>Pittogrammi per la comunicazione aumentativa e lettura ad alta voce di ogni testo.</span></li>
-        <li><span>Le tre scritture con un tasto: stampato maiuscolo, stampato minuscolo, corsivo.</span></li>
-        <li><span>Niente tempo e niente «hai perso». Numero di risposte regolabile. Modalità senza errore.</span></li>
-        <li><span>Alla LIM: bersagli grandi, comandi in basso, e «tocca e tocca» oltre al trascinamento.</span></li>
+      <ul class="semplice">
+        <li>Pittogrammi per la comunicazione aumentativa, così si può rispondere anche senza parlare.</li>
+        <li>Ogni testo si può far leggere ad alta voce.</li>
+        <li>Alla LIM i bersagli sono grandi e i comandi stanno in basso, a portata di bambino; oltre al trascinamento c'è il «tocca e tocca».</li>
+        <li>Ogni scheda si stampa in bianco e nero, per chi lavora anche sul quaderno.</li>
       </ul>
+    </section>
+
+    <section aria-labelledby="regole">
+      <h2 id="regole">Le regole</h2>
+      <p>È gratis e lo resterà: niente funzioni a pagamento, niente pubblicità, niente tracciamento. Gli alunni non hanno un account e non lasciano dati. Il codice è aperto e gli esercizi pubblicati restano liberi per tutti.</p>
+    </section>
+
+    <section aria-labelledby="come">
+      <h2 id="come">Come funzionerà</h2>
+      <ol class="passi">
+        <li>Gli insegnanti si registrano con la loro email, creano gli esercizi e li pubblicano.</li>
+        <li>Un esercizio nuovo si gioca subito con il suo link ed entra nel catalogo comune dopo il controllo di altri insegnanti.</li>
+        <li>Chiunque può aprire il catalogo e giocare, senza registrarsi.</li>
+        <li>Gli insegnanti danno le stelle e segnalano i contenuti non validi.</li>
+        <li>Funziona nel browser, anche senza connessione, e si installa come app su tablet, telefono e PC della LIM.</li>
+      </ol>
     </section>
   </main>
 
   <footer>
-    <p>Progetto open source: <a href="https://github.com/marcellomassardo-collab/lavagnaamica">codice su GitHub</a>.</p>
-    <p>Codice sotto licenza <a href="https://github.com/marcellomassardo-collab/lavagnaamica/blob/main/LICENSE">GNU AGPL-3.0</a> · esercizi pubblicati sotto <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.it">CC BY-SA 4.0</a>.</p>
-    <p>Questa pagina non usa cookie e non carica nulla da altri siti. · <a href="privacy.html">Informativa privacy</a></p>
+    <p>Hai trovato un errore o vuoi proporre un esercizio? <a href="https://github.com/marcellomassardo-collab/lavagnaamica/issues">Scrivilo qui</a>.</p>
+    <p>Progetto open source: <a href="https://github.com/marcellomassardo-collab/lavagnaamica">codice su GitHub</a>. Codice sotto licenza <a href="https://github.com/marcellomassardo-collab/lavagnaamica/blob/main/LICENSE">GNU AGPL-3.0</a>, esercizi pubblicati sotto <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.it">CC BY-SA 4.0</a>.</p>
+    <p>Questa pagina non usa cookie e non carica nulla da altri siti. <a href="privacy.html">Informativa privacy</a></p>
   </footer>
 </div>
+<div class="mensola" aria-hidden="true"><span class="cancellino"></span><span class="gessetto"></span><span class="gessetto giallo"></span></div>
 </body>
 </html>
