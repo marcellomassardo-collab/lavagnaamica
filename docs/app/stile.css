@@ -334,6 +334,22 @@ input[type="text"], input[type="search"], select {
 .talpa .carta { margin: 0 6% 6%; min-height: 0; min-width: 0; padding: 6px; }
 .talpa .carta.breve .carta-testo { font-size: clamp(1.4rem, 1rem + 1.5vw, 2.4rem); }
 .talpa .picto, .talpa img { max-height: clamp(40px, 5vw, 64px); }
+.gi-guida { margin: 0; text-align: center; font-weight: 700; color: var(--tenue); }
+.gi-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 14vw, 170px), 1fr)); gap: clamp(12px, 1.6vw, 20px); width: min(100%, 1100px); margin: 0 auto; }
+.gi-box { display: grid; gap: 8px; justify-items: center; perspective: 900px; }
+.gi-dentro { position: relative; width: 100%; aspect-ratio: 1; border: 0; padding: 0; background: none; cursor: pointer; font: inherit; color: inherit;
+  transform-style: preserve-3d; transition: transform .55s cubic-bezier(.3, 1.3, .5, 1); }
+.gi-box.girata .gi-dentro { transform: rotateY(180deg); cursor: default; }
+.gi-faccia { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 18px; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border: 4px solid var(--bordo); box-shadow: 0 6px 0 rgba(0, 0, 0, .18); }
+.gi-fronte { background: linear-gradient(135deg, #2F6FD6, #7B4FC9); }
+.gi-retro { background: #FFF4C2; transform: rotateY(180deg); border-color: var(--evidenzia); }
+.gi-faccia .carta { min-width: 0; min-height: 0; width: 86%; max-height: 86%; }
+.gi-box.saputa .gi-retro { background: #E2F6EA; border-color: #1E8A4C; }
+.gi-giudizio { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.gi-si { border-color: #1E8A4C; }
+.gi-no { border-color: #C98A00; }
+@media (prefers-reduced-motion: reduce) { .gi-dentro { transition: none; } }
 .sc-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(96px, 13vw, 150px), 1fr)); gap: clamp(14px, 2vw, 26px); width: min(100%, 980px); margin: auto; }
 .sc-scatola { --colore: #E0332B; position: relative; aspect-ratio: 1; border: 0; border-radius: 14px; cursor: pointer; color: #fff; font: inherit;
   background: linear-gradient(90deg, transparent 43%, rgba(255, 255, 255, .55) 43% 57%, transparent 57%), var(--colore); box-shadow: 0 6px 0 rgba(0, 0, 0, .25); transition: transform .15s; }

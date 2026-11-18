@@ -29,11 +29,12 @@ import * as vero from "./giochi/vero.js";
 import * as palloncini from "./giochi/palloncini.js";
 import * as talpa from "./giochi/talpa.js";
 import * as scatole from "./giochi/scatole.js";
+import * as girare from "./giochi/girare.js";
 import * as quiz from "./giochi/quiz.js";
 import * as ruota from "./giochi/ruota.js";
 import * as ascolta from "./giochi/ascolta.js";
 
-const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura, brano, vero, palloncini, talpa, scatole, quiz, ruota, ascolta };
+const MOTORI = { abbina, memory, scelta, raggruppa, sequenza, completa, matematica, lettura, brano, vero, palloncini, talpa, scatole, girare, quiz, ruota, ascolta };
 
 /* ---------- inizio ---------- */
 

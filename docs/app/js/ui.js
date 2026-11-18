@@ -80,7 +80,7 @@ export function pulsanteVoce(testo, etichetta, lingua) {
 
 // ---------- un po' di movimento: le scelte entrano una dopo l'altra, la risposta giusta salta e manda stelline ----------
 const fermi = () => !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
-const ENTRANO = ".carta, .opzione, .let-opzione, .let-tessera, .let-pezzo, .brano-opzione, .mat-opzione, .vf-coppia, .vf-tasto, .barre-scelta, .logica-tessera, .piramide-riga";
+const ENTRANO = ".gi-box, .sc-scatola, .carta, .opzione, .let-opzione, .let-tessera, .let-pezzo, .brano-opzione, .mat-opzione, .vf-coppia, .vf-tasto, .barre-scelta, .logica-tessera, .piramide-riga";
 const viste = new WeakSet();
 
 // Le carte nuove entrano una alla volta, ma solo la prima volta: quando si spostano (trascinate, rimesse nel mucchio) non rientrano.
@@ -88,7 +88,8 @@ export function animaEntrate(area) {
   if (fermi() || !window.MutationObserver) return () => {};
   let fila = 0, azzera = null;
   const entra = n => {
-    if (viste.has(n)) return;
+    // le facce delle carte da girare non entrano da sole: entra la carta intera (un'animazione lì dentro rompe la girata)
+    if (viste.has(n) || n.closest(".gi-faccia, .talpa")) return;
     viste.add(n);
     n.style.animationDelay = Math.min(fila++, 10) * 60 + "ms";
     n.classList.add("entra");
