@@ -46,6 +46,7 @@ export const ANIMAZIONI = {
   "stati-materia": "Solidi, liquidi e gas",
   "maiuscolo-minuscolo": "Maiuscolo e minuscolo",
   quadrilinea: "Le righe: la quadrilinea",
+  cambio: "Il cambio: unità, decine, centinaia (anche con lo zero)",
   "salti-numeri": "Moltiplicare e dividere con i salti",
   raddoppi: "Le tabelline con i raddoppi",
   "per-10": "Per 10, per 100, diviso 10: le cifre scivolano",

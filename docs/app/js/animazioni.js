@@ -681,112 +681,249 @@ function nascosto(n) {
   return n;
 }
 
+/* ---------- riporto, prestito e cambio, con i blocchi grandi ---------- */
+// Cubetto = 1 unità, barretta = 1 decina (10 cubetti in fila), quadrato = 1 centinaio (10 barrette).
+// I blocchi si muovono davvero: i 10 cubetti si mettono in fila e diventano una barretta, la barretta si apre in 10 cubetti.
+const GIALLO_B = "#FFD23F", BRUNO_B = "#8A6D00";
+function cubetto(u) { return s("g", { class: "sp-blocco" }, s("rect", { width: u, height: u, rx: 2, fill: GIALLO_B, stroke: BRUNO_B, "stroke-width": 1.5 })); }
+function barretta(u) {
+  return s("g", { class: "sp-blocco" }, s("rect", { width: 10 * u, height: u, rx: 2, fill: "#7FC8F8", stroke: "#1F5F8B", "stroke-width": 1.5 }),
+    Array.from({ length: 9 }, (_, j) => s("line", { x1: (j + 1) * u, x2: (j + 1) * u, y1: 0, y2: u, stroke: "#1F5F8B", "stroke-width": 1 })));
+}
+function quadratoCento(u) {
+  return s("g", { class: "sp-blocco" }, s("rect", { width: 10 * u, height: 10 * u, rx: 2, fill: "#A8E6A1", stroke: "#2E7D32", "stroke-width": 1.5 }),
+    Array.from({ length: 9 }, (_, j) => [s("line", { x1: (j + 1) * u, x2: (j + 1) * u, y1: 0, y2: 10 * u, stroke: "#2E7D32", "stroke-width": 0.8 }),
+      s("line", { y1: (j + 1) * u, y2: (j + 1) * u, x1: 0, x2: 10 * u, stroke: "#2E7D32", "stroke-width": 0.8 })]));
+}
+// mette un blocco al suo posto senza farlo volare (per preparare la scena)
+function subito(g, x, y) { g.style.transition = "none"; mettiA(g, x, y); void g.getBoundingClientRect(); g.style.transition = ""; }
+const cifraScritta = (x, y, t, misura, colore) => scritta(x, y, t, { "font-size": misura || 56, "font-weight": 800, fill: colore || INCHIOSTRO, "font-family": "Lettura, system-ui, sans-serif" });
+
+// La colonna scritta a destra: due righe, la linea, il risultato e i numerini piccoli sopra.
+function colonnaScritta(svg, a, op, b, X) {
+  const alto = 150, basso = 230, ris = 330;
+  svg.append(s("rect", { x: X[0] - 90, y: 60, width: X[X.length - 1] - X[0] + 160, height: 310, rx: 16, fill: "#fff", stroke: "#DDD5C3", "stroke-width": 3 }));
+  const cifreA = String(a).padStart(X.length, " ").split("").map((c, i) => c.trim() && cifraScritta(X[i], alto, c));
+  const cifreB = String(b).padStart(X.length, " ").split("").map((c, i) => c.trim() && cifraScritta(X[i], basso, c));
+  svg.append(...cifreA.filter(Boolean), ...cifreB.filter(Boolean), cifraScritta(X[0] - 60, basso, op),
+    s("line", { x1: X[0] - 80, x2: X[X.length - 1] + 40, y1: 255, y2: 255, stroke: INCHIOSTRO, "stroke-width": 4 }));
+  const risultato = X.map(x => nascosto(cifraScritta(x, ris, "", 56, "#1E6B52")));
+  svg.append(...risultato);
+  return { cifreA, risultato, dice: (i, t) => { risultato[i].textContent = t; vedi(risultato[i], !!t); } };
+}
+const sopra = (x, y, t, misura) => nascosto(cifraScritta(x, y, t, misura || 30, "#C0282B"));
+const barrata = (x, y) => nascosto(s("line", { x1: x - 22, x2: x + 22, y1: y - 6, y2: y - 46, stroke: "#C0282B", "stroke-width": 6, "stroke-linecap": "round" }));
+
+// i posti sulla tavola: unità in file da 5, decine una sotto l'altra
+const U2 = 20;
+const postoCubo = (j, y0) => [300 + (j % 5) * 26, (y0 || 70) + Math.floor(j / 5) * 26];
+const postoBarra = (i, y0) => [50, (y0 || 70) + i * 28];
+function tavolaDU(svg) {
+  svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }),
+    s("rect", { x: 30, y: 55, width: 240, height: 385, rx: 12, fill: "#E8F4FB" }), s("rect", { x: 285, y: 55, width: 225, height: 385, rx: 12, fill: "#FFF7D6" }),
+    etichetta(150, 42, "decine", 24), etichetta(397, 42, "unità", 24));
+  const luceD = nascosto(s("rect", { x: 30, y: 55, width: 240, height: 385, rx: 12, fill: "none", stroke: "#E0332B", "stroke-width": 5 }));
+  const luceU = nascosto(s("rect", { x: 285, y: 55, width: 225, height: 385, rx: 12, fill: "none", stroke: "#E0332B", "stroke-width": 5 }));
+  svg.append(luceD, luceU);
+  return { luceD, luceU };
+}
+
 const RIPORTO = {
   passi: [
-    "Facciamo 38 + 25 in colonna. Ogni numero è fatto di decine, le barrette da dieci, e di unità, i cubetti.",
-    "Si comincia sempre dalle unità: 8 unità più 5 unità fanno 13 unità.",
-    "13 unità sono troppe per una colonna sola: 10 unità si mettono insieme e diventano 1 decina.",
-    "La decina nuova va nella colonna delle decine: è il riporto. Sopra le decine si scrive un 1 piccolo, e nelle unità ne restano 3.",
-    "Ora le decine: 3 più 2 fa 5, più 1 di riporto fa 6 decine. Il risultato è 63."
+    "Facciamo 38 + 25 in colonna. Le barrette azzurre sono le decine, i cubetti gialli sono le unità.",
+    "Si comincia sempre dalle unità: gli 8 cubetti e i 5 cubetti si mettono insieme. Sono 13 unità.",
+    "13 unità sono più di 10. Dieci cubetti si mettono in fila e si attaccano: diventano 1 barretta. È il cambio: 10 unità = 1 decina.",
+    "La barretta nuova va nella colonna delle decine: è il riporto. Sopra le decine si scrive un 1 piccolo. Nelle unità restano 3 cubetti: si scrive 3.",
+    "Ora le decine: 3 barrette, più 2, più 1 di riporto, fanno 6. Il risultato è 63."
   ],
   crea(svg) {
-    const luce = tabellaColonna(svg, 38, "+", 25);
-    const aD = [0, 1, 2].map(() => blocco("d")), bD = [0, 1].map(() => blocco("d"));
-    const unita = Array.from({ length: 13 }, () => blocco("u"));  // le prime 8 sono di 38, le altre 5 di 25
-    const nuova = blocco("d");
-    nuova.firstChild.setAttribute("stroke", "#C0282B");
-    nuova.firstChild.setAttribute("stroke-width", 3);
-    const dieci = nascosto(s("rect", { x: 492, y: 302, width: 102, height: 44, rx: 8, fill: "none", stroke: "#C0282B", "stroke-width": 4, "stroke-dasharray": "8 6" }));
-    const scrittaDieci = nascosto(etichetta(612, 396, "10 unità = 1 decina", 19));
-    const uno = nascosto(scritta(215, 66, "1", { "font-size": 34, "font-weight": 800, fill: "#C0282B" }));
-    const ru = nascosto(cifraCol(465, 360, "3", "#1E6B52"));
-    const rd = nascosto(cifraCol(215, 360, "6", "#1E6B52"));
-    const finale = nascosto(etichetta(400, 436, "38 + 25 = 63", 30));
-    aD.forEach((g, i) => piazza(g, postoD(0, i)));
-    bD.forEach((g, i) => piazza(g, postoD(1, i)));
-    unita.forEach((g, i) => piazza(g, i < 8 ? postoU(0, i) : postoU(1, i - 8)));
-    piazza(nuova, [548, 300]);
-    vedi(nuova, false);
-    svg.append(...aD, ...bD, ...unita, nuova, dieci, scrittaDieci, uno, ru, rd, finale);
+    const luce = tavolaDU(svg);
+    const linea = s("line", { x1: 40, x2: 500, y1: 208, y2: 208, stroke: "#B9AE96", "stroke-width": 3, "stroke-dasharray": "10 8", class: "sp-sfuma" });
+    svg.append(linea);
+    const aD = [0, 1, 2].map(() => barretta(U2)), bD = [0, 1].map(() => barretta(U2));
+    const cubi = Array.from({ length: 13 }, () => cubetto(U2));
+    const nuova = barretta(U2);
+    nuova.classList.add("sp-sfuma");
+    const fila = nascosto(s("g", {}, s("rect", { x: 290, y: 292, width: 216, height: 36, rx: 8, fill: "none", stroke: "#E0332B", "stroke-width": 4, "stroke-dasharray": "8 6" }),
+      etichetta(397, 360, "10 unità = 1 decina", 24)));
+    svg.append(...aD, ...bD, ...cubi, nuova, fila);
+    const col = colonnaScritta(svg, 38, "+", 25, [650, 730]);
+    const uno = sopra(650, 100, "1");
+    const conto = [nascosto(etichetta(397, 400, "8 + 5 = 13", 28)), nascosto(etichetta(150, 400, "3 + 2 + 1 = 6", 28))];
+    const finale = nascosto(etichetta(690, 410, "38 + 25 = 63", 32));
+    svg.append(uno, ...conto, finale);
+    const r = regista();
     return {
       vai(k) {
-        vedi(luce.u, k >= 1 && k <= 3);
-        vedi(luce.d, k === 4);
-        unita.forEach((g, i) => {
-          // dal passo 3 i primi 10 cubetti sono diventati la barretta: restano solo gli ultimi 3, spostati a sinistra
-          piazza(g, k === 0 ? (i < 8 ? postoU(0, i) : postoU(1, i - 8)) : k >= 3 && i >= 10 ? postoU(2, i - 10) : postoU(2, i));
-          vedi(g, !(k >= 3 && i < 10));
-        });
-        vedi(dieci, k === 2);
-        vedi(scrittaDieci, k === 2);
-        // la barretta nuova compare dove c'erano i 10 cubetti, poi vola tra le decine
-        nuova.style.transition = k === 3 ? "opacity .5s, transform 1s cubic-bezier(.3,.7,.4,1) .7s" : "";
-        vedi(nuova, k >= 3);
-        piazza(nuova, k >= 3 ? postoD(2, 0) : [548, 300]);
-        aD.forEach((g, i) => piazza(g, k === 4 ? postoD(2, 1 + i) : postoD(0, i)));
-        bD.forEach((g, i) => piazza(g, k === 4 ? postoD(2, 4 + i) : postoD(1, i)));
-        vedi(uno, k >= 3);
-        vedi(ru, k >= 3);
-        vedi(rd, k === 4);
-        vedi(finale, k === 4);
+        r.pulisci();
+        vedi(luce.luceU, k >= 1 && k <= 3); vedi(luce.luceD, k === 4);
+        vedi(linea, k < 4); vedi(fila, false); vedi(conto[0], k === 1); vedi(conto[1], k === 4);
+        vedi(uno, k >= 3); vedi(finale, k === 4);
+        col.dice(1, k >= 3 ? "3" : ""); col.dice(0, k === 4 ? "6" : "");
+        // le decine
+        aD.forEach((g, i) => subito(g, ...postoBarra(i)));
+        bD.forEach((g, i) => subito(g, ...(k === 4 ? postoBarra(3 + i) : postoBarra(i, 225))));
+        if (k === 4) { bD.forEach((g, i) => { subito(g, ...postoBarra(i, 225)); r.dopo(500 + i * 300, () => mettiA(g, ...postoBarra(4 + i))); }); }
+        // le unità
+        const posti = k === 0 ? cubi.map((_, j) => j < 8 ? postoCubo(j) : postoCubo(j - 8, 225)) : cubi.map((_, j) => postoCubo(j));
+        cubi.forEach((g, j) => { vedi(g, !(k >= 3 && j < 10)); subito(g, ...(k >= 3 && j >= 10 ? postoCubo(j - 10) : posti[j])); });
+        vedi(nuova, k >= 3); subito(nuova, ...(k >= 3 ? postoBarra(3) : [295, 300]));
+        if (k === 1) cubi.forEach((g, j) => { if (j >= 8) { subito(g, ...postoCubo(j - 8, 225)); r.dopo(400 + (j - 8) * 220, () => mettiA(g, ...postoCubo(j))); } });
+        if (k === 2) {
+          // i primi 10 cubetti si mettono in fila...
+          cubi.forEach((g, j) => { if (j < 10) r.dopo(300 + j * 120, () => mettiA(g, 295 + j * U2, 300)); });
+          r.dopo(1900, () => mettiA(cubi[10], ...postoCubo(0)));
+          r.dopo(2000, () => { mettiA(cubi[11], ...postoCubo(1)); mettiA(cubi[12], ...postoCubo(2)); vedi(fila, true); });
+          // ...e diventano una barretta
+          r.dopo(3200, () => { subito(nuova, 295, 300); vedi(nuova, true); cubi.slice(0, 10).forEach(g => vedi(g, false)); });
+        }
+        if (k === 3) { subito(nuova, 295, 300); cubi.slice(10).forEach((g, j) => subito(g, ...postoCubo(j)));
+          r.dopo(500, () => mettiA(nuova, ...postoBarra(3))); }
       },
-      ferma() {}
+      ferma() { r.pulisci(); }
     };
   }
 };
 
 const PRESTITO = {
   passi: [
-    "Facciamo 52 − 27 in colonna. Il numero 52 è fatto di 5 decine, le barrette, e di 2 unità, i cubetti.",
-    "Si comincia dalle unità: devo togliere 7 unità, ma ne ho solo 2. Non bastano!",
-    "Allora chiedo un prestito alle decine: 1 decina si apre e diventa 10 unità. Le decine diventano 4 e le unità diventano 12.",
-    "Adesso le unità sono 12: ne tolgo 7, e ne restano 5.",
-    "Ora le decine: ne sono rimaste 4. Ne tolgo 2, e ne restano 2. Il risultato è 25."
+    "Facciamo 52 − 27 in colonna. Il 52 è fatto di 5 barrette, le decine, e di 2 cubetti, le unità.",
+    "Si comincia dalle unità: devo togliere 7 cubetti, ma ne ho solo 2. Non bastano!",
+    "Allora si fa il cambio: una barretta va nelle unità e si apre in 10 cubetti. Le decine diventano 4, le unità diventano 12.",
+    "Adesso ci sono 12 cubetti: ne tolgo 7, e ne restano 5.",
+    "Ora le decine: sono rimaste 4 barrette. Ne tolgo 2, e ne restano 2. Il risultato è 25."
   ],
   crea(svg) {
-    const luce = tabellaColonna(svg, 52, "−", 27);
-    const aD = [0, 1, 2, 3, 4].map(() => blocco("d"));
-    const unita = Array.from({ length: 12 }, () => blocco("u"));  // 2 di 52 e 10 che arrivano dalla decina aperta
-    const pochi = nascosto(etichetta(640, 152, "2 è meno di 7!", 22));
-    const barra = nascosto(s("line", { x1: 192, x2: 238, y1: 96, y2: 80, stroke: "#C0282B", "stroke-width": 6, "stroke-linecap": "round" }));
-    const quattro = nascosto(scritta(215, 66, "4", { "font-size": 34, "font-weight": 800, fill: "#C0282B" }));
-    const unoU = nascosto(scritta(438, 104, "1", { "font-size": 30, "font-weight": 800, fill: "#C0282B" }));
-    const tolgo7 = nascosto(etichetta(640, 152, "ne tolgo 7", 22));
-    const tolgo2 = nascosto(etichetta(305, 168, "ne tolgo 2", 22));
-    const ru = nascosto(cifraCol(465, 360, "5", "#1E6B52"));
-    const rd = nascosto(cifraCol(215, 360, "2", "#1E6B52"));
-    const finale = nascosto(etichetta(400, 436, "52 − 27 = 25", 30));
-    const casa = i => (i < 2 ? postoU(0, i) : postoD(0, 4));  // le 10 nuove partono da dentro la decina che si apre
-    aD.forEach((g, i) => piazza(g, postoD(0, i)));
-    unita.forEach((g, i) => { piazza(g, casa(i)); vedi(g, i < 2); });
-    svg.append(...aD, ...unita, pochi, barra, quattro, unoU, tolgo7, tolgo2, ru, rd, finale);
+    const luce = tavolaDU(svg);
+    const barre = [0, 1, 2, 3, 4].map(() => barretta(U2));
+    const cubi = Array.from({ length: 12 }, () => cubetto(U2));   // 2 del 52 e 10 dalla barretta aperta
+    const zonaVia = nascosto(s("g", {}, s("rect", { x: 40, y: 300, width: 460, height: 130, rx: 10, fill: "#F2EEE6", stroke: "#B9AE96", "stroke-width": 2, "stroke-dasharray": "8 6" }),
+      etichetta(270, 425, "quelli che tolgo", 20)));
+    svg.append(zonaVia, ...barre, ...cubi);
+    const col = colonnaScritta(svg, 52, "−", 27, [650, 730]);
+    const segni = { x5: barrata(650, 150), q4: sopra(650, 100, "4"), u1: sopra(700, 150, "1", 34) };
+    const pochi = nascosto(etichetta(397, 250, "2 è meno di 7!", 26));
+    const finale = nascosto(etichetta(690, 410, "52 − 27 = 25", 32));
+    svg.append(...Object.values(segni), pochi, finale);
+    const r = regista();
+    const via = (j, n) => [60 + (n % 9) * 26 + (j >= 0 ? 0 : 0), 320 + Math.floor(n / 9) * 26];
     return {
       vai(k) {
-        vedi(luce.u, k >= 1 && k <= 3);
-        vedi(luce.d, k === 4);
-        vedi(pochi, k === 1);
-        // la quinta decina si apre: sparisce, e al suo posto partono 10 cubetti verso le unità
-        vedi(aD[4], k < 2);
-        unita.forEach((g, i) => {
-          const tolto = k >= 3 && i >= 5;   // gli ultimi 7 se ne vanno
-          vedi(g, i < 2 || k >= 2 ? (tolto ? 0.18 : 1) : 0);
-          g.style.opacity = i < 2 || k >= 2 ? (tolto ? 0.18 : 1) : 0;
-          piazza(g, k >= 3 && !tolto ? postoU(2, i) : k >= 2 || i < 2 ? postoU(0, i) : casa(i));
-        });
-        vedi(barra, k >= 2);
-        vedi(quattro, k >= 2);
-        vedi(unoU, k >= 2);
-        vedi(tolgo7, k === 3);
-        vedi(ru, k >= 3);
-        aD.slice(0, 4).forEach((g, i) => {
-          g.style.opacity = k === 4 && i >= 2 ? 0.18 : 1;
-          piazza(g, k === 4 && i < 2 ? postoD(2, i) : postoD(0, i));
-        });
-        vedi(tolgo2, k === 4);
-        vedi(rd, k === 4);
+        r.pulisci();
+        vedi(luce.luceU, k >= 1 && k <= 3); vedi(luce.luceD, k === 4);
+        vedi(pochi, k === 1); vedi(zonaVia, k >= 3);
+        Object.values(segni).forEach(x => vedi(x, k >= 2));
         vedi(finale, k === 4);
+        col.dice(1, k >= 3 ? "5" : ""); col.dice(0, k === 4 ? "2" : "");
+        barre.forEach((g, i) => { vedi(g, i < 4 || k < 2); subito(g, ...postoBarra(i)); });
+        cubi.forEach((g, j) => { vedi(g, j < 2 || k >= 3); subito(g, ...postoCubo(j)); });
+        if (k === 2) {
+          // la barretta vola nelle unità...
+          vedi(barre[4], true); subito(barre[4], ...postoBarra(4));
+          r.dopo(500, () => mettiA(barre[4], 295, 200));
+          // ...e si apre in 10 cubetti, che vanno al loro posto vicino agli altri 2
+          r.dopo(1700, () => { vedi(barre[4], false); cubi.slice(2).forEach((g, j) => { subito(g, 295 + j * U2, 200); vedi(g, true); }); });
+          r.dopo(2300, () => cubi.slice(2).forEach((g, j) => r.dopo(j * 110, () => mettiA(g, ...postoCubo(j + 2)))));
+        }
+        if (k >= 3) cubi.forEach((g, j) => { if (j >= 5) { if (k === 3) r.dopo(400 + (j - 5) * 200, () => mettiA(g, ...via(j, j - 5))); else subito(g, ...via(j, j - 5)); } });
+        if (k === 4) barre.slice(2, 4).forEach((g, i) => r.dopo(500 + i * 400, () => mettiA(g, 280, 330 + i * 30)));
       },
-      ferma() {}
+      ferma() { r.pulisci(); }
+    };
+  }
+};
+
+// Il cambio in tutte e due le direzioni, anche con le centinaia, e il caso difficile: lo zero (302 − 157).
+const CAMBIO = {
+  passi: [
+    "Il cambio: 10 unità si mettono in fila e diventano 1 decina.",
+    "Allo stesso modo, 10 decine si mettono insieme e diventano 1 centinaio, un quadrato.",
+    "Si può cambiare anche al contrario: 1 centinaio si apre in 10 decine, e 1 decina si apre in 10 unità.",
+    "Un caso difficile: 302 − 157. Nelle unità 2 è meno di 7, ma nelle decine c'è 0: non c'è niente da cambiare.",
+    "Allora si va alle centinaia: 1 centinaio si apre in 10 decine. Le centinaia diventano 2, le decine diventano 10.",
+    "Ora 1 decina si apre in 10 unità: le decine diventano 9, le unità diventano 12.",
+    "Adesso si toglie colonna per colonna: 12 − 7 = 5, 9 − 5 = 4, 2 − 1 = 1. Il risultato è 145."
+  ],
+  crea(svg) {
+    const u = 10;
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }),
+      s("rect", { x: 20, y: 50, width: 150, height: 390, rx: 10, fill: "#EAF7E8" }), s("rect", { x: 178, y: 50, width: 150, height: 390, rx: 10, fill: "#E8F4FB" }),
+      s("rect", { x: 336, y: 50, width: 160, height: 390, rx: 10, fill: "#FFF7D6" }),
+      etichetta(95, 40, "centinaia", 20), etichetta(253, 40, "decine", 20), etichetta(416, 40, "unità", 20));
+    const H = i => [45, 60 + i * 115], D = i => [203, 60 + i * 13], C = j => [348 + (j % 5) * 13, 60 + Math.floor(j / 5) * 13];
+    const quad = [0, 1, 2].map(() => quadratoCento(u));
+    const barre = Array.from({ length: 10 }, () => barretta(u));
+    const cubi = Array.from({ length: 12 }, () => cubetto(u));
+    [...quad, ...barre, ...cubi].forEach(g => g.classList.add("sp-sfuma"));
+    svg.append(...quad, ...barre, ...cubi);
+    const foglio = s("g", { class: "sp-sfuma" });
+    svg.append(foglio);
+    const col = colonnaScritta(foglio, 302, "−", 157, [600, 665, 730]);
+    const segni = { x3: barrata(600, 150), s2: sopra(600, 100, "2"), x0: barrata(665, 150), s10: sopra(665, 100, "10"),
+      x10: s("line", { x1: 647, x2: 683, y1: 84, y2: 70, stroke: "#C0282B", "stroke-width": 5, class: "sp-sfuma" }), s9: sopra(688, 66, "9", 26), u1: sopra(704, 150, "1", 34) };
+    vedi(segni.x10, false);
+    const scritte = [nascosto(etichetta(416, 300, "10 unità = 1 decina", 20)), nascosto(etichetta(253, 300, "10 decine = 1 centinaio", 20)),
+      nascosto(etichetta(253, 420, "e al contrario", 22)), nascosto(etichetta(253, 300, "qui c'è 0!", 26))];
+    const finale = nascosto(etichetta(665, 410, "302 − 157 = 145", 28));
+    svg.append(...Object.values(segni), ...scritte, finale);
+    const r = regista();
+    const nascondiTutto = () => [...quad, ...barre, ...cubi].forEach(g => vedi(g, false));
+    return {
+      vai(k) {
+        r.pulisci();
+        nascondiTutto();
+        scritte.forEach((x, i) => vedi(x, i === k));
+        Object.values(segni).forEach(x => vedi(x, false));
+        vedi(finale, k === 6);
+        vedi(foglio, k >= 3);
+        [0, 1, 2].forEach(i => col.dice(i, ""));
+        if (k === 0) {
+          cubi.slice(0, 10).forEach((g, j) => { subito(g, ...C(j)); vedi(g, true); r.dopo(500 + j * 110, () => mettiA(g, 348 + j * u, 250)); });
+          r.dopo(2000, () => { subito(barre[0], 348, 250); vedi(barre[0], true); cubi.slice(0, 10).forEach(g => vedi(g, false)); });
+          r.dopo(2900, () => mettiA(barre[0], ...D(0)));
+        }
+        if (k === 1) {
+          barre.forEach((g, i) => { subito(g, 203, 60 + i * 15); vedi(g, true); r.dopo(600, () => mettiA(g, ...D(i))); });
+          r.dopo(1800, () => { subito(quad[0], 203, 60); vedi(quad[0], true); barre.forEach(g => vedi(g, false)); });
+          r.dopo(2700, () => mettiA(quad[0], ...H(0)));
+        }
+        if (k === 2) {
+          subito(quad[0], ...H(0)); vedi(quad[0], true);
+          r.dopo(500, () => mettiA(quad[0], 203, 60));
+          r.dopo(1500, () => { vedi(quad[0], false); barre.forEach((g, i) => { subito(g, ...D(i)); vedi(g, true); }); });
+          r.dopo(2000, () => barre.forEach((g, i) => mettiA(g, 203, 60 + i * 15)));
+          r.dopo(2800, () => mettiA(barre[9], 348, 250));
+          r.dopo(3800, () => { vedi(barre[9], false); cubi.slice(0, 10).forEach((g, j) => { subito(g, 348 + j * u, 250); vedi(g, true); }); });
+          r.dopo(4300, () => cubi.slice(0, 10).forEach((g, j) => mettiA(g, ...C(j))));
+        }
+        if (k >= 3) {
+          // 302: 3 centinaia, 0 decine, 2 unità
+          quad.forEach((g, i) => { subito(g, ...H(i)); vedi(g, true); });
+          cubi.slice(0, 2).forEach((g, j) => { subito(g, ...C(j)); vedi(g, true); });
+        }
+        if (k >= 4) {
+          vedi(segni.x3, true); vedi(segni.s2, true); vedi(segni.x0, true); vedi(segni.s10, true);
+          const apri = () => { vedi(quad[2], false); barre.forEach((g, i) => { subito(g, ...D(i)); vedi(g, true); }); };
+          if (k === 4) { r.dopo(500, () => mettiA(quad[2], 203, 60)); r.dopo(1600, apri); }
+          else apri();
+        }
+        if (k >= 5) {
+          vedi(segni.x10, true); vedi(segni.s9, true); vedi(segni.u1, true);
+          const apri = () => { vedi(barre[9], false); cubi.slice(2).forEach((g, j) => { subito(g, ...C(j + 2)); vedi(g, true); }); };
+          if (k === 5) { r.dopo(500, () => mettiA(barre[9], 348, 250));
+            r.dopo(1500, () => { vedi(barre[9], false); cubi.slice(2).forEach((g, j) => { subito(g, 348 + j * u, 250); vedi(g, true); }); });
+            r.dopo(2000, () => cubi.slice(2).forEach((g, j) => mettiA(g, ...C(j + 2)))); }
+          else apri();
+        }
+        if (k === 6) {
+          // si tolgono 7 unità, 5 decine, 1 centinaio: diventano chiari
+          cubi.slice(5).forEach((g, j) => r.dopo(300 + j * 120, () => { g.style.opacity = 0.18; }));
+          barre.slice(4, 9).forEach((g, j) => r.dopo(1300 + j * 150, () => { g.style.opacity = 0.18; }));
+          r.dopo(2200, () => { quad[1].style.opacity = 0.18; });
+          r.dopo(500, () => col.dice(2, "5")); r.dopo(1700, () => col.dice(1, "4")); r.dopo(2500, () => col.dice(0, "1"));
+        }
+      },
+      ferma() { r.pulisci(); }
     };
   }
 };
@@ -2958,7 +3095,7 @@ const EQUIVALENZE = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, "salti-numeri": SALTI_NUMERI, raddoppi: RADDOPPI, "per-10": PER_DIECI, "divisione-pezzi": DIVISIONE_PEZZI, misure: MISURE, equivalenze: EQUIVALENZE, tastiera: TASTIERA, suona: SUONA, "a-an": A_AN, "pronomi-inglese": PRONOMI_EN, "ing-inglese": ING_EN, "maiuscolo-minuscolo": MAIUSCOLO_MINUSCOLO, quadrilinea: QUADRILINEA, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "facce-emozioni": FACCE_EMOZIONI, "corpo-emozioni": CORPO_EMOZIONI, calmarsi: CALMARSI, empatia: EMPATIA, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+const SPIEGAZIONI = { "stati-materia": STATI, cambio: CAMBIO, "salti-numeri": SALTI_NUMERI, raddoppi: RADDOPPI, "per-10": PER_DIECI, "divisione-pezzi": DIVISIONE_PEZZI, misure: MISURE, equivalenze: EQUIVALENZE, tastiera: TASTIERA, suona: SUONA, "a-an": A_AN, "pronomi-inglese": PRONOMI_EN, "ing-inglese": ING_EN, "maiuscolo-minuscolo": MAIUSCOLO_MINUSCOLO, quadrilinea: QUADRILINEA, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "facce-emozioni": FACCE_EMOZIONI, "corpo-emozioni": CORPO_EMOZIONI, calmarsi: CALMARSI, empatia: EMPATIA, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,

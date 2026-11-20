@@ -11568,7 +11568,7 @@
   "gioco": "matematica",
   "consegna": "Quando nella colonna vicina c'è uno zero, il prestito si chiede ancora più a sinistra: alle centinaia.",
   "scopri": {
-   "animazione": "prestito"
+   "animazione": "cambio"
   },
   "dati": {
    "aiuto": "sempre",
