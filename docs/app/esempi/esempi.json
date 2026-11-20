@@ -11850,6 +11850,9 @@
      "b": 10
     }
    ]
+  },
+  "scopri": {
+   "animazione": "salti-numeri"
   }
  },
  {
@@ -11929,6 +11932,9 @@
      "b": 10
     }
    ]
+  },
+  "scopri": {
+   "animazione": "salti-numeri"
   }
  },
  {
@@ -12008,6 +12014,9 @@
      "b": 10
     }
    ]
+  },
+  "scopri": {
+   "animazione": "raddoppi"
   }
  },
  {
@@ -12166,6 +12175,9 @@
      "b": 10
     }
    ]
+  },
+  "scopri": {
+   "animazione": "salti-numeri"
   }
  },
  {
@@ -12245,6 +12257,9 @@
      "b": 10
     }
    ]
+  },
+  "scopri": {
+   "animazione": "salti-numeri"
   }
  },
  {
@@ -12324,6 +12339,9 @@
      "b": 10
     }
    ]
+  },
+  "scopri": {
+   "animazione": "raddoppi"
   }
  },
  {
@@ -12403,6 +12421,9 @@
      "b": 10
     }
    ]
+  },
+  "scopri": {
+   "animazione": "salti-numeri"
   }
  },
  {
@@ -12591,6 +12612,9 @@
      "b": 9
     }
    ]
+  },
+  "scopri": {
+   "animazione": "raddoppi"
   }
  },
  {
@@ -15385,6 +15409,9 @@
      }
     ]
    ]
+  },
+  "scopri": {
+   "animazione": "per-10"
   }
  },
  {
@@ -15944,6 +15971,9 @@
      }
     ]
    ]
+  },
+  "scopri": {
+   "animazione": "equivalenze"
   }
  },
  {
@@ -24004,6 +24034,400 @@
   }
  },
  {
+  "id": "sc-unita-misura",
+  "materia": "Scienze",
+  "livello": 3,
+  "titolo": "Le unità di misura",
+  "scrittura": "minuscolo",
+  "tipo": "gruppi",
+  "gioco": "raggruppa",
+  "consegna": "Che cosa misura questa unità? La lunghezza, il peso o la capacità?",
+  "dati": {
+   "gruppi": [
+    {
+     "nome": "lunghezza",
+     "p": 2913,
+     "elementi": [
+      {
+       "t": "m"
+      },
+      {
+       "t": "cm"
+      },
+      {
+       "t": "km"
+      },
+      {
+       "t": "mm"
+      },
+      {
+       "t": "dm"
+      }
+     ]
+    },
+    {
+     "nome": "peso",
+     "p": 36883,
+     "elementi": [
+      {
+       "t": "kg"
+      },
+      {
+       "t": "g"
+      },
+      {
+       "t": "hg"
+      }
+     ]
+    },
+    {
+     "nome": "capacità",
+     "p": 32466,
+     "elementi": [
+      {
+       "t": "l"
+      },
+      {
+       "t": "dl"
+      },
+      {
+       "t": "ml"
+      },
+      {
+       "t": "cl"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "misure"
+  }
+ },
+ {
+  "id": "sc-equivalenze-scendere",
+  "materia": "Scienze",
+  "livello": 3,
+  "titolo": "Equivalenze: verso le unità più piccole",
+  "scrittura": "minuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Scendi la scala: a ogni gradino moltiplica per 10.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "3 m = ? cm"
+     },
+     "giusta": {
+      "t": "300"
+     },
+     "sbagliate": [
+      {
+       "t": "30"
+      },
+      {
+       "t": "3000"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "2 m = ? dm"
+     },
+     "giusta": {
+      "t": "20"
+     },
+     "sbagliate": [
+      {
+       "t": "200"
+      },
+      {
+       "t": "2"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "5 dm = ? cm"
+     },
+     "giusta": {
+      "t": "50"
+     },
+     "sbagliate": [
+      {
+       "t": "500"
+      },
+      {
+       "t": "5"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "4 cm = ? mm"
+     },
+     "giusta": {
+      "t": "40"
+     },
+     "sbagliate": [
+      {
+       "t": "400"
+      },
+      {
+       "t": "4"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "2 km = ? m"
+     },
+     "giusta": {
+      "t": "2000"
+     },
+     "sbagliate": [
+      {
+       "t": "200"
+      },
+      {
+       "t": "20"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "6 m = ? mm"
+     },
+     "giusta": {
+      "t": "6000"
+     },
+     "sbagliate": [
+      {
+       "t": "600"
+      },
+      {
+       "t": "60"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "equivalenze"
+  }
+ },
+ {
+  "id": "sc-equivalenze-salire",
+  "materia": "Scienze",
+  "livello": 4,
+  "titolo": "Equivalenze: verso le unità più grandi",
+  "scrittura": "minuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Sali la scala: a ogni gradino dividi per 10.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "500 cm = ? m"
+     },
+     "giusta": {
+      "t": "5"
+     },
+     "sbagliate": [
+      {
+       "t": "50"
+      },
+      {
+       "t": "500"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "70 dm = ? m"
+     },
+     "giusta": {
+      "t": "7"
+     },
+     "sbagliate": [
+      {
+       "t": "70"
+      },
+      {
+       "t": "700"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "3000 m = ? km"
+     },
+     "giusta": {
+      "t": "3"
+     },
+     "sbagliate": [
+      {
+       "t": "30"
+      },
+      {
+       "t": "300"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "80 mm = ? cm"
+     },
+     "giusta": {
+      "t": "8"
+     },
+     "sbagliate": [
+      {
+       "t": "80"
+      },
+      {
+       "t": "800"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "400 cm = ? dm"
+     },
+     "giusta": {
+      "t": "40"
+     },
+     "sbagliate": [
+      {
+       "t": "4"
+      },
+      {
+       "t": "4000"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "equivalenze"
+  }
+ },
+ {
+  "id": "sc-equivalenze-peso-capacita",
+  "materia": "Scienze",
+  "livello": 4,
+  "titolo": "Equivalenze di peso e di capacità",
+  "scrittura": "minuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Grammi e litri: la scala funziona allo stesso modo.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "2 kg = ? g"
+     },
+     "giusta": {
+      "t": "2000"
+     },
+     "sbagliate": [
+      {
+       "t": "200"
+      },
+      {
+       "t": "20"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "3 hg = ? g"
+     },
+     "giusta": {
+      "t": "300"
+     },
+     "sbagliate": [
+      {
+       "t": "30"
+      },
+      {
+       "t": "3000"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "1 l = ? ml"
+     },
+     "giusta": {
+      "t": "1000"
+     },
+     "sbagliate": [
+      {
+       "t": "100"
+      },
+      {
+       "t": "10"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "5 l = ? dl"
+     },
+     "giusta": {
+      "t": "50"
+     },
+     "sbagliate": [
+      {
+       "t": "500"
+      },
+      {
+       "t": "5"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "4000 g = ? kg"
+     },
+     "giusta": {
+      "t": "4"
+     },
+     "sbagliate": [
+      {
+       "t": "40"
+      },
+      {
+       "t": "400"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "30 dl = ? l"
+     },
+     "giusta": {
+      "t": "3"
+     },
+     "sbagliate": [
+      {
+       "t": "30"
+      },
+      {
+       "t": "300"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "equivalenze"
+  }
+ },
+ {
   "id": "compiti-colonna-due-cifre",
   "materia": "Matematica",
   "livello": 3,
@@ -25248,6 +25672,119 @@
   },
   "scopri": {
    "animazione": "moltiplicazione"
+  }
+ },
+ {
+  "id": "divisioni-a-pezzi",
+  "materia": "Matematica",
+  "livello": 4,
+  "titolo": "Divisioni a pezzi",
+  "scrittura": "maiuscolo",
+  "tipo": "domande",
+  "gioco": "scelta",
+  "consegna": "Fai la divisione a pezzi: prima 10 gruppi alla volta, poi quelli che restano.",
+  "dati": {
+   "domande": [
+    {
+     "d": {
+      "t": "72 : 3 = ?"
+     },
+     "giusta": {
+      "t": "24"
+     },
+     "sbagliate": [
+      {
+       "t": "21"
+      },
+      {
+       "t": "26"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "84 : 4 = ?"
+     },
+     "giusta": {
+      "t": "21"
+     },
+     "sbagliate": [
+      {
+       "t": "24"
+      },
+      {
+       "t": "19"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "65 : 5 = ?"
+     },
+     "giusta": {
+      "t": "13"
+     },
+     "sbagliate": [
+      {
+       "t": "15"
+      },
+      {
+       "t": "12"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "96 : 3 = ?"
+     },
+     "giusta": {
+      "t": "32"
+     },
+     "sbagliate": [
+      {
+       "t": "31"
+      },
+      {
+       "t": "23"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "78 : 6 = ?"
+     },
+     "giusta": {
+      "t": "13"
+     },
+     "sbagliate": [
+      {
+       "t": "12"
+      },
+      {
+       "t": "16"
+      }
+     ]
+    },
+    {
+     "d": {
+      "t": "91 : 7 = ?"
+     },
+     "giusta": {
+      "t": "13"
+     },
+     "sbagliate": [
+      {
+       "t": "17"
+      },
+      {
+       "t": "14"
+      }
+     ]
+    }
+   ]
+  },
+  "scopri": {
+   "animazione": "divisione-pezzi"
   }
  },
  {

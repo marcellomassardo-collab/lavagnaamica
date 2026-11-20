@@ -27,7 +27,7 @@ export const voceDisponibile = !!sintesi;
 const PREFERITE_IT = [/Isabella Online \(Natural\)/i, /Elsa Online \(Natural\)/i, /Diego Online \(Natural\)/i, /Giuseppe.*Online \(Natural\)/i,
   /Google italiano \d \(Natural\)/i, /it-it-x-.*-network/i, /^Google italiano$/i, /^Federica/i, /^Emma/i, /^Alice/i, /^Paola/i, /^Luca/i];
 const PREFERITE_EN = [/Sonia Online \(Natural\)/i, /Libby Online \(Natural\)/i, /Ryan Online \(Natural\)/i, /Maisie Online \(Natural\)/i, /Thomas Online \(Natural\)/i,
-  /Google UK English \d \(Natural\)/i, /en-gb-x-.*-network/i, /^Google UK English (Female|Male)$/i, /^(Serena|Kate|Daniel|Jamie|Oliver|Stephanie|Arthur|Martha)/i,
+  /Google UK English \d \(Natural\)/i, /en-gb-x-.*-network/i, /^Google UK English (Female|Male)$/i, /^(Serena|Kate|Daniel|Jamie|Oliver|Stephanie|Arthur|Martha)\b/i,
   /(Emma|Ava|Andrew|Brian|Jenny|Aria|Guy).*Online \(Natural\)/i, /^Google US English/i];
 const posto = (v, elenco) => { const i = elenco.findIndex(r => r.test(v.name)); return i < 0 ? 0 : 100 - i; };
 
@@ -57,8 +57,14 @@ export function quandoCambianoLeVoci(fn) {
 }
 
 // Il testo come va detto: in minuscolo (alcune voci leggono il maiuscolo a scatti) e con i simboli in parole.
+// I simboli delle unità di misura si leggono per esteso: «3 m» è «3 metri», non «3 emme».
+const UNITA = { km: "chilometri", hm: "ettometri", dam: "decametri", m: "metri", dm: "decimetri", cm: "centimetri", mm: "millimetri",
+  kg: "chilogrammi", hg: "ettogrammi", dag: "decagrammi", g: "grammi", dg: "decigrammi", cg: "centigrammi", mg: "milligrammi",
+  kl: "chilolitri", hl: "ettolitri", dal: "decalitri", l: "litri", dl: "decilitri", cl: "centilitri", ml: "millilitri" };
+const leggiUnita = t => t.replace(/(\d|\?)\s*(km|hm|dam|dm|cm|mm|kg|hg|dag|dg|cg|mg|kl|hl|dal|dl|cl|ml|m|g|l)\b/g, (x, n, u) => n + " " + UNITA[u]);
+
 export function perLaVoce(t) {
-  return String(t)
+  return leggiUnita(String(t))
     .replace(/[🔊🎉]/gu, "")
     .replace(/^\s*[<>=]\s+(?=\p{L})/u, "")
     .replace(/(\d)\s*:\s*(\d)/g, "$1 diviso $2")

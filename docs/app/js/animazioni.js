@@ -2653,7 +2653,312 @@ const SUONA = {
   }
 };
 
-const SPIEGAZIONI = { "stati-materia": STATI, tastiera: TASTIERA, suona: SUONA, "a-an": A_AN, "pronomi-inglese": PRONOMI_EN, "ing-inglese": ING_EN, "maiuscolo-minuscolo": MAIUSCOLO_MINUSCOLO, quadrilinea: QUADRILINEA, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "facce-emozioni": FACCE_EMOZIONI, "corpo-emozioni": CORPO_EMOZIONI, calmarsi: CALMARSI, empatia: EMPATIA, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
+/* ---------- moltiplicare e dividere: salti, raddoppi, per 10, a pezzi ---------- */
+// un piccolo regista: passi a tempo che si possono fermare quando si cambia passo
+function regista() {
+  let t = [];
+  return {
+    dopo(ms, fn) { t.push(setTimeout(fn, movimentoRidotto() ? 0 : ms)); },
+    pulisci() { t.forEach(clearTimeout); t = []; }
+  };
+}
+const numeroGrande = (testo, misura, colore) => s("g", { class: "sp-blocco" },
+  scritta(0, 0, testo, { "font-size": misura || 80, "font-weight": 800, fill: colore || INCHIOSTRO, "font-family": "Lettura, system-ui, sans-serif" }));
+
+// La moltiplicazione come salti uguali sulla linea dei numeri, e la divisione come salti all'indietro.
+const SALTI_NUMERI = {
+  passi: [
+    "Sulla linea dei numeri, la moltiplicazione è fatta di salti tutti uguali.",
+    "3 × 4: si parte da 0 e si fanno 3 salti da 4. Si arriva a 12. Quindi 3 × 4 = 12.",
+    "Dove atterra il canguro? Su 4, 8, 12: sono i numeri della tabellina del 4.",
+    "La divisione va al contrario. 12 : 4: da 12 si torna allo 0 con salti da 4. I salti sono 3, quindi 12 : 4 = 3.",
+    "Se non si arriva preciso allo 0, quello che avanza è il resto. 14 : 4: 3 salti da 4, e restano 2. 14 : 4 = 3 con resto 2."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const X = n => 60 + n * 42.5, Y = 300;
+    svg.append(s("g", {}, s("line", { x1: 40, y1: Y, x2: 760, y2: Y, stroke: INCHIOSTRO, "stroke-width": 4 }),
+      Array.from({ length: 17 }, (_, n) => s("g", {}, s("line", { x1: X(n), y1: Y - 10, x2: X(n), y2: Y + 10, stroke: INCHIOSTRO, "stroke-width": 3 }),
+        scritta(X(n), Y + 40, String(n), { "font-size": 22, "font-weight": 700, fill: INCHIOSTRO })))));
+    const arco = (a, b, colore) => s("path", { d: `M${X(a)} ${Y} Q ${(X(a) + X(b)) / 2} ${Y - 150} ${X(b)} ${Y}`, fill: "none", stroke: colore, "stroke-width": 5,
+      "stroke-linecap": "round", pathLength: 1, class: "sp-traccia" });
+    const salti = (lista, colore, segno) => lista.map(([a, b]) => ({ arco: arco(a, b, colore),
+      scritta: nascosto(etichetta((X(a) + X(b)) / 2, Y - 88, segno, 24)) }));
+    const avanti = salti([[0, 4], [4, 8], [8, 12]], "#2B7FC4", "+4");
+    const indietro = salti([[12, 8], [8, 4], [4, 0]], "#E0332B", "−4");
+    const resto = salti([[14, 10], [10, 6], [6, 2]], "#E0332B", "−4");
+    const tutti = [...avanti, ...indietro, ...resto];
+    tutti.forEach(x => svg.append(x.arco, x.scritta));
+    const cerchi = nascosto(s("g", {}, [4, 8, 12].map(n => s("circle", { cx: X(n), cy: Y + 33, r: 20, fill: "none", stroke: "#2B7FC4", "stroke-width": 4 }))));
+    const parentesi = nascosto(s("g", {}, s("path", { d: `M${X(0)} ${Y + 62} L${X(0)} ${Y + 74} L${X(2)} ${Y + 74} L${X(2)} ${Y + 62}`, fill: "none", stroke: "#1E8A4C", "stroke-width": 4 }),
+      etichetta(X(1), Y + 104, "resto 2", 24)));
+    const scritte = [nascosto(etichetta(400, 70, "salti tutti uguali", 34)), nascosto(etichetta(400, 70, "3 × 4 = 12", 40)), nascosto(etichetta(400, 70, "4, 8, 12…", 40)),
+      nascosto(etichetta(400, 70, "12 : 4 = 3", 40)), nascosto(etichetta(400, 70, "14 : 4 = 3   resto 2", 40))];
+    const canguro = s("g", { class: "sp-blocco" }, s("circle", { r: 16, fill: "#F2A300", stroke: INCHIOSTRO, "stroke-width": 3 }),
+      s("circle", { cx: 5, cy: -4, r: 3, fill: INCHIOSTRO }));
+    svg.append(cerchi, parentesi, ...scritte, canguro);
+    const r = regista();
+    const traccia = (x, si, ritardo) => { x.arco.style.transitionDelay = (ritardo || 0) + "s"; x.arco.style.strokeDashoffset = si ? 0 : 1; vedi(x.scritta, si); };
+    return {
+      vai(k) {
+        r.pulisci();
+        tutti.forEach(x => traccia(x, false));
+        scritte.forEach((x, i) => vedi(x, i === k));
+        vedi(cerchi, k === 2);
+        vedi(parentesi, false);
+        const fai = (lista, da, arrivi) => {
+          mettiA(canguro, X(da), Y - 16);
+          lista.forEach((x, i) => r.dopo(500 + i * 900, () => { traccia(x, true); mettiA(canguro, X(arrivi[i]), Y - 16); }));
+        };
+        if (k === 0) mettiA(canguro, X(0), Y - 16);
+        if (k === 1) fai(avanti, 0, [4, 8, 12]);
+        if (k === 2) { avanti.forEach(x => traccia(x, true)); mettiA(canguro, X(12), Y - 16); }
+        if (k === 3) fai(indietro, 12, [8, 4, 0]);
+        if (k === 4) { fai(resto, 14, [10, 6, 2]); r.dopo(3300, () => vedi(parentesi, true)); }
+      },
+      ferma() { r.pulisci(); }
+    };
+  }
+};
+
+// Le tabelline con i raddoppi: per 2 il doppio, per 4 il doppio del doppio, per 8 ancora, per 5 la metà di per 10.
+const RADDOPPI = {
+  passi: [
+    "Alcune tabelline si ricavano da altre. Per 2 si fa il doppio: 2 × 7 è 7 + 7, cioè 14.",
+    "Per 4 si fa il doppio del doppio: le 2 righe si copiano e diventano 4. 4 × 7 = 28, il doppio di 14.",
+    "Per 8 si raddoppia ancora: 8 × 7 = 56, il doppio di 28.",
+    "Per 5 si fa la metà di 10 volte. 10 × 7 = 70, e la metà di 70 è 35. Quindi 5 × 7 = 35."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const COLORI = ["#E0332B", "#E0332B", "#2B7FC4", "#2B7FC4", "#1E8A4C", "#1E8A4C", "#1E8A4C", "#1E8A4C", "#8E44AD", "#8E44AD"];
+    const righe = COLORI.map(c => s("g", { class: "sp-blocco" }, Array.from({ length: 7 }, (_, j) =>
+      s("circle", { cx: 140 + j * 32, cy: 0, r: 12, fill: c, stroke: INCHIOSTRO, "stroke-width": 2 }))));
+    righe.forEach(g => { g.classList.add("sp-sfuma"); vedi(g, false); });
+    const Yr = i => 70 + i * 32;
+    const meta = nascosto(s("line", { x1: 110, x2: 400, y1: Yr(4) + 16, y2: Yr(4) + 16, stroke: INCHIOSTRO, "stroke-width": 4, "stroke-dasharray": "10 6" }));
+    const scritte = [
+      nascosto(s("g", {}, etichetta(600, 140, "2 × 7", 44), etichetta(600, 200, "7 + 7 = 14", 36))),
+      nascosto(s("g", {}, etichetta(600, 140, "4 × 7 = 28", 44), etichetta(600, 200, "il doppio di 14", 30))),
+      nascosto(s("g", {}, etichetta(600, 140, "8 × 7 = 56", 44), etichetta(600, 200, "il doppio di 28", 30))),
+      nascosto(s("g", {}, etichetta(600, 140, "10 × 7 = 70", 40), etichetta(600, 210, "la metà:", 30), etichetta(600, 270, "5 × 7 = 35", 44)))];
+    svg.append(...righe, meta, ...scritte);
+    const r = regista();
+    // le righe nuove partono sopra quelle che copiano e scendono al loro posto
+    const copia = (da, a, quante) => {
+      for (let i = da; i < a; i++) { righe[i].style.transition = "none"; mettiA(righe[i], 0, Yr(i - quante)); vedi(righe[i], false); }
+      r.dopo(60, () => { for (let i = da; i < a; i++) { righe[i].style.transition = ""; vedi(righe[i], true); mettiA(righe[i], 0, Yr(i)); } });
+    };
+    return {
+      vai(k) {
+        r.pulisci();
+        scritte.forEach((x, i) => vedi(x, i === k));
+        vedi(meta, k === 3);
+        righe.forEach((g, i) => { g.style.opacity = ""; g.querySelectorAll("circle").forEach(c => c.setAttribute("opacity", 1)); });
+        const fino = [2, 4, 8, 10][k];
+        righe.forEach((g, i) => { if (i < fino) { mettiA(g, 0, Yr(i)); vedi(g, true); } else vedi(g, false); });
+        if (k === 1) copia(2, 4, 2);
+        if (k === 2) copia(4, 8, 4);
+        if (k === 3) { righe.forEach((g, i) => { g.style.transition = "none"; mettiA(g, 0, Yr(i)); }); r.dopo(40, () => righe.forEach(g => { g.style.transition = ""; }));
+          r.dopo(1200, () => righe.forEach((g, i) => { if (i >= 5) g.querySelectorAll("circle").forEach(c => c.setAttribute("opacity", 0.25)); })); }
+      },
+      ferma() { r.pulisci(); }
+    };
+  }
+};
+
+// Per 10 e per 100 nella tabella delle posizioni: le cifre scivolano a sinistra (e a destra se si divide).
+const PER_DIECI = {
+  passi: [
+    "Questa è la tabella delle posizioni: migliaia, centinaia, decine, unità. Il 23 ha 2 decine e 3 unità.",
+    "Per 10 ogni cifra diventa 10 volte più grande: si sposta di un posto a sinistra. Nel posto delle unità, rimasto vuoto, si scrive 0. 23 × 10 = 230.",
+    "Per 100 le cifre si spostano di due posti a sinistra, e gli zeri sono due. 23 × 100 = 2300.",
+    "Dividere per 10 è il contrario: le cifre si spostano di un posto a destra. 230 : 10 = 23."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const X = [220, 340, 460, 580];
+    const nomi = ["migliaia", "centinaia", "decine", "unità"];
+    svg.append(s("g", {}, X.map((x, i) => s("g", {},
+      s("rect", { x: x - 60, y: 110, width: 120, height: 220, fill: i % 2 ? "#FFF4C2" : "#E3F2EC", stroke: INCHIOSTRO, "stroke-width": 2 }),
+      scritta(x, 145, nomi[i], { "font-size": 16, "font-weight": 800, fill: INCHIOSTRO })))));
+    const due = numeroGrande("2", 96), tre = numeroGrande("3", 96);
+    const zero1 = numeroGrande("0", 96, "#E0332B"), zero2 = numeroGrande("0", 96, "#E0332B");
+    [zero1, zero2].forEach(z => { z.classList.add("sp-sfuma"); vedi(z, false); });
+    const Yc = 275;
+    const scritte = [nascosto(etichetta(400, 70, "23", 44)), nascosto(etichetta(400, 70, "23 × 10 = 230", 40)),
+      nascosto(etichetta(400, 70, "23 × 100 = 2300", 40)), nascosto(etichetta(400, 70, "230 : 10 = 23", 40))];
+    const freccia = (verso, testo) => nascosto(s("g", {}, etichetta(400, 395, (verso < 0 ? "← " : "") + testo + (verso > 0 ? " →" : ""), 30)));
+    const frecce = [null, freccia(-1, "un posto a sinistra"), freccia(-1, "due posti a sinistra"), freccia(1, "un posto a destra")];
+    svg.append(due, tre, zero1, zero2, ...scritte, ...frecce.filter(Boolean));
+    const r = regista();
+    const metti = (n, i, subito) => { if (subito) n.style.transition = "none"; mettiA(n, X[i], Yc); if (subito) r.dopo(30, () => { n.style.transition = ""; }); };
+    return {
+      vai(k) {
+        r.pulisci();
+        scritte.forEach((x, i) => vedi(x, i === k));
+        frecce.forEach((x, i) => x && vedi(x, i === k));
+        vedi(zero1, false); vedi(zero2, false);
+        if (k === 0) { metti(due, 2, true); metti(tre, 3, true); }
+        if (k === 1) { metti(due, 2, true); metti(tre, 3, true); r.dopo(600, () => { metti(due, 1); metti(tre, 2); });
+          r.dopo(1600, () => { metti(zero1, 3, true); vedi(zero1, true); }); }
+        if (k === 2) { metti(due, 2, true); metti(tre, 3, true); r.dopo(600, () => { metti(due, 0); metti(tre, 1); });
+          r.dopo(1600, () => { metti(zero1, 2, true); metti(zero2, 3, true); vedi(zero1, true); vedi(zero2, true); }); }
+        if (k === 3) { metti(due, 1, true); metti(tre, 2, true); metti(zero1, 3, true); vedi(zero1, true);
+          r.dopo(800, () => vedi(zero1, false)); r.dopo(1300, () => { metti(due, 2); metti(tre, 3); }); }
+      },
+      ferma() { r.pulisci(); }
+    };
+  }
+};
+
+// La divisione a pezzi: si tolgono gruppi grandi (10 gruppi alla volta), poi quelli che restano.
+const DIVISIONE_PEZZI = {
+  passi: [
+    "Una divisione grande si può fare a pezzi. 72 : 3 vuol dire: quanti gruppi da 3 ci sono in 72?",
+    "Prendo subito 10 gruppi da 3: sono 30. Di 72 ne restano 42.",
+    "Prendo altri 10 gruppi da 3: altri 30. Ne restano 12.",
+    "12 sono 4 gruppi da 3, perché 4 × 3 = 12. Non resta niente.",
+    "In tutto i gruppi sono 10 + 10 + 4 = 24. Quindi 72 : 3 = 24."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const U = 9, X0 = 76, Y0 = 190, H = 70;
+    svg.append(s("rect", { x: X0, y: Y0, width: 72 * U, height: H, fill: "#fff", stroke: INCHIOSTRO, "stroke-width": 3, rx: 6 }),
+      etichetta(X0 + 36 * U, Y0 - 24, "72", 34));
+    const pezzo = (da, quanti, colore, testo, sotto) => {
+      const g = s("g", { class: "sp-blocco" }, s("rect", { x: X0 + da * U, y: Y0, width: quanti * U, height: H, fill: colore, stroke: INCHIOSTRO, "stroke-width": 2 }),
+        Array.from({ length: quanti / 3 - 1 }, (_, j) => s("line", { x1: X0 + (da + 3 * (j + 1)) * U, x2: X0 + (da + 3 * (j + 1)) * U, y1: Y0 + 8, y2: Y0 + H - 8, stroke: "#fff", "stroke-width": 2 })),
+        etichetta(X0 + (da + quanti / 2) * U, Y0 + H + (sotto || 40), testo, 22));
+      g.classList.add("sp-sfuma");
+      return g;
+    };
+    const pezzi = [pezzo(0, 30, "#2B7FC4", "10 gruppi = 30"), pezzo(30, 30, "#1E8A4C", "10 gruppi = 30"), pezzo(60, 12, "#F2A300", "4 gruppi = 12", 72)];
+    const restano = [null, "restano 42", "restano 12", "non resta niente"].map(t => t && nascosto(etichetta(400, 110, t, 34)));
+    const finale = nascosto(s("g", {}, etichetta(400, 380, "10 + 10 + 4 = 24", 40), etichetta(400, 430, "72 : 3 = 24", 40)));
+    svg.append(...pezzi, ...restano.filter(Boolean), finale);
+    const r = regista();
+    return {
+      vai(k) {
+        r.pulisci();
+        pezzi.forEach((p, i) => {
+          if (i + 1 < k || (k === 4)) { mettiA(p, 0, 0); vedi(p, true); }
+          else if (i + 1 === k) { p.style.transition = "none"; mettiA(p, 0, -120); vedi(p, false);
+            r.dopo(60, () => { p.style.transition = ""; vedi(p, true); mettiA(p, 0, 0); }); }
+          else vedi(p, false);
+        });
+        restano.forEach((x, i) => x && vedi(x, i === k));
+        vedi(finale, k === 4);
+      },
+      ferma() { r.pulisci(); }
+    };
+  }
+};
+
+/* ---------- scienze: le unità di misura e le equivalenze ---------- */
+const MISURE = {
+  passi: [
+    "Misurare vuol dire confrontare con un'unità di misura: si conta quante volte ci sta.",
+    "Se ognuno misura con il suo piede, le misure non tornano: un piede grande ci sta 4 volte, uno piccolo 6. Per questo si usano unità uguali per tutti.",
+    "Ogni cosa si misura con la sua unità. La lunghezza in metri (m), il peso in chilogrammi (kg) e grammi (g), quanto liquido ci sta in un recipiente, la capacità, in litri (l).",
+    "Il metro si divide in 10 decimetri (dm). Ogni decimetro si divide in 10 centimetri (cm), e ogni centimetro in 10 millimetri (mm).",
+    "Per le distanze lunghe si usa il chilometro (km): un chilometro è lungo 1000 metri."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const r = regista();
+    // 0: il righello-unità che salta lungo la matita
+    const banco = s("rect", { x: 160, y: 210, width: 480, height: 40, rx: 8, fill: "#C99A5B", stroke: INCHIOSTRO, "stroke-width": 3 });
+    const unita = s("g", { class: "sp-blocco" }, s("rect", { width: 96, height: 24, rx: 4, fill: "#2B7FC4", stroke: INCHIOSTRO, "stroke-width": 2 }));
+    const conti = Array.from({ length: 5 }, (_, i) => nascosto(etichetta(208 + i * 96, 300, String(i + 1), 30)));
+    const g0 = nascosto(s("g", {}, banco, unita, ...conti, etichetta(400, 380, "5 volte", 34)));
+    // 1: due piedi diversi
+    const piede = (x, y, l) => s("ellipse", { cx: x + l / 2, cy: y, rx: l / 2 - 3, ry: 16, fill: "#F4C7A1", stroke: INCHIOSTRO, "stroke-width": 2 });
+    const g1 = nascosto(s("g", {}, s("rect", { x: 160, y: 200, width: 480, height: 30, rx: 6, fill: "#C99A5B", stroke: INCHIOSTRO, "stroke-width": 3 }),
+      Array.from({ length: 4 }, (_, i) => piede(160 + i * 120, 140, 120)), etichetta(400, 100, "piede grande: 4", 28),
+      Array.from({ length: 6 }, (_, i) => piede(160 + i * 80, 280, 80)), etichetta(400, 340, "piede piccolo: 6", 28), etichetta(400, 410, "misure diverse!", 32)));
+    // 2: tre grandezze, tre strumenti
+    const g2 = nascosto(s("g", {}, [[2913, "lunghezza", "metro (m)"], [36883, "peso", "chilogrammo (kg)"], [32466, "capacità", "litro (l)"]].map(([id, a, b], i) =>
+      s("g", {}, immagine(id, 60 + i * 250, 70, 180), etichetta(150 + i * 250, 300, a, 30), etichetta(150 + i * 250, 345, b, 26)))));
+    // 3: il metro diviso in 10 decimetri, un decimetro in 10 centimetri
+    const dm = Array.from({ length: 10 }, (_, i) => s("rect", { x: 60 + i * 68, y: 110, width: 68, height: 50, fill: i % 2 ? "#FFD23F" : "#F2A300", stroke: INCHIOSTRO, "stroke-width": 2, class: "sp-sfuma" }));
+    const cm = Array.from({ length: 10 }, (_, i) => s("rect", { x: 60 + i * 68, y: 290, width: 68, height: 40, fill: i % 2 ? "#BEE3F8" : "#2B7FC4", stroke: INCHIOSTRO, "stroke-width": 2, class: "sp-sfuma" }));
+    const lente = nascosto(s("path", { d: "M60 160 L60 290 M128 160 L740 290", stroke: INCHIOSTRO, "stroke-width": 2, "stroke-dasharray": "8 6", fill: "none" }));
+    const g3 = nascosto(s("g", {}, ...dm, etichetta(400, 80, "1 m = 10 dm", 32), lente, ...cm, nascosto(etichetta(400, 380, "1 dm = 10 cm", 32))));
+    const scrittaCm = g3.lastChild;
+    // 4: il chilometro
+    const g4 = nascosto(s("g", {}, immagine(5946, 280, 60, 240), etichetta(400, 350, "1 km = 1000 m", 44)));
+    const gruppi = [g0, g1, g2, g3, g4];
+    svg.append(...gruppi);
+    return {
+      vai(k) {
+        r.pulisci();
+        gruppi.forEach((g, i) => vedi(g, i === k));
+        if (k === 0) { conti.forEach(c => vedi(c, false)); unita.style.transition = "none"; mettiA(unita, 160, 186);
+          for (let i = 0; i < 5; i++) r.dopo(500 + i * 800, () => { unita.style.transition = ""; mettiA(unita, 160 + i * 96, 186); vedi(conti[i], true); }); }
+        if (k === 3) { [...dm, ...cm].forEach(x => vedi(x, false)); vedi(lente, false); vedi(scrittaCm, false);
+          dm.forEach((x, i) => r.dopo(300 + i * 160, () => vedi(x, true)));
+          r.dopo(2200, () => vedi(lente, true)); cm.forEach((x, i) => r.dopo(2600 + i * 160, () => vedi(x, true))); r.dopo(4300, () => vedi(scrittaCm, true)); }
+      },
+      ferma() { r.pulisci(); }
+    };
+  }
+};
+
+// Le equivalenze: la scala delle unità. Scendendo si moltiplica per 10 a ogni gradino, salendo si divide per 10.
+const EQUIVALENZE = {
+  passi: [
+    "Le unità della lunghezza stanno in fila, come i gradini di una scala: km, hm, dam, m, dm, cm, mm.",
+    "Ogni gradino è 10 volte più piccolo di quello sopra. Scendendo di un gradino si moltiplica per 10; salendo si divide per 10.",
+    "3 m quanti centimetri sono? Si scende: 3 m sono 30 dm, che sono 300 cm. Quindi 3 m = 300 cm.",
+    "500 cm quanti metri sono? Si sale: 500 cm sono 50 dm, che sono 5 m. Quindi 500 cm = 5 m.",
+    "Si può usare anche la tabella: si scrive 4 sotto i metri, poi si aggiunge uno 0 per ogni colonna fino ai centimetri. 4 m = 400 cm.",
+    "Funziona allo stesso modo per la capacità, con il litro, e per il peso, con il grammo."
+  ],
+  crea(svg) {
+    svg.append(s("rect", { width: 800, height: 450, fill: "#FBF8F1" }));
+    const UN = ["km", "hm", "dam", "m", "dm", "cm", "mm"];
+    const GX = i => 60 + i * 100, GY = i => 90 + i * 45;
+    const scala = s("g", {}, UN.map((u, i) => s("g", {},
+      s("rect", { x: GX(i), y: GY(i), width: 100, height: 360 - GY(i) + 60, fill: i === 3 ? "#FFD23F" : "#E3F2EC", stroke: INCHIOSTRO, "stroke-width": 2 }),
+      scritta(GX(i) + 50, GY(i) + 32, u, { "font-size": 26, "font-weight": 800, fill: INCHIOSTRO }))));
+    const per10 = nascosto(s("g", {}, UN.slice(0, 6).map((_, i) => etichetta(GX(i) + 100, GY(i) + 4, "×10", 18))));
+    const palla = s("g", { class: "sp-blocco" }, s("circle", { r: 26, fill: "#E0332B", stroke: INCHIOSTRO, "stroke-width": 3 }));
+    const valore = scritta(0, 8, "", { "font-size": 20, "font-weight": 800, fill: "#fff" });
+    palla.append(valore);
+    const scritte = [null, null, nascosto(etichetta(560, 70, "3 m = 300 cm", 36)), nascosto(etichetta(560, 70, "500 cm = 5 m", 36))];
+    const g03 = s("g", {}, scala, per10, palla, ...scritte.filter(Boolean));
+    // la tabella
+    const TX = i => 85 + i * 90;
+    const cifre = ["4", "0", "0"].map((c, i) => { const n = numeroGrande(c, 64, i ? "#E0332B" : INCHIOSTRO); n.classList.add("sp-sfuma"); mettiA(n, TX(3 + i), 250); return n; });
+    const g4 = nascosto(s("g", {}, UN.map((u, i) => s("g", {}, s("rect", { x: TX(i) - 45, y: 120, width: 90, height: 170, fill: i === 3 ? "#FFF4C2" : "#fff", stroke: INCHIOSTRO, "stroke-width": 2 }),
+      scritta(TX(i), 155, u, { "font-size": 26, "font-weight": 800, fill: INCHIOSTRO }))), ...cifre, etichetta(400, 370, "4 m = 400 cm", 40)));
+    // le tre scale
+    const righe = [["lunghezza", "km hm dam m dm cm mm"], ["capacità", "kl hl dal l dl cl ml"], ["peso", "kg hg dag g dg cg mg"]];
+    const g5 = nascosto(s("g", {}, righe.map(([n, l], i) => s("g", { class: "sp-sfuma" }, etichetta(110, 130 + i * 110, n, 26),
+      l.split(" ").map((u, j) => scritta(240 + j * 80, 132 + i * 110, u, { "font-size": 28, "font-weight": 800, fill: j === 3 ? "#E0332B" : INCHIOSTRO }))))));
+    svg.append(g03, g4, g5);
+    const r = regista();
+    const vai = (i, testo, subito) => { if (subito) palla.style.transition = "none"; mettiA(palla, GX(i) + 50, GY(i) - 28); valore.textContent = testo;
+      if (subito) r.dopo(30, () => { palla.style.transition = ""; }); };
+    return {
+      vai(k) {
+        r.pulisci();
+        vedi(g03, k <= 3); vedi(g4, k === 4); vedi(g5, k === 5);
+        vedi(per10, k >= 1 && k <= 3);
+        scritte.forEach((x, i) => x && vedi(x, i === k));
+        vedi(palla, k >= 2);
+        if (k === 2) { vai(3, "3", true); r.dopo(1000, () => vai(4, "30")); r.dopo(2000, () => vai(5, "300")); }
+        if (k === 3) { vai(5, "500", true); r.dopo(1000, () => vai(4, "50")); r.dopo(2000, () => vai(3, "5")); }
+        if (k === 4) { vedi(cifre[0], true); vedi(cifre[1], false); vedi(cifre[2], false); r.dopo(900, () => vedi(cifre[1], true)); r.dopo(1700, () => vedi(cifre[2], true)); }
+        if (k === 5) g5.querySelectorAll(":scope > g").forEach((x, i) => { vedi(x, false); r.dopo(300 + i * 700, () => vedi(x, true)); });
+      },
+      ferma() { r.pulisci(); }
+    };
+  }
+};
+
+const SPIEGAZIONI = { "stati-materia": STATI, "salti-numeri": SALTI_NUMERI, raddoppi: RADDOPPI, "per-10": PER_DIECI, "divisione-pezzi": DIVISIONE_PEZZI, misure: MISURE, equivalenze: EQUIVALENZE, tastiera: TASTIERA, suona: SUONA, "a-an": A_AN, "pronomi-inglese": PRONOMI_EN, "ing-inglese": ING_EN, "maiuscolo-minuscolo": MAIUSCOLO_MINUSCOLO, quadrilinea: QUADRILINEA, "togliere-10": TOGLIERE_10, "moltiplicazione-colonna": MOLTIPLICAZIONE_COLONNA, "fare-10": FARE_10, "linea-vuota": LINEA_VUOTA, "moltiplicazione-giapponese": GIAPPONESE, divisione: DIVISIONE, "divisione-colonna": DIVISIONE_COLONNA, emozioni: EMOZIONI, "analisi-grammaticale": ANALISI_GRAMMATICALE, "facce-emozioni": FACCE_EMOZIONI, "corpo-emozioni": CORPO_EMOZIONI, calmarsi: CALMARSI, empatia: EMPATIA, "analisi-logica": ANALISI_LOGICA, barre: BARRE, "linee-rette": LINEE_RETTE, angoli: ANGOLI, simmetria: SIMMETRIA, perimetro: PERIMETRO, "valore-posizionale": VALORE, frazioni: FRAZIONI, "pari-dispari": PARI, "retta-numeri": RETTA, riporto: RIPORTO, prestito: PRESTITO, "tavola-pitagorica": TAVOLA,
   moltiplicazione: MOLTIPLICAZIONE, tabelline: insieme(MOLTIPLICAZIONE, TAVOLA), "ciclo-acqua": ACQUA, pianta: PIANTA, "sistema-solare": SISTEMA, universo: UNIVERSO,
   fonti: FONTI, "linea-del-tempo": LINEA, "punti-cardinali": PUNTI, carte: CARTE,
   "proprieta-addizione": insieme(COMMUTATIVA_ADD, ASSOCIATIVA_ADD, DISSOCIATIVA_ADD), "proprieta-sottrazione": INVARIANTIVA,
